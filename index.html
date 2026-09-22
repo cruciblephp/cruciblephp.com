@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+document.documentElement.classList.add('js');
+/* FOUC guard fallback: assets/site.js (loaded at the end of body) reveals
+   the page almost immediately once it runs — this inline copy is just a
+   safety net so a blocked/failed-to-load external script can't leave the
+   whole page permanently hidden. document.body doesn't exist yet at this
+   point (still parsing <head>), but by the time this callback actually
+   fires later, it will. */
+setTimeout(function () { document.body && document.body.classList.add('loaded'); }, 1500);
+/* Sets the real <html lang> before <body> ever paints, so a returning
+   visitor with a stored non-English locale (assets/locale.js's own
+   applyStoredLocale does the same lookup, later) doesn't see a flash of
+   English content immediately swapped for their actual language once JS
+   runs — the :lang() CSS in locale.css already reacts to this attribute
+   the instant it's set, no later JS pass required for the static content.
+   Duplicated literal key ('crucible-locale') rather than shared with
+   locale.js's STORAGE_KEY constant — this runs before that file is even
+   requested, and the project has no build step to source one from the
+   other. Only sets the attribute; the rest of setLocale()'s work
+   (persisting again, announcing, engaging Google Translate) still
+   happens the normal way once locale.js itself runs. */
+try {
+  var storedLocale = localStorage.getItem('crucible-locale');
+  if (storedLocale && storedLocale !== 'en') document.documentElement.lang = storedLocale;
+} catch (e) {}
+</script>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light dark" />
+<title>Crucible PHP — Test framework for PHP 8.3+</title>
+<meta name="author" content="Luciano Federico Pereira" />
+<meta name="description" content="An independent, XML-free test framework for PHP 8.3+ — drop-in compatible with PHPUnit suites, engineered like the best runners of other ecosystems." />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Crucible PHP — Test framework for PHP 8.3+" />
+<meta property="og:description" content="An independent, XML-free test framework for PHP 8.3+ — drop-in compatible with PHPUnit suites." />
+<meta name="twitter:card" content="summary" />
+<meta name="theme-color" content="#faf8f1" media="(prefers-color-scheme: light)" />
+<meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="assets/crucible.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="assets/site.css" />
+<!-- Alternate palettes — inert by default. Add data-palette="name" to
+     <html> above to pick one; see the file header for the full list. -->
+<link rel="stylesheet" href="assets/palettes.css" />
+<link rel="stylesheet" href="assets/locale.css" />
+<!-- Cheap even if translate is never engaged — actual script load is lazy,
+     see assets/locale.js. -->
+<link rel="preconnect" crossorigin="anonymous" href="https://translate.google.com">
+<link rel="preconnect" crossorigin="anonymous" href="https://translate.googleapis.com">
+<link rel="dns-prefetch" href="https://translate.google.com">
+<link rel="dns-prefetch" href="https://translate.googleapis.com">
+</head>
+<body>
+
+<!-- The mark, defined once and reused via <use> everywhere below (nav,
+     hero, footer). The paths are assets/crucible.svg's own, unchanged; the
+     viewBox is cropped to the artwork (it spans x 27–373, y 13–387 of that
+     file's 400×400) so it sizes like a glyph instead of carrying the
+     file's margin into every place it appears. -->
+<svg style="position:absolute; width:0; height:0; overflow:hidden" aria-hidden="true">
+  <symbol id="icon-crucible" viewBox="27 13 346 374">
+    <path fill="#e80c08" d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z"/>
+    <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z"/>
+  </symbol>
+  <!-- Classic "external link" arrow (Feather/Lucide-style) — hand-drawn
+       stroke shape, same visual language as .ic-svg's feature icons,
+       instead of the Unicode "↗" character whose exact weight/angle/
+       proportions vary by whatever font renders it on a given device. -->
+  <symbol id="icon-external" viewBox="0 0 24 24">
+    <path d="M7 17 17 7" />
+    <path d="M8 7h9v9" />
+  </symbol>
+  <!-- Magnifying glass for the search/jump-to trigger — same hand-drawn
+       stroke language (round caps, two simple paths) as icon-external. -->
+  <symbol id="icon-search" viewBox="0 0 24 24">
+    <circle cx="11" cy="11" r="7" />
+    <path d="M20 20 16 16" />
+  </symbol>
+  <!-- Chevron for the back-to-top button — same construction as the
+       carousel's left/right arrows (.carousel-btn svg), just pointing up. -->
+  <symbol id="icon-chevron-up" viewBox="0 0 24 24">
+    <path d="M5 15 12 8 19 15" />
+  </symbol>
+  <symbol id="flag-bg" viewBox="0 0 640 480">
+<path fill="#fff" d="M0 0h640v160H0z"/>
+  <path fill="#00966e" d="M0 160h640v160H0z"/>
+  <path fill="#d62612" d="M0 320h640v160H0z"/>
+  </symbol>
+  <symbol id="flag-cn" viewBox="0 0 640 480">
+<defs>
+    <path id="cn-a" fill="#ff0" d="M-.6.8 0-1 .6.8-1-.3h2z"/>
+  </defs>
+  <path fill="#ee1c25" d="M0 0h640v480H0z"/>
+  <use href="#cn-a" width="30" height="20" transform="matrix(71.9991 0 0 72 120 120)"/>
+  <use href="#cn-a" width="30" height="20" transform="rotate(239.07 133.748 -44.074)scale(23.99992 23.99978)"/>
+  <use href="#cn-a" width="30" height="20" transform="rotate(-98.11 185.558 -77.035)scale(24 23.9997)"/>
+  <use href="#cn-a" width="30" height="20" transform="matrix(6.5991 -23.0749 23.0746 6.59919 288 168)"/>
+  <use href="#cn-a" width="30" height="20" transform="matrix(14.9991 -18.73557 18.73533 14.99929 240 216)"/>
+  </symbol>
+  <symbol id="flag-cz" viewBox="0 0 640 480">
+<path fill="#fff" d="M0 0h640v240H0z"/>
+  <path fill="#d7141a" d="M0 240h640v240H0z"/>
+  <path fill="#11457e" d="M360 240 0 0v480z"/>
+  </symbol>
+  <symbol id="flag-de" viewBox="0 0 640 480">
+<path fill="#fc0" d="M0 320h640v160H0z"/>
+  <path fill="#000001" d="M0 0h640v160H0z"/>
+  <path fill="red" d="M0 160h640v160H0z"/>
+  </symbol>
+  <symbol id="flag-dk" viewBox="0 0 640 480">
+<path fill="#c8102e" d="M0 0h640.1v480H0z"/>
+  <path fill="#fff" d="M205.7 0h68.6v480h-68.6z"/>
+  <path fill="#fff" d="M0 205.7h640.1v68.6H0z"/>
+  </symbol>
+  <symbol id="flag-ee" viewBox="0 0 640 480">
+<path fill="#1791ff" d="M0 0h640v160H0z"/>
+  <path fill="#000001" d="M0 160h640v160H0z"/>
+  <path fill="#fff" d="M0 320h640v160H0z"/>
+  </symbol>
+  <symbol id="flag-es" viewBox="0 0 640 480">
+<path fill="#aa151b" d="M0 0h640v480H0z"/>
+  <path fill="#f1bf00" d="M0 120h640v240H0z"/>
+  </symbol>
+  <symbol id="flag-fi" viewBox="0 0 640 480">
+<path fill="#fff" d="M0 0h640v480H0z"/>
+  <path fill="#002f6c" d="M0 174.5h640v131H0z"/>
+  <path fill="#002f6c" d="M175.5 0h130.9v480h-131z"/>
+  </symbol>
+  <symbol id="flag-fr" viewBox="0 0 640 480">
+<path fill="#fff" d="M0 0h640v480H0z"/>
+  <path fill="#000091" d="M0 0h213.3v480H0z"/>
+  <path fill="#e1000f" d="M426.7 0H640v480H426.7z"/>
+  </symbol>
+  <symbol id="flag-gr" viewBox="0 0 640 480">
+<path fill="#0d5eaf" fill-rule="evenodd" d="M0 0h640v53.3H0z"/>
+  <path fill="#fff" fill-rule="evenodd" d="M0 53.3h640v53.4H0z"/>
+  <path fill="#0d5eaf" fill-rule="evenodd" d="M0 106.7h640V160H0z"/>
+  <path fill="#fff" fill-rule="evenodd" d="M0 160h640v53.3H0z"/>
+  <path fill="#0d5eaf" d="M0 0h266.7v266.7H0z"/>
+  <path fill="#0d5eaf" fill-rule="evenodd" d="M0 213.3h640v53.4H0z"/>
+  <path fill="#fff" fill-rule="evenodd" d="M0 266.7h640V320H0z"/>
+  <path fill="#0d5eaf" fill-rule="evenodd" d="M0 320h640v53.3H0z"/>
+  <path fill="#fff" fill-rule="evenodd" d="M0 373.3h640v53.4H0z"/>
+  <g fill="#fff" fill-rule="evenodd" stroke-width="1.3">
+    <path d="M106.7 0H160v266.7h-53.3z"/>
+    <path d="M0 106.7h266.7V160H0z"/>
+  </g>
+  <path fill="#0d5eaf" d="M0 426.7h640V480H0z"/>
+  </symbol>
+  <symbol id="flag-hr" viewBox="0 0 640 480">
+<path fill="#171796" d="M0 0h640v480H0z"/>
+  <path fill="#fff" d="M0 0h640v320H0z"/>
+  <path fill="red" d="M0 0h640v160H0z"/>
+  </symbol>
+  <symbol id="flag-hu" viewBox="0 0 640 480">
+<g fill-rule="evenodd">
+    <path fill="#fff" d="M640 480H0V0h640z"/>
+    <path fill="#388d00" d="M640 480H0V320h640z"/>
+    <path fill="#d43516" d="M640 160.1H0V.1h640z"/>
+  </g>
+  </symbol>
+  <symbol id="flag-ie" viewBox="0 0 640 480">
+<g fill-rule="evenodd" stroke-width="1pt">
+    <path fill="#fff" d="M0 0h640v480H0z"/>
+    <path fill="#009a49" d="M0 0h213.3v480H0z"/>
+    <path fill="#ff7900" d="M426.7 0H640v480H426.7z"/>
+  </g>
+  </symbol>
+  <symbol id="flag-it" viewBox="0 0 640 480">
+<g fill-rule="evenodd" stroke-width="1pt">
+    <path fill="#fff" d="M0 0h640v480H0z"/>
+    <path fill="#009246" d="M0 0h213.3v480H0z"/>
+    <path fill="#ce2b37" d="M426.7 0H640v480H426.7z"/>
+  </g>
+  </symbol>
+  <symbol id="flag-lt" viewBox="0 0 640 480">
+<g fill-rule="evenodd" stroke-width="1pt" transform="scale(.64143 .96773)">
+    <rect width="1063" height="708.7" fill="#006a44" rx="0" ry="0" transform="scale(.93865 .69686)"/>
+    <rect width="1063" height="236.2" y="475.6" fill="#c1272d" rx="0" ry="0" transform="scale(.93865 .69686)"/>
+    <path fill="#fdb913" d="M0 0h997.8v164.6H0z"/>
+  </g>
+  </symbol>
+  <symbol id="flag-lv" viewBox="0 0 640 480">
+<g fill-rule="evenodd">
+    <path fill="#fff" d="M0 0h640v480H0z"/>
+    <path fill="#981e32" d="M0 0h640v192H0zm0 288h640v192H0z"/>
+  </g>
+  </symbol>
+  <symbol id="flag-mt" viewBox="0 0 640 480">
+<path fill="#fff" d="M0 0h320v480H0z"/>
+  <path fill="#cf142b" d="M320 0h320v480H320z"/>
+  </symbol>
+  <symbol id="flag-nl" viewBox="0 0 640 480">
+<path fill="#ae1c28" d="M0 0h640v160H0z"/>
+  <path fill="#fff" d="M0 160h640v160H0z"/>
+  <path fill="#21468b" d="M0 320h640v160H0z"/>
+  </symbol>
+  <symbol id="flag-pl" viewBox="0 0 640 480">
+<g fill-rule="evenodd">
+    <path fill="#fff" d="M640 480H0V0h640z"/>
+    <path fill="#dc143c" d="M640 480H0V240h640z"/>
+  </g>
+  </symbol>
+  <symbol id="flag-pt" viewBox="0 0 640 480">
+<path fill="red" d="M256 0h384v480H256z"/>
+  <path fill="#060" d="M0 0h256v480H0z"/>
+  </symbol>
+  <symbol id="flag-ro" viewBox="0 0 640 480">
+<g fill-rule="evenodd" stroke-width="1pt">
+    <path fill="#00319c" d="M0 0h213.3v480H0z"/>
+    <path fill="#ffde00" d="M213.3 0h213.4v480H213.3z"/>
+    <path fill="#de2110" d="M426.7 0H640v480H426.7z"/>
+  </g>
+  </symbol>
+  <symbol id="flag-se" viewBox="0 0 640 480">
+<path fill="#005293" d="M0 0h640v480H0z"/>
+  <path fill="#fecb00" d="M176 0v192H0v96h176v192h96V288h368v-96H272V0z"/>
+  </symbol>
+  <symbol id="flag-si" viewBox="0 0 640 480">
+<defs>
+    <clipPath id="si-a">
+      <path fill-opacity=".7" d="M-15 0h682.6v512H-15.1z"/>
+    </clipPath>
+  </defs>
+  <g fill-rule="evenodd" stroke-width="1pt" clip-path="url(#si-a)" transform="translate(14.1)scale(.9375)">
+    <path fill="#fff" d="M-62 0H962v512H-62z"/>
+    <path fill="#d50000" d="M-62 341.3H962V512H-62z"/>
+    <path fill="#0000bf" d="M-62 170.7H962v170.6H-62z"/>
+    <path fill="#d50000" d="M228.4 93c-4 61.6-6.4 95.4-15.7 111-10.2 16.8-20 29.1-59.7 44-39.6-14.9-49.4-27.2-59.6-44-9.4-15.6-11.7-49.4-15.7-111l5.8-2c11.8-3.6 20.6-6.5 27.1-7.8 9.3-2 17.3-4.2 42.3-4.7 25 .4 33 2.8 42.3 4.8q9.7 2.1 27.3 7.7z"/>
+    <path fill="#0000bf" d="M222.6 91c-3.8 61.5-7 89.7-12 103.2-9.6 23.2-24.8 35.9-57.6 48-32.8-12.1-48-24.8-57.7-48-5-13.6-8-41.7-11.8-103.3q17.4-5.6 27.1-7.7c9.3-2 17.3-4.3 42.3-4.7 25 .4 33 2.7 42.3 4.7a284 284 0 0 1 27.4 7.7z"/>
+    <path fill="#ffdf00" d="m153 109.8 1.5 3.7 7 1-4.5 2.7 4.3 2.9-6.3 1-2 3.4-2-3.5-6-.8 4-3-4.2-2.7 6.7-1z"/>
+    <path fill="#fff" d="m208.3 179.6-3.9-3-2.7-4.6-5.4-4.7-2.9-4.7-5.4-4.9-2.6-4.7-3-2.3-1.8-1.9-5 4.3-2.6 4.7-3.3 3-3.7-2.9-2.7-4.8-10.3-18.3-10.3 18.3-2.7 4.8-3.7 2.9-3.3-3-2.7-4.7-4.9-4.3-1.9 1.8-2.9 2.4-2.6 4.7-5.4 4.9-2.9 4.7-5.4 4.7-2.7 4.6-3.9 3a66 66 0 0 0 18.6 36.3 107 107 0 0 0 36.6 20.5 104 104 0 0 0 36.8-20.5c5.8-6 16.6-19.3 18.6-36.3"/>
+    <path fill="#ffdf00" d="m169.4 83.9 1.6 3.7 7 1-4.6 2.7 4.4 2.9-6.3 1-2 3.4-2-3.5-6-.8 4-3-4.2-2.7 6.6-1zm-33 0 1.6 3.7 7 .9-4.5 2.7 4.3 2.9-6.3 1-2 3.4-2-3.4-6-.9 4-3-4.2-2.7 6.7-1z"/>
+    <path fill="#0000bf" d="M199.7 203h-7.4l-7-.5-8.3-4h-9.4l-8.1 4-6.5.6-6.4-.6-8.1-4H129l-8.4 4-6.9.6-7.6-.1-3.6-6.2.1-.2 11.2 1.9 6.9-.5 8.3-4.1h9.4l8.2 4 6.4.6 6.5-.6 8.1-4h9.4l8.4 4 6.9.6 10.8-2 .2.4zm-86.4 9.5 7.4-.5 8.3-4h9.4l8.2 4 6.4.5 6.4-.5 8.2-4h9.4l8.3 4 7.5.5 4.8-6h-.1l-5.2 1.4-6.9-.5-8.3-4h-9.4l-8.2 4-6.4.6-6.5-.6-8.1-4H129l-8.4 4-6.9.6-5-1.3v.2l4.5 5.6z"/>
+  </g>
+  </symbol>
+  <symbol id="flag-sk" viewBox="0 0 640 480">
+<path fill="#ee1c25" d="M0 0h640v480H0z"/>
+  <path fill="#0b4ea2" d="M0 0h640v320H0z"/>
+  <path fill="#fff" d="M0 0h640v160H0z"/>
+  <path fill="#fff" d="M233 370.8c-43-20.7-104.6-61.9-104.6-143.2 0-81.4 4-118.4 4-118.4h201.3s3.9 37 3.9 118.4S276 350 233 370.8"/>
+  <path fill="#ee1c25" d="M233 360c-39.5-19-96-56.8-96-131.4s3.6-108.6 3.6-108.6h184.8s3.5 34 3.5 108.6C329 303.3 272.5 341 233 360"/>
+  <path fill="#fff" d="M241.4 209c10.7.2 31.6.6 50.1-5.6 0 0-.4 6.7-.4 14.4s.5 14.4.5 14.4c-17-5.7-38.1-5.8-50.2-5.7v41.2h-16.8v-41.2c-12-.1-33.1 0-50.1 5.7 0 0 .5-6.7.5-14.4s-.5-14.4-.5-14.4c18.5 6.2 39.4 5.8 50 5.6v-25.9c-9.7 0-23.7.4-39.6 5.7 0 0 .5-6.6.5-14.4 0-7.7-.5-14.4-.5-14.4 15.9 5.3 29.9 5.8 39.6 5.7-.5-16.4-5.3-37-5.3-37s9.9.7 13.8.7 13.8-.7 13.8-.7-4.8 20.6-5.3 37c9.7.1 23.7-.4 39.6-5.7 0 0-.5 6.7-.5 14.4s.5 14.4.5 14.4a119 119 0 0 0-39.7-5.7v26z"/>
+  <path fill="#0b4ea2" d="M233 263.3c-19.9 0-30.5 27.5-30.5 27.5s-6-13-22.2-13c-11 0-19 9.7-24.2 18.8 20 31.7 51.9 51.3 76.9 63.4 25-12 57-31.7 76.9-63.4-5.2-9-13.2-18.8-24.2-18.8-16.2 0-22.2 13-22.2 13S253 263.3 233 263.3"/>
+  </symbol>
+  <symbol id="flag-us" viewBox="0 0 640 480">
+<path fill="#bd3d44" d="M0 0h640v480H0"/>
+  <path stroke="#fff" stroke-width="37" d="M0 55.3h640M0 129h640M0 203h640M0 277h640M0 351h640M0 425h640"/>
+  <path fill="#192f5d" d="M0 0h364.8v258.5H0"/>
+  <marker id="us-a" markerHeight="30" markerWidth="30">
+    <path fill="#fff" d="m14 0 9 27L0 10h28L5 27z"/>
+  </marker>
+  <path fill="none" marker-mid="url(#us-a)" d="m0 0 16 11h61 61 61 61 60L47 37h61 61 60 61L16 63h61 61 61 61 60L47 89h61 61 60 61L16 115h61 61 61 61 60L47 141h61 61 60 61L16 166h61 61 61 61 60L47 192h61 61 60 61L16 218h61 61 61 61 60z"/>
+  </symbol>
+  <symbol id="icon-globe" viewBox="0 0 24 24">
+    <circle cx="12" cy="12" r="10"/>
+    <path d="M2 12h20"/>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+  </symbol>
+</svg>
+
+<!-- Populated from JS on window "beforeprint" (see site.js) — invisible on
+     screen (.print-only), shown only in the printed output. -->
+<div class="print-only" id="print-meta" aria-hidden="true">
+  <strong id="print-meta-title"></strong>
+  <span id="print-meta-url"></span>
+  <span id="print-meta-date"></span>
+</div>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<div class="shell">
+
+<nav class="nav" aria-label="Primary">
+  <div class="wrap">
+    <a class="brand notranslate" href="#top"><span class="logo"><svg class="logo-mark" aria-hidden="true"><use href="#icon-crucible"/></svg></span> Crucible</a>
+    <div class="links" id="nav-links">
+      <a class="link i18n" href="#compare"><span data-i18n-default>Why</span><span data-locale="es" class="notranslate">Por qué</span><span data-locale="it" class="notranslate">Perché</span></a>
+      <a class="link i18n" href="#demo"><span data-i18n-default>Live demo</span><span data-locale="es" class="notranslate">Demo en vivo</span><span data-locale="it" class="notranslate">Demo dal vivo</span></a>
+      <a class="link i18n" href="#dialects"><span data-i18n-default>Dialects</span><span data-locale="es" class="notranslate">Dialectos</span><span data-locale="it" class="notranslate">Dialetti</span></a>
+      <a class="link i18n" href="#use-cases"><span data-i18n-default>Use cases</span><span data-locale="es" class="notranslate">Casos de uso</span><span data-locale="it" class="notranslate">Casi d'uso</span></a>
+      <a class="link i18n" href="#how"><span data-i18n-default>How it works</span><span data-locale="es" class="notranslate">Cómo funciona</span><span data-locale="it" class="notranslate">Come funziona</span></a>
+      <a class="link i18n" href="#quick-start"><span data-i18n-default>Quick start</span><span data-locale="es" class="notranslate">Inicio rápido</span><span data-locale="it" class="notranslate">Avvio rapido</span></a>
+      <a class="link i18n" href="#options"><span data-i18n-default>Options</span><span data-locale="es" class="notranslate">Opciones</span><span data-locale="it" class="notranslate">Opzioni</span></a>
+      <a class="link i18n" href="#features"><span data-i18n-default>Features</span><span data-locale="es" class="notranslate">Funciones</span><span data-locale="it" class="notranslate">Funzionalità</span></a>
+      <a class="link" href="#faq">FAQ</a>
+      <div class="links-external">
+        <a class="link link--external i18n" href="docs.html"><span data-i18n-default>Docs</span><span data-locale="es" class="notranslate">Documentación</span><span data-locale="it" class="notranslate">Documentazione</span><svg class="link-external-icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
+        <a class="link link--external i18n" href="changelog.html"><span data-i18n-default>Changelog</span><span data-locale="es" class="notranslate">Cambios</span><span data-locale="it" class="notranslate">Modifiche</span><svg class="link-external-icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
+        <a class="link link--external notranslate" href="https://github.com/cruciblephp/crucible" target="_blank" rel="noopener">GitHub<svg class="link-external-icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <!-- Duplicate of .links-external above, not a reference to it: the
+         original lives inside #nav-links so it's still reachable inside
+         the hamburger dropdown once that collapses. This copy is hidden
+         by default and only shown by .nav.is-compact (assets/locale.js's
+         checkNavOverflow) when the in-page links don't fit but these two
+         external links + search + switcher + hamburger still do. -->
+    <div class="links-external-toolbar" id="nav-links-external-toolbar">
+      <a class="link link--external i18n" href="changelog.html"><span data-i18n-default>Changelog</span><span data-locale="es" class="notranslate">Cambios</span><span data-locale="it" class="notranslate">Modifiche</span><svg class="link-external-icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
+      <a class="link link--external notranslate" href="https://github.com/cruciblephp/crucible" target="_blank" rel="noopener">GitHub<svg class="link-external-icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
+    </div>
+    <button type="button" class="search-trigger" id="search-trigger" aria-haspopup="dialog" aria-label="Search or jump to&hellip;">
+      <svg class="search-trigger-icon" aria-hidden="true"><use href="#icon-search"/></svg>
+      <span class="search-trigger-label">Search</span>
+      <kbd class="search-kbd">S</kbd>
+    </button>
+    <div class="locale-switcher notranslate" id="locale-switcher">
+      <button type="button" class="locale-trigger" id="locale-trigger"
+              aria-haspopup="true" aria-expanded="false" aria-controls="locale-menu"
+              aria-label="Choose language">
+        <svg class="locale-trigger-icon" aria-hidden="true"><use href="#icon-globe"/></svg>
+      </button>
+      <ul class="locale-menu" id="locale-menu" role="menu" aria-hidden="true" aria-label="Choose language"></ul>
+      <span class="locale-announce" id="locale-announce" role="status" aria-live="polite"></span>
+    </div>
+    <div id="translate" class="notranslate" hidden></div>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle menu">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Search or jump to: harvests this page's own h1/h2 (all of which sit
+     inside an ancestor with a real id — header#top, section#compare, etc.)
+     and jumps straight to that ancestor's id. -->
+<dialog class="search-modal" id="search-modal" aria-label="Search or jump to">
+  <div class="search-input-wrap">
+    <svg aria-hidden="true"><use href="#icon-search"/></svg>
+    <input type="search" id="search-input" placeholder="Search or jump to&hellip;" autocomplete="off" aria-controls="search-results" aria-expanded="false" role="combobox" />
+  </div>
+  <ul class="search-results" id="search-results" role="listbox"></ul>
+</dialog>
+
+<main id="main-content">
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="logo"><svg class="logo-mark" aria-hidden="true"><use href="#icon-crucible"/></svg></div>
+        <h1 class="notranslate">Crucible PHP</h1>
+        <p class="tagline i18n">
+          <span data-i18n-default>An independent, XML-free test framework for PHP 8.3+ — drop-in compatible
+          with PHPUnit suites, engineered like the best runners of other ecosystems.</span>
+          <span data-locale="es" class="notranslate">Un framework de pruebas independiente y sin XML para PHP 8.3+ — compatible
+          sin cambios con suites de PHPUnit, diseñado como los mejores runners de otros ecosistemas.</span>
+          <span data-locale="it" class="notranslate">Un framework di test indipendente e senza XML per PHP 8.3+ — compatibile
+          senza modifiche con le suite PHPUnit, progettato come i migliori runner di altri ecosistemi.</span>
+        </p>
+        <div class="badges notranslate">
+          <span class="badge">PHP 8.3+</span>
+          <span class="badge">0 Composer deps</span>
+          <span class="badge">PHPUnit-compatible</span>
+          <span class="badge">code: MIT</span>
+        </div>
+        <div class="cta">
+          <a class="btn btn--primary i18n" href="https://github.com/cruciblephp/crucible">
+            <span data-i18n-default>Star on GitHub</span><span data-locale="es" class="notranslate">Danos una estrella en GitHub</span><span data-locale="it" class="notranslate">Metti una stella su GitHub</span>
+          </a>
+          <a class="btn btn--ghost no-print i18n" href="#demo"><span data-i18n-default>Watch it run</span><span data-locale="es" class="notranslate">Ver cómo funciona</span><span data-locale="it" class="notranslate">Guardalo in azione</span></a>
+          <a class="btn btn--ghost i18n" href="#quick-start"><span data-i18n-default>Quick start</span><span data-locale="es" class="notranslate">Inicio rápido</span><span data-locale="it" class="notranslate">Avvio rapido</span></a>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <svg class="hero-mark" viewBox="27 13 346 374" role="img" aria-label="The Crucible mark"><use href="#icon-crucible"/></svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="compare">
+  <div class="wrap">
+    <div class="eyebrow reveal i18n"><span data-i18n-default>Drop-in</span><span data-locale="es" class="notranslate">Reemplazo directo</span><span data-locale="it" class="notranslate">Sostituto diretto</span></div>
+    <h2 class="reveal i18n"><span data-i18n-default>Your PHPUnit suite, unchanged</span><span data-locale="es" class="notranslate">Tu suite de PHPUnit, sin cambios</span><span data-locale="it" class="notranslate">La tua suite PHPUnit, senza modifiche</span></h2>
+    <p class="section-lead reveal i18n">
+      <span data-i18n-default>A real Laravel 13 application runs green — factories, <code class="inline">RefreshDatabase</code>,
+      Laravel's own constraints, mocks, <code class="inline">--parallel</code> — with the
+      <code class="inline">composer remove</code> as the only change to the project.</span>
+      <span data-locale="es" class="notranslate">Una aplicación Laravel 13 real pasa en verde — factories, <code class="inline">RefreshDatabase</code>,
+      las restricciones propias de Laravel, mocks, <code class="inline">--parallel</code> — con el
+      <code class="inline">composer remove</code> como único cambio en el proyecto.</span>
+      <span data-locale="it" class="notranslate">Una vera applicazione Laravel 13 passa in verde — factory, <code class="inline">RefreshDatabase</code>,
+      i vincoli di Laravel stesso, mock, <code class="inline">--parallel</code> — con il
+      <code class="inline">composer remove</code> come unica modifica al progetto.</span>
+    </p>
+    <div class="table-scroll reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="notranslate">PHPUnit</th>
+            <th class="notranslate">Pest</th>
+            <th class="col-highlight"><span class="col-head"><span class="notranslate">Crucible</span><span class="pill i18n"><span data-i18n-default>drop-in</span><span data-locale="es" class="notranslate">directo</span><span data-locale="it" class="notranslate">diretto</span></span></span></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="i18n"><span data-i18n-default>Runs an existing PHPUnit suite unchanged</span><span data-locale="es" class="notranslate">Ejecuta una suite de PHPUnit existente sin cambios</span><span data-locale="it" class="notranslate">Esegue una suite PHPUnit esistente senza modifiche</span></td><td class="compare-yes" data-label="PHPUnit">✓</td><td class="compare-yes" data-label="Pest">✓</td><td class="col-highlight compare-yes" data-label="Crucible">✓</td></tr>
+          <tr><td class="i18n"><span data-i18n-default>Pest tests and PHPUnit classes in the same run</span><span data-locale="es" class="notranslate">Pruebas de Pest y clases de PHPUnit en la misma ejecución</span><span data-locale="it" class="notranslate">Test Pest e classi PHPUnit nella stessa esecuzione</span></td><td class="compare-no" data-label="PHPUnit">✕</td><td class="compare-yes" data-label="Pest">✓</td><td class="col-highlight compare-yes" data-label="Crucible">✓</td></tr>
+          <tr><td class="i18n"><span data-i18n-default>Configuration in typed PHP, not XML</span><span data-locale="es" class="notranslate">Configuración en PHP tipado, no en XML</span><span data-locale="it" class="notranslate">Configurazione in PHP tipizzato, non in XML</span></td><td class="compare-no" data-label="PHPUnit">✕</td><td class="compare-no" data-label="Pest">✕</td><td class="col-highlight compare-yes" data-label="Crucible">✓</td></tr>
+          <tr><td class="i18n"><span data-i18n-default>The current PHPUnit and Pest feature set, on PHP 8.3</span><span data-locale="es" class="notranslate">Las funciones actuales de PHPUnit y Pest, en PHP 8.3</span><span data-locale="it" class="notranslate">Le funzionalità attuali di PHPUnit e Pest, su PHP 8.3</span></td><td class="compare-no" data-label="PHPUnit">✕<sup>†</sup></td><td class="compare-no" data-label="Pest">✕<sup>†</sup></td><td class="col-highlight compare-yes" data-label="Crucible">✓</td></tr>
+          <tr><td class="i18n"><span data-i18n-default>Runs only the tests a change affects, with no coverage driver</span><span data-locale="es" class="notranslate">Ejecuta solo las pruebas que un cambio afecta, sin driver de cobertura</span><span data-locale="it" class="notranslate">Esegue solo i test che una modifica interessa, senza driver di copertura</span></td><td class="compare-no" data-label="PHPUnit">✕</td><td class="compare-no" data-label="Pest">✕<sup>*</sup></td><td class="col-highlight compare-yes" data-label="Crucible">✓</td></tr>
+          <tr><td class="i18n"><span data-i18n-default>A pass on retry reported as flaky, with quarantine</span><span data-locale="es" class="notranslate">Un pase en el reintento se informa como inestable, con cuarentena</span><span data-locale="it" class="notranslate">Un passaggio al nuovo tentativo segnalato come instabile, con quarantena</span></td><td class="compare-no" data-label="PHPUnit">✕</td><td class="compare-no" data-label="Pest">✕<sup>*</sup></td><td class="col-highlight compare-yes" data-label="Crucible">✓</td></tr>
+          <tr><td class="i18n"><span data-i18n-default>Property-based testing with shrinking</span><span data-locale="es" class="notranslate">Pruebas basadas en propiedades, con reducción</span><span data-locale="it" class="notranslate">Test basati su proprietà, con riduzione</span></td><td class="compare-no" data-label="PHPUnit">✕</td><td class="compare-no" data-label="Pest">✕</td><td class="col-highlight compare-yes" data-label="Crucible">✓</td></tr>
+          <tr><td class="i18n"><span data-i18n-default>Vitest in the same run and exit code</span><span data-locale="es" class="notranslate">Vitest en la misma ejecución y código de salida</span><span data-locale="it" class="notranslate">Vitest nella stessa esecuzione e codice di uscita</span></td><td class="compare-no" data-label="PHPUnit">✕</td><td class="compare-no" data-label="Pest">✕</td><td class="col-highlight compare-yes" data-label="Crucible">✓</td></tr>
+          <tr><td class="i18n"><span data-i18n-default>No Composer dependencies at all</span><span data-locale="es" class="notranslate">Ninguna dependencia de Composer</span><span data-locale="it" class="notranslate">Nessuna dipendenza Composer</span></td><td class="compare-no" data-label="PHPUnit">✕</td><td class="compare-no" data-label="Pest">✕</td><td class="col-highlight compare-yes" data-label="Crucible">✓</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="compare-note reveal i18n"><span data-i18n-default><sup>†</sup> PHPUnit 13 requires PHP 8.4.1 and Pest 5 requires PHP 8.4; on 8.3 a project stays on PHPUnit 12 or Pest 4.</span><span data-locale="es" class="notranslate"><sup>†</sup> PHPUnit 13 requiere PHP 8.4.1 y Pest 5 requiere PHP 8.4; en 8.3 un proyecto se queda en PHPUnit 12 o Pest 4.</span><span data-locale="it" class="notranslate"><sup>†</sup> PHPUnit 13 richiede PHP 8.4.1 e Pest 5 richiede PHP 8.4; su 8.3 un progetto resta su PHPUnit 12 o Pest 4.</span></p>
+    <p class="compare-note reveal i18n"><span data-i18n-default><sup>*</sup> Pest has partial versions: <code class="inline">--dirty</code> selects changed test files, <code class="inline">--tia</code> needs pcov or Xdebug, and <code class="inline">--flaky</code> retries failing tests.</span><span data-locale="es" class="notranslate"><sup>*</sup> Pest tiene versiones parciales: <code class="inline">--dirty</code> selecciona los archivos de prueba modificados, <code class="inline">--tia</code> necesita pcov o Xdebug, y <code class="inline">--flaky</code> reintenta las pruebas que fallan.</span><span data-locale="it" class="notranslate"><sup>*</sup> Pest ha versioni parziali: <code class="inline">--dirty</code> seleziona i file di test modificati, <code class="inline">--tia</code> richiede pcov o Xdebug, e <code class="inline">--flaky</code> riprova i test che falliscono.</span></p>
+  </div>
+</section>
+
+<section id="demo">
+  <div class="wrap">
+    <div class="eyebrow reveal i18n"><span data-i18n-default>Live demo</span><span data-locale="es" class="notranslate">Demo en vivo</span><span data-locale="it" class="notranslate">Demo dal vivo</span></div>
+    <h2 class="reveal i18n"><span data-i18n-default>The suite as a map</span><span data-locale="es" class="notranslate">La suite como un mapa</span><span data-locale="it" class="notranslate">La suite come una mappa</span></h2>
+    <p class="section-lead reveal i18n">
+      <span data-i18n-default>One cell per test, reserved before the run starts, with Time, Tests and Legend panels and one progress bar.
+      Real output from the real renderer — scroll it into view once, then hit replay as often as you like.</span>
+      <span data-locale="es" class="notranslate">Una celda por prueba, reservada antes de que empiece la ejecución, con los paneles Time, Tests y Legend y una barra de progreso.
+      Salida real del renderizador real — desplázate hasta que aparezca una vez y luego presiona repetir tantas veces como quieras.</span>
+      <span data-locale="it" class="notranslate">Una cella per test, riservata prima che l'esecuzione inizi, con i pannelli Time, Tests e Legend e una barra di avanzamento.
+      Output reale del renderer reale — scorri fino a farlo comparire una volta, poi premi replay tutte le volte che vuoi.</span>
+    </p>
+
+    <div class="demo-card reveal" id="demo-card">
+      <svg class="border-draw" aria-hidden="true" focusable="false">
+        <rect class="border-draw-rect" rx="11" ry="11" pathLength="1" />
+      </svg>
+      <div class="demo-chrome">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="demo-filename notranslate">crucible</span>
+        <button type="button" class="replay-btn i18n" id="demo-replay"><span data-i18n-default>↻ Replay</span><span data-locale="es" class="notranslate">↻ Repetir</span><span data-locale="it" class="notranslate">↻ Riproduci</span></button>
+      </div>
+      <div class="demo-body demo-body--screen notranslate">
+        <pre class="demo-pre"><code>$ <span id="demo-marker">./vendor/bin/crucible</span><span class="demo-cursor" aria-hidden="true"></span></code></pre>
+        <!-- The rows of assets/run.svg, verbatim: the grid mid-run, 80
+             columns, captured from MapView driven through a FakeTerminal. -->
+        <div class="demo-tree demo-screen" id="demo-tree" aria-live="polite">
+<span class="line show">┌──────────────────────────────────────────────────────────────────────────────┐</span>
+<span class="line show">│ ◇ crucible.php             v1.0 · cruciblephp.com                      05:43 │</span>
+<span class="line show">├─ Suite ──────────────────────────────────────────────────────────────────────┤</span>
+<span class="line show">│ ███·█✕██!███████████████████████████████████████████████████████████████████ │</span>
+<span class="line show">│ ████████████████████████████████████████████████████████████████████████████ │</span>
+<span class="line show">│ ████████████████████████████████████████████████████████████████████████████ │</span>
+<span class="line show">│ ███████████████████████████████████████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │</span>
+<span class="line show">│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░ │</span>
+<span class="line show">│ ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░                                     │</span>
+<span class="line show">├──────────────────────────────────────────────────────────────────────────────┤</span>
+<span class="line show">│ ▸ tests/unit/Reporting/MapViewTest.php::testTheFirstFrameReservesACell       │</span>
+<span class="line show">└──────────────────────────────────────────────────────────────────────────────┘</span>
+<span class="line show">┌─ Time ────────────────┬─ Tests ───────────────┬─ Legend ─────────────────────┐</span>
+<span class="line show">│ Estimated:      00:00 │   Current:        271 │ █ passed      ✕ failed       │</span>
+<span class="line show">│   Elapsed:      00:00 │     Total:        420 │ ! risky       ? incomplete   │</span>
+<span class="line show">│ Remaining:      00:00 │    Failed:          1 │ · skipped     ░ pending      │</span>
+<span class="line show">├───────────────────────┴───────────────────────┴──────────────────────────────┤</span>
+<span class="line show">│ 420 tests  ███████████████████████████████████████░░░░░░░░░░░░░░░░░░░░░  65% │</span>
+<span class="line show">└──────────────────────────────────────────────────────────────────────────────┘</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="section-lead reveal i18n" style="margin-top:28px">
+      <span data-i18n-default>And when it finishes — where the time went, in columns, with the verdict last:</span>
+      <span data-locale="es" class="notranslate">Y cuando termina — en qué se fue el tiempo, en columnas, con el veredicto al final:</span>
+      <span data-locale="it" class="notranslate">E quando finisce — dove è andato il tempo, in colonne, con il verdetto alla fine:</span>
+    </p>
+    <div class="demo-card reveal">
+      <div class="demo-chrome">
+        <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+        <span class="demo-filename notranslate">crucible</span>
+      </div>
+      <div class="demo-body demo-body--screen notranslate">
+        <!-- The rows of assets/report.svg, verbatim. -->
+<pre class="demo-pre demo-screen-static">Passed
+                                    tests      time   share
+tests/unit                             28    0.027s   ████████████
+├─ Console                             25    0.024s   ████████████
+│  ├─ Support                          15    0.013s   ██████······
+│  │  └─ Str                           15    0.013s   ██████······
+│  └─ Output                           10    0.011s   ██████······
+│     ├─ TextPdf                        3    0.009s   █████·······
+│     └─ Help                           7    0.002s   █···········
+└─ CLI/Commands                         3    0.003s   ██··········
+   └─ CompletionCommand                 3    0.003s   ██··········
+Tests: 28. Passed: 28, Failed: 0, Errors: 0, Skipped: 0, Incomplete: 0, Risky: 0. Time: 0.030s
+OK</pre>
+      </div>
+    </div>
+
+    <p class="section-lead reveal i18n" style="margin-top:28px">
+      <span data-i18n-default>And on a real Pest 5 suite, faster than Pest itself — the same 1,926 tests, the same machine, alternated runs:</span>
+      <span data-locale="es" class="notranslate">Y en una suite real de Pest 5, más rápido que el propio Pest — las mismas 1.926 pruebas, la misma máquina, ejecuciones alternadas:</span>
+      <span data-locale="it" class="notranslate">E su una vera suite Pest 5, più veloce di Pest stesso — gli stessi 1.926 test, la stessa macchina, esecuzioni alternate:</span>
+    </p>
+    <img class="filetree-svg reveal" src="assets/speed.svg" width="700" height="232"
+         alt="Wall time for the same 1,926 tests of spatie/schema-org's Pest 5 suite, median of three alternated runs: Crucible 1.0, 13.51 seconds; Pest 5.2.1, 15.25 seconds. Crucible is 11.4% faster." />
+  </div>
+</section>
+
+<section id="dialects">
+  <div class="wrap">
+    <div class="eyebrow reveal i18n"><span data-i18n-default>Mixed freely</span><span data-locale="es" class="notranslate">Mezclados libremente</span><span data-locale="it" class="notranslate">Mescolati liberamente</span></div>
+    <h2 class="reveal i18n"><span data-i18n-default>Three dialects, one run</span><span data-locale="es" class="notranslate">Tres dialectos, una ejecución</span><span data-locale="it" class="notranslate">Tre dialetti, un'esecuzione</span></h2>
+    <p class="section-lead reveal i18n">
+      <span data-i18n-default>Mixed freely in one suite and one run — there is no mode to switch. Every sample is from
+      <a href="https://github.com/cruciblephp/crucible/tree/main/examples"><code class="inline">examples/</code></a>,
+      and those files are run by the test suite: an example that stopped working turns the suite red.</span>
+      <span data-locale="es" class="notranslate">Mezclados libremente en una suite y una ejecución — no hay ningún modo que cambiar. Cada ejemplo viene de
+      <a href="https://github.com/cruciblephp/crucible/tree/main/examples"><code class="inline">examples/</code></a>,
+      y esos archivos los ejecuta la suite de pruebas: un ejemplo que deja de funcionar pone la suite en rojo.</span>
+      <span data-locale="it" class="notranslate">Mescolati liberamente in una suite e in un'esecuzione — non c'è nessuna modalità da cambiare. Ogni esempio viene da
+      <a href="https://github.com/cruciblephp/crucible/tree/main/examples"><code class="inline">examples/</code></a>,
+      e quei file li esegue la suite di test: un esempio che smette di funzionare fa diventare rossa la suite.</span>
+    </p>
+
+    <div class="variant reveal">
+      <div class="head">
+        <span class="name notranslate">PHPUnit</span>
+        <span class="desc i18n"><span data-i18n-default>The drop-in one — a suite written for PHPUnit runs unchanged</span><span data-locale="es" class="notranslate">El de reemplazo directo — una suite escrita para PHPUnit se ejecuta sin cambios</span><span data-locale="it" class="notranslate">Quello diretto — una suite scritta per PHPUnit gira senza modifiche</span></span>
+      </div>
+      <div class="body">
+<pre class="notranslate">final class CalculatorTest extends TestCase
+{
+    public function testAddsTwoNumbers(): void
+    {
+        $this-&gt;assertSame(4, 2 + 2);
+    }
+}</pre>
+      </div>
+    </div>
+
+    <div class="variant reveal">
+      <div class="head">
+        <span class="name notranslate">Pest</span>
+        <span class="desc i18n"><span data-i18n-default>The expressive one — <code class="inline">*.pest.php</code> files run natively</span><span data-locale="es" class="notranslate">El expresivo — los archivos <code class="inline">*.pest.php</code> se ejecutan de forma nativa</span><span data-locale="it" class="notranslate">Quello espressivo — i file <code class="inline">*.pest.php</code> girano in modo nativo</span></span>
+      </div>
+      <div class="body">
+<pre class="notranslate">test('a test is a description and a closure', function (): void {
+    expect(2 + 2)-&gt;toBe(4);
+});
+
+it('rounds up', function (): void {
+    expect((int) ceil(1.2))-&gt;toBe(2);
+});
+
+describe('expectations', function (): void {
+    it('chains', function (): void {
+        expect('crucible')-&gt;toBeString()-&gt;toHaveLength(8)-&gt;toStartWith('cru');
+    });
+});</pre>
+      </div>
+    </div>
+
+    <div class="variant reveal">
+      <div class="head">
+        <span class="name notranslate">inline</span>
+        <span class="desc i18n"><span data-i18n-default><code class="inline">check()</code> is a nameless test — the name comes from the source line</span><span data-locale="es" class="notranslate"><code class="inline">check()</code> es una prueba sin nombre — el nombre sale de la línea de código</span><span data-locale="it" class="notranslate"><code class="inline">check()</code> è un test senza nome — il nome viene dalla riga di codice</span></span>
+      </div>
+      <div class="body">
+<pre class="notranslate">check(fn () =&gt; expect(strtoupper('a'))-&gt;toBe('A'));</pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="use-cases">
+  <div class="wrap wrap-wide">
+    <div class="eyebrow reveal i18n"><span data-i18n-default>Where it fits</span><span data-locale="es" class="notranslate">Dónde encaja</span><span data-locale="it" class="notranslate">Dove si adatta</span></div>
+    <h2 class="reveal i18n"><span data-i18n-default>Use cases</span><span data-locale="es" class="notranslate">Casos de uso</span><span data-locale="it" class="notranslate">Casi d'uso</span></h2>
+    <p class="section-lead reveal i18n"><span data-i18n-default>Drag or scroll sideways.</span><span data-locale="es" class="notranslate">Arrastra o desplázate lateralmente.</span><span data-locale="it" class="notranslate">Trascina o scorri lateralmente.</span></p>
+
+    <div class="carousel-viewport reveal">
+      <div class="carousel" id="use-case-carousel" role="region" aria-label="Use cases, scrollable" tabindex="0">
+        <div class="carousel-card">
+          <div class="cc-eyebrow i18n"><span data-i18n-default>Laravel applications</span><span data-locale="es" class="notranslate">Aplicaciones Laravel</span><span data-locale="it" class="notranslate">Applicazioni Laravel</span></div>
+          <p class="i18n"><span data-i18n-default>Factories, <code class="inline">RefreshDatabase</code>, mocks and <code class="inline">--parallel</code>, green on a real Laravel 13 app.</span><span data-locale="es" class="notranslate">Factories, <code class="inline">RefreshDatabase</code>, mocks y <code class="inline">--parallel</code>, en verde sobre una app Laravel 13 real.</span><span data-locale="it" class="notranslate">Factory, <code class="inline">RefreshDatabase</code>, mock e <code class="inline">--parallel</code>, in verde su una vera app Laravel 13.</span></p>
+        </div>
+        <div class="carousel-card">
+          <div class="cc-eyebrow i18n"><span data-i18n-default>Pest projects</span><span data-locale="es" class="notranslate">Proyectos Pest</span><span data-locale="it" class="notranslate">Progetti Pest</span></div>
+          <p class="i18n"><span data-i18n-default><code class="inline">*.pest.php</code> runs natively, beside PHPUnit classes in the same run.</span><span data-locale="es" class="notranslate"><code class="inline">*.pest.php</code> se ejecuta de forma nativa, junto a clases de PHPUnit en la misma ejecución.</span><span data-locale="it" class="notranslate"><code class="inline">*.pest.php</code> gira in modo nativo, accanto alle classi PHPUnit nella stessa esecuzione.</span></p>
+        </div>
+        <div class="carousel-card">
+          <div class="cc-eyebrow i18n"><span data-i18n-default>PHP and JavaScript</span><span data-locale="es" class="notranslate">PHP y JavaScript</span><span data-locale="it" class="notranslate">PHP e JavaScript</span></div>
+          <p class="i18n"><span data-i18n-default><code class="inline">-&gt;vitest('resources/js')</code> folds every JS test into the same report, tally and exit code.</span><span data-locale="es" class="notranslate"><code class="inline">-&gt;vitest('resources/js')</code> incorpora cada prueba JS al mismo informe, recuento y código de salida.</span><span data-locale="it" class="notranslate"><code class="inline">-&gt;vitest('resources/js')</code> integra ogni test JS nello stesso report, conteggio e codice di uscita.</span></p>
+        </div>
+        <div class="carousel-card">
+          <div class="cc-eyebrow i18n"><span data-i18n-default>CI pipelines</span><span data-locale="es" class="notranslate">Pipelines de CI</span><span data-locale="it" class="notranslate">Pipeline di CI</span></div>
+          <p class="i18n"><span data-i18n-default><code class="inline">--shard 1/4</code> is hash-stable: adding or removing tests never moves the others between shards.</span><span data-locale="es" class="notranslate"><code class="inline">--shard 1/4</code> es estable por hash: agregar o quitar pruebas nunca mueve las demás entre shards.</span><span data-locale="it" class="notranslate"><code class="inline">--shard 1/4</code> è stabile per hash: aggiungere o togliere test non sposta mai gli altri tra gli shard.</span></p>
+        </div>
+        <div class="carousel-card">
+          <div class="cc-eyebrow i18n"><span data-i18n-default>Large suites</span><span data-locale="es" class="notranslate">Suites grandes</span><span data-locale="it" class="notranslate">Suite grandi</span></div>
+          <p class="i18n"><span data-i18n-default><code class="inline">--changed</code> runs the tests a change puts in doubt, and widens to the full suite when it cannot tell.</span><span data-locale="es" class="notranslate"><code class="inline">--changed</code> ejecuta las pruebas que un cambio pone en duda, y amplía a la suite completa cuando no puede saberlo.</span><span data-locale="it" class="notranslate"><code class="inline">--changed</code> esegue i test che una modifica mette in dubbio, e si allarga alla suite completa quando non può saperlo.</span></p>
+        </div>
+        <div class="carousel-card">
+          <div class="cc-eyebrow i18n"><span data-i18n-default>Flaky suites</span><span data-locale="es" class="notranslate">Suites inestables</span><span data-locale="it" class="notranslate">Suite instabili</span></div>
+          <p class="i18n"><span data-i18n-default>A pass on retry is <strong>flaky</strong>, not a pass — and <code class="inline">crucible flakes</code> hunts the order-dependent ones.</span><span data-locale="es" class="notranslate">Un pase en el reintento es <strong>inestable</strong>, no un pase — y <code class="inline">crucible flakes</code> busca las que dependen del orden.</span><span data-locale="it" class="notranslate">Un passaggio al nuovo tentativo è <strong>instabile</strong>, non un passaggio — e <code class="inline">crucible flakes</code> scova quelli che dipendono dall'ordine.</span></p>
+        </div>
+      </div>
+      <div class="carousel-nav">
+        <button type="button" class="carousel-btn" id="carousel-prev" aria-label="Scroll left">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12 15 19" pathLength="1"/></svg>
+        </button>
+        <button type="button" class="carousel-btn" id="carousel-next" aria-label="Scroll right">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 16 12 9 19" pathLength="1"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="eyebrow reveal i18n"><span data-i18n-default>Migrating from PHPUnit</span><span data-locale="es" class="notranslate">Migrar desde PHPUnit</span><span data-locale="it" class="notranslate">Migrare da PHPUnit</span></div>
+    <h2 class="reveal i18n"><span data-i18n-default>How it works</span><span data-locale="es" class="notranslate">Cómo funciona</span><span data-locale="it" class="notranslate">Come funziona</span></h2>
+    <p class="section-lead reveal i18n"><span data-i18n-default>Four steps, and the last one is a removal.</span><span data-locale="es" class="notranslate">Cuatro pasos, y el último es quitar algo.</span><span data-locale="it" class="notranslate">Quattro passaggi, e l'ultimo è togliere qualcosa.</span></p>
+    <div class="steps">
+      <div class="step reveal" style="transition-delay:0s">
+        <div class="step-number">1</div>
+        <h3 class="i18n"><span data-i18n-default>Install</span><span data-locale="es" class="notranslate">Instalar</span><span data-locale="it" class="notranslate">Installa</span></h3>
+        <p class="i18n"><span data-i18n-default><code class="inline">composer require --dev cruciblephp/crucible</code></span><span data-locale="es" class="notranslate"><code class="inline">composer require --dev cruciblephp/crucible</code></span><span data-locale="it" class="notranslate"><code class="inline">composer require --dev cruciblephp/crucible</code></span></p>
+      </div>
+      <div class="step reveal" style="transition-delay:.07s">
+        <div class="step-number">2</div>
+        <h3 class="i18n"><span data-i18n-default>Convert</span><span data-locale="es" class="notranslate">Convertir</span><span data-locale="it" class="notranslate">Converti</span></h3>
+        <p class="i18n"><span data-i18n-default><code class="inline">crucible migrate-config</code> converts <code class="inline">phpunit.xml</code> and reports anything it could not translate.</span><span data-locale="es" class="notranslate"><code class="inline">crucible migrate-config</code> convierte <code class="inline">phpunit.xml</code> e informa de todo lo que no pudo traducir.</span><span data-locale="it" class="notranslate"><code class="inline">crucible migrate-config</code> converte <code class="inline">phpunit.xml</code> e segnala tutto ciò che non ha potuto tradurre.</span></p>
+      </div>
+      <div class="step reveal" style="transition-delay:.14s">
+        <div class="step-number">3</div>
+        <h3 class="i18n"><span data-i18n-default>Run</span><span data-locale="es" class="notranslate">Ejecutar</span><span data-locale="it" class="notranslate">Esegui</span></h3>
+        <p class="i18n"><span data-i18n-default><code class="inline">./vendor/bin/crucible</code> — the suite should be green.</span><span data-locale="es" class="notranslate"><code class="inline">./vendor/bin/crucible</code> — la suite debería estar en verde.</span><span data-locale="it" class="notranslate"><code class="inline">./vendor/bin/crucible</code> — la suite dovrebbe essere verde.</span></p>
+      </div>
+      <div class="step reveal" style="transition-delay:.21s">
+        <div class="step-number">4</div>
+        <h3 class="i18n"><span data-i18n-default>Remove</span><span data-locale="es" class="notranslate">Quitar</span><span data-locale="it" class="notranslate">Rimuovi</span></h3>
+        <p class="i18n"><span data-i18n-default><code class="inline">composer remove phpunit/phpunit</code> turns on the compatibility aliases, so <code class="inline">PHPUnit\Framework\TestCase</code> keeps resolving.</span><span data-locale="es" class="notranslate"><code class="inline">composer remove phpunit/phpunit</code> activa los alias de compatibilidad, así que <code class="inline">PHPUnit\Framework\TestCase</code> sigue resolviéndose.</span><span data-locale="it" class="notranslate"><code class="inline">composer remove phpunit/phpunit</code> attiva gli alias di compatibilità, così <code class="inline">PHPUnit\Framework\TestCase</code> continua a risolversi.</span></p>
+      </div>
+    </div>
+    <div class="callout reveal i18n">
+      <span data-i18n-default><strong>Step 3 not green?</strong> Run <code class="inline">crucible compat-check</code> before digging in by hand.
+      While the incumbent is still installed, it runs your real suite through both engines and reports every test that
+      passes on the incumbent but fails on Crucible, with why. <code class="inline">--auto-fix</code> rewrites the shapes it
+      recognizes; <code class="inline">--revert</code> undoes anything it changed.</span>
+      <span data-locale="es" class="notranslate"><strong>¿El paso 3 no está en verde?</strong> Ejecuta <code class="inline">crucible compat-check</code> antes de investigar a mano.
+      Mientras el titular siga instalado, pasa tu suite real por ambos motores e informa de cada prueba que
+      pasa con el titular pero falla con Crucible, y por qué. <code class="inline">--auto-fix</code> reescribe las formas que
+      reconoce; <code class="inline">--revert</code> deshace todo lo que cambió.</span>
+      <span data-locale="it" class="notranslate"><strong>Il passaggio 3 non è verde?</strong> Esegui <code class="inline">crucible compat-check</code> prima di indagare a mano.
+      Finché l'incumbent è ancora installato, fa girare la tua suite reale su entrambi i motori e segnala ogni test che
+      passa con l'incumbent ma fallisce con Crucible, e perché. <code class="inline">--auto-fix</code> riscrive le forme che
+      riconosce; <code class="inline">--revert</code> annulla tutto ciò che ha cambiato.</span>
+    </div>
+  </div>
+</section>
+
+<section id="quick-start">
+  <div class="wrap">
+    <div class="eyebrow reveal i18n"><span data-i18n-default>Three commands</span><span data-locale="es" class="notranslate">Tres comandos</span><span data-locale="it" class="notranslate">Tre comandi</span></div>
+    <h2 class="reveal i18n"><span data-i18n-default>Quick start</span><span data-locale="es" class="notranslate">Inicio rápido</span><span data-locale="it" class="notranslate">Avvio rapido</span></h2>
+    <p class="section-lead reveal i18n"><span data-i18n-default><strong>PHP 8.3 or newer, and nothing else.</strong> No runtime dependencies — the extensions it needs ship with a stock PHP build.</span><span data-locale="es" class="notranslate"><strong>PHP 8.3 o más reciente, y nada más.</strong> Sin dependencias en tiempo de ejecución — las extensiones que necesita vienen con una instalación estándar de PHP.</span><span data-locale="it" class="notranslate"><strong>PHP 8.3 o più recente, e nient'altro.</strong> Nessuna dipendenza a runtime — le estensioni che servono sono incluse in una build standard di PHP.</span></p>
+<pre class="notranslate">composer require --dev cruciblephp/crucible
+./vendor/bin/crucible --init
+./vendor/bin/crucible</pre>
+    <p class="section-lead reveal i18n" style="margin-top:24px"><span data-i18n-default>Configuration is typed PHP in <code class="inline">crucible.php</code>, not XML. Your editor completes it and PHPStan checks it:</span><span data-locale="es" class="notranslate">La configuración es PHP tipado en <code class="inline">crucible.php</code>, no XML. Tu editor la autocompleta y PHPStan la verifica:</span><span data-locale="it" class="notranslate">La configurazione è PHP tipizzato in <code class="inline">crucible.php</code>, non XML. Il tuo editor la completa e PHPStan la verifica:</span></p>
+<pre class="notranslate">&lt;?php
+
+use LucianoPereira\Crucible\Configuration\Crucible;
+
+return Crucible::configure()
+    -&gt;bootstrap('vendor/autoload.php')
+    -&gt;testSuite('unit', 'tests/Unit')
+    -&gt;testSuite('feature', 'tests/Feature')
+    -&gt;source(include: ['src'])
+    -&gt;build();</pre>
+    <p class="section-lead reveal i18n" style="margin-top:24px">
+      <span data-i18n-default>Already have a <code class="inline">phpunit.xml</code>? <code class="inline">./vendor/bin/crucible migrate-config</code> converts it,
+      and tells you about anything it could not translate rather than dropping it silently. Then read the whole manual, in the terminal:</span>
+      <span data-locale="es" class="notranslate">¿Ya tienes un <code class="inline">phpunit.xml</code>? <code class="inline">./vendor/bin/crucible migrate-config</code> lo convierte,
+      y te avisa de todo lo que no pudo traducir en lugar de descartarlo en silencio. Después lee el manual completo, en la terminal:</span>
+      <span data-locale="it" class="notranslate">Hai già un <code class="inline">phpunit.xml</code>? <code class="inline">./vendor/bin/crucible migrate-config</code> lo converte,
+      e ti segnala tutto ciò che non ha potuto tradurre invece di scartarlo in silenzio. Poi leggi il manuale completo, nel terminale:</span>
+    </p>
+<pre class="notranslate">./vendor/bin/crucible manual</pre>
+  </div>
+</section>
+
+<section id="options">
+  <div class="wrap">
+    <div class="eyebrow reveal i18n"><span data-i18n-default>Command line</span><span data-locale="es" class="notranslate">Línea de comandos</span><span data-locale="it" class="notranslate">Riga di comando</span></div>
+    <h2 class="reveal i18n"><span data-i18n-default>Options</span><span data-locale="es" class="notranslate">Opciones</span><span data-locale="it" class="notranslate">Opzioni</span></h2>
+    <p class="section-lead reveal i18n"><span data-i18n-default>A CLI option always beats the same setting in <code class="inline">crucible.php</code>. A few of the most useful — <a href="docs.html#/HELP">every option</a> is in the docs:</span><span data-locale="es" class="notranslate">Una opción de CLI siempre gana sobre el mismo ajuste en <code class="inline">crucible.php</code>. Algunas de las más útiles — <a href="docs.html#/HELP">todas las opciones</a> están en la documentación:</span><span data-locale="it" class="notranslate">Un'opzione da riga di comando vince sempre sulla stessa impostazione in <code class="inline">crucible.php</code>. Alcune tra le più utili — <a href="docs.html#/HELP">tutte le opzioni</a> sono nella documentazione:</span></p>
+    <div class="table-scroll reveal">
+      <table class="options-table">
+        <thead>
+          <tr><th class="i18n"><span data-i18n-default>Option</span><span data-locale="es" class="notranslate">Opción</span><span data-locale="it" class="notranslate">Opzione</span></th><th class="i18n"><span data-i18n-default>Example</span><span data-locale="es" class="notranslate">Ejemplo</span><span data-locale="it" class="notranslate">Esempio</span></th><th class="i18n"><span data-i18n-default>Meaning</span><span data-locale="es" class="notranslate">Significado</span><span data-locale="it" class="notranslate">Significato</span></th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>--watch</code></td><td data-label="Example"><code>--watch</code></td><td data-label="Meaning" class="i18n"><span data-i18n-default>Re-run affected tests on every change (<code>q</code> quits, <code>a</code> runs all, <code>f</code> runs failures).</span><span data-locale="es" class="notranslate">Vuelve a ejecutar las pruebas afectadas en cada cambio (<code>q</code> sale, <code>a</code> ejecuta todo, <code>f</code> ejecuta los fallos).</span><span data-locale="it" class="notranslate">Riesegue i test interessati a ogni modifica (<code>q</code> esce, <code>a</code> esegue tutto, <code>f</code> esegue i fallimenti).</span></td></tr>
+          <tr><td><code>--changed</code></td><td data-label="Example"><code>--changed=main</code></td><td data-label="Meaning" class="i18n"><span data-i18n-default>Tests affected by changes against a ref (default <code>HEAD</code>).</span><span data-locale="es" class="notranslate">Pruebas afectadas por los cambios respecto a una ref (por defecto <code>HEAD</code>).</span><span data-locale="it" class="notranslate">Test interessati dalle modifiche rispetto a un ref (predefinito <code>HEAD</code>).</span></td></tr>
+          <tr><td><code>--dirty</code></td><td data-label="Example"><code>--dirty</code></td><td data-label="Meaning" class="i18n"><span data-i18n-default>Tests affected by uncommitted work — staged, unstaged and untracked.</span><span data-locale="es" class="notranslate">Pruebas afectadas por el trabajo sin confirmar — preparado, sin preparar y sin seguimiento.</span><span data-locale="it" class="notranslate">Test interessati dal lavoro non committato — in stage, fuori stage e non tracciato.</span></td></tr>
+          <tr><td><code>--parallel</code></td><td data-label="Example"><code>--parallel 4</code></td><td data-label="Meaning" class="i18n"><span data-i18n-default>Run test classes in N worker processes, longest-first scheduled.</span><span data-locale="es" class="notranslate">Ejecuta las clases de prueba en N procesos, planificando primero las más largas.</span><span data-locale="it" class="notranslate">Esegue le classi di test in N processi, pianificando prima le più lunghe.</span></td></tr>
+          <tr><td><code>--shard</code></td><td data-label="Example"><code>--shard 1/4</code></td><td data-label="Meaning" class="i18n"><span data-i18n-default>Run the Mth of N hash-stable slices.</span><span data-locale="es" class="notranslate">Ejecuta la porción M de N, estable por hash.</span><span data-locale="it" class="notranslate">Esegue la porzione M di N, stabile per hash.</span></td></tr>
+          <tr><td><code>--retries</code></td><td data-label="Example"><code>--retries 2</code></td><td data-label="Meaning" class="i18n"><span data-i18n-default>Re-run failing tests up to N times; a pass on retry is <strong>flaky</strong>, not a pass.</span><span data-locale="es" class="notranslate">Reintenta las pruebas que fallan hasta N veces; un pase en el reintento es <strong>inestable</strong>, no un pase.</span><span data-locale="it" class="notranslate">Riesegue i test che falliscono fino a N volte; un passaggio al nuovo tentativo è <strong>instabile</strong>, non un passaggio.</span></td></tr>
+          <tr><td><code>--min</code></td><td data-label="Example"><code>--min 90</code></td><td data-label="Meaning" class="i18n"><span data-i18n-default>Fail the run below this line-coverage percentage.</span><span data-locale="es" class="notranslate">Hace fallar la ejecución por debajo de este porcentaje de cobertura de líneas.</span><span data-locale="it" class="notranslate">Fa fallire l'esecuzione sotto questa percentuale di copertura delle righe.</span></td></tr>
+          <tr><td><code>--profile</code></td><td data-label="Example"><code>--profile</code></td><td data-label="Meaning" class="i18n"><span data-i18n-default>List the slowest tests, each with its share of total runtime.</span><span data-locale="es" class="notranslate">Lista las pruebas más lentas, cada una con su parte del tiempo total.</span><span data-locale="it" class="notranslate">Elenca i test più lenti, ciascuno con la sua quota del tempo totale.</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <div class="eyebrow reveal i18n"><span data-i18n-default>The idea</span><span data-locale="es" class="notranslate">La idea</span><span data-locale="it" class="notranslate">L'idea</span></div>
+    <h2 class="reveal i18n"><span data-i18n-default>Why Crucible</span><span data-locale="es" class="notranslate">Por qué Crucible</span><span data-locale="it" class="notranslate">Perché Crucible</span></h2>
+    <div class="features" style="margin-top:24px">
+      <div class="feature reveal">
+        <svg class="ic-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 21 7.5 21 16.5 12 21 3 16.5 3 7.5Z" pathLength="1"/><path d="M3 7.5 12 12 21 7.5" pathLength="1"/><path d="M12 12 12 21" pathLength="1"/></svg>
+        <div><h3 class="i18n"><span data-i18n-default>PHP 8.3, nothing else</span><span data-locale="es" class="notranslate">PHP 8.3, nada más</span><span data-locale="it" class="notranslate">PHP 8.3, nient'altro</span></h3><p class="i18n"><span data-i18n-default>No Composer dependencies. A suite on 8.3 should not have to move the whole project to a newer PHP to change test runner.</span><span data-locale="es" class="notranslate">Sin dependencias de Composer. Una suite en 8.3 no debería tener que mover todo el proyecto a un PHP más nuevo para cambiar de runner.</span><span data-locale="it" class="notranslate">Nessuna dipendenza Composer. Una suite su 8.3 non dovrebbe dover spostare l'intero progetto su un PHP più recente per cambiare runner.</span></p></div>
+      </div>
+      <div class="feature reveal">
+        <svg class="ic-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 19 6 19 11C19 16 15.5 19.5 12 21 8.5 19.5 5 16 5 11L5 6Z" pathLength="1"/><path d="M9 12 11 14 15 9.5" pathLength="1"/></svg>
+        <div><h3 class="i18n"><span data-i18n-default>Spec, not source</span><span data-locale="es" class="notranslate">Especificación, no código</span><span data-locale="it" class="notranslate">Specifica, non codice</span></h3><p class="i18n"><span data-i18n-default>A clean-room implementation: PHPUnit's behavior established from public documentation and black-box observation, never read as source.</span><span data-locale="es" class="notranslate">Una implementación clean-room: el comportamiento de PHPUnit se establece a partir de la documentación pública y la observación de caja negra, nunca leyendo su código.</span><span data-locale="it" class="notranslate">Un'implementazione clean-room: il comportamento di PHPUnit è stabilito dalla documentazione pubblica e dall'osservazione a scatola nera, mai leggendone il codice.</span></p></div>
+      </div>
+      <div class="feature reveal">
+        <svg class="ic-svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="12" r="6.5" pathLength="1"/><circle cx="15" cy="12" r="6.5" pathLength="1"/></svg>
+        <div><h3 class="i18n"><span data-i18n-default>Compatibility is executable</span><span data-locale="es" class="notranslate">La compatibilidad es ejecutable</span><span data-locale="it" class="notranslate">La compatibilità è eseguibile</span></h3><p class="i18n"><span data-i18n-default>19 fixture suites run against both the real <code class="inline">phpunit</code> binary and <code class="inline">crucible</code>, asserting identical outcomes, counts and exit codes.</span><span data-locale="es" class="notranslate">19 suites de fixtures se ejecutan contra el binario real de <code class="inline">phpunit</code> y contra <code class="inline">crucible</code>, verificando resultados, recuentos y códigos de salida idénticos.</span><span data-locale="it" class="notranslate">19 suite di fixture girano sia sul vero binario <code class="inline">phpunit</code> sia su <code class="inline">crucible</code>, verificando esiti, conteggi e codici di uscita identici.</span></p></div>
+      </div>
+      <div class="feature reveal">
+        <svg class="ic-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 11A8 8 0 1 0 18.5 16" pathLength="1"/><path d="M20 5v6h-6" pathLength="1"/></svg>
+        <div><h3 class="i18n"><span data-i18n-default>Architecture is a test</span><span data-locale="es" class="notranslate">La arquitectura es una prueba</span><span data-locale="it" class="notranslate">L'architettura è un test</span></h3><p class="i18n"><span data-i18n-default><code class="inline">arch()</code> states the shape the code must keep, and fails like any other test when it drifts.</span><span data-locale="es" class="notranslate"><code class="inline">arch()</code> declara la forma que el código debe mantener, y falla como cualquier otra prueba cuando se desvía.</span><span data-locale="it" class="notranslate"><code class="inline">arch()</code> dichiara la forma che il codice deve mantenere, e fallisce come qualsiasi altro test quando se ne allontana.</span></p></div>
+      </div>
+      <div class="feature reveal">
+        <svg class="ic-svg" viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="2" width="10" height="20" rx="2" pathLength="1"/><path d="M11 18h2" pathLength="1"/></svg>
+        <div><h3 class="i18n"><span data-i18n-default>The browser is a tier</span><span data-locale="es" class="notranslate">El navegador es un nivel</span><span data-locale="it" class="notranslate">Il browser è un livello</span></h3><p class="i18n"><span data-i18n-default>The server runs inside the test process, so whatever the test faked is what the page sees.</span><span data-locale="es" class="notranslate">El servidor corre dentro del proceso de pruebas, así que lo que la prueba simuló es lo que ve la página.</span><span data-locale="it" class="notranslate">Il server gira dentro il processo di test, quindi ciò che il test ha simulato è ciò che vede la pagina.</span></p></div>
+      </div>
+      <div class="feature reveal">
+        <svg class="ic-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8" pathLength="1"/><circle cx="12" cy="12" r="4" pathLength="1"/></svg>
+        <div><h3 class="i18n"><span data-i18n-default>One event stream</span><span data-locale="es" class="notranslate">Un solo flujo de eventos</span><span data-locale="it" class="notranslate">Un solo flusso di eventi</span></h3><p class="i18n"><span data-i18n-default>A versioned NDJSON event stream is the single output substrate: every reporter is a listener over it, and so can yours be.</span><span data-locale="es" class="notranslate">Un flujo de eventos NDJSON versionado es la única base de salida: cada reporter es un listener sobre él, y el tuyo también puede serlo.</span><span data-locale="it" class="notranslate">Un flusso di eventi NDJSON versionato è l'unica base dell'output: ogni reporter è un listener su di esso, e anche il tuo può esserlo.</span></p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="eyebrow reveal i18n"><span data-i18n-default>Before you ask</span><span data-locale="es" class="notranslate">Antes de preguntar</span><span data-locale="it" class="notranslate">Prima di chiedere</span></div>
+    <h2 class="reveal i18n"><span data-i18n-default>FAQ</span><span data-locale="es" class="notranslate">Preguntas frecuentes</span><span data-locale="it" class="notranslate">Domande frequenti</span></h2>
+    <p class="section-lead reveal i18n"><span data-i18n-default>The short answers — the manual has the long ones.</span><span data-locale="es" class="notranslate">Las respuestas breves — el manual tiene las largas.</span><span data-locale="it" class="notranslate">Le risposte brevi — il manuale ha quelle lunghe.</span></p>
+
+    <div class="accordion reveal">
+      <div class="accordion-item">
+        <button type="button" class="accordion-trigger" aria-expanded="true" aria-controls="faq-1">
+          <span class="i18n"><span data-i18n-default>Does my suite need changes?</span><span data-locale="es" class="notranslate">¿Mi suite necesita cambios?</span><span data-locale="it" class="notranslate">La mia suite ha bisogno di modifiche?</span></span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel-wrap" id="faq-1">
+          <div class="accordion-panel-inner">
+            <p class="accordion-panel i18n"><span data-i18n-default>No. A suite written for PHPUnit runs unchanged. With the compatibility aliases enabled, <code class="inline">PHPUnit\Framework\*</code> resolves too — which is what makes an existing suite run with <code class="inline">composer remove phpunit/phpunit</code> as the only change.</span><span data-locale="es" class="notranslate">No. Una suite escrita para PHPUnit se ejecuta sin cambios. Con los alias de compatibilidad activados, <code class="inline">PHPUnit\Framework\*</code> también se resuelve — que es lo que permite ejecutar una suite existente con <code class="inline">composer remove phpunit/phpunit</code> como único cambio.</span><span data-locale="it" class="notranslate">No. Una suite scritta per PHPUnit gira senza modifiche. Con gli alias di compatibilità attivi, anche <code class="inline">PHPUnit\Framework\*</code> si risolve — ed è questo che permette a una suite esistente di girare con <code class="inline">composer remove phpunit/phpunit</code> come unica modifica.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-2">
+          <span class="i18n"><span data-i18n-default>What if <code class="inline">migrate-config</code> cannot translate a setting?</span><span data-locale="es" class="notranslate">¿Y si <code class="inline">migrate-config</code> no puede traducir un ajuste?</span><span data-locale="it" class="notranslate">E se <code class="inline">migrate-config</code> non riesce a tradurre un'impostazione?</span></span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel-wrap" id="faq-2">
+          <div class="accordion-panel-inner">
+            <p class="accordion-panel i18n"><span data-i18n-default>It says so. It is the one place Crucible reads XML, and it never silently drops a setting it did not understand — anything it cannot translate is reported.</span><span data-locale="es" class="notranslate">Lo dice. Es el único lugar donde Crucible lee XML, y nunca descarta en silencio un ajuste que no entendió — todo lo que no puede traducir se informa.</span><span data-locale="it" class="notranslate">Lo dice. È l'unico punto in cui Crucible legge XML, e non scarta mai in silenzio un'impostazione che non ha capito — tutto ciò che non può tradurre viene segnalato.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-3">
+          <span class="i18n"><span data-i18n-default>Can it run while Pest is installed?</span><span data-locale="es" class="notranslate">¿Puede ejecutarse con Pest instalado?</span><span data-locale="it" class="notranslate">Può girare con Pest installato?</span></span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel-wrap" id="faq-3">
+          <div class="accordion-panel-inner">
+            <p class="accordion-panel i18n"><span data-i18n-default>Not by default: Crucible refuses rather than fight Pest for the same global functions, because PHP cannot redeclare one. Crucible ships a prelude that stops Composer loading Pest's two function files — with it, and <code class="inline">-&gt;phpunitCompatibility()</code>, both can be installed at once, which is what <code class="inline">compat-check</code> needs.</span><span data-locale="es" class="notranslate">No por defecto: Crucible se niega en lugar de disputarle a Pest las mismas funciones globales, porque PHP no puede redeclarar una. Crucible incluye un preludio que evita que Composer cargue los dos archivos de funciones de Pest — con él, y <code class="inline">-&gt;phpunitCompatibility()</code>, ambos pueden estar instalados a la vez, que es lo que necesita <code class="inline">compat-check</code>.</span><span data-locale="it" class="notranslate">Non di default: Crucible si rifiuta invece di contendere a Pest le stesse funzioni globali, perché PHP non può ridichiararne una. Crucible include un preludio che impedisce a Composer di caricare i due file di funzioni di Pest — con quello, e <code class="inline">-&gt;phpunitCompatibility()</code>, entrambi possono essere installati insieme, ed è ciò che serve a <code class="inline">compat-check</code>.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-4">
+          <span class="i18n"><span data-i18n-default>Does Mockery still work?</span><span data-locale="es" class="notranslate">¿Mockery sigue funcionando?</span><span data-locale="it" class="notranslate">Mockery funziona ancora?</span></span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel-wrap" id="faq-4">
+          <div class="accordion-panel-inner">
+            <p class="accordion-panel i18n"><span data-i18n-default>Yes, unchanged, if the project already uses it.</span><span data-locale="es" class="notranslate">Sí, sin cambios, si el proyecto ya lo usa.</span><span data-locale="it" class="notranslate">Sì, senza modifiche, se il progetto lo usa già.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-5">
+          <span class="i18n"><span data-i18n-default>Is any PHPUnit code inside?</span><span data-locale="es" class="notranslate">¿Contiene código de PHPUnit?</span><span data-locale="it" class="notranslate">Contiene codice di PHPUnit?</span></span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel-wrap" id="faq-5">
+          <div class="accordion-panel-inner">
+            <p class="accordion-panel i18n"><span data-i18n-default>No. PHPUnit defines the behavioral spec — assertions, attributes, CLI options, defaults, exit codes — and no code, templates, doc comments or message text are copied from any project.</span><span data-locale="es" class="notranslate">No. PHPUnit define la especificación de comportamiento — aserciones, atributos, opciones de CLI, valores por defecto, códigos de salida — y no se copia código, plantillas, comentarios de documentación ni textos de mensajes de ningún proyecto.</span><span data-locale="it" class="notranslate">No. PHPUnit definisce la specifica di comportamento — asserzioni, attributi, opzioni CLI, valori predefiniti, codici di uscita — e non viene copiato codice, template, commenti di documentazione o testo dei messaggi da nessun progetto.</span></p>
+          </div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button type="button" class="accordion-trigger" aria-expanded="false" aria-controls="faq-6">
+          <span class="i18n"><span data-i18n-default>What does the licence cover?</span><span data-locale="es" class="notranslate">¿Qué cubre la licencia?</span><span data-locale="it" class="notranslate">Cosa copre la licenza?</span></span>
+          <span class="accordion-icon" aria-hidden="true">+</span>
+        </button>
+        <div class="accordion-panel-wrap" id="faq-6">
+          <div class="accordion-panel-inner">
+            <p class="accordion-panel i18n"><span data-i18n-default>The code is MIT. The name "Crucible" and the Crucible logo are trademarks of Luciano Federico Pereira and are <strong>not</strong> covered by that licence. Fork the software freely; do not ship it under this name or mark.</span><span data-locale="es" class="notranslate">El código es MIT. El nombre "Crucible" y el logo de Crucible son marcas de Luciano Federico Pereira y <strong>no</strong> están cubiertos por esa licencia. Haz fork del software libremente; no lo distribuyas bajo este nombre ni esta marca.</span><span data-locale="it" class="notranslate">Il codice è MIT. Il nome "Crucible" e il logo di Crucible sono marchi di Luciano Federico Pereira e <strong>non</strong> sono coperti da quella licenza. Fai fork del software liberamente; non distribuirlo con questo nome o questo marchio.</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+</div><!-- /.shell -->
+
+<footer class="reveal-footer">
+  <div class="wrap">
+    <p>
+      <a class="notranslate" href="https://github.com/cruciblephp/crucible">GitHub</a><span class="no-print"> ·</span>
+      <a class="i18n" href="docs.html"><span data-i18n-default>Docs</span><span data-locale="es" class="notranslate">Documentación</span><span data-locale="it" class="notranslate">Documentazione</span></a><span class="no-print"> ·</span>
+      <a class="i18n" href="changelog.html"><span data-i18n-default>Changelog</span><span data-locale="es" class="notranslate">Cambios</span><span data-locale="it" class="notranslate">Modifiche</span></a><span class="no-print"> ·</span>
+      <a class="i18n" href="https://opencollective.com/luciano-federico-pereira"><span data-i18n-default>Support</span><span data-locale="es" class="notranslate">Apoyar</span><span data-locale="it" class="notranslate">Sostieni</span></a><span class="no-print"> ·</span>
+      <a class="i18n" href="https://github.com/cruciblephp/crucible/blob/main/LICENSE"><span data-i18n-default>License</span><span data-locale="es" class="notranslate">Licencia</span><span data-locale="it" class="notranslate">Licenza</span></a>
+    </p>
+    <!-- Not "MIT" alone, as treegen2's footer says: LICENSE reserves the
+         name and the mark, so the line carries the same split the README does. -->
+    <p class="muted"><span class="no-print notranslate"><svg class="logo-mark logo-mark--sm" aria-hidden="true"><use href="#icon-crucible"/></svg> Crucible · by </span><a class="notranslate" href="https://github.com/lucianofedericopereira">Luciano Federico Pereira</a><span class="no-print"> · </span><span class="i18n"><span data-i18n-default>The code is MIT; the name and logo are not covered by it.</span><span data-locale="es" class="notranslate">El código es MIT; el nombre y el logo no están cubiertos por ella.</span><span data-locale="it" class="notranslate">Il codice è MIT; il nome e il logo non ne sono coperti.</span></span></p>
+  </div>
+</footer>
+
+<!-- Fixed, bottom-right; JS toggles .is-visible once scrolled off the top
+     (site.js initBackToTop). -->
+<button type="button" class="back-to-top" id="back-to-top" aria-label="Back to top">
+  <svg aria-hidden="true"><use href="#icon-chevron-up"/></svg>
+</button>
+
+<script src="assets/site.js"></script>
+<script src="assets/locale.js"></script>
+</body>
+</html>
