@@ -1,0 +1,3 @@
+# Installed by scripts/check-site.mjs's instructions, never part of the site.
+/node_modules/
+/package-lock.json
