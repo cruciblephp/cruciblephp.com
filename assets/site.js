@@ -254,7 +254,7 @@
         })
         .filter(Boolean);
 
-    // Changelog entry bullets aren't headings, so a query like "Opus 5" (a
+    // Changelog entry bullets aren't headings, so a query like "compat-check" (a
     // specific release note) needs its own harvest — text from the <li>,
     // id from its ancestor section (changelog.js gives every version
     // section that id; there's nothing more specific inside it to jump
@@ -302,8 +302,8 @@
             // appendInlineMarkdown (changelog.js) turns into real nodes —
             // matched here only to strip the syntax markers back out
             // (`code`, **bold**, [text](url) -> code/bold/text), since a
-            // query like "opus" shouldn't have to also match a literal
-            // backtick to find `claude-opus-5`. Duplicated from that same
+            // query like "mutate" shouldn't have to also match a literal
+            // backtick to find `crucible mutate`. Duplicated from that same
             // regex for the same reason as the rest of this branch: no
             // shared module to pull it from instead.
             const stripMarkdown = (raw) =>

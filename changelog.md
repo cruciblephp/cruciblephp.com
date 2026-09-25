@@ -1,8 +1,19 @@
 # Changelog
 
-Every release, as it ships. Nothing is tagged yet: v1.0.0 is the version the code reports, and RELEASE.md is the full record of what shipped, each entry traced to its decision record.
+Every release, as it ships. RELEASE.md is the full record of what shipped, each entry traced to its decision record.
 
-## v1.0.0 - Unreleased
+## v1.0.1 — 2026-09-25
+
+- Fixed the hook order to match PHPUnit: at the default priority, `#[Before]` hooks now run before `setUp()` and `#[After]` hooks after `tearDown()`, so a trait's `#[Before]` reset no longer wipes what `setUp()` wired
+- Fixed `#[After]` and `#[PostCondition]` priorities, which ran lowest first: the highest priority now runs first in every phase, and hooks at equal priority run in PHPUnit's order
+- Added `assertPreConditions()` and `assertPostConditions()` to `TestCase`, called where PHPUnit calls them
+- Added `TestCase::transformException()`, so Orchestra Testbench test cases load instead of stopping discovery with a fatal error
+- Added the `PHPUnit\Framework\Constraint\LogicalNot` alias, so Laravel's `assertDatabaseMissing()` runs
+- Fixed failure messages from framework constraints such as Laravel's `HasInDatabase`: they now read "Failed asserting that …" as under PHPUnit, and the negated form no longer rewrites the data it quotes
+- Fixed the release check, which rejected a two-part tag such as `v1.0` although Composer reads it as 1.0.0
+- Updated the phpcpd-next benchmark from v1.4 to v2.0, its latest release: 710 of 710 tests pass, as under PHPUnit
+
+## v1.0 — 2026-09-23
 
 - Added the engine's core: immutable events with a versioned NDJSON event stream as the one output substrate, typed `crucible.php` configuration instead of XML, and a closed command line where an unknown option is an error
 - Added the complete PHPUnit 13 assertion surface — all 176 `assert*` methods, each checked against the real PHPUnit case by case

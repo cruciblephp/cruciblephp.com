@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="en">
 <head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <script>
 document.documentElement.classList.add('js');
 /* FOUC guard fallback: assets/site.js (loaded at the end of body) reveals
@@ -27,16 +29,55 @@ try {
   if (storedLocale && storedLocale !== 'en') document.documentElement.lang = storedLocale;
 } catch (e) {}
 </script>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="color-scheme" content="light dark" />
-<title>Crucible PHP — Test framework for PHP 8.3+</title>
+<title>Crucible PHP — PHPUnit-compatible test framework for PHP 8.3+</title>
 <meta name="author" content="Luciano Federico Pereira" />
-<meta name="description" content="An independent, XML-free test framework for PHP 8.3+ — drop-in compatible with PHPUnit suites, engineered like the best runners of other ecosystems." />
+<meta name="description" content="Independent PHP 8.3+ test framework that runs PHPUnit and Pest suites unchanged: typed PHP config instead of XML, parallel runs, coverage and mutation testing." />
+<link rel="canonical" href="https://www.cruciblephp.com/" />
+<meta name="robots" content="index, follow" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="Crucible PHP — Test framework for PHP 8.3+" />
-<meta property="og:description" content="An independent, XML-free test framework for PHP 8.3+ — drop-in compatible with PHPUnit suites." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:site_name" content="Crucible PHP" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://www.cruciblephp.com/" />
+<meta property="og:title" content="Crucible PHP — PHPUnit-compatible test framework for PHP 8.3+" />
+<meta property="og:description" content="Runs PHPUnit and Pest suites unchanged, with typed PHP config instead of XML, parallel runs, coverage and mutation testing." />
+<meta property="og:image" content="https://www.cruciblephp.com/assets/og-image.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Crucible PHP: an independent, XML-free test framework for PHP 8.3+, drop-in compatible with PHPUnit suites." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://www.cruciblephp.com/assets/og-image.png" />
+<meta name="twitter:image:alt" content="Crucible PHP: an independent, XML-free test framework for PHP 8.3+, drop-in compatible with PHPUnit suites." />
+<meta name="twitter:title" content="Crucible PHP — PHPUnit-compatible test framework for PHP 8.3+" />
+<meta name="twitter:description" content="Runs PHPUnit and Pest suites unchanged, with typed PHP config instead of XML, parallel runs, coverage and mutation testing." />
+<!-- What search engines read as the software itself: its name, category,
+     requirement, price and where to get it. Kept to facts that do not
+     change per release, so it never states a stale version. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Crucible PHP",
+  "alternateName": "Crucible",
+  "url": "https://www.cruciblephp.com/",
+  "image": "https://www.cruciblephp.com/assets/og-image.png",
+  "description": "An independent test framework for PHP 8.3+ that runs PHPUnit and Pest suites unchanged, configured in typed PHP instead of XML.",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "Test framework",
+  "operatingSystem": "Linux, macOS, Windows",
+  "softwareRequirements": "PHP 8.3 or later",
+  "license": "https://opensource.org/license/mit",
+  "isAccessibleForFree": true,
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "author": { "@type": "Person", "name": "Luciano Federico Pereira" },
+  "downloadUrl": "https://packagist.org/packages/cruciblephp/crucible",
+  "sameAs": [
+    "https://github.com/cruciblephp/crucible",
+    "https://packagist.org/packages/cruciblephp/crucible"
+  ]
+}
+</script>
 <meta name="theme-color" content="#faf8f1" media="(prefers-color-scheme: light)" />
 <meta name="theme-color" content="#161615" media="(prefers-color-scheme: dark)" />
 <link rel="icon" href="assets/crucible.svg" type="image/svg+xml" />
