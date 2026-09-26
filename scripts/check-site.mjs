@@ -45,6 +45,14 @@ const PAGES = ['index.html', 'changelog.html', ...DOCS.map((doc) => `docs.html#/
 // only when a reader picks a language, which this check never does.
 const IGNORED_HOSTS = new Set(['translate.google.com', 'translate.googleapis.com']);
 
+// The changelog asks GitHub whether each release exists before it offers a
+// download link, and hides the link on a 404 (assets/changelog.js,
+// releaseExists). A 404 there is the page working, for a release that is
+// tagged but not yet published — not a broken page. Only that answer, from
+// that endpoint, is excused.
+const RELEASE_PROBE = /^https:\/\/api\.github\.com\/repos\/[^/]+\/[^/]+\/releases\/tags\//;
+const expectedProbe = (url, status) => status === 404 && RELEASE_PROBE.test(url);
+
 const server = createServer((req, res) => {
   const requested = decodeURIComponent((req.url ?? '/').split('?')[0]);
   const path = join(ROOT, normalize(requested === '/' ? '/index.html' : requested));
@@ -82,13 +90,18 @@ for (const page of PAGES) {
   const report = (what) => problems.push(`${page}: ${what}`);
   tab.on('pageerror', (error) => report(`script error: ${error.message}`));
   tab.on('console', (message) => {
-    if (message.type() === 'error') report(`console error: ${message.text()}`);
+    if (message.type() !== 'error') return;
+    // The browser logs the release probe's 404 too; its location names the URL.
+    if (message.text().includes('status of 404') && RELEASE_PROBE.test(message.location().url ?? '')) return;
+    report(`console error: ${message.text()}`);
   });
   tab.on('requestfailed', (request) => {
     if (!IGNORED_HOSTS.has(new URL(request.url()).hostname)) report(`request failed: ${request.url()}`);
   });
   tab.on('response', (response) => {
-    if (response.status() >= 400) report(`HTTP ${response.status()}: ${response.url()}`);
+    if (response.status() >= 400 && !expectedProbe(response.url(), response.status())) {
+      report(`HTTP ${response.status()}: ${response.url()}`);
+    }
   });
 
   await tab.goto(base + page, { waitUntil: 'networkidle' });
