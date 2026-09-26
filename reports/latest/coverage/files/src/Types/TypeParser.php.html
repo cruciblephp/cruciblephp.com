@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Types/TypeParser.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/Types/TypeParser.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Types;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use LucianoPereira\Crucible\Exceptions\ConfigurationException;</span>
+<span class=""><span class="ln">14</span></span>
+<span class=""><span class="ln">15</span>use function count;</span>
+<span class=""><span class="ln">16</span>use function in_array;</span>
+<span class=""><span class="ln">17</span>use function preg_match_all;</span>
+<span class=""><span class="ln">18</span>use function sprintf;</span>
+<span class=""><span class="ln">19</span>use function stripcslashes;</span>
+<span class=""><span class="ln">20</span>use function strtolower;</span>
+<span class=""><span class="ln">21</span>use function substr;</span>
+<span class=""><span class="ln">22</span></span>
+<span class=""><span class="ln">23</span>use const PREG_OFFSET_CAPTURE;</span>
+<span class=""><span class="ln">24</span>use const PREG_SET_ORDER;</span>
+<span class=""><span class="ln">25</span></span>
+<span class=""><span class="ln">26</span>/**</span>
+<span class=""><span class="ln">27</span> * Reads a PHPStan type string into a TypeExpression (D-131): a</span>
+<span class=""><span class="ln">28</span> * recursive-descent parser over the subset TypeExpression documents. A</span>
+<span class=""><span class="ln">29</span> * string it cannot read is refused with the position where it stops —</span>
+<span class=""><span class="ln">30</span> * a type assertion that silently meant something else would be worse</span>
+<span class=""><span class="ln">31</span> * than none.</span>
+<span class=""><span class="ln">32</span> */</span>
+<span class=""><span class="ln">33</span>final class TypeParser</span>
+<span class=""><span class="ln">34</span>{</span>
+<span class=""><span class="ln">35</span>    /** @var list&lt;array{string, int}&gt; token text, offset */</span>
+<span class=""><span class="ln">36</span>    private array $tokens = [];</span>
+<span class=""><span class="ln">37</span></span>
+<span class=""><span class="ln">38</span>    private int $at = 0;</span>
+<span class=""><span class="ln">39</span></span>
+<span class="covered"><span class="ln">40</span>    public function __construct(private readonly string $source)</span>
+<span class=""><span class="ln">41</span>    {</span>
+<span class="covered"><span class="ln">42</span>        preg_match_all(</span>
+<span class="covered"><span class="ln">43</span>            &#039;/\s*(\.\.\.|\&#039;(?:[^\&#039;\\\\]|\\\\.)*\&#039;|&quot;(?:[^&quot;\\\\]|\\\\.)*&quot;|-?\d+(?:\.\d+)?|[A-Za-z_\\\\][A-Za-z0-9_\\\\-]*|\[\]|[|&amp;?&lt;&gt;{}(),:]|\S)/&#039;,</span>
+<span class="covered"><span class="ln">44</span>            $source,</span>
+<span class="covered"><span class="ln">45</span>            $matches,</span>
+<span class="covered"><span class="ln">46</span>            PREG_SET_ORDER | PREG_OFFSET_CAPTURE,</span>
+<span class=""><span class="ln">47</span>        );</span>
+<span class=""><span class="ln">48</span></span>
+<span class="covered"><span class="ln">49</span>        foreach ($matches as $match) {</span>
+<span class="covered"><span class="ln">50</span>            $this-&gt;tokens[] = [$match[1][0], $match[1][1]];</span>
+<span class=""><span class="ln">51</span>        }</span>
+<span class=""><span class="ln">52</span>    }</span>
+<span class=""><span class="ln">53</span></span>
+<span class=""><span class="ln">54</span>    public function parse(): TypeExpression</span>
+<span class=""><span class="ln">55</span>    {</span>
+<span class="covered"><span class="ln">56</span>        $type = $this-&gt;union();</span>
+<span class=""><span class="ln">57</span></span>
+<span class="covered"><span class="ln">58</span>        if ($this-&gt;peek() !== null) {</span>
+<span class="missed"><span class="ln">59</span>            $this-&gt;refuse(&#039;unexpected &#039; . $this-&gt;peek());</span>
+<span class=""><span class="ln">60</span>        }</span>
+<span class=""><span class="ln">61</span></span>
+<span class="covered"><span class="ln">62</span>        return $type;</span>
+<span class=""><span class="ln">63</span>    }</span>
+<span class=""><span class="ln">64</span></span>
+<span class=""><span class="ln">65</span>    private function union(): TypeExpression</span>
+<span class=""><span class="ln">66</span>    {</span>
+<span class="covered"><span class="ln">67</span>        $members = [$this-&gt;intersection()];</span>
+<span class=""><span class="ln">68</span></span>
+<span class="covered"><span class="ln">69</span>        while ($this-&gt;peek() === &#039;|&#039;) {</span>
+<span class="covered"><span class="ln">70</span>            $this-&gt;at++;</span>
+<span class="covered"><span class="ln">71</span>            $members[] = $this-&gt;intersection();</span>
+<span class=""><span class="ln">72</span>        }</span>
+<span class=""><span class="ln">73</span></span>
+<span class="covered"><span class="ln">74</span>        return count($members) === 1 ? $members[0] : TypeExpression::union($members);</span>
+<span class=""><span class="ln">75</span>    }</span>
+<span class=""><span class="ln">76</span></span>
+<span class=""><span class="ln">77</span>    private function intersection(): TypeExpression</span>
+<span class=""><span class="ln">78</span>    {</span>
+<span class="covered"><span class="ln">79</span>        $members = [$this-&gt;postfix()];</span>
+<span class=""><span class="ln">80</span></span>
+<span class="covered"><span class="ln">81</span>        while ($this-&gt;peek() === &#039;&amp;&#039;) {</span>
+<span class="covered"><span class="ln">82</span>            $this-&gt;at++;</span>
+<span class="covered"><span class="ln">83</span>            $members[] = $this-&gt;postfix();</span>
+<span class=""><span class="ln">84</span>        }</span>
+<span class=""><span class="ln">85</span></span>
+<span class="covered"><span class="ln">86</span>        return count($members) === 1 ? $members[0] : TypeExpression::intersection($members);</span>
+<span class=""><span class="ln">87</span>    }</span>
+<span class=""><span class="ln">88</span></span>
+<span class=""><span class="ln">89</span>    private function postfix(): TypeExpression</span>
+<span class=""><span class="ln">90</span>    {</span>
+<span class="covered"><span class="ln">91</span>        $type = $this-&gt;atom();</span>
+<span class=""><span class="ln">92</span></span>
+<span class="covered"><span class="ln">93</span>        while ($this-&gt;peek() === &#039;[]&#039;) {</span>
+<span class="covered"><span class="ln">94</span>            $this-&gt;at++;</span>
+<span class="covered"><span class="ln">95</span>            $type = TypeExpression::array(&#039;array&#039;, [$type]);</span>
+<span class=""><span class="ln">96</span>        }</span>
+<span class=""><span class="ln">97</span></span>
+<span class="covered"><span class="ln">98</span>        return $type;</span>
+<span class=""><span class="ln">99</span>    }</span>
+<span class=""><span class="ln">100</span></span>
+<span class=""><span class="ln">101</span>    private function atom(): TypeExpression</span>
+<span class=""><span class="ln">102</span>    {</span>
+<span class="covered"><span class="ln">103</span>        $token = $this-&gt;next();</span>
+<span class=""><span class="ln">104</span></span>
+<span class="covered"><span class="ln">105</span>        if ($token === &#039;?&#039;) {</span>
+<span class="covered"><span class="ln">106</span>            return TypeExpression::union([$this-&gt;atom(), TypeExpression::keyword(&#039;null&#039;)]);</span>
+<span class=""><span class="ln">107</span>        }</span>
+<span class=""><span class="ln">108</span></span>
+<span class="covered"><span class="ln">109</span>        if ($token === &#039;(&#039;) {</span>
+<span class="missed"><span class="ln">110</span>            $type = $this-&gt;union();</span>
+<span class="missed"><span class="ln">111</span>            $this-&gt;expect(&#039;)&#039;);</span>
+<span class=""><span class="ln">112</span></span>
+<span class="missed"><span class="ln">113</span>            return $type;</span>
+<span class=""><span class="ln">114</span>        }</span>
+<span class=""><span class="ln">115</span></span>
+<span class="covered"><span class="ln">116</span>        if ($token[0] === &quot;&#039;&quot; || $token[0] === &#039;&quot;&#039;) {</span>
+<span class="covered"><span class="ln">117</span>            return TypeExpression::literal(stripcslashes(substr($token, 1, -1)));</span>
+<span class=""><span class="ln">118</span>        }</span>
+<span class=""><span class="ln">119</span></span>
+<span class="covered"><span class="ln">120</span>        $integer = TypeExpression::integer($token);</span>
+<span class=""><span class="ln">121</span></span>
+<span class="covered"><span class="ln">122</span>        if ($integer !== null) {</span>
+<span class="covered"><span class="ln">123</span>            return TypeExpression::literal($integer);</span>
+<span class=""><span class="ln">124</span>        }</span>
+<span class=""><span class="ln">125</span></span>
+<span class="covered"><span class="ln">126</span>        if (TypeExpression::looksLikeFloat($token)) {</span>
+<span class="missed"><span class="ln">127</span>            return TypeExpression::literal((float) $token);</span>
+<span class=""><span class="ln">128</span>        }</span>
+<span class=""><span class="ln">129</span></span>
+<span class="covered"><span class="ln">130</span>        if (preg_match_all(&#039;/^[A-Za-z_\\\\]/&#039;, $token) !== 1) {</span>
+<span class="missed"><span class="ln">131</span>            $this-&gt;refuse(&#039;unexpected &#039; . $token, -1);</span>
+<span class=""><span class="ln">132</span>        }</span>
+<span class=""><span class="ln">133</span></span>
+<span class="covered"><span class="ln">134</span>        $name = strtolower($token);</span>
+<span class=""><span class="ln">135</span></span>
+<span class="covered"><span class="ln">136</span>        if ($this-&gt;peek() === &#039;{&#039; &amp;&amp; in_array($name, [&#039;array&#039;, &#039;list&#039;, &#039;non-empty-array&#039;, &#039;non-empty-list&#039;], true)) {</span>
+<span class="covered"><span class="ln">137</span>            return $this-&gt;shape($name);</span>
+<span class=""><span class="ln">138</span>        }</span>
+<span class=""><span class="ln">139</span></span>
+<span class="covered"><span class="ln">140</span>        if ($this-&gt;peek() === &#039;&lt;&#039;) {</span>
+<span class="covered"><span class="ln">141</span>            return $this-&gt;generic($name, $token);</span>
+<span class=""><span class="ln">142</span>        }</span>
+<span class=""><span class="ln">143</span></span>
+<span class="covered"><span class="ln">144</span>        return TypeExpression::isKeyword($token)</span>
+<span class="covered"><span class="ln">145</span>            ? TypeExpression::keyword($name)</span>
+<span class="covered"><span class="ln">146</span>            : TypeExpression::class(TypeExpression::className($token));</span>
+<span class=""><span class="ln">147</span>    }</span>
+<span class=""><span class="ln">148</span></span>
+<span class=""><span class="ln">149</span>    private function generic(string $name, string $token): TypeExpression</span>
+<span class=""><span class="ln">150</span>    {</span>
+<span class="covered"><span class="ln">151</span>        $this-&gt;expect(&#039;&lt;&#039;);</span>
+<span class=""><span class="ln">152</span></span>
+<span class="covered"><span class="ln">153</span>        if ($name === &#039;int&#039;) {</span>
+<span class="covered"><span class="ln">154</span>            $min = $this-&gt;bound(&#039;min&#039;);</span>
+<span class="covered"><span class="ln">155</span>            $this-&gt;expect(&#039;,&#039;);</span>
+<span class="covered"><span class="ln">156</span>            $max = $this-&gt;bound(&#039;max&#039;);</span>
+<span class="covered"><span class="ln">157</span>            $this-&gt;expect(&#039;&gt;&#039;);</span>
+<span class=""><span class="ln">158</span></span>
+<span class="covered"><span class="ln">159</span>            return TypeExpression::range($min, $max);</span>
+<span class=""><span class="ln">160</span>        }</span>
+<span class=""><span class="ln">161</span></span>
+<span class="covered"><span class="ln">162</span>        $arguments = [$this-&gt;union()];</span>
+<span class=""><span class="ln">163</span></span>
+<span class="covered"><span class="ln">164</span>        while ($this-&gt;peek() === &#039;,&#039;) {</span>
+<span class="covered"><span class="ln">165</span>            $this-&gt;at++;</span>
+<span class="covered"><span class="ln">166</span>            $arguments[] = $this-&gt;union();</span>
+<span class=""><span class="ln">167</span>        }</span>
+<span class=""><span class="ln">168</span></span>
+<span class="covered"><span class="ln">169</span>        $this-&gt;expect(&#039;&gt;&#039;);</span>
+<span class=""><span class="ln">170</span></span>
+<span class="covered"><span class="ln">171</span>        if ($name === &#039;class-string&#039;) {</span>
+<span class="covered"><span class="ln">172</span>            return TypeExpression::classString($arguments);</span>
+<span class=""><span class="ln">173</span>        }</span>
+<span class=""><span class="ln">174</span></span>
+<span class="covered"><span class="ln">175</span>        if (!in_array($name, [&#039;array&#039;, &#039;list&#039;, &#039;non-empty-array&#039;, &#039;non-empty-list&#039;, &#039;iterable&#039;], true) || count($arguments) &gt; 2) {</span>
+<span class="covered"><span class="ln">176</span>            $this-&gt;refuse(sprintf(&#039;%s&lt;…&gt; is not a type this reads&#039;, $token));</span>
+<span class=""><span class="ln">177</span>        }</span>
+<span class=""><span class="ln">178</span></span>
+<span class="covered"><span class="ln">179</span>        return TypeExpression::array($name, $arguments);</span>
+<span class=""><span class="ln">180</span>    }</span>
+<span class=""><span class="ln">181</span></span>
+<span class=""><span class="ln">182</span>    private function bound(string $open): ?int</span>
+<span class=""><span class="ln">183</span>    {</span>
+<span class="covered"><span class="ln">184</span>        $token = $this-&gt;next();</span>
+<span class=""><span class="ln">185</span></span>
+<span class="covered"><span class="ln">186</span>        if (strtolower($token) === $open) {</span>
+<span class="covered"><span class="ln">187</span>            return null;</span>
+<span class=""><span class="ln">188</span>        }</span>
+<span class=""><span class="ln">189</span></span>
+<span class="covered"><span class="ln">190</span>        $integer = TypeExpression::integer($token);</span>
+<span class=""><span class="ln">191</span></span>
+<span class="covered"><span class="ln">192</span>        if ($integer === null) {</span>
+<span class="covered"><span class="ln">193</span>            $this-&gt;refuse(&#039;expected an integer or &#039; . $open, -1);</span>
+<span class=""><span class="ln">194</span>        }</span>
+<span class=""><span class="ln">195</span></span>
+<span class="covered"><span class="ln">196</span>        return $integer;</span>
+<span class=""><span class="ln">197</span>    }</span>
+<span class=""><span class="ln">198</span></span>
+<span class=""><span class="ln">199</span>    private function shape(string $name): TypeExpression</span>
+<span class=""><span class="ln">200</span>    {</span>
+<span class="covered"><span class="ln">201</span>        $this-&gt;expect(&#039;{&#039;);</span>
+<span class=""><span class="ln">202</span></span>
+<span class="covered"><span class="ln">203</span>        $keys     = [];</span>
+<span class="covered"><span class="ln">204</span>        $open     = true;</span>
+<span class="covered"><span class="ln">205</span>        $position = 0;</span>
+<span class=""><span class="ln">206</span></span>
+<span class="covered"><span class="ln">207</span>        while ($this-&gt;peek() !== &#039;}&#039;) {</span>
+<span class="covered"><span class="ln">208</span>            if ($this-&gt;peek() === &#039;...&#039;) {</span>
+<span class="missed"><span class="ln">209</span>                $this-&gt;at++;</span>
+<span class="missed"><span class="ln">210</span>                $open = true;</span>
+<span class=""><span class="ln">211</span></span>
+<span class=""><span class="ln">212</span>                // `...&lt;K, V&gt;`: the unnamed keys&#039; types; read and allowed.</span>
+<span class="missed"><span class="ln">213</span>                if ($this-&gt;peek() === &#039;&lt;&#039;) {</span>
+<span class="missed"><span class="ln">214</span>                    $this-&gt;generic(&#039;array&#039;, &#039;array&#039;);</span>
+<span class=""><span class="ln">215</span>                }</span>
+<span class="covered"><span class="ln">216</span>            } elseif ($this-&gt;isKeyed()) {</span>
+<span class="covered"><span class="ln">217</span>                $key      = $this-&gt;next();</span>
+<span class="covered"><span class="ln">218</span>                $key      = $key[0] === &quot;&#039;&quot; || $key[0] === &#039;&quot;&#039; ? stripcslashes(substr($key, 1, -1)) : (TypeExpression::integer($key) ?? $key);</span>
+<span class="covered"><span class="ln">219</span>                $optional = $this-&gt;peek() === &#039;?&#039;;</span>
+<span class=""><span class="ln">220</span></span>
+<span class="covered"><span class="ln">221</span>                if ($optional) {</span>
+<span class="covered"><span class="ln">222</span>                    $this-&gt;at++;</span>
+<span class=""><span class="ln">223</span>                }</span>
+<span class=""><span class="ln">224</span></span>
+<span class="covered"><span class="ln">225</span>                $this-&gt;expect(&#039;:&#039;);</span>
+<span class="covered"><span class="ln">226</span>                $keys[$key] = [$this-&gt;union(), $optional];</span>
+<span class=""><span class="ln">227</span>            } else {</span>
+<span class="covered"><span class="ln">228</span>                $keys[$position++] = [$this-&gt;union(), false];</span>
+<span class=""><span class="ln">229</span>            }</span>
+<span class=""><span class="ln">230</span></span>
+<span class="covered"><span class="ln">231</span>            if ($this-&gt;peek() !== &#039;,&#039;) {</span>
+<span class="covered"><span class="ln">232</span>                break;</span>
+<span class=""><span class="ln">233</span>            }</span>
+<span class=""><span class="ln">234</span></span>
+<span class="covered"><span class="ln">235</span>            $this-&gt;at++;</span>
+<span class=""><span class="ln">236</span>        }</span>
+<span class=""><span class="ln">237</span></span>
+<span class="covered"><span class="ln">238</span>        $this-&gt;expect(&#039;}&#039;);</span>
+<span class=""><span class="ln">239</span></span>
+<span class="covered"><span class="ln">240</span>        return TypeExpression::shape($name, $keys, $open);</span>
+<span class=""><span class="ln">241</span>    }</span>
+<span class=""><span class="ln">242</span></span>
+<span class=""><span class="ln">243</span>    /** Whether the next entry is `key:` or `key?:` rather than a bare type. */</span>
+<span class=""><span class="ln">244</span>    private function isKeyed(): bool</span>
+<span class=""><span class="ln">245</span>    {</span>
+<span class="covered"><span class="ln">246</span>        $after = $this-&gt;tokens[$this-&gt;at + 1][0] ?? null;</span>
+<span class=""><span class="ln">247</span></span>
+<span class="covered"><span class="ln">248</span>        return $after === &#039;:&#039; || ($after === &#039;?&#039; &amp;&amp; ($this-&gt;tokens[$this-&gt;at + 2][0] ?? null) === &#039;:&#039;);</span>
+<span class=""><span class="ln">249</span>    }</span>
+<span class=""><span class="ln">250</span></span>
+<span class=""><span class="ln">251</span>    private function peek(): ?string</span>
+<span class=""><span class="ln">252</span>    {</span>
+<span class="covered"><span class="ln">253</span>        return $this-&gt;tokens[$this-&gt;at][0] ?? null;</span>
+<span class=""><span class="ln">254</span>    }</span>
+<span class=""><span class="ln">255</span></span>
+<span class=""><span class="ln">256</span>    private function next(): string</span>
+<span class=""><span class="ln">257</span>    {</span>
+<span class="covered"><span class="ln">258</span>        $token = $this-&gt;peek();</span>
+<span class=""><span class="ln">259</span></span>
+<span class="covered"><span class="ln">260</span>        if ($token === null) {</span>
+<span class="missed"><span class="ln">261</span>            $this-&gt;refuse(&#039;the type ends too early&#039;, 0);</span>
+<span class=""><span class="ln">262</span>        }</span>
+<span class=""><span class="ln">263</span></span>
+<span class="covered"><span class="ln">264</span>        $this-&gt;at++;</span>
+<span class=""><span class="ln">265</span></span>
+<span class="covered"><span class="ln">266</span>        return $token;</span>
+<span class=""><span class="ln">267</span>    }</span>
+<span class=""><span class="ln">268</span></span>
+<span class=""><span class="ln">269</span>    private function expect(string $token): void</span>
+<span class=""><span class="ln">270</span>    {</span>
+<span class="covered"><span class="ln">271</span>        if ($this-&gt;peek() !== $token) {</span>
+<span class="covered"><span class="ln">272</span>            $this-&gt;refuse(sprintf(&#039;expected %s&#039;, $token));</span>
+<span class=""><span class="ln">273</span>        }</span>
+<span class=""><span class="ln">274</span></span>
+<span class="covered"><span class="ln">275</span>        $this-&gt;at++;</span>
+<span class=""><span class="ln">276</span>    }</span>
+<span class=""><span class="ln">277</span></span>
+<span class=""><span class="ln">278</span>    private function refuse(string $why, int $shift = 0): never</span>
+<span class=""><span class="ln">279</span>    {</span>
+<span class="covered"><span class="ln">280</span>        $offset = $this-&gt;tokens[$this-&gt;at + $shift][1] ?? null;</span>
+<span class=""><span class="ln">281</span></span>
+<span class="covered"><span class="ln">282</span>        throw new ConfigurationException(sprintf(</span>
+<span class=""><span class="ln">283</span>            &#039;Cannot read the type &quot;%s&quot;%s: %s.&#039;,</span>
+<span class="covered"><span class="ln">284</span>            $this-&gt;source,</span>
+<span class="covered"><span class="ln">285</span>            $offset === null ? &#039; at its end&#039; : sprintf(&#039; at offset %d&#039;, $offset),</span>
+<span class="covered"><span class="ln">286</span>            $why,</span>
+<span class=""><span class="ln">287</span>        ));</span>
+<span class=""><span class="ln">288</span>    }</span>
+<span class=""><span class="ln">289</span>}</span>
+<span class=""><span class="ln">290</span></span>
+</pre>
+</body>
+</html>

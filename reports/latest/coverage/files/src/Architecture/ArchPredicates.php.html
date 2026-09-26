@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Architecture/ArchPredicates.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/Architecture/ArchPredicates.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Architecture;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use Closure;</span>
+<span class=""><span class="ln">14</span>use Composer\Autoload\ClassLoader;</span>
+<span class=""><span class="ln">15</span>use ReflectionClass;</span>
+<span class=""><span class="ln">16</span>use ReflectionMethod;</span>
+<span class=""><span class="ln">17</span>use ReflectionProperty;</span>
+<span class=""><span class="ln">18</span></span>
+<span class=""><span class="ln">19</span>use function array_filter;</span>
+<span class=""><span class="ln">20</span>use function array_flip;</span>
+<span class=""><span class="ln">21</span>use function array_keys;</span>
+<span class=""><span class="ln">22</span>use function array_values;</span>
+<span class=""><span class="ln">23</span>use function enum_exists;</span>
+<span class=""><span class="ln">24</span>use function explode;</span>
+<span class=""><span class="ln">25</span>use function file_get_contents;</span>
+<span class=""><span class="ln">26</span>use function in_array;</span>
+<span class=""><span class="ln">27</span>use function is_array;</span>
+<span class=""><span class="ln">28</span>use function preg_match;</span>
+<span class=""><span class="ln">29</span>use function realpath;</span>
+<span class=""><span class="ln">30</span>use function rtrim;</span>
+<span class=""><span class="ln">31</span>use function spl_autoload_functions;</span>
+<span class=""><span class="ln">32</span>use function str_contains;</span>
+<span class=""><span class="ln">33</span>use function str_replace;</span>
+<span class=""><span class="ln">34</span>use function str_starts_with;</span>
+<span class=""><span class="ln">35</span>use function strlen;</span>
+<span class=""><span class="ln">36</span>use function substr;</span>
+<span class=""><span class="ln">37</span></span>
+<span class=""><span class="ln">38</span>use const DIRECTORY_SEPARATOR;</span>
+<span class=""><span class="ln">39</span></span>
+<span class=""><span class="ln">40</span>/**</span>
+<span class=""><span class="ln">41</span> * What an architecture question asks of ONE class, in one place.</span>
+<span class=""><span class="ln">42</span> *</span>
+<span class=""><span class="ln">43</span> * Two spellings reach these now — `arch()-&gt;expect(...)` and the pest</span>
+<span class=""><span class="ln">44</span> * `expect(...)` arch matchers (D1) — and the answer has to be the same</span>
+<span class=""><span class="ln">45</span> * from both. Holding the predicates here is what makes that structural</span>
+<span class=""><span class="ln">46</span> * rather than a promise: there is one implementation to be right or</span>
+<span class=""><span class="ln">47</span> * wrong, so the two spellings cannot drift into disagreeing.</span>
+<span class=""><span class="ln">48</span> *</span>
+<span class=""><span class="ln">49</span> * That is not a general preference for sharing. It is the specific</span>
+<span class=""><span class="ln">50</span> * lesson of D-108, where one verdict classification lived in five</span>
+<span class=""><span class="ln">51</span> * copies and the copies produced a false green — and of the guards</span>
+<span class=""><span class="ln">52</span> * beside it, which are deliberately NOT shared because they answer</span>
+<span class=""><span class="ln">53</span> * different questions that merely share a position. These answer the</span>
+<span class=""><span class="ln">54</span> * same question, so they are one.</span>
+<span class=""><span class="ln">55</span> */</span>
+<span class=""><span class="ln">56</span>final readonly class ArchPredicates</span>
+<span class=""><span class="ln">57</span>{</span>
+<span class=""><span class="ln">58</span>    /**</span>
+<span class=""><span class="ln">59</span>     * Enum members with no source to annotate; read in both directions.</span>
+<span class=""><span class="ln">60</span>     *</span>
+<span class=""><span class="ln">61</span>     * @var list&lt;non-empty-string&gt;</span>
+<span class=""><span class="ln">62</span>     */</span>
+<span class=""><span class="ln">63</span>    private const array GENERATED_METHODS = [&#039;from&#039;, &#039;tryFrom&#039;, &#039;cases&#039;];</span>
+<span class=""><span class="ln">64</span></span>
+<span class=""><span class="ln">65</span>    /** @var list&lt;non-empty-string&gt; */</span>
+<span class=""><span class="ln">66</span>    private const array GENERATED_PROPERTIES = [&#039;value&#039;, &#039;name&#039;];</span>
+<span class=""><span class="ln">67</span></span>
+<span class=""><span class="ln">68</span>    /** @return Closure(string): bool */</span>
+<span class=""><span class="ln">69</span>    public static function extendsNothing(): Closure</span>
+<span class=""><span class="ln">70</span>    {</span>
+<span class="missed"><span class="ln">71</span>        return static function (string $class): bool {</span>
+<span class=""><span class="ln">72</span>            /** @var class-string $class */</span>
+<span class="missed"><span class="ln">73</span>            return (new ReflectionClass($class))-&gt;getParentClass() === false;</span>
+<span class="missed"><span class="ln">74</span>        };</span>
+<span class=""><span class="ln">75</span>    }</span>
+<span class=""><span class="ln">76</span></span>
+<span class=""><span class="ln">77</span>    /** ✓ The incumbent&#039;s `not-&gt;toExtendNothing`: &quot;extends a class&quot;. @return Closure(string): bool */</span>
+<span class=""><span class="ln">78</span>    public static function extendsSomething(): Closure</span>
+<span class=""><span class="ln">79</span>    {</span>
+<span class="missed"><span class="ln">80</span>        return static function (string $class): bool {</span>
+<span class=""><span class="ln">81</span>            /** @var class-string $class */</span>
+<span class="missed"><span class="ln">82</span>            return (new ReflectionClass($class))-&gt;getParentClass() !== false;</span>
+<span class="missed"><span class="ln">83</span>        };</span>
+<span class=""><span class="ln">84</span>    }</span>
+<span class=""><span class="ln">85</span></span>
+<span class=""><span class="ln">86</span>    /** @return Closure(string): bool */</span>
+<span class=""><span class="ln">87</span>    public static function implementsNothing(): Closure</span>
+<span class=""><span class="ln">88</span>    {</span>
+<span class="missed"><span class="ln">89</span>        return static function (string $class): bool {</span>
+<span class=""><span class="ln">90</span>            /** @var class-string $class */</span>
+<span class="missed"><span class="ln">91</span>            return (new ReflectionClass($class))-&gt;getInterfaceNames() === [];</span>
+<span class="missed"><span class="ln">92</span>        };</span>
+<span class=""><span class="ln">93</span>    }</span>
+<span class=""><span class="ln">94</span></span>
+<span class=""><span class="ln">95</span>    /** ✓ The incumbent&#039;s `not-&gt;toImplementNothing`. @return Closure(string): bool */</span>
+<span class=""><span class="ln">96</span>    public static function implementsSomething(): Closure</span>
+<span class=""><span class="ln">97</span>    {</span>
+<span class="missed"><span class="ln">98</span>        return static function (string $class): bool {</span>
+<span class=""><span class="ln">99</span>            /** @var class-string $class */</span>
+<span class="missed"><span class="ln">100</span>            return (new ReflectionClass($class))-&gt;getInterfaceNames() !== [];</span>
+<span class="missed"><span class="ln">101</span>        };</span>
+<span class=""><span class="ln">102</span>    }</span>
+<span class=""><span class="ln">103</span></span>
+<span class=""><span class="ln">104</span>    /** @return Closure(string): bool */</span>
+<span class=""><span class="ln">105</span>    public static function declaresStrictTypes(ArchitectureUniverse $universe): Closure</span>
+<span class=""><span class="ln">106</span>    {</span>
+<span class="covered"><span class="ln">107</span>        return static function (string $class) use ($universe): bool {</span>
+<span class="covered"><span class="ln">108</span>            $source = self::sourceOf($universe, $class);</span>
+<span class=""><span class="ln">109</span></span>
+<span class="covered"><span class="ln">110</span>            return $source !== null &amp;&amp; preg_match(&#039;/declare\s*\(\s*strict_types\s*=\s*1\s*\)/&#039;, $source) === 1;</span>
+<span class="covered"><span class="ln">111</span>        };</span>
+<span class=""><span class="ln">112</span>    }</span>
+<span class=""><span class="ln">113</span></span>
+<span class=""><span class="ln">114</span>    /**</span>
+<span class=""><span class="ln">115</span>     * ✓ The incumbent&#039;s `not-&gt;toUseStrictTypes` pattern, copied not</span>
+<span class=""><span class="ln">116</span>     * reconciled: it anchors at `&lt;?php` with no room for a comment, so a</span>
+<span class=""><span class="ln">117</span>     * file whose declare follows a header fails BOTH forms there.</span>
+<span class=""><span class="ln">118</span>     *</span>
+<span class=""><span class="ln">119</span>     * @return Closure(string): bool</span>
+<span class=""><span class="ln">120</span>     */</span>
+<span class=""><span class="ln">121</span>    public static function declaresNoStrictTypes(ArchitectureUniverse $universe): Closure</span>
+<span class=""><span class="ln">122</span>    {</span>
+<span class="missed"><span class="ln">123</span>        return static function (string $class) use ($universe): bool {</span>
+<span class="missed"><span class="ln">124</span>            $source = self::sourceOf($universe, $class);</span>
+<span class=""><span class="ln">125</span></span>
+<span class="missed"><span class="ln">126</span>            return $source !== null &amp;&amp; preg_match(&#039;/^&lt;\?php\s+declare\(.*?strict_types\s?=\s?1.*?\);/&#039;, $source) !== 1;</span>
+<span class="missed"><span class="ln">127</span>        };</span>
+<span class=""><span class="ln">128</span>    }</span>
+<span class=""><span class="ln">129</span></span>
+<span class=""><span class="ln">130</span>    /**</span>
+<span class=""><span class="ln">131</span>     * ✓ Pinned to the incumbent, which scans the source text for `&#039; == &#039;`</span>
+<span class=""><span class="ln">132</span>     * and `&#039; != &#039;`, spaced. Copied deliberately rather than improved on:</span>
+<span class=""><span class="ln">133</span>     * a token-aware reading would be cleverer and would answer</span>
+<span class=""><span class="ln">134</span>     * differently on the files someone is likely to test.</span>
+<span class=""><span class="ln">135</span>     *</span>
+<span class=""><span class="ln">136</span>     * @return Closure(string): bool</span>
+<span class=""><span class="ln">137</span>     */</span>
+<span class=""><span class="ln">138</span>    public static function usesStrictEquality(ArchitectureUniverse $universe): Closure</span>
+<span class=""><span class="ln">139</span>    {</span>
+<span class="missed"><span class="ln">140</span>        return static function (string $class) use ($universe): bool {</span>
+<span class="missed"><span class="ln">141</span>            $source = self::sourceOf($universe, $class);</span>
+<span class=""><span class="ln">142</span></span>
+<span class="missed"><span class="ln">143</span>            return $source !== null &amp;&amp; !str_contains($source, &#039; == &#039;) &amp;&amp; !str_contains($source, &#039; != &#039;);</span>
+<span class="missed"><span class="ln">144</span>        };</span>
+<span class=""><span class="ln">145</span>    }</span>
+<span class=""><span class="ln">146</span></span>
+<span class=""><span class="ln">147</span>    /**</span>
+<span class=""><span class="ln">148</span>     * ✓ The incumbent&#039;s `not-&gt;toUseStrictEquality` scans for `&#039; === &#039;`</span>
+<span class=""><span class="ln">149</span>     * and `&#039; !== &#039;` — the other two operators, not a negation of the scan</span>
+<span class=""><span class="ln">150</span>     * above. A file comparing nothing passes both; one mixing them fails both.</span>
+<span class=""><span class="ln">151</span>     *</span>
+<span class=""><span class="ln">152</span>     * @return Closure(string): bool</span>
+<span class=""><span class="ln">153</span>     */</span>
+<span class=""><span class="ln">154</span>    public static function usesNoStrictEquality(ArchitectureUniverse $universe): Closure</span>
+<span class=""><span class="ln">155</span>    {</span>
+<span class="missed"><span class="ln">156</span>        return static function (string $class) use ($universe): bool {</span>
+<span class="missed"><span class="ln">157</span>            $source = self::sourceOf($universe, $class);</span>
+<span class=""><span class="ln">158</span></span>
+<span class="missed"><span class="ln">159</span>            return $source !== null &amp;&amp; !str_contains($source, &#039; === &#039;) &amp;&amp; !str_contains($source, &#039; !== &#039;);</span>
+<span class="missed"><span class="ln">160</span>        };</span>
+<span class=""><span class="ln">161</span>    }</span>
+<span class=""><span class="ln">162</span></span>
+<span class=""><span class="ln">163</span>    /**</span>
+<span class=""><span class="ln">164</span>     * The class a file declares is the class its path implies, judged</span>
+<span class=""><span class="ln">165</span>     * against composer&#039;s PSR-4 map — the project&#039;s own autoload</span>
+<span class=""><span class="ln">166</span>     * configuration answers, not a convention assumed here.</span>
+<span class=""><span class="ln">167</span>     *</span>
+<span class=""><span class="ln">168</span>     * @return Closure(string): bool</span>
+<span class=""><span class="ln">169</span>     */</span>
+<span class=""><span class="ln">170</span>    public static function casedCorrectly(ArchitectureUniverse $universe): Closure</span>
+<span class=""><span class="ln">171</span>    {</span>
+<span class="missed"><span class="ln">172</span>        return static function (string $class) use ($universe): bool {</span>
+<span class="missed"><span class="ln">173</span>            $file = $universe-&gt;fileOf($class);</span>
+<span class="missed"><span class="ln">174</span>            $real = $file === null ? false : realpath($file);</span>
+<span class=""><span class="ln">175</span></span>
+<span class="missed"><span class="ln">176</span>            if ($real === false) {</span>
+<span class="missed"><span class="ln">177</span>                return false;</span>
+<span class=""><span class="ln">178</span>            }</span>
+<span class=""><span class="ln">179</span></span>
+<span class="missed"><span class="ln">180</span>            foreach (self::psr4Prefixes() as $namespace =&gt; $directories) {</span>
+<span class="missed"><span class="ln">181</span>                foreach ($directories as $directory) {</span>
+<span class="missed"><span class="ln">182</span>                    $root = realpath($directory);</span>
+<span class=""><span class="ln">183</span></span>
+<span class="missed"><span class="ln">184</span>                    if ($root === false || !str_starts_with($real, $root . DIRECTORY_SEPARATOR)) {</span>
+<span class="missed"><span class="ln">185</span>                        continue;</span>
+<span class=""><span class="ln">186</span>                    }</span>
+<span class=""><span class="ln">187</span></span>
+<span class="missed"><span class="ln">188</span>                    $relative = explode(&#039;.&#039;, substr($real, strlen($root) + 1))[0];</span>
+<span class=""><span class="ln">189</span></span>
+<span class="missed"><span class="ln">190</span>                    return rtrim($namespace, &#039;\\&#039;) . &#039;\\&#039; . str_replace(DIRECTORY_SEPARATOR, &#039;\\&#039;, $relative) === $class;</span>
+<span class=""><span class="ln">191</span>                }</span>
+<span class=""><span class="ln">192</span>            }</span>
+<span class=""><span class="ln">193</span></span>
+<span class="missed"><span class="ln">194</span>            return false;</span>
+<span class="missed"><span class="ln">195</span>        };</span>
+<span class=""><span class="ln">196</span>    }</span>
+<span class=""><span class="ln">197</span></span>
+<span class=""><span class="ln">198</span>    /**</span>
+<span class=""><span class="ln">199</span>     * Every method the file itself declares carries a docblock.</span>
+<span class=""><span class="ln">200</span>     *</span>
+<span class=""><span class="ln">201</span>     * ✓ The incumbent&#039;s qualifications are kept because each changes the</span>
+<span class=""><span class="ln">202</span>     * answer: an inherited method is not this file&#039;s to document, an</span>
+<span class=""><span class="ln">203</span>     * enum&#039;s generated `from`/`tryFrom`/`cases` have no source to</span>
+<span class=""><span class="ln">204</span>     * annotate, and presence is what is checked, never content.</span>
+<span class=""><span class="ln">205</span>     *</span>
+<span class=""><span class="ln">206</span>     * @return Closure(string): bool</span>
+<span class=""><span class="ln">207</span>     */</span>
+<span class=""><span class="ln">208</span>    public static function documentsMethods(ArchitectureUniverse $universe): Closure</span>
+<span class=""><span class="ln">209</span>    {</span>
+<span class="missed"><span class="ln">210</span>        return static function (string $class) use ($universe): bool {</span>
+<span class=""><span class="ln">211</span>            /** @var class-string $class */</span>
+<span class="missed"><span class="ln">212</span>            return self::documented($universe, $class, (new ReflectionClass($class))-&gt;getMethods(), self::GENERATED_METHODS, true);</span>
+<span class="missed"><span class="ln">213</span>        };</span>
+<span class=""><span class="ln">214</span>    }</span>
+<span class=""><span class="ln">215</span></span>
+<span class=""><span class="ln">216</span>    /**</span>
+<span class=""><span class="ln">217</span>     * ✓ The incumbent&#039;s `not-&gt;toHaveMethodsDocumented`: not one declared</span>
+<span class=""><span class="ln">218</span>     * method carries a docblock. A class with no methods satisfies both.</span>
+<span class=""><span class="ln">219</span>     *</span>
+<span class=""><span class="ln">220</span>     * @return Closure(string): bool</span>
+<span class=""><span class="ln">221</span>     */</span>
+<span class=""><span class="ln">222</span>    public static function documentsNoMethods(ArchitectureUniverse $universe): Closure</span>
+<span class=""><span class="ln">223</span>    {</span>
+<span class="missed"><span class="ln">224</span>        return static function (string $class) use ($universe): bool {</span>
+<span class=""><span class="ln">225</span>            /** @var class-string $class */</span>
+<span class="missed"><span class="ln">226</span>            return self::documented($universe, $class, (new ReflectionClass($class))-&gt;getMethods(), self::GENERATED_METHODS, false);</span>
+<span class="missed"><span class="ln">227</span>        };</span>
+<span class=""><span class="ln">228</span>    }</span>
+<span class=""><span class="ln">229</span></span>
+<span class=""><span class="ln">230</span>    /**</span>
+<span class=""><span class="ln">231</span>     * The same for properties, minus promoted ones: a promoted property</span>
+<span class=""><span class="ln">232</span>     * is a constructor parameter, and the constructor is where it would</span>
+<span class=""><span class="ln">233</span>     * be documented.</span>
+<span class=""><span class="ln">234</span>     *</span>
+<span class=""><span class="ln">235</span>     * @return Closure(string): bool</span>
+<span class=""><span class="ln">236</span>     */</span>
+<span class=""><span class="ln">237</span>    public static function documentsProperties(ArchitectureUniverse $universe): Closure</span>
+<span class=""><span class="ln">238</span>    {</span>
+<span class="missed"><span class="ln">239</span>        return static function (string $class) use ($universe): bool {</span>
+<span class=""><span class="ln">240</span>            /** @var class-string $class */</span>
+<span class="missed"><span class="ln">241</span>            return self::documented($universe, $class, self::ownProperties($class), self::GENERATED_PROPERTIES, true);</span>
+<span class="missed"><span class="ln">242</span>        };</span>
+<span class=""><span class="ln">243</span>    }</span>
+<span class=""><span class="ln">244</span></span>
+<span class=""><span class="ln">245</span>    /** ✓ The incumbent&#039;s `not-&gt;toHavePropertiesDocumented`. @return Closure(string): bool */</span>
+<span class=""><span class="ln">246</span>    public static function documentsNoProperties(ArchitectureUniverse $universe): Closure</span>
+<span class=""><span class="ln">247</span>    {</span>
+<span class="missed"><span class="ln">248</span>        return static function (string $class) use ($universe): bool {</span>
+<span class=""><span class="ln">249</span>            /** @var class-string $class */</span>
+<span class="missed"><span class="ln">250</span>            return self::documented($universe, $class, self::ownProperties($class), self::GENERATED_PROPERTIES, false);</span>
+<span class="missed"><span class="ln">251</span>        };</span>
+<span class=""><span class="ln">252</span>    }</span>
+<span class=""><span class="ln">253</span></span>
+<span class=""><span class="ln">254</span>    /**</span>
+<span class=""><span class="ln">255</span>     * The references a class makes that LEAVE the target set and land in</span>
+<span class=""><span class="ln">256</span>     * the project&#039;s own source — the one definition of &quot;uses&quot; both</span>
+<span class=""><span class="ln">257</span>     * spellings read, in the outbound direction.</span>
+<span class=""><span class="ln">258</span>     *</span>
+<span class=""><span class="ln">259</span>     * Two things do not count. References outside the configured source</span>
+<span class=""><span class="ln">260</span>     * — PHP built-ins, vendor packages — because this is a question</span>
+<span class=""><span class="ln">261</span>     * about your own layering, and counting `Closure` as a dependency</span>
+<span class=""><span class="ln">262</span>     * would force every rule to carry a whitelist of the standard</span>
+<span class=""><span class="ln">263</span>     * library first. And references to another class of the SAME</span>
+<span class=""><span class="ln">264</span>     * target, because they do not cross the boundary the rule is about:</span>
+<span class=""><span class="ln">265</span>     * ✓ measured against pest 5.1.1, `expect(&#039;App\Models&#039;)-&gt;toUseNothing()`</span>
+<span class=""><span class="ln">266</span>     * passes while one model uses a sibling model, and fails the moment</span>
+<span class=""><span class="ln">267</span>     * one reaches out of `App\Models` — with a control proving the</span>
+<span class=""><span class="ln">268</span>     * matcher can still fail.</span>
+<span class=""><span class="ln">269</span>     *</span>
+<span class=""><span class="ln">270</span>     * @param list&lt;string&gt; $targets every class the rule targets</span>
+<span class=""><span class="ln">271</span>     *</span>
+<span class=""><span class="ln">272</span>     * @return list&lt;string&gt;</span>
+<span class=""><span class="ln">273</span>     */</span>
+<span class=""><span class="ln">274</span>    public static function crossingsOf(ArchitectureUniverse $universe, array $targets, string $class): array</span>
+<span class=""><span class="ln">275</span>    {</span>
+<span class="covered"><span class="ln">276</span>        $known    = $universe-&gt;classes();</span>
+<span class="covered"><span class="ln">277</span>        $inside   = array_flip($targets);</span>
+<span class="covered"><span class="ln">278</span>        $crossing = [];</span>
+<span class=""><span class="ln">279</span></span>
+<span class="covered"><span class="ln">280</span>        foreach ($universe-&gt;referencesOf($class) as $reference) {</span>
+<span class="covered"><span class="ln">281</span>            if ($reference !== $class &amp;&amp; !isset($inside[$reference]) &amp;&amp; isset($known[$reference])) {</span>
+<span class="covered"><span class="ln">282</span>                $crossing[] = $reference;</span>
+<span class=""><span class="ln">283</span>            }</span>
+<span class=""><span class="ln">284</span>        }</span>
+<span class=""><span class="ln">285</span></span>
+<span class="covered"><span class="ln">286</span>        return $crossing;</span>
+<span class=""><span class="ln">287</span>    }</span>
+<span class=""><span class="ln">288</span></span>
+<span class=""><span class="ln">289</span>    /**</span>
+<span class=""><span class="ln">290</span>     * The inbound direction of the same boundary rule: every pair where</span>
+<span class=""><span class="ln">291</span>     * a class OUTSIDE the target set references one inside it.</span>
+<span class=""><span class="ln">292</span>     *</span>
+<span class=""><span class="ln">293</span>     * One walk of the universe for the whole target set, not one walk</span>
+<span class=""><span class="ln">294</span>     * per targeted class — the reverse direction has to read every</span>
+<span class=""><span class="ln">295</span>     * file, so asking it per class turns a rule over 200 classes into</span>
+<span class=""><span class="ln">296</span>     * 200 full traversals.</span>
+<span class=""><span class="ln">297</span>     *</span>
+<span class=""><span class="ln">298</span>     * @param list&lt;string&gt; $targets every class the rule targets</span>
+<span class=""><span class="ln">299</span>     *</span>
+<span class=""><span class="ln">300</span>     * @return list&lt;array{0: string, 1: string}&gt; the user, and the targeted class it reached</span>
+<span class=""><span class="ln">301</span>     */</span>
+<span class=""><span class="ln">302</span>    public static function inboundPairs(ArchitectureUniverse $universe, array $targets): array</span>
+<span class=""><span class="ln">303</span>    {</span>
+<span class="covered"><span class="ln">304</span>        $inside = array_flip($targets);</span>
+<span class="covered"><span class="ln">305</span>        $pairs  = [];</span>
+<span class=""><span class="ln">306</span></span>
+<span class="covered"><span class="ln">307</span>        foreach (array_keys($universe-&gt;classes()) as $candidate) {</span>
+<span class="covered"><span class="ln">308</span>            if (isset($inside[$candidate])) {</span>
+<span class="covered"><span class="ln">309</span>                continue;</span>
+<span class=""><span class="ln">310</span>            }</span>
+<span class=""><span class="ln">311</span></span>
+<span class="covered"><span class="ln">312</span>            foreach ($universe-&gt;referencesOf($candidate) as $reference) {</span>
+<span class="covered"><span class="ln">313</span>                if (isset($inside[$reference])) {</span>
+<span class="covered"><span class="ln">314</span>                    $pairs[] = [$candidate, $reference];</span>
+<span class=""><span class="ln">315</span>                }</span>
+<span class=""><span class="ln">316</span>            }</span>
+<span class=""><span class="ln">317</span>        }</span>
+<span class=""><span class="ln">318</span></span>
+<span class="covered"><span class="ln">319</span>        return $pairs;</span>
+<span class=""><span class="ln">320</span>    }</span>
+<span class=""><span class="ln">321</span></span>
+<span class=""><span class="ln">322</span>    /**</span>
+<span class=""><span class="ln">323</span>     * Nothing the class references crosses out of the target set into</span>
+<span class=""><span class="ln">324</span>     * the project&#039;s own source.</span>
+<span class=""><span class="ln">325</span>     *</span>
+<span class=""><span class="ln">326</span>     * @param list&lt;string&gt; $targets</span>
+<span class=""><span class="ln">327</span>     *</span>
+<span class=""><span class="ln">328</span>     * @return Closure(string): bool</span>
+<span class=""><span class="ln">329</span>     */</span>
+<span class=""><span class="ln">330</span>    public static function referencesNothingOwn(ArchitectureUniverse $universe, array $targets): Closure</span>
+<span class=""><span class="ln">331</span>    {</span>
+<span class="covered"><span class="ln">332</span>        return static fn(string $class): bool =&gt; self::crossingsOf($universe, $targets, $class) === [];</span>
+<span class=""><span class="ln">333</span>    }</span>
+<span class=""><span class="ln">334</span></span>
+<span class=""><span class="ln">335</span>    /**</span>
+<span class=""><span class="ln">336</span>     * Nothing outside the target set references the class.</span>
+<span class=""><span class="ln">337</span>     *</span>
+<span class=""><span class="ln">338</span>     * @param list&lt;string&gt; $targets</span>
+<span class=""><span class="ln">339</span>     *</span>
+<span class=""><span class="ln">340</span>     * @return Closure(string): bool</span>
+<span class=""><span class="ln">341</span>     */</span>
+<span class=""><span class="ln">342</span>    public static function usedByNothing(ArchitectureUniverse $universe, array $targets): Closure</span>
+<span class=""><span class="ln">343</span>    {</span>
+<span class="covered"><span class="ln">344</span>        $inside = array_flip($targets);</span>
+<span class="covered"><span class="ln">345</span>        $used   = [];</span>
+<span class=""><span class="ln">346</span></span>
+<span class=""><span class="ln">347</span>        // NOT inboundPairs(): this walk counts a SIBLING user too, and</span>
+<span class=""><span class="ln">348</span>        // that asymmetry is the incumbent&#039;s, measured rather than</span>
+<span class=""><span class="ln">349</span>        // reasoned about. ✓ pest 5.1.1, 2026-09-06:</span>
+<span class=""><span class="ln">350</span>        // `expect(&#039;ArchFixture\Deps\Pure&#039;)-&gt;toBeUsedInNothing()` fails</span>
+<span class=""><span class="ln">351</span>        // with &quot;Expecting &#039;Deps\Pure\Beta&#039; not to be used on</span>
+<span class=""><span class="ln">352</span>        // &#039;Deps\Pure\Alpha&#039;&quot; — both classes INSIDE the target — while</span>
+<span class=""><span class="ln">353</span>        // `toUseNothing()` passes over the same two files. Outbound</span>
+<span class=""><span class="ln">354</span>        // ignores the boundary&#039;s inside; inbound does not.</span>
+<span class=""><span class="ln">355</span>        //</span>
+<span class=""><span class="ln">356</span>        // ⚠ This corrects 2026-09-02, which recorded the crossing rule</span>
+<span class=""><span class="ln">357</span>        // as measured for BOTH directions and made them share one</span>
+<span class=""><span class="ln">358</span>        // implementation. The control run that day had no sibling</span>
+<span class=""><span class="ln">359</span>        // reference in the inbound direction, so it proved the outbound</span>
+<span class=""><span class="ln">360</span>        // half twice. A control only earns the name when it could have</span>
+<span class=""><span class="ln">361</span>        // come out wrong.</span>
+<span class=""><span class="ln">362</span>        //</span>
+<span class=""><span class="ln">363</span>        // toOnlyBeUsedIn() keeps inboundPairs(): &quot;only these may use it&quot;</span>
+<span class=""><span class="ln">364</span>        // is a question about outside users, and it takes arguments, so</span>
+<span class=""><span class="ln">365</span>        // no grid has measured it. Changing it here would be reasoning,</span>
+<span class=""><span class="ln">366</span>        // not measuring.</span>
+<span class="covered"><span class="ln">367</span>        foreach (array_keys($universe-&gt;classes()) as $candidate) {</span>
+<span class="covered"><span class="ln">368</span>            foreach ($universe-&gt;referencesOf($candidate) as $reference) {</span>
+<span class="covered"><span class="ln">369</span>                if ($candidate !== $reference &amp;&amp; isset($inside[$reference])) {</span>
+<span class="covered"><span class="ln">370</span>                    $used[$reference] = true;</span>
+<span class=""><span class="ln">371</span>                }</span>
+<span class=""><span class="ln">372</span>            }</span>
+<span class=""><span class="ln">373</span>        }</span>
+<span class=""><span class="ln">374</span></span>
+<span class="covered"><span class="ln">375</span>        return static fn(string $class): bool =&gt; !isset($used[$class]);</span>
+<span class=""><span class="ln">376</span>    }</span>
+<span class=""><span class="ln">377</span></span>
+<span class=""><span class="ln">378</span>    /**</span>
+<span class=""><span class="ln">379</span>     * Every own member is in the state $documented names.</span>
+<span class=""><span class="ln">380</span>     *</span>
+<span class=""><span class="ln">381</span>     * A parameter, not a fixed `true`: the incumbent&#039;s negated forms ask</span>
+<span class=""><span class="ln">382</span>     * that every member be UNdocumented, which differs from &quot;not every</span>
+<span class=""><span class="ln">383</span>     * member is documented&quot; whenever there are no members.</span>
+<span class=""><span class="ln">384</span>     *</span>
+<span class=""><span class="ln">385</span>     * @param list&lt;ReflectionMethod|ReflectionProperty&gt; $members</span>
+<span class=""><span class="ln">386</span>     * @param list&lt;non-empty-string&gt;                    $generated names an enum declares without source</span>
+<span class=""><span class="ln">387</span>     */</span>
+<span class=""><span class="ln">388</span>    private static function documented(ArchitectureUniverse $universe, string $class, array $members, array $generated, bool $documented): bool</span>
+<span class=""><span class="ln">389</span>    {</span>
+<span class="missed"><span class="ln">390</span>        $file = $universe-&gt;fileOf($class);</span>
+<span class="missed"><span class="ln">391</span>        $real = $file === null ? false : realpath($file);</span>
+<span class="missed"><span class="ln">392</span>        $enum = enum_exists($class);</span>
+<span class=""><span class="ln">393</span></span>
+<span class="missed"><span class="ln">394</span>        foreach ($members as $member) {</span>
+<span class="missed"><span class="ln">395</span>            if ($enum &amp;&amp; in_array($member-&gt;getName(), $generated, true)) {</span>
+<span class="missed"><span class="ln">396</span>                continue;</span>
+<span class=""><span class="ln">397</span>            }</span>
+<span class=""><span class="ln">398</span></span>
+<span class="missed"><span class="ln">399</span>            $declaredIn = $member-&gt;getDeclaringClass()-&gt;getFileName();</span>
+<span class=""><span class="ln">400</span></span>
+<span class="missed"><span class="ln">401</span>            if ($declaredIn === false || realpath($declaredIn) !== $real) {</span>
+<span class="missed"><span class="ln">402</span>                continue;</span>
+<span class=""><span class="ln">403</span>            }</span>
+<span class=""><span class="ln">404</span></span>
+<span class="missed"><span class="ln">405</span>            if (($member-&gt;getDocComment() !== false) !== $documented) {</span>
+<span class="missed"><span class="ln">406</span>                return false;</span>
+<span class=""><span class="ln">407</span>            }</span>
+<span class=""><span class="ln">408</span>        }</span>
+<span class=""><span class="ln">409</span></span>
+<span class="missed"><span class="ln">410</span>        return true;</span>
+<span class=""><span class="ln">411</span>    }</span>
+<span class=""><span class="ln">412</span></span>
+<span class=""><span class="ln">413</span>    /**</span>
+<span class=""><span class="ln">414</span>     * Promoted properties excluded: they are constructor parameters.</span>
+<span class=""><span class="ln">415</span>     *</span>
+<span class=""><span class="ln">416</span>     * @param class-string $class</span>
+<span class=""><span class="ln">417</span>     *</span>
+<span class=""><span class="ln">418</span>     * @return list&lt;ReflectionProperty&gt;</span>
+<span class=""><span class="ln">419</span>     */</span>
+<span class=""><span class="ln">420</span>    private static function ownProperties(string $class): array</span>
+<span class=""><span class="ln">421</span>    {</span>
+<span class="missed"><span class="ln">422</span>        return array_values(array_filter(</span>
+<span class="missed"><span class="ln">423</span>            (new ReflectionClass($class))-&gt;getProperties(),</span>
+<span class="missed"><span class="ln">424</span>            static fn(ReflectionProperty $property): bool =&gt; !$property-&gt;isPromoted(),</span>
+<span class=""><span class="ln">425</span>        ));</span>
+<span class=""><span class="ln">426</span>    }</span>
+<span class=""><span class="ln">427</span></span>
+<span class=""><span class="ln">428</span>    private static function sourceOf(ArchitectureUniverse $universe, string $class): ?string</span>
+<span class=""><span class="ln">429</span>    {</span>
+<span class="covered"><span class="ln">430</span>        $file   = $universe-&gt;fileOf($class);</span>
+<span class="covered"><span class="ln">431</span>        $source = $file === null ? false : file_get_contents($file);</span>
+<span class=""><span class="ln">432</span></span>
+<span class="covered"><span class="ln">433</span>        return $source === false ? null : $source;</span>
+<span class=""><span class="ln">434</span>    }</span>
+<span class=""><span class="ln">435</span></span>
+<span class=""><span class="ln">436</span>    /**</span>
+<span class=""><span class="ln">437</span>     * @return array&lt;string, list&lt;string&gt;&gt;</span>
+<span class=""><span class="ln">438</span>     */</span>
+<span class=""><span class="ln">439</span>    private static function psr4Prefixes(): array</span>
+<span class=""><span class="ln">440</span>    {</span>
+<span class="missed"><span class="ln">441</span>        $prefixes = [];</span>
+<span class=""><span class="ln">442</span></span>
+<span class="missed"><span class="ln">443</span>        foreach (spl_autoload_functions() as $function) {</span>
+<span class="missed"><span class="ln">444</span>            if (is_array($function) &amp;&amp; $function[0] instanceof ClassLoader) {</span>
+<span class="missed"><span class="ln">445</span>                foreach ($function[0]-&gt;getPrefixesPsr4() as $namespace =&gt; $directories) {</span>
+<span class="missed"><span class="ln">446</span>                    $prefixes[$namespace] = $directories;</span>
+<span class=""><span class="ln">447</span>                }</span>
+<span class=""><span class="ln">448</span>            }</span>
+<span class=""><span class="ln">449</span>        }</span>
+<span class=""><span class="ln">450</span></span>
+<span class="missed"><span class="ln">451</span>        return $prefixes;</span>
+<span class=""><span class="ln">452</span>    }</span>
+<span class=""><span class="ln">453</span>}</span>
+<span class="missed"><span class="ln">454</span></span>
+</pre>
+</body>
+</html>

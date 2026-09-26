@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/CLI/Commands/MutationCommand.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../../index.html">Crucible coverage</a> / src/CLI/Commands/MutationCommand.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\CLI\Commands;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use Closure;</span>
+<span class=""><span class="ln">14</span>use LucianoPereira\Crucible\Attributes\MutatesClass;</span>
+<span class=""><span class="ln">15</span>use LucianoPereira\Crucible\CLI\CliOptions;</span>
+<span class=""><span class="ln">16</span>use LucianoPereira\Crucible\Configuration\Loader;</span>
+<span class=""><span class="ln">17</span>use LucianoPereira\Crucible\Console\Components\Progress;</span>
+<span class=""><span class="ln">18</span>use LucianoPereira\Crucible\Coverage\MutationIndex;</span>
+<span class=""><span class="ln">19</span>use LucianoPereira\Crucible\Coverage\TestLineMap;</span>
+<span class=""><span class="ln">20</span>use LucianoPereira\Crucible\Dialect\PhpUnit\ClassLocator;</span>
+<span class=""><span class="ln">21</span>use LucianoPereira\Crucible\Exceptions\Exception;</span>
+<span class=""><span class="ln">22</span>use LucianoPereira\Crucible\Filesystem\WorkingDirectory;</span>
+<span class=""><span class="ln">23</span>use LucianoPereira\Crucible\Mutation\ColdMutantExecutor;</span>
+<span class=""><span class="ln">24</span>use LucianoPereira\Crucible\Mutation\CoveringTestRunner;</span>
+<span class=""><span class="ln">25</span>use LucianoPereira\Crucible\Mutation\EquivalentMarkers;</span>
+<span class=""><span class="ln">26</span>use LucianoPereira\Crucible\Mutation\Mutant;</span>
+<span class=""><span class="ln">27</span>use LucianoPereira\Crucible\Mutation\MutantApplier;</span>
+<span class=""><span class="ln">28</span>use LucianoPereira\Crucible\Mutation\MutantGenerator;</span>
+<span class=""><span class="ln">29</span>use LucianoPereira\Crucible\Mutation\MutationJournal;</span>
+<span class=""><span class="ln">30</span>use LucianoPereira\Crucible\Mutation\MutationOutcome;</span>
+<span class=""><span class="ln">31</span>use LucianoPereira\Crucible\Mutation\MutationReport;</span>
+<span class=""><span class="ln">32</span>use LucianoPereira\Crucible\Mutation\MutationRunner;</span>
+<span class=""><span class="ln">33</span>use LucianoPereira\Crucible\Mutation\MutationVerdict;</span>
+<span class=""><span class="ln">34</span>use LucianoPereira\Crucible\Mutation\WarmMutantExecutor;</span>
+<span class=""><span class="ln">35</span>use LucianoPereira\Crucible\Runner\ResultCache;</span>
+<span class=""><span class="ln">36</span>use LucianoPereira\Crucible\Runner\TestDiscoverer;</span>
+<span class=""><span class="ln">37</span>use LucianoPereira\Crucible\Test\TestGroup;</span>
+<span class=""><span class="ln">38</span></span>
+<span class=""><span class="ln">39</span>use function array_filter;</span>
+<span class=""><span class="ln">40</span>use function array_keys;</span>
+<span class=""><span class="ln">41</span>use function array_slice;</span>
+<span class=""><span class="ln">42</span>use function array_values;</span>
+<span class=""><span class="ln">43</span>use function count;</span>
+<span class=""><span class="ln">44</span>use function explode;</span>
+<span class=""><span class="ln">45</span>use function file_get_contents;</span>
+<span class=""><span class="ln">46</span>use function filemtime;</span>
+<span class=""><span class="ln">47</span>use function implode;</span>
+<span class=""><span class="ln">48</span>use function intdiv;</span>
+<span class=""><span class="ln">49</span>use function is_file;</span>
+<span class=""><span class="ln">50</span>use function json_encode;</span>
+<span class=""><span class="ln">51</span>use function ksort;</span>
+<span class=""><span class="ln">52</span>use function md5;</span>
+<span class=""><span class="ln">53</span>use function microtime;</span>
+<span class=""><span class="ln">54</span>use function printf;</span>
+<span class=""><span class="ln">55</span>use function realpath;</span>
+<span class=""><span class="ln">56</span>use function rtrim;</span>
+<span class=""><span class="ln">57</span>use function sprintf;</span>
+<span class=""><span class="ln">58</span>use function str_starts_with;</span>
+<span class=""><span class="ln">59</span>use function strlen;</span>
+<span class=""><span class="ln">60</span>use function substr;</span>
+<span class=""><span class="ln">61</span></span>
+<span class=""><span class="ln">62</span>use const JSON_PRETTY_PRINT;</span>
+<span class=""><span class="ln">63</span>use const JSON_THROW_ON_ERROR;</span>
+<span class=""><span class="ln">64</span>use const JSON_UNESCAPED_SLASHES;</span>
+<span class=""><span class="ln">65</span>use const PHP_EOL;</span>
+<span class=""><span class="ln">66</span></span>
+<span class=""><span class="ln">67</span>/**</span>
+<span class=""><span class="ln">68</span> * The `crucible mutation-index` and `crucible mutate` commands</span>
+<span class=""><span class="ln">69</span> * (D-077, D-082): the per-line covering-tests index, and the</span>
+<span class=""><span class="ln">70</span> * mutation-testing run built on top of it.</span>
+<span class=""><span class="ln">71</span> */</span>
+<span class=""><span class="ln">72</span>final class MutationCommand</span>
+<span class=""><span class="ln">73</span>{</span>
+<span class=""><span class="ln">74</span>    /**</span>
+<span class=""><span class="ln">75</span>     * `crucible mutation-index` (D-077): emit the mutation-facing query</span>
+<span class=""><span class="ln">76</span>     * index as JSON — for every covered source line, the tests that ran</span>
+<span class=""><span class="ln">77</span>     * it, fastest-first. Assembled from the per-test line map</span>
+<span class=""><span class="ln">78</span>     * (`--coverage`) and the result cache&#039;s timings; a mutation tool</span>
+<span class=""><span class="ln">79</span>     * loads it to run a mutant&#039;s covering tests cheapest-first.</span>
+<span class=""><span class="ln">80</span>     *</span>
+<span class=""><span class="ln">81</span>     */</span>
+<span class=""><span class="ln">82</span>    public function index(CliOptions $options, WorkingDirectory $workingDirectory): int</span>
+<span class=""><span class="ln">83</span>    {</span>
+<span class=""><span class="ln">84</span>        try {</span>
+<span class="missed"><span class="ln">85</span>            $loaded = (new Loader())-&gt;load($workingDirectory, $options-&gt;configuration);</span>
+<span class="missed"><span class="ln">86</span>        } catch (Exception $e) {</span>
+<span class="missed"><span class="ln">87</span>            print $e-&gt;getMessage() . PHP_EOL;</span>
+<span class=""><span class="ln">88</span></span>
+<span class="missed"><span class="ln">89</span>            return 1;</span>
+<span class=""><span class="ln">90</span>        }</span>
+<span class=""><span class="ln">91</span></span>
+<span class="missed"><span class="ln">92</span>        $cacheDirectory = $options-&gt;cacheDirectory ?? $loaded-&gt;configuration-&gt;cacheDirectory;</span>
+<span class="missed"><span class="ln">93</span>        $base           = $workingDirectory-&gt;absolute($cacheDirectory);</span>
+<span class="missed"><span class="ln">94</span>        $map            = TestLineMap::load($base . &#039;/coverage-lines.json&#039;);</span>
+<span class=""><span class="ln">95</span></span>
+<span class="missed"><span class="ln">96</span>        if ($map-&gt;tests === []) {</span>
+<span class=""><span class="ln">97</span>            // An opt-in query owes the user the way in (D-041&#039;s rule).</span>
+<span class="missed"><span class="ln">98</span>            print &#039;mutation-index needs a per-test line map — run the suite once with --coverage first.&#039; . PHP_EOL;</span>
+<span class=""><span class="ln">99</span></span>
+<span class="missed"><span class="ln">100</span>            return 1;</span>
+<span class=""><span class="ln">101</span>        }</span>
+<span class=""><span class="ln">102</span></span>
+<span class="missed"><span class="ln">103</span>        $cache     = ResultCache::load($base . &#039;/results.json&#039;);</span>
+<span class="missed"><span class="ln">104</span>        $durations = [];</span>
+<span class=""><span class="ln">105</span></span>
+<span class="missed"><span class="ln">106</span>        foreach (array_keys($map-&gt;tests) as $id) {</span>
+<span class="missed"><span class="ln">107</span>            if ($id === &#039;&#039;) {</span>
+<span class="missed"><span class="ln">108</span>                continue;</span>
+<span class=""><span class="ln">109</span>            }</span>
+<span class=""><span class="ln">110</span></span>
+<span class="missed"><span class="ln">111</span>            $duration = $cache-&gt;duration($id);</span>
+<span class=""><span class="ln">112</span></span>
+<span class="missed"><span class="ln">113</span>            if ($duration !== null) {</span>
+<span class="missed"><span class="ln">114</span>                $durations[$id] = $duration;</span>
+<span class=""><span class="ln">115</span>            }</span>
+<span class=""><span class="ln">116</span>        }</span>
+<span class=""><span class="ln">117</span></span>
+<span class="missed"><span class="ln">118</span>        print json_encode(</span>
+<span class="missed"><span class="ln">119</span>            MutationIndex::build($map, $durations)-&gt;toArray(),</span>
+<span class="missed"><span class="ln">120</span>            JSON_THROW_ON_ERROR | JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES,</span>
+<span class="missed"><span class="ln">121</span>        ) . PHP_EOL;</span>
+<span class=""><span class="ln">122</span></span>
+<span class="missed"><span class="ln">123</span>        return 0;</span>
+<span class=""><span class="ln">124</span>    }</span>
+<span class=""><span class="ln">125</span></span>
+<span class=""><span class="ln">126</span>    /**</span>
+<span class=""><span class="ln">127</span>     * `crucible mutate`: generate mutants across the covered source, run each</span>
+<span class=""><span class="ln">128</span>     * against its covering tests (fastest-first, D-077), and report the</span>
+<span class=""><span class="ln">129</span>     * mutation score. Cold execution — portable, no pcntl — in v1; the</span>
+<span class=""><span class="ln">130</span>     * warm fork is the follow-up the router already accommodates. Exits 1</span>
+<span class=""><span class="ln">131</span>     * when any mutant escaped: an escaped mutant is a gap in the suite.</span>
+<span class=""><span class="ln">132</span>     *</span>
+<span class=""><span class="ln">133</span>     * @param list&lt;string&gt;     $argv</span>
+<span class=""><span class="ln">134</span>     */</span>
+<span class=""><span class="ln">135</span>    public function mutate(CliOptions $options, array $argv, WorkingDirectory $workingDirectory): int</span>
+<span class=""><span class="ln">136</span>    {</span>
+<span class=""><span class="ln">137</span>        try {</span>
+<span class="missed"><span class="ln">138</span>            $loaded = (new Loader())-&gt;load($workingDirectory, $options-&gt;configuration);</span>
+<span class="missed"><span class="ln">139</span>        } catch (Exception $e) {</span>
+<span class="missed"><span class="ln">140</span>            print $e-&gt;getMessage() . PHP_EOL;</span>
+<span class=""><span class="ln">141</span></span>
+<span class="missed"><span class="ln">142</span>            return 1;</span>
+<span class=""><span class="ln">143</span>        }</span>
+<span class=""><span class="ln">144</span></span>
+<span class="missed"><span class="ln">145</span>        $cacheDirectory = $options-&gt;cacheDirectory ?? $loaded-&gt;configuration-&gt;cacheDirectory;</span>
+<span class="missed"><span class="ln">146</span>        $base           = $workingDirectory-&gt;absolute($cacheDirectory);</span>
+<span class="missed"><span class="ln">147</span>        $mapFile        = $base . &#039;/coverage-lines.json&#039;;</span>
+<span class="missed"><span class="ln">148</span>        $map            = TestLineMap::load($mapFile);</span>
+<span class=""><span class="ln">149</span></span>
+<span class="missed"><span class="ln">150</span>        if ($map-&gt;tests === []) {</span>
+<span class="missed"><span class="ln">151</span>            print &#039;mutate needs a per-test line map — run the suite once with --coverage first.&#039; . PHP_EOL;</span>
+<span class=""><span class="ln">152</span></span>
+<span class="missed"><span class="ln">153</span>            return 1;</span>
+<span class=""><span class="ln">154</span>        }</span>
+<span class=""><span class="ln">155</span></span>
+<span class="missed"><span class="ln">156</span>        $cache     = ResultCache::load($base . &#039;/results.json&#039;);</span>
+<span class="missed"><span class="ln">157</span>        $durations = [];</span>
+<span class=""><span class="ln">158</span></span>
+<span class="missed"><span class="ln">159</span>        foreach (array_keys($map-&gt;tests) as $id) {</span>
+<span class="missed"><span class="ln">160</span>            if ($id === &#039;&#039;) {</span>
+<span class="missed"><span class="ln">161</span>                continue;</span>
+<span class=""><span class="ln">162</span>            }</span>
+<span class=""><span class="ln">163</span></span>
+<span class="missed"><span class="ln">164</span>            $duration = $cache-&gt;duration($id);</span>
+<span class=""><span class="ln">165</span></span>
+<span class="missed"><span class="ln">166</span>            if ($duration !== null) {</span>
+<span class="missed"><span class="ln">167</span>                $durations[$id] = $duration;</span>
+<span class=""><span class="ln">168</span>            }</span>
+<span class=""><span class="ln">169</span>        }</span>
+<span class=""><span class="ln">170</span></span>
+<span class="missed"><span class="ln">171</span>        $index   = MutationIndex::build($map, $durations);</span>
+<span class="missed"><span class="ln">172</span>        $covered = array_keys($index-&gt;toArray());</span>
+<span class=""><span class="ln">173</span></span>
+<span class="missed"><span class="ln">174</span>        $this-&gt;warnIfCoverageStale($mapFile, $covered, $workingDirectory);</span>
+<span class=""><span class="ln">175</span></span>
+<span class=""><span class="ln">176</span>        // Discovery is hoisted above mutant generation because mutates()</span>
+<span class=""><span class="ln">177</span>        // lives in test metadata, and the warm executor below needs the</span>
+<span class=""><span class="ln">178</span>        // same discovered set — one discovery serves both.</span>
+<span class=""><span class="ln">179</span>        try {</span>
+<span class="missed"><span class="ln">180</span>            $discovered = (new TestDiscoverer())-&gt;discover($loaded-&gt;configuration, $workingDirectory);</span>
+<span class="missed"><span class="ln">181</span>        } catch (Exception $e) {</span>
+<span class="missed"><span class="ln">182</span>            print $e-&gt;getMessage() . PHP_EOL;</span>
+<span class=""><span class="ln">183</span></span>
+<span class="missed"><span class="ln">184</span>            return 1;</span>
+<span class=""><span class="ln">185</span>        }</span>
+<span class=""><span class="ln">186</span></span>
+<span class="missed"><span class="ln">187</span>        $declared = $this-&gt;declaredMutationScope($discovered);</span>
+<span class="missed"><span class="ln">188</span>        $covered  = $this-&gt;narrowToDeclaredMutationScope($declared, $covered, $workingDirectory);</span>
+<span class=""><span class="ln">189</span></span>
+<span class=""><span class="ln">190</span>        // Asked to mutate named classes and none of them is covered: the</span>
+<span class=""><span class="ln">191</span>        // ask cannot be met. Reporting &quot;no mutants&quot; and exiting 0 here</span>
+<span class=""><span class="ln">192</span>        // would say the mutation run succeeded having tested nothing,</span>
+<span class=""><span class="ln">193</span>        // which is the silent pass this command exists to prevent.</span>
+<span class="missed"><span class="ln">194</span>        if ($declared !== [] &amp;&amp; $covered === []) {</span>
+<span class="missed"><span class="ln">195</span>            printf(</span>
+<span class="missed"><span class="ln">196</span>                &#039;mutates(): none of the declared classes is covered, so there is nothing to mutate: %s&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">197</span>                implode(&#039;, &#039;, array_keys($declared)),</span>
+<span class=""><span class="ln">198</span>            );</span>
+<span class=""><span class="ln">199</span></span>
+<span class="missed"><span class="ln">200</span>            return 1;</span>
+<span class=""><span class="ln">201</span>        }</span>
+<span class=""><span class="ln">202</span></span>
+<span class="missed"><span class="ln">203</span>        $mutants = $this-&gt;generateMutants($covered, $workingDirectory);</span>
+<span class="missed"><span class="ln">204</span>        $binary  = realpath($argv[0] ?? &#039;&#039;);</span>
+<span class=""><span class="ln">205</span></span>
+<span class="missed"><span class="ln">206</span>        if ($mutants === []) {</span>
+<span class="missed"><span class="ln">207</span>            print &#039;No mutants generated from the covered source.&#039; . PHP_EOL;</span>
+<span class=""><span class="ln">208</span></span>
+<span class="missed"><span class="ln">209</span>            return 0;</span>
+<span class=""><span class="ln">210</span>        }</span>
+<span class=""><span class="ln">211</span></span>
+<span class="missed"><span class="ln">212</span>        if ($binary === false) {</span>
+<span class="missed"><span class="ln">213</span>            print &#039;Cannot resolve the crucible binary path for the cold mutation workers.&#039; . PHP_EOL;</span>
+<span class=""><span class="ln">214</span></span>
+<span class="missed"><span class="ln">215</span>            return 1;</span>
+<span class=""><span class="ln">216</span>        }</span>
+<span class=""><span class="ln">217</span></span>
+<span class=""><span class="ln">218</span>        // Resume before anything is executed. The journal is keyed on</span>
+<span class=""><span class="ln">219</span>        // mutated content, so a source edit drops its own entries and</span>
+<span class=""><span class="ln">220</span>        // only the untouched files carry over.</span>
+<span class="missed"><span class="ln">221</span>        $journal     = MutationJournal::load($base . &#039;/mutation-verdicts.ndjson&#039;);</span>
+<span class="missed"><span class="ln">222</span>        $coveringIds = function (Mutant $mutant) use ($index, $workingDirectory): array {</span>
+<span class="missed"><span class="ln">223</span>            $relative = $this-&gt;relativeTo($mutant-&gt;file, $workingDirectory);</span>
+<span class="missed"><span class="ln">224</span>            $ids      = [];</span>
+<span class=""><span class="ln">225</span></span>
+<span class="missed"><span class="ln">226</span>            foreach ($index-&gt;coveringTests($relative, $mutant-&gt;line) as $test) {</span>
+<span class="missed"><span class="ln">227</span>                if ($test[&#039;id&#039;] !== &#039;&#039;) {</span>
+<span class="missed"><span class="ln">228</span>                    $ids[] = $test[&#039;id&#039;];</span>
+<span class=""><span class="ln">229</span>                }</span>
+<span class=""><span class="ln">230</span>            }</span>
+<span class=""><span class="ln">231</span></span>
+<span class="missed"><span class="ln">232</span>            return $ids;</span>
+<span class="dead"><span class="ln">233</span>        };</span>
+<span class=""><span class="ln">234</span></span>
+<span class="missed"><span class="ln">235</span>        $sources  = [];</span>
+<span class="missed"><span class="ln">236</span>        $judgedBy = [];</span>
+<span class="missed"><span class="ln">237</span>        $done     = [];</span>
+<span class="missed"><span class="ln">238</span>        $pending  = [];</span>
+<span class=""><span class="ln">239</span></span>
+<span class="missed"><span class="ln">240</span>        foreach ($mutants as $mutant) {</span>
+<span class="missed"><span class="ln">241</span>            $fingerprint                               = $this-&gt;judgedBy($coveringIds($mutant), $workingDirectory, $sources);</span>
+<span class="missed"><span class="ln">242</span>            $judgedBy[MutationJournal::keyOf($mutant)] = $fingerprint;</span>
+<span class=""><span class="ln">243</span></span>
+<span class="missed"><span class="ln">244</span>            if ($journal-&gt;has($mutant, $fingerprint)) {</span>
+<span class="missed"><span class="ln">245</span>                $done[] = $mutant;</span>
+<span class=""><span class="ln">246</span></span>
+<span class="missed"><span class="ln">247</span>                continue;</span>
+<span class=""><span class="ln">248</span>            }</span>
+<span class=""><span class="ln">249</span></span>
+<span class="missed"><span class="ln">250</span>            $pending[] = $mutant;</span>
+<span class=""><span class="ln">251</span>        }</span>
+<span class=""><span class="ln">252</span></span>
+<span class="missed"><span class="ln">253</span>        printf(&#039;Mutation testing: %d mutant(s) across %d covered file(s).&#039; . PHP_EOL, count($mutants), count($covered));</span>
+<span class=""><span class="ln">254</span></span>
+<span class="missed"><span class="ln">255</span>        if ($done !== []) {</span>
+<span class="missed"><span class="ln">256</span>            printf(</span>
+<span class="missed"><span class="ln">257</span>                &#039;Resuming: %d already decided, %d to run. Delete %s to start over.&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">258</span>                count($done),</span>
+<span class="missed"><span class="ln">259</span>                count($pending),</span>
+<span class="missed"><span class="ln">260</span>                $this-&gt;relativeTo($base . &#039;/mutation-verdicts.ndjson&#039;, $workingDirectory),</span>
+<span class=""><span class="ln">261</span>            );</span>
+<span class=""><span class="ln">262</span>        }</span>
+<span class=""><span class="ln">263</span></span>
+<span class="missed"><span class="ln">264</span>        print PHP_EOL;</span>
+<span class=""><span class="ln">265</span></span>
+<span class=""><span class="ln">266</span>        // Warm forking where the platform allows it; the suite is discovered</span>
+<span class=""><span class="ln">267</span>        // here in the parent, which never runs a test — so the source under</span>
+<span class=""><span class="ln">268</span>        // mutation stays unloaded and every mutant is warm-applicable. A</span>
+<span class=""><span class="ln">269</span>        // box without pcntl has no warm executor and routes every mutant</span>
+<span class=""><span class="ln">270</span>        // cold (the router&#039;s contract). D-082.</span>
+<span class="missed"><span class="ln">271</span>        $warm = null;</span>
+<span class=""><span class="ln">272</span></span>
+<span class="missed"><span class="ln">273</span>        if (MutantApplier::isSupported()) {</span>
+<span class="missed"><span class="ln">274</span>            $covering = new CoveringTestRunner($discovered, $workingDirectory, $cache);</span>
+<span class="missed"><span class="ln">275</span>            $warm     = new WarmMutantExecutor(new MutantApplier(), $covering-&gt;firstKiller(...));</span>
+<span class=""><span class="ln">276</span>        }</span>
+<span class=""><span class="ln">277</span></span>
+<span class="missed"><span class="ln">278</span>        $cold = new ColdMutantExecutor($binary, $loaded-&gt;path, $workingDirectory);</span>
+<span class=""><span class="ln">279</span></span>
+<span class=""><span class="ln">280</span>        // The bar counts the whole run, resumed mutants included, so a</span>
+<span class=""><span class="ln">281</span>        // resumed run does not restart at 0%.</span>
+<span class="missed"><span class="ln">282</span>        $bar          = new Progress(&#039;Mutation testing&#039;, count($mutants));</span>
+<span class="missed"><span class="ln">283</span>        $bar-&gt;current = count($done);</span>
+<span class="missed"><span class="ln">284</span>        $bar-&gt;start();</span>
+<span class=""><span class="ln">285</span></span>
+<span class="missed"><span class="ln">286</span>        (new MutationRunner($cold, $warm, $coveringIds))</span>
+<span class="missed"><span class="ln">287</span>            -&gt;run($pending, $this-&gt;progress($bar, $workingDirectory, $journal, $judgedBy, count($done), count($mutants)));</span>
+<span class=""><span class="ln">288</span></span>
+<span class="missed"><span class="ln">289</span>        $bar-&gt;finish();</span>
+<span class=""><span class="ln">290</span></span>
+<span class=""><span class="ln">291</span>        // The report is the WHOLE run, read back from the journal: the</span>
+<span class=""><span class="ln">292</span>        // verdicts this process just appended plus the ones an earlier</span>
+<span class=""><span class="ln">293</span>        // one did. Scoring $report alone would rate a resumed run on</span>
+<span class=""><span class="ln">294</span>        // only the mutants it happened to finish.</span>
+<span class="missed"><span class="ln">295</span>        return $this-&gt;printMutationReport(new MutationReport($journal-&gt;verdictsFor($mutants)), $workingDirectory);</span>
+<span class=""><span class="ln">296</span>    }</span>
+<span class=""><span class="ln">297</span></span>
+<span class=""><span class="ln">298</span>    /**</span>
+<span class=""><span class="ln">299</span>     * The classes the suite declared with mutates(), if any.</span>
+<span class=""><span class="ln">300</span>     *</span>
+<span class=""><span class="ln">301</span>     * @param list&lt;TestGroup&gt; $discovered</span>
+<span class=""><span class="ln">302</span>     *</span>
+<span class=""><span class="ln">303</span>     * @return array&lt;class-string, true&gt;</span>
+<span class=""><span class="ln">304</span>     */</span>
+<span class=""><span class="ln">305</span>    private function declaredMutationScope(array $discovered): array</span>
+<span class=""><span class="ln">306</span>    {</span>
+<span class="missed"><span class="ln">307</span>        $declared = [];</span>
+<span class=""><span class="ln">308</span></span>
+<span class="missed"><span class="ln">309</span>        foreach ($discovered as $group) {</span>
+<span class="missed"><span class="ln">310</span>            foreach ($group-&gt;tests as $test) {</span>
+<span class="missed"><span class="ln">311</span>                foreach ($test-&gt;metadata-&gt;ofType(MutatesClass::class) as $mutates) {</span>
+<span class="missed"><span class="ln">312</span>                    $declared[$mutates-&gt;className] = true;</span>
+<span class=""><span class="ln">313</span>                }</span>
+<span class=""><span class="ln">314</span>            }</span>
+<span class=""><span class="ln">315</span>        }</span>
+<span class=""><span class="ln">316</span></span>
+<span class="missed"><span class="ln">317</span>        return $declared;</span>
+<span class=""><span class="ln">318</span>    }</span>
+<span class=""><span class="ln">319</span></span>
+<span class=""><span class="ln">320</span>    /**</span>
+<span class=""><span class="ln">321</span>     * Narrow the covered source to what mutates() declared, if anything did.</span>
+<span class=""><span class="ln">322</span>     *</span>
+<span class=""><span class="ln">323</span>     * Declaring nothing keeps the whole covered scope: a suite that never</span>
+<span class=""><span class="ln">324</span>     * says mutates() must not silently mutate nothing.</span>
+<span class=""><span class="ln">325</span>     *</span>
+<span class=""><span class="ln">326</span>     * @param array&lt;class-string, true&gt; $declared</span>
+<span class=""><span class="ln">327</span>     * @param list&lt;string&gt;              $covered  relative paths</span>
+<span class=""><span class="ln">328</span>     *</span>
+<span class=""><span class="ln">329</span>     * @return list&lt;string&gt;</span>
+<span class=""><span class="ln">330</span>     */</span>
+<span class=""><span class="ln">331</span>    private function narrowToDeclaredMutationScope(array $declared, array $covered, WorkingDirectory $workingDirectory): array</span>
+<span class=""><span class="ln">332</span>    {</span>
+<span class="missed"><span class="ln">333</span>        if ($declared === []) {</span>
+<span class="missed"><span class="ln">334</span>            return $covered;</span>
+<span class=""><span class="ln">335</span>        }</span>
+<span class=""><span class="ln">336</span></span>
+<span class=""><span class="ln">337</span>        // Compare file -&gt; class rather than resolving class -&gt; file: the</span>
+<span class=""><span class="ln">338</span>        // covered files are already in hand, and this needs no autoload</span>
+<span class=""><span class="ln">339</span>        // of the declared target.</span>
+<span class="missed"><span class="ln">340</span>        $locator  = new ClassLocator();</span>
+<span class="missed"><span class="ln">341</span>        $narrowed = array_values(array_filter(</span>
+<span class="missed"><span class="ln">342</span>            $covered,</span>
+<span class="missed"><span class="ln">343</span>            static function (string $relative) use ($locator, $declared, $workingDirectory): bool {</span>
+<span class="missed"><span class="ln">344</span>                $class = $locator-&gt;classIn($workingDirectory-&gt;absolute($relative));</span>
+<span class=""><span class="ln">345</span></span>
+<span class="missed"><span class="ln">346</span>                return $class !== null &amp;&amp; isset($declared[$class]);</span>
+<span class="missed"><span class="ln">347</span>            },</span>
+<span class=""><span class="ln">348</span>        ));</span>
+<span class=""><span class="ln">349</span></span>
+<span class="missed"><span class="ln">350</span>        printf(</span>
+<span class="missed"><span class="ln">351</span>            &#039;mutates(): narrowed the mutation scope to %d of %d covered file(s).&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">352</span>            count($narrowed),</span>
+<span class="missed"><span class="ln">353</span>            count($covered),</span>
+<span class=""><span class="ln">354</span>        );</span>
+<span class=""><span class="ln">355</span></span>
+<span class="missed"><span class="ln">356</span>        return $narrowed;</span>
+<span class=""><span class="ln">357</span>    }</span>
+<span class=""><span class="ln">358</span></span>
+<span class=""><span class="ln">359</span>    /**</span>
+<span class=""><span class="ln">360</span>     * Generate mutants over the covered source files (relative paths),</span>
+<span class=""><span class="ln">361</span>     * resolving each file&#039;s class as the autoload key. Files without a</span>
+<span class=""><span class="ln">362</span>     * declared class, or that cannot be read, are skipped.</span>
+<span class=""><span class="ln">363</span>     *</span>
+<span class=""><span class="ln">364</span>     * @param list&lt;string&gt;     $coveredFiles relative paths</span>
+<span class=""><span class="ln">365</span>     *</span>
+<span class=""><span class="ln">366</span>     * @return list&lt;Mutant&gt;</span>
+<span class=""><span class="ln">367</span>     */</span>
+<span class=""><span class="ln">368</span>    private function generateMutants(array $coveredFiles, WorkingDirectory $workingDirectory): array</span>
+<span class=""><span class="ln">369</span>    {</span>
+<span class="missed"><span class="ln">370</span>        $generator = new MutantGenerator();</span>
+<span class="missed"><span class="ln">371</span>        $locator   = new ClassLocator();</span>
+<span class="missed"><span class="ln">372</span>        $mutants   = [];</span>
+<span class=""><span class="ln">373</span></span>
+<span class="missed"><span class="ln">374</span>        foreach ($coveredFiles as $relative) {</span>
+<span class="missed"><span class="ln">375</span>            if ($relative === &#039;&#039;) {</span>
+<span class="missed"><span class="ln">376</span>                continue;</span>
+<span class=""><span class="ln">377</span>            }</span>
+<span class=""><span class="ln">378</span></span>
+<span class="missed"><span class="ln">379</span>            $absolute = $workingDirectory-&gt;absolute($relative);</span>
+<span class=""><span class="ln">380</span></span>
+<span class=""><span class="ln">381</span>            // A covered &quot;file&quot; can be an eval()&#039;d-code pseudo-path (inline</span>
+<span class=""><span class="ln">382</span>            // doctests) — not a real file to mutate.</span>
+<span class="missed"><span class="ln">383</span>            if (!is_file($absolute)) {</span>
+<span class="missed"><span class="ln">384</span>                continue;</span>
+<span class=""><span class="ln">385</span>            }</span>
+<span class=""><span class="ln">386</span></span>
+<span class="missed"><span class="ln">387</span>            $source = @file_get_contents($absolute);</span>
+<span class="missed"><span class="ln">388</span>            $class  = $locator-&gt;classIn($absolute);</span>
+<span class=""><span class="ln">389</span></span>
+<span class="missed"><span class="ln">390</span>            if ($source === false || $class === null) {</span>
+<span class="missed"><span class="ln">391</span>                continue;</span>
+<span class=""><span class="ln">392</span>            }</span>
+<span class=""><span class="ln">393</span></span>
+<span class="missed"><span class="ln">394</span>            $fileMutants = $generator-&gt;generate($absolute, $class, $source);</span>
+<span class=""><span class="ln">395</span></span>
+<span class="missed"><span class="ln">396</span>            foreach ($fileMutants as $mutant) {</span>
+<span class="missed"><span class="ln">397</span>                $mutants[] = $mutant;</span>
+<span class=""><span class="ln">398</span>            }</span>
+<span class=""><span class="ln">399</span></span>
+<span class=""><span class="ln">400</span>            // A marker that declares nothing is reported, not trusted</span>
+<span class=""><span class="ln">401</span>            // (D-134): one covering no mutant (the code moved or the</span>
+<span class=""><span class="ln">402</span>            // mutators changed), or one giving no reason.</span>
+<span class="missed"><span class="ln">403</span>            foreach (EquivalentMarkers::scan($source)-&gt;ranges as $range) {</span>
+<span class="missed"><span class="ln">404</span>                $covers = array_filter($fileMutants, static fn(Mutant $m): bool =&gt; $m-&gt;line &gt;= $range[&#039;from&#039;] &amp;&amp; $m-&gt;line &lt;= $range[&#039;to&#039;]) !== [];</span>
+<span class=""><span class="ln">405</span></span>
+<span class="missed"><span class="ln">406</span>                if ($range[&#039;reason&#039;] === null || !$covers) {</span>
+<span class="missed"><span class="ln">407</span>                    printf(</span>
+<span class="missed"><span class="ln">408</span>                        &#039;  STALE    %s:%d  crucible-equivalent %s&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">409</span>                        $relative,</span>
+<span class="missed"><span class="ln">410</span>                        $range[&#039;line&#039;],</span>
+<span class="missed"><span class="ln">411</span>                        $range[&#039;reason&#039;] === null ? &#039;gives no reason, so declares nothing&#039; : &#039;covers no mutant; remove it&#039;,</span>
+<span class=""><span class="ln">412</span>                    );</span>
+<span class=""><span class="ln">413</span>                }</span>
+<span class=""><span class="ln">414</span>            }</span>
+<span class=""><span class="ln">415</span>        }</span>
+<span class=""><span class="ln">416</span></span>
+<span class="missed"><span class="ln">417</span>        return $mutants;</span>
+<span class=""><span class="ln">418</span>    }</span>
+<span class=""><span class="ln">419</span></span>
+<span class=""><span class="ln">420</span>    /**</span>
+<span class=""><span class="ln">421</span>     * Coverage that predates the source it maps is a lie — an escaped</span>
+<span class=""><span class="ln">422</span>     * mutant might just be a covering test that no longer runs. Warn (not</span>
+<span class=""><span class="ln">423</span>     * refuse: the user may know better) and name the drift.</span>
+<span class=""><span class="ln">424</span>     *</span>
+<span class=""><span class="ln">425</span>     * @param list&lt;string&gt;     $coveredFiles relative paths</span>
+<span class=""><span class="ln">426</span>     */</span>
+<span class=""><span class="ln">427</span>    private function warnIfCoverageStale(string $mapFile, array $coveredFiles, WorkingDirectory $workingDirectory): void</span>
+<span class=""><span class="ln">428</span>    {</span>
+<span class="missed"><span class="ln">429</span>        $coverageTime = @filemtime($mapFile);</span>
+<span class=""><span class="ln">430</span></span>
+<span class="missed"><span class="ln">431</span>        if ($coverageTime === false) {</span>
+<span class="missed"><span class="ln">432</span>            return;</span>
+<span class=""><span class="ln">433</span>        }</span>
+<span class=""><span class="ln">434</span></span>
+<span class="missed"><span class="ln">435</span>        $stale = [];</span>
+<span class=""><span class="ln">436</span></span>
+<span class="missed"><span class="ln">437</span>        foreach ($coveredFiles as $relative) {</span>
+<span class="missed"><span class="ln">438</span>            if ($relative === &#039;&#039;) {</span>
+<span class="missed"><span class="ln">439</span>                continue;</span>
+<span class=""><span class="ln">440</span>            }</span>
+<span class=""><span class="ln">441</span></span>
+<span class="missed"><span class="ln">442</span>            $sourceTime = @filemtime($workingDirectory-&gt;absolute($relative));</span>
+<span class=""><span class="ln">443</span></span>
+<span class="missed"><span class="ln">444</span>            if ($sourceTime !== false &amp;&amp; $sourceTime &gt; $coverageTime) {</span>
+<span class="missed"><span class="ln">445</span>                $stale[] = $relative;</span>
+<span class=""><span class="ln">446</span>            }</span>
+<span class=""><span class="ln">447</span>        }</span>
+<span class=""><span class="ln">448</span></span>
+<span class="missed"><span class="ln">449</span>        if ($stale !== []) {</span>
+<span class="missed"><span class="ln">450</span>            printf(</span>
+<span class="missed"><span class="ln">451</span>                &#039;Warning: %d covered file(s) changed since coverage was collected — results may be inaccurate; re-run with --coverage. First: %s&#039; . PHP_EOL . PHP_EOL,</span>
+<span class="missed"><span class="ln">452</span>                count($stale),</span>
+<span class="missed"><span class="ln">453</span>                $stale[0],</span>
+<span class=""><span class="ln">454</span>            );</span>
+<span class=""><span class="ln">455</span>        }</span>
+<span class=""><span class="ln">456</span>    }</span>
+<span class=""><span class="ln">457</span></span>
+<span class=""><span class="ln">458</span>    /**</span>
+<span class=""><span class="ln">459</span>     * Live output for a run measured in hours.</span>
+<span class=""><span class="ln">460</span>     *</span>
+<span class=""><span class="ln">461</span>     * Escapes print the moment they are found rather than at the end,</span>
+<span class=""><span class="ln">462</span>     * because an escape is the finding — a run stopped halfway has still</span>
+<span class=""><span class="ln">463</span>     * told the user which mutants their suite does not catch. The</span>
+<span class=""><span class="ln">464</span>     * counter is throttled to once a second: 4083 lines of progress is</span>
+<span class=""><span class="ln">465</span>     * not progress.</span>
+<span class=""><span class="ln">466</span>     *</span>
+<span class=""><span class="ln">467</span>     * Every verdict is journalled here too, before anything is printed:</span>
+<span class=""><span class="ln">468</span>     * the point of the journal is to survive the kill, so it must be</span>
+<span class=""><span class="ln">469</span>     * written at the moment the verdict exists, not at the end.</span>
+<span class=""><span class="ln">470</span>     *</span>
+<span class=""><span class="ln">471</span>     * @param array&lt;string, string&gt; $judgedBy         mutant key =&gt; covering-tests fingerprint</span>
+<span class=""><span class="ln">472</span>     * @param int                   $resumed          verdicts an earlier run already decided</span>
+<span class=""><span class="ln">473</span>     * @param int                   $overall          mutants in the whole run, resumed included</span>
+<span class=""><span class="ln">474</span>     *</span>
+<span class=""><span class="ln">475</span>     * @return Closure(MutationVerdict, int, int): void</span>
+<span class=""><span class="ln">476</span>     */</span>
+<span class=""><span class="ln">477</span>    private function progress(Progress $bar, WorkingDirectory $workingDirectory, MutationJournal $journal, array $judgedBy, int $resumed, int $overall): Closure</span>
+<span class=""><span class="ln">478</span>    {</span>
+<span class="missed"><span class="ln">479</span>        $started = microtime(true);</span>
+<span class="missed"><span class="ln">480</span>        $last    = 0.0;</span>
+<span class="missed"><span class="ln">481</span>        $escaped = 0;</span>
+<span class=""><span class="ln">482</span></span>
+<span class="missed"><span class="ln">483</span>        return function (MutationVerdict $verdict, int $done, int $total) use ($bar, $workingDirectory, $journal, $judgedBy, $resumed, $overall, $started, &amp;$last, &amp;$escaped): void {</span>
+<span class="missed"><span class="ln">484</span>            $journal-&gt;append($verdict-&gt;mutant, $verdict, $judgedBy[MutationJournal::keyOf($verdict-&gt;mutant)] ?? &#039;&#039;);</span>
+<span class=""><span class="ln">485</span></span>
+<span class=""><span class="ln">486</span>            // $done counts THIS process; the rate must too. Dividing the</span>
+<span class=""><span class="ln">487</span>            // elapsed time of a resumed run by a count that includes the</span>
+<span class=""><span class="ln">488</span>            // resumed mutants reads as a machine several times faster</span>
+<span class=""><span class="ln">489</span>            // than the one doing the work.</span>
+<span class="missed"><span class="ln">490</span>            $rate  = $done === 0 ? 0.0 : (microtime(true) - $started) / $done;</span>
+<span class="missed"><span class="ln">491</span>            $done  = $resumed + $done;</span>
+<span class="missed"><span class="ln">492</span>            $total = $overall;</span>
+<span class=""><span class="ln">493</span></span>
+<span class="missed"><span class="ln">494</span>            $bar-&gt;current = $done;</span>
+<span class=""><span class="ln">495</span></span>
+<span class="missed"><span class="ln">496</span>            if ($verdict-&gt;outcome === MutationOutcome::Escaped) {</span>
+<span class="missed"><span class="ln">497</span>                $escaped++;</span>
+<span class=""><span class="ln">498</span></span>
+<span class=""><span class="ln">499</span>                // Through the bar, not print: an escape is history and has</span>
+<span class=""><span class="ln">500</span>                // to scroll away above a frame that stays put. Without a</span>
+<span class=""><span class="ln">501</span>                // bar on screen this is the same line it always was.</span>
+<span class="missed"><span class="ln">502</span>                $bar-&gt;interrupt(sprintf(</span>
+<span class=""><span class="ln">503</span>                    &#039;  ESCAPED  %s:%d  %s&#039;,</span>
+<span class="missed"><span class="ln">504</span>                    $this-&gt;relativeTo($verdict-&gt;mutant-&gt;file, $workingDirectory),</span>
+<span class="missed"><span class="ln">505</span>                    $verdict-&gt;mutant-&gt;line,</span>
+<span class="missed"><span class="ln">506</span>                    $verdict-&gt;mutant-&gt;mutatorId,</span>
+<span class=""><span class="ln">507</span>                ));</span>
+<span class=""><span class="ln">508</span>            }</span>
+<span class=""><span class="ln">509</span></span>
+<span class="missed"><span class="ln">510</span>            $now = microtime(true);</span>
+<span class=""><span class="ln">511</span></span>
+<span class="missed"><span class="ln">512</span>            if ($now - $last &lt; 1.0 &amp;&amp; $done !== $total) {</span>
+<span class="missed"><span class="ln">513</span>                return;</span>
+<span class=""><span class="ln">514</span>            }</span>
+<span class=""><span class="ln">515</span></span>
+<span class="missed"><span class="ln">516</span>            $last    = $now;</span>
+<span class="missed"><span class="ln">517</span>            $elapsed = $now - $started;</span>
+<span class="missed"><span class="ln">518</span>            $left    = $rate * ($total - $done);</span>
+<span class=""><span class="ln">519</span></span>
+<span class=""><span class="ln">520</span>            // ⚠ The piped form is unchanged, deliberately: a `tee`d</span>
+<span class=""><span class="ln">521</span>            // mutation log is how a run that takes hours gets read back,</span>
+<span class=""><span class="ln">522</span>            // and these are the lines that get grepped. The bar is what</span>
+<span class=""><span class="ln">523</span>            // replaces them at a terminal, where nothing is being kept.</span>
+<span class="missed"><span class="ln">524</span>            if (! $bar-&gt;isActive()) {</span>
+<span class="missed"><span class="ln">525</span>                printf(</span>
+<span class="missed"><span class="ln">526</span>                    &#039;  %d/%d mutants — %d escaped — %s elapsed, ~%s left&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">527</span>                    $done,</span>
+<span class="missed"><span class="ln">528</span>                    $total,</span>
+<span class="missed"><span class="ln">529</span>                    $escaped,</span>
+<span class="missed"><span class="ln">530</span>                    $this-&gt;duration($elapsed),</span>
+<span class="missed"><span class="ln">531</span>                    $this-&gt;duration($left),</span>
+<span class=""><span class="ln">532</span>                );</span>
+<span class=""><span class="ln">533</span></span>
+<span class="missed"><span class="ln">534</span>                return;</span>
+<span class=""><span class="ln">535</span>            }</span>
+<span class=""><span class="ln">536</span></span>
+<span class="missed"><span class="ln">537</span>            $bar-&gt;hint(sprintf(</span>
+<span class=""><span class="ln">538</span>                &#039;%d/%d · %d escaped · %s elapsed, ~%s left&#039;,</span>
+<span class=""><span class="ln">539</span>                $done,</span>
+<span class=""><span class="ln">540</span>                $total,</span>
+<span class=""><span class="ln">541</span>                $escaped,</span>
+<span class="missed"><span class="ln">542</span>                $this-&gt;duration($elapsed),</span>
+<span class="missed"><span class="ln">543</span>                $this-&gt;duration($left),</span>
+<span class=""><span class="ln">544</span>            ));</span>
+<span class="missed"><span class="ln">545</span>        };</span>
+<span class=""><span class="ln">546</span>    }</span>
+<span class=""><span class="ln">547</span></span>
+<span class=""><span class="ln">548</span>    /**</span>
+<span class=""><span class="ln">549</span>     * A fingerprint of the tests that will judge this mutant.</span>
+<span class=""><span class="ln">550</span>     *</span>
+<span class=""><span class="ln">551</span>     * Their CONTENTS, not their names: rewriting a test&#039;s assertions</span>
+<span class=""><span class="ln">552</span>     * without renaming it is exactly the change that must invalidate a</span>
+<span class=""><span class="ln">553</span>     * recorded verdict, and it is the change that slipped through when</span>
+<span class=""><span class="ln">554</span>     * the journal keyed on the mutant alone.</span>
+<span class=""><span class="ln">555</span>     *</span>
+<span class=""><span class="ln">556</span>     * Per FILE rather than per test id — a test id is `file.php::method`</span>
+<span class=""><span class="ln">557</span>     * and a file&#039;s methods share its bytes — with the digests cached</span>
+<span class=""><span class="ln">558</span>     * across mutants, since one test file covers hundreds of them.</span>
+<span class=""><span class="ln">559</span>     *</span>
+<span class=""><span class="ln">560</span>     * @param list&lt;non-empty-string&gt; $testIds</span>
+<span class=""><span class="ln">561</span>     * @param array&lt;string, string&gt;  $sources   digest cache, by file</span>
+<span class=""><span class="ln">562</span>     */</span>
+<span class=""><span class="ln">563</span>    private function judgedBy(array $testIds, WorkingDirectory $workingDirectory, array &amp;$sources): string</span>
+<span class=""><span class="ln">564</span>    {</span>
+<span class="missed"><span class="ln">565</span>        $digests = [];</span>
+<span class=""><span class="ln">566</span></span>
+<span class="missed"><span class="ln">567</span>        foreach ($testIds as $id) {</span>
+<span class="missed"><span class="ln">568</span>            $file = explode(&#039;::&#039;, $id)[0];</span>
+<span class=""><span class="ln">569</span></span>
+<span class="missed"><span class="ln">570</span>            if ($file === &#039;&#039;) {</span>
+<span class="missed"><span class="ln">571</span>                continue;</span>
+<span class=""><span class="ln">572</span>            }</span>
+<span class=""><span class="ln">573</span></span>
+<span class="missed"><span class="ln">574</span>            if (!isset($sources[$file])) {</span>
+<span class="missed"><span class="ln">575</span>                $contents       = @file_get_contents($workingDirectory-&gt;absolute($file));</span>
+<span class="missed"><span class="ln">576</span>                $sources[$file] = $contents === false ? &#039;&#039; : md5($contents);</span>
+<span class=""><span class="ln">577</span>            }</span>
+<span class=""><span class="ln">578</span></span>
+<span class="missed"><span class="ln">579</span>            $digests[$file] = $sources[$file];</span>
+<span class=""><span class="ln">580</span>        }</span>
+<span class=""><span class="ln">581</span></span>
+<span class="missed"><span class="ln">582</span>        ksort($digests);</span>
+<span class=""><span class="ln">583</span></span>
+<span class="missed"><span class="ln">584</span>        return md5(implode(&#039;|&#039;, $digests) . &#039;#&#039; . implode(&#039;|&#039;, array_keys($digests)));</span>
+<span class=""><span class="ln">585</span>    }</span>
+<span class=""><span class="ln">586</span></span>
+<span class=""><span class="ln">587</span>    /** @return non-empty-string */</span>
+<span class=""><span class="ln">588</span>    private function duration(float $seconds): string</span>
+<span class=""><span class="ln">589</span>    {</span>
+<span class="missed"><span class="ln">590</span>        $whole = (int) $seconds;</span>
+<span class=""><span class="ln">591</span></span>
+<span class="missed"><span class="ln">592</span>        return $whole &lt; 60</span>
+<span class="missed"><span class="ln">593</span>            ? $whole . &#039;s&#039;</span>
+<span class="missed"><span class="ln">594</span>            : sprintf(&#039;%dm%02ds&#039;, intdiv($whole, 60), $whole % 60);</span>
+<span class=""><span class="ln">595</span>    }</span>
+<span class=""><span class="ln">596</span></span>
+<span class=""><span class="ln">597</span>    private function printMutationReport(MutationReport $report, WorkingDirectory $workingDirectory): int</span>
+<span class=""><span class="ln">598</span>    {</span>
+<span class="missed"><span class="ln">599</span>        $escaped = array_values(array_filter(</span>
+<span class="missed"><span class="ln">600</span>            $report-&gt;verdicts,</span>
+<span class="missed"><span class="ln">601</span>            static fn(MutationVerdict $verdict): bool =&gt; $verdict-&gt;outcome === MutationOutcome::Escaped,</span>
+<span class=""><span class="ln">602</span>        ));</span>
+<span class=""><span class="ln">603</span></span>
+<span class="missed"><span class="ln">604</span>        foreach (array_slice($escaped, 0, 20) as $verdict) {</span>
+<span class="missed"><span class="ln">605</span>            printf(&#039;  ESCAPED  %s:%d  %s&#039; . PHP_EOL, $this-&gt;relativeTo($verdict-&gt;mutant-&gt;file, $workingDirectory), $verdict-&gt;mutant-&gt;line, $verdict-&gt;mutant-&gt;mutatorId);</span>
+<span class=""><span class="ln">606</span>        }</span>
+<span class=""><span class="ln">607</span></span>
+<span class="missed"><span class="ln">608</span>        if (count($escaped) &gt; 20) {</span>
+<span class="missed"><span class="ln">609</span>            printf(&#039;  … and %d more escaped.&#039; . PHP_EOL, count($escaped) - 20);</span>
+<span class=""><span class="ln">610</span>        }</span>
+<span class=""><span class="ln">611</span></span>
+<span class="missed"><span class="ln">612</span>        if ($escaped !== []) {</span>
+<span class="missed"><span class="ln">613</span>            print PHP_EOL;</span>
+<span class=""><span class="ln">614</span>        }</span>
+<span class=""><span class="ln">615</span></span>
+<span class="missed"><span class="ln">616</span>        $equivalent = array_values(array_filter(</span>
+<span class="missed"><span class="ln">617</span>            $report-&gt;verdicts,</span>
+<span class="missed"><span class="ln">618</span>            static fn(MutationVerdict $verdict): bool =&gt; $verdict-&gt;outcome === MutationOutcome::Equivalent,</span>
+<span class=""><span class="ln">619</span>        ));</span>
+<span class=""><span class="ln">620</span></span>
+<span class=""><span class="ln">621</span>        // Declared equivalents are listed, never hidden (D-134): the</span>
+<span class=""><span class="ln">622</span>        // decision stays in front of whoever reads the report.</span>
+<span class="missed"><span class="ln">623</span>        foreach (array_slice($equivalent, 0, 20) as $verdict) {</span>
+<span class="missed"><span class="ln">624</span>            printf(&#039;  EQUIVALENT  %s:%d  %s — %s&#039; . PHP_EOL, $this-&gt;relativeTo($verdict-&gt;mutant-&gt;file, $workingDirectory), $verdict-&gt;mutant-&gt;line, $verdict-&gt;mutant-&gt;mutatorId, (string) $verdict-&gt;reason);</span>
+<span class=""><span class="ln">625</span>        }</span>
+<span class=""><span class="ln">626</span></span>
+<span class="missed"><span class="ln">627</span>        if (count($equivalent) &gt; 20) {</span>
+<span class="missed"><span class="ln">628</span>            printf(&#039;  … and %d more declared equivalent.&#039; . PHP_EOL, count($equivalent) - 20);</span>
+<span class=""><span class="ln">629</span>        }</span>
+<span class=""><span class="ln">630</span></span>
+<span class="missed"><span class="ln">631</span>        if ($equivalent !== []) {</span>
+<span class="missed"><span class="ln">632</span>            print PHP_EOL;</span>
+<span class=""><span class="ln">633</span>        }</span>
+<span class=""><span class="ln">634</span></span>
+<span class="missed"><span class="ln">635</span>        printf(</span>
+<span class="missed"><span class="ln">636</span>            &#039;Killed: %d  Escaped: %d  Errored: %d  Timed out: %d  Not covered: %d  Declared equivalent: %d&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">637</span>            $report-&gt;count(MutationOutcome::Killed),</span>
+<span class="missed"><span class="ln">638</span>            count($escaped),</span>
+<span class="missed"><span class="ln">639</span>            $report-&gt;count(MutationOutcome::Errored),</span>
+<span class="missed"><span class="ln">640</span>            $report-&gt;count(MutationOutcome::TimedOut),</span>
+<span class="missed"><span class="ln">641</span>            $report-&gt;count(MutationOutcome::NotCovered),</span>
+<span class="missed"><span class="ln">642</span>            count($equivalent),</span>
+<span class=""><span class="ln">643</span>        );</span>
+<span class="missed"><span class="ln">644</span>        printf(&#039;MSI: %.1f%% over %d covered mutant(s).&#039; . PHP_EOL, $report-&gt;score(), $report-&gt;covered());</span>
+<span class=""><span class="ln">645</span></span>
+<span class="missed"><span class="ln">646</span>        return $escaped === [] ? 0 : 1;</span>
+<span class=""><span class="ln">647</span>    }</span>
+<span class=""><span class="ln">648</span></span>
+<span class=""><span class="ln">649</span>    private function relativeTo(string $file, WorkingDirectory $workingDirectory): string</span>
+<span class=""><span class="ln">650</span>    {</span>
+<span class="missed"><span class="ln">651</span>        $prefix = rtrim($workingDirectory-&gt;path, &#039;/&#039;) . &#039;/&#039;;</span>
+<span class=""><span class="ln">652</span></span>
+<span class="missed"><span class="ln">653</span>        return str_starts_with($file, $prefix) ? substr($file, strlen($prefix)) : $file;</span>
+<span class=""><span class="ln">654</span>    }</span>
+<span class=""><span class="ln">655</span>}</span>
+<span class="missed"><span class="ln">656</span></span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,906 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R /Outlines 15 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [ 7 0 R 9 0 R 11 0 R 13 0 R ] /Count 4 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Title (Test report) /Author (Luciano Federico Pereira) /Producer (Crucible 1.1.0) /CreationDate (D:20260926174409+00'00') >>
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 8 0 R >>
+endobj
+8 0 obj
+<< /Length 15300 >>
+stream
+q 0.07 0.00 0.00 -0.07 56.00 784.89 cm
+219.9300 385.4900 m
+70.4500 301.3200 l
+51.5400 306.6800 l
+174.5700 375.5700 l
+177.5600 376.5600 l
+188.8100 377.0100 l
+179.9900 369.0100 l
+211.3600 385.2200 l
+174.5000 385.2200 l
+168.8300 383.5100 l
+33.0600 309.6300 l
+29.5800 306.7000 l
+27.7200 303.0800 l
+27.7200 111.8000 l
+28.8800 107.9800 l
+33.2000 103.8800 l
+180.5100 27.8600 l
+189.6200 24.9800 l
+189.0100 27.5400 l
+186.4200 29.9600 l
+38.2000 112.5400 l
+38.2000 112.6200 l
+61.5900 102.2000 l
+62.2500 108.5700 l
+61.4100 110.0500 l
+47.1400 117.0300 l
+62.4000 125.1700 l
+62.6700 134.7000 l
+37.9800 122.6100 l
+37.9800 210.9500 l
+65.8900 204.1400 l
+65.8900 99.7800 l
+66.8100 98.6600 l
+218.0600 13.9800 l
+225.1900 13.3200 l
+368.8500 99.5800 l
+370.3400 100.9700 l
+371.4100 105.0700 l
+370.8500 107.3100 l
+369.3700 108.9600 l
+318.9400 138.0700 l
+313.3800 138.9700 l
+310.7400 138.2100 l
+222.8000 87.4400 l
+130.3000 140.8400 l
+130.3000 265.5600 l
+229.7900 323.0000 l
+315.7400 273.3800 l
+324.7500 272.7300 l
+368.7400 298.1200 l
+372.2900 305.6700 l
+371.8000 306.4100 l
+232.7700 386.6800 l
+223.7400 386.6800 l
+h
+222.9900 330.2200 m
+125.8200 274.1200 l
+76.5300 297.7900 l
+85.1700 299.2500 l
+222.9900 378.8100 l
+h
+358.8700 303.9100 m
+356.9700 301.7200 l
+320.7300 280.8000 l
+232.7500 331.5800 l
+232.7500 376.7300 l
+h
+65.7300 293.4300 m
+65.7300 213.7900 l
+37.9400 220.4600 l
+37.9400 292.3500 l
+62.1200 282.5700 l
+62.1200 289.9200 l
+38.1900 299.6300 l
+37.9100 302.5600 l
+h
+119.6600 266.9500 m
+119.6600 139.3100 l
+75.6100 113.8800 l
+75.6100 131.6900 l
+89.7900 139.7300 l
+103.6000 133.3100 l
+112.8000 138.3800 l
+96.5200 145.7400 l
+96.5200 191.5300 l
+86.6400 193.8000 l
+86.6400 148.1700 l
+75.6100 142.6300 l
+75.6100 200.7000 l
+76.4800 201.2100 l
+114.5200 191.6300 l
+115.2200 198.4700 l
+114.6600 200.6100 l
+77.6900 210.3300 l
+75.5900 211.6800 l
+75.5900 276.0800 l
+86.7400 271.1000 l
+86.7400 212.8100 l
+96.5100 210.0400 l
+96.5100 268.2600 l
+108.7300 267.6100 l
+108.0400 268.6800 l
+75.5800 284.9100 l
+75.5800 288.6200 l
+h
+219.6200 78.5800 m
+219.6200 25.2400 l
+187.1900 43.9600 l
+187.1900 87.4000 l
+200.8800 84.9200 l
+128.2900 126.8300 l
+123.8900 126.8300 l
+119.7600 124.1400 l
+177.4700 90.8200 l
+177.4700 46.8600 l
+77.6200 104.5100 l
+126.1600 132.5400 l
+h
+360.3400 103.6200 m
+291.5600 62.1900 l
+229.5000 25.4400 l
+229.5000 79.5400 l
+315.7800 129.3500 l
+h
+184.1800 351.6200 m
+183.9400 333.1200 l
+133.2600 303.9500 l
+106.9100 288.4100 l
+115.4200 283.5600 l
+192.1900 327.8800 l
+204.3100 322.4700 l
+213.1500 327.8600 l
+193.7200 336.1300 l
+193.7200 356.0400 l
+h
+237.1200 362.1200 m
+324.1700 311.8800 l
+306.6900 297.4100 l
+315.7700 292.4400 l
+334.8800 306.8900 l
+348.6000 300.7000 l
+352.6200 302.9300 l
+238.4900 368.8100 l
+h
+309.0200 121.4100 m
+334.1200 111.3200 l
+336.2800 113.3200 l
+314.3800 125.9600 l
+h
+224.7300 312.1600 m
+260.4400 294.3100 l
+294.9400 277.9400 l
+299.9700 279.0100 l
+296.5800 281.8900 l
+229.6700 316.0600 l
+h
+244.5800 279.8600 m
+294.7300 250.9100 l
+290.1800 217.8000 l
+280.1300 230.3900 l
+283.9600 248.2500 l
+242.1100 275.5800 l
+254.7200 243.1300 l
+289.8700 202.7300 l
+293.0800 200.7300 l
+296.1000 200.7300 l
+298.6200 203.2900 l
+305.7700 253.9700 l
+304.9000 255.0300 l
+251.9300 285.6200 l
+h
+164.5500 255.8900 m
+162.5600 252.8600 l
+174.3100 176.9400 l
+177.1900 175.1800 l
+180.0700 175.1800 l
+182.5000 177.0900 l
+222.1200 228.7900 l
+215.7500 237.0300 l
+182.4100 194.2000 l
+181.7000 194.9400 l
+173.1100 248.7300 l
+174.4300 250.9300 l
+223.1500 279.0600 l
+222.7100 280.5000 l
+215.7800 283.9400 l
+213.2200 284.0000 l
+h
+184.1800 247.4700 m
+190.1800 216.6900 l
+232.3000 275.8000 l
+232.3000 277.4800 l
+226.9100 274.8200 l
+h
+219.1300 212.2800 m
+260.9900 160.0700 l
+270.9000 154.7200 l
+273.7300 157.2800 l
+281.1700 203.5900 l
+272.3800 213.3500 l
+265.3100 171.8800 l
+225.3700 221.2100 l
+h
+196.9700 186.1900 m
+208.3600 156.1100 l
+227.9800 109.5200 l
+228.8600 108.6800 l
+231.6000 108.1200 l
+233.2300 109.9300 l
+241.6300 174.7500 l
+232.8500 184.9800 l
+226.7100 139.2800 l
+225.6900 139.6600 l
+204.7600 195.6400 l
+h
+0.9098 0.0471 0.0314 rg
+f
+236.3800 268.3100 m
+219.2300 244.0300 l
+219.5000 242.3000 l
+255.3100 193.9800 l
+256.2300 194.1600 l
+263.0200 222.3400 l
+245.7700 242.3300 l
+237.7800 269.0600 l
+h
+0.9451 0.4588 0.0627 rg
+f
+Q
+BT 0.00 0.00 0.00 rg /F2 15.00 Tf 91.00 766.49 Td (Test report) Tj ET
+0.18 0.49 0.20 rg 181.34 761.89 32.50 20.00 re f
+BT 1.00 1.00 1.00 rg /F2 11.00 Tf 189.34 767.93 Td (OK) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 56.00 743.39 Td (Crucible 1.1.0 by Luciano Federico Pereira) Tj ET
+BT 0.00 0.00 0.00 rg /F1 10.50 Tf 56.00 729.49 Td (1583 tests · 1581 passed · 2 flagged · 101.023s) Tj ET
+0.18 0.49 0.20 rg 56.00 720.29 482.67 5.00 re f
+0.46 0.46 0.46 rg 538.67 720.29 0.61 5.00 re f
+BT 0.00 0.00 0.00 rg /F2 12.00 Tf 56.00 694.29 Td (Problems) Tj ET
+0.5 w 0.75 G 56.00 689.79 m 539.28 689.79 l S
+BT 0.00 0.00 0.00 rg /F2 12.00 Tf 56.00 669.49 Td (Skipped \(2\)) Tj ET
+0.5 w 0.75 G 56.00 664.99 m 539.28 664.99 l S
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 65.27 647.19 Td (1) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.50 Tf 76.00 647.19 Td (tests/unit/Extension/AssertNoDuplicationTest.php::testTheAbsentToolSaysWhichPackageIsMissing [skip]) Tj ET
+BT 0.46 0.46 0.46 rg /F3 7.50 Tf 76.00 636.19 Td (phpcpd-next is installed, so its absence cannot be observed.) Tj ET
+0.46 0.46 0.46 rg 60.00 636.19 2.00 20.50 re f
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 65.27 619.69 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.50 Tf 76.00 619.69 Td (tests/unit/Extension/DuplicationCheckTest.php::testAskingForTheCheckWithoutTheToolSaysWhichPackageIs) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.50 Tf 76.00 606.69 Td (Missing [skip]) Tj ET
+BT 0.46 0.46 0.46 rg /F3 7.50 Tf 76.00 595.69 Td (phpcpd-next is installed, so its absence cannot be observed.) Tj ET
+0.46 0.46 0.46 rg 60.00 595.69 2.00 33.50 re f
+BT 0.00 0.00 0.00 rg /F2 12.00 Tf 56.00 572.69 Td (Slowest tests) Tj ET
+0.5 w 0.75 G 56.00 568.19 m 539.28 568.19 l S
+BT 0.00 0.00 0.00 rg /F1 10.50 Tf 56.00 549.39 Td (These durations are inflated: xdebug is loaded in coverage mode and hooks every call. Re-run with -d) Tj ET
+BT 0.00 0.00 0.00 rg /F1 10.50 Tf 56.00 534.69 Td (xdebug.mode=off to time the tests instead of the profiler.) Tj ET
+BT 0.00 0.00 0.00 rg /F2 9.00 Tf 56.00 520.99 Td (Both spellings agree on every case · ArchDependency) Tj ET
+BT 0.00 0.00 0.00 rg /F2 9.00 Tf 516.76 520.99 Td (9.32s) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 299.08 520.99 Td (................................................................................................) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 56.00 507.99 Td (A sibling reference inside the target is not a use · ArchDependency) Tj ET
+BT 0.46 0.46 0.46 rg /F1 9.00 Tf 517.27 507.99 Td (3.73s) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 332.63 507.99 Td (.................................................................................) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 56.00 494.99 Td (A reference from outside makes a class used · ArchDependency) Tj ET
+BT 0.46 0.46 0.46 rg /F1 9.00 Tf 517.27 494.99 Td (3.58s) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 323.11 494.99 Td (.....................................................................................) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 56.00 481.99 Td (A sibling reference does make a class used · ArchDependency) Tj ET
+BT 0.46 0.46 0.46 rg /F1 9.00 Tf 517.27 481.99 Td (3.57s) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 316.61 481.99 Td (........................................................................................) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 56.00 468.99 Td (A test slower than its size allows is risky · TestRunner) Tj ET
+BT 0.46 0.46 0.46 rg /F1 9.00 Tf 517.27 468.99 Td (3.16s) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 280.06 468.99 Td (........................................................................................................) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 56.00 455.99 Td (The extension agrees with the incumbents line for line · ExtensionParity) Tj ET
+BT 0.46 0.46 0.46 rg /F1 9.00 Tf 517.27 455.99 Td (2.35s) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 351.13 455.99 Td (........................................................................) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 56.00 442.99 Td (An unregistered generator is reported and a registered one is not · ApprovedGeneratorRule) Tj ET
+BT 0.46 0.46 0.46 rg /F1 9.00 Tf 517.27 442.99 Td (2.13s) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 430.18 442.99 Td (.....................................) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 56.00 429.99 Td (Wildcards match within and across segments · ArchRule) Tj ET
+BT 0.46 0.46 0.46 rg /F1 9.00 Tf 517.27 429.99 Td (2.08s) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 291.07 429.99 Td (...................................................................................................) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 56.00 416.99 Td (Every preset produces a context · EnvironmentSimulation) Tj ET
+BT 0.46 0.46 0.46 rg /F1 9.00 Tf 517.27 416.99 Td (1.92s) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 295.60 416.99 Td (.................................................................................................) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 56.00 403.99 Td (Used in nothing is an empty allowlist · ArchRule) Tj ET
+BT 0.46 0.46 0.46 rg /F1 9.00 Tf 517.27 403.99 Td (1.79s) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 256.07 403.99 Td (...................................................................................................................) Tj ET
+BT 0.00 0.00 0.00 rg /F2 12.00 Tf 56.00 384.49 Td (Results) Tj ET
+0.5 w 0.75 G 56.00 379.99 m 539.28 379.99 l S
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 56.00 361.69 Td (tests/unit) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 105.45 361.69 Td (· 2 tests · 96.907s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 65.00 346.19 Td (SkipReasons) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 204.65 346.19 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 326.69 Td (Architecture) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 133.90 326.69 Td (· 30 tests · 43.548s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 311.19 Td (ArchRule) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 209.53 311.19 Td (22) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 311.19 Td (ArchDependency) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 311.19 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 311.19 Td (rules.pest) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 311.19 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 291.69 Td (Browser) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 115.01 291.69 Td (· 84 tests · 18.598s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 276.19 Td (NetworkIdle) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 181.07 276.19 Td (4 · 3.561s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 276.19 Td (Livewire) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 341.49 276.19 Td (3 · 2.726s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 276.19 Td (EnvironmentSimulation) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 276.19 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 263.19 Td (InteractionTail) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 263.19 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 263.19 Td (HealthChecks) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 263.19 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 263.19 Td (DriverSession) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 263.19 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 250.19 Td (Inertia) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 250.19 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 250.19 Td (PageAssertions) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 250.19 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 250.19 Td (InProcessServer) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 250.19 Td (1) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 237.19 Td (InitScript) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 237.19 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 237.19 Td (Browsing) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 237.19 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 237.19 Td (VisitDialect.pest) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 237.19 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 224.19 Td (RelativeVisit) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 224.19 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 224.19 Td (PageAssertionsSurface) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 369.96 224.19 Td (26) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 224.19 Td (SessionGate) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 224.19 Td (6) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 211.19 Td (FrameStream) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 211.19 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 211.19 Td (Selector) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 211.19 Td (6) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 211.19 Td (JsValue) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 211.19 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 198.19 Td (FrameBuffer) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 198.19 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 179.19 Td (Server) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 120.13 179.19 Td (· CgiVariables) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 183.65 179.19 Td (· 9 tests · 0.005s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 163.69 Td (PHPStan) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 117.23 163.69 Td (· 17 tests · 14.173s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 148.19 Td (ExtensionBlackBox) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 181.07 148.19 Td (4 · 6.269s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 148.19 Td (ExtensionParity) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 148.19 Td (1) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 148.19 Td (ApprovedGeneratorRule) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 148.19 Td (1) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 135.19 Td (DataRowRules) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 135.19 Td (1) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 135.19 Td (ApprovedEvalRule) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 135.19 Td (1) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 135.19 Td (UsesResolver) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 135.19 Td (9) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 115.69 Td (Runner) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 110.00 115.69 Td (· 91 tests · 4.928s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 100.19 Td (TestRunner) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 209.53 100.19 Td (10) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 100.19 Td (RetryAndQuarantine) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 369.96 100.19 Td (11) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 100.19 Td (TestSelection) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 530.38 100.19 Td (13) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 87.19 Td (TestDiscoverer) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 87.19 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 87.19 Td (Scheduler) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 369.96 87.19 Td (11) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 87.19 Td (ExpectedOutcome) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 87.19 Td (7) Tj ET
+0.5 w 0.75 G 56.00 44.00 m 539.28 44.00 l S
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 56.00 30.00 Td (Crucible 1.1.0) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 498.36 30.00 Td (Page 1 of 4) Tj ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 10 0 R >>
+endobj
+10 0 obj
+<< /Length 12055 >>
+stream
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 776.39 Td (Todo) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 776.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 776.39 Td (Shard) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 776.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 776.39 Td (UntestedClassification) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 776.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 763.39 Td (IssueCollector) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 763.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 763.39 Td (ResultCache) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 763.39 Td (6) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 763.39 Td (Repetition) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 763.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 750.39 Td (TimingOverhead) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 750.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 750.39 Td (TimeLimit) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 750.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 730.89 Td (Process) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 127.91 730.89 Td (· 15 tests · 1.452s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 715.39 Td (WorkerTiming) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 223.31 715.39 Td (1) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 248.76 715.39 Td (WorkerProtocol) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 379.07 715.39 Td (9) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 404.52 715.39 Td (DependencyValues) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 715.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 695.89 Td (Types) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 103.90 695.89 Td (· 11 tests · 4.684s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 680.39 Td (TypeTestRunner) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 181.07 680.39 Td (2 · 3.019s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 680.39 Td (TypeExpressionAgreement) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 680.39 Td (1) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 680.39 Td (TypeExpression) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 680.39 Td (8) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 660.89 Td (Dialect) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 107.79 660.89 Td (· 152 tests · 2.036s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 645.39 Td (PestDialect.pest) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 209.53 645.39 Td (52) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 645.39 Td (CrucibleDialect.crucible) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 369.96 645.39 Td (19) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 645.39 Td (InlineDialect) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 530.38 645.39 Td (23) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 632.39 Td (PestDialectLongTail.pest) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 209.53 632.39 Td (34) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 632.39 Td (PestDialectConfig.pest) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 369.96 632.39 Td (20) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 632.39 Td (DoctestShadow) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 632.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 612.89 Td (Pest) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 110.12 612.89 Td (· 140 tests · 1.600s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 597.39 Td (ArchExpectation) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 218.86 597.39 Td (10) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 248.76 597.39 Td (TraitComposer) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 379.07 597.39 Td (7) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 404.52 597.39 Td (PestBuilderAssertionBridge) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 597.39 Td (1) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 584.39 Td (PestRegistry) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 218.86 584.39 Td (19) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 248.76 584.39 Td (PestScopes) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.62 584.39 Td (19) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 404.52 584.39 Td (PestCovers) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 584.39 Td (6) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 571.39 Td (TestCall) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 218.86 571.39 Td (18) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 248.76 571.39 Td (PestFileSniffer) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.62 571.39 Td (10) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 404.52 571.39 Td (ScopeRegistration) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 530.38 571.39 Td (10) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 558.39 Td (RealPhpUnitExceptionExpectations) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.62 558.39 Td (12) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 404.52 558.39 Td (ExpectationFilesystem) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 558.39 Td (6) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 545.39 Td (CurrentTest) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 223.31 545.39 Td (8) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 248.76 545.39 Td (PestTodoGlobal) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 379.07 545.39 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 404.52 545.39 Td (PestBuilderCurrentTestBridge) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 545.39 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 532.39 Td (RealPhpUnitBootstrap) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 223.31 532.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 248.76 532.39 Td (PestClassLifecycle) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 379.07 532.39 Td (1) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 404.52 532.39 Td (PestFixture) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 532.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 513.39 Td (PhpUnit) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 127.33 513.39 Td (· ClassLocator) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 192.35 513.39 Td (· 6 tests · 0.007s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 497.89 Td (Property) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 116.12 497.89 Td (· 47 tests · 1.668s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 482.39 Td (GenOf) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 209.53 482.39 Td (15) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 482.39 Td (Property) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 369.96 482.39 Td (19) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 482.39 Td (PropertyDialect.crucible) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 482.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 469.39 Td (PropertyDatabase) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 209.53 469.39 Td (10) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 449.89 Td (Reporting) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 122.22 449.89 Td (· 44 tests · 1.651s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 434.39 Td (MapView) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 209.53 434.39 Td (20) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 434.39 Td (Reporters) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 369.96 434.39 Td (18) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 434.39 Td (RunModel) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 434.39 Td (6) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 414.89 Td (Document) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 137.89 414.89 Td (· 21 tests · 0.423s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 399.39 Td (PdfPrimitives) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 218.86 399.39 Td (17) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 248.76 399.39 Td (SampleDocument) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 379.07 399.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 98.00 379.89 Td (Renderers) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 152.46 379.89 Td (· 23 tests · 0.263s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 107.00 364.39 Td (SarifSchema) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 232.65 364.39 Td (1) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 258.09 364.39 Td (PdfRenderer) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 379.29 364.39 Td (16) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 409.19 364.39 Td (SarifRenderer) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 364.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 107.00 351.39 Td (JsonRenderer) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 232.65 351.39 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 112.00 332.39 Td (Support) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 155.33 332.39 Td (· FailureLocation) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 229.36 332.39 Td (· 3 tests · 0.004s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 98.00 316.89 Td (Svg) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 121.34 316.89 Td (· 50 tests · 0.069s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 107.00 301.39 Td (SvgDocument) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 228.20 301.39 Td (35) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 258.09 301.39 Td (SvgPathData) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 379.29 301.39 Td (15) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 98.00 281.89 Td (Blocks) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 135.79 281.89 Td (· 17 tests · 0.026s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 107.00 266.39 Td (FoldingTree) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 232.65 266.39 Td (8) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 258.09 266.39 Td (Badge) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 383.74 266.39 Td (6) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 409.19 266.39 Td (Image) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 266.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 246.89 Td (Subscriber) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 141.24 246.89 Td (· 17 tests · 0.027s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 231.39 Td (SubscriberRegistry) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 218.86 231.39 Td (14) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 248.76 231.39 Td (OtrSchema) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 379.07 231.39 Td (1) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 404.52 231.39 Td (FileBackedSubscriber) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 231.39 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 212.39 Td (ProgressView) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 155.14 212.39 Td (· ProgressViewRegistry) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 256.16 212.39 Td (· 14 tests · 0.024s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 197.39 Td (ReportFormat) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 155.11 197.39 Td (· ReportFormatRegistry) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 256.13 197.39 Td (· 15 tests · 0.019s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 181.89 Td (Extension) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 122.79 181.89 Td (· 18 tests · 1.557s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 166.39 Td (CommandGate) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 166.39 Td (7) Tj ET
+0.70 0.42 0.00 rg 235.13 169.39 m 235.13 170.61 234.14 171.59 232.93 171.59 c 231.71 171.59 230.73 170.61 230.73 169.39 c 230.73 168.17 231.71 167.19 232.93 167.19 c 234.14 167.19 235.13 168.17 235.13 169.39 c f
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 166.39 Td (AssertNoDuplication) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 166.39 Td (4) Tj ET
+0.70 0.42 0.00 rg 395.55 169.39 m 395.55 170.61 394.57 171.59 393.35 171.59 c 392.14 171.59 391.15 170.61 391.15 169.39 c 391.15 168.17 392.14 167.19 393.35 167.19 c 394.57 167.19 395.55 168.17 395.55 169.39 c f
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 166.39 Td (DuplicationCheck) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 166.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 153.39 Td (CheckExtension) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 153.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 133.89 Td (Bridge) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 106.67 133.89 Td (· 0.855s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 117.89 Td (Laravel) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 124.02 117.89 Td (· 8 tests · 0.827s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 102.39 Td (CrucibleServiceProvider) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 223.31 102.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 248.76 102.39 Td (BrowserKernelHandler) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 379.07 102.39 Td (5) Tj ET
+0.5 w 0.75 G 56.00 44.00 m 539.28 44.00 l S
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 56.00 30.00 Td (Crucible 1.1.0) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 498.36 30.00 Td (Page 2 of 4) Tj ET
+endstream
+endobj
+11 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 12 0 R >>
+endobj
+12 0 obj
+<< /Length 11559 >>
+stream
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 775.89 Td (PestSnapshots) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 161.24 775.89 Td (· 15 tests · 0.028s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 760.39 Td (SnapshotIdentityWrapper) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 223.31 760.39 Td (9) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 248.76 760.39 Td (Functions) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 379.07 760.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 404.52 760.39 Td (AutoMixedTrait) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 760.39 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 741.39 Td (PestLaravel) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 145.14 741.39 Td (· Functions) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 196.66 741.39 Td (· 2 tests · 0.001s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 725.89 Td (Double) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 108.89 725.89 Td (· 83 tests · 0.639s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 710.39 Td (GeneratedShapes) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 710.39 Td (8) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 710.39 Td (MockeryMatchers) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 369.96 710.39 Td (21) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 710.39 Td (Double) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 530.38 710.39 Td (10) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 697.39 Td (MockerySurface) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 209.53 697.39 Td (25) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 697.39 Td (MockBuilder) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 369.96 697.39 Td (19) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 677.89 Td (Mutation) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 116.66 677.89 Td (· 41 tests · 0.583s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 662.39 Td (MutantApplier) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 662.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 662.39 Td (ColdMutantExecutor) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 662.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 662.39 Td (CoveringTestRunner) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 662.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 649.39 Td (EquivalentMarkers) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 649.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 649.39 Td (MutationJournal) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 649.39 Td (9) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 649.39 Td (MutationRunner) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 649.39 Td (7) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 636.39 Td (MutantGenerator) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 636.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 636.39 Td (ShapeMutator) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 636.39 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 636.39 Td (MutationReport) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 636.39 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 616.89 Td (Coverage) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 120.57 616.89 Td (· 46 tests · 0.450s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 601.39 Td (SourceAnalysis) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 209.53 601.39 Td (10) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 601.39 Td (ExternalCoverageArtifact) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 601.39 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 601.39 Td (Coverage) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 530.38 601.39 Td (21) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 588.39 Td (CoversTargets) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 588.39 Td (8) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 588.39 Td (CoverageMetadataEnforcement) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 588.39 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 575.39 Td (MutationIndex) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 575.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 555.89 Td (CLI) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 91.11 555.89 Td (· 79 tests · 0.401s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 540.39 Td (DocumentedOptions) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 540.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 540.39 Td (CliOptions) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 369.96 540.39 Td (42) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 540.39 Td (PostRunReport) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 530.38 540.39 Td (13) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 527.39 Td (PhpstanNeon) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 209.53 527.39 Td (11) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 527.39 Td (AnsweredOptions) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 527.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 527.39 Td (ReproducibleOutput) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 527.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 514.39 Td (PhpConfigurationCheck) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 514.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 494.89 Td (Commands) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 143.45 494.89 Td (· 25 tests · 0.200s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 479.39 Td (InitCommand) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 223.31 479.39 Td (6) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 248.76 479.39 Td (ExtensionsCommand) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.62 479.39 Td (11) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 404.52 479.39 Td (CompletionCommand) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 479.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 466.39 Td (CompatCheckCommand) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 223.31 466.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 446.89 Td (Console) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 114.45 446.89 Td (· 0.287s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 430.89 Td (Components) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 150.11 430.89 Td (· 19 tests · 0.155s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 415.39 Td (Splash) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 218.86 415.39 Td (13) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 248.76 415.39 Td (SelectPrompt) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 379.07 415.39 Td (6) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 395.89 Td (Output) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 121.77 395.89 Td (· 22 tests · 0.059s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 93.00 380.39 Td (TextPdf) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 223.31 380.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 248.76 380.39 Td (Markdown) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.62 380.39 Td (12) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 404.52 380.39 Td (Help) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 380.39 Td (7) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 361.39 Td (Support) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 127.33 361.39 Td (· Str) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 151.34 361.39 Td (· 15 tests · 0.051s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 346.39 Td (Runtime) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 129.00 346.39 Td (· ModalPresenter) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 205.03 346.39 Td (· 5 tests · 0.016s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 84.00 331.39 Td (Terminal) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 130.68 331.39 Td (· Capabilities) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 189.70 331.39 Td (· 10 tests · 0.006s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 315.89 Td (Impact) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 107.23 315.89 Td (· 58 tests · 0.216s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 300.39 Td (DependencyIndex) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 300.39 Td (8) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 300.39 Td (ChangedFiles) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 300.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 300.39 Td (ImpactSelection) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 530.38 300.39 Td (18) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 287.39 Td (DependencyGraph) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 287.39 Td (6) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 287.39 Td (ReferenceScanner) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 369.96 287.39 Td (14) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 287.39 Td (VitestImpact) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 287.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 274.39 Td (ImpactFingerprint) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 274.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 254.89 Td (Watch) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 105.00 254.89 Td (· 30 tests · 0.151s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 239.39 Td (RetriggerListener) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 239.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 239.39 Td (WatchSession) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 369.96 239.39 Td (14) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 239.39 Td (RetriggerEndpoint) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 239.39 Td (7) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 226.39 Td (FileWatcher) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 226.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 206.89 Td (Compat/Migration) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 160.00 206.89 Td (· 46 tests · 0.107s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 191.39 Td (CompositeEqualsPattern) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 191.39 Td (8) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 191.39 Td (SourceRewriter) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 369.96 191.39 Td (11) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 191.39 Td (OracleRun) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 191.39 Td (8) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 178.39 Td (OutcomeDiff) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 178.39 Td (7) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 178.39 Td (FixManifest) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 178.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 178.39 Td (CrucibleRun) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 178.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 165.39 Td (PhpUnitEventLog) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 165.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 145.89 Td (Vitest) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 102.23 145.89 Td (· 9 tests · 0.103s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 130.39 Td (VitestRunner) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 130.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 130.39 Td (VitestReport) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 130.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 110.89 Td (Snapshot) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 120.56 110.89 Td (· 37 tests · 0.066s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 95.39 Td (Snapshot) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 209.53 95.39 Td (12) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 95.39 Td (SnapshotPruner) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 95.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 95.39 Td (InlineSnapshot) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 95.39 Td (7) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 82.39 Td (InlineSnapshotWriter) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 82.39 Td (9) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 82.39 Td (SnapshotDialect.crucible) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 82.39 Td (4) Tj ET
+0.5 w 0.75 G 56.00 44.00 m 539.28 44.00 l S
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 56.00 30.00 Td (Crucible 1.1.0) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 498.36 30.00 Td (Page 3 of 4) Tj ET
+endstream
+endobj
+13 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 14 0 R >>
+endobj
+14 0 obj
+<< /Length 6521 >>
+stream
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 775.89 Td (Event) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 102.23 775.89 Td (· 17 tests · 0.039s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 760.39 Td (EventPayload) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 760.39 Td (8) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 760.39 Td (NdjsonStream) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 760.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 760.39 Td (EventTextWriter) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 760.39 Td (3) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 747.39 Td (Emitter) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 747.39 Td (2) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 727.89 Td (Assert) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 106.12 727.89 Td (· 40 tests · 0.028s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 712.39 Td (Assert) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 209.53 712.39 Td (11) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 712.39 Td (AssertTranche) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 712.39 Td (8) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 712.39 Td (EqualitySemantics) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 530.38 712.39 Td (11) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 699.39 Td (Exporter) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 699.39 Td (6) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 699.39 Td (Differ) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 699.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 679.89 Td (Configuration) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 140.55 679.89 Td (· 29 tests · 0.024s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 664.39 Td (Loader) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 664.39 Td (9) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 664.39 Td (Builder) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 664.39 Td (8) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 399.85 664.39 Td (Quirk) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 534.83 664.39 Td (8) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 651.39 Td (XmlMigrator) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 651.39 Td (4) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 631.89 Td (Flakiness) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 120.58 631.89 Td (· 14 tests · 0.023s) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 79.00 616.39 Td (FailureOutsideDiff) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 213.98 616.39 Td (9) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 239.43 616.39 Td (OrderDependencyHunter) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 374.41 616.39 Td (5) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 597.39 Td (Framework) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 128.35 597.39 Td (· LifecycleCompatibility) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 227.37 597.39 Td (· 11 tests · 0.021s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 582.39 Td (Polyfill/Php84) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 140.58 582.39 Td (· ArrayFunctions) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 213.60 582.39 Td (· 16 tests · 0.013s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 567.39 Td (Polyfill/Php85) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 140.58 567.39 Td (· ArrayFunctions) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 213.60 567.39 Td (· 8 tests · 0.006s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 552.39 Td (Isolation) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 116.12 552.39 Td (· GlobalStateExport) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 201.66 552.39 Td (· 6 tests · 0.010s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 537.39 Td (Metadata) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 118.34 537.39 Td (· MetadataParser) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 194.87 537.39 Td (· 5 tests · 0.009s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 522.39 Td (Generated) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 124.46 522.39 Td (· GeneratedCode) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 201.00 522.39 Td (· 7 tests · 0.009s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 507.39 Td (Filesystem) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 126.69 507.39 Td (· WorkingDirectory) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 208.20 507.39 Td (· 8 tests · 0.007s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 70.00 492.39 Td (Test) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 95.56 492.39 Td (· TestId) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 133.08 492.39 Td (· 3 tests · 0.003s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 56.00 477.39 Td (examples/07-type-tests) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 171.04 477.39 Td (· ids.types) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 219.06 477.39 Td (· 2 tests · 1.505s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 56.00 462.39 Td (examples/05-shapes) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 158.27 462.39 Td (· shapes.pest) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 219.30 462.39 Td (· 3 tests · 0.080s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 56.00 447.39 Td (examples/04-architecture) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 181.05 447.39 Td (· rules.pest) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 232.57 447.39 Td (· 4 tests · 0.019s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 56.00 432.39 Td (examples/02-pest-dialect) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 179.38 432.39 Td (· basics.pest) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 236.90 432.39 Td (· 16 tests · 0.017s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 56.00 417.39 Td (examples/03-doubles) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 162.15 417.39 Td (· Payments) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 214.67 417.39 Td (· 4 tests · 0.006s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 56.00 402.39 Td (examples/01-phpunit-dialect) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 195.48 402.39 Td (· Calculator) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 248.50 402.39 Td (· 6 tests · 0.004s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 56.00 387.39 Td (examples/06-equivalent-mutants) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 215.49 387.39 Td (· Inventory) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 265.01 387.39 Td (· 2 tests · 0.002s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 56.00 372.39 Td (src/Test) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 99.35 372.39 Td (· TestId) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 136.87 372.39 Td (· 2 tests · 0.001s) Tj ET
+BT 0.00 0.00 0.00 rg /F2 10.00 Tf 56.00 357.39 Td (src/Reporting) Tj ET
+BT 0.00 0.00 0.00 rg /F1 9.00 Tf 126.01 357.39 Td (· PrettyName) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.50 Tf 186.03 357.39 Td (· 2 tests · 0.001s) Tj ET
+0.5 w 0.75 G 56.00 44.00 m 539.28 44.00 l S
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 56.00 30.00 Td (Crucible 1.1.0) Tj ET
+BT 0.46 0.46 0.46 rg /F1 8.00 Tf 498.36 30.00 Td (Page 4 of 4) Tj ET
+endstream
+endobj
+15 0 obj
+<< /Type /Outlines /First 16 0 R /Last 16 0 R /Count 5 >>
+endobj
+16 0 obj
+<< /Title (Test report) /Parent 15 0 R /First 17 0 R /Last 20 0 R /Count 3 /Dest [7 0 R /XYZ null null null] >>
+endobj
+17 0 obj
+<< /Title (Problems) /Parent 16 0 R /Next 19 0 R /First 18 0 R /Last 18 0 R /Count 1 /Dest [7 0 R /XYZ null null null] >>
+endobj
+18 0 obj
+<< /Title (Skipped \(2\)) /Parent 17 0 R /Dest [7 0 R /XYZ null null null] >>
+endobj
+19 0 obj
+<< /Title (Slowest tests) /Parent 16 0 R /Prev 17 0 R /Next 20 0 R /Dest [7 0 R /XYZ null null null] >>
+endobj
+20 0 obj
+<< /Title (Results) /Parent 16 0 R /Prev 19 0 R /Dest [7 0 R /XYZ null null null] >>
+endobj
+xref
+0 21
+0000000000 65535 f 
+0000000015 00000 n 
+0000000081 00000 n 
+0000000160 00000 n 
+0000000257 00000 n 
+0000000359 00000 n 
+0000000454 00000 n 
+0000000598 00000 n 
+0000000750 00000 n 
+0000016102 00000 n 
+0000016255 00000 n 
+0000028363 00000 n 
+0000028517 00000 n 
+0000040129 00000 n 
+0000040283 00000 n 
+0000046856 00000 n 
+0000046930 00000 n 
+0000047058 00000 n 
+0000047196 00000 n 
+0000047290 00000 n 
+0000047410 00000 n 
+trailer
+<< /Size 21 /Root 1 0 R /Info 6 0 R >>
+startxref
+47511
+%%EOF

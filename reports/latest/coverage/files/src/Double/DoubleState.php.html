@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Double/DoubleState.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/Double/DoubleState.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Double;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use Closure;</span>
+<span class=""><span class="ln">14</span>use ReflectionMethod;</span>
+<span class=""><span class="ln">15</span>use ReflectionType;</span>
+<span class=""><span class="ln">16</span></span>
+<span class=""><span class="ln">17</span>use function array_key_exists;</span>
+<span class=""><span class="ln">18</span>use function array_reverse;</span>
+<span class=""><span class="ln">19</span>use function count;</span>
+<span class=""><span class="ln">20</span>use function method_exists;</span>
+<span class=""><span class="ln">21</span>use function sprintf;</span>
+<span class=""><span class="ln">22</span></span>
+<span class=""><span class="ln">23</span>/**</span>
+<span class=""><span class="ln">24</span> * The per-double brain: registered configurators, the call log, and</span>
+<span class=""><span class="ln">25</span> * dispatch. Generated double methods forward every call here. Knows</span>
+<span class=""><span class="ln">26</span> * which methods the specification doubled — configuring anything</span>
+<span class=""><span class="ln">27</span> * else is a test error, named at configuration time — and whether</span>
+<span class=""><span class="ln">28</span> * unconfigured calls fabricate return values or refuse (the spec&#039;s</span>
+<span class=""><span class="ln">29</span> * auto-return-value-generation switch).</span>
+<span class=""><span class="ln">30</span> */</span>
+<span class=""><span class="ln">31</span>final class DoubleState</span>
+<span class=""><span class="ln">32</span>{</span>
+<span class=""><span class="ln">33</span>    /** @var list&lt;MethodConfigurator&gt; */</span>
+<span class=""><span class="ln">34</span>    private array $configurators = [];</span>
+<span class=""><span class="ln">35</span></span>
+<span class=""><span class="ln">36</span>    /** @var list&lt;array{non-empty-string, list&lt;mixed&gt;}&gt; */</span>
+<span class=""><span class="ln">37</span>    private array $calls = [];</span>
+<span class=""><span class="ln">38</span></span>
+<span class=""><span class="ln">39</span>    /**</span>
+<span class=""><span class="ln">40</span>     * Resolved once per method name; a null entry means &quot;resolved, and</span>
+<span class=""><span class="ln">41</span>     * there is no declared type&quot;.</span>
+<span class=""><span class="ln">42</span>     *</span>
+<span class=""><span class="ln">43</span>     * @var array&lt;non-empty-string, ?ReflectionType&gt;</span>
+<span class=""><span class="ln">44</span>     */</span>
+<span class=""><span class="ln">45</span>    private array $returnTypes = [];</span>
+<span class=""><span class="ln">46</span></span>
+<span class=""><span class="ln">47</span>    /**</span>
+<span class=""><span class="ln">48</span>     * The default-return thunk a configurator calls only when it carries</span>
+<span class=""><span class="ln">49</span>     * no behavior of its own. Built once per method rather than once per</span>
+<span class=""><span class="ln">50</span>     * dispatch: it closes over nothing that varies, now that the double</span>
+<span class=""><span class="ln">51</span>     * is the state&#039;s own.</span>
+<span class=""><span class="ln">52</span>     *</span>
+<span class=""><span class="ln">53</span>     * @var array&lt;non-empty-string, Closure(): mixed&gt;</span>
+<span class=""><span class="ln">54</span>     */</span>
+<span class=""><span class="ln">55</span>    private array $fallbacks = [];</span>
+<span class=""><span class="ln">56</span></span>
+<span class=""><span class="ln">57</span>    /**</span>
+<span class=""><span class="ln">58</span>     * @param object                       $double              the one double this state belongs to;</span>
+<span class=""><span class="ln">59</span>     *                                                          both construction sites build it</span>
+<span class=""><span class="ln">60</span>     *                                                          first and attach the state to it,</span>
+<span class=""><span class="ln">61</span>     *                                                          so holding it here makes</span>
+<span class=""><span class="ln">62</span>     *                                                          one-state-one-double structural</span>
+<span class=""><span class="ln">63</span>     *                                                          rather than a convention</span>
+<span class=""><span class="ln">64</span>     * @param non-empty-list&lt;class-string&gt; $targets</span>
+<span class=""><span class="ln">65</span>     * @param ?list&lt;non-empty-string&gt;      $configurable        null = every doubled method</span>
+<span class=""><span class="ln">66</span>     * @param bool                         $advisesExpectations mock-flavored creation: ending</span>
+<span class=""><span class="ln">67</span>     *                                                          the test without expects() is</span>
+<span class=""><span class="ln">68</span>     *                                                          worth a notice (D-046)</span>
+<span class=""><span class="ln">69</span>     * @param DispatchStrategy             $strategy            which grammar&#039;s dispatch</span>
+<span class=""><span class="ln">70</span>     *                                                          semantics govern this double</span>
+<span class=""><span class="ln">71</span>     * @param bool                         $mergeConfigurations LatestWins-only: a matching</span>
+<span class=""><span class="ln">72</span>     *                                                          configurator with no return</span>
+<span class=""><span class="ln">73</span>     *                                                          behavior of its own falls back</span>
+<span class=""><span class="ln">74</span>     *                                                          through older matches instead of</span>
+<span class=""><span class="ln">75</span>     *                                                          fabricating a default (D-046&#039;s</span>
+<span class=""><span class="ln">76</span>     *                                                          &quot;latest wins&quot; stays the literal</span>
+<span class=""><span class="ln">77</span>     *                                                          default; see DoubleSpecification)</span>
+<span class=""><span class="ln">78</span>     * @param bool                         $prefixArgumentMatching with() constraints match as a</span>
+<span class=""><span class="ln">79</span>     *                                                             positional prefix, not exact</span>
+<span class=""><span class="ln">80</span>     *                                                             arity — see DoubleSpecification</span>
+<span class=""><span class="ln">81</span>     */</span>
+<span class=""><span class="ln">82</span>    public function __construct(</span>
+<span class="covered"><span class="ln">83</span>        private readonly object $double,</span>
+<span class="covered"><span class="ln">84</span>        private readonly array $targets,</span>
+<span class="covered"><span class="ln">85</span>        private readonly ReturnDefaults $defaults,</span>
+<span class="covered"><span class="ln">86</span>        private readonly ?array $configurable = null,</span>
+<span class="covered"><span class="ln">87</span>        private readonly bool $autoReturnValues = true,</span>
+<span class="covered"><span class="ln">88</span>        private readonly bool $advisesExpectations = false,</span>
+<span class="covered"><span class="ln">89</span>        private readonly DispatchStrategy $strategy = DispatchStrategy::LatestWins,</span>
+<span class="covered"><span class="ln">90</span>        private readonly bool $mergeConfigurations = false,</span>
+<span class="covered"><span class="ln">91</span>        private readonly bool $prefixArgumentMatching = false,</span>
+<span class="covered"><span class="ln">92</span>    ) {}</span>
+<span class=""><span class="ln">93</span></span>
+<span class=""><span class="ln">94</span>    /**</span>
+<span class=""><span class="ln">95</span>     * @return non-empty-list&lt;class-string&gt;</span>
+<span class=""><span class="ln">96</span>     */</span>
+<span class=""><span class="ln">97</span>    public function targets(): array</span>
+<span class=""><span class="ln">98</span>    {</span>
+<span class="missed"><span class="ln">99</span>        return $this-&gt;targets;</span>
+<span class=""><span class="ln">100</span>    }</span>
+<span class=""><span class="ln">101</span></span>
+<span class=""><span class="ln">102</span>    /**</span>
+<span class=""><span class="ln">103</span>     * @return ?class-string the doubled type, when this double is a</span>
+<span class=""><span class="ln">104</span>     *                       mock that ended up with no expectations</span>
+<span class=""><span class="ln">105</span>     */</span>
+<span class=""><span class="ln">106</span>    public function expectationlessMockTarget(): ?string</span>
+<span class=""><span class="ln">107</span>    {</span>
+<span class="covered"><span class="ln">108</span>        if (!$this-&gt;advisesExpectations) {</span>
+<span class="covered"><span class="ln">109</span>            return null;</span>
+<span class=""><span class="ln">110</span>        }</span>
+<span class=""><span class="ln">111</span></span>
+<span class="covered"><span class="ln">112</span>        foreach ($this-&gt;configurators as $configurator) {</span>
+<span class="covered"><span class="ln">113</span>            if ($configurator-&gt;isExpectation()) {</span>
+<span class="covered"><span class="ln">114</span>                return null;</span>
+<span class=""><span class="ln">115</span>            }</span>
+<span class=""><span class="ln">116</span>        }</span>
+<span class=""><span class="ln">117</span></span>
+<span class="missed"><span class="ln">118</span>        return $this-&gt;targets[0];</span>
+<span class=""><span class="ln">119</span>    }</span>
+<span class=""><span class="ln">120</span></span>
+<span class=""><span class="ln">121</span>    /**</span>
+<span class=""><span class="ln">122</span>     * @param non-empty-string $method</span>
+<span class=""><span class="ln">123</span>     */</span>
+<span class=""><span class="ln">124</span>    public function configureMethod(string $method): MethodConfigurator</span>
+<span class=""><span class="ln">125</span>    {</span>
+<span class="covered"><span class="ln">126</span>        $configurator = (new MethodConfigurator(null, $this-&gt;configurable, $this-&gt;prefixArgumentMatching))-&gt;method($method);</span>
+<span class=""><span class="ln">127</span></span>
+<span class="covered"><span class="ln">128</span>        $this-&gt;configurators[] = $configurator;</span>
+<span class=""><span class="ln">129</span></span>
+<span class="covered"><span class="ln">130</span>        return $configurator;</span>
+<span class=""><span class="ln">131</span>    }</span>
+<span class=""><span class="ln">132</span></span>
+<span class=""><span class="ln">133</span>    public function expectInvocation(InvocationCount $count): MethodConfigurator</span>
+<span class=""><span class="ln">134</span>    {</span>
+<span class="covered"><span class="ln">135</span>        $configurator = new MethodConfigurator($count, $this-&gt;configurable, $this-&gt;prefixArgumentMatching);</span>
+<span class=""><span class="ln">136</span></span>
+<span class="covered"><span class="ln">137</span>        $this-&gt;configurators[] = $configurator;</span>
+<span class=""><span class="ln">138</span></span>
+<span class="covered"><span class="ln">139</span>        return $configurator;</span>
+<span class=""><span class="ln">140</span>    }</span>
+<span class=""><span class="ln">141</span></span>
+<span class=""><span class="ln">142</span>    /**</span>
+<span class=""><span class="ln">143</span>     * The state of a double, or a refusal naming what was called.</span>
+<span class=""><span class="ln">144</span>     *</span>
+<span class=""><span class="ln">145</span>     * Generated code holds its state in a nullable property, because</span>
+<span class=""><span class="ln">146</span>     * the double is instantiated first and given its state after. Every</span>
+<span class=""><span class="ln">147</span>     * generated method and every method of the configuration surface</span>
+<span class=""><span class="ln">148</span>     * therefore dereferences a nullable, which is exactly what the</span>
+<span class=""><span class="ln">149</span>     * generated-code type tier reported — 39 times, all true. Left</span>
+<span class=""><span class="ln">150</span>     * alone, a double built outside TestDoubles answers a method call</span>
+<span class=""><span class="ln">151</span>     * with &quot;Call to a member function dispatch() on null&quot;, which names</span>
+<span class=""><span class="ln">152</span>     * neither the double nor the method.</span>
+<span class=""><span class="ln">153</span>     */</span>
+<span class=""><span class="ln">154</span>    public static function of(?self $state, object $double, string $method): self</span>
+<span class=""><span class="ln">155</span>    {</span>
+<span class="covered"><span class="ln">156</span>        return $state ?? throw new DoubleConfigurationException(sprintf(</span>
+<span class=""><span class="ln">157</span>            &#039;%s::%s() was called on a double with no state attached. Doubles are created through &#039;</span>
+<span class=""><span class="ln">158</span>                . &#039;TestDoubles, which attaches it; one built any other way cannot answer anything.&#039;,</span>
+<span class="missed"><span class="ln">159</span>            $double::class,</span>
+<span class="covered"><span class="ln">160</span>            $method,</span>
+<span class=""><span class="ln">161</span>        ));</span>
+<span class=""><span class="ln">162</span>    }</span>
+<span class=""><span class="ln">163</span></span>
+<span class=""><span class="ln">164</span>    /**</span>
+<span class=""><span class="ln">165</span>     * @param non-empty-string $method</span>
+<span class=""><span class="ln">166</span>     * @param list&lt;mixed&gt;      $arguments</span>
+<span class=""><span class="ln">167</span>     */</span>
+<span class=""><span class="ln">168</span>    public function dispatch(object $double, string $method, array $arguments): mixed</span>
+<span class=""><span class="ln">169</span>    {</span>
+<span class="covered"><span class="ln">170</span>        $this-&gt;calls[] = [$method, $arguments];</span>
+<span class=""><span class="ln">171</span></span>
+<span class="covered"><span class="ln">172</span>        if ($this-&gt;strategy === DispatchStrategy::FirstDeclared) {</span>
+<span class="missed"><span class="ln">173</span>            return $this-&gt;dispatchFirstDeclared($double, $method, $arguments);</span>
+<span class=""><span class="ln">174</span>        }</span>
+<span class=""><span class="ln">175</span></span>
+<span class=""><span class="ln">176</span>        // Latest configuration wins, so the walk is newest-first.</span>
+<span class=""><span class="ln">177</span>        //</span>
+<span class=""><span class="ln">178</span>        // Without merging — the default — only the newest match is ever</span>
+<span class=""><span class="ln">179</span>        // used, so the loop stops there. It used to array_reverse() the</span>
+<span class=""><span class="ln">180</span>        // whole list and collect every match into a second array, two</span>
+<span class=""><span class="ln">181</span>        // allocations per call to read one element, and every later</span>
+<span class=""><span class="ln">182</span>        // configurator was asked appliesTo() for an answer nobody read.</span>
+<span class="covered"><span class="ln">183</span>        if (!$this-&gt;mergeConfigurations) {</span>
+<span class="missed"><span class="ln">184</span>            for ($index = count($this-&gt;configurators) - 1; $index &gt;= 0; $index--) {</span>
+<span class="missed"><span class="ln">185</span>                $configurator = $this-&gt;configurators[$index];</span>
+<span class=""><span class="ln">186</span></span>
+<span class="missed"><span class="ln">187</span>                if (!$configurator-&gt;appliesTo($method, $arguments)) {</span>
+<span class="missed"><span class="ln">188</span>                    continue;</span>
+<span class=""><span class="ln">189</span>                }</span>
+<span class=""><span class="ln">190</span></span>
+<span class="missed"><span class="ln">191</span>                $configurator-&gt;registerInvocation();</span>
+<span class=""><span class="ln">192</span></span>
+<span class="missed"><span class="ln">193</span>                return $configurator-&gt;invoke(</span>
+<span class="missed"><span class="ln">194</span>                    $double,</span>
+<span class=""><span class="ln">195</span>                    $arguments,</span>
+<span class="missed"><span class="ln">196</span>                    $this-&gt;fallbackFor($method),</span>
+<span class=""><span class="ln">197</span>                );</span>
+<span class=""><span class="ln">198</span>            }</span>
+<span class=""><span class="ln">199</span></span>
+<span class="missed"><span class="ln">200</span>            return $this-&gt;defaultReturn($double, $method);</span>
+<span class=""><span class="ln">201</span>        }</span>
+<span class=""><span class="ln">202</span></span>
+<span class=""><span class="ln">203</span>        // Merging reads every match, so it still collects them all,</span>
+<span class=""><span class="ln">204</span>        // newest-first. ✓ Measured: an index loop over the same list is</span>
+<span class=""><span class="ln">205</span>        // slower here than the reverse-and-walk, so this branch keeps</span>
+<span class=""><span class="ln">206</span>        // what it had.</span>
+<span class="covered"><span class="ln">207</span>        $matching = [];</span>
+<span class=""><span class="ln">208</span></span>
+<span class="covered"><span class="ln">209</span>        foreach (array_reverse($this-&gt;configurators) as $configurator) {</span>
+<span class="covered"><span class="ln">210</span>            if ($configurator-&gt;appliesTo($method, $arguments)) {</span>
+<span class="covered"><span class="ln">211</span>                $matching[] = $configurator;</span>
+<span class=""><span class="ln">212</span>            }</span>
+<span class=""><span class="ln">213</span>        }</span>
+<span class=""><span class="ln">214</span></span>
+<span class="covered"><span class="ln">215</span>        if ($matching === []) {</span>
+<span class="covered"><span class="ln">216</span>            return $this-&gt;defaultReturn($double, $method);</span>
+<span class=""><span class="ln">217</span>        }</span>
+<span class=""><span class="ln">218</span></span>
+<span class=""><span class="ln">219</span>        // Real-world code commonly layers a bare expects()-&gt;method()</span>
+<span class=""><span class="ln">220</span>        // invocation-count expectation over a return value configured</span>
+<span class=""><span class="ln">221</span>        // earlier via a shared helper. Every matching configurator still</span>
+<span class=""><span class="ln">222</span>        // tracks its own count (each is independent, spec-accurate), but</span>
+<span class=""><span class="ln">223</span>        // the return value comes from the newest one that actually</span>
+<span class=""><span class="ln">224</span>        // carries a behavior — not from an emptier configurator that</span>
+<span class=""><span class="ln">225</span>        // would otherwise shadow it.</span>
+<span class="covered"><span class="ln">226</span>        foreach ($matching as $configurator) {</span>
+<span class="covered"><span class="ln">227</span>            $configurator-&gt;registerInvocation();</span>
+<span class=""><span class="ln">228</span>        }</span>
+<span class=""><span class="ln">229</span></span>
+<span class="covered"><span class="ln">230</span>        foreach ($matching as $configurator) {</span>
+<span class="covered"><span class="ln">231</span>            if ($configurator-&gt;hasBehavior()) {</span>
+<span class="covered"><span class="ln">232</span>                return $configurator-&gt;invoke(</span>
+<span class="covered"><span class="ln">233</span>                    $double,</span>
+<span class=""><span class="ln">234</span>                    $arguments,</span>
+<span class="covered"><span class="ln">235</span>                    $this-&gt;fallbackFor($method),</span>
+<span class=""><span class="ln">236</span>                );</span>
+<span class=""><span class="ln">237</span>            }</span>
+<span class=""><span class="ln">238</span>        }</span>
+<span class=""><span class="ln">239</span></span>
+<span class="missed"><span class="ln">240</span>        return $this-&gt;defaultReturn($double, $method);</span>
+<span class=""><span class="ln">241</span>    }</span>
+<span class=""><span class="ln">242</span></span>
+<span class=""><span class="ln">243</span>    /**</span>
+<span class=""><span class="ln">244</span>     * The Mockery grammar&#039;s dispatch, oracle-pinned (D-060 /</span>
+<span class=""><span class="ln">245</span>     * spec/mockery-api.md §3): first-declared expectation wins, a</span>
+<span class=""><span class="ln">246</span>     * count-exhausted one falls through to the next match, an</span>
+<span class=""><span class="ln">247</span>     * exhausted one with no successor still handles the call (its</span>
+<span class=""><span class="ln">248</span>     * violation settles at close, never at call time), and an</span>
+<span class=""><span class="ln">249</span>     * unmatched call is a NAMED error — unknown method vs</span>
+<span class=""><span class="ln">250</span>     * non-matching arguments are different mistakes.</span>
+<span class=""><span class="ln">251</span>     *</span>
+<span class=""><span class="ln">252</span>     * @param non-empty-string $method</span>
+<span class=""><span class="ln">253</span>     * @param list&lt;mixed&gt;      $arguments</span>
+<span class=""><span class="ln">254</span>     */</span>
+<span class=""><span class="ln">255</span>    private function dispatchFirstDeclared(object $double, string $method, array $arguments): mixed</span>
+<span class=""><span class="ln">256</span>    {</span>
+<span class="missed"><span class="ln">257</span>        $fallback = null;</span>
+<span class=""><span class="ln">258</span></span>
+<span class="missed"><span class="ln">259</span>        foreach ($this-&gt;configurators as $configurator) {</span>
+<span class="missed"><span class="ln">260</span>            if (!$configurator-&gt;appliesTo($method, $arguments)) {</span>
+<span class="missed"><span class="ln">261</span>                continue;</span>
+<span class=""><span class="ln">262</span>            }</span>
+<span class=""><span class="ln">263</span></span>
+<span class="missed"><span class="ln">264</span>            if (!$configurator-&gt;exhausted()) {</span>
+<span class="missed"><span class="ln">265</span>                $configurator-&gt;registerInvocation(failFast: false);</span>
+<span class=""><span class="ln">266</span></span>
+<span class="missed"><span class="ln">267</span>                return $configurator-&gt;invoke($double, $arguments, $this-&gt;fallbackFor($method));</span>
+<span class=""><span class="ln">268</span>            }</span>
+<span class=""><span class="ln">269</span></span>
+<span class="missed"><span class="ln">270</span>            $fallback ??= $configurator;</span>
+<span class=""><span class="ln">271</span>        }</span>
+<span class=""><span class="ln">272</span></span>
+<span class="missed"><span class="ln">273</span>        if ($fallback instanceof MethodConfigurator) {</span>
+<span class="missed"><span class="ln">274</span>            $fallback-&gt;registerInvocation(failFast: false);</span>
+<span class=""><span class="ln">275</span></span>
+<span class="missed"><span class="ln">276</span>            return $fallback-&gt;invoke($double, $arguments, $this-&gt;fallbackFor($method));</span>
+<span class=""><span class="ln">277</span>        }</span>
+<span class=""><span class="ln">278</span></span>
+<span class="missed"><span class="ln">279</span>        foreach ($this-&gt;configurators as $configurator) {</span>
+<span class="missed"><span class="ln">280</span>            if ($configurator-&gt;methodName() === $method) {</span>
+<span class="missed"><span class="ln">281</span>                throw new Mockery\NoMatchingExpectationException(sprintf(</span>
+<span class=""><span class="ln">282</span>                    &#039;No matching handler found for %s::%s(). Either the method was unexpected or its arguments matched no expected argument list for this method.&#039;,</span>
+<span class="missed"><span class="ln">283</span>                    $this-&gt;targets[0],</span>
+<span class="missed"><span class="ln">284</span>                    $method,</span>
+<span class=""><span class="ln">285</span>                ));</span>
+<span class=""><span class="ln">286</span>            }</span>
+<span class=""><span class="ln">287</span>        }</span>
+<span class=""><span class="ln">288</span></span>
+<span class="missed"><span class="ln">289</span>        throw new Mockery\MockeryBadMethodCallException(sprintf(</span>
+<span class=""><span class="ln">290</span>            &#039;Method %s::%s() does not exist on this mock object.&#039;,</span>
+<span class="missed"><span class="ln">291</span>            $this-&gt;targets[0],</span>
+<span class="missed"><span class="ln">292</span>            $method,</span>
+<span class=""><span class="ln">293</span>        ));</span>
+<span class=""><span class="ln">294</span>    }</span>
+<span class=""><span class="ln">295</span></span>
+<span class=""><span class="ln">296</span>    /**</span>
+<span class=""><span class="ln">297</span>     * @throws \LucianoPereira\Crucible\Assert\AssertionFailedError</span>
+<span class=""><span class="ln">298</span>     */</span>
+<span class=""><span class="ln">299</span>    public function verifyExpectations(): void</span>
+<span class=""><span class="ln">300</span>    {</span>
+<span class="covered"><span class="ln">301</span>        foreach ($this-&gt;configurators as $configurator) {</span>
+<span class="covered"><span class="ln">302</span>            $configurator-&gt;verify();</span>
+<span class=""><span class="ln">303</span>        }</span>
+<span class=""><span class="ln">304</span>    }</span>
+<span class=""><span class="ln">305</span></span>
+<span class=""><span class="ln">306</span>    /**</span>
+<span class=""><span class="ln">307</span>     * @param non-empty-string $method</span>
+<span class=""><span class="ln">308</span>     *</span>
+<span class=""><span class="ln">309</span>     * @return list&lt;array{non-empty-string, list&lt;mixed&gt;}&gt;</span>
+<span class=""><span class="ln">310</span>     */</span>
+<span class=""><span class="ln">311</span>    public function callsTo(string $method): array</span>
+<span class=""><span class="ln">312</span>    {</span>
+<span class="missed"><span class="ln">313</span>        $matching = [];</span>
+<span class=""><span class="ln">314</span></span>
+<span class="missed"><span class="ln">315</span>        foreach ($this-&gt;calls as $call) {</span>
+<span class="missed"><span class="ln">316</span>            if ($call[0] === $method) {</span>
+<span class="missed"><span class="ln">317</span>                $matching[] = $call;</span>
+<span class=""><span class="ln">318</span>            }</span>
+<span class=""><span class="ln">319</span>        }</span>
+<span class=""><span class="ln">320</span></span>
+<span class="missed"><span class="ln">321</span>        return $matching;</span>
+<span class=""><span class="ln">322</span>    }</span>
+<span class=""><span class="ln">323</span></span>
+<span class=""><span class="ln">324</span>    /**</span>
+<span class=""><span class="ln">325</span>     * @param non-empty-string $method</span>
+<span class=""><span class="ln">326</span>     */</span>
+<span class=""><span class="ln">327</span>    private function defaultReturn(object $double, string $method): mixed</span>
+<span class=""><span class="ln">328</span>    {</span>
+<span class="covered"><span class="ln">329</span>        if (!$this-&gt;autoReturnValues) {</span>
+<span class="missed"><span class="ln">330</span>            throw new DoubleConfigurationException(sprintf(</span>
+<span class=""><span class="ln">331</span>                &#039;%s::%s() has no configured return value and automatic return value generation is disabled.&#039;,</span>
+<span class="missed"><span class="ln">332</span>                $this-&gt;targets[0],</span>
+<span class="missed"><span class="ln">333</span>                $method,</span>
+<span class=""><span class="ln">334</span>            ));</span>
+<span class=""><span class="ln">335</span>        }</span>
+<span class=""><span class="ln">336</span></span>
+<span class=""><span class="ln">337</span>        // Memoised per method, and the TYPE rather than the</span>
+<span class=""><span class="ln">338</span>        // ReflectionMethod, because the type is all this reads. A fresh</span>
+<span class=""><span class="ln">339</span>        // ReflectionMethod per dispatch is why a double with ZERO</span>
+<span class=""><span class="ln">340</span>        // configurators already cost many times a plain object.</span>
+<span class=""><span class="ln">341</span>        // array_key_exists, not ??=: a method with no declared return</span>
+<span class=""><span class="ln">342</span>        // type resolves to null and must not be resolved again.</span>
+<span class="covered"><span class="ln">343</span>        if (!array_key_exists($method, $this-&gt;returnTypes)) {</span>
+<span class="covered"><span class="ln">344</span>            $reflection = $this-&gt;reflectionOf($method);</span>
+<span class=""><span class="ln">345</span></span>
+<span class=""><span class="ln">346</span>            // Tentative return types are invisible to getReturnType() —</span>
+<span class=""><span class="ln">347</span>            // Countable::count(): int reads as null there. The generated</span>
+<span class=""><span class="ln">348</span>            // SIGNATURE already falls back (Generator::methodCode), so</span>
+<span class=""><span class="ln">349</span>            // without the same fallback here the double promises int and</span>
+<span class=""><span class="ln">350</span>            // answers null: ✓ measured, doubling Countable, ArrayAccess or</span>
+<span class=""><span class="ln">351</span>            // Iterator produced a TypeError on the first call.</span>
+<span class="covered"><span class="ln">352</span>            $this-&gt;returnTypes[$method] = $reflection?-&gt;getReturnType() ?? $reflection?-&gt;getTentativeReturnType();</span>
+<span class=""><span class="ln">353</span>        }</span>
+<span class=""><span class="ln">354</span></span>
+<span class="covered"><span class="ln">355</span>        return $this-&gt;defaults-&gt;forType($this-&gt;returnTypes[$method], $double);</span>
+<span class=""><span class="ln">356</span>    }</span>
+<span class=""><span class="ln">357</span></span>
+<span class=""><span class="ln">358</span>    /**</span>
+<span class=""><span class="ln">359</span>     * @param non-empty-string $method</span>
+<span class=""><span class="ln">360</span>     *</span>
+<span class=""><span class="ln">361</span>     * @return Closure(): mixed</span>
+<span class=""><span class="ln">362</span>     */</span>
+<span class=""><span class="ln">363</span>    private function fallbackFor(string $method): Closure</span>
+<span class=""><span class="ln">364</span>    {</span>
+<span class="covered"><span class="ln">365</span>        return $this-&gt;fallbacks[$method] ??= fn(): mixed =&gt; $this-&gt;defaultReturn($this-&gt;double, $method);</span>
+<span class=""><span class="ln">366</span>    }</span>
+<span class=""><span class="ln">367</span></span>
+<span class=""><span class="ln">368</span>    /**</span>
+<span class=""><span class="ln">369</span>     * @param non-empty-string $method</span>
+<span class=""><span class="ln">370</span>     */</span>
+<span class=""><span class="ln">371</span>    private function reflectionOf(string $method): ?ReflectionMethod</span>
+<span class=""><span class="ln">372</span>    {</span>
+<span class="covered"><span class="ln">373</span>        foreach ($this-&gt;targets as $target) {</span>
+<span class="covered"><span class="ln">374</span>            if (method_exists($target, $method)) {</span>
+<span class="covered"><span class="ln">375</span>                return new ReflectionMethod($target, $method);</span>
+<span class=""><span class="ln">376</span>            }</span>
+<span class=""><span class="ln">377</span>        }</span>
+<span class=""><span class="ln">378</span></span>
+<span class=""><span class="ln">379</span>        // Mockery-surface doubles accept methods no target declares</span>
+<span class=""><span class="ln">380</span>        // (anonymous mocks, allowMockingNonExistentMethods) — untyped,</span>
+<span class=""><span class="ln">381</span>        // so the default is null.</span>
+<span class="missed"><span class="ln">382</span>        return null;</span>
+<span class=""><span class="ln">383</span>    }</span>
+<span class=""><span class="ln">384</span>}</span>
+<span class="missed"><span class="ln">385</span></span>
+</pre>
+</body>
+</html>

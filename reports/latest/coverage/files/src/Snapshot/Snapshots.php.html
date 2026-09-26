@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Snapshot/Snapshots.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/Snapshot/Snapshots.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Snapshot;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use LucianoPereira\Crucible\Assert\Assert;</span>
+<span class=""><span class="ln">14</span>use LucianoPereira\Crucible\Assert\Exporter;</span>
+<span class=""><span class="ln">15</span>use LucianoPereira\Crucible\Exceptions\ConfigurationException;</span>
+<span class=""><span class="ln">16</span>use LucianoPereira\Crucible\Filesystem\WorkingDirectory;</span>
+<span class=""><span class="ln">17</span>use LucianoPereira\Crucible\Test\TestId;</span>
+<span class=""><span class="ln">18</span></span>
+<span class=""><span class="ln">19</span>use function base64_encode;</span>
+<span class=""><span class="ln">20</span>use function file_get_contents;</span>
+<span class=""><span class="ln">21</span>use function file_put_contents;</span>
+<span class=""><span class="ln">22</span>use function hash;</span>
+<span class=""><span class="ln">23</span>use function htmlspecialchars;</span>
+<span class=""><span class="ln">24</span>use function is_dir;</span>
+<span class=""><span class="ln">25</span>use function is_file;</span>
+<span class=""><span class="ln">26</span>use function mkdir;</span>
+<span class=""><span class="ln">27</span>use function preg_replace;</span>
+<span class=""><span class="ln">28</span>use function sprintf;</span>
+<span class=""><span class="ln">29</span>use function substr;</span>
+<span class=""><span class="ln">30</span></span>
+<span class=""><span class="ln">31</span>use const ENT_QUOTES;</span>
+<span class=""><span class="ln">32</span></span>
+<span class=""><span class="ln">33</span>/**</span>
+<span class=""><span class="ln">34</span> * The snapshot engine (D-042), dialect-neutral like everything else:</span>
+<span class=""><span class="ln">35</span> * one ambient context per test attempt (the PropertyContext pattern —</span>
+<span class=""><span class="ln">36</span> * a test body cannot be handed parameters), one canonical serializer</span>
+<span class=""><span class="ln">37</span> * (the Exporter, which D-012 built with snapshots already in mind),</span>
+<span class=""><span class="ln">38</span> * every dialect one thin call away — assertMatchesSnapshot() in</span>
+<span class=""><span class="ln">39</span> * TestCase, -&gt;toMatchSnapshot() in pest/crucible, both callable from</span>
+<span class=""><span class="ln">40</span> * doctests.</span>
+<span class=""><span class="ln">41</span> *</span>
+<span class=""><span class="ln">42</span> * The behavior is deterministic and explicit, by principle: a missing</span>
+<span class=""><span class="ln">43</span> * snapshot FAILS and names the flag — snapshots are never invented as</span>
+<span class=""><span class="ln">44</span> * a side effect of a normal run — and `--update-snapshots` is the one</span>
+<span class=""><span class="ln">45</span> * way values get recorded or replaced.</span>
+<span class=""><span class="ln">46</span> */</span>
+<span class=""><span class="ln">47</span>final class Snapshots</span>
+<span class=""><span class="ln">48</span>{</span>
+<span class=""><span class="ln">49</span>    private static ?TestId $test = null;</span>
+<span class=""><span class="ln">50</span></span>
+<span class=""><span class="ln">51</span>    private static bool $update = false;</span>
+<span class=""><span class="ln">52</span></span>
+<span class=""><span class="ln">53</span>    /** whether this process may rewrite test source (D-076) — sequential runs only, never a worker */</span>
+<span class=""><span class="ln">54</span>    private static bool $inlineRewrite = false;</span>
+<span class=""><span class="ln">55</span></span>
+<span class=""><span class="ln">56</span>    private static ?SnapshotRepository $repository = null;</span>
+<span class=""><span class="ln">57</span></span>
+<span class=""><span class="ln">58</span>    private static ?WorkingDirectory $workingDirectory = null;</span>
+<span class=""><span class="ln">59</span>    /**</span>
+<span class=""><span class="ln">60</span>     * The configured directory, or the &#039;/&#039; the property used to default</span>
+<span class=""><span class="ln">61</span>     * to. A static property cannot hold a `new`, so the default moved</span>
+<span class=""><span class="ln">62</span>     * here rather than changing what an unconfigured read answers.</span>
+<span class=""><span class="ln">63</span>     */</span>
+<span class=""><span class="ln">64</span>    private static function workingDirectory(): WorkingDirectory</span>
+<span class=""><span class="ln">65</span>    {</span>
+<span class="covered"><span class="ln">66</span>        return self::$workingDirectory ??= new WorkingDirectory(&#039;/&#039;);</span>
+<span class=""><span class="ln">67</span>    }</span>
+<span class=""><span class="ln">68</span></span>
+<span class=""><span class="ln">69</span></span>
+<span class=""><span class="ln">70</span>    private static int $counter = 0;</span>
+<span class=""><span class="ln">71</span></span>
+<span class=""><span class="ln">72</span>    private static int $created = 0;</span>
+<span class=""><span class="ln">73</span></span>
+<span class=""><span class="ln">74</span>    private static int $updated = 0;</span>
+<span class=""><span class="ln">75</span></span>
+<span class=""><span class="ln">76</span>    /** @var list&lt;non-empty-string&gt; */</span>
+<span class=""><span class="ln">77</span>    private static array $visited = [];</span>
+<span class=""><span class="ln">78</span></span>
+<span class=""><span class="ln">79</span>    /** @var list&lt;non-empty-string&gt; */</span>
+<span class=""><span class="ln">80</span>    private static array $lastVisited = [];</span>
+<span class=""><span class="ln">81</span></span>
+<span class=""><span class="ln">82</span>    public static function begin(TestId $test, bool $update, SnapshotRepository $repository, WorkingDirectory $workingDirectory, bool $inlineRewrite = false): void</span>
+<span class=""><span class="ln">83</span>    {</span>
+<span class="covered"><span class="ln">84</span>        self::$test             = $test;</span>
+<span class="covered"><span class="ln">85</span>        self::$update           = $update;</span>
+<span class="covered"><span class="ln">86</span>        self::$inlineRewrite    = $inlineRewrite;</span>
+<span class="covered"><span class="ln">87</span>        self::$repository       = $repository;</span>
+<span class="covered"><span class="ln">88</span>        self::$workingDirectory = $workingDirectory;</span>
+<span class="covered"><span class="ln">89</span>        self::$counter          = 0;</span>
+<span class="covered"><span class="ln">90</span>        self::$created          = 0;</span>
+<span class="covered"><span class="ln">91</span>        self::$updated          = 0;</span>
+<span class="covered"><span class="ln">92</span>        self::$visited          = [];</span>
+<span class=""><span class="ln">93</span>    }</span>
+<span class=""><span class="ln">94</span></span>
+<span class=""><span class="ln">95</span>    /** @var ?array{created: int, updated: int} */</span>
+<span class=""><span class="ln">96</span>    private static ?array $lastRecorded = null;</span>
+<span class=""><span class="ln">97</span></span>
+<span class=""><span class="ln">98</span>    /**</span>
+<span class=""><span class="ln">99</span>     * What the just-ended attempt recorded under --update-snapshots —</span>
+<span class=""><span class="ln">100</span>     * the console counts (D-066). Null outside update mode / when</span>
+<span class=""><span class="ln">101</span>     * nothing changed, so the event payload stays default-omitted.</span>
+<span class=""><span class="ln">102</span>     * Stashed at end() by the ENDING context: a nested harness run</span>
+<span class=""><span class="ln">103</span>     * (tests that run their own inner runner, the self-hosted suite&#039;s</span>
+<span class=""><span class="ln">104</span>     * own pattern) cannot leak its counts onto the outer attempt —</span>
+<span class=""><span class="ln">105</span>     * the outer end() overwrites the stash from its own state.</span>
+<span class=""><span class="ln">106</span>     *</span>
+<span class=""><span class="ln">107</span>     * @return ?array{created: int, updated: int}</span>
+<span class=""><span class="ln">108</span>     */</span>
+<span class=""><span class="ln">109</span>    public static function recorded(): ?array</span>
+<span class=""><span class="ln">110</span>    {</span>
+<span class="covered"><span class="ln">111</span>        return self::$lastRecorded;</span>
+<span class=""><span class="ln">112</span>    }</span>
+<span class=""><span class="ln">113</span></span>
+<span class=""><span class="ln">114</span>    public static function end(): void</span>
+<span class=""><span class="ln">115</span>    {</span>
+<span class="covered"><span class="ln">116</span>        self::$repository?-&gt;flush();</span>
+<span class=""><span class="ln">117</span></span>
+<span class="covered"><span class="ln">118</span>        self::$lastRecorded = self::$update &amp;&amp; (self::$created &gt; 0 || self::$updated &gt; 0)</span>
+<span class="covered"><span class="ln">119</span>            ? [&#039;created&#039; =&gt; self::$created, &#039;updated&#039; =&gt; self::$updated]</span>
+<span class="covered"><span class="ln">120</span>            : null;</span>
+<span class=""><span class="ln">121</span></span>
+<span class="covered"><span class="ln">122</span>        self::$lastVisited = self::$visited;</span>
+<span class=""><span class="ln">123</span></span>
+<span class="covered"><span class="ln">124</span>        self::$test          = null;</span>
+<span class="covered"><span class="ln">125</span>        self::$update        = false;</span>
+<span class="covered"><span class="ln">126</span>        self::$inlineRewrite = false;</span>
+<span class="covered"><span class="ln">127</span>        self::$repository    = null;</span>
+<span class="covered"><span class="ln">128</span>        self::$counter       = 0;</span>
+<span class="covered"><span class="ln">129</span>        self::$created       = 0;</span>
+<span class="covered"><span class="ln">130</span>        self::$updated       = 0;</span>
+<span class="covered"><span class="ln">131</span>        self::$visited       = [];</span>
+<span class=""><span class="ln">132</span>    }</span>
+<span class=""><span class="ln">133</span></span>
+<span class=""><span class="ln">134</span>    /**</span>
+<span class=""><span class="ln">135</span>     * The snapshot keys the just-ended attempt touched — what the</span>
+<span class=""><span class="ln">136</span>     * obsolete-snapshot pruner (D-071) unions across the run to know</span>
+<span class=""><span class="ln">137</span>     * which stored entries are still alive. Same stash-at-end rule as</span>
+<span class=""><span class="ln">138</span>     * recorded(): the ending context overwrites, so a nested harness</span>
+<span class=""><span class="ln">139</span>     * run cannot leak its keys onto the outer attempt.</span>
+<span class=""><span class="ln">140</span>     *</span>
+<span class=""><span class="ln">141</span>     * @return list&lt;non-empty-string&gt;</span>
+<span class=""><span class="ln">142</span>     */</span>
+<span class=""><span class="ln">143</span>    public static function visited(): array</span>
+<span class=""><span class="ln">144</span>    {</span>
+<span class="covered"><span class="ln">145</span>        return self::$lastVisited;</span>
+<span class=""><span class="ln">146</span>    }</span>
+<span class=""><span class="ln">147</span></span>
+<span class=""><span class="ln">148</span>    /**</span>
+<span class=""><span class="ln">149</span>     * The one snapshot assertion. Compares the exported value with</span>
+<span class=""><span class="ln">150</span>     * the stored entry; in update mode it records instead. Multiple</span>
+<span class=""><span class="ln">151</span>     * calls in one test number themselves; $name pins a stable key.</span>
+<span class=""><span class="ln">152</span>     *</span>
+<span class=""><span class="ln">153</span>     * @param ?non-empty-string $name</span>
+<span class=""><span class="ln">154</span>     */</span>
+<span class=""><span class="ln">155</span>    public static function match(mixed $value, ?string $name = null): void</span>
+<span class=""><span class="ln">156</span>    {</span>
+<span class="covered"><span class="ln">157</span>        [$test, $repository, $key] = self::context($name);</span>
+<span class=""><span class="ln">158</span></span>
+<span class="covered"><span class="ln">159</span>        $rendered = Exporter::export($value);</span>
+<span class="covered"><span class="ln">160</span>        $file     = SnapshotRepository::pathFor(self::workingDirectory(), $test-&gt;file);</span>
+<span class="covered"><span class="ln">161</span>        $stored   = $repository-&gt;get($file, $key);</span>
+<span class=""><span class="ln">162</span></span>
+<span class="covered"><span class="ln">163</span>        if (self::$update) {</span>
+<span class="covered"><span class="ln">164</span>            if ($stored === null) {</span>
+<span class="covered"><span class="ln">165</span>                self::$created++;</span>
+<span class="covered"><span class="ln">166</span>                $repository-&gt;put($file, $key, $rendered);</span>
+<span class="covered"><span class="ln">167</span>            } elseif ($stored !== $rendered) {</span>
+<span class="covered"><span class="ln">168</span>                self::$updated++;</span>
+<span class="covered"><span class="ln">169</span>                $repository-&gt;put($file, $key, $rendered);</span>
+<span class=""><span class="ln">170</span>            }</span>
+<span class=""><span class="ln">171</span></span>
+<span class="covered"><span class="ln">172</span>            Assert::countSatisfiedAssertion(); // recording is the assertion</span>
+<span class=""><span class="ln">173</span></span>
+<span class="covered"><span class="ln">174</span>            return;</span>
+<span class=""><span class="ln">175</span>        }</span>
+<span class=""><span class="ln">176</span></span>
+<span class="covered"><span class="ln">177</span>        if ($stored === null) {</span>
+<span class="covered"><span class="ln">178</span>            Assert::fail(sprintf(</span>
+<span class=""><span class="ln">179</span>                &#039;No snapshot recorded for &quot;%s&quot;. Run with --update-snapshots to record the current value.&#039;,</span>
+<span class="covered"><span class="ln">180</span>                $key,</span>
+<span class=""><span class="ln">181</span>            ));</span>
+<span class=""><span class="ln">182</span>        }</span>
+<span class=""><span class="ln">183</span></span>
+<span class="covered"><span class="ln">184</span>        Assert::assertSame($stored, $rendered, sprintf(</span>
+<span class=""><span class="ln">185</span>            &#039;Snapshot mismatch for &quot;%s&quot; (run --update-snapshots to accept the new value).&#039;,</span>
+<span class="covered"><span class="ln">186</span>            $key,</span>
+<span class=""><span class="ln">187</span>        ));</span>
+<span class="covered"><span class="ln">188</span>    }</span>
+<span class=""><span class="ln">189</span></span>
+<span class=""><span class="ln">190</span>    /**</span>
+<span class=""><span class="ln">191</span>     * The inline snapshot assertion (D-076): the expected value lives in</span>
+<span class=""><span class="ln">192</span>     * the test source, passed as $expected (null the first time). Same</span>
+<span class=""><span class="ln">193</span>     * explicit-recording principle as the file flavor — a missing value</span>
+<span class=""><span class="ln">194</span>     * FAILS and names the flag; `--update-snapshots` rewrites the source</span>
+<span class=""><span class="ln">195</span>     * to record or replace it, buffered and applied at run end. Recording</span>
+<span class=""><span class="ln">196</span>     * is sequential-run only; a worker cannot rewrite a shared file, so</span>
+<span class=""><span class="ln">197</span>     * it fails naming the constraint instead of racing.</span>
+<span class=""><span class="ln">198</span>     *</span>
+<span class=""><span class="ln">199</span>     * @param string $file the call site, captured by the dialect entry point (&#039;&#039; when unknown)</span>
+<span class=""><span class="ln">200</span>     */</span>
+<span class=""><span class="ln">201</span>    public static function matchInline(mixed $value, ?string $expected, string $file, int $line): void</span>
+<span class=""><span class="ln">202</span>    {</span>
+<span class="covered"><span class="ln">203</span>        if (!self::$test instanceof TestId) {</span>
+<span class="missed"><span class="ln">204</span>            throw new ConfigurationException(&#039;Snapshot assertions need the crucible runner — there is no snapshot context here.&#039;);</span>
+<span class=""><span class="ln">205</span>        }</span>
+<span class=""><span class="ln">206</span></span>
+<span class="covered"><span class="ln">207</span>        $rendered = Exporter::export($value);</span>
+<span class=""><span class="ln">208</span></span>
+<span class=""><span class="ln">209</span>        // A value already recorded in the source: compare, or replace</span>
+<span class=""><span class="ln">210</span>        // under --update-snapshots.</span>
+<span class="covered"><span class="ln">211</span>        if ($expected !== null) {</span>
+<span class="covered"><span class="ln">212</span>            if ($rendered === $expected) {</span>
+<span class="covered"><span class="ln">213</span>                Assert::countSatisfiedAssertion();</span>
+<span class=""><span class="ln">214</span></span>
+<span class="covered"><span class="ln">215</span>                return;</span>
+<span class=""><span class="ln">216</span>            }</span>
+<span class=""><span class="ln">217</span></span>
+<span class="covered"><span class="ln">218</span>            if (self::$update) {</span>
+<span class="missed"><span class="ln">219</span>                self::recordInline($file, $line, $rendered);</span>
+<span class="missed"><span class="ln">220</span>                self::$updated++;</span>
+<span class="missed"><span class="ln">221</span>                Assert::countSatisfiedAssertion();</span>
+<span class=""><span class="ln">222</span></span>
+<span class="missed"><span class="ln">223</span>                return;</span>
+<span class=""><span class="ln">224</span>            }</span>
+<span class=""><span class="ln">225</span></span>
+<span class="covered"><span class="ln">226</span>            Assert::assertSame($expected, $rendered, &#039;Inline snapshot mismatch (run --update-snapshots to accept the new value).&#039;);</span>
+<span class=""><span class="ln">227</span></span>
+<span class="missed"><span class="ln">228</span>            return;</span>
+<span class=""><span class="ln">229</span>        }</span>
+<span class=""><span class="ln">230</span></span>
+<span class=""><span class="ln">231</span>        // Nothing recorded yet.</span>
+<span class="covered"><span class="ln">232</span>        if (self::$update) {</span>
+<span class="covered"><span class="ln">233</span>            self::recordInline($file, $line, $rendered);</span>
+<span class="covered"><span class="ln">234</span>            self::$created++;</span>
+<span class="covered"><span class="ln">235</span>            Assert::countSatisfiedAssertion();</span>
+<span class=""><span class="ln">236</span></span>
+<span class="covered"><span class="ln">237</span>            return;</span>
+<span class=""><span class="ln">238</span>        }</span>
+<span class=""><span class="ln">239</span></span>
+<span class="covered"><span class="ln">240</span>        Assert::fail(&#039;No inline snapshot recorded. Run with --update-snapshots to record the current value.&#039;);</span>
+<span class=""><span class="ln">241</span>    }</span>
+<span class=""><span class="ln">242</span></span>
+<span class=""><span class="ln">243</span>    /**</span>
+<span class=""><span class="ln">244</span>     * Queue a source rewrite, or fail naming the constraint when this</span>
+<span class=""><span class="ln">245</span>     * process may not rewrite (a worker / a parallel run) or the call</span>
+<span class=""><span class="ln">246</span>     * site could not be located.</span>
+<span class=""><span class="ln">247</span>     */</span>
+<span class=""><span class="ln">248</span>    private static function recordInline(string $file, int $line, string $rendered): void</span>
+<span class=""><span class="ln">249</span>    {</span>
+<span class="covered"><span class="ln">250</span>        if (!self::$inlineRewrite) {</span>
+<span class="covered"><span class="ln">251</span>            Assert::fail(&#039;Inline snapshot recording needs a sequential run — rerun without --parallel (or process isolation) to record it.&#039;);</span>
+<span class=""><span class="ln">252</span>        }</span>
+<span class=""><span class="ln">253</span></span>
+<span class="covered"><span class="ln">254</span>        if ($file === &#039;&#039; || $line &lt;= 0) {</span>
+<span class="missed"><span class="ln">255</span>            Assert::fail(&#039;Inline snapshot recording could not locate its call site in the source.&#039;);</span>
+<span class=""><span class="ln">256</span>        }</span>
+<span class=""><span class="ln">257</span></span>
+<span class="covered"><span class="ln">258</span>        InlineSnapshotWriter::record($file, $line, $rendered);</span>
+<span class=""><span class="ln">259</span>    }</span>
+<span class=""><span class="ln">260</span></span>
+<span class=""><span class="ln">261</span>    /**</span>
+<span class=""><span class="ln">262</span>     * The screenshot flavor (D-064): the .snap entry stays the</span>
+<span class=""><span class="ln">263</span>     * content hash (byte-exact, collision-proof, diffable as text),</span>
+<span class=""><span class="ln">264</span>     * while the update run also stores the reference PNG beside the</span>
+<span class=""><span class="ln">265</span>     * snapshot file — so a later mismatch can render a VISUAL diff:</span>
+<span class=""><span class="ln">266</span>     * reference, actual, and a blend-mode overlay (black where the</span>
+<span class=""><span class="ln">267</span>     * pixels agree), all in one dependency-free HTML file named by</span>
+<span class=""><span class="ln">268</span>     * the failure message. Recording stays explicit — the reference</span>
+<span class=""><span class="ln">269</span>     * image is only ever written under --update-snapshots.</span>
+<span class=""><span class="ln">270</span>     *</span>
+<span class=""><span class="ln">271</span>     * @param ?non-empty-string $name</span>
+<span class=""><span class="ln">272</span>     */</span>
+<span class=""><span class="ln">273</span>    public static function matchScreenshot(string $png, ?string $name = null): void</span>
+<span class=""><span class="ln">274</span>    {</span>
+<span class="covered"><span class="ln">275</span>        [$test, $repository, $key] = self::context($name);</span>
+<span class=""><span class="ln">276</span></span>
+<span class="covered"><span class="ln">277</span>        $rendered = &#039;png-sha256:&#039; . hash(&#039;sha256&#039;, $png);</span>
+<span class="covered"><span class="ln">278</span>        $file     = SnapshotRepository::pathFor(self::workingDirectory(), $test-&gt;file);</span>
+<span class="covered"><span class="ln">279</span>        $stored   = $repository-&gt;get($file, $key);</span>
+<span class=""><span class="ln">280</span></span>
+<span class="covered"><span class="ln">281</span>        $imageDirectory = substr($file, 0, -5); // …/__snapshots__/&lt;basename&gt; (the .snap dropped)</span>
+<span class="covered"><span class="ln">282</span>        $imageBase      = $imageDirectory . &#039;/&#039; . self::fileSafe($key);</span>
+<span class=""><span class="ln">283</span></span>
+<span class="covered"><span class="ln">284</span>        if (self::$update) {</span>
+<span class="covered"><span class="ln">285</span>            if ($stored === null) {</span>
+<span class="covered"><span class="ln">286</span>                self::$created++;</span>
+<span class="covered"><span class="ln">287</span>                $repository-&gt;put($file, $key, $rendered);</span>
+<span class="missed"><span class="ln">288</span>            } elseif ($stored !== $rendered) {</span>
+<span class="missed"><span class="ln">289</span>                self::$updated++;</span>
+<span class="missed"><span class="ln">290</span>                $repository-&gt;put($file, $key, $rendered);</span>
+<span class=""><span class="ln">291</span>            }</span>
+<span class=""><span class="ln">292</span></span>
+<span class="covered"><span class="ln">293</span>            if (!is_dir($imageDirectory)) {</span>
+<span class="covered"><span class="ln">294</span>                mkdir($imageDirectory, 0o777, true);</span>
+<span class=""><span class="ln">295</span>            }</span>
+<span class=""><span class="ln">296</span></span>
+<span class="covered"><span class="ln">297</span>            file_put_contents($imageBase . &#039;.png&#039;, $png);</span>
+<span class=""><span class="ln">298</span></span>
+<span class="covered"><span class="ln">299</span>            Assert::countSatisfiedAssertion();</span>
+<span class=""><span class="ln">300</span></span>
+<span class="covered"><span class="ln">301</span>            return;</span>
+<span class=""><span class="ln">302</span>        }</span>
+<span class=""><span class="ln">303</span></span>
+<span class="covered"><span class="ln">304</span>        if ($stored === null) {</span>
+<span class="missed"><span class="ln">305</span>            Assert::fail(sprintf(</span>
+<span class=""><span class="ln">306</span>                &#039;No screenshot snapshot recorded for &quot;%s&quot;. Run with --update-snapshots to record the current rendering.&#039;,</span>
+<span class="missed"><span class="ln">307</span>                $key,</span>
+<span class=""><span class="ln">308</span>            ));</span>
+<span class=""><span class="ln">309</span>        }</span>
+<span class=""><span class="ln">310</span></span>
+<span class="covered"><span class="ln">311</span>        if ($stored === $rendered) {</span>
+<span class="covered"><span class="ln">312</span>            Assert::countSatisfiedAssertion();</span>
+<span class=""><span class="ln">313</span></span>
+<span class="covered"><span class="ln">314</span>            return;</span>
+<span class=""><span class="ln">315</span>        }</span>
+<span class=""><span class="ln">316</span></span>
+<span class="covered"><span class="ln">317</span>        $diff = self::writeVisualDiff($imageBase, $png, $key);</span>
+<span class=""><span class="ln">318</span></span>
+<span class="covered"><span class="ln">319</span>        Assert::fail(sprintf(</span>
+<span class=""><span class="ln">320</span>            &quot;Screenshot mismatch for \&quot;%s\&quot; (run --update-snapshots to accept the new rendering).%s&quot;,</span>
+<span class=""><span class="ln">321</span>            $key,</span>
+<span class="covered"><span class="ln">322</span>            $diff !== null ? &quot;\nVisual diff: &quot; . $diff : &#039;&#039;,</span>
+<span class=""><span class="ln">323</span>        ));</span>
+<span class=""><span class="ln">324</span>    }</span>
+<span class=""><span class="ln">325</span></span>
+<span class=""><span class="ln">326</span>    /**</span>
+<span class=""><span class="ln">327</span>     * The side-by-side + difference-overlay view. Dependency-free:</span>
+<span class=""><span class="ln">328</span>     * both PNGs embed as data URIs, the overlay uses CSS</span>
+<span class=""><span class="ln">329</span>     * mix-blend-mode difference — black where the renderings agree.</span>
+<span class=""><span class="ln">330</span>     * Null when the reference image is missing (hash recorded before</span>
+<span class=""><span class="ln">331</span>     * the screenshot flavor existed).</span>
+<span class=""><span class="ln">332</span>     */</span>
+<span class=""><span class="ln">333</span>    private static function writeVisualDiff(string $imageBase, string $actual, string $key): ?string</span>
+<span class=""><span class="ln">334</span>    {</span>
+<span class="covered"><span class="ln">335</span>        $referenceFile = $imageBase . &#039;.png&#039;;</span>
+<span class=""><span class="ln">336</span></span>
+<span class="covered"><span class="ln">337</span>        if (!is_file($referenceFile)) {</span>
+<span class="missed"><span class="ln">338</span>            return null;</span>
+<span class=""><span class="ln">339</span>        }</span>
+<span class=""><span class="ln">340</span></span>
+<span class="covered"><span class="ln">341</span>        file_put_contents($imageBase . &#039;.actual.png&#039;, $actual);</span>
+<span class=""><span class="ln">342</span></span>
+<span class="covered"><span class="ln">343</span>        $reference = base64_encode((string) file_get_contents($referenceFile));</span>
+<span class="covered"><span class="ln">344</span>        $current   = base64_encode($actual);</span>
+<span class=""><span class="ln">345</span></span>
+<span class="covered"><span class="ln">346</span>        $html = sprintf(</span>
+<span class=""><span class="ln">347</span>            &lt;&lt;&lt;&#039;HTML&#039;</span>
+<span class="covered"><span class="ln">348</span>                &lt;!DOCTYPE html&gt;</span>
+<span class=""><span class="ln">349</span>                &lt;html lang=&quot;en&quot;&gt;</span>
+<span class=""><span class="ln">350</span>                &lt;head&gt;&lt;meta charset=&quot;utf-8&quot;&gt;&lt;title&gt;%1$s — screenshot diff&lt;/title&gt;&lt;style&gt;</span>
+<span class=""><span class="ln">351</span>                body { font-family: ui-monospace, monospace; margin: 2rem; background: #fff; color: #1a1a1a; }</span>
+<span class=""><span class="ln">352</span>                h1 { font-size: 1rem; } h2 { font-size: .85rem; margin: 1.5rem 0 .5rem; }</span>
+<span class=""><span class="ln">353</span>                img { max-width: 100%%; border: 1px solid #ddd; display: block; }</span>
+<span class=""><span class="ln">354</span>                .side { display: flex; gap: 1rem; } .side &gt; div { flex: 1; }</span>
+<span class=""><span class="ln">355</span>                .overlay { position: relative; } .overlay img { position: absolute; inset: 0; }</span>
+<span class=""><span class="ln">356</span>                .overlay img + img { mix-blend-mode: difference; }</span>
+<span class=""><span class="ln">357</span>                .overlay { aspect-ratio: auto; } .overlay::after { content: &quot;&quot;; display: block; padding-top: 60%%; }</span>
+<span class=""><span class="ln">358</span>                &lt;/style&gt;&lt;/head&gt;</span>
+<span class=""><span class="ln">359</span>                &lt;body&gt;</span>
+<span class=""><span class="ln">360</span>                &lt;h1&gt;%1$s&lt;/h1&gt;</span>
+<span class=""><span class="ln">361</span>                &lt;div class=&quot;side&quot;&gt;</span>
+<span class=""><span class="ln">362</span>                &lt;div&gt;&lt;h2&gt;Reference&lt;/h2&gt;&lt;img src=&quot;data:image/png;base64,%2$s&quot; alt=&quot;reference&quot;&gt;&lt;/div&gt;</span>
+<span class=""><span class="ln">363</span>                &lt;div&gt;&lt;h2&gt;Actual&lt;/h2&gt;&lt;img src=&quot;data:image/png;base64,%3$s&quot; alt=&quot;actual&quot;&gt;&lt;/div&gt;</span>
+<span class=""><span class="ln">364</span>                &lt;/div&gt;</span>
+<span class=""><span class="ln">365</span>                &lt;h2&gt;Difference (black = identical)&lt;/h2&gt;</span>
+<span class=""><span class="ln">366</span>                &lt;div class=&quot;overlay&quot;&gt;&lt;img src=&quot;data:image/png;base64,%2$s&quot; alt=&quot;&quot;&gt;&lt;img src=&quot;data:image/png;base64,%3$s&quot; alt=&quot;&quot;&gt;&lt;/div&gt;</span>
+<span class=""><span class="ln">367</span>                &lt;/body&gt;</span>
+<span class=""><span class="ln">368</span>                &lt;/html&gt;</span>
+<span class=""><span class="ln">369</span>                HTML,</span>
+<span class="covered"><span class="ln">370</span>            htmlspecialchars($key, ENT_QUOTES),</span>
+<span class="covered"><span class="ln">371</span>            $reference,</span>
+<span class="covered"><span class="ln">372</span>            $current,</span>
+<span class=""><span class="ln">373</span>        );</span>
+<span class=""><span class="ln">374</span></span>
+<span class="covered"><span class="ln">375</span>        $diffFile = $imageBase . &#039;.diff.html&#039;;</span>
+<span class=""><span class="ln">376</span></span>
+<span class="covered"><span class="ln">377</span>        file_put_contents($diffFile, $html);</span>
+<span class=""><span class="ln">378</span></span>
+<span class="covered"><span class="ln">379</span>        return $diffFile;</span>
+<span class=""><span class="ln">380</span>    }</span>
+<span class=""><span class="ln">381</span></span>
+<span class=""><span class="ln">382</span>    /**</span>
+<span class=""><span class="ln">383</span>     * @param ?non-empty-string $name</span>
+<span class=""><span class="ln">384</span>     *</span>
+<span class=""><span class="ln">385</span>     * @return array{TestId, SnapshotRepository, non-empty-string}</span>
+<span class=""><span class="ln">386</span>     */</span>
+<span class=""><span class="ln">387</span>    private static function context(?string $name): array</span>
+<span class=""><span class="ln">388</span>    {</span>
+<span class="covered"><span class="ln">389</span>        $test       = self::$test;</span>
+<span class="covered"><span class="ln">390</span>        $repository = self::$repository;</span>
+<span class=""><span class="ln">391</span></span>
+<span class="covered"><span class="ln">392</span>        if (!$test instanceof TestId || !$repository instanceof SnapshotRepository) {</span>
+<span class="covered"><span class="ln">393</span>            throw new ConfigurationException(&#039;Snapshot assertions need the crucible runner — there is no snapshot context here.&#039;);</span>
+<span class=""><span class="ln">394</span>        }</span>
+<span class=""><span class="ln">395</span></span>
+<span class="covered"><span class="ln">396</span>        $key = $test-&gt;name</span>
+<span class="covered"><span class="ln">397</span>            . ($test-&gt;dataset !== null ? &#039;#&#039; . $test-&gt;dataset : &#039;&#039;)</span>
+<span class="covered"><span class="ln">398</span>            . &#039; » &#039;</span>
+<span class="covered"><span class="ln">399</span>            . ($name ?? &#039;#&#039; . ++self::$counter);</span>
+<span class=""><span class="ln">400</span></span>
+<span class="covered"><span class="ln">401</span>        self::$visited[] = $key;</span>
+<span class=""><span class="ln">402</span></span>
+<span class="covered"><span class="ln">403</span>        return [$test, $repository, $key];</span>
+<span class=""><span class="ln">404</span>    }</span>
+<span class=""><span class="ln">405</span></span>
+<span class=""><span class="ln">406</span>    /**</span>
+<span class=""><span class="ln">407</span>     * @return non-empty-string</span>
+<span class=""><span class="ln">408</span>     */</span>
+<span class=""><span class="ln">409</span>    public static function fileSafe(string $key): string</span>
+<span class=""><span class="ln">410</span>    {</span>
+<span class="covered"><span class="ln">411</span>        $safe = (string) preg_replace(&#039;/[^A-Za-z0-9._-]+/&#039;, &#039;_&#039;, $key);</span>
+<span class=""><span class="ln">412</span></span>
+<span class="covered"><span class="ln">413</span>        return $safe === &#039;&#039; ? &#039;_&#039; : $safe;</span>
+<span class=""><span class="ln">414</span>    }</span>
+<span class=""><span class="ln">415</span>}</span>
+<span class=""><span class="ln">416</span></span>
+</pre>
+</body>
+</html>

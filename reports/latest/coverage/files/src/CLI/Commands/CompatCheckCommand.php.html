@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/CLI/Commands/CompatCheckCommand.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../../index.html">Crucible coverage</a> / src/CLI/Commands/CompatCheckCommand.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\CLI\Commands;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use LucianoPereira\Crucible\CLI\CliOptions;</span>
+<span class=""><span class="ln">14</span>use LucianoPereira\Crucible\Compat\Migration\CrucibleRun;</span>
+<span class=""><span class="ln">15</span>use LucianoPereira\Crucible\Compat\Migration\FixManifest;</span>
+<span class=""><span class="ln">16</span>use LucianoPereira\Crucible\Compat\Migration\KnownCouplingPatterns;</span>
+<span class=""><span class="ln">17</span>use LucianoPereira\Crucible\Compat\Migration\OracleRun;</span>
+<span class=""><span class="ln">18</span>use LucianoPereira\Crucible\Compat\Migration\OutcomeDiff;</span>
+<span class=""><span class="ln">19</span>use LucianoPereira\Crucible\Compat\Migration\PhpUnitEventLog;</span>
+<span class=""><span class="ln">20</span>use LucianoPereira\Crucible\Compat\Migration\SourceRewriter;</span>
+<span class=""><span class="ln">21</span>use LucianoPereira\Crucible\Compat\PhpUnitCompatibility;</span>
+<span class=""><span class="ln">22</span>use LucianoPereira\Crucible\Dialect\PhpUnit\ClassLocator;</span>
+<span class=""><span class="ln">23</span>use LucianoPereira\Crucible\Filesystem\WorkingDirectory;</span>
+<span class=""><span class="ln">24</span></span>
+<span class=""><span class="ln">25</span>use function array_keys;</span>
+<span class=""><span class="ln">26</span>use function array_slice;</span>
+<span class=""><span class="ln">27</span>use function basename;</span>
+<span class=""><span class="ln">28</span>use function count;</span>
+<span class=""><span class="ln">29</span>use function explode;</span>
+<span class=""><span class="ln">30</span>use function fgets;</span>
+<span class=""><span class="ln">31</span>use function file_get_contents;</span>
+<span class=""><span class="ln">32</span>use function file_put_contents;</span>
+<span class=""><span class="ln">33</span>use function getmypid;</span>
+<span class=""><span class="ln">34</span>use function in_array;</span>
+<span class=""><span class="ln">35</span>use function is_file;</span>
+<span class=""><span class="ln">36</span>use function printf;</span>
+<span class=""><span class="ln">37</span>use function realpath;</span>
+<span class=""><span class="ln">38</span>use function rtrim;</span>
+<span class=""><span class="ln">39</span>use function sprintf;</span>
+<span class=""><span class="ln">40</span>use function strtolower;</span>
+<span class=""><span class="ln">41</span>use function sys_get_temp_dir;</span>
+<span class=""><span class="ln">42</span>use function trim;</span>
+<span class=""><span class="ln">43</span>use function unlink;</span>
+<span class=""><span class="ln">44</span></span>
+<span class=""><span class="ln">45</span>use const PHP_EOL;</span>
+<span class=""><span class="ln">46</span>use const STDIN;</span>
+<span class=""><span class="ln">47</span></span>
+<span class=""><span class="ln">48</span>/**</span>
+<span class=""><span class="ln">49</span> * `crucible compat-check`: runs the project&#039;s real, installed PHPUnit</span>
+<span class=""><span class="ln">50</span> * alongside Crucible, finds tests the oracle passes but Crucible</span>
+<span class=""><span class="ln">51</span> * doesn&#039;t, and diagnoses why — the productized version of a manual</span>
+<span class=""><span class="ln">52</span> * compat audit. Auto-fix only ever touches the small, explicit table</span>
+<span class=""><span class="ln">53</span> * in KnownCouplingPatterns; anything else is diagnosed, never guessed</span>
+<span class=""><span class="ln">54</span> * at, and the interactive path always asks before writing.</span>
+<span class=""><span class="ln">55</span> */</span>
+<span class=""><span class="ln">56</span>final class CompatCheckCommand</span>
+<span class=""><span class="ln">57</span>{</span>
+<span class=""><span class="ln">58</span>    /**</span>
+<span class=""><span class="ln">59</span>     * @param list&lt;string&gt;     $argv</span>
+<span class=""><span class="ln">60</span>     */</span>
+<span class=""><span class="ln">61</span>    public function execute(CliOptions $options, array $argv, WorkingDirectory $workingDirectory): int</span>
+<span class=""><span class="ln">62</span>    {</span>
+<span class="covered"><span class="ln">63</span>        $manifest = new FixManifest(</span>
+<span class="covered"><span class="ln">64</span>            $workingDirectory-&gt;path . &#039;/&#039; . ($options-&gt;cacheDirectory ?? &#039;.crucible.cache&#039;) . &#039;/compat-fixes.json&#039;,</span>
+<span class=""><span class="ln">65</span>        );</span>
+<span class=""><span class="ln">66</span></span>
+<span class="covered"><span class="ln">67</span>        if ($options-&gt;revert) {</span>
+<span class="covered"><span class="ln">68</span>            return $this-&gt;revert($manifest);</span>
+<span class=""><span class="ln">69</span>        }</span>
+<span class=""><span class="ln">70</span></span>
+<span class=""><span class="ln">71</span>        // Every exit below is either 1 — the engines disagree, which</span>
+<span class=""><span class="ln">72</span>        // is a finding about the code — or 2, the run could not be</span>
+<span class=""><span class="ln">73</span>        // performed, which is a finding about the setup. HELP.md&#039;s</span>
+<span class=""><span class="ln">74</span>        // table already draws that line (&quot;no tests found&quot; is a 2), and</span>
+<span class=""><span class="ln">75</span>        // a CI job acts on the two differently: fix the tests, or fix</span>
+<span class=""><span class="ln">76</span>        // the configuration.</span>
+<span class="covered"><span class="ln">77</span>        if (!PhpUnitCompatibility::phpUnitIsInstalled()) {</span>
+<span class=""><span class="ln">78</span>            print &#039;compat-check needs the real phpunit/phpunit installed alongside Crucible &#039;</span>
+<span class="covered"><span class="ln">79</span>                . &#039;(it is the oracle being compared against) — composer require --dev phpunit/phpunit.&#039; . PHP_EOL;</span>
+<span class=""><span class="ln">80</span></span>
+<span class="covered"><span class="ln">81</span>            return 2;</span>
+<span class=""><span class="ln">82</span>        }</span>
+<span class=""><span class="ln">83</span></span>
+<span class=""><span class="ln">84</span>        // Pest when the project has it, phpunit otherwise: measured,</span>
+<span class=""><span class="ln">85</span>        // the phpunit binary cannot run a pest suite at all, so on a</span>
+<span class=""><span class="ln">86</span>        // pest project it is not a narrower oracle but an empty one</span>
+<span class=""><span class="ln">87</span>        // (D-114).</span>
+<span class="missed"><span class="ln">88</span>        $oracleBinary = OracleRun::binaryIn($workingDirectory);</span>
+<span class=""><span class="ln">89</span></span>
+<span class="missed"><span class="ln">90</span>        if ($oracleBinary === null) {</span>
+<span class="missed"><span class="ln">91</span>            printf(&#039;Cannot find an oracle binary — looked for vendor/bin/pest and vendor/bin/phpunit in %s.&#039; . PHP_EOL, $workingDirectory-&gt;path);</span>
+<span class=""><span class="ln">92</span></span>
+<span class="missed"><span class="ln">93</span>            return 2;</span>
+<span class=""><span class="ln">94</span>        }</span>
+<span class=""><span class="ln">95</span></span>
+<span class="missed"><span class="ln">96</span>        $crucibleBinary = realpath($argv[0] ?? &#039;&#039;);</span>
+<span class=""><span class="ln">97</span></span>
+<span class="missed"><span class="ln">98</span>        if ($crucibleBinary === false) {</span>
+<span class="missed"><span class="ln">99</span>            print &#039;Cannot resolve the crucible binary path for the comparison run.&#039; . PHP_EOL;</span>
+<span class=""><span class="ln">100</span></span>
+<span class="missed"><span class="ln">101</span>            return 2;</span>
+<span class=""><span class="ln">102</span>        }</span>
+<span class=""><span class="ln">103</span></span>
+<span class="missed"><span class="ln">104</span>        $forwarded = $this-&gt;forwardedArgs($argv);</span>
+<span class="missed"><span class="ln">105</span>        $tmp       = sys_get_temp_dir() . &#039;/crucible-compat-check-&#039; . getmypid();</span>
+<span class=""><span class="ln">106</span></span>
+<span class=""><span class="ln">107</span>        // The events log is asked for only from pest, the one oracle</span>
+<span class=""><span class="ln">108</span>        // whose JUnit loses the file (D-118). An older phpunit is never</span>
+<span class=""><span class="ln">109</span>        // handed an option it would refuse.</span>
+<span class="missed"><span class="ln">110</span>        $eventsFile = basename($oracleBinary) === &#039;pest&#039; ? $tmp . &#039;-events.txt&#039; : null;</span>
+<span class=""><span class="ln">111</span></span>
+<span class="missed"><span class="ln">112</span>        printf(&#039;Running the real %s oracle...&#039; . PHP_EOL, basename($oracleBinary));</span>
+<span class="missed"><span class="ln">113</span>        [&#039;outcomes&#039; =&gt; $oracle, &#039;unmapped&#039; =&gt; $unmapped] = OracleRun::outcomes(</span>
+<span class="missed"><span class="ln">114</span>            $oracleBinary,</span>
+<span class="missed"><span class="ln">115</span>            $forwarded,</span>
+<span class="missed"><span class="ln">116</span>            $workingDirectory,</span>
+<span class="missed"><span class="ln">117</span>            $tmp . &#039;-junit.xml&#039;,</span>
+<span class="missed"><span class="ln">118</span>            $eventsFile,</span>
+<span class=""><span class="ln">119</span>        );</span>
+<span class=""><span class="ln">120</span></span>
+<span class="missed"><span class="ln">121</span>        if (is_file($tmp . &#039;-junit.xml&#039;)) {</span>
+<span class="missed"><span class="ln">122</span>            unlink($tmp . &#039;-junit.xml&#039;);</span>
+<span class=""><span class="ln">123</span>        }</span>
+<span class=""><span class="ln">124</span></span>
+<span class="missed"><span class="ln">125</span>        print &#039;Running Crucible...&#039; . PHP_EOL;</span>
+<span class="missed"><span class="ln">126</span>        $crucible = CrucibleRun::outcomes($crucibleBinary, $forwarded, $workingDirectory, $tmp . &#039;-events.ndjson&#039;);</span>
+<span class=""><span class="ln">127</span></span>
+<span class="missed"><span class="ln">128</span>        print PHP_EOL;</span>
+<span class=""><span class="ln">129</span></span>
+<span class=""><span class="ln">130</span>        // What pest described instead of locating is asked of the</span>
+<span class=""><span class="ln">131</span>        // engine that owns it, before any verdict — recovering those</span>
+<span class=""><span class="ln">132</span>        // rows widens the comparison, and what stays unrecovered</span>
+<span class=""><span class="ln">133</span>        // narrows what the verdict is ABOUT.</span>
+<span class="missed"><span class="ln">134</span>        $lost = 0;</span>
+<span class=""><span class="ln">135</span></span>
+<span class="missed"><span class="ln">136</span>        if ($unmapped !== [] &amp;&amp; $eventsFile !== null &amp;&amp; is_file($eventsFile)) {</span>
+<span class="missed"><span class="ln">137</span>            $placed = PhpUnitEventLog::keyedByFile(</span>
+<span class="missed"><span class="ln">138</span>                PhpUnitEventLog::parse($eventsFile),</span>
+<span class="missed"><span class="ln">139</span>                self::classesInCandidateFiles($oracle, $crucible, $workingDirectory),</span>
+<span class=""><span class="ln">140</span>            );</span>
+<span class=""><span class="ln">141</span></span>
+<span class="missed"><span class="ln">142</span>            $oracle = [...$oracle, ...$placed[&#039;outcomes&#039;]];</span>
+<span class=""><span class="ln">143</span></span>
+<span class="missed"><span class="ln">144</span>            $lost = $this-&gt;reportUnmapped($unmapped, $placed[&#039;outcomes&#039;], $placed[&#039;unlocated&#039;]);</span>
+<span class="missed"><span class="ln">145</span>        } elseif ($unmapped !== []) {</span>
+<span class="missed"><span class="ln">146</span>            $lost = $this-&gt;reportUnmapped($unmapped, [], []);</span>
+<span class=""><span class="ln">147</span>        }</span>
+<span class=""><span class="ln">148</span></span>
+<span class="missed"><span class="ln">149</span>        if ($eventsFile !== null &amp;&amp; is_file($eventsFile)) {</span>
+<span class="missed"><span class="ln">150</span>            unlink($eventsFile);</span>
+<span class=""><span class="ln">151</span>        }</span>
+<span class=""><span class="ln">152</span></span>
+<span class="missed"><span class="ln">153</span>        $drifted = OutcomeDiff::driftedToFailure($oracle, $crucible);</span>
+<span class="missed"><span class="ln">154</span>        $missing = OutcomeDiff::missingFromCrucible($oracle, $crucible);</span>
+<span class=""><span class="ln">155</span></span>
+<span class=""><span class="ln">156</span>        // And before that: an oracle that collected nothing leaves both</span>
+<span class=""><span class="ln">157</span>        // lists empty, which is exactly what agreement is spelled with.</span>
+<span class="missed"><span class="ln">158</span>        $vacuous = self::nothingToCompare($oracle, $crucible);</span>
+<span class=""><span class="ln">159</span></span>
+<span class="missed"><span class="ln">160</span>        if ($vacuous !== null) {</span>
+<span class="missed"><span class="ln">161</span>            print $vacuous;</span>
+<span class=""><span class="ln">162</span></span>
+<span class="missed"><span class="ln">163</span>            return 2;</span>
+<span class=""><span class="ln">164</span>        }</span>
+<span class=""><span class="ln">165</span></span>
+<span class=""><span class="ln">166</span>        // Before any verdict: a test Crucible never ran is not a test</span>
+<span class=""><span class="ln">167</span>        // Crucible agrees about. Comparing outcomes alone cannot see</span>
+<span class=""><span class="ln">168</span>        // that, so nothing below is meaningful until it is ruled out.</span>
+<span class="missed"><span class="ln">169</span>        if ($missing !== []) {</span>
+<span class="missed"><span class="ln">170</span>            return $this-&gt;reportMissing($oracle, $crucible, $missing);</span>
+<span class=""><span class="ln">171</span>        }</span>
+<span class=""><span class="ln">172</span></span>
+<span class="missed"><span class="ln">173</span>        if ($drifted === []) {</span>
+<span class=""><span class="ln">174</span>            // A partial comparison does not get the clean sentence</span>
+<span class=""><span class="ln">175</span>            // first and a caveat after it. What a reader takes from a</span>
+<span class=""><span class="ln">176</span>            // skim is the verdict, so the qualifier is IN the verdict:</span>
+<span class=""><span class="ln">177</span>            // the unearned green this command exists to refuse is one</span>
+<span class=""><span class="ln">178</span>            // that reads green.</span>
+<span class="missed"><span class="ln">179</span>            if ($lost &gt; 0) {</span>
+<span class="missed"><span class="ln">180</span>                printf(</span>
+<span class=""><span class="ln">181</span>                    &#039;No drift among the %d test(s) both engines could be asked about — but %d could not be, &#039;</span>
+<span class="missed"><span class="ln">182</span>                        . &#039;so the suite is not proven.&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">183</span>                    count($oracle),</span>
+<span class="missed"><span class="ln">184</span>                    $lost,</span>
+<span class=""><span class="ln">185</span>                );</span>
+<span class=""><span class="ln">186</span></span>
+<span class="missed"><span class="ln">187</span>                return 2;</span>
+<span class=""><span class="ln">188</span>            }</span>
+<span class=""><span class="ln">189</span></span>
+<span class=""><span class="ln">190</span>            // The count is part of the verdict, not decoration: this</span>
+<span class=""><span class="ln">191</span>            // command&#039;s failure mode is agreeing about nothing, and a</span>
+<span class=""><span class="ln">192</span>            // clean run that does not say how much it compared cannot</span>
+<span class=""><span class="ln">193</span>            // be told from one that compared almost none of it.</span>
+<span class="missed"><span class="ln">194</span>            printf(</span>
+<span class="missed"><span class="ln">195</span>                &#039;No drift: all %d test(s) the real %s oracle passes, Crucible also passes.&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">196</span>                count($oracle),</span>
+<span class="missed"><span class="ln">197</span>                basename($oracleBinary),</span>
+<span class=""><span class="ln">198</span>            );</span>
+<span class=""><span class="ln">199</span></span>
+<span class="missed"><span class="ln">200</span>            return 0;</span>
+<span class=""><span class="ln">201</span>        }</span>
+<span class=""><span class="ln">202</span></span>
+<span class="missed"><span class="ln">203</span>        return $this-&gt;handleDrift($drifted, $manifest, $workingDirectory, $options-&gt;autoFix, basename($oracleBinary));</span>
+<span class=""><span class="ln">204</span>    }</span>
+<span class=""><span class="ln">205</span></span>
+<span class=""><span class="ln">206</span>    /**</span>
+<span class=""><span class="ln">207</span>     * The classes declared by the files the oracle could not key.</span>
+<span class=""><span class="ln">208</span>     *</span>
+<span class=""><span class="ln">209</span>     * The candidate set is implied by the two runs already made: every</span>
+<span class=""><span class="ln">210</span>     * file Crucible reported an id in, minus every file the oracle</span>
+<span class=""><span class="ln">211</span>     * managed to key. Only those files are scanned, and the scan is</span>
+<span class=""><span class="ln">212</span>     * ClassLocator&#039;s token pass — a file that declares a class says so</span>
+<span class=""><span class="ln">213</span>     * in its own grammar, so this needs no loading and no inference.</span>
+<span class=""><span class="ln">214</span>     *</span>
+<span class=""><span class="ln">215</span>     * A pest-shaped file is deliberately NOT excluded here. It was, for</span>
+<span class=""><span class="ln">216</span>     * as long as the recovery meant handing the file to phpunit, which</span>
+<span class=""><span class="ln">217</span>     * dies inside pest on such a file — and that exclusion is what</span>
+<span class=""><span class="ln">218</span>     * capped the comparison at 3.3% of a real suite (D-117), because a</span>
+<span class=""><span class="ln">219</span>     * classic class living in a pest-shaped file is exactly the case</span>
+<span class=""><span class="ln">220</span>     * that needed recovering. Reading the run&#039;s own event log asks no</span>
+<span class=""><span class="ln">221</span>     * engine to load anything, so the guard has nothing left to guard.</span>
+<span class=""><span class="ln">222</span>     *</span>
+<span class=""><span class="ln">223</span>     * @param array&lt;string, string&gt; $oracle</span>
+<span class=""><span class="ln">224</span>     * @param array&lt;string, string&gt; $crucible</span>
+<span class=""><span class="ln">225</span>     *</span>
+<span class=""><span class="ln">226</span>     * @return array&lt;string, non-empty-string&gt; class =&gt; project-relative file</span>
+<span class=""><span class="ln">227</span>     */</span>
+<span class=""><span class="ln">228</span>    public static function classesInCandidateFiles(array $oracle, array $crucible, WorkingDirectory $workingDirectory): array</span>
+<span class=""><span class="ln">229</span>    {</span>
+<span class="covered"><span class="ln">230</span>        $answered = [];</span>
+<span class=""><span class="ln">231</span></span>
+<span class="covered"><span class="ln">232</span>        foreach (array_keys($oracle) as $key) {</span>
+<span class="covered"><span class="ln">233</span>            $answered[explode(&#039;::&#039;, $key, 2)[0]] = true;</span>
+<span class=""><span class="ln">234</span>        }</span>
+<span class=""><span class="ln">235</span></span>
+<span class="covered"><span class="ln">236</span>        $locator = new ClassLocator();</span>
+<span class="covered"><span class="ln">237</span>        $classes = [];</span>
+<span class="covered"><span class="ln">238</span>        $seen    = [];</span>
+<span class=""><span class="ln">239</span></span>
+<span class="covered"><span class="ln">240</span>        foreach (array_keys($crucible) as $key) {</span>
+<span class="covered"><span class="ln">241</span>            $file = explode(&#039;::&#039;, $key, 2)[0];</span>
+<span class=""><span class="ln">242</span></span>
+<span class="covered"><span class="ln">243</span>            if ($file === &#039;&#039; || isset($answered[$file]) || isset($seen[$file])) {</span>
+<span class="covered"><span class="ln">244</span>                continue;</span>
+<span class=""><span class="ln">245</span>            }</span>
+<span class=""><span class="ln">246</span></span>
+<span class="covered"><span class="ln">247</span>            $seen[$file] = true;</span>
+<span class="covered"><span class="ln">248</span>            $absolute    = rtrim($workingDirectory-&gt;path, &#039;/&#039;) . &#039;/&#039; . $file;</span>
+<span class=""><span class="ln">249</span></span>
+<span class="covered"><span class="ln">250</span>            if (!is_file($absolute)) {</span>
+<span class="covered"><span class="ln">251</span>                continue;</span>
+<span class=""><span class="ln">252</span>            }</span>
+<span class=""><span class="ln">253</span></span>
+<span class="covered"><span class="ln">254</span>            foreach ($locator-&gt;classesIn($absolute) as $class) {</span>
+<span class="covered"><span class="ln">255</span>                $classes[$class] = $file;</span>
+<span class=""><span class="ln">256</span>            }</span>
+<span class=""><span class="ln">257</span>        }</span>
+<span class=""><span class="ln">258</span></span>
+<span class="covered"><span class="ln">259</span>        return $classes;</span>
+<span class=""><span class="ln">260</span>    }</span>
+<span class=""><span class="ln">261</span></span>
+<span class=""><span class="ln">262</span>    /**</span>
+<span class=""><span class="ln">263</span>     * What the first oracle pass could not key, and what became of it.</span>
+<span class=""><span class="ln">264</span>     *</span>
+<span class=""><span class="ln">265</span>     * Anything the second pass did not recover leaves the comparison</span>
+<span class=""><span class="ln">266</span>     * and is named here rather than dropped: quietly shrinking the</span>
+<span class=""><span class="ln">267</span>     * compared suite is [nothingToCompare]&#039;s defect one size down, and</span>
+<span class=""><span class="ln">268</span>     * the harder one to notice, because the number that shrinks is</span>
+<span class=""><span class="ln">269</span>     * never printed. When there was nothing to retry the cause is</span>
+<span class=""><span class="ln">270</span>     * usually one thing, and it is said instead of shrugged at.</span>
+<span class=""><span class="ln">271</span>     *</span>
+<span class=""><span class="ln">272</span>     * @param list&lt;string&gt;          $unmapped</span>
+<span class=""><span class="ln">273</span>     * @param array&lt;string, string&gt; $recovered</span>
+<span class=""><span class="ln">274</span>     * @param list&lt;string&gt;          $unlocated classes the event log named that no candidate file declares</span>
+<span class=""><span class="ln">275</span>     *</span>
+<span class=""><span class="ln">276</span>     * @return int the number left out of the comparison</span>
+<span class=""><span class="ln">277</span>     */</span>
+<span class=""><span class="ln">278</span>    private function reportUnmapped(array $unmapped, array $recovered, array $unlocated): int</span>
+<span class=""><span class="ln">279</span>    {</span>
+<span class="missed"><span class="ln">280</span>        if ($unmapped === []) {</span>
+<span class="missed"><span class="ln">281</span>            return 0;</span>
+<span class=""><span class="ln">282</span>        }</span>
+<span class=""><span class="ln">283</span></span>
+<span class="missed"><span class="ln">284</span>        printf(</span>
+<span class=""><span class="ln">285</span>            &#039;%d oracle test(s) came back without a source file — pest reports a classic PHPUnit class by &#039;</span>
+<span class="missed"><span class="ln">286</span>                . &#039;description, not by file.&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">287</span>            count($unmapped),</span>
+<span class=""><span class="ln">288</span>        );</span>
+<span class=""><span class="ln">289</span></span>
+<span class="missed"><span class="ln">290</span>        if ($recovered !== []) {</span>
+<span class="missed"><span class="ln">291</span>            printf(</span>
+<span class=""><span class="ln">292</span>                &#039;  Read %d of them from the run\&#039;s own event log, which reports a class by name rather than by &#039;</span>
+<span class="missed"><span class="ln">293</span>                    . &#039;description, and placed them by the file that declares that class.&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">294</span>                count($recovered),</span>
+<span class=""><span class="ln">295</span>            );</span>
+<span class=""><span class="ln">296</span>        }</span>
+<span class=""><span class="ln">297</span></span>
+<span class="missed"><span class="ln">298</span>        $lost = count($unmapped) - count($recovered);</span>
+<span class=""><span class="ln">299</span></span>
+<span class="missed"><span class="ln">300</span>        if ($lost &lt;= 0) {</span>
+<span class="missed"><span class="ln">301</span>            print PHP_EOL;</span>
+<span class=""><span class="ln">302</span></span>
+<span class="missed"><span class="ln">303</span>            return 0;</span>
+<span class=""><span class="ln">304</span>        }</span>
+<span class=""><span class="ln">305</span></span>
+<span class="missed"><span class="ln">306</span>        printf(&#039;  %d are NOT part of what follows:&#039; . PHP_EOL, $lost);</span>
+<span class=""><span class="ln">307</span></span>
+<span class="missed"><span class="ln">308</span>        foreach (array_slice($unmapped, 0, 5) as $name) {</span>
+<span class="missed"><span class="ln">309</span>            printf(&#039;    %s&#039; . PHP_EOL, $name);</span>
+<span class=""><span class="ln">310</span>        }</span>
+<span class=""><span class="ln">311</span></span>
+<span class="missed"><span class="ln">312</span>        if (count($unmapped) &gt; 5) {</span>
+<span class="missed"><span class="ln">313</span>            printf(&#039;    ... and %d more.&#039; . PHP_EOL, count($unmapped) - 5);</span>
+<span class=""><span class="ln">314</span>        }</span>
+<span class=""><span class="ln">315</span></span>
+<span class="missed"><span class="ln">316</span>        if ($unlocated !== []) {</span>
+<span class=""><span class="ln">317</span>            // The residual case, and it has the opposite remedy to a</span>
+<span class=""><span class="ln">318</span>            // limit: the event log named a class, so the oracle DID run</span>
+<span class=""><span class="ln">319</span>            // it — no candidate file declares it, which means Crucible</span>
+<span class=""><span class="ln">320</span>            // ran nothing in that file. That is discovery, not a</span>
+<span class=""><span class="ln">321</span>            // structural bar, and it is said rather than shrugged at.</span>
+<span class="missed"><span class="ln">322</span>            printf(</span>
+<span class=""><span class="ln">323</span>                &#039;  %d of them name a class no file Crucible ran declares, so the two runs cannot be lined up &#039;</span>
+<span class=""><span class="ln">324</span>                    . &#039;there. Crucible discovering that file is what closes it — check the suites in &#039;</span>
+<span class=""><span class="ln">325</span>                    . &#039;crucible.php, and -&gt;phpunitCompatibility() if the class extends PHPUnit\&#039;s TestCase &#039;</span>
+<span class="missed"><span class="ln">326</span>                    . &#039;while phpunit/phpunit is installed (D-019):&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">327</span>                count($unlocated),</span>
+<span class=""><span class="ln">328</span>            );</span>
+<span class=""><span class="ln">329</span></span>
+<span class="missed"><span class="ln">330</span>            foreach (array_slice($unlocated, 0, 5) as $id) {</span>
+<span class="missed"><span class="ln">331</span>                printf(&#039;    %s&#039; . PHP_EOL, $id);</span>
+<span class=""><span class="ln">332</span>            }</span>
+<span class=""><span class="ln">333</span>        }</span>
+<span class=""><span class="ln">334</span></span>
+<span class="missed"><span class="ln">335</span>        print PHP_EOL;</span>
+<span class=""><span class="ln">336</span></span>
+<span class="missed"><span class="ln">337</span>        return $lost;</span>
+<span class=""><span class="ln">338</span>    }</span>
+<span class=""><span class="ln">339</span></span>
+<span class=""><span class="ln">340</span>    /**</span>
+<span class=""><span class="ln">341</span>     * Why this comparison proves nothing, or null when it proves</span>
+<span class=""><span class="ln">342</span>     * something.    /**</span>
+<span class=""><span class="ln">343</span>     * Why this comparison proves nothing, or null when it proves</span>
+<span class=""><span class="ln">344</span>     * something.</span>
+<span class=""><span class="ln">345</span>     *</span>
+<span class=""><span class="ln">346</span>     * &quot;No drift&quot; is spelled with two empty lists — no missing tests, no</span>
+<span class=""><span class="ln">347</span>     * drifted ones — and an oracle that collected nothing produces</span>
+<span class=""><span class="ln">348</span>     * exactly that pair. The green then reports the strength of the</span>
+<span class=""><span class="ln">349</span>     * evidence as agreement, which is the one failure mode a parity</span>
+<span class=""><span class="ln">350</span>     * tool must not have: the same output for &quot;they agree everywhere&quot;</span>
+<span class=""><span class="ln">351</span>     * and &quot;nothing was asked&quot;. The Crucible-side hole was already</span>
+<span class=""><span class="ln">352</span>     * guarded; this is its mirror.</span>
+<span class=""><span class="ln">353</span>     *</span>
+<span class=""><span class="ln">354</span>     * @param array&lt;string, string&gt; $oracle</span>
+<span class=""><span class="ln">355</span>     * @param array&lt;string, string&gt; $crucible</span>
+<span class=""><span class="ln">356</span>     */</span>
+<span class=""><span class="ln">357</span>    public static function nothingToCompare(array $oracle, array $crucible): ?string</span>
+<span class=""><span class="ln">358</span>    {</span>
+<span class="covered"><span class="ln">359</span>        if ($oracle !== []) {</span>
+<span class="covered"><span class="ln">360</span>            return null;</span>
+<span class=""><span class="ln">361</span>        }</span>
+<span class=""><span class="ln">362</span></span>
+<span class="covered"><span class="ln">363</span>        return sprintf(</span>
+<span class=""><span class="ln">364</span>            &#039;The oracle ran no tests at all, while Crucible ran %d. Nothing can be compared, so this &#039;</span>
+<span class=""><span class="ln">365</span>                . &#039;is not &quot;no drift&quot;.&#039; . PHP_EOL . PHP_EOL</span>
+<span class=""><span class="ln">366</span>                . &#039;Check that the real phpunit collects anything here on its own (vendor/bin/phpunit), that &#039;</span>
+<span class=""><span class="ln">367</span>                . &#039;a forwarded --filter matches something — it is passed to both engines verbatim — and that &#039;</span>
+<span class=""><span class="ln">368</span>                . &#039;this is the directory its configuration belongs to.&#039; . PHP_EOL,</span>
+<span class="covered"><span class="ln">369</span>            count($crucible),</span>
+<span class=""><span class="ln">370</span>        );</span>
+<span class=""><span class="ln">371</span>    }</span>
+<span class=""><span class="ln">372</span></span>
+<span class=""><span class="ln">373</span>    /**</span>
+<span class=""><span class="ln">374</span>     * @param array&lt;string, string&gt;  $oracle</span>
+<span class=""><span class="ln">375</span>     * @param array&lt;string, string&gt;  $crucible</span>
+<span class=""><span class="ln">376</span>     * @param list&lt;non-empty-string&gt; $missing</span>
+<span class=""><span class="ln">377</span>     */</span>
+<span class=""><span class="ln">378</span>    private function reportMissing(array $oracle, array $crucible, array $missing): int</span>
+<span class=""><span class="ln">379</span>    {</span>
+<span class="missed"><span class="ln">380</span>        if ($crucible === []) {</span>
+<span class="missed"><span class="ln">381</span>            printf(</span>
+<span class=""><span class="ln">382</span>                &#039;Crucible ran no tests at all, while the oracle ran %d. Nothing can be compared, so this &#039;</span>
+<span class=""><span class="ln">383</span>                    . &#039;is not &quot;no drift&quot;.&#039; . PHP_EOL . PHP_EOL</span>
+<span class=""><span class="ln">384</span>                    . &#039;The usual cause: phpunit/phpunit is installed, so the PHPUnit-namespace compatibility &#039;</span>
+<span class=""><span class="ln">385</span>                    . &#039;aliases stand down (D-019) and a suite extending PHPUnit\&#039;s TestCase is discovered by &#039;</span>
+<span class=""><span class="ln">386</span>                    . &#039;nobody. Give the suite Crucible\&#039;s TestCase, opt in with -&gt;phpunitCompatibility(), or &#039;</span>
+<span class="missed"><span class="ln">387</span>                    . &#039;run the comparison from a checkout where the dialect applies.&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">388</span>                count($oracle),</span>
+<span class=""><span class="ln">389</span>            );</span>
+<span class=""><span class="ln">390</span></span>
+<span class=""><span class="ln">391</span>            // The setup side of the line: nothing was compared, and the</span>
+<span class=""><span class="ln">392</span>            // cause named above is a configuration one. Its neighbour</span>
+<span class=""><span class="ln">393</span>            // below stays a 1 — tests that ARE missing from a Crucible</span>
+<span class=""><span class="ln">394</span>            // run that happened is a finding about discovery, and D-112</span>
+<span class=""><span class="ln">395</span>            // is the proof that it can be a real bug.</span>
+<span class="missed"><span class="ln">396</span>            return 2;</span>
+<span class=""><span class="ln">397</span>        }</span>
+<span class=""><span class="ln">398</span></span>
+<span class="missed"><span class="ln">399</span>        printf(</span>
+<span class=""><span class="ln">400</span>            &#039;%d test(s) the oracle passes produced no Crucible outcome at all — they were never run, which &#039;</span>
+<span class="missed"><span class="ln">401</span>                . &#039;is not the same as passing:&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">402</span>            count($missing),</span>
+<span class=""><span class="ln">403</span>        );</span>
+<span class=""><span class="ln">404</span></span>
+<span class="missed"><span class="ln">405</span>        foreach (array_slice($missing, 0, 10) as $key) {</span>
+<span class="missed"><span class="ln">406</span>            printf(&#039;  %s&#039; . PHP_EOL, $key);</span>
+<span class=""><span class="ln">407</span>        }</span>
+<span class=""><span class="ln">408</span></span>
+<span class="missed"><span class="ln">409</span>        if (count($missing) &gt; 10) {</span>
+<span class="missed"><span class="ln">410</span>            printf(&#039;  ... and %d more.&#039; . PHP_EOL, count($missing) - 10);</span>
+<span class=""><span class="ln">411</span>        }</span>
+<span class=""><span class="ln">412</span></span>
+<span class="missed"><span class="ln">413</span>        return 1;</span>
+<span class=""><span class="ln">414</span>    }</span>
+<span class=""><span class="ln">415</span></span>
+<span class=""><span class="ln">416</span>    /**</span>
+<span class=""><span class="ln">417</span>     * @param list&lt;non-empty-string&gt; $drifted</span>
+<span class=""><span class="ln">418</span>     */</span>
+<span class=""><span class="ln">419</span>    private function handleDrift(array $drifted, FixManifest $manifest, WorkingDirectory $workingDirectory, bool $autoFix, string $oracle): int</span>
+<span class=""><span class="ln">420</span>    {</span>
+<span class="missed"><span class="ln">421</span>        $patterns = KnownCouplingPatterns::all();</span>
+<span class="missed"><span class="ln">422</span>        $unfixed  = 0;</span>
+<span class=""><span class="ln">423</span></span>
+<span class="missed"><span class="ln">424</span>        foreach ($drifted as $key) {</span>
+<span class="missed"><span class="ln">425</span>            [$relativeFile, $rest] = explode(&#039;::&#039;, $key, 2);</span>
+<span class="missed"><span class="ln">426</span>            $method                = explode(&#039;#&#039;, $rest, 2)[0];</span>
+<span class=""><span class="ln">427</span></span>
+<span class="missed"><span class="ln">428</span>            printf(&#039;%s::%s fails under Crucible, passes under real %s.&#039; . PHP_EOL, $relativeFile, $method, $oracle);</span>
+<span class="missed"><span class="ln">429</span>            print &quot;  Likely coupled to PHPUnit&#039;s own internals (file layout, internal class/method names) rather than your code&#039;s behavior.&quot; . PHP_EOL;</span>
+<span class=""><span class="ln">430</span></span>
+<span class="missed"><span class="ln">431</span>            $file = rtrim($workingDirectory-&gt;path, &#039;/&#039;) . &#039;/&#039; . $relativeFile;</span>
+<span class=""><span class="ln">432</span></span>
+<span class="missed"><span class="ln">433</span>            if (!is_file($file)) {</span>
+<span class="missed"><span class="ln">434</span>                print &#039;  Could not locate the source file — review manually.&#039; . PHP_EOL . PHP_EOL;</span>
+<span class="missed"><span class="ln">435</span>                $unfixed++;</span>
+<span class=""><span class="ln">436</span></span>
+<span class="missed"><span class="ln">437</span>                continue;</span>
+<span class=""><span class="ln">438</span>            }</span>
+<span class=""><span class="ln">439</span></span>
+<span class="missed"><span class="ln">440</span>            $source = (string) file_get_contents($file);</span>
+<span class="missed"><span class="ln">441</span>            $span   = SourceRewriter::locateMethod($source, $method);</span>
+<span class=""><span class="ln">442</span></span>
+<span class="missed"><span class="ln">443</span>            if ($span === null) {</span>
+<span class="missed"><span class="ln">444</span>                print &#039;  Could not locate the method in its source file to check for a known fix — review manually.&#039; . PHP_EOL . PHP_EOL;</span>
+<span class="missed"><span class="ln">445</span>                $unfixed++;</span>
+<span class=""><span class="ln">446</span></span>
+<span class="missed"><span class="ln">447</span>                continue;</span>
+<span class=""><span class="ln">448</span>            }</span>
+<span class=""><span class="ln">449</span></span>
+<span class="missed"><span class="ln">450</span>            [$startLine, $endLine] = $span;</span>
+<span class="missed"><span class="ln">451</span>            $preview               = SourceRewriter::preview($source, $startLine, $endLine, $patterns);</span>
+<span class=""><span class="ln">452</span></span>
+<span class="missed"><span class="ln">453</span>            if ($preview === []) {</span>
+<span class="missed"><span class="ln">454</span>                print &#039;  No automatic fix available for this pattern — review manually, or run this specific test under PHPUnit.&#039; . PHP_EOL . PHP_EOL;</span>
+<span class="missed"><span class="ln">455</span>                $unfixed++;</span>
+<span class=""><span class="ln">456</span></span>
+<span class="missed"><span class="ln">457</span>                continue;</span>
+<span class=""><span class="ln">458</span>            }</span>
+<span class=""><span class="ln">459</span></span>
+<span class="missed"><span class="ln">460</span>            foreach ($preview as $match) {</span>
+<span class="missed"><span class="ln">461</span>                printf(&#039;  %s (line %d):&#039; . PHP_EOL, $match[&#039;description&#039;], $match[&#039;line&#039;]);</span>
+<span class="missed"><span class="ln">462</span>                printf(&#039;    - %s&#039; . PHP_EOL, $match[&#039;before&#039;]);</span>
+<span class="missed"><span class="ln">463</span>                printf(&#039;    + %s&#039; . PHP_EOL, $match[&#039;after&#039;]);</span>
+<span class=""><span class="ln">464</span>            }</span>
+<span class=""><span class="ln">465</span></span>
+<span class="missed"><span class="ln">466</span>            if (!$autoFix &amp;&amp; !$this-&gt;confirm(&#039;  Rewrite this test?&#039;)) {</span>
+<span class="missed"><span class="ln">467</span>                print &#039;  Skipped.&#039; . PHP_EOL . PHP_EOL;</span>
+<span class="missed"><span class="ln">468</span>                $unfixed++;</span>
+<span class=""><span class="ln">469</span></span>
+<span class="missed"><span class="ln">470</span>                continue;</span>
+<span class=""><span class="ln">471</span>            }</span>
+<span class=""><span class="ln">472</span></span>
+<span class="missed"><span class="ln">473</span>            $manifest-&gt;backup($file, $source);</span>
+<span class=""><span class="ln">474</span></span>
+<span class="missed"><span class="ln">475</span>            $result = SourceRewriter::apply($source, $startLine, $endLine, $patterns);</span>
+<span class="missed"><span class="ln">476</span>            file_put_contents($file, $result[&#039;source&#039;]);</span>
+<span class=""><span class="ln">477</span></span>
+<span class=""><span class="ln">478</span>            // &quot;Rewrote&quot;, not &quot;Fixed&quot;: this only confirms the known</span>
+<span class=""><span class="ln">479</span>            // pattern(s) above were applied, not that the whole test</span>
+<span class=""><span class="ln">480</span>            // now passes — the same method can carry other coupling</span>
+<span class=""><span class="ln">481</span>            // this table does not recognize (that is exactly what</span>
+<span class=""><span class="ln">482</span>            // happened to LineFormatterTest::testBasePath&#039;s second</span>
+<span class=""><span class="ln">483</span>            // assertion during this feature&#039;s own real-world</span>
+<span class=""><span class="ln">484</span>            // verification: fixing frame 0 left frame 1 still</span>
+<span class=""><span class="ln">485</span>            // failing, silently, until the mandatory re-run caught</span>
+<span class=""><span class="ln">486</span>            // it). Re-running compat-check is how success is</span>
+<span class=""><span class="ln">487</span>            // actually confirmed, not this message.</span>
+<span class="missed"><span class="ln">488</span>            print &#039;  Rewrote the pattern(s) above.&#039; . PHP_EOL . PHP_EOL;</span>
+<span class=""><span class="ln">489</span>        }</span>
+<span class=""><span class="ln">490</span></span>
+<span class="missed"><span class="ln">491</span>        if ($unfixed &gt; 0) {</span>
+<span class="missed"><span class="ln">492</span>            printf(&#039;%d test(s) still drifted after this run. Re-run crucible compat-check to verify, or --revert to undo applied fixes.&#039; . PHP_EOL, $unfixed);</span>
+<span class=""><span class="ln">493</span></span>
+<span class="missed"><span class="ln">494</span>            return 1;</span>
+<span class=""><span class="ln">495</span>        }</span>
+<span class=""><span class="ln">496</span></span>
+<span class="missed"><span class="ln">497</span>        print &#039;Rewrote every drifted test that matched a known pattern. Re-run crucible compat-check to confirm they now pass — a rewrite here is not itself proof of that.&#039; . PHP_EOL;</span>
+<span class=""><span class="ln">498</span></span>
+<span class="missed"><span class="ln">499</span>        return 0;</span>
+<span class=""><span class="ln">500</span>    }</span>
+<span class=""><span class="ln">501</span></span>
+<span class=""><span class="ln">502</span>    private function revert(FixManifest $manifest): int</span>
+<span class=""><span class="ln">503</span>    {</span>
+<span class="covered"><span class="ln">504</span>        if ($manifest-&gt;isEmpty()) {</span>
+<span class="covered"><span class="ln">505</span>            print &#039;Nothing to revert.&#039; . PHP_EOL;</span>
+<span class=""><span class="ln">506</span></span>
+<span class="covered"><span class="ln">507</span>            return 0;</span>
+<span class=""><span class="ln">508</span>        }</span>
+<span class=""><span class="ln">509</span></span>
+<span class="covered"><span class="ln">510</span>        $restored = $manifest-&gt;revert();</span>
+<span class=""><span class="ln">511</span></span>
+<span class="covered"><span class="ln">512</span>        print &#039;Restored:&#039; . PHP_EOL;</span>
+<span class=""><span class="ln">513</span></span>
+<span class="covered"><span class="ln">514</span>        foreach ($restored as $file) {</span>
+<span class="covered"><span class="ln">515</span>            print &#039;  - &#039; . $file . PHP_EOL;</span>
+<span class=""><span class="ln">516</span>        }</span>
+<span class=""><span class="ln">517</span></span>
+<span class="covered"><span class="ln">518</span>        return 0;</span>
+<span class=""><span class="ln">519</span>    }</span>
+<span class=""><span class="ln">520</span></span>
+<span class=""><span class="ln">521</span>    /**</span>
+<span class=""><span class="ln">522</span>     * @param list&lt;string&gt; $argv</span>
+<span class=""><span class="ln">523</span>     *</span>
+<span class=""><span class="ln">524</span>     * @return list&lt;non-empty-string&gt;</span>
+<span class=""><span class="ln">525</span>     */</span>
+<span class=""><span class="ln">526</span>    private function forwardedArgs(array $argv): array</span>
+<span class=""><span class="ln">527</span>    {</span>
+<span class="missed"><span class="ln">528</span>        $forwarded = [];</span>
+<span class=""><span class="ln">529</span></span>
+<span class="missed"><span class="ln">530</span>        foreach (array_slice($argv, 1) as $argument) {</span>
+<span class="missed"><span class="ln">531</span>            if (in_array($argument, [&#039;compat-check&#039;, &#039;--auto-fix&#039;, &#039;--revert&#039;, &#039;&#039;], true)) {</span>
+<span class="missed"><span class="ln">532</span>                continue;</span>
+<span class=""><span class="ln">533</span>            }</span>
+<span class=""><span class="ln">534</span></span>
+<span class="missed"><span class="ln">535</span>            $forwarded[] = $argument;</span>
+<span class=""><span class="ln">536</span>        }</span>
+<span class=""><span class="ln">537</span></span>
+<span class="missed"><span class="ln">538</span>        return $forwarded;</span>
+<span class=""><span class="ln">539</span>    }</span>
+<span class=""><span class="ln">540</span></span>
+<span class=""><span class="ln">541</span>    private function confirm(string $prompt): bool</span>
+<span class=""><span class="ln">542</span>    {</span>
+<span class="missed"><span class="ln">543</span>        print $prompt . &#039; [y/N] &#039;;</span>
+<span class=""><span class="ln">544</span></span>
+<span class="missed"><span class="ln">545</span>        $answer = fgets(STDIN);</span>
+<span class=""><span class="ln">546</span></span>
+<span class="missed"><span class="ln">547</span>        return $answer !== false &amp;&amp; strtolower(trim($answer)) === &#039;y&#039;;</span>
+<span class=""><span class="ln">548</span>    }</span>
+<span class=""><span class="ln">549</span>}</span>
+<span class="missed"><span class="ln">550</span></span>
+</pre>
+</body>
+</html>

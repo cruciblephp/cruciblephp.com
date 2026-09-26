@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Mutation/MutantApplier.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/Mutation/MutantApplier.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Mutation;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use RuntimeException;</span>
+<span class=""><span class="ln">14</span>use Throwable;</span>
+<span class=""><span class="ln">15</span></span>
+<span class=""><span class="ln">16</span>use function class_exists;</span>
+<span class=""><span class="ln">17</span>use function file_get_contents;</span>
+<span class=""><span class="ln">18</span>use function file_put_contents;</span>
+<span class=""><span class="ln">19</span>use function function_exists;</span>
+<span class=""><span class="ln">20</span>use function ini_set;</span>
+<span class=""><span class="ln">21</span>use function is_array;</span>
+<span class=""><span class="ln">22</span>use function is_string;</span>
+<span class=""><span class="ln">23</span>use function json_decode;</span>
+<span class=""><span class="ln">24</span>use function json_encode;</span>
+<span class=""><span class="ln">25</span>use function microtime;</span>
+<span class=""><span class="ln">26</span>use function pcntl_fork;</span>
+<span class=""><span class="ln">27</span>use function pcntl_waitpid;</span>
+<span class=""><span class="ln">28</span>use function posix_getpid;</span>
+<span class=""><span class="ln">29</span>use function posix_kill;</span>
+<span class=""><span class="ln">30</span>use function sys_get_temp_dir;</span>
+<span class=""><span class="ln">31</span>use function tempnam;</span>
+<span class=""><span class="ln">32</span>use function unlink;</span>
+<span class=""><span class="ln">33</span>use function usleep;</span>
+<span class=""><span class="ln">34</span></span>
+<span class=""><span class="ln">35</span>use const SIGKILL;</span>
+<span class=""><span class="ln">36</span>use const WNOHANG;</span>
+<span class=""><span class="ln">37</span></span>
+<span class=""><span class="ln">38</span>/**</span>
+<span class=""><span class="ln">39</span> * Applies a mutant *warm* and returns its verdict. The parent process</span>
+<span class=""><span class="ln">40</span> * boots once; each mutant runs in a `pcntl_fork`ed child that loads the</span>
+<span class=""><span class="ln">41</span> * mutated bytes on first reference — through a prepended autoloader that,</span>
+<span class=""><span class="ln">42</span> * while a mutant is active, serves it from a unique temp path (a fresh</span>
+<span class=""><span class="ln">43</span> * path means opcache compiles it cleanly, so no invalidate is ever</span>
+<span class=""><span class="ln">44</span> * needed). The child reports its verdict to a file and dies by SIGKILL,</span>
+<span class=""><span class="ln">45</span> * skipping every shutdown handler the parent registered.</span>
+<span class=""><span class="ln">46</span> *</span>
+<span class=""><span class="ln">47</span> * The precondition is redeclare-safety: a class already loaded cannot be</span>
+<span class=""><span class="ln">48</span> * re-mutated in a forked child (its declaration is inherited), so callers</span>
+<span class=""><span class="ln">49</span> * check {@see canApply} first and cold-fallback when it is false. This is</span>
+<span class=""><span class="ln">50</span> * the mechanism proven before the engine was built; the covering-test</span>
+<span class=""><span class="ln">51</span> * ordering and catalog live above it.</span>
+<span class=""><span class="ln">52</span> *</span>
+<span class=""><span class="ln">53</span> * Warm application needs `pcntl` and `posix` — the fork and the signal.</span>
+<span class=""><span class="ln">54</span> * They are absent on Windows and on minimal PHP builds, so a runner asks</span>
+<span class=""><span class="ln">55</span> * {@see isSupported} first and cold-forks each mutant through `proc_open`</span>
+<span class=""><span class="ln">56</span> * (the portable path the rest of Crucible already uses) when it is false.</span>
+<span class=""><span class="ln">57</span> * The rest of the test runner never touches these extensions.</span>
+<span class=""><span class="ln">58</span> */</span>
+<span class=""><span class="ln">59</span>final readonly class MutantApplier</span>
+<span class=""><span class="ln">60</span>{</span>
+<span class=""><span class="ln">61</span>    private const int POLL_MICROSECONDS = 1_000;</span>
+<span class=""><span class="ln">62</span></span>
+<span class=""><span class="ln">63</span>    /**</span>
+<span class=""><span class="ln">64</span>     * The memory a single mutant may use before it is cut off.</span>
+<span class=""><span class="ln">65</span>     *</span>
+<span class=""><span class="ln">66</span>     * ✓ Measured 2026-09-20, and it is why this exists: a mutant that</span>
+<span class=""><span class="ln">67</span>     * turns a bounded loop into an unbounded one grows ~130 MiB/s when</span>
+<span class=""><span class="ln">68</span>     * the loop writes to anything that accumulates — a FakeTerminal</span>
+<span class=""><span class="ln">69</span>     * collecting frames does exactly that. The wall-clock timeout is no</span>
+<span class=""><span class="ln">70</span>     * defence, because 10s of that is 1.3 GB and the cold path&#039;s 30s is</span>
+<span class=""><span class="ln">71</span>     * 3.9 GB, so the OOM killer reaches the whole process tree first. It</span>
+<span class=""><span class="ln">72</span>     * did: three runs died with SIGKILL around mutant 2444, and the</span>
+<span class=""><span class="ln">73</span>     * journal named the mutant each time.</span>
+<span class=""><span class="ln">74</span>     *</span>
+<span class=""><span class="ln">75</span>     * A limit turns that into an ordinary errored verdict, because a</span>
+<span class=""><span class="ln">76</span>     * child that dies without writing one is already read as &quot;the mutant</span>
+<span class=""><span class="ln">77</span>     * crashed the run&quot; rather than as an escape.</span>
+<span class=""><span class="ln">78</span>     *</span>
+<span class=""><span class="ln">79</span>     * Generous against a worker running a handful of covering tests —</span>
+<span class=""><span class="ln">80</span>     * the mutate parent itself peaks near 245 MiB — and still an order</span>
+<span class=""><span class="ln">81</span>     * of magnitude under the runaway.</span>
+<span class=""><span class="ln">82</span>     *</span>
+<span class=""><span class="ln">83</span>     * Shared with ColdMutantExecutor on purpose: one budget for a mutant,</span>
+<span class=""><span class="ln">84</span>     * whichever way it runs, or the two paths disagree about what is</span>
+<span class=""><span class="ln">85</span>     * survivable.</span>
+<span class=""><span class="ln">86</span>     */</span>
+<span class=""><span class="ln">87</span>    public const string MEMORY_LIMIT = &#039;512M&#039;;</span>
+<span class=""><span class="ln">88</span></span>
+<span class=""><span class="ln">89</span>    private MutationAutoloader $autoloader;</span>
+<span class=""><span class="ln">90</span></span>
+<span class=""><span class="ln">91</span>    public function __construct()</span>
+<span class=""><span class="ln">92</span>    {</span>
+<span class=""><span class="ln">93</span>        // Dormant in the parent; each fork arms it for its own mutant. The</span>
+<span class=""><span class="ln">94</span>        // same loader serves the cold worker from the environment.</span>
+<span class="covered"><span class="ln">95</span>        $this-&gt;autoloader = new MutationAutoloader();</span>
+<span class="covered"><span class="ln">96</span>        $this-&gt;autoloader-&gt;register();</span>
+<span class=""><span class="ln">97</span>    }</span>
+<span class=""><span class="ln">98</span></span>
+<span class=""><span class="ln">99</span>    /**</span>
+<span class=""><span class="ln">100</span>     * Whether this platform can run the warm path at all: the fork and the</span>
+<span class=""><span class="ln">101</span>     * signal it terminates the child with. False on Windows and minimal</span>
+<span class=""><span class="ln">102</span>     * builds — the runner cold-falls-back through `proc_open` instead.</span>
+<span class=""><span class="ln">103</span>     */</span>
+<span class=""><span class="ln">104</span>    public static function isSupported(): bool</span>
+<span class=""><span class="ln">105</span>    {</span>
+<span class="covered"><span class="ln">106</span>        return function_exists(&#039;pcntl_fork&#039;)</span>
+<span class="covered"><span class="ln">107</span>            &amp;&amp; function_exists(&#039;pcntl_waitpid&#039;)</span>
+<span class="covered"><span class="ln">108</span>            &amp;&amp; function_exists(&#039;posix_kill&#039;)</span>
+<span class="covered"><span class="ln">109</span>            &amp;&amp; function_exists(&#039;posix_getpid&#039;);</span>
+<span class=""><span class="ln">110</span>    }</span>
+<span class=""><span class="ln">111</span></span>
+<span class=""><span class="ln">112</span>    /**</span>
+<span class=""><span class="ln">113</span>     * Whether the mutant&#039;s class is still unloaded in this process — the</span>
+<span class=""><span class="ln">114</span>     * warm precondition. Once a class is declared it cannot be replaced</span>
+<span class=""><span class="ln">115</span>     * without a redeclare fatal, so a false here means cold-fallback.</span>
+<span class=""><span class="ln">116</span>     */</span>
+<span class=""><span class="ln">117</span>    public function canApply(Mutant $mutant): bool</span>
+<span class=""><span class="ln">118</span>    {</span>
+<span class="covered"><span class="ln">119</span>        return !class_exists($mutant-&gt;class, false);</span>
+<span class=""><span class="ln">120</span>    }</span>
+<span class=""><span class="ln">121</span></span>
+<span class=""><span class="ln">122</span>    /**</span>
+<span class=""><span class="ln">123</span>     * Run the covering tests against the mutant in an isolated child.</span>
+<span class=""><span class="ln">124</span>     * $covering runs the ordered covering tests and returns the id of the</span>
+<span class=""><span class="ln">125</span>     * first that failed — the kill — or null when every one passed.</span>
+<span class=""><span class="ln">126</span>     *</span>
+<span class=""><span class="ln">127</span>     * @param callable(): ?non-empty-string $covering</span>
+<span class=""><span class="ln">128</span>     */</span>
+<span class=""><span class="ln">129</span>    public function run(Mutant $mutant, callable $covering, float $timeoutSeconds = 10.0): MutationVerdict</span>
+<span class=""><span class="ln">130</span>    {</span>
+<span class=""><span class="ln">131</span>        // A safety net, not the routing point: a runner checks isSupported()</span>
+<span class=""><span class="ln">132</span>        // up front and cold-falls-back, so this only fires on direct misuse</span>
+<span class=""><span class="ln">133</span>        // — and reports it plainly rather than fataling on an undefined fork.</span>
+<span class="covered"><span class="ln">134</span>        if (!self::isSupported()) {</span>
+<span class="missed"><span class="ln">135</span>            return MutationVerdict::errored($mutant, &#039;Warm mutation requires the pcntl and posix extensions.&#039;, 0.0);</span>
+<span class=""><span class="ln">136</span>        }</span>
+<span class=""><span class="ln">137</span></span>
+<span class="covered"><span class="ln">138</span>        $started    = microtime(true);</span>
+<span class="covered"><span class="ln">139</span>        $mutatedTmp = tempnam(sys_get_temp_dir(), &#039;crucible-mutant-&#039;);</span>
+<span class="covered"><span class="ln">140</span>        $resultTmp  = tempnam(sys_get_temp_dir(), &#039;crucible-verdict-&#039;);</span>
+<span class=""><span class="ln">141</span></span>
+<span class="covered"><span class="ln">142</span>        if ($mutatedTmp === false || $resultTmp === false) {</span>
+<span class="missed"><span class="ln">143</span>            return MutationVerdict::errored($mutant, &#039;Could not allocate a temp file for the mutant.&#039;, 0.0);</span>
+<span class=""><span class="ln">144</span>        }</span>
+<span class=""><span class="ln">145</span></span>
+<span class="covered"><span class="ln">146</span>        file_put_contents($mutatedTmp, $mutant-&gt;mutatedSource);</span>
+<span class=""><span class="ln">147</span></span>
+<span class=""><span class="ln">148</span>        // Remembered BEFORE the fork, so the child can prove it is not</span>
+<span class=""><span class="ln">149</span>        // the parent. ✓ Measured 2026-09-20: mutating the `$pid === 0`</span>
+<span class=""><span class="ln">150</span>        // branch below makes the parent take the child&#039;s path, and the</span>
+<span class=""><span class="ln">151</span>        // child&#039;s last act is SIGKILL on its own pid — uncatchable, so</span>
+<span class=""><span class="ln">152</span>        // the whole run dies with no verdict and no log line. Three</span>
+<span class=""><span class="ln">153</span>        // mutation runs ended exactly there.</span>
+<span class=""><span class="ln">154</span>        //</span>
+<span class=""><span class="ln">155</span>        // The guard is worth more than that one mutant: any fork bug</span>
+<span class=""><span class="ln">156</span>        // reaching child() in the parent takes the run with it, and this</span>
+<span class=""><span class="ln">157</span>        // is the one invariant that cannot be true by accident.</span>
+<span class="covered"><span class="ln">158</span>        $parent = posix_getpid();</span>
+<span class="covered"><span class="ln">159</span>        $pid    = pcntl_fork();</span>
+<span class=""><span class="ln">160</span></span>
+<span class="covered"><span class="ln">161</span>        if ($pid === -1) {</span>
+<span class="missed"><span class="ln">162</span>            @unlink($mutatedTmp);</span>
+<span class="missed"><span class="ln">163</span>            @unlink($resultTmp);</span>
+<span class=""><span class="ln">164</span></span>
+<span class="missed"><span class="ln">165</span>            return MutationVerdict::errored($mutant, &#039;Could not fork to isolate the mutant.&#039;, microtime(true) - $started);</span>
+<span class=""><span class="ln">166</span>        }</span>
+<span class=""><span class="ln">167</span></span>
+<span class="covered"><span class="ln">168</span>        if ($pid === 0) {</span>
+<span class="missed"><span class="ln">169</span>            $this-&gt;child($mutant, $mutatedTmp, $resultTmp, $covering, $parent);</span>
+<span class=""><span class="ln">170</span>        }</span>
+<span class=""><span class="ln">171</span></span>
+<span class=""><span class="ln">172</span>        // Guarded in BOTH directions, because either branch being wrong is</span>
+<span class=""><span class="ln">173</span>        // unrecoverable in a different way. A parent that reaches child()</span>
+<span class=""><span class="ln">174</span>        // must not SIGKILL itself — that is the guard inside child(). A</span>
+<span class=""><span class="ln">175</span>        // CHILD that skips child() must not reach here and resume the</span>
+<span class=""><span class="ln">176</span>        // parent&#039;s work: it would finish the parent&#039;s run, fork again from</span>
+<span class=""><span class="ln">177</span>        // inside the loop, and multiply. Its own pid is the proof.</span>
+<span class="covered"><span class="ln">178</span>        if (posix_getpid() !== $parent) {</span>
+<span class="missed"><span class="ln">179</span>            posix_kill(posix_getpid(), SIGKILL);</span>
+<span class=""><span class="ln">180</span>        }</span>
+<span class=""><span class="ln">181</span></span>
+<span class="covered"><span class="ln">182</span>        $verdict = $this-&gt;await($pid, $mutant, $resultTmp, $timeoutSeconds, $started);</span>
+<span class=""><span class="ln">183</span></span>
+<span class="covered"><span class="ln">184</span>        @unlink($mutatedTmp);</span>
+<span class="covered"><span class="ln">185</span>        @unlink($resultTmp);</span>
+<span class=""><span class="ln">186</span></span>
+<span class="covered"><span class="ln">187</span>        return $verdict;</span>
+<span class=""><span class="ln">188</span>    }</span>
+<span class=""><span class="ln">189</span></span>
+<span class=""><span class="ln">190</span>    /**</span>
+<span class=""><span class="ln">191</span>     * The child: activate the mutant, run the covering tests, write the</span>
+<span class=""><span class="ln">192</span>     * verdict, and terminate hard.</span>
+<span class=""><span class="ln">193</span>     *</span>
+<span class=""><span class="ln">194</span>     * @param non-empty-string              $mutatedTmp</span>
+<span class=""><span class="ln">195</span>     * @param non-empty-string              $resultTmp</span>
+<span class=""><span class="ln">196</span>     * @param callable(): ?non-empty-string $covering</span>
+<span class=""><span class="ln">197</span>     * @param int                           $parentPid the pid that forked this one</span>
+<span class=""><span class="ln">198</span>     */</span>
+<span class=""><span class="ln">199</span>    private function child(Mutant $mutant, string $mutatedTmp, string $resultTmp, callable $covering, int $parentPid): never</span>
+<span class=""><span class="ln">200</span>    {</span>
+<span class=""><span class="ln">201</span>        // Only the child is capped. The parent is bookkeeping and must</span>
+<span class=""><span class="ln">202</span>        // outlive every mutant it runs.</span>
+<span class="missed"><span class="ln">203</span>        ini_set(&#039;memory_limit&#039;, self::MEMORY_LIMIT);</span>
+<span class=""><span class="ln">204</span></span>
+<span class="missed"><span class="ln">205</span>        $this-&gt;autoloader-&gt;activate($mutant-&gt;class, $mutatedTmp);</span>
+<span class=""><span class="ln">206</span></span>
+<span class=""><span class="ln">207</span>        try {</span>
+<span class="missed"><span class="ln">208</span>            $killedBy = $covering();</span>
+<span class="missed"><span class="ln">209</span>            $payload  = $killedBy === null</span>
+<span class="missed"><span class="ln">210</span>                ? [&#039;outcome&#039; =&gt; &#039;escaped&#039;]</span>
+<span class="missed"><span class="ln">211</span>                : [&#039;outcome&#039; =&gt; &#039;killed&#039;, &#039;killedBy&#039; =&gt; $killedBy];</span>
+<span class="missed"><span class="ln">212</span>        } catch (Throwable $throwable) {</span>
+<span class="missed"><span class="ln">213</span>            $payload = [&#039;outcome&#039; =&gt; &#039;errored&#039;, &#039;reason&#039; =&gt; $throwable-&gt;getMessage()];</span>
+<span class=""><span class="ln">214</span>        }</span>
+<span class=""><span class="ln">215</span></span>
+<span class="missed"><span class="ln">216</span>        file_put_contents($resultTmp, (string) json_encode($payload));</span>
+<span class=""><span class="ln">217</span></span>
+<span class=""><span class="ln">218</span>        // The one check that must hold before an uncatchable signal: this</span>
+<span class=""><span class="ln">219</span>        // is a child, not the process that forked it. Throwing satisfies</span>
+<span class=""><span class="ln">220</span>        // `never` and leaves a run that can still report; SIGKILL here in</span>
+<span class=""><span class="ln">221</span>        // the parent would end it with no verdict and no message.</span>
+<span class="missed"><span class="ln">222</span>        if (posix_getpid() === $parentPid) {</span>
+<span class="missed"><span class="ln">223</span>            throw new RuntimeException(&#039;child() ran in the process that forked it; refusing to signal the parent.&#039;);</span>
+<span class=""><span class="ln">224</span>        }</span>
+<span class=""><span class="ln">225</span></span>
+<span class=""><span class="ln">226</span>        // Hard exit: the verdict file is the only thing this child leaves</span>
+<span class=""><span class="ln">227</span>        // behind — no shutdown handler, no flushed output buffer.</span>
+<span class="missed"><span class="ln">228</span>        posix_kill(posix_getpid(), SIGKILL);</span>
+<span class=""><span class="ln">229</span></span>
+<span class="missed"><span class="ln">230</span>        exit(1); // unreachable once the signal lands; the `never` guarantee.</span>
+<span class=""><span class="ln">231</span>    }</span>
+<span class=""><span class="ln">232</span></span>
+<span class=""><span class="ln">233</span>    /**</span>
+<span class=""><span class="ln">234</span>     * Wait for the child, enforcing the timeout, then read its verdict.</span>
+<span class=""><span class="ln">235</span>     *</span>
+<span class=""><span class="ln">236</span>     * @param non-empty-string $resultTmp</span>
+<span class=""><span class="ln">237</span>     */</span>
+<span class=""><span class="ln">238</span>    private function await(int $pid, Mutant $mutant, string $resultTmp, float $timeoutSeconds, float $started): MutationVerdict</span>
+<span class=""><span class="ln">239</span>    {</span>
+<span class="covered"><span class="ln">240</span>        $deadline = $started + $timeoutSeconds;</span>
+<span class="covered"><span class="ln">241</span>        $status   = 0;</span>
+<span class=""><span class="ln">242</span></span>
+<span class="covered"><span class="ln">243</span>        while (true) {</span>
+<span class="covered"><span class="ln">244</span>            if (pcntl_waitpid($pid, $status, WNOHANG) === $pid) {</span>
+<span class="covered"><span class="ln">245</span>                break;</span>
+<span class=""><span class="ln">246</span>            }</span>
+<span class=""><span class="ln">247</span></span>
+<span class="covered"><span class="ln">248</span>            if (microtime(true) &gt;= $deadline) {</span>
+<span class="covered"><span class="ln">249</span>                posix_kill($pid, SIGKILL);</span>
+<span class="covered"><span class="ln">250</span>                pcntl_waitpid($pid, $status);</span>
+<span class=""><span class="ln">251</span></span>
+<span class="covered"><span class="ln">252</span>                return MutationVerdict::timedOut($mutant, microtime(true) - $started);</span>
+<span class=""><span class="ln">253</span>            }</span>
+<span class=""><span class="ln">254</span></span>
+<span class="covered"><span class="ln">255</span>            usleep(self::POLL_MICROSECONDS);</span>
+<span class=""><span class="ln">256</span>        }</span>
+<span class=""><span class="ln">257</span></span>
+<span class="covered"><span class="ln">258</span>        return $this-&gt;verdictFrom($mutant, $resultTmp, microtime(true) - $started);</span>
+<span class=""><span class="ln">259</span>    }</span>
+<span class=""><span class="ln">260</span></span>
+<span class=""><span class="ln">261</span>    /**</span>
+<span class=""><span class="ln">262</span>     * @param non-empty-string $resultTmp</span>
+<span class=""><span class="ln">263</span>     */</span>
+<span class=""><span class="ln">264</span>    private function verdictFrom(Mutant $mutant, string $resultTmp, float $duration): MutationVerdict</span>
+<span class=""><span class="ln">265</span>    {</span>
+<span class="covered"><span class="ln">266</span>        $raw     = file_get_contents($resultTmp);</span>
+<span class="covered"><span class="ln">267</span>        $decoded = $raw === false || $raw === &#039;&#039; ? null : json_decode($raw, true);</span>
+<span class=""><span class="ln">268</span></span>
+<span class="covered"><span class="ln">269</span>        if (!is_array($decoded) || !is_string($decoded[&#039;outcome&#039;] ?? null)) {</span>
+<span class=""><span class="ln">270</span>            // No verdict written — the child died before finishing, i.e. a</span>
+<span class=""><span class="ln">271</span>            // fatal in the mutated code. That is an error, never a silent</span>
+<span class=""><span class="ln">272</span>            // escape.</span>
+<span class="missed"><span class="ln">273</span>            return MutationVerdict::errored($mutant, &#039;The mutant crashed the run before a verdict was recorded.&#039;, $duration);</span>
+<span class=""><span class="ln">274</span>        }</span>
+<span class=""><span class="ln">275</span></span>
+<span class="covered"><span class="ln">276</span>        $killedBy = is_string($decoded[&#039;killedBy&#039;] ?? null) &amp;&amp; $decoded[&#039;killedBy&#039;] !== &#039;&#039; ? $decoded[&#039;killedBy&#039;] : &#039;unknown&#039;;</span>
+<span class="covered"><span class="ln">277</span>        $reason   = is_string($decoded[&#039;reason&#039;] ?? null) &amp;&amp; $decoded[&#039;reason&#039;] !== &#039;&#039; ? $decoded[&#039;reason&#039;] : &#039;The mutant errored.&#039;;</span>
+<span class=""><span class="ln">278</span></span>
+<span class="covered"><span class="ln">279</span>        return match ($decoded[&#039;outcome&#039;]) {</span>
+<span class="covered"><span class="ln">280</span>            &#039;killed&#039;  =&gt; MutationVerdict::killed($mutant, $killedBy, $duration),</span>
+<span class="covered"><span class="ln">281</span>            &#039;escaped&#039; =&gt; MutationVerdict::escaped($mutant, $duration),</span>
+<span class="covered"><span class="ln">282</span>            default   =&gt; MutationVerdict::errored($mutant, $reason, $duration),</span>
+<span class=""><span class="ln">283</span>        };</span>
+<span class=""><span class="ln">284</span>    }</span>
+<span class=""><span class="ln">285</span>}</span>
+<span class="missed"><span class="ln">286</span></span>
+</pre>
+</body>
+</html>

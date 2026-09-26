@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Framework/TestCase.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/Framework/TestCase.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Framework;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use AssertionError;</span>
+<span class=""><span class="ln">14</span>use LucianoPereira\Crucible\Assert\Assert;</span>
+<span class=""><span class="ln">15</span>use LucianoPereira\Crucible\Assert\AssertionFailedError;</span>
+<span class=""><span class="ln">16</span>use LucianoPereira\Crucible\Attributes\AllowMockObjectsWithoutExpectations;</span>
+<span class=""><span class="ln">17</span>use LucianoPereira\Crucible\Double\DoubleSpecification;</span>
+<span class=""><span class="ln">18</span>use LucianoPereira\Crucible\Double\InvocationCount;</span>
+<span class=""><span class="ln">19</span>use LucianoPereira\Crucible\Double\MockBuilder;</span>
+<span class=""><span class="ln">20</span>use LucianoPereira\Crucible\Double\Mocked;</span>
+<span class=""><span class="ln">21</span>use LucianoPereira\Crucible\Double\Mockery\MockeryContainer;</span>
+<span class=""><span class="ln">22</span>use LucianoPereira\Crucible\Double\TestDoubles;</span>
+<span class=""><span class="ln">23</span>use LucianoPereira\Crucible\Reporting\PrettyName;</span>
+<span class=""><span class="ln">24</span>use ReflectionClass;</span>
+<span class=""><span class="ln">25</span>use ReflectionMethod;</span>
+<span class=""><span class="ln">26</span>use Throwable;</span>
+<span class=""><span class="ln">27</span></span>
+<span class=""><span class="ln">28</span>use function preg_match;</span>
+<span class=""><span class="ln">29</span>use function sprintf;</span>
+<span class=""><span class="ln">30</span>use function str_contains;</span>
+<span class=""><span class="ln">31</span>use function trigger_error;</span>
+<span class=""><span class="ln">32</span></span>
+<span class=""><span class="ln">33</span>use const E_USER_NOTICE;</span>
+<span class=""><span class="ln">34</span></span>
+<span class=""><span class="ln">35</span>/**</span>
+<span class=""><span class="ln">36</span> * The xUnit test case of the PHPUnit 13 spec: per-test lifecycle</span>
+<span class=""><span class="ln">37</span> * (fresh instance, setUp/tearDown), class-level hooks, exception</span>
+<span class=""><span class="ln">38</span> * expectations, and the assertion API inherited from Assert.</span>
+<span class=""><span class="ln">39</span> *</span>
+<span class=""><span class="ln">40</span> * invokeTest() is Crucible&#039;s internal orchestration entry — dialect</span>
+<span class=""><span class="ln">41</span> * frontends bind it into a TestDefinition closure; the runner</span>
+<span class=""><span class="ln">42</span> * classifies whatever it throws.</span>
+<span class=""><span class="ln">43</span> */</span>
+<span class=""><span class="ln">44</span>abstract class TestCase extends Assert</span>
+<span class=""><span class="ln">45</span>{</span>
+<span class=""><span class="ln">46</span>    /** @var ?class-string&lt;Throwable&gt; */</span>
+<span class=""><span class="ln">47</span>    private ?string $expectedException = null;</span>
+<span class=""><span class="ln">48</span></span>
+<span class=""><span class="ln">49</span>    private ?string $expectedExceptionMessage = null;</span>
+<span class=""><span class="ln">50</span></span>
+<span class=""><span class="ln">51</span>    /** @var ?non-empty-string */</span>
+<span class=""><span class="ln">52</span>    private ?string $expectedExceptionMessageRegularExpression = null;</span>
+<span class=""><span class="ln">53</span></span>
+<span class=""><span class="ln">54</span>    private int|string|null $expectedExceptionCode = null;</span>
+<span class=""><span class="ln">55</span></span>
+<span class=""><span class="ln">56</span>    private bool $doesNotPerformAssertions = false;</span>
+<span class=""><span class="ln">57</span></span>
+<span class=""><span class="ln">58</span>    private ?TestDoubles $doubles = null;</span>
+<span class=""><span class="ln">59</span></span>
+<span class=""><span class="ln">60</span>    private string $testName = &#039;&#039;;</span>
+<span class=""><span class="ln">61</span></span>
+<span class=""><span class="ln">62</span>    /** @var ?non-empty-string */</span>
+<span class=""><span class="ln">63</span>    private ?string $testDataset = null;</span>
+<span class=""><span class="ln">64</span></span>
+<span class="missed"><span class="ln">65</span>    public static function setUpBeforeClass(): void {}</span>
+<span class=""><span class="ln">66</span></span>
+<span class="missed"><span class="ln">67</span>    public static function tearDownAfterClass(): void {}</span>
+<span class=""><span class="ln">68</span></span>
+<span class="covered"><span class="ln">69</span>    protected function setUp(): void {}</span>
+<span class=""><span class="ln">70</span></span>
+<span class=""><span class="ln">71</span>    /** Runs after setUp() and before the test: assertions every test of the class shares. */</span>
+<span class="covered"><span class="ln">72</span>    protected function assertPreConditions(): void {}</span>
+<span class=""><span class="ln">73</span></span>
+<span class=""><span class="ln">74</span>    /** Runs after a test that completed and before tearDown(): assertions every test shares. */</span>
+<span class="covered"><span class="ln">75</span>    protected function assertPostConditions(): void {}</span>
+<span class=""><span class="ln">76</span></span>
+<span class="covered"><span class="ln">77</span>    protected function tearDown(): void {}</span>
+<span class=""><span class="ln">78</span></span>
+<span class=""><span class="ln">79</span>    /**</span>
+<span class=""><span class="ln">80</span>     * The seam a subclass uses to replace an error before it is</span>
+<span class=""><span class="ln">81</span>     * reported: whatever a test, a before hook or setUp() throws, other</span>
+<span class=""><span class="ln">82</span>     * than a failure, a skip or an incomplete, passes through here once.</span>
+<span class=""><span class="ln">83</span>     * Frameworks override it (Orchestra Testbench adds the request that</span>
+<span class=""><span class="ln">84</span>     * produced a Laravel exception), so it must exist to be overridden.</span>
+<span class=""><span class="ln">85</span>     */</span>
+<span class=""><span class="ln">86</span>    protected function transformException(Throwable $t): Throwable</span>
+<span class=""><span class="ln">87</span>    {</span>
+<span class="missed"><span class="ln">88</span>        return $t;</span>
+<span class=""><span class="ln">89</span>    }</span>
+<span class=""><span class="ln">90</span></span>
+<span class=""><span class="ln">91</span>    /**</span>
+<span class=""><span class="ln">92</span>     * Runs one test method through the per-test lifecycle. Internal:</span>
+<span class=""><span class="ln">93</span>     * called by dialect frontends, not by user code. Returns the test</span>
+<span class=""><span class="ln">94</span>     * method&#039;s return value (consumed by #[Depends] injection).</span>
+<span class=""><span class="ln">95</span>     *</span>
+<span class=""><span class="ln">96</span>     * The hook lists carry setUp(), the condition templates and</span>
+<span class=""><span class="ln">97</span>     * tearDown() at their priority-0 place (HookPlan). A failure in the</span>
+<span class=""><span class="ln">98</span>     * before phase ends the test without the after phase, as a failing</span>
+<span class=""><span class="ln">99</span>     * setUp() always has; once the test body is entered, the after</span>
+<span class=""><span class="ln">100</span>     * phase always runs.</span>
+<span class=""><span class="ln">101</span>     *</span>
+<span class=""><span class="ln">102</span>     * @param non-empty-string  $methodName</span>
+<span class=""><span class="ln">103</span>     * @param list&lt;mixed&gt;       $arguments</span>
+<span class=""><span class="ln">104</span>     * @param ?non-empty-string $dataset</span>
+<span class=""><span class="ln">105</span>     */</span>
+<span class=""><span class="ln">106</span>    final public function invokeTest(string $methodName, array $arguments = [], ?HookPlan $hooks = null, ?string $dataset = null): mixed</span>
+<span class=""><span class="ln">107</span>    {</span>
+<span class="covered"><span class="ln">108</span>        $hooks ??= new HookPlan();</span>
+<span class="covered"><span class="ln">109</span>        $this-&gt;nameTest($methodName, $dataset);</span>
+<span class=""><span class="ln">110</span></span>
+<span class=""><span class="ln">111</span>        try {</span>
+<span class="covered"><span class="ln">112</span>            foreach ($hooks-&gt;before as $hook) {</span>
+<span class="covered"><span class="ln">113</span>                $this-&gt;{$hook}();</span>
+<span class=""><span class="ln">114</span>            }</span>
+<span class=""><span class="ln">115</span></span>
+<span class="covered"><span class="ln">116</span>            foreach ($hooks-&gt;preConditions as $hook) {</span>
+<span class="covered"><span class="ln">117</span>                $this-&gt;{$hook}();</span>
+<span class=""><span class="ln">118</span>            }</span>
+<span class="covered"><span class="ln">119</span>        } catch (Throwable $throwable) {</span>
+<span class="covered"><span class="ln">120</span>            throw $this-&gt;transformed($throwable);</span>
+<span class=""><span class="ln">121</span>        }</span>
+<span class=""><span class="ln">122</span></span>
+<span class=""><span class="ln">123</span>        try {</span>
+<span class="covered"><span class="ln">124</span>            $result = $this-&gt;{$methodName}(...$arguments);</span>
+<span class="covered"><span class="ln">125</span>            $this-&gt;verifyNoExpectedExceptionWasMissed();</span>
+<span class="covered"><span class="ln">126</span>            $this-&gt;verifyTestDoubles($this-&gt;allowsExpectationlessMocks($methodName));</span>
+<span class=""><span class="ln">127</span></span>
+<span class="covered"><span class="ln">128</span>            foreach ($hooks-&gt;postConditions as $hook) {</span>
+<span class="covered"><span class="ln">129</span>                $this-&gt;{$hook}();</span>
+<span class=""><span class="ln">130</span>            }</span>
+<span class=""><span class="ln">131</span></span>
+<span class="covered"><span class="ln">132</span>            return $result;</span>
+<span class="covered"><span class="ln">133</span>        } catch (AssertionFailedError|SkippedTestError|IncompleteTestError $outcome) {</span>
+<span class=""><span class="ln">134</span>            // An expected exception may itself be an assertion failure</span>
+<span class=""><span class="ln">135</span>            // (testing a test framework does exactly this).</span>
+<span class="covered"><span class="ln">136</span>            if ($outcome instanceof AssertionFailedError &amp;&amp; $this-&gt;expectsException()) {</span>
+<span class="missed"><span class="ln">137</span>                $this-&gt;verifyThrowableMatchesExpectation($outcome);</span>
+<span class=""><span class="ln">138</span></span>
+<span class="missed"><span class="ln">139</span>                return null;</span>
+<span class=""><span class="ln">140</span>            }</span>
+<span class=""><span class="ln">141</span></span>
+<span class="covered"><span class="ln">142</span>            throw $outcome;</span>
+<span class="covered"><span class="ln">143</span>        } catch (Throwable $throwable) {</span>
+<span class="covered"><span class="ln">144</span>            if (!$this-&gt;expectsException()) {</span>
+<span class="covered"><span class="ln">145</span>                throw $this-&gt;transformed($throwable);</span>
+<span class=""><span class="ln">146</span>            }</span>
+<span class=""><span class="ln">147</span></span>
+<span class="covered"><span class="ln">148</span>            $this-&gt;verifyThrowableMatchesExpectation($throwable);</span>
+<span class=""><span class="ln">149</span></span>
+<span class="covered"><span class="ln">150</span>            return null;</span>
+<span class="dead"><span class="ln">151</span>        } finally {</span>
+<span class="covered"><span class="ln">152</span>            foreach ($hooks-&gt;after as $hook) {</span>
+<span class="covered"><span class="ln">153</span>                $this-&gt;{$hook}();</span>
+<span class=""><span class="ln">154</span>            }</span>
+<span class=""><span class="ln">155</span>        }</span>
+<span class=""><span class="ln">156</span>    }</span>
+<span class=""><span class="ln">157</span></span>
+<span class=""><span class="ln">158</span>    /**</span>
+<span class=""><span class="ln">159</span>     * An error goes through transformException(); a failure, a skip or</span>
+<span class=""><span class="ln">160</span>     * an incomplete is an outcome, not an error, and passes unchanged.</span>
+<span class=""><span class="ln">161</span>     */</span>
+<span class=""><span class="ln">162</span>    private function transformed(Throwable $throwable): Throwable</span>
+<span class=""><span class="ln">163</span>    {</span>
+<span class="covered"><span class="ln">164</span>        if ($throwable instanceof AssertionFailedError</span>
+<span class="covered"><span class="ln">165</span>            || $throwable instanceof AssertionError</span>
+<span class="covered"><span class="ln">166</span>            || $throwable instanceof SkippedTestError</span>
+<span class="covered"><span class="ln">167</span>            || $throwable instanceof IncompleteTestError) {</span>
+<span class="missed"><span class="ln">168</span>            return $throwable;</span>
+<span class=""><span class="ln">169</span>        }</span>
+<span class=""><span class="ln">170</span></span>
+<span class="covered"><span class="ln">171</span>        return $this-&gt;transformException($throwable);</span>
+<span class=""><span class="ln">172</span>    }</span>
+<span class=""><span class="ln">173</span></span>
+<span class=""><span class="ln">174</span>    final public function expectsNoAssertions(): bool</span>
+<span class=""><span class="ln">175</span>    {</span>
+<span class="missed"><span class="ln">176</span>        return $this-&gt;doesNotPerformAssertions;</span>
+<span class=""><span class="ln">177</span>    }</span>
+<span class=""><span class="ln">178</span></span>
+<span class=""><span class="ln">179</span>    /**</span>
+<span class=""><span class="ln">180</span>     * The current test method&#039;s name — set at the start of</span>
+<span class=""><span class="ln">181</span>     * invokeTest(), so it is available throughout setUp(), the test</span>
+<span class=""><span class="ln">182</span>     * body, and tearDown(). getName() is the pre-PHPUnit-10 alias,</span>
+<span class=""><span class="ln">183</span>     * kept since real-world suites still mix both (D-019&#039;s whole</span>
+<span class=""><span class="ln">184</span>     * point is running that code unmodified).</span>
+<span class=""><span class="ln">185</span>     */</span>
+<span class=""><span class="ln">186</span>    final public function name(): string</span>
+<span class=""><span class="ln">187</span>    {</span>
+<span class="missed"><span class="ln">188</span>        return $this-&gt;testName;</span>
+<span class=""><span class="ln">189</span>    }</span>
+<span class=""><span class="ln">190</span></span>
+<span class=""><span class="ln">191</span>    final public function getName(): string</span>
+<span class=""><span class="ln">192</span>    {</span>
+<span class="missed"><span class="ln">193</span>        return $this-&gt;testName;</span>
+<span class=""><span class="ln">194</span>    }</span>
+<span class=""><span class="ln">195</span></span>
+<span class=""><span class="ln">196</span>    /**</span>
+<span class=""><span class="ln">197</span>     * The name with the spec&#039;s dataset spelling appended, and the bare</span>
+<span class=""><span class="ln">198</span>     * name when the test takes no dataset. ✓ Measured against phpunit</span>
+<span class=""><span class="ln">199</span>     * 13.3.1: `testPositional with data set #0`, `testLabelled with</span>
+<span class=""><span class="ln">200</span>     * data set &quot;first row&quot;`, `testPlain`.</span>
+<span class=""><span class="ln">201</span>     */</span>
+<span class=""><span class="ln">202</span>    final public function nameWithDataSet(): string</span>
+<span class=""><span class="ln">203</span>    {</span>
+<span class="missed"><span class="ln">204</span>        return $this-&gt;testDataset === null</span>
+<span class="missed"><span class="ln">205</span>            ? $this-&gt;testName</span>
+<span class="missed"><span class="ln">206</span>            : $this-&gt;testName . PrettyName::dataset($this-&gt;testDataset);</span>
+<span class=""><span class="ln">207</span>    }</span>
+<span class=""><span class="ln">208</span></span>
+<span class=""><span class="ln">209</span>    /**</span>
+<span class=""><span class="ln">210</span>     * Names the running test. Internal, like invokeTest(): the phpunit</span>
+<span class=""><span class="ln">211</span>     * dialect gets this through invokeTest(), and a dialect that runs</span>
+<span class=""><span class="ln">212</span>     * its own lifecycle (PestBuilder) calls it directly.</span>
+<span class=""><span class="ln">213</span>     *</span>
+<span class=""><span class="ln">214</span>     * @param ?non-empty-string $dataset</span>
+<span class=""><span class="ln">215</span>     */</span>
+<span class=""><span class="ln">216</span>    final public function nameTest(string $name, ?string $dataset = null): void</span>
+<span class=""><span class="ln">217</span>    {</span>
+<span class="covered"><span class="ln">218</span>        $this-&gt;testName    = $name;</span>
+<span class="covered"><span class="ln">219</span>        $this-&gt;testDataset = $dataset;</span>
+<span class=""><span class="ln">220</span>    }</span>
+<span class=""><span class="ln">221</span></span>
+<span class=""><span class="ln">222</span>    // --- Expectations -------------------------------------------------------</span>
+<span class=""><span class="ln">223</span></span>
+<span class=""><span class="ln">224</span>    /**</span>
+<span class=""><span class="ln">225</span>     * @param class-string&lt;Throwable&gt; $exception</span>
+<span class=""><span class="ln">226</span>     */</span>
+<span class=""><span class="ln">227</span>    final protected function expectException(string $exception): void</span>
+<span class=""><span class="ln">228</span>    {</span>
+<span class="covered"><span class="ln">229</span>        $this-&gt;expectedException = $exception;</span>
+<span class=""><span class="ln">230</span>    }</span>
+<span class=""><span class="ln">231</span></span>
+<span class=""><span class="ln">232</span>    final protected function expectExceptionMessage(string $message): void</span>
+<span class=""><span class="ln">233</span>    {</span>
+<span class="covered"><span class="ln">234</span>        $this-&gt;expectedExceptionMessage = $message;</span>
+<span class=""><span class="ln">235</span>    }</span>
+<span class=""><span class="ln">236</span></span>
+<span class=""><span class="ln">237</span>    /**</span>
+<span class=""><span class="ln">238</span>     * @param non-empty-string $regularExpression</span>
+<span class=""><span class="ln">239</span>     */</span>
+<span class=""><span class="ln">240</span>    final protected function expectExceptionMessageMatches(string $regularExpression): void</span>
+<span class=""><span class="ln">241</span>    {</span>
+<span class="missed"><span class="ln">242</span>        $this-&gt;expectedExceptionMessageRegularExpression = $regularExpression;</span>
+<span class=""><span class="ln">243</span>    }</span>
+<span class=""><span class="ln">244</span></span>
+<span class=""><span class="ln">245</span>    final protected function expectExceptionCode(int|string $code): void</span>
+<span class=""><span class="ln">246</span>    {</span>
+<span class="missed"><span class="ln">247</span>        $this-&gt;expectedExceptionCode = $code;</span>
+<span class=""><span class="ln">248</span>    }</span>
+<span class=""><span class="ln">249</span></span>
+<span class=""><span class="ln">250</span>    final protected function expectNotToPerformAssertions(): void</span>
+<span class=""><span class="ln">251</span>    {</span>
+<span class="missed"><span class="ln">252</span>        $this-&gt;doesNotPerformAssertions = true;</span>
+<span class=""><span class="ln">253</span>    }</span>
+<span class=""><span class="ln">254</span></span>
+<span class=""><span class="ln">255</span>    // --- Test doubles -----------------------------------------------------------</span>
+<span class=""><span class="ln">256</span></span>
+<span class=""><span class="ln">257</span>    /**</span>
+<span class=""><span class="ln">258</span>     * @template T of object</span>
+<span class=""><span class="ln">259</span>     *</span>
+<span class=""><span class="ln">260</span>     * @param class-string&lt;T&gt; $originalClassName</span>
+<span class=""><span class="ln">261</span>     *</span>
+<span class=""><span class="ln">262</span>     * @return T&amp;Mocked</span>
+<span class=""><span class="ln">263</span>     */</span>
+<span class=""><span class="ln">264</span>    final protected function createMock(string $originalClassName): object</span>
+<span class=""><span class="ln">265</span>    {</span>
+<span class=""><span class="ln">266</span>        /** @var T&amp;Mocked */</span>
+<span class="covered"><span class="ln">267</span>        return $this-&gt;testDoubles()-&gt;fromSpecification(</span>
+<span class="covered"><span class="ln">268</span>            new DoubleSpecification([$originalClassName], mergeConfigurations: true, prefixArgumentMatching: true),</span>
+<span class="covered"><span class="ln">269</span>            advisesExpectations: true,</span>
+<span class=""><span class="ln">270</span>        );</span>
+<span class=""><span class="ln">271</span>    }</span>
+<span class=""><span class="ln">272</span></span>
+<span class=""><span class="ln">273</span>    /**</span>
+<span class=""><span class="ln">274</span>     * @template T of object</span>
+<span class=""><span class="ln">275</span>     *</span>
+<span class=""><span class="ln">276</span>     * @param class-string&lt;T&gt; $originalClassName</span>
+<span class=""><span class="ln">277</span>     *</span>
+<span class=""><span class="ln">278</span>     * @return T&amp;Mocked</span>
+<span class=""><span class="ln">279</span>     */</span>
+<span class=""><span class="ln">280</span>    final protected function createStub(string $originalClassName): object</span>
+<span class=""><span class="ln">281</span>    {</span>
+<span class="covered"><span class="ln">282</span>        return $this-&gt;testDoubles()-&gt;create($originalClassName);</span>
+<span class=""><span class="ln">283</span>    }</span>
+<span class=""><span class="ln">284</span></span>
+<span class=""><span class="ln">285</span>    /**</span>
+<span class=""><span class="ln">286</span>     * @template T of object</span>
+<span class=""><span class="ln">287</span>     *</span>
+<span class=""><span class="ln">288</span>     * @param class-string&lt;T&gt;              $originalClassName</span>
+<span class=""><span class="ln">289</span>     * @param array&lt;non-empty-string, mixed&gt; $configuration method =&gt; return value</span>
+<span class=""><span class="ln">290</span>     *</span>
+<span class=""><span class="ln">291</span>     * @return T&amp;Mocked</span>
+<span class=""><span class="ln">292</span>     */</span>
+<span class=""><span class="ln">293</span>    final protected function createConfiguredMock(string $originalClassName, array $configuration): object</span>
+<span class=""><span class="ln">294</span>    {</span>
+<span class="missed"><span class="ln">295</span>        $mock = $this-&gt;createMock($originalClassName);</span>
+<span class=""><span class="ln">296</span></span>
+<span class="missed"><span class="ln">297</span>        foreach ($configuration as $method =&gt; $value) {</span>
+<span class="missed"><span class="ln">298</span>            $mock-&gt;method($method)-&gt;willReturn($value);</span>
+<span class=""><span class="ln">299</span>        }</span>
+<span class=""><span class="ln">300</span></span>
+<span class="missed"><span class="ln">301</span>        return $mock;</span>
+<span class=""><span class="ln">302</span>    }</span>
+<span class=""><span class="ln">303</span></span>
+<span class=""><span class="ln">304</span>    /**</span>
+<span class=""><span class="ln">305</span>     * @template T of object</span>
+<span class=""><span class="ln">306</span>     *</span>
+<span class=""><span class="ln">307</span>     * @param class-string&lt;T&gt;              $originalClassName</span>
+<span class=""><span class="ln">308</span>     * @param array&lt;non-empty-string, mixed&gt; $configuration method =&gt; return value</span>
+<span class=""><span class="ln">309</span>     *</span>
+<span class=""><span class="ln">310</span>     * @return T&amp;Mocked</span>
+<span class=""><span class="ln">311</span>     */</span>
+<span class=""><span class="ln">312</span>    final protected function createConfiguredStub(string $originalClassName, array $configuration): object</span>
+<span class=""><span class="ln">313</span>    {</span>
+<span class="missed"><span class="ln">314</span>        $stub = $this-&gt;createStub($originalClassName);</span>
+<span class=""><span class="ln">315</span></span>
+<span class="missed"><span class="ln">316</span>        foreach ($configuration as $method =&gt; $value) {</span>
+<span class="missed"><span class="ln">317</span>            $stub-&gt;method($method)-&gt;willReturn($value);</span>
+<span class=""><span class="ln">318</span>        }</span>
+<span class=""><span class="ln">319</span></span>
+<span class="missed"><span class="ln">320</span>        return $stub;</span>
+<span class=""><span class="ln">321</span>    }</span>
+<span class=""><span class="ln">322</span></span>
+<span class=""><span class="ln">323</span>    /**</span>
+<span class=""><span class="ln">324</span>     * @template T of object</span>
+<span class=""><span class="ln">325</span>     *</span>
+<span class=""><span class="ln">326</span>     * @param class-string&lt;T&gt; $className</span>
+<span class=""><span class="ln">327</span>     *</span>
+<span class=""><span class="ln">328</span>     * @return MockBuilder&lt;T&gt;</span>
+<span class=""><span class="ln">329</span>     */</span>
+<span class=""><span class="ln">330</span>    final protected function getMockBuilder(string $className): MockBuilder</span>
+<span class=""><span class="ln">331</span>    {</span>
+<span class="missed"><span class="ln">332</span>        return new MockBuilder($this-&gt;testDoubles(), $className);</span>
+<span class=""><span class="ln">333</span>    }</span>
+<span class=""><span class="ln">334</span></span>
+<span class=""><span class="ln">335</span>    /**</span>
+<span class=""><span class="ln">336</span>     * Stubs are mocks in Crucible (D-017): the stub builder is the mock</span>
+<span class=""><span class="ln">337</span>     * builder, with getStub()/setStubClassName() as extra spellings.</span>
+<span class=""><span class="ln">338</span>     *</span>
+<span class=""><span class="ln">339</span>     * @template T of object</span>
+<span class=""><span class="ln">340</span>     *</span>
+<span class=""><span class="ln">341</span>     * @param class-string&lt;T&gt; $className</span>
+<span class=""><span class="ln">342</span>     *</span>
+<span class=""><span class="ln">343</span>     * @return MockBuilder&lt;T&gt;</span>
+<span class=""><span class="ln">344</span>     */</span>
+<span class=""><span class="ln">345</span>    final protected function getStubBuilder(string $className): MockBuilder</span>
+<span class=""><span class="ln">346</span>    {</span>
+<span class="missed"><span class="ln">347</span>        return $this-&gt;getMockBuilder($className);</span>
+<span class=""><span class="ln">348</span>    }</span>
+<span class=""><span class="ln">349</span></span>
+<span class=""><span class="ln">350</span>    /**</span>
+<span class=""><span class="ln">351</span>     * The listed methods are doubled; everything else runs the real</span>
+<span class=""><span class="ln">352</span>     * implementation. The original constructor is never called (spec</span>
+<span class=""><span class="ln">353</span>     * behavior, observed).</span>
+<span class=""><span class="ln">354</span>     *</span>
+<span class=""><span class="ln">355</span>     * @template T of object</span>
+<span class=""><span class="ln">356</span>     *</span>
+<span class=""><span class="ln">357</span>     * @param class-string&lt;T&gt;        $originalClassName</span>
+<span class=""><span class="ln">358</span>     * @param list&lt;non-empty-string&gt; $methods</span>
+<span class=""><span class="ln">359</span>     *</span>
+<span class=""><span class="ln">360</span>     * @return T&amp;Mocked</span>
+<span class=""><span class="ln">361</span>     */</span>
+<span class=""><span class="ln">362</span>    final protected function createPartialMock(string $originalClassName, array $methods): object</span>
+<span class=""><span class="ln">363</span>    {</span>
+<span class=""><span class="ln">364</span>        /** @var T&amp;Mocked */</span>
+<span class="missed"><span class="ln">365</span>        return $this-&gt;testDoubles()-&gt;fromSpecification(</span>
+<span class="missed"><span class="ln">366</span>            new DoubleSpecification([$originalClassName], $methods, mergeConfigurations: true, prefixArgumentMatching: true),</span>
+<span class="missed"><span class="ln">367</span>            advisesExpectations: true,</span>
+<span class=""><span class="ln">368</span>        );</span>
+<span class=""><span class="ln">369</span>    }</span>
+<span class=""><span class="ln">370</span></span>
+<span class=""><span class="ln">371</span>    /**</span>
+<span class=""><span class="ln">372</span>     * @param non-empty-list&lt;class-string&gt; $interfaces</span>
+<span class=""><span class="ln">373</span>     *</span>
+<span class=""><span class="ln">374</span>     * @return Mocked</span>
+<span class=""><span class="ln">375</span>     */</span>
+<span class=""><span class="ln">376</span>    final protected function createMockForIntersectionOfInterfaces(array $interfaces): object</span>
+<span class=""><span class="ln">377</span>    {</span>
+<span class="missed"><span class="ln">378</span>        return $this-&gt;testDoubles()-&gt;fromSpecification(</span>
+<span class="missed"><span class="ln">379</span>            new DoubleSpecification($interfaces, mergeConfigurations: true, prefixArgumentMatching: true),</span>
+<span class="missed"><span class="ln">380</span>            advisesExpectations: true,</span>
+<span class=""><span class="ln">381</span>        );</span>
+<span class=""><span class="ln">382</span>    }</span>
+<span class=""><span class="ln">383</span></span>
+<span class=""><span class="ln">384</span>    /**</span>
+<span class=""><span class="ln">385</span>     * @param non-empty-list&lt;class-string&gt; $interfaces</span>
+<span class=""><span class="ln">386</span>     *</span>
+<span class=""><span class="ln">387</span>     * @return Mocked</span>
+<span class=""><span class="ln">388</span>     */</span>
+<span class=""><span class="ln">389</span>    final protected function createStubForIntersectionOfInterfaces(array $interfaces): object</span>
+<span class=""><span class="ln">390</span>    {</span>
+<span class="missed"><span class="ln">391</span>        return $this-&gt;createMockForIntersectionOfInterfaces($interfaces);</span>
+<span class=""><span class="ln">392</span>    }</span>
+<span class=""><span class="ln">393</span></span>
+<span class=""><span class="ln">394</span>    /**</span>
+<span class=""><span class="ln">395</span>     * Internal: end-of-test double settlement — expectation</span>
+<span class=""><span class="ln">396</span>     * verification plus the expectation-less-mock advisory (a notice,</span>
+<span class=""><span class="ln">397</span>     * never an outcome). Called by invokeTest and by dialect frontends</span>
+<span class=""><span class="ln">398</span>     * that orchestrate the lifecycle themselves (D-046).</span>
+<span class=""><span class="ln">399</span>     */</span>
+<span class=""><span class="ln">400</span>    final public function verifyTestDoubles(bool $expectationlessMocksAllowed = false): void</span>
+<span class=""><span class="ln">401</span>    {</span>
+<span class="covered"><span class="ln">402</span>        $this-&gt;doubles?-&gt;verify();</span>
+<span class=""><span class="ln">403</span></span>
+<span class=""><span class="ln">404</span>        // Mockery-grammar doubles settle in the same window — their</span>
+<span class=""><span class="ln">405</span>        // Mockery::close() is a spelling for this call (D-060).</span>
+<span class="covered"><span class="ln">406</span>        MockeryContainer::settle();</span>
+<span class=""><span class="ln">407</span></span>
+<span class="covered"><span class="ln">408</span>        if ($expectationlessMocksAllowed || !$this-&gt;doubles instanceof TestDoubles) {</span>
+<span class="covered"><span class="ln">409</span>            return;</span>
+<span class=""><span class="ln">410</span>        }</span>
+<span class=""><span class="ln">411</span></span>
+<span class="covered"><span class="ln">412</span>        foreach ($this-&gt;doubles-&gt;expectationlessMocks() as $target) {</span>
+<span class="missed"><span class="ln">413</span>            trigger_error(sprintf(</span>
+<span class=""><span class="ln">414</span>                &#039;The mock for %s ended the test without any expectation; create a stub when none are needed, or add #[AllowMockObjectsWithoutExpectations].&#039;,</span>
+<span class="missed"><span class="ln">415</span>                $target,</span>
+<span class="missed"><span class="ln">416</span>            ), E_USER_NOTICE);</span>
+<span class=""><span class="ln">417</span>        }</span>
+<span class=""><span class="ln">418</span>    }</span>
+<span class=""><span class="ln">419</span></span>
+<span class=""><span class="ln">420</span>    private function allowsExpectationlessMocks(string $methodName): bool</span>
+<span class=""><span class="ln">421</span>    {</span>
+<span class="covered"><span class="ln">422</span>        return (new ReflectionMethod($this, $methodName))-&gt;getAttributes(AllowMockObjectsWithoutExpectations::class) !== []</span>
+<span class="covered"><span class="ln">423</span>            || (new ReflectionClass($this))-&gt;getAttributes(AllowMockObjectsWithoutExpectations::class) !== [];</span>
+<span class=""><span class="ln">424</span>    }</span>
+<span class=""><span class="ln">425</span></span>
+<span class=""><span class="ln">426</span>    final protected function any(): InvocationCount</span>
+<span class=""><span class="ln">427</span>    {</span>
+<span class="missed"><span class="ln">428</span>        return InvocationCount::any();</span>
+<span class=""><span class="ln">429</span>    }</span>
+<span class=""><span class="ln">430</span></span>
+<span class=""><span class="ln">431</span>    final protected function never(): InvocationCount</span>
+<span class=""><span class="ln">432</span>    {</span>
+<span class="missed"><span class="ln">433</span>        return InvocationCount::never();</span>
+<span class=""><span class="ln">434</span>    }</span>
+<span class=""><span class="ln">435</span></span>
+<span class=""><span class="ln">436</span>    final protected function once(): InvocationCount</span>
+<span class=""><span class="ln">437</span>    {</span>
+<span class="covered"><span class="ln">438</span>        return InvocationCount::once();</span>
+<span class=""><span class="ln">439</span>    }</span>
+<span class=""><span class="ln">440</span></span>
+<span class=""><span class="ln">441</span>    final protected function exactly(int $count): InvocationCount</span>
+<span class=""><span class="ln">442</span>    {</span>
+<span class="missed"><span class="ln">443</span>        return InvocationCount::exactly($count);</span>
+<span class=""><span class="ln">444</span>    }</span>
+<span class=""><span class="ln">445</span></span>
+<span class=""><span class="ln">446</span>    final protected function atLeastOnce(): InvocationCount</span>
+<span class=""><span class="ln">447</span>    {</span>
+<span class="missed"><span class="ln">448</span>        return InvocationCount::atLeastOnce();</span>
+<span class=""><span class="ln">449</span>    }</span>
+<span class=""><span class="ln">450</span></span>
+<span class=""><span class="ln">451</span>    final protected function atLeast(int $count): InvocationCount</span>
+<span class=""><span class="ln">452</span>    {</span>
+<span class="missed"><span class="ln">453</span>        return InvocationCount::atLeast($count);</span>
+<span class=""><span class="ln">454</span>    }</span>
+<span class=""><span class="ln">455</span></span>
+<span class=""><span class="ln">456</span>    final protected function atMost(int $count): InvocationCount</span>
+<span class=""><span class="ln">457</span>    {</span>
+<span class="missed"><span class="ln">458</span>        return InvocationCount::atMost($count);</span>
+<span class=""><span class="ln">459</span>    }</span>
+<span class=""><span class="ln">460</span></span>
+<span class=""><span class="ln">461</span>    private function testDoubles(): TestDoubles</span>
+<span class=""><span class="ln">462</span>    {</span>
+<span class="covered"><span class="ln">463</span>        return $this-&gt;doubles ??= new TestDoubles();</span>
+<span class=""><span class="ln">464</span>    }</span>
+<span class=""><span class="ln">465</span></span>
+<span class=""><span class="ln">466</span>    // --- Explicit outcomes -----------------------------------------------------</span>
+<span class=""><span class="ln">467</span></span>
+<span class=""><span class="ln">468</span>    final protected function markTestSkipped(string $message = &#039;&#039;): never</span>
+<span class=""><span class="ln">469</span>    {</span>
+<span class="missed"><span class="ln">470</span>        throw new SkippedTestError($message);</span>
+<span class=""><span class="ln">471</span>    }</span>
+<span class=""><span class="ln">472</span></span>
+<span class=""><span class="ln">473</span>    final protected function markTestIncomplete(string $message = &#039;&#039;): never</span>
+<span class=""><span class="ln">474</span>    {</span>
+<span class="missed"><span class="ln">475</span>        throw new IncompleteTestError($message);</span>
+<span class=""><span class="ln">476</span>    }</span>
+<span class=""><span class="ln">477</span></span>
+<span class=""><span class="ln">478</span>    // --- Internals ----------------------------------------------------------------</span>
+<span class=""><span class="ln">479</span></span>
+<span class=""><span class="ln">480</span>    private function expectsException(): bool</span>
+<span class=""><span class="ln">481</span>    {</span>
+<span class="covered"><span class="ln">482</span>        return $this-&gt;expectedException !== null</span>
+<span class="covered"><span class="ln">483</span>            || $this-&gt;expectedExceptionMessage !== null</span>
+<span class="covered"><span class="ln">484</span>            || $this-&gt;expectedExceptionMessageRegularExpression !== null</span>
+<span class="covered"><span class="ln">485</span>            || $this-&gt;expectedExceptionCode !== null;</span>
+<span class=""><span class="ln">486</span>    }</span>
+<span class=""><span class="ln">487</span></span>
+<span class=""><span class="ln">488</span>    private function verifyNoExpectedExceptionWasMissed(): void</span>
+<span class=""><span class="ln">489</span>    {</span>
+<span class="covered"><span class="ln">490</span>        if (!$this-&gt;expectsException()) {</span>
+<span class="covered"><span class="ln">491</span>            return;</span>
+<span class=""><span class="ln">492</span>        }</span>
+<span class=""><span class="ln">493</span></span>
+<span class="missed"><span class="ln">494</span>        $expected = $this-&gt;expectedException ?? Throwable::class;</span>
+<span class=""><span class="ln">495</span></span>
+<span class=""><span class="ln">496</span>        // Disarm before failing: the missed-expectation failure itself</span>
+<span class=""><span class="ln">497</span>        // must never re-enter expectation matching (AssertionFailedError</span>
+<span class=""><span class="ln">498</span>        // extends RuntimeException — expecting RuntimeException would</span>
+<span class=""><span class="ln">499</span>        // otherwise swallow this failure; found by the conformance suite).</span>
+<span class="missed"><span class="ln">500</span>        $this-&gt;expectedException                         = null;</span>
+<span class="missed"><span class="ln">501</span>        $this-&gt;expectedExceptionMessage                  = null;</span>
+<span class="missed"><span class="ln">502</span>        $this-&gt;expectedExceptionMessageRegularExpression = null;</span>
+<span class="missed"><span class="ln">503</span>        $this-&gt;expectedExceptionCode                     = null;</span>
+<span class=""><span class="ln">504</span></span>
+<span class="missed"><span class="ln">505</span>        self::fail(sprintf(</span>
+<span class=""><span class="ln">506</span>            &#039;Failed asserting that exception of type &quot;%s&quot; is thrown.&#039;,</span>
+<span class="missed"><span class="ln">507</span>            $expected,</span>
+<span class=""><span class="ln">508</span>        ));</span>
+<span class=""><span class="ln">509</span>    }</span>
+<span class=""><span class="ln">510</span></span>
+<span class=""><span class="ln">511</span>    private function verifyThrowableMatchesExpectation(Throwable $throwable): void</span>
+<span class=""><span class="ln">512</span>    {</span>
+<span class="covered"><span class="ln">513</span>        if (!$this-&gt;expectsException()) {</span>
+<span class="missed"><span class="ln">514</span>            throw $throwable;</span>
+<span class=""><span class="ln">515</span>        }</span>
+<span class=""><span class="ln">516</span></span>
+<span class="covered"><span class="ln">517</span>        if ($this-&gt;expectedException !== null &amp;&amp; !$throwable instanceof $this-&gt;expectedException) {</span>
+<span class="missed"><span class="ln">518</span>            throw new AssertionFailedError(sprintf(</span>
+<span class=""><span class="ln">519</span>                &#039;Failed asserting that exception of type &quot;%s&quot; matches expected exception &quot;%s&quot;. Message was: &quot;%s&quot;.&#039;,</span>
+<span class="missed"><span class="ln">520</span>                $throwable::class,</span>
+<span class="missed"><span class="ln">521</span>                $this-&gt;expectedException,</span>
+<span class="missed"><span class="ln">522</span>                $throwable-&gt;getMessage(),</span>
+<span class=""><span class="ln">523</span>            ));</span>
+<span class=""><span class="ln">524</span>        }</span>
+<span class=""><span class="ln">525</span></span>
+<span class="covered"><span class="ln">526</span>        if ($this-&gt;expectedExceptionMessage !== null &amp;&amp; !str_contains($throwable-&gt;getMessage(), $this-&gt;expectedExceptionMessage)) {</span>
+<span class="missed"><span class="ln">527</span>            throw new AssertionFailedError(sprintf(</span>
+<span class=""><span class="ln">528</span>                &#039;Failed asserting that exception message &quot;%s&quot; contains &quot;%s&quot;.&#039;,</span>
+<span class="missed"><span class="ln">529</span>                $throwable-&gt;getMessage(),</span>
+<span class="missed"><span class="ln">530</span>                $this-&gt;expectedExceptionMessage,</span>
+<span class=""><span class="ln">531</span>            ));</span>
+<span class=""><span class="ln">532</span>        }</span>
+<span class=""><span class="ln">533</span></span>
+<span class="covered"><span class="ln">534</span>        if ($this-&gt;expectedExceptionMessageRegularExpression !== null &amp;&amp; preg_match($this-&gt;expectedExceptionMessageRegularExpression, $throwable-&gt;getMessage()) !== 1) {</span>
+<span class="missed"><span class="ln">535</span>            throw new AssertionFailedError(sprintf(</span>
+<span class=""><span class="ln">536</span>                &#039;Failed asserting that exception message &quot;%s&quot; matches &quot;%s&quot;.&#039;,</span>
+<span class="missed"><span class="ln">537</span>                $throwable-&gt;getMessage(),</span>
+<span class="missed"><span class="ln">538</span>                $this-&gt;expectedExceptionMessageRegularExpression,</span>
+<span class=""><span class="ln">539</span>            ));</span>
+<span class=""><span class="ln">540</span>        }</span>
+<span class=""><span class="ln">541</span></span>
+<span class="covered"><span class="ln">542</span>        if ($this-&gt;expectedExceptionCode !== null &amp;&amp; (string) $throwable-&gt;getCode() !== (string) $this-&gt;expectedExceptionCode) {</span>
+<span class="missed"><span class="ln">543</span>            throw new AssertionFailedError(sprintf(</span>
+<span class=""><span class="ln">544</span>                &#039;Failed asserting that exception code &quot;%s&quot; is equal to &quot;%s&quot;.&#039;,</span>
+<span class="missed"><span class="ln">545</span>                (string) $throwable-&gt;getCode(),</span>
+<span class="missed"><span class="ln">546</span>                (string) $this-&gt;expectedExceptionCode,</span>
+<span class=""><span class="ln">547</span>            ));</span>
+<span class=""><span class="ln">548</span>        }</span>
+<span class=""><span class="ln">549</span></span>
+<span class=""><span class="ln">550</span>        // The expectation itself counts as a verified assertion.</span>
+<span class="covered"><span class="ln">551</span>        self::assertThat(true, new \LucianoPereira\Crucible\Assert\Constraint\IsTrue());</span>
+<span class=""><span class="ln">552</span>    }</span>
+<span class=""><span class="ln">553</span>}</span>
+<span class=""><span class="ln">554</span></span>
+</pre>
+</body>
+</html>

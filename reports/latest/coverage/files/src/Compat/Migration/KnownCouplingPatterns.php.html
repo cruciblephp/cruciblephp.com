@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Compat/Migration/KnownCouplingPatterns.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../../index.html">Crucible coverage</a> / src/Compat/Migration/KnownCouplingPatterns.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Compat\Migration;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use function in_array;</span>
+<span class=""><span class="ln">14</span>use function preg_match;</span>
+<span class=""><span class="ln">15</span>use function preg_quote;</span>
+<span class=""><span class="ln">16</span>use function str_contains;</span>
+<span class=""><span class="ln">17</span>use function str_replace;</span>
+<span class=""><span class="ln">18</span></span>
+<span class=""><span class="ln">19</span>/**</span>
+<span class=""><span class="ln">20</span> * The seeded table `compat-check --auto-fix` actually knows how to</span>
+<span class=""><span class="ln">21</span> * rewrite. Every pattern here was verified against a real suite</span>
+<span class=""><span class="ln">22</span> * (Monolog 3.9.0, 2026-07-28 session) and re-checked against the real</span>
+<span class=""><span class="ln">23</span> * PHPUnit oracle after rewriting, so a fix doesn&#039;t just weaken the</span>
+<span class=""><span class="ln">24</span> * test into a vacuous pass — including a real correction found by</span>
+<span class=""><span class="ln">25</span> * that same re-check: a first version of the vendor-path pattern</span>
+<span class=""><span class="ln">26</span> * matched ANY frame index, but only frame 0 (the immediate call site)</span>
+<span class=""><span class="ln">27</span> * is structurally guaranteed to be some TestCase.php in every engine.</span>
+<span class=""><span class="ln">28</span> * Frame 1+ reflects each engine&#039;s own internal call depth, which does</span>
+<span class=""><span class="ln">29</span> * NOT line up — real PHPUnit&#039;s frame 1 is also TestCase.php, but</span>
+<span class=""><span class="ln">30</span> * Crucible&#039;s is a different file entirely. The two non-immediate-frame</span>
+<span class=""><span class="ln">31</span> * patterns below exist specifically to still close that case, honestly</span>
+<span class=""><span class="ln">32</span> * (weakened to &quot;this frame exists&quot;, never claiming which file it&#039;s</span>
+<span class=""><span class="ln">33</span> * in) rather than either guessing wrong or leaving it unfixed.</span>
+<span class=""><span class="ln">34</span> *</span>
+<span class=""><span class="ln">35</span> * A fourth real shape found in that same audit is deliberately NOT</span>
+<span class=""><span class="ln">36</span> * here: a composite `assertEquals()` against a whole array/object</span>
+<span class=""><span class="ln">37</span> * literal with a PHPUnit-internal value buried inside one of its</span>
+<span class=""><span class="ln">38</span> * fields. Fixing that needs understanding the surrounding structure,</span>
+<span class=""><span class="ln">39</span> * not just one call&#039;s literal argument — outside what a single-call</span>
+<span class=""><span class="ln">40</span> * token rewrite can safely do. It stays diagnosed, not auto-fixed.</span>
+<span class=""><span class="ln">41</span> * Extend this table only with patterns verified the same way: fixed</span>
+<span class=""><span class="ln">42</span> * by hand against a real failure, then re-checked against the real</span>
+<span class=""><span class="ln">43</span> * oracle — never by guessing at a plausible-looking transform.</span>
+<span class=""><span class="ln">44</span> */</span>
+<span class=""><span class="ln">45</span>final readonly class KnownCouplingPatterns</span>
+<span class=""><span class="ln">46</span>{</span>
+<span class=""><span class="ln">47</span>    /**</span>
+<span class=""><span class="ln">48</span>     * PHPUnit-only internal filenames with no Crucible equivalent at</span>
+<span class=""><span class="ln">49</span>     * all — no path prefix to relax, so containment can only be</span>
+<span class=""><span class="ln">50</span>     * weakened to a structural &quot;some stacktrace frame exists&quot; check.</span>
+<span class=""><span class="ln">51</span>     */</span>
+<span class=""><span class="ln">52</span>    private const array NO_EQUIVALENT_FILENAMES = [&#039;TestSuite.php&#039;];</span>
+<span class=""><span class="ln">53</span></span>
+<span class=""><span class="ln">54</span>    /**</span>
+<span class=""><span class="ln">55</span>     * Order matters: `SourceRewriter` tries these in array order and</span>
+<span class=""><span class="ln">56</span>     * stops at the first match, so the two non-immediate-frame</span>
+<span class=""><span class="ln">57</span>     * patterns (more specific) must come before the general one</span>
+<span class=""><span class="ln">58</span>     * (which would otherwise wrongly claim a specific file for a</span>
+<span class=""><span class="ln">59</span>     * frame that does not structurally guarantee one).</span>
+<span class=""><span class="ln">60</span>     *</span>
+<span class=""><span class="ln">61</span>     * @return list&lt;CouplingPattern&gt;</span>
+<span class=""><span class="ln">62</span>     */</span>
+<span class=""><span class="ln">63</span>    public static function all(): array</span>
+<span class=""><span class="ln">64</span>    {</span>
+<span class=""><span class="ln">65</span>        return [</span>
+<span class=""><span class="ln">66</span>            // Frame N&gt;=1 with an explicit &quot;#N &quot; marker inside the</span>
+<span class=""><span class="ln">67</span>            // literal itself (LineFormatterTest::testBasePath&#039;s</span>
+<span class=""><span class="ln">68</span>            // shape). The frame-number text is real and verifiable in</span>
+<span class=""><span class="ln">69</span>            // both engines; the specific file at that frame is not</span>
+<span class=""><span class="ln">70</span>            // (real PHPUnit&#039;s frame 1 is also TestCase.php -- two</span>
+<span class=""><span class="ln">71</span>            // consecutive TestCase.php frames, its own internal</span>
+<span class=""><span class="ln">72</span>            // quirk -- but Crucible&#039;s frame 1 is TestBuilder.php, a</span>
+<span class=""><span class="ln">73</span>            // different file). Weaken to &quot;this frame exists&quot;, not</span>
+<span class=""><span class="ln">74</span>            // which file it names.</span>
+<span class="missed"><span class="ln">75</span>            new CouplingPattern(</span>
+<span class="missed"><span class="ln">76</span>                description: &#039;Asserts a literal vendor/phpunit/phpunit path at a non-immediate stack frame&#039;,</span>
+<span class=""><span class="ln">77</span>                methods: [&#039;assertStringContainsString&#039;, &#039;assertStringStartsWith&#039;],</span>
+<span class="missed"><span class="ln">78</span>                matchesLiteral: static fn(string $literal, string $restArgs): bool =&gt; str_contains($literal, &#039;vendor/phpunit/phpunit&#039;)</span>
+<span class="missed"><span class="ln">79</span>                    &amp;&amp; preg_match(&#039;/^.*?#\d+\s+vendor\/phpunit\/phpunit/&#039;, $literal) === 1</span>
+<span class="missed"><span class="ln">80</span>                    &amp;&amp; !self::isImmediateFrame($literal, $restArgs),</span>
+<span class="missed"><span class="ln">81</span>                rewrite: static function (string $literal, string $restArgs): string {</span>
+<span class="missed"><span class="ln">82</span>                    preg_match(&#039;/^(.*?#\d+\s+)/&#039;, $literal, $match);</span>
+<span class=""><span class="ln">83</span></span>
+<span class="missed"><span class="ln">84</span>                    return &#039;assertMatchesRegularExpression(\&#039;/&#039; . preg_quote($match[1] ?? &#039;&#039;, &#039;/&#039;) . &#039;\S+/\&#039;, &#039; . $restArgs . &#039;)&#039;;</span>
+<span class="missed"><span class="ln">85</span>                },</span>
+<span class=""><span class="ln">86</span>            ),</span>
+<span class=""><span class="ln">87</span>            // Frame N&gt;=1 via a trailing &quot;[N]&quot; array index with NO</span>
+<span class=""><span class="ln">88</span>            // frame marker in the literal at all</span>
+<span class=""><span class="ln">89</span>            // (NormalizerFormatterTest&#039;s shape: the identical literal</span>
+<span class=""><span class="ln">90</span>            // is reused for every frame, only the expression&#039;s index</span>
+<span class=""><span class="ln">91</span>            // distinguishes them). Nothing in the literal is worth</span>
+<span class=""><span class="ln">92</span>            // preserving for a non-immediate frame, so the honest</span>
+<span class=""><span class="ln">93</span>            // weakening is confirming that frame has some string</span>
+<span class=""><span class="ln">94</span>            // content, not what it says.</span>
+<span class="missed"><span class="ln">95</span>            new CouplingPattern(</span>
+<span class="missed"><span class="ln">96</span>                description: &#039;Asserts a literal vendor/phpunit/phpunit path at a non-immediate array-indexed frame&#039;,</span>
+<span class=""><span class="ln">97</span>                methods: [&#039;assertStringContainsString&#039;, &#039;assertStringStartsWith&#039;],</span>
+<span class="missed"><span class="ln">98</span>                matchesLiteral: static fn(string $literal, string $restArgs): bool =&gt; str_contains($literal, &#039;vendor/phpunit/phpunit&#039;)</span>
+<span class="missed"><span class="ln">99</span>                    &amp;&amp; preg_match(&#039;/\[\s*(\d+)\s*]\s*$/&#039;, $restArgs, $match) === 1</span>
+<span class="missed"><span class="ln">100</span>                    &amp;&amp; $match[1] !== &#039;0&#039;,</span>
+<span class="missed"><span class="ln">101</span>                rewrite: static fn(string $literal, string $restArgs): string =&gt; &#039;assertIsString(&#039; . $restArgs . &#039;)&#039;,</span>
+<span class=""><span class="ln">102</span>            ),</span>
+<span class=""><span class="ln">103</span>            // Frame 0 (the immediate call site) -- structurally</span>
+<span class=""><span class="ln">104</span>            // guaranteed to be some TestCase.php in every engine, so</span>
+<span class=""><span class="ln">105</span>            // preserving the file-name suffix is safe.</span>
+<span class="missed"><span class="ln">106</span>            new CouplingPattern(</span>
+<span class="missed"><span class="ln">107</span>                description: &#039;Asserts a literal vendor/phpunit/phpunit install path&#039;,</span>
+<span class=""><span class="ln">108</span>                methods: [&#039;assertStringContainsString&#039;, &#039;assertStringStartsWith&#039;],</span>
+<span class="missed"><span class="ln">109</span>                matchesLiteral: static fn(string $literal, string $restArgs): bool =&gt; str_contains($literal, &#039;vendor/phpunit/phpunit&#039;)</span>
+<span class="missed"><span class="ln">110</span>                    &amp;&amp; self::isImmediateFrame($literal, $restArgs),</span>
+<span class="missed"><span class="ln">111</span>                rewrite: static function (string $literal, string $restArgs): string {</span>
+<span class="missed"><span class="ln">112</span>                    $pattern = str_replace(</span>
+<span class="missed"><span class="ln">113</span>                        preg_quote(&#039;vendor/phpunit/phpunit&#039;, &#039;/&#039;),</span>
+<span class=""><span class="ln">114</span>                        &#039;\S*&#039;,</span>
+<span class="missed"><span class="ln">115</span>                        preg_quote($literal, &#039;/&#039;),</span>
+<span class=""><span class="ln">116</span>                    );</span>
+<span class=""><span class="ln">117</span></span>
+<span class="missed"><span class="ln">118</span>                    return &#039;assertMatchesRegularExpression(\&#039;/&#039; . $pattern . &#039;/\&#039;, &#039; . $restArgs . &#039;)&#039;;</span>
+<span class="missed"><span class="ln">119</span>                },</span>
+<span class=""><span class="ln">120</span>            ),</span>
+<span class="missed"><span class="ln">121</span>            new CouplingPattern(</span>
+<span class="missed"><span class="ln">122</span>                description: &#039;Asserts a PHPUnit-only internal filename Crucible has no equivalent for&#039;,</span>
+<span class=""><span class="ln">123</span>                methods: [&#039;assertStringContainsString&#039;],</span>
+<span class="missed"><span class="ln">124</span>                matchesLiteral: static fn(string $literal, string $restArgs): bool =&gt; in_array($literal, self::NO_EQUIVALENT_FILENAMES, true),</span>
+<span class="missed"><span class="ln">125</span>                rewrite: static fn(string $literal, string $restArgs): string =&gt; &#039;assertMatchesRegularExpression(\&#039;/#\d+ /\&#039;, &#039; . $restArgs . &#039;)&#039;,</span>
+<span class=""><span class="ln">126</span>            ),</span>
+<span class=""><span class="ln">127</span>        ];</span>
+<span class=""><span class="ln">128</span>    }</span>
+<span class=""><span class="ln">129</span></span>
+<span class=""><span class="ln">130</span>    /**</span>
+<span class=""><span class="ln">131</span>     * Whether this occurrence is checking the immediate call frame</span>
+<span class=""><span class="ln">132</span>     * (index 0) specifically, as opposed to a deeper one — the only</span>
+<span class=""><span class="ln">133</span>     * case verified safe to rewrite (see class docblock). Checks both</span>
+<span class=""><span class="ln">134</span>     * signals a real occurrence might carry: an explicit &quot;#N &quot; frame</span>
+<span class=""><span class="ln">135</span>     * marker inside the literal itself (LineFormatterTest&#039;s shape), or</span>
+<span class=""><span class="ln">136</span>     * a trailing &quot;[N]&quot; array index in the asserted-on expression</span>
+<span class=""><span class="ln">137</span>     * (NormalizerFormatterTest&#039;s shape, where the literal is identical</span>
+<span class=""><span class="ln">138</span>     * for every frame and only the expression distinguishes them). No</span>
+<span class=""><span class="ln">139</span>     * signal present at all (neither marker) is treated as frame 0,</span>
+<span class=""><span class="ln">140</span>     * matching every real occurrence seen so far.</span>
+<span class=""><span class="ln">141</span>     */</span>
+<span class=""><span class="ln">142</span>    private static function isImmediateFrame(string $literal, string $restArgs): bool</span>
+<span class=""><span class="ln">143</span>    {</span>
+<span class="missed"><span class="ln">144</span>        if (preg_match(&#039;/#(\d+)\s/&#039;, $literal, $match) === 1 &amp;&amp; $match[1] !== &#039;0&#039;) {</span>
+<span class="missed"><span class="ln">145</span>            return false;</span>
+<span class=""><span class="ln">146</span>        }</span>
+<span class=""><span class="ln">147</span></span>
+<span class="missed"><span class="ln">148</span>        if (preg_match(&#039;/\[\s*(\d+)\s*]\s*$/&#039;, $restArgs, $match) === 1 &amp;&amp; $match[1] !== &#039;0&#039;) {</span>
+<span class="missed"><span class="ln">149</span>            return false;</span>
+<span class=""><span class="ln">150</span>        }</span>
+<span class=""><span class="ln">151</span></span>
+<span class="missed"><span class="ln">152</span>        return true;</span>
+<span class=""><span class="ln">153</span>    }</span>
+<span class=""><span class="ln">154</span>}</span>
+<span class="missed"><span class="ln">155</span></span>
+</pre>
+</body>
+</html>

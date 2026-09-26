@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/PHPStan/UsesResolver.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/PHPStan/UsesResolver.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\PHPStan;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use PhpToken;</span>
+<span class=""><span class="ln">14</span></span>
+<span class=""><span class="ln">15</span>use function array_key_exists;</span>
+<span class=""><span class="ln">16</span>use function array_last;</span>
+<span class=""><span class="ln">17</span>use function array_merge;</span>
+<span class=""><span class="ln">18</span>use function count;</span>
+<span class=""><span class="ln">19</span>use function explode;</span>
+<span class=""><span class="ln">20</span>use function implode;</span>
+<span class=""><span class="ln">21</span>use function in_array;</span>
+<span class=""><span class="ln">22</span>use function ltrim;</span>
+<span class=""><span class="ln">23</span>use function str_contains;</span>
+<span class=""><span class="ln">24</span>use function str_starts_with;</span>
+<span class=""><span class="ln">25</span>use function trim;</span>
+<span class=""><span class="ln">26</span></span>
+<span class=""><span class="ln">27</span>use const T_AS;</span>
+<span class=""><span class="ln">28</span>use const T_CLASS;</span>
+<span class=""><span class="ln">29</span>use const T_CONST;</span>
+<span class=""><span class="ln">30</span>use const T_CONSTANT_ENCAPSED_STRING;</span>
+<span class=""><span class="ln">31</span>use const T_DOUBLE_COLON;</span>
+<span class=""><span class="ln">32</span>use const T_FUNCTION;</span>
+<span class=""><span class="ln">33</span>use const T_NAME_FULLY_QUALIFIED;</span>
+<span class=""><span class="ln">34</span>use const T_NAME_QUALIFIED;</span>
+<span class=""><span class="ln">35</span>use const T_NAMESPACE;</span>
+<span class=""><span class="ln">36</span>use const T_NS_SEPARATOR;</span>
+<span class=""><span class="ln">37</span>use const T_OBJECT_OPERATOR;</span>
+<span class=""><span class="ln">38</span>use const T_STRING;</span>
+<span class=""><span class="ln">39</span>use const T_USE;</span>
+<span class=""><span class="ln">40</span></span>
+<span class=""><span class="ln">41</span>/**</span>
+<span class=""><span class="ln">42</span> * Static reading of a dialect file&#039;s `uses(...)` arguments (D-050):</span>
+<span class=""><span class="ln">43</span> * the class and trait names a test file binds its closures to, taken</span>
+<span class=""><span class="ln">44</span> * from the source text alone — the analysis-time mirror of what</span>
+<span class=""><span class="ln">45</span> * PestScopes resolves at runtime by executing the file. Token-based</span>
+<span class=""><span class="ln">46</span> * like every other scanner in this project, name resolution follows</span>
+<span class=""><span class="ln">47</span> * PHP&#039;s own rules (leading backslash wins, then the alias map, then</span>
+<span class=""><span class="ln">48</span> * the namespace prefix), and imports are read by PHP&#039;s grammar: lists,</span>
+<span class=""><span class="ln">49</span> * groups, aliases (D-137). File-local `uses(...)` reads through</span>
+<span class=""><span class="ln">50</span> * classRefs(); the directory-scoped `pest()/uses()-&gt;in()` chains a</span>
+<span class=""><span class="ln">51</span> * Pest.php declares read through scopedRegistrations() (D-067). Both</span>
+<span class=""><span class="ln">52</span> * are one walk over the file, differing only in what they keep.</span>
+<span class=""><span class="ln">53</span> */</span>
+<span class=""><span class="ln">54</span>final readonly class UsesResolver</span>
+<span class=""><span class="ln">55</span>{</span>
+<span class=""><span class="ln">56</span>    /** A name as the tokenizer spells it: bare, qualified, or fully qualified. */</span>
+<span class=""><span class="ln">57</span>    private const array NAME = [T_STRING, T_NAME_QUALIFIED, T_NAME_FULLY_QUALIFIED];</span>
+<span class=""><span class="ln">58</span></span>
+<span class=""><span class="ln">59</span>    /**</span>
+<span class=""><span class="ln">60</span>     * Fully-qualified names passed to top-level uses() calls, in</span>
+<span class=""><span class="ln">61</span>     * argument order — `Foo::class` references and FQ string</span>
+<span class=""><span class="ln">62</span>     * literals both count, exactly the runtime surface.</span>
+<span class=""><span class="ln">63</span>     *</span>
+<span class=""><span class="ln">64</span>     * @return list&lt;non-empty-string&gt;</span>
+<span class=""><span class="ln">65</span>     */</span>
+<span class=""><span class="ln">66</span>    public static function classRefs(string $source): array</span>
+<span class=""><span class="ln">67</span>    {</span>
+<span class="covered"><span class="ln">68</span>        $names = [];</span>
+<span class=""><span class="ln">69</span></span>
+<span class="covered"><span class="ln">70</span>        foreach (self::chains($source, [&#039;uses&#039;]) as $chain) {</span>
+<span class="covered"><span class="ln">71</span>            $names = [...$names, ...$chain[&#039;root&#039;]];</span>
+<span class=""><span class="ln">72</span>        }</span>
+<span class=""><span class="ln">73</span></span>
+<span class="covered"><span class="ln">74</span>        return $names;</span>
+<span class=""><span class="ln">75</span>    }</span>
+<span class=""><span class="ln">76</span></span>
+<span class=""><span class="ln">77</span>    /**</span>
+<span class=""><span class="ln">78</span>     * The scoped registrations a Pest.php declares (D-067, closing</span>
+<span class=""><span class="ln">79</span>     * the D-050 leftover): every `pest()`/`uses()` chain carrying an</span>
+<span class=""><span class="ln">80</span>     * `-&gt;in(...)`, read as the class/trait names its extend()/use()/</span>
+<span class=""><span class="ln">81</span>     * assign()/initial arguments collect plus the in() glob strings —</span>
+<span class=""><span class="ln">82</span>     * the analysis-time mirror of ScopeRegistration. Chains without</span>
+<span class=""><span class="ln">83</span>     * an in() are bare (hooks only, classes inert — the D-033 rule)</span>
+<span class=""><span class="ln">84</span>     * and are not returned.</span>
+<span class=""><span class="ln">85</span>     *</span>
+<span class=""><span class="ln">86</span>     * @return list&lt;array{names: list&lt;non-empty-string&gt;, globs: non-empty-list&lt;non-empty-string&gt;}&gt;</span>
+<span class=""><span class="ln">87</span>     */</span>
+<span class=""><span class="ln">88</span>    public static function scopedRegistrations(string $source): array</span>
+<span class=""><span class="ln">89</span>    {</span>
+<span class="covered"><span class="ln">90</span>        $registrations = [];</span>
+<span class=""><span class="ln">91</span></span>
+<span class="covered"><span class="ln">92</span>        foreach (self::chains($source, [&#039;pest&#039;, &#039;uses&#039;]) as $chain) {</span>
+<span class="covered"><span class="ln">93</span>            if ($chain[&#039;globs&#039;] !== []) {</span>
+<span class="covered"><span class="ln">94</span>                $registrations[] = [&#039;names&#039; =&gt; array_merge($chain[&#039;root&#039;], $chain[&#039;chained&#039;]), &#039;globs&#039; =&gt; $chain[&#039;globs&#039;]];</span>
+<span class=""><span class="ln">95</span>            }</span>
+<span class=""><span class="ln">96</span>        }</span>
+<span class=""><span class="ln">97</span></span>
+<span class="covered"><span class="ln">98</span>        return $registrations;</span>
+<span class=""><span class="ln">99</span>    }</span>
+<span class=""><span class="ln">100</span></span>
+<span class=""><span class="ln">101</span>    /**</span>
+<span class=""><span class="ln">102</span>     * Every top-level call to one of $roots and its fluent chain: the</span>
+<span class=""><span class="ln">103</span>     * names its own arguments pass, the names `-&gt;extend()`, `-&gt;use()` and</span>
+<span class=""><span class="ln">104</span>     * `-&gt;assign()` pass, and the `-&gt;in()` globs — resolved against the</span>
+<span class=""><span class="ln">105</span>     * namespace and imports in force where the call stands.</span>
+<span class=""><span class="ln">106</span>     *</span>
+<span class=""><span class="ln">107</span>     * @param non-empty-list&lt;non-empty-string&gt; $roots</span>
+<span class=""><span class="ln">108</span>     *</span>
+<span class=""><span class="ln">109</span>     * @return list&lt;array{root: list&lt;non-empty-string&gt;, chained: list&lt;non-empty-string&gt;, globs: list&lt;non-empty-string&gt;}&gt;</span>
+<span class=""><span class="ln">110</span>     */</span>
+<span class=""><span class="ln">111</span>    private static function chains(string $source, array $roots): array</span>
+<span class=""><span class="ln">112</span>    {</span>
+<span class="covered"><span class="ln">113</span>        $tokens    = PhpToken::tokenize($source);</span>
+<span class="covered"><span class="ln">114</span>        $total     = count($tokens);</span>
+<span class="covered"><span class="ln">115</span>        $namespace = &#039;&#039;;</span>
+<span class=""><span class="ln">116</span></span>
+<span class=""><span class="ln">117</span>        /** @var array&lt;string, non-empty-string&gt; $aliases alias =&gt; fully-qualified */</span>
+<span class="covered"><span class="ln">118</span>        $aliases = [];</span>
+<span class="covered"><span class="ln">119</span>        $chains  = [];</span>
+<span class=""><span class="ln">120</span></span>
+<span class="covered"><span class="ln">121</span>        for ($i = 0; $i &lt; $total; $i++) {</span>
+<span class="covered"><span class="ln">122</span>            $token = $tokens[$i];</span>
+<span class=""><span class="ln">123</span></span>
+<span class="covered"><span class="ln">124</span>            if ($token-&gt;is(T_NAMESPACE)) {</span>
+<span class="covered"><span class="ln">125</span>                $next      = self::nextSignificant($tokens, $i + 1);</span>
+<span class="covered"><span class="ln">126</span>                $namespace = $next !== null &amp;&amp; $tokens[$next]-&gt;is([T_STRING, T_NAME_QUALIFIED]) ? $tokens[$next]-&gt;text : $namespace;</span>
+<span class=""><span class="ln">127</span></span>
+<span class="covered"><span class="ln">128</span>                continue;</span>
+<span class=""><span class="ln">129</span>            }</span>
+<span class=""><span class="ln">130</span></span>
+<span class="covered"><span class="ln">131</span>            if ($token-&gt;is(T_USE)) {</span>
+<span class="covered"><span class="ln">132</span>                self::collectImport($tokens, $i + 1, $aliases);</span>
+<span class=""><span class="ln">133</span></span>
+<span class="covered"><span class="ln">134</span>                continue;</span>
+<span class=""><span class="ln">135</span>            }</span>
+<span class=""><span class="ln">136</span></span>
+<span class="covered"><span class="ln">137</span>            $open = self::rootCall($tokens, $i, $roots);</span>
+<span class=""><span class="ln">138</span></span>
+<span class="covered"><span class="ln">139</span>            if ($open === null) {</span>
+<span class="covered"><span class="ln">140</span>                continue;</span>
+<span class=""><span class="ln">141</span>            }</span>
+<span class=""><span class="ln">142</span></span>
+<span class="covered"><span class="ln">143</span>            $chain = [&#039;root&#039; =&gt; self::resolveAll(self::arguments($tokens, $open + 1), $namespace, $aliases), &#039;chained&#039; =&gt; [], &#039;globs&#039; =&gt; []];</span>
+<span class="covered"><span class="ln">144</span>            $index = self::closingParen($tokens, $open);</span>
+<span class=""><span class="ln">145</span></span>
+<span class=""><span class="ln">146</span>            // Walk the fluent chain: `-&gt; name ( args )` until it ends.</span>
+<span class="covered"><span class="ln">147</span>            while ($index !== null) {</span>
+<span class="covered"><span class="ln">148</span>                $arrow  = self::nextSignificant($tokens, $index + 1);</span>
+<span class="covered"><span class="ln">149</span>                $method = $arrow === null || !$tokens[$arrow]-&gt;is(T_OBJECT_OPERATOR) ? null : self::nextSignificant($tokens, $arrow + 1);</span>
+<span class="covered"><span class="ln">150</span>                $args   = $method === null ? null : self::nextSignificant($tokens, $method + 1);</span>
+<span class=""><span class="ln">151</span></span>
+<span class="covered"><span class="ln">152</span>                if ($method === null || $args === null || $tokens[$args]-&gt;text !== &#039;(&#039;) {</span>
+<span class="covered"><span class="ln">153</span>                    break;</span>
+<span class=""><span class="ln">154</span>                }</span>
+<span class=""><span class="ln">155</span></span>
+<span class="covered"><span class="ln">156</span>                if (in_array($tokens[$method]-&gt;text, [&#039;extend&#039;, &#039;use&#039;, &#039;assign&#039;], true)) {</span>
+<span class="covered"><span class="ln">157</span>                    $chain[&#039;chained&#039;] = [...$chain[&#039;chained&#039;], ...self::resolveAll(self::arguments($tokens, $args + 1), $namespace, $aliases)];</span>
+<span class="covered"><span class="ln">158</span>                } elseif ($tokens[$method]-&gt;text === &#039;in&#039;) {</span>
+<span class="covered"><span class="ln">159</span>                    $chain[&#039;globs&#039;] = [...$chain[&#039;globs&#039;], ...self::stringArguments($tokens, $args + 1)];</span>
+<span class=""><span class="ln">160</span>                }</span>
+<span class=""><span class="ln">161</span></span>
+<span class="covered"><span class="ln">162</span>                $index = self::closingParen($tokens, $args);</span>
+<span class=""><span class="ln">163</span>            }</span>
+<span class=""><span class="ln">164</span></span>
+<span class="covered"><span class="ln">165</span>            $chains[] = $chain;</span>
+<span class="covered"><span class="ln">166</span>            $i        = $index ?? $i;</span>
+<span class=""><span class="ln">167</span>        }</span>
+<span class=""><span class="ln">168</span></span>
+<span class="covered"><span class="ln">169</span>        return $chains;</span>
+<span class=""><span class="ln">170</span>    }</span>
+<span class=""><span class="ln">171</span></span>
+<span class=""><span class="ln">172</span>    /**</span>
+<span class=""><span class="ln">173</span>     * The index of the `(` when the token at $i calls one of $roots as</span>
+<span class=""><span class="ln">174</span>     * the dialect global: `uses(` or `\uses(`, never `-&gt;uses(`,</span>
+<span class=""><span class="ln">175</span>     * `::uses(` or the `function uses(` that declares somebody else&#039;s.</span>
+<span class=""><span class="ln">176</span>     *</span>
+<span class=""><span class="ln">177</span>     * @param array&lt;PhpToken&gt;                  $tokens</span>
+<span class=""><span class="ln">178</span>     * @param non-empty-list&lt;non-empty-string&gt; $roots</span>
+<span class=""><span class="ln">179</span>     */</span>
+<span class=""><span class="ln">180</span>    private static function rootCall(array $tokens, int $i, array $roots): ?int</span>
+<span class=""><span class="ln">181</span>    {</span>
+<span class="covered"><span class="ln">182</span>        $token = $tokens[$i];</span>
+<span class="covered"><span class="ln">183</span>        $name  = $token-&gt;is(T_NAME_FULLY_QUALIFIED) ? ltrim($token-&gt;text, &#039;\\&#039;) : ($token-&gt;is(T_STRING) ? $token-&gt;text : null);</span>
+<span class=""><span class="ln">184</span></span>
+<span class="covered"><span class="ln">185</span>        if ($name === null || !in_array($name, $roots, true)) {</span>
+<span class="covered"><span class="ln">186</span>            return null;</span>
+<span class=""><span class="ln">187</span>        }</span>
+<span class=""><span class="ln">188</span></span>
+<span class="covered"><span class="ln">189</span>        $previous = self::previousSignificant($tokens, $i - 1);</span>
+<span class=""><span class="ln">190</span></span>
+<span class="covered"><span class="ln">191</span>        if ($previous !== null &amp;&amp; $tokens[$previous]-&gt;is([T_OBJECT_OPERATOR, T_DOUBLE_COLON, T_FUNCTION])) {</span>
+<span class="covered"><span class="ln">192</span>            return null;</span>
+<span class=""><span class="ln">193</span>        }</span>
+<span class=""><span class="ln">194</span></span>
+<span class="covered"><span class="ln">195</span>        $open = self::nextSignificant($tokens, $i + 1);</span>
+<span class=""><span class="ln">196</span></span>
+<span class="covered"><span class="ln">197</span>        return $open !== null &amp;&amp; $tokens[$open]-&gt;text === &#039;(&#039; ? $open : null;</span>
+<span class=""><span class="ln">198</span>    }</span>
+<span class=""><span class="ln">199</span></span>
+<span class=""><span class="ln">200</span>    /**</span>
+<span class=""><span class="ln">201</span>     * Every string literal inside one balanced argument list.</span>
+<span class=""><span class="ln">202</span>     *</span>
+<span class=""><span class="ln">203</span>     * @param array&lt;PhpToken&gt; $tokens</span>
+<span class=""><span class="ln">204</span>     *</span>
+<span class=""><span class="ln">205</span>     * @return list&lt;non-empty-string&gt;</span>
+<span class=""><span class="ln">206</span>     */</span>
+<span class=""><span class="ln">207</span>    private static function stringArguments(array $tokens, int $start): array</span>
+<span class=""><span class="ln">208</span>    {</span>
+<span class="covered"><span class="ln">209</span>        $strings = [];</span>
+<span class=""><span class="ln">210</span></span>
+<span class="covered"><span class="ln">211</span>        foreach (self::argumentTokens($tokens, $start) as $token) {</span>
+<span class="covered"><span class="ln">212</span>            $literal = $token-&gt;is(T_CONSTANT_ENCAPSED_STRING) ? trim($token-&gt;text, &quot;&#039;\&quot;&quot;) : &#039;&#039;;</span>
+<span class=""><span class="ln">213</span></span>
+<span class="covered"><span class="ln">214</span>            if ($literal !== &#039;&#039;) {</span>
+<span class="covered"><span class="ln">215</span>                $strings[] = $literal;</span>
+<span class=""><span class="ln">216</span>            }</span>
+<span class=""><span class="ln">217</span>        }</span>
+<span class=""><span class="ln">218</span></span>
+<span class="covered"><span class="ln">219</span>        return $strings;</span>
+<span class=""><span class="ln">220</span>    }</span>
+<span class=""><span class="ln">221</span></span>
+<span class=""><span class="ln">222</span>    /**</span>
+<span class=""><span class="ln">223</span>     * The `Name::class` and FQ-string arguments inside one balanced</span>
+<span class=""><span class="ln">224</span>     * argument list, unresolved.</span>
+<span class=""><span class="ln">225</span>     *</span>
+<span class=""><span class="ln">226</span>     * @param array&lt;PhpToken&gt; $tokens</span>
+<span class=""><span class="ln">227</span>     *</span>
+<span class=""><span class="ln">228</span>     * @return list&lt;string&gt;</span>
+<span class=""><span class="ln">229</span>     */</span>
+<span class=""><span class="ln">230</span>    private static function arguments(array $tokens, int $start): array</span>
+<span class=""><span class="ln">231</span>    {</span>
+<span class="covered"><span class="ln">232</span>        $names = [];</span>
+<span class=""><span class="ln">233</span></span>
+<span class="covered"><span class="ln">234</span>        foreach (self::argumentTokens($tokens, $start) as $index =&gt; $token) {</span>
+<span class="covered"><span class="ln">235</span>            if ($token-&gt;is(T_CONSTANT_ENCAPSED_STRING)) {</span>
+<span class="covered"><span class="ln">236</span>                $literal = trim($token-&gt;text, &quot;&#039;\&quot;&quot;);</span>
+<span class=""><span class="ln">237</span></span>
+<span class="covered"><span class="ln">238</span>                if (str_contains($literal, &#039;\\&#039;)) {</span>
+<span class="covered"><span class="ln">239</span>                    $names[] = &#039;\\&#039; . ltrim($literal, &#039;\\&#039;);</span>
+<span class=""><span class="ln">240</span>                }</span>
+<span class=""><span class="ln">241</span></span>
+<span class="covered"><span class="ln">242</span>                continue;</span>
+<span class=""><span class="ln">243</span>            }</span>
+<span class=""><span class="ln">244</span></span>
+<span class="covered"><span class="ln">245</span>            $colons = $token-&gt;is(self::NAME) ? self::nextSignificant($tokens, $index + 1) : null;</span>
+<span class="covered"><span class="ln">246</span>            $class  = $colons !== null &amp;&amp; $tokens[$colons]-&gt;is(T_DOUBLE_COLON) ? self::nextSignificant($tokens, $colons + 1) : null;</span>
+<span class=""><span class="ln">247</span></span>
+<span class="covered"><span class="ln">248</span>            if ($class !== null &amp;&amp; $tokens[$class]-&gt;is(T_CLASS)) {</span>
+<span class="covered"><span class="ln">249</span>                $names[] = $token-&gt;text;</span>
+<span class=""><span class="ln">250</span>            }</span>
+<span class=""><span class="ln">251</span>        }</span>
+<span class=""><span class="ln">252</span></span>
+<span class="covered"><span class="ln">253</span>        return $names;</span>
+<span class=""><span class="ln">254</span>    }</span>
+<span class=""><span class="ln">255</span></span>
+<span class=""><span class="ln">256</span>    /**</span>
+<span class=""><span class="ln">257</span>     * The tokens of one balanced argument list, from $start (just past</span>
+<span class=""><span class="ln">258</span>     * its `(`) to its `)`, keyed by index.</span>
+<span class=""><span class="ln">259</span>     *</span>
+<span class=""><span class="ln">260</span>     * @param array&lt;PhpToken&gt; $tokens</span>
+<span class=""><span class="ln">261</span>     *</span>
+<span class=""><span class="ln">262</span>     * @return array&lt;int, PhpToken&gt;</span>
+<span class=""><span class="ln">263</span>     */</span>
+<span class=""><span class="ln">264</span>    private static function argumentTokens(array $tokens, int $start): array</span>
+<span class=""><span class="ln">265</span>    {</span>
+<span class="covered"><span class="ln">266</span>        $end = self::closingParen($tokens, $start - 1) ?? count($tokens);</span>
+<span class="covered"><span class="ln">267</span>        $in  = [];</span>
+<span class=""><span class="ln">268</span></span>
+<span class="covered"><span class="ln">269</span>        for ($i = $start; $i &lt; $end; $i++) {</span>
+<span class="covered"><span class="ln">270</span>            $in[$i] = $tokens[$i];</span>
+<span class=""><span class="ln">271</span>        }</span>
+<span class=""><span class="ln">272</span></span>
+<span class="covered"><span class="ln">273</span>        return $in;</span>
+<span class=""><span class="ln">274</span>    }</span>
+<span class=""><span class="ln">275</span></span>
+<span class=""><span class="ln">276</span>    /**</span>
+<span class=""><span class="ln">277</span>     * The index of the parenthesis closing the one open at $open.</span>
+<span class=""><span class="ln">278</span>     *</span>
+<span class=""><span class="ln">279</span>     * @param array&lt;PhpToken&gt; $tokens</span>
+<span class=""><span class="ln">280</span>     */</span>
+<span class=""><span class="ln">281</span>    private static function closingParen(array $tokens, int $open): ?int</span>
+<span class=""><span class="ln">282</span>    {</span>
+<span class="covered"><span class="ln">283</span>        $depth = 0;</span>
+<span class=""><span class="ln">284</span></span>
+<span class="covered"><span class="ln">285</span>        for ($i = $open, $total = count($tokens); $i &lt; $total; $i++) {</span>
+<span class="covered"><span class="ln">286</span>            if ($tokens[$i]-&gt;text === &#039;(&#039;) {</span>
+<span class="covered"><span class="ln">287</span>                $depth++;</span>
+<span class="covered"><span class="ln">288</span>            } elseif ($tokens[$i]-&gt;text === &#039;)&#039; &amp;&amp; --$depth === 0) {</span>
+<span class="covered"><span class="ln">289</span>                return $i;</span>
+<span class=""><span class="ln">290</span>            }</span>
+<span class=""><span class="ln">291</span>        }</span>
+<span class=""><span class="ln">292</span></span>
+<span class="covered"><span class="ln">293</span>        return null;</span>
+<span class=""><span class="ln">294</span>    }</span>
+<span class=""><span class="ln">295</span></span>
+<span class=""><span class="ln">296</span>    /**</span>
+<span class=""><span class="ln">297</span>     * Each name resolved; one that resolves to nothing is dropped.</span>
+<span class=""><span class="ln">298</span>     *</span>
+<span class=""><span class="ln">299</span>     * @param list&lt;string&gt;                    $names</span>
+<span class=""><span class="ln">300</span>     * @param array&lt;string, non-empty-string&gt; $aliases</span>
+<span class=""><span class="ln">301</span>     *</span>
+<span class=""><span class="ln">302</span>     * @return list&lt;non-empty-string&gt;</span>
+<span class=""><span class="ln">303</span>     */</span>
+<span class=""><span class="ln">304</span>    private static function resolveAll(array $names, string $namespace, array $aliases): array</span>
+<span class=""><span class="ln">305</span>    {</span>
+<span class="covered"><span class="ln">306</span>        $resolved = [];</span>
+<span class=""><span class="ln">307</span></span>
+<span class="covered"><span class="ln">308</span>        foreach ($names as $name) {</span>
+<span class="covered"><span class="ln">309</span>            $name = self::resolve($name, $namespace, $aliases);</span>
+<span class=""><span class="ln">310</span></span>
+<span class="covered"><span class="ln">311</span>            if ($name !== &#039;&#039;) {</span>
+<span class="covered"><span class="ln">312</span>                $resolved[] = $name;</span>
+<span class=""><span class="ln">313</span>            }</span>
+<span class=""><span class="ln">314</span>        }</span>
+<span class=""><span class="ln">315</span></span>
+<span class="covered"><span class="ln">316</span>        return $resolved;</span>
+<span class=""><span class="ln">317</span>    }</span>
+<span class=""><span class="ln">318</span></span>
+<span class=""><span class="ln">319</span>    /**</span>
+<span class=""><span class="ln">320</span>     * PHP&#039;s own resolution rules: a leading backslash wins, then the</span>
+<span class=""><span class="ln">321</span>     * alias map rewrites the first segment, then the namespace</span>
+<span class=""><span class="ln">322</span>     * prefixes bare names.</span>
+<span class=""><span class="ln">323</span>     *</span>
+<span class=""><span class="ln">324</span>     * @param array&lt;string, non-empty-string&gt; $aliases</span>
+<span class=""><span class="ln">325</span>     */</span>
+<span class=""><span class="ln">326</span>    private static function resolve(string $name, string $namespace, array $aliases): string</span>
+<span class=""><span class="ln">327</span>    {</span>
+<span class="covered"><span class="ln">328</span>        if (str_starts_with($name, &#039;\\&#039;)) {</span>
+<span class="covered"><span class="ln">329</span>            return ltrim($name, &#039;\\&#039;);</span>
+<span class=""><span class="ln">330</span>        }</span>
+<span class=""><span class="ln">331</span></span>
+<span class="covered"><span class="ln">332</span>        $segments = explode(&#039;\\&#039;, $name);</span>
+<span class=""><span class="ln">333</span></span>
+<span class="covered"><span class="ln">334</span>        if (array_key_exists($segments[0], $aliases)) {</span>
+<span class="covered"><span class="ln">335</span>            $segments[0] = $aliases[$segments[0]];</span>
+<span class=""><span class="ln">336</span></span>
+<span class="covered"><span class="ln">337</span>            return implode(&#039;\\&#039;, $segments);</span>
+<span class=""><span class="ln">338</span>        }</span>
+<span class=""><span class="ln">339</span></span>
+<span class="covered"><span class="ln">340</span>        return $namespace === &#039;&#039; ? $name : $namespace . &#039;\\&#039; . $name;</span>
+<span class=""><span class="ln">341</span>    }</span>
+<span class=""><span class="ln">342</span></span>
+<span class=""><span class="ln">343</span>    /**</span>
+<span class=""><span class="ln">344</span>     * One `use` statement into the alias map, by PHP&#039;s grammar: a comma</span>
+<span class=""><span class="ln">345</span>     * list (`use A, B as C;`) and group imports (`use A\{B, C as D};`),</span>
+<span class=""><span class="ln">346</span>     * each entry optionally aliased. Function and const imports never name</span>
+<span class=""><span class="ln">347</span>     * classes and are skipped, whole or inside a group. Trait-use inside</span>
+<span class=""><span class="ln">348</span>     * class bodies is not routed here: the dialect files this reads are</span>
+<span class=""><span class="ln">349</span>     * top-level scripts.</span>
+<span class=""><span class="ln">350</span>     *</span>
+<span class=""><span class="ln">351</span>     * @param array&lt;PhpToken&gt;                 $tokens</span>
+<span class=""><span class="ln">352</span>     * @param array&lt;string, non-empty-string&gt; $aliases</span>
+<span class=""><span class="ln">353</span>     */</span>
+<span class=""><span class="ln">354</span>    private static function collectImport(array $tokens, int $start, array &amp;$aliases): void</span>
+<span class=""><span class="ln">355</span>    {</span>
+<span class="covered"><span class="ln">356</span>        $index = self::nextSignificant($tokens, $start);</span>
+<span class=""><span class="ln">357</span></span>
+<span class="covered"><span class="ln">358</span>        if ($index === null || $tokens[$index]-&gt;is([T_FUNCTION, T_CONST])) {</span>
+<span class="covered"><span class="ln">359</span>            return;</span>
+<span class=""><span class="ln">360</span>        }</span>
+<span class=""><span class="ln">361</span></span>
+<span class="covered"><span class="ln">362</span>        while ($index !== null &amp;&amp; $tokens[$index]-&gt;is(self::NAME)) {</span>
+<span class="covered"><span class="ln">363</span>            $after = self::nextSignificant($tokens, $index + 1);</span>
+<span class="covered"><span class="ln">364</span>            $index = $after !== null &amp;&amp; $tokens[$after]-&gt;is(T_NS_SEPARATOR)</span>
+<span class="covered"><span class="ln">365</span>                ? self::collectGroup($tokens, $after, ltrim($tokens[$index]-&gt;text, &#039;\\&#039;) . &#039;\\&#039;, $aliases)</span>
+<span class="covered"><span class="ln">366</span>                : self::collectEntry($tokens, $index, &#039;&#039;, $aliases);</span>
+<span class=""><span class="ln">367</span></span>
+<span class="covered"><span class="ln">368</span>            if ($index === null || $tokens[$index]-&gt;text !== &#039;,&#039;) {</span>
+<span class="covered"><span class="ln">369</span>                return;</span>
+<span class=""><span class="ln">370</span>            }</span>
+<span class=""><span class="ln">371</span></span>
+<span class="covered"><span class="ln">372</span>            $index = self::nextSignificant($tokens, $index + 1);</span>
+<span class=""><span class="ln">373</span>        }</span>
+<span class=""><span class="ln">374</span>    }</span>
+<span class=""><span class="ln">375</span></span>
+<span class=""><span class="ln">376</span>    /**</span>
+<span class=""><span class="ln">377</span>     * The `{…}` of a group import after its `Prefix\`: every class entry,</span>
+<span class=""><span class="ln">378</span>     * prefixed. The index after the closing brace, or null.</span>
+<span class=""><span class="ln">379</span>     *</span>
+<span class=""><span class="ln">380</span>     * @param array&lt;PhpToken&gt;                 $tokens</span>
+<span class=""><span class="ln">381</span>     * @param array&lt;string, non-empty-string&gt; $aliases</span>
+<span class=""><span class="ln">382</span>     */</span>
+<span class=""><span class="ln">383</span>    private static function collectGroup(array $tokens, int $separator, string $prefix, array &amp;$aliases): ?int</span>
+<span class=""><span class="ln">384</span>    {</span>
+<span class="covered"><span class="ln">385</span>        $open = self::nextSignificant($tokens, $separator + 1);</span>
+<span class=""><span class="ln">386</span></span>
+<span class="covered"><span class="ln">387</span>        if ($open === null || $tokens[$open]-&gt;text !== &#039;{&#039;) {</span>
+<span class="missed"><span class="ln">388</span>            return null;</span>
+<span class=""><span class="ln">389</span>        }</span>
+<span class=""><span class="ln">390</span></span>
+<span class="covered"><span class="ln">391</span>        $index = self::nextSignificant($tokens, $open + 1);</span>
+<span class=""><span class="ln">392</span></span>
+<span class="covered"><span class="ln">393</span>        while ($index !== null &amp;&amp; $tokens[$index]-&gt;text !== &#039;}&#039;) {</span>
+<span class=""><span class="ln">394</span>            // `use A\{function f, const C, B}`: only B names a class.</span>
+<span class="covered"><span class="ln">395</span>            $class = !$tokens[$index]-&gt;is([T_FUNCTION, T_CONST]);</span>
+<span class="covered"><span class="ln">396</span>            $entry = $class ? $index : self::nextSignificant($tokens, $index + 1);</span>
+<span class="covered"><span class="ln">397</span>            $index = $entry === null ? null : self::collectEntry($tokens, $entry, $prefix, $aliases, $class);</span>
+<span class=""><span class="ln">398</span></span>
+<span class="covered"><span class="ln">399</span>            if ($index !== null &amp;&amp; $tokens[$index]-&gt;text === &#039;,&#039;) {</span>
+<span class="covered"><span class="ln">400</span>                $index = self::nextSignificant($tokens, $index + 1);</span>
+<span class=""><span class="ln">401</span>            }</span>
+<span class=""><span class="ln">402</span>        }</span>
+<span class=""><span class="ln">403</span></span>
+<span class="covered"><span class="ln">404</span>        return $index === null ? null : self::nextSignificant($tokens, $index + 1);</span>
+<span class=""><span class="ln">405</span>    }</span>
+<span class=""><span class="ln">406</span></span>
+<span class=""><span class="ln">407</span>    /**</span>
+<span class=""><span class="ln">408</span>     * One `Name` or `Name as Alias` entry. The index after it, or null</span>
+<span class=""><span class="ln">409</span>     * when the token at $index is no name.</span>
+<span class=""><span class="ln">410</span>     *</span>
+<span class=""><span class="ln">411</span>     * @param array&lt;PhpToken&gt;                 $tokens</span>
+<span class=""><span class="ln">412</span>     * @param array&lt;string, non-empty-string&gt; $aliases</span>
+<span class=""><span class="ln">413</span>     */</span>
+<span class=""><span class="ln">414</span>    private static function collectEntry(array $tokens, int $index, string $prefix, array &amp;$aliases, bool $record = true): ?int</span>
+<span class=""><span class="ln">415</span>    {</span>
+<span class="covered"><span class="ln">416</span>        if (!$tokens[$index]-&gt;is(self::NAME)) {</span>
+<span class="missed"><span class="ln">417</span>            return null;</span>
+<span class=""><span class="ln">418</span>        }</span>
+<span class=""><span class="ln">419</span></span>
+<span class="covered"><span class="ln">420</span>        $qualified = $prefix . ltrim($tokens[$index]-&gt;text, &#039;\\&#039;);</span>
+<span class="covered"><span class="ln">421</span>        $alias     = array_last(explode(&#039;\\&#039;, $qualified));</span>
+<span class="covered"><span class="ln">422</span>        $next      = self::nextSignificant($tokens, $index + 1);</span>
+<span class=""><span class="ln">423</span></span>
+<span class="covered"><span class="ln">424</span>        if ($next !== null &amp;&amp; $tokens[$next]-&gt;is(T_AS)) {</span>
+<span class="covered"><span class="ln">425</span>            $aliasToken = self::nextSignificant($tokens, $next + 1);</span>
+<span class=""><span class="ln">426</span></span>
+<span class="covered"><span class="ln">427</span>            if ($aliasToken !== null &amp;&amp; $tokens[$aliasToken]-&gt;is(T_STRING)) {</span>
+<span class="covered"><span class="ln">428</span>                $alias = $tokens[$aliasToken]-&gt;text;</span>
+<span class="covered"><span class="ln">429</span>                $next  = self::nextSignificant($tokens, $aliasToken + 1);</span>
+<span class=""><span class="ln">430</span>            }</span>
+<span class=""><span class="ln">431</span>        }</span>
+<span class=""><span class="ln">432</span></span>
+<span class="covered"><span class="ln">433</span>        if ($record &amp;&amp; $qualified !== &#039;&#039; &amp;&amp; $alias !== &#039;&#039;) {</span>
+<span class="covered"><span class="ln">434</span>            $aliases[$alias] = $qualified;</span>
+<span class=""><span class="ln">435</span>        }</span>
+<span class=""><span class="ln">436</span></span>
+<span class="covered"><span class="ln">437</span>        return $next;</span>
+<span class=""><span class="ln">438</span>    }</span>
+<span class=""><span class="ln">439</span></span>
+<span class=""><span class="ln">440</span>    /**</span>
+<span class=""><span class="ln">441</span>     * @param array&lt;PhpToken&gt; $tokens</span>
+<span class=""><span class="ln">442</span>     */</span>
+<span class=""><span class="ln">443</span>    private static function nextSignificant(array $tokens, int $start): ?int</span>
+<span class=""><span class="ln">444</span>    {</span>
+<span class="covered"><span class="ln">445</span>        for ($i = $start, $total = count($tokens); $i &lt; $total; $i++) {</span>
+<span class="covered"><span class="ln">446</span>            if (!$tokens[$i]-&gt;isIgnorable()) {</span>
+<span class="covered"><span class="ln">447</span>                return $i;</span>
+<span class=""><span class="ln">448</span>            }</span>
+<span class=""><span class="ln">449</span>        }</span>
+<span class=""><span class="ln">450</span></span>
+<span class="covered"><span class="ln">451</span>        return null;</span>
+<span class=""><span class="ln">452</span>    }</span>
+<span class=""><span class="ln">453</span></span>
+<span class=""><span class="ln">454</span>    /**</span>
+<span class=""><span class="ln">455</span>     * @param array&lt;PhpToken&gt; $tokens</span>
+<span class=""><span class="ln">456</span>     */</span>
+<span class=""><span class="ln">457</span>    private static function previousSignificant(array $tokens, int $start): ?int</span>
+<span class=""><span class="ln">458</span>    {</span>
+<span class="covered"><span class="ln">459</span>        for ($i = $start; $i &gt;= 0; $i--) {</span>
+<span class="covered"><span class="ln">460</span>            if (!$tokens[$i]-&gt;isIgnorable()) {</span>
+<span class="covered"><span class="ln">461</span>                return $i;</span>
+<span class=""><span class="ln">462</span>            }</span>
+<span class=""><span class="ln">463</span>        }</span>
+<span class=""><span class="ln">464</span></span>
+<span class="covered"><span class="ln">465</span>        return null;</span>
+<span class=""><span class="ln">466</span>    }</span>
+<span class=""><span class="ln">467</span>}</span>
+<span class="missed"><span class="ln">468</span></span>
+</pre>
+</body>
+</html>

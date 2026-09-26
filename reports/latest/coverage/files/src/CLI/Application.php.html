@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/CLI/Application.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/CLI/Application.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\CLI;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use LucianoPereira\Crucible\CLI\Commands\CompatCheckCommand;</span>
+<span class=""><span class="ln">14</span>use LucianoPereira\Crucible\CLI\Commands\CompletionCommand;</span>
+<span class=""><span class="ln">15</span>use LucianoPereira\Crucible\CLI\Commands\ExtensionsCommand;</span>
+<span class=""><span class="ln">16</span>use LucianoPereira\Crucible\CLI\Commands\FlakesCommand;</span>
+<span class=""><span class="ln">17</span>use LucianoPereira\Crucible\CLI\Commands\InitCommand;</span>
+<span class=""><span class="ln">18</span>use LucianoPereira\Crucible\CLI\Commands\LintInlineCommand;</span>
+<span class=""><span class="ln">19</span>use LucianoPereira\Crucible\CLI\Commands\ManualCommand;</span>
+<span class=""><span class="ln">20</span>use LucianoPereira\Crucible\CLI\Commands\MigrateConfigCommand;</span>
+<span class=""><span class="ln">21</span>use LucianoPereira\Crucible\CLI\Commands\MutationCommand;</span>
+<span class=""><span class="ln">22</span>use LucianoPereira\Crucible\CLI\Commands\PhpstanInitCommand;</span>
+<span class=""><span class="ln">23</span>use LucianoPereira\Crucible\CLI\Commands\RunTestsCommand;</span>
+<span class=""><span class="ln">24</span>use LucianoPereira\Crucible\CLI\Commands\ValidateConfigCommand;</span>
+<span class=""><span class="ln">25</span>use LucianoPereira\Crucible\CLI\Commands\WarmCoverageCacheCommand;</span>
+<span class=""><span class="ln">26</span>use LucianoPereira\Crucible\CLI\Commands\WatchCommand;</span>
+<span class=""><span class="ln">27</span>use LucianoPereira\Crucible\Console\Components\Splash;</span>
+<span class=""><span class="ln">28</span>use LucianoPereira\Crucible\Console\Exceptions\CancelledException;</span>
+<span class=""><span class="ln">29</span>use LucianoPereira\Crucible\Console\Exceptions\NonInteractiveException;</span>
+<span class=""><span class="ln">30</span>use LucianoPereira\Crucible\Console\Output\Help;</span>
+<span class=""><span class="ln">31</span>use LucianoPereira\Crucible\Console\Runtime\Runtime;</span>
+<span class=""><span class="ln">32</span>use LucianoPereira\Crucible\Console\Style\Color;</span>
+<span class=""><span class="ln">33</span>use LucianoPereira\Crucible\Console\Style\Style;</span>
+<span class=""><span class="ln">34</span>use LucianoPereira\Crucible\Console\Style\Theme;</span>
+<span class=""><span class="ln">35</span>use LucianoPereira\Crucible\Console\Terminal\Capabilities;</span>
+<span class=""><span class="ln">36</span>use LucianoPereira\Crucible\Filesystem\WorkingDirectory;</span>
+<span class=""><span class="ln">37</span>use LucianoPereira\Crucible\Reporting\MapView;</span>
+<span class=""><span class="ln">38</span>use LucianoPereira\Crucible\Version;</span>
+<span class=""><span class="ln">39</span></span>
+<span class=""><span class="ln">40</span>use function getcwd;</span>
+<span class=""><span class="ln">41</span>use function is_string;</span>
+<span class=""><span class="ln">42</span>use function max;</span>
+<span class=""><span class="ln">43</span>use function min;</span>
+<span class=""><span class="ln">44</span>use function printf;</span>
+<span class=""><span class="ln">45</span>use function sprintf;</span>
+<span class=""><span class="ln">46</span>use function strlen;</span>
+<span class=""><span class="ln">47</span>use function version_compare;</span>
+<span class=""><span class="ln">48</span></span>
+<span class=""><span class="ln">49</span>use const PHP_EOL;</span>
+<span class=""><span class="ln">50</span>use const STDOUT;</span>
+<span class=""><span class="ln">51</span></span>
+<span class=""><span class="ln">52</span>final class Application</span>
+<span class=""><span class="ln">53</span>{</span>
+<span class=""><span class="ln">54</span>    private const string RESET = &quot;\e[0m&quot;;</span>
+<span class=""><span class="ln">55</span></span>
+<span class=""><span class="ln">56</span>    /** Milliseconds per banner frame — readable, and paid for by a fork rather than by the run. */</span>
+<span class=""><span class="ln">57</span>    private const int BANNER_FRAME_MS = 90;</span>
+<span class=""><span class="ln">58</span></span>
+<span class=""><span class="ln">59</span>    /** @param list&lt;string&gt; $argv */</span>
+<span class=""><span class="ln">60</span>    public function run(array $argv): int</span>
+<span class=""><span class="ln">61</span>    {</span>
+<span class="covered"><span class="ln">62</span>        $options = CliOptions::fromArgv($argv);</span>
+<span class=""><span class="ln">63</span></span>
+<span class="covered"><span class="ln">64</span>        if (is_string($options)) {</span>
+<span class="missed"><span class="ln">65</span>            print $options . PHP_EOL;</span>
+<span class=""><span class="ln">66</span></span>
+<span class="missed"><span class="ln">67</span>            return 1;</span>
+<span class=""><span class="ln">68</span>        }</span>
+<span class=""><span class="ln">69</span></span>
+<span class=""><span class="ln">70</span>        // Worker mode prints nothing: stdout is the NDJSON protocol.</span>
+<span class="covered"><span class="ln">71</span>        if ($options-&gt;worker) {</span>
+<span class="missed"><span class="ln">72</span>            return (new RunTestsCommand())-&gt;worker();</span>
+<span class=""><span class="ln">73</span>        }</span>
+<span class=""><span class="ln">74</span></span>
+<span class="covered"><span class="ln">75</span>        $wantsBanner = $this-&gt;wantsBanner($options);</span>
+<span class="covered"><span class="ln">76</span>        $banner      = $wantsBanner ? $this-&gt;startBanner($options-&gt;version) : null;</span>
+<span class=""><span class="ln">77</span></span>
+<span class="covered"><span class="ln">78</span>        if ($options-&gt;version) {</span>
+<span class="missed"><span class="ln">79</span>            return 0;</span>
+<span class=""><span class="ln">80</span>        }</span>
+<span class=""><span class="ln">81</span></span>
+<span class=""><span class="ln">82</span>        // The spec&#039;s two version gates. --atleast-version is a CI guard:</span>
+<span class=""><span class="ln">83</span>        // it answers with an exit code, not a message. --check-version asks</span>
+<span class=""><span class="ln">84</span>        // whether a newer release exists, which Crucible cannot answer —</span>
+<span class=""><span class="ln">85</span>        // there is no update channel and it does not phone home — so it</span>
+<span class=""><span class="ln">86</span>        // says so rather than pretending the running version is current.</span>
+<span class="covered"><span class="ln">87</span>        if ($options-&gt;atLeastVersion !== null) {</span>
+<span class="missed"><span class="ln">88</span>            $banner?-&gt;settle();</span>
+<span class=""><span class="ln">89</span></span>
+<span class="missed"><span class="ln">90</span>            return version_compare(Version::NUMBER, $options-&gt;atLeastVersion, &#039;&gt;=&#039;) ? 0 : 1;</span>
+<span class=""><span class="ln">91</span>        }</span>
+<span class=""><span class="ln">92</span></span>
+<span class="covered"><span class="ln">93</span>        if ($options-&gt;checkVersion) {</span>
+<span class="missed"><span class="ln">94</span>            $banner?-&gt;settle();</span>
+<span class=""><span class="ln">95</span></span>
+<span class="missed"><span class="ln">96</span>            print &#039;Crucible has no update channel and does not check for new versions.&#039; . PHP_EOL;</span>
+<span class=""><span class="ln">97</span></span>
+<span class="missed"><span class="ln">98</span>            return 0;</span>
+<span class=""><span class="ln">99</span>        }</span>
+<span class=""><span class="ln">100</span></span>
+<span class=""><span class="ln">101</span>        // The spec&#039;s php.ini audit: advisory about the environment, so</span>
+<span class=""><span class="ln">102</span>        // it answers and exits rather than running anything. Exit 1</span>
+<span class=""><span class="ln">103</span>        // when a setting is not as recommended, which is what makes it</span>
+<span class=""><span class="ln">104</span>        // usable as a CI gate on the machine rather than the code.</span>
+<span class="covered"><span class="ln">105</span>        if ($options-&gt;checkPhpConfiguration) {</span>
+<span class="missed"><span class="ln">106</span>            $banner?-&gt;settle();</span>
+<span class=""><span class="ln">107</span></span>
+<span class="missed"><span class="ln">108</span>            return $this-&gt;printPhpConfiguration();</span>
+<span class=""><span class="ln">109</span>        }</span>
+<span class=""><span class="ln">110</span></span>
+<span class="covered"><span class="ln">111</span>        $banner?-&gt;settle();</span>
+<span class=""><span class="ln">112</span></span>
+<span class=""><span class="ln">113</span>        // The separator belongs to the banner, so it goes when the banner</span>
+<span class=""><span class="ln">114</span>        // does — a suppressed banner must not leave its blank line behind.</span>
+<span class="covered"><span class="ln">115</span>        if ($wantsBanner) {</span>
+<span class="covered"><span class="ln">116</span>            print PHP_EOL;</span>
+<span class=""><span class="ln">117</span>        }</span>
+<span class=""><span class="ln">118</span></span>
+<span class="covered"><span class="ln">119</span>        if ($options-&gt;help) {</span>
+<span class="covered"><span class="ln">120</span>            $this-&gt;help();</span>
+<span class=""><span class="ln">121</span></span>
+<span class="covered"><span class="ln">122</span>            return 0;</span>
+<span class=""><span class="ln">123</span>        }</span>
+<span class=""><span class="ln">124</span></span>
+<span class="missed"><span class="ln">125</span>        $cwd = getcwd();</span>
+<span class=""><span class="ln">126</span></span>
+<span class="missed"><span class="ln">127</span>        if ($cwd === false) {</span>
+<span class="missed"><span class="ln">128</span>            print &#039;Cannot determine the current working directory.&#039; . PHP_EOL;</span>
+<span class=""><span class="ln">129</span></span>
+<span class="missed"><span class="ln">130</span>            return 1;</span>
+<span class=""><span class="ln">131</span>        }</span>
+<span class=""><span class="ln">132</span></span>
+<span class="missed"><span class="ln">133</span>        $workingDirectory = new WorkingDirectory($cwd);</span>
+<span class=""><span class="ln">134</span></span>
+<span class=""><span class="ln">135</span>        // ⚠ The two ways a console component ends a command. Uncaught,</span>
+<span class=""><span class="ln">136</span>        // Ctrl-C at a prompt printed a stack trace over the half-drawn</span>
+<span class=""><span class="ln">137</span>        // frame it had just cancelled.</span>
+<span class=""><span class="ln">138</span>        try {</span>
+<span class="missed"><span class="ln">139</span>            return $this-&gt;dispatch($options, $argv, $workingDirectory);</span>
+<span class="missed"><span class="ln">140</span>        } catch (CancelledException) {</span>
+<span class="missed"><span class="ln">141</span>            print &#039;Cancelled.&#039; . PHP_EOL;</span>
+<span class=""><span class="ln">142</span></span>
+<span class="missed"><span class="ln">143</span>            return 130;</span>
+<span class="missed"><span class="ln">144</span>        } catch (NonInteractiveException $e) {</span>
+<span class="missed"><span class="ln">145</span>            print $e-&gt;getMessage() . PHP_EOL;</span>
+<span class=""><span class="ln">146</span></span>
+<span class="missed"><span class="ln">147</span>            return 1;</span>
+<span class=""><span class="ln">148</span>        }</span>
+<span class=""><span class="ln">149</span>    }</span>
+<span class=""><span class="ln">150</span></span>
+<span class=""><span class="ln">151</span>    /**</span>
+<span class=""><span class="ln">152</span>     * @param list&lt;string&gt; $argv</span>
+<span class=""><span class="ln">153</span>     */</span>
+<span class=""><span class="ln">154</span>    private function dispatch(CliOptions $options, array $argv, WorkingDirectory $workingDirectory): int</span>
+<span class=""><span class="ln">155</span>    {</span>
+<span class=""><span class="ln">156</span>        // Parsing the source scope for method structure is the cost the</span>
+<span class=""><span class="ln">157</span>        // Crap4J, XML, and per-method HTML reports pay. Warming it is</span>
+<span class=""><span class="ln">158</span>        // paying that cost deliberately, before the run that needs it.</span>
+<span class="missed"><span class="ln">159</span>        if ($options-&gt;warmCoverageCache) {</span>
+<span class="missed"><span class="ln">160</span>            return (new WarmCoverageCacheCommand())-&gt;execute($options, $workingDirectory);</span>
+<span class=""><span class="ln">161</span>        }</span>
+<span class=""><span class="ln">162</span></span>
+<span class="missed"><span class="ln">163</span>        if ($options-&gt;validateConfiguration) {</span>
+<span class="missed"><span class="ln">164</span>            return (new ValidateConfigCommand())-&gt;execute($options, $workingDirectory);</span>
+<span class=""><span class="ln">165</span>        }</span>
+<span class=""><span class="ln">166</span></span>
+<span class="missed"><span class="ln">167</span>        if ($options-&gt;init) {</span>
+<span class="missed"><span class="ln">168</span>            return (new InitCommand())-&gt;execute($workingDirectory);</span>
+<span class=""><span class="ln">169</span>        }</span>
+<span class=""><span class="ln">170</span></span>
+<span class="missed"><span class="ln">171</span>        if ($options-&gt;migrateConfig) {</span>
+<span class="missed"><span class="ln">172</span>            return (new MigrateConfigCommand())-&gt;execute($workingDirectory);</span>
+<span class=""><span class="ln">173</span>        }</span>
+<span class=""><span class="ln">174</span></span>
+<span class="missed"><span class="ln">175</span>        if ($options-&gt;phpstanInit) {</span>
+<span class="missed"><span class="ln">176</span>            return (new PhpstanInitCommand())-&gt;execute($options, $workingDirectory);</span>
+<span class=""><span class="ln">177</span>        }</span>
+<span class=""><span class="ln">178</span></span>
+<span class="missed"><span class="ln">179</span>        if ($options-&gt;lintInline) {</span>
+<span class="missed"><span class="ln">180</span>            return (new LintInlineCommand())-&gt;execute($options, $workingDirectory);</span>
+<span class=""><span class="ln">181</span>        }</span>
+<span class=""><span class="ln">182</span></span>
+<span class="missed"><span class="ln">183</span>        if ($options-&gt;mutationIndex) {</span>
+<span class="missed"><span class="ln">184</span>            return (new MutationCommand())-&gt;index($options, $workingDirectory);</span>
+<span class=""><span class="ln">185</span>        }</span>
+<span class=""><span class="ln">186</span></span>
+<span class="missed"><span class="ln">187</span>        if ($options-&gt;mutate) {</span>
+<span class="missed"><span class="ln">188</span>            return (new MutationCommand())-&gt;mutate($options, $argv, $workingDirectory);</span>
+<span class=""><span class="ln">189</span>        }</span>
+<span class=""><span class="ln">190</span></span>
+<span class="missed"><span class="ln">191</span>        if ($options-&gt;flakes) {</span>
+<span class="missed"><span class="ln">192</span>            return (new FlakesCommand())-&gt;execute($options, $argv, $workingDirectory);</span>
+<span class=""><span class="ln">193</span>        }</span>
+<span class=""><span class="ln">194</span></span>
+<span class="missed"><span class="ln">195</span>        if ($options-&gt;compatCheck) {</span>
+<span class="missed"><span class="ln">196</span>            return (new CompatCheckCommand())-&gt;execute($options, $argv, $workingDirectory);</span>
+<span class=""><span class="ln">197</span>        }</span>
+<span class=""><span class="ln">198</span></span>
+<span class="missed"><span class="ln">199</span>        if ($options-&gt;extensions) {</span>
+<span class="missed"><span class="ln">200</span>            return (new ExtensionsCommand())-&gt;execute($options, $argv, $workingDirectory);</span>
+<span class=""><span class="ln">201</span>        }</span>
+<span class=""><span class="ln">202</span></span>
+<span class="missed"><span class="ln">203</span>        if ($options-&gt;completion) {</span>
+<span class="missed"><span class="ln">204</span>            return (new CompletionCommand())-&gt;execute($options-&gt;argument);</span>
+<span class=""><span class="ln">205</span>        }</span>
+<span class=""><span class="ln">206</span></span>
+<span class="missed"><span class="ln">207</span>        if ($options-&gt;manual) {</span>
+<span class="missed"><span class="ln">208</span>            return (new ManualCommand())-&gt;execute($options-&gt;out);</span>
+<span class=""><span class="ln">209</span>        }</span>
+<span class=""><span class="ln">210</span></span>
+<span class="missed"><span class="ln">211</span>        if ($options-&gt;watch) {</span>
+<span class="missed"><span class="ln">212</span>            return (new WatchCommand())-&gt;execute($options, $argv, $workingDirectory);</span>
+<span class=""><span class="ln">213</span>        }</span>
+<span class=""><span class="ln">214</span></span>
+<span class="missed"><span class="ln">215</span>        return (new RunTestsCommand())-&gt;execute($options, $argv, $workingDirectory);</span>
+<span class=""><span class="ln">216</span>    }</span>
+<span class=""><span class="ln">217</span></span>
+<span class=""><span class="ln">218</span>    /**</span>
+<span class=""><span class="ln">219</span>     * @return int&lt;0, 1&gt;</span>
+<span class=""><span class="ln">220</span>     */</span>
+<span class=""><span class="ln">221</span>    private function printPhpConfiguration(): int</span>
+<span class=""><span class="ln">222</span>    {</span>
+<span class="missed"><span class="ln">223</span>        $results = PhpConfigurationCheck::results();</span>
+<span class="missed"><span class="ln">224</span>        $width   = 0;</span>
+<span class=""><span class="ln">225</span></span>
+<span class="missed"><span class="ln">226</span>        foreach ($results as $result) {</span>
+<span class="missed"><span class="ln">227</span>            $width = max($width, strlen($result[&#039;name&#039;] . &#039; = &#039; . $result[&#039;expected&#039;]));</span>
+<span class=""><span class="ln">228</span>        }</span>
+<span class=""><span class="ln">229</span></span>
+<span class="missed"><span class="ln">230</span>        print &#039;Checking whether PHP is configured for development.&#039; . PHP_EOL . PHP_EOL;</span>
+<span class=""><span class="ln">231</span></span>
+<span class="missed"><span class="ln">232</span>        $exit = 0;</span>
+<span class=""><span class="ln">233</span></span>
+<span class="missed"><span class="ln">234</span>        foreach ($results as $result) {</span>
+<span class="missed"><span class="ln">235</span>            if (!$result[&#039;ok&#039;]) {</span>
+<span class="missed"><span class="ln">236</span>                $exit = 1;</span>
+<span class=""><span class="ln">237</span>            }</span>
+<span class=""><span class="ln">238</span></span>
+<span class="missed"><span class="ln">239</span>            printf(</span>
+<span class="missed"><span class="ln">240</span>                &#039;%-&#039; . $width . &quot;s ... %s&quot; . PHP_EOL,</span>
+<span class="missed"><span class="ln">241</span>                $result[&#039;name&#039;] . &#039; = &#039; . $result[&#039;expected&#039;],</span>
+<span class="missed"><span class="ln">242</span>                $result[&#039;ok&#039;] ? &#039;ok&#039; : sprintf(&#039;not ok (%s)&#039;, $result[&#039;actual&#039;] === &#039;&#039; ? &#039;(empty)&#039; : $result[&#039;actual&#039;]),</span>
+<span class=""><span class="ln">243</span>            );</span>
+<span class=""><span class="ln">244</span>        }</span>
+<span class=""><span class="ln">245</span></span>
+<span class="missed"><span class="ln">246</span>        return $exit;</span>
+<span class=""><span class="ln">247</span>    }</span>
+<span class=""><span class="ln">248</span></span>
+<span class=""><span class="ln">249</span>    /**</span>
+<span class=""><span class="ln">250</span>     * The banner, branded where a human is looking and plain where a log is.</span>
+<span class=""><span class="ln">251</span>     *</span>
+<span class=""><span class="ln">252</span>     * The colourless form is byte-identical to what this printed before —</span>
+<span class=""><span class="ln">253</span>     * it goes to pipes, CI and captured output, and a banner is not worth</span>
+<span class=""><span class="ln">254</span>     * changing those. Colour is decided by Capabilities, which already</span>
+<span class=""><span class="ln">255</span>     * honours NO_COLOR, FORCE_COLOR and the --colors override, so this adds</span>
+<span class=""><span class="ln">256</span>     * no new rule about when to use it.</span>
+<span class=""><span class="ln">257</span>     *</span>
+<span class=""><span class="ln">258</span>     * The mark is the project&#039;s own: a diamond and the wordmark swept by</span>
+<span class=""><span class="ln">259</span>     * {@see Splash}, the version in the accent, the author dimmed.</span>
+<span class=""><span class="ln">260</span>     *</span>
+<span class=""><span class="ln">261</span>     * ⚠ The author is `dim`, not a pinned grey. It was Brand::slate()</span>
+<span class=""><span class="ln">262</span>     * (#4A4A4A), which is the unlit state of an animation against a known</span>
+<span class=""><span class="ln">263</span>     * background — as a byline on a dark terminal it is unreadable. `dim`</span>
+<span class=""><span class="ln">264</span>     * is the terminal&#039;s own attenuation of its own foreground, so it stays</span>
+<span class=""><span class="ln">265</span>     * legible whatever the theme.</span>
+<span class=""><span class="ln">266</span>     *</span>
+<span class=""><span class="ln">267</span>     * ⚠ The sweep is forked, not slept through. `--version` is the one</span>
+<span class=""><span class="ln">268</span>     * case with nothing behind it to overlap, so there it runs</span>
+<span class=""><span class="ln">269</span>     * synchronously and IS the command; everywhere else it sweeps while</span>
+<span class=""><span class="ln">270</span>     * the configuration loads and settles when the caller is ready to</span>
+<span class=""><span class="ln">271</span>     * print. A banner that costs a real run half a second is a banner</span>
+<span class=""><span class="ln">272</span>     * someone turns off.</span>
+<span class=""><span class="ln">273</span>     */</span>
+<span class=""><span class="ln">274</span>    /**</span>
+<span class=""><span class="ln">275</span>     * Whether this run gets a banner line of its own.</span>
+<span class=""><span class="ln">276</span>     *</span>
+<span class=""><span class="ln">277</span>     * ⚠ Not when the map is coming. Its top border already carries the</span>
+<span class=""><span class="ln">278</span>     * mark, the version and the byline, so printing them again above it</span>
+<span class=""><span class="ln">279</span>     * is the same identity twice — and on the alternate screen the line</span>
+<span class=""><span class="ln">280</span>     * above scrolls away unread anyway.</span>
+<span class=""><span class="ln">281</span>     */</span>
+<span class=""><span class="ln">282</span>    private function wantsBanner(CliOptions $options): bool</span>
+<span class=""><span class="ln">283</span>    {</span>
+<span class="covered"><span class="ln">284</span>        if ($options-&gt;noOutput) {</span>
+<span class="missed"><span class="ln">285</span>            return false;</span>
+<span class=""><span class="ln">286</span>        }</span>
+<span class=""><span class="ln">287</span></span>
+<span class=""><span class="ln">288</span>        // ⚠ A completion script is evaluated by the shell, not read by a</span>
+<span class=""><span class="ln">289</span>        // person: `eval &quot;$(crucible completion bash)&quot;` would try to run</span>
+<span class=""><span class="ln">290</span>        // the banner as shell and fail on the first word.</span>
+<span class="covered"><span class="ln">291</span>        if ($options-&gt;completion) {</span>
+<span class="missed"><span class="ln">292</span>            return false;</span>
+<span class=""><span class="ln">293</span>        }</span>
+<span class=""><span class="ln">294</span></span>
+<span class=""><span class="ln">295</span>        // --version is the banner, whatever view a run would have used.</span>
+<span class="covered"><span class="ln">296</span>        if ($options-&gt;version) {</span>
+<span class="missed"><span class="ln">297</span>            return true;</span>
+<span class=""><span class="ln">298</span>        }</span>
+<span class=""><span class="ln">299</span></span>
+<span class="covered"><span class="ln">300</span>        return !MapView::isDefaultFor(</span>
+<span class="covered"><span class="ln">301</span>            $options-&gt;view,</span>
+<span class="covered"><span class="ln">302</span>            $options-&gt;testdox === true,</span>
+<span class="covered"><span class="ln">303</span>            $options-&gt;teamcity === true,</span>
+<span class="covered"><span class="ln">304</span>            Runtime::terminal(),</span>
+<span class=""><span class="ln">305</span>        );</span>
+<span class=""><span class="ln">306</span>    }</span>
+<span class=""><span class="ln">307</span></span>
+<span class=""><span class="ln">308</span>    private function startBanner(bool $versionOnly): ?Splash</span>
+<span class=""><span class="ln">309</span>    {</span>
+<span class="covered"><span class="ln">310</span>        $terminal = Runtime::terminal();</span>
+<span class=""><span class="ln">311</span></span>
+<span class="covered"><span class="ln">312</span>        if (!Capabilities::color($terminal)) {</span>
+<span class="covered"><span class="ln">313</span>            printf(&#039;crucible %s by %s.&#039; . PHP_EOL, Version::NUMBER, Version::AUTHOR);</span>
+<span class=""><span class="ln">314</span></span>
+<span class="covered"><span class="ln">315</span>            return null;</span>
+<span class=""><span class="ln">316</span>        }</span>
+<span class=""><span class="ln">317</span></span>
+<span class="missed"><span class="ln">318</span>        $splash           = new Splash($terminal, &#039;◆ crucible&#039;);</span>
+<span class="missed"><span class="ln">319</span>        $splash-&gt;interval = self::BANNER_FRAME_MS;</span>
+<span class="missed"><span class="ln">320</span>        $splash-&gt;suffix   = sprintf(</span>
+<span class=""><span class="ln">321</span>            &#039; %s%s%s %sby %s.%s&#039;,</span>
+<span class="missed"><span class="ln">322</span>            $this-&gt;paint(Theme::accent()),</span>
+<span class="missed"><span class="ln">323</span>            Version::NUMBER,</span>
+<span class=""><span class="ln">324</span>            self::RESET,</span>
+<span class="missed"><span class="ln">325</span>            Style::none()-&gt;dim()-&gt;toAnsi(),</span>
+<span class="missed"><span class="ln">326</span>            Version::AUTHOR,</span>
+<span class="missed"><span class="ln">327</span>            self::RESET,</span>
+<span class=""><span class="ln">328</span>        );</span>
+<span class=""><span class="ln">329</span></span>
+<span class="missed"><span class="ln">330</span>        if ($versionOnly) {</span>
+<span class="missed"><span class="ln">331</span>            $splash-&gt;sweeps = 1;</span>
+<span class="missed"><span class="ln">332</span>            $splash-&gt;render();</span>
+<span class=""><span class="ln">333</span></span>
+<span class="missed"><span class="ln">334</span>            return null;</span>
+<span class=""><span class="ln">335</span>        }</span>
+<span class=""><span class="ln">336</span></span>
+<span class="missed"><span class="ln">337</span>        $splash-&gt;begin();</span>
+<span class=""><span class="ln">338</span></span>
+<span class="missed"><span class="ln">339</span>        return $splash;</span>
+<span class=""><span class="ln">340</span>    }</span>
+<span class=""><span class="ln">341</span></span>
+<span class=""><span class="ln">342</span>    private function paint(Color $color): string</span>
+<span class=""><span class="ln">343</span>    {</span>
+<span class="missed"><span class="ln">344</span>        return Style::none()-&gt;withForeground($color)-&gt;toAnsi();</span>
+<span class=""><span class="ln">345</span>    }</span>
+<span class=""><span class="ln">346</span></span>
+<span class=""><span class="ln">347</span>    private function help(): void</span>
+<span class=""><span class="ln">348</span>    {</span>
+<span class="covered"><span class="ln">349</span>        $terminal = Runtime::terminal();</span>
+<span class=""><span class="ln">350</span></span>
+<span class="covered"><span class="ln">351</span>        print (new Help(min(100, max(60, $terminal-&gt;columns())), Capabilities::color($terminal)))-&gt;render(&lt;&lt;&lt;&#039;EOT&#039;</span>
+<span class="covered"><span class="ln">352</span>            Usage:</span>
+<span class=""><span class="ln">353</span>              crucible [options]</span>
+<span class=""><span class="ln">354</span>              crucible migrate-config      Convert phpunit.xml(.dist) to a crucible.php and exit</span>
+<span class=""><span class="ln">355</span>              crucible flakes [--rounds N]  Hunt order-dependent tests via seeded random rounds</span>
+<span class=""><span class="ln">356</span>              crucible phpstan-init        Wire Crucible&#039;s PHPStan extension into phpstan.neon</span>
+<span class=""><span class="ln">357</span>              crucible lint-inline         Analyse @crucible doctests with PHPStan via shadow files</span>
+<span class=""><span class="ln">358</span>              crucible mutation-index      Emit the per-line covering-tests index (JSON) for a mutation tool</span>
+<span class=""><span class="ln">359</span>              crucible mutate              Mutation-test the covered source and report the score (needs --coverage first)</span>
+<span class=""><span class="ln">360</span>              crucible compat-check        Diagnose tests that pass on the real incumbent (pest, else phpunit) but fail on Crucible</span>
+<span class=""><span class="ln">361</span>                --auto-fix                   Apply known-safe rewrites without asking</span>
+<span class=""><span class="ln">362</span>                --revert                     Undo fixes applied by a previous --auto-fix run</span>
+<span class=""><span class="ln">363</span>              crucible extensions          List registered report-format, subscriber, and progress-view plugins and their availability</span>
+<span class=""><span class="ln">364</span>                --key &lt;name&gt;                 Show one plugin&#039;s full detail instead of the summary list</span>
+<span class=""><span class="ln">365</span>                --preview                    Render or run a live sample through --key &lt;name&gt; and write it</span>
+<span class=""><span class="ln">366</span>                --out &lt;path&gt;                 Preview output path (default: a temp file, path printed)</span>
+<span class=""><span class="ln">367</span>                --json                       Machine-readable output for the list/detail view</span>
+<span class=""><span class="ln">368</span>              crucible completion &lt;shell&gt;   Print the tab-completion script for bash, zsh or fish</span>
+<span class=""><span class="ln">369</span>              crucible manual               Read Crucible&#039;s manual fullscreen (↑/↓ scroll, / search, 1-9 follow links, ⌫ back, q quit)</span>
+<span class=""><span class="ln">370</span>                --out &lt;path&gt;                Write the manual to &lt;path&gt; as a PDF instead of reading it</span>
+<span class=""><span class="ln">371</span>                --manual                     The same, spelled as an option</span>
+<span class=""><span class="ln">372</span></span>
+<span class=""><span class="ln">373</span>            Options:</span>
+<span class=""><span class="ln">374</span>              --assignee &lt;name&gt;         Select only todos assigned to &lt;name&gt;</span>
+<span class=""><span class="ln">375</span>              --configuration &lt;file&gt;    Read configuration from &lt;file&gt; instead of crucible.php</span>
+<span class=""><span class="ln">376</span>              --covers &lt;name,...&gt;       Run only tests declaring one of these covered targets</span>
+<span class=""><span class="ln">377</span>              --exclude-filter &lt;pattern&gt;  Never run tests whose name matches &lt;pattern&gt;</span>
+<span class=""><span class="ln">378</span>              --exclude-group &lt;name,...&gt;  Never run tests in the given group(s)</span>
+<span class=""><span class="ln">379</span>              --exclude-testsuite &lt;name,...&gt;  Never run the named test suite(s)</span>
+<span class=""><span class="ln">380</span>              --filter &lt;pattern&gt;        Run only tests whose name matches &lt;pattern&gt;</span>
+<span class=""><span class="ln">381</span>              --group &lt;name,...&gt;        Run only tests in the given group(s)</span>
+<span class=""><span class="ln">382</span>              --ignore-dependencies     Leave the scheduled positions alone; an unmet Depends still skips</span>
+<span class=""><span class="ln">383</span>              --issue &lt;id&gt;              Select only todos referencing issue &lt;id&gt;</span>
+<span class=""><span class="ln">384</span>              --log-events-json &lt;file&gt;  Write the NDJSON event stream to &lt;file&gt;</span>
+<span class=""><span class="ln">385</span>              --log-events-text &lt;file&gt;  Write the event stream to &lt;file&gt; as one line per event</span>
+<span class=""><span class="ln">386</span>              --log-events-verbose &lt;file&gt;  As --log-events-text, keeping each event&#039;s payload fields</span>
+<span class=""><span class="ln">387</span>              --log-junit &lt;file&gt;        Write a JUnit XML report to &lt;file&gt; (CI interop)</span>
+<span class=""><span class="ln">388</span>              --log-markdown &lt;file&gt;     Write a Markdown report to &lt;file&gt;</span>
+<span class=""><span class="ln">389</span>              --log-otr &lt;file&gt;          Write an Open Test Reporting (opentest4j) event stream to &lt;file&gt;</span>
+<span class=""><span class="ln">390</span>              --log-pdf &lt;file&gt;          Write a PDF report to &lt;file&gt;</span>
+<span class=""><span class="ln">391</span>              --log-teamcity &lt;file&gt;     Write TeamCity service messages to &lt;file&gt;, leaving the progress output alone</span>
+<span class=""><span class="ln">392</span>              --order-by &lt;order&gt;        Run tests in order: default|defects|duration|random|reverse|size</span>
+<span class=""><span class="ln">393</span>              --parallel &lt;N&gt;            Run test classes in N worker processes (LPT-scheduled)</span>
+<span class=""><span class="ln">394</span>              --process-isolation       Run every test in its own process, as if each were marked RunInSeparateProcess</span>
+<span class=""><span class="ln">395</span>              --profile                 List the slowest tests, with each one&#039;s share of total runtime</span>
+<span class=""><span class="ln">396</span>              --random-order-seed &lt;N&gt;   Seed for --order-by random, to replay an ordering</span>
+<span class=""><span class="ln">397</span>              --report &lt;key:path,...&gt;   Render one or more registered report formats (see crucible extensions) to &lt;path&gt;</span>
+<span class=""><span class="ln">398</span>              --requires-ext &lt;name,...&gt;  Run only tests requiring one of these extensions</span>
+<span class=""><span class="ln">399</span>              --resolve-dependencies    Reorder so a Depends prerequisite runs before its dependent (the default)</span>
+<span class=""><span class="ln">400</span>              --run-test-id &lt;id,...&gt;    Run only the tests with these ids (see --list-test-ids)</span>
+<span class=""><span class="ln">401</span>              --shard &lt;M/N&gt;             Run the Mth of N hash-stable suite slices (CI sharding)</span>
+<span class=""><span class="ln">402</span>              --subscriber &lt;key:path,...&gt;  Subscribe one or more registered subscribers (see crucible extensions) writing to &lt;path&gt;</span>
+<span class=""><span class="ln">403</span>              --teamcity                Sugar for --view=teamcity: replace the progress output with TeamCity service messages</span>
+<span class=""><span class="ln">404</span>              --test-files-file &lt;file&gt;  Run only the test files listed in &lt;file&gt;, one per line</span>
+<span class=""><span class="ln">405</span>              --test-id-filter-file &lt;file&gt;  Run only the test ids listed in &lt;file&gt;, one per line</span>
+<span class=""><span class="ln">406</span>              --test-suffix &lt;suffix,...&gt;  Discover test files by these suffixes instead of each suite&#039;s</span>
+<span class=""><span class="ln">407</span>              --testdox                 Sugar for --view=testdox: replace the progress output with the documentation view</span>
+<span class=""><span class="ln">408</span>              --testdox-html &lt;file&gt;     Write the documentation view to &lt;file&gt; as a standalone HTML page</span>
+<span class=""><span class="ln">409</span>              --testdox-summary &lt;file&gt;  Write only the run tally to &lt;file&gt;, without the per-test listing</span>
+<span class=""><span class="ln">410</span>              --testdox-text &lt;file&gt;     Write the documentation view to &lt;file&gt; as plain text</span>
+<span class=""><span class="ln">411</span>              --testsuite &lt;name,...&gt;    Run only the named test suite(s)</span>
+<span class=""><span class="ln">412</span>              --todos                   Select only todo-marked tests — the open-work listing</span>
+<span class=""><span class="ln">413</span>              --uses &lt;name,...&gt;         Run only tests declaring one of these used targets</span>
+<span class=""><span class="ln">414</span>              --view &lt;key&gt;              Select a registered progress view (see crucible extensions) by key</span>
+<span class=""><span class="ln">415</span>                  map             the suite as a map, a cell per test, drawn inline</span>
+<span class=""><span class="ln">416</span>                  map-fullscreen  the same on the alternate screen (the default at a terminal)</span>
+<span class=""><span class="ln">417</span>                  console         the dot-per-test view (the default in CI and pipes)</span>
+<span class=""><span class="ln">418</span>              --no-wip                  Exclude work-in-progress (-&gt;wip()) tests from the run</span>
+<span class=""><span class="ln">419</span>              --with-telemetry          Prefix each event-text line with elapsed time and peak memory</span>
+<span class=""><span class="ln">420</span>              --changed[=&lt;ref&gt;]         Run only tests affected by changes vs &lt;ref&gt; (default HEAD)</span>
+<span class=""><span class="ln">421</span>              --coverage                Collect line coverage (pcov or xdebug) and print the summary</span>
+<span class=""><span class="ln">422</span>              --coverage-branch         Also collect branch coverage (needs xdebug — pcov cannot)</span>
+<span class=""><span class="ln">423</span>              --coverage-clover &lt;file&gt;  Write Clover XML coverage to &lt;file&gt; (CI interop)</span>
+<span class=""><span class="ln">424</span>              --coverage-cobertura &lt;file&gt;  Write Cobertura XML coverage to &lt;file&gt; (CI interop)</span>
+<span class=""><span class="ln">425</span>              --coverage-html &lt;dir&gt;     Write the self-contained HTML coverage report into &lt;dir&gt;</span>
+<span class=""><span class="ln">426</span>              --coverage-openclover &lt;file&gt;  Write OpenClover XML coverage to &lt;file&gt; (CI interop)</span>
+<span class=""><span class="ln">427</span>              --coverage-php &lt;file&gt;     Write the coverage data to &lt;file&gt; as a PHP file that returns it</span>
+<span class=""><span class="ln">428</span>              --dirty                   Run only tests affected by uncommitted work (staged, unstaged, untracked)</span>
+<span class=""><span class="ln">429</span>              --fail-on-flaky           Exit non-zero when a test passed only on retry</span>
+<span class=""><span class="ln">430</span>              --min &lt;percent&gt;           Fail the run below this line-coverage percentage (collects coverage on its own)</span>
+<span class=""><span class="ln">431</span>              --path-coverage           Also collect path coverage, whole routes through a function (needs xdebug)</span>
+<span class=""><span class="ln">432</span>              --related &lt;file,...&gt;      Run only tests affected by the given file(s)</span>
+<span class=""><span class="ln">433</span>              --repeat &lt;N&gt;              Run every selected test N times, pass or fail</span>
+<span class=""><span class="ln">434</span>              --reproducible            Normalise what describes the run, so two runs of the same code write identical report bytes</span>
+<span class=""><span class="ln">435</span>              --retries &lt;N&gt;             Re-run failing tests up to N times; a pass on retry is FLAKY</span>
+<span class=""><span class="ln">436</span>              --retry &lt;N&gt;               PHPUnit spelling: attempt each test up to N times in total</span>
+<span class=""><span class="ln">437</span>              --strict-coverage         Be strict about coverage metadata: executing code outside the declared Covers/Uses targets is risky</span>
+<span class=""><span class="ln">438</span>              --validate-configuration  Check that crucible.php loads and every path it names exists</span>
+<span class=""><span class="ln">439</span>              --warm-coverage-cache     Parse the coverage scope&#039;s source now, so a later report does not</span>
+<span class=""><span class="ln">440</span>              --watch                   Re-run affected tests on every file change (q quits)</span>
+<span class=""><span class="ln">441</span>              --coverage-text[=&lt;file&gt;]  Write the text coverage report to &lt;file&gt;, or the terminal when bare</span>
+<span class=""><span class="ln">442</span>              --coverage-crap4j &lt;file&gt;  Write the Crap4J XML report (complexity against coverage) to &lt;file&gt;</span>
+<span class=""><span class="ln">443</span>              --coverage-filter &lt;dir&gt;   Add &lt;dir&gt; to the coverage scope, alongside whatever -&gt;source() declares</span>
+<span class=""><span class="ln">444</span>              --coverage-text-summary  Text coverage report: totals only, no per-file rows</span>
+<span class=""><span class="ln">445</span>              --coverage-text-uncovered  Text coverage report: keep the files with no covered line</span>
+<span class=""><span class="ln">446</span>              --coverage-xml &lt;dir&gt;      Write the XML coverage report into &lt;dir&gt;</span>
+<span class=""><span class="ln">447</span>              --coverage-xml-no-source  Omit the source element from the XML coverage report</span>
+<span class=""><span class="ln">448</span>              --disable-coverage-ignore  Accepted: Crucible has no coverage-ignore metadata to disable</span>
+<span class=""><span class="ln">449</span>              --disable-coverage-targeting  Every test contributes all it executed, not only its declared targets</span>
+<span class=""><span class="ln">450</span>              --fail-on-deprecation     Exit non-zero when a test triggers a deprecation</span>
+<span class=""><span class="ln">451</span>              --fail-on-incomplete      Exit non-zero when a test is incomplete</span>
+<span class=""><span class="ln">452</span>              --fail-on-notice          Exit non-zero when a test triggers a notice</span>
+<span class=""><span class="ln">453</span>              --fail-on-risky           Exit non-zero when a test is risky</span>
+<span class=""><span class="ln">454</span>              --fail-on-skipped         Exit non-zero when a test is skipped</span>
+<span class=""><span class="ln">455</span>              --fail-on-warning         Exit non-zero when a test triggers a warning</span>
+<span class=""><span class="ln">456</span>              --include-git-information  Record the checkout commit, branch, and cleanliness in the coverage data</span>
+<span class=""><span class="ln">457</span>              --stop-on-defect          Stop after the first error, failure, or risky test</span>
+<span class=""><span class="ln">458</span>              --stop-on-deprecation     Stop after the first test that triggers a deprecation</span>
+<span class=""><span class="ln">459</span>              --stop-on-error           Stop after the first error</span>
+<span class=""><span class="ln">460</span>              --stop-on-failure         Stop after the first failure</span>
+<span class=""><span class="ln">461</span>              --stop-on-incomplete      Stop after the first incomplete test</span>
+<span class=""><span class="ln">462</span>              --stop-on-notice          Stop after the first test that triggers a notice</span>
+<span class=""><span class="ln">463</span>              --stop-on-risky           Stop after the first risky test</span>
+<span class=""><span class="ln">464</span>              --stop-on-skipped         Stop after the first skipped test</span>
+<span class=""><span class="ln">465</span>              --stop-on-warning         Stop after the first test that triggers a warning</span>
+<span class=""><span class="ln">466</span>              --update-baseline  Add the run&#039;s deprecations to the baseline file</span>
+<span class=""><span class="ln">467</span>              --update-snapshots, -u    Record or replace snapshot values (never happens implicitly)</span>
+<span class=""><span class="ln">468</span>              --without-class-view      HTML coverage report: drop the per-method table</span>
+<span class=""><span class="ln">469</span>              --without-file-view       HTML coverage report: drop the annotated source pages</span>
+<span class=""><span class="ln">470</span>              --colors[=&lt;when&gt;]         Colorize output: auto (default), always, never</span>
+<span class=""><span class="ln">471</span>              --browser &lt;engine&gt;        Run browser tests on: chrome (default), firefox, safari</span>
+<span class=""><span class="ln">472</span>              --cache-directory &lt;dir&gt;   Directory for Crucible&#039;s caches</span>
+<span class=""><span class="ln">473</span>              --cache-result            Write the result cache (default)</span>
+<span class=""><span class="ln">474</span>              --do-not-cache-result     Do not read or write the result cache</span>
+<span class=""><span class="ln">475</span>              --debug                   Print each test&#039;s name as it starts, for locating a hang</span>
+<span class=""><span class="ln">476</span>              --init                    Create a crucible.php configuration file in the current directory</span>
+<span class=""><span class="ln">477</span>              --list-groups             List the groups they belong to</span>
+<span class=""><span class="ln">478</span>              --list-suites             List the configured test suites</span>
+<span class=""><span class="ln">479</span>              --list-test-files         List the files they live in</span>
+<span class=""><span class="ln">480</span>              --list-test-ids           List their ids, ready to feed back to --run-test-id</span>
+<span class=""><span class="ln">481</span>              --list-tests              List the selected tests instead of running them</span>
+<span class=""><span class="ln">482</span>              --list-tests-xml          List the selected tests as XML</span>
+<span class=""><span class="ln">483</span>              --version                 Print version information and exit</span>
+<span class=""><span class="ln">484</span>              -h, --help                Print this help and exit</span>
+<span class=""><span class="ln">485</span></span>
+<span class=""><span class="ln">486</span>            PHPUnit spellings, accepted so an existing command line runs unchanged:</span>
+<span class=""><span class="ln">487</span>              --all                     Accepted: Crucible runs every configured suite already</span>
+<span class=""><span class="ln">488</span>              --atleast-version &lt;v&gt;     Exit 0 only if the running version is at least &lt;v&gt;</span>
+<span class=""><span class="ln">489</span>              --bootstrap &lt;file&gt;        Load &lt;file&gt; before the suite; wins over the configuration&#039;s</span>
+<span class=""><span class="ln">490</span>              --branch-coverage         Same as --coverage-branch</span>
+<span class=""><span class="ln">491</span>              --check-php-configuration  Report whether PHP is configured for development, and exit 1 if not</span>
+<span class=""><span class="ln">492</span>              --check-version           Report that Crucible has no update channel, and exit 0</span>
+<span class=""><span class="ln">493</span>              --columns &lt;n|max&gt;         Progress characters per line (default 64)</span>
+<span class=""><span class="ln">494</span>              --compact                 Progress and tally only, nothing between them</span>
+<span class=""><span class="ln">495</span>              --no-configuration        Run without reading crucible.php at all</span>
+<span class=""><span class="ln">496</span>              --no-coverage             Collect no coverage, whatever else this command line asks for</span>
+<span class=""><span class="ln">497</span>              --default-time-limit &lt;sec&gt;  The budget for a test that declares no size</span>
+<span class=""><span class="ln">498</span>              --diff-context &lt;n&gt;        Unchanged lines to keep around each change in a diff</span>
+<span class=""><span class="ln">499</span>              --disallow-test-output    A test that prints anything is risky</span>
+<span class=""><span class="ln">500</span>              --display-all-issues      All six of the above at once</span>
+<span class=""><span class="ln">501</span>              --display-deprecations    List the deprecations the tally counted, with their scope</span>
+<span class=""><span class="ln">502</span>              --display-errors          List the errored tests and their reasons</span>
+<span class=""><span class="ln">503</span>              --display-incomplete      List the incomplete tests and their reasons</span>
+<span class=""><span class="ln">504</span>              --display-notices         List the notices the tally counted</span>
+<span class=""><span class="ln">505</span>              --display-phpunit-deprecations   Accepted; Crucible emits no framework-internal issues</span>
+<span class=""><span class="ln">506</span>              --display-phpunit-notices        Accepted; Crucible emits no framework-internal issues</span>
+<span class=""><span class="ln">507</span>              --display-skipped         List the skipped tests and their reasons</span>
+<span class=""><span class="ln">508</span>              --display-warnings        List the warnings the tally counted</span>
+<span class=""><span class="ln">509</span>              --enforce-time-limit      A test slower than its declared size allows is risky</span>
+<span class=""><span class="ln">510</span>              --extension &lt;class&gt;       Register an extension class for this run</span>
+<span class=""><span class="ln">511</span>              --no-extensions           Register no extensions, configured or from --extension</span>
+<span class=""><span class="ln">512</span>              --fail-on-all-issues             Turn on every fail-on policy above</span>
+<span class=""><span class="ln">513</span>              --no-fail-on-deprecation     Do not exit non-zero on a deprecation</span>
+<span class=""><span class="ln">514</span>              --fail-on-direct     Exit non-zero on a deprecation your code triggered in a dependency</span>
+<span class=""><span class="ln">515</span>              --no-fail-on-direct    Do not exit non-zero on a direct deprecation</span>
+<span class=""><span class="ln">516</span>              --fail-on-empty-test-suite       Exit non-zero when the run selected no tests</span>
+<span class=""><span class="ln">517</span>              --no-fail-on-empty-test-suite  Do not exit non-zero when the run selected no tests</span>
+<span class=""><span class="ln">518</span>              --no-fail-on-incomplete      Do not exit non-zero on an incomplete test</span>
+<span class=""><span class="ln">519</span>              --fail-on-indirect   Exit non-zero on a deprecation one dependency triggered in another</span>
+<span class=""><span class="ln">520</span>              --no-fail-on-indirect  Do not exit non-zero on an indirect deprecation</span>
+<span class=""><span class="ln">521</span>              --no-fail-on-notice          Do not exit non-zero on a notice</span>
+<span class=""><span class="ln">522</span>              --fail-on-phpunit-deprecation    Accepted; Crucible emits no framework-internal issues</span>
+<span class=""><span class="ln">523</span>              --no-fail-on-phpunit-deprecation  Accepted; Crucible emits no framework-internal issues</span>
+<span class=""><span class="ln">524</span>              --fail-on-phpunit-notice         Accepted; Crucible emits no framework-internal issues</span>
+<span class=""><span class="ln">525</span>              --no-fail-on-phpunit-notice       Accepted; Crucible emits no framework-internal issues</span>
+<span class=""><span class="ln">526</span>              --fail-on-phpunit-warning        Accepted; Crucible emits no framework-internal issues</span>
+<span class=""><span class="ln">527</span>              --no-fail-on-phpunit-warning      Accepted; Crucible emits no framework-internal issues</span>
+<span class=""><span class="ln">528</span>              --no-fail-on-risky           Do not exit non-zero on a risky test</span>
+<span class=""><span class="ln">529</span>              --fail-on-self       Exit non-zero on a deprecation triggered in your own code</span>
+<span class=""><span class="ln">530</span>              --no-fail-on-self      Do not exit non-zero on a self deprecation</span>
+<span class=""><span class="ln">531</span>              --no-fail-on-skipped         Do not exit non-zero on a skipped test</span>
+<span class=""><span class="ln">532</span>              --no-fail-on-warning         Do not exit non-zero on a warning</span>
+<span class=""><span class="ln">533</span>              --generate-baseline &lt;file&gt;  Run reading no baseline, then write what it saw to &lt;file&gt;</span>
+<span class=""><span class="ln">534</span>              --globals-backup          Back up and restore $GLOBALS around every test</span>
+<span class=""><span class="ln">535</span>              --ignore-baseline         Read no deprecations baseline at all</span>
+<span class=""><span class="ln">536</span>              --include-path &lt;path&gt;     Prepend &lt;path&gt; to PHP&#039;s include_path before the bootstrap</span>
+<span class=""><span class="ln">537</span>              --no-logging              Write no report or log file, whatever else this command line asks for</span>
+<span class=""><span class="ln">538</span>              --migrate-configuration   Same as the migrate-config command</span>
+<span class=""><span class="ln">539</span>              --no-output               Print nothing at all; the exit code and the log targets are unchanged</span>
+<span class=""><span class="ln">540</span>              --php-advisory  Print that advisory before the run instead</span>
+<span class=""><span class="ln">541</span>              --no-php-advisory  Never print it (the default)</span>
+<span class=""><span class="ln">542</span>              --no-progress             Print no per-test progress characters</span>
+<span class=""><span class="ln">543</span>              --random-order            Same as --order-by random</span>
+<span class=""><span class="ln">544</span>              --require-coverage  Mark a test risky when it declares no coverage target</span>
+<span class=""><span class="ln">545</span>              --no-results              Print no problem list and no passed tree</span>
+<span class=""><span class="ln">546</span>              --reverse-list            List the problems last-first</span>
+<span class=""><span class="ln">547</span>              --reverse-order           Same as --order-by reverse</span>
+<span class=""><span class="ln">548</span>              --static-backup           Back up and restore static properties around every test</span>
+<span class=""><span class="ln">549</span>              --stderr                  Write the progress view to stderr instead of stdout</span>
+<span class=""><span class="ln">550</span>              --strict-global-state     Mark a test risky when it changes global state</span>
+<span class=""><span class="ln">551</span>              --use-baseline &lt;file&gt;     Read the deprecations baseline from &lt;file&gt;</span>
+<span class=""><span class="ln">552</span>              --no-useless-test-reports  Do not mark a test that asserts nothing as risky</span>
+<span class=""><span class="ln">553</span></span>
+<span class=""><span class="ln">554</span>            Longer PHPUnit spellings, both accepted (Crucible&#039;s name first):</span>
+<span class=""><span class="ln">555</span>              --cache-result  --record-test-run-history</span>
+<span class=""><span class="ln">556</span>              --do-not-cache-result  --do-not-record-test-run-history</span>
+<span class=""><span class="ln">557</span>              --coverage-text-summary  --only-summary-for-coverage-text</span>
+<span class=""><span class="ln">558</span>              --coverage-text-uncovered  --show-uncovered-for-coverage-text</span>
+<span class=""><span class="ln">559</span>              --coverage-xml-no-source  --exclude-source-from-xml-coverage</span>
+<span class=""><span class="ln">560</span>              --no-fail-on-deprecation  --do-not-fail-on-deprecation</span>
+<span class=""><span class="ln">561</span>              --fail-on-direct  --fail-on-direct-deprecation</span>
+<span class=""><span class="ln">562</span>              --no-fail-on-direct  --do-not-fail-on-direct-deprecation</span>
+<span class=""><span class="ln">563</span>              --no-fail-on-empty-test-suite  --do-not-fail-on-empty-test-suite</span>
+<span class=""><span class="ln">564</span>              --no-fail-on-incomplete  --do-not-fail-on-incomplete</span>
+<span class=""><span class="ln">565</span>              --fail-on-indirect  --fail-on-indirect-deprecation</span>
+<span class=""><span class="ln">566</span>              --no-fail-on-indirect  --do-not-fail-on-indirect-deprecation</span>
+<span class=""><span class="ln">567</span>              --no-fail-on-notice  --do-not-fail-on-notice</span>
+<span class=""><span class="ln">568</span>              --no-fail-on-phpunit-deprecation  --do-not-fail-on-phpunit-deprecation</span>
+<span class=""><span class="ln">569</span>              --no-fail-on-phpunit-notice  --do-not-fail-on-phpunit-notice</span>
+<span class=""><span class="ln">570</span>              --no-fail-on-phpunit-warning  --do-not-fail-on-phpunit-warning</span>
+<span class=""><span class="ln">571</span>              --no-fail-on-risky  --do-not-fail-on-risky</span>
+<span class=""><span class="ln">572</span>              --fail-on-self  --fail-on-self-deprecation</span>
+<span class=""><span class="ln">573</span>              --no-fail-on-self  --do-not-fail-on-self-deprecation</span>
+<span class=""><span class="ln">574</span>              --no-fail-on-skipped  --do-not-fail-on-skipped</span>
+<span class=""><span class="ln">575</span>              --no-fail-on-warning  --do-not-fail-on-warning</span>
+<span class=""><span class="ln">576</span>              --init  --generate-configuration</span>
+<span class=""><span class="ln">577</span>              --log-events-verbose  --log-events-verbose-text</span>
+<span class=""><span class="ln">578</span>              --php-advisory  --warn-when-php-is-not-configured-for-development</span>
+<span class=""><span class="ln">579</span>              --no-php-advisory  --do-not-warn-when-php-is-not-configured-for-development</span>
+<span class=""><span class="ln">580</span>              --require-coverage  --require-coverage-contribution</span>
+<span class=""><span class="ln">581</span>              --requires-ext  --requires-php-extension</span>
+<span class=""><span class="ln">582</span>              --update-baseline  --update-deprecations-baseline</span>
+<span class=""><span class="ln">583</span>              --no-useless-test-reports  --do-not-report-useless-tests</span>
+<span class=""><span class="ln">584</span></span>
+<span class=""><span class="ln">585</span>            Crucible is an independent test framework targeting drop-in</span>
+<span class=""><span class="ln">586</span>            compatibility with PHPUnit 13 suites. HELP.md documents every</span>
+<span class=""><span class="ln">587</span>            option in full; RELEASE.md records what shipped.</span>
+<span class=""><span class="ln">588</span></span>
+<span class=""><span class="ln">589</span>            EOT);</span>
+<span class=""><span class="ln">590</span>    }</span>
+<span class=""><span class="ln">591</span>}</span>
+<span class=""><span class="ln">592</span></span>
+</pre>
+</body>
+</html>

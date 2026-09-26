@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/PHPStan/ApprovedEvalRule.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/PHPStan/ApprovedEvalRule.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\PHPStan;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use Override;</span>
+<span class=""><span class="ln">14</span>use PhpParser\Node;</span>
+<span class=""><span class="ln">15</span>use PhpParser\Node\Expr\Eval_;</span>
+<span class=""><span class="ln">16</span>use PHPStan\Analyser\Scope;</span>
+<span class=""><span class="ln">17</span>use PHPStan\Rules\Rule;</span>
+<span class=""><span class="ln">18</span>use PHPStan\Rules\RuleErrorBuilder;</span>
+<span class=""><span class="ln">19</span></span>
+<span class=""><span class="ln">20</span>use function array_keys;</span>
+<span class=""><span class="ln">21</span>use function implode;</span>
+<span class=""><span class="ln">22</span>use function sprintf;</span>
+<span class=""><span class="ln">23</span>use function str_ends_with;</span>
+<span class=""><span class="ln">24</span>use function str_replace;</span>
+<span class=""><span class="ln">25</span></span>
+<span class=""><span class="ln">26</span>use const DIRECTORY_SEPARATOR;</span>
+<span class=""><span class="ln">27</span></span>
+<span class=""><span class="ln">28</span>/**</span>
+<span class=""><span class="ln">29</span> * `eval()` may only appear where it has been argued for.</span>
+<span class=""><span class="ln">30</span> *</span>
+<span class=""><span class="ln">31</span> * Generated code is the one region of this codebase no instrument</span>
+<span class=""><span class="ln">32</span> * reads: PHPStan cannot see inside a string literal, phpcpd finds no</span>
+<span class=""><span class="ln">33</span> * clone there (D-108), and the mutation runner drops eval()&#039;d</span>
+<span class=""><span class="ln">34</span> * pseudo-paths outright (`MutationCommand.php:334`). Every defect that</span>
+<span class=""><span class="ln">35</span> * lives there is therefore invisible until it reaches a user — the</span>
+<span class=""><span class="ln">36</span> * shape corpus found two on its first run, one of them an uncatchable</span>
+<span class=""><span class="ln">37</span> * fatal.</span>
+<span class=""><span class="ln">38</span> *</span>
+<span class=""><span class="ln">39</span> * So the count of such places is held still by a gate rather than by a</span>
+<span class=""><span class="ln">40</span> * grep. It was a grep until this rule existed, and the grep was wrong:</span>
+<span class=""><span class="ln">41</span> * it reported six sites, because `eval(` also matches four docblocks</span>
+<span class=""><span class="ln">42</span> * and one comment.</span>
+<span class=""><span class="ln">43</span> *</span>
+<span class=""><span class="ln">44</span> * Adding a site means adding a line here with the reason, which is the</span>
+<span class=""><span class="ln">45</span> * point — a sentence in a review rather than a silent sixth blind spot.</span>
+<span class=""><span class="ln">46</span> * Only THIS repository&#039;s analysis registers the rule; a project using</span>
+<span class=""><span class="ln">47</span> * Crucible&#039;s PHPStan extension is not told where it may call eval().</span>
+<span class=""><span class="ln">48</span> *</span>
+<span class=""><span class="ln">49</span> * @implements Rule&lt;Eval_&gt;</span>
+<span class=""><span class="ln">50</span> */</span>
+<span class="missed"><span class="ln">51</span>final readonly class ApprovedEvalRule implements Rule</span>
+<span class=""><span class="ln">52</span>{</span>
+<span class=""><span class="ln">53</span>    /**</span>
+<span class=""><span class="ln">54</span>     * Path suffix =&gt; why that site generates code at runtime.</span>
+<span class=""><span class="ln">55</span>     *</span>
+<span class=""><span class="ln">56</span>     * @var array&lt;string, string&gt;</span>
+<span class=""><span class="ln">57</span>     */</span>
+<span class=""><span class="ln">58</span>    private const array APPROVED = [</span>
+<span class=""><span class="ln">59</span>        &#039;src/Generated/GeneratedCode.php&#039; =&gt; &#039;the one place Crucible compiles code it wrote itself&#039;,</span>
+<span class=""><span class="ln">60</span>    ];</span>
+<span class=""><span class="ln">61</span></span>
+<span class=""><span class="ln">62</span>    #[Override]</span>
+<span class=""><span class="ln">63</span>    public function getNodeType(): string</span>
+<span class=""><span class="ln">64</span>    {</span>
+<span class="missed"><span class="ln">65</span>        return Eval_::class;</span>
+<span class=""><span class="ln">66</span>    }</span>
+<span class=""><span class="ln">67</span></span>
+<span class=""><span class="ln">68</span>    /**</span>
+<span class=""><span class="ln">69</span>     * @return list&lt;\PHPStan\Rules\IdentifierRuleError&gt;</span>
+<span class=""><span class="ln">70</span>     */</span>
+<span class=""><span class="ln">71</span>    #[Override]</span>
+<span class=""><span class="ln">72</span>    public function processNode(Node $node, Scope $scope): array</span>
+<span class=""><span class="ln">73</span>    {</span>
+<span class="missed"><span class="ln">74</span>        $file = $scope-&gt;getFile();</span>
+<span class=""><span class="ln">75</span></span>
+<span class="missed"><span class="ln">76</span>        foreach (array_keys(self::APPROVED) as $approved) {</span>
+<span class=""><span class="ln">77</span>            // The keys are written with &#039;/&#039;, the analysed path uses the OS&#039;s own separator.</span>
+<span class="missed"><span class="ln">78</span>            if (str_ends_with($file, str_replace(&#039;/&#039;, DIRECTORY_SEPARATOR, $approved))) {</span>
+<span class="missed"><span class="ln">79</span>                return [];</span>
+<span class=""><span class="ln">80</span>            }</span>
+<span class=""><span class="ln">81</span>        }</span>
+<span class=""><span class="ln">82</span></span>
+<span class=""><span class="ln">83</span>        return [</span>
+<span class="missed"><span class="ln">84</span>            RuleErrorBuilder::message(sprintf(</span>
+<span class=""><span class="ln">85</span>                &#039;eval() is not approved here. Code that exists only as a string is invisible to every gate — &#039;</span>
+<span class=""><span class="ln">86</span>                    . &#039;no type check, no clone check, no mutation. If this site really must generate code, add &#039;</span>
+<span class=""><span class="ln">87</span>                    . &#039;it to ApprovedEvalRule with the reason; the approved ones are: %s.&#039;,</span>
+<span class="missed"><span class="ln">88</span>                implode(&#039;, &#039;, array_keys(self::APPROVED)),</span>
+<span class=""><span class="ln">89</span>            ))</span>
+<span class="missed"><span class="ln">90</span>                -&gt;identifier(&#039;crucible.evalNotApproved&#039;)</span>
+<span class="missed"><span class="ln">91</span>                -&gt;build(),</span>
+<span class=""><span class="ln">92</span>        ];</span>
+<span class=""><span class="ln">93</span>    }</span>
+<span class=""><span class="ln">94</span>}</span>
+<span class="missed"><span class="ln">95</span></span>
+</pre>
+</body>
+</html>

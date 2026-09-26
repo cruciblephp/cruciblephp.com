@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Reporting/Document/Svg/SvgPathData.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../../../index.html">Crucible coverage</a> / src/Reporting/Document/Svg/SvgPathData.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Reporting\Document\Svg;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use InvalidArgumentException;</span>
+<span class=""><span class="ln">14</span></span>
+<span class=""><span class="ln">15</span>use function abs;</span>
+<span class=""><span class="ln">16</span>use function acos;</span>
+<span class=""><span class="ln">17</span>use function ceil;</span>
+<span class=""><span class="ln">18</span>use function cos;</span>
+<span class=""><span class="ln">19</span>use function count;</span>
+<span class=""><span class="ln">20</span>use function is_numeric;</span>
+<span class=""><span class="ln">21</span>use function max;</span>
+<span class=""><span class="ln">22</span>use function min;</span>
+<span class=""><span class="ln">23</span>use function preg_match_all;</span>
+<span class=""><span class="ln">24</span>use function sin;</span>
+<span class=""><span class="ln">25</span>use function sqrt;</span>
+<span class=""><span class="ln">26</span>use function strlen;</span>
+<span class=""><span class="ln">27</span>use function strtolower;</span>
+<span class=""><span class="ln">28</span>use function strtoupper;</span>
+<span class=""><span class="ln">29</span>use function tan;</span>
+<span class=""><span class="ln">30</span></span>
+<span class=""><span class="ln">31</span>use const M_PI;</span>
+<span class=""><span class="ln">32</span></span>
+<span class=""><span class="ln">33</span>/**</span>
+<span class=""><span class="ln">34</span> * Parses an SVG `&lt;path d=&quot;...&quot;&gt;` attribute into a normalized list of</span>
+<span class=""><span class="ln">35</span> * subpaths, each a moveto followed by line/curve segments in absolute</span>
+<span class=""><span class="ln">36</span> * coordinates — quadratics upgraded to cubics (PDF&#039;s `c` operator is the</span>
+<span class=""><span class="ln">37</span> * only curve primitive it has) and arcs converted via the standard</span>
+<span class=""><span class="ln">38</span> * endpoint-to-center parameterization (SVG spec Appendix F.6), the same</span>
+<span class=""><span class="ln">39</span> * technique every SVG-to-PDF/Canvas converter uses since PDF has no arc</span>
+<span class=""><span class="ln">40</span> * operator of its own.</span>
+<span class=""><span class="ln">41</span> *</span>
+<span class=""><span class="ln">42</span> * @phpstan-type Segment array{0: &#039;l&#039;, 1: float, 2: float}|array{0: &#039;c&#039;, 1: float, 2: float, 3: float, 4: float, 5: float, 6: float}</span>
+<span class=""><span class="ln">43</span> * @phpstan-type Subpath array{start: array{float, float}, segments: list&lt;Segment&gt;, closed: bool}</span>
+<span class=""><span class="ln">44</span> */</span>
+<span class=""><span class="ln">45</span>final class SvgPathData</span>
+<span class=""><span class="ln">46</span>{</span>
+<span class=""><span class="ln">47</span>    /**</span>
+<span class=""><span class="ln">48</span>     * @return list&lt;Subpath&gt;</span>
+<span class=""><span class="ln">49</span>     */</span>
+<span class=""><span class="ln">50</span>    public static function parse(string $d): array</span>
+<span class=""><span class="ln">51</span>    {</span>
+<span class="covered"><span class="ln">52</span>        $tokens = self::tokenize($d);</span>
+<span class="covered"><span class="ln">53</span>        $pos    = 0;</span>
+<span class="covered"><span class="ln">54</span>        $count  = count($tokens);</span>
+<span class=""><span class="ln">55</span></span>
+<span class=""><span class="ln">56</span>        /** @var list&lt;Subpath&gt; $subpaths */</span>
+<span class="covered"><span class="ln">57</span>        $subpaths = [];</span>
+<span class=""><span class="ln">58</span></span>
+<span class="covered"><span class="ln">59</span>        $currentX = 0.0;</span>
+<span class="covered"><span class="ln">60</span>        $currentY = 0.0;</span>
+<span class="covered"><span class="ln">61</span>        $startX   = 0.0;</span>
+<span class="covered"><span class="ln">62</span>        $startY   = 0.0;</span>
+<span class=""><span class="ln">63</span></span>
+<span class=""><span class="ln">64</span>        /** @var list&lt;Segment&gt; $segments */</span>
+<span class="covered"><span class="ln">65</span>        $segments = [];</span>
+<span class="covered"><span class="ln">66</span>        $hasOpen  = false;</span>
+<span class=""><span class="ln">67</span></span>
+<span class=""><span class="ln">68</span>        // The absolute position of the previous cubic/quadratic control</span>
+<span class=""><span class="ln">69</span>        // point, used to reflect S/s and T/t&#039;s implicit control point —</span>
+<span class=""><span class="ln">70</span>        // null whenever the previous command wasn&#039;t the matching curve</span>
+<span class=""><span class="ln">71</span>        // type, per spec (&quot;equivalent to specifying the current point</span>
+<span class=""><span class="ln">72</span>        // as the reflection&quot;).</span>
+<span class="covered"><span class="ln">73</span>        $prevCubicControl = null;</span>
+<span class="covered"><span class="ln">74</span>        $prevQuadControl  = null;</span>
+<span class=""><span class="ln">75</span></span>
+<span class="covered"><span class="ln">76</span>        while ($pos &lt; $count) {</span>
+<span class="covered"><span class="ln">77</span>            $command = $tokens[$pos];</span>
+<span class="covered"><span class="ln">78</span>            if (!self::isCommandLetter($command)) {</span>
+<span class="missed"><span class="ln">79</span>                throw new InvalidArgumentException(&quot;Expected an SVG path command letter, found \&quot;{$command}\&quot;.&quot;);</span>
+<span class=""><span class="ln">80</span>            }</span>
+<span class=""><span class="ln">81</span></span>
+<span class="covered"><span class="ln">82</span>            $pos++;</span>
+<span class="covered"><span class="ln">83</span>            $isRelative = $command === strtolower($command);</span>
+<span class="covered"><span class="ln">84</span>            $upper      = strtoupper($command);</span>
+<span class=""><span class="ln">85</span></span>
+<span class="covered"><span class="ln">86</span>            if ($upper !== &#039;S&#039; &amp;&amp; $upper !== &#039;T&#039;) {</span>
+<span class="covered"><span class="ln">87</span>                $prevCubicControl = $upper === &#039;C&#039; ? $prevCubicControl : null;</span>
+<span class="covered"><span class="ln">88</span>                $prevQuadControl  = $upper === &#039;Q&#039; ? $prevQuadControl : null;</span>
+<span class=""><span class="ln">89</span>            }</span>
+<span class=""><span class="ln">90</span></span>
+<span class="covered"><span class="ln">91</span>            switch ($upper) {</span>
+<span class="covered"><span class="ln">92</span>                case &#039;M&#039;:</span>
+<span class="covered"><span class="ln">93</span>                    [$x, $y, $pos] = self::readPoint($tokens, $pos, $isRelative, $currentX, $currentY);</span>
+<span class=""><span class="ln">94</span></span>
+<span class="covered"><span class="ln">95</span>                    if ($hasOpen) {</span>
+<span class="covered"><span class="ln">96</span>                        $subpaths[] = [&#039;start&#039; =&gt; [$startX, $startY], &#039;segments&#039; =&gt; $segments, &#039;closed&#039; =&gt; false];</span>
+<span class=""><span class="ln">97</span>                    }</span>
+<span class=""><span class="ln">98</span></span>
+<span class="covered"><span class="ln">99</span>                    $currentX = $startX = $x;</span>
+<span class="covered"><span class="ln">100</span>                    $currentY = $startY = $y;</span>
+<span class="covered"><span class="ln">101</span>                    $segments = [];</span>
+<span class="covered"><span class="ln">102</span>                    $hasOpen  = true;</span>
+<span class=""><span class="ln">103</span></span>
+<span class=""><span class="ln">104</span>                    // Subsequent coordinate pairs after the initial</span>
+<span class=""><span class="ln">105</span>                    // moveto are implicit linetos — 0 more is valid here.</span>
+<span class="covered"><span class="ln">106</span>                    while ($pos &lt; $count &amp;&amp; !self::isCommandLetter($tokens[$pos])) {</span>
+<span class="covered"><span class="ln">107</span>                        [$x, $y, $pos] = self::readPoint($tokens, $pos, $isRelative, $currentX, $currentY);</span>
+<span class="covered"><span class="ln">108</span>                        $segments[]    = [&#039;l&#039;, $x, $y];</span>
+<span class="covered"><span class="ln">109</span>                        $currentX      = $x;</span>
+<span class="covered"><span class="ln">110</span>                        $currentY      = $y;</span>
+<span class=""><span class="ln">111</span>                    }</span>
+<span class=""><span class="ln">112</span></span>
+<span class="covered"><span class="ln">113</span>                    break;</span>
+<span class=""><span class="ln">114</span></span>
+<span class="covered"><span class="ln">115</span>                case &#039;L&#039;:</span>
+<span class="covered"><span class="ln">116</span>                    self::requireArgument($tokens, $pos, $count, $command);</span>
+<span class=""><span class="ln">117</span></span>
+<span class="covered"><span class="ln">118</span>                    while ($pos &lt; $count &amp;&amp; !self::isCommandLetter($tokens[$pos])) {</span>
+<span class="covered"><span class="ln">119</span>                        [$x, $y, $pos] = self::readPoint($tokens, $pos, $isRelative, $currentX, $currentY);</span>
+<span class="covered"><span class="ln">120</span>                        $segments[]    = [&#039;l&#039;, $x, $y];</span>
+<span class="covered"><span class="ln">121</span>                        $currentX      = $x;</span>
+<span class="covered"><span class="ln">122</span>                        $currentY      = $y;</span>
+<span class=""><span class="ln">123</span>                    }</span>
+<span class=""><span class="ln">124</span></span>
+<span class="covered"><span class="ln">125</span>                    break;</span>
+<span class=""><span class="ln">126</span></span>
+<span class="covered"><span class="ln">127</span>                case &#039;H&#039;:</span>
+<span class="covered"><span class="ln">128</span>                    self::requireArgument($tokens, $pos, $count, $command);</span>
+<span class=""><span class="ln">129</span></span>
+<span class="covered"><span class="ln">130</span>                    while ($pos &lt; $count &amp;&amp; !self::isCommandLetter($tokens[$pos])) {</span>
+<span class="covered"><span class="ln">131</span>                        $value = self::readNumber($tokens, $pos);</span>
+<span class="covered"><span class="ln">132</span>                        $pos++;</span>
+<span class="covered"><span class="ln">133</span>                        $currentX   = $isRelative ? $currentX + $value : $value;</span>
+<span class="covered"><span class="ln">134</span>                        $segments[] = [&#039;l&#039;, $currentX, $currentY];</span>
+<span class=""><span class="ln">135</span>                    }</span>
+<span class=""><span class="ln">136</span></span>
+<span class="covered"><span class="ln">137</span>                    break;</span>
+<span class=""><span class="ln">138</span></span>
+<span class="covered"><span class="ln">139</span>                case &#039;V&#039;:</span>
+<span class="covered"><span class="ln">140</span>                    self::requireArgument($tokens, $pos, $count, $command);</span>
+<span class=""><span class="ln">141</span></span>
+<span class="covered"><span class="ln">142</span>                    while ($pos &lt; $count &amp;&amp; !self::isCommandLetter($tokens[$pos])) {</span>
+<span class="covered"><span class="ln">143</span>                        $value = self::readNumber($tokens, $pos);</span>
+<span class="covered"><span class="ln">144</span>                        $pos++;</span>
+<span class="covered"><span class="ln">145</span>                        $currentY   = $isRelative ? $currentY + $value : $value;</span>
+<span class="covered"><span class="ln">146</span>                        $segments[] = [&#039;l&#039;, $currentX, $currentY];</span>
+<span class=""><span class="ln">147</span>                    }</span>
+<span class=""><span class="ln">148</span></span>
+<span class="covered"><span class="ln">149</span>                    break;</span>
+<span class=""><span class="ln">150</span></span>
+<span class="covered"><span class="ln">151</span>                case &#039;C&#039;:</span>
+<span class="covered"><span class="ln">152</span>                    self::requireArgument($tokens, $pos, $count, $command);</span>
+<span class=""><span class="ln">153</span></span>
+<span class="covered"><span class="ln">154</span>                    while ($pos &lt; $count &amp;&amp; !self::isCommandLetter($tokens[$pos])) {</span>
+<span class="covered"><span class="ln">155</span>                        [$x1, $y1, $pos] = self::readPoint($tokens, $pos, $isRelative, $currentX, $currentY);</span>
+<span class="covered"><span class="ln">156</span>                        [$x2, $y2, $pos] = self::readPoint($tokens, $pos, $isRelative, $currentX, $currentY);</span>
+<span class="covered"><span class="ln">157</span>                        [$x, $y, $pos]   = self::readPoint($tokens, $pos, $isRelative, $currentX, $currentY);</span>
+<span class=""><span class="ln">158</span></span>
+<span class="covered"><span class="ln">159</span>                        $segments[]       = [&#039;c&#039;, $x1, $y1, $x2, $y2, $x, $y];</span>
+<span class="covered"><span class="ln">160</span>                        $prevCubicControl = [$x2, $y2];</span>
+<span class="covered"><span class="ln">161</span>                        $currentX         = $x;</span>
+<span class="covered"><span class="ln">162</span>                        $currentY         = $y;</span>
+<span class=""><span class="ln">163</span>                    }</span>
+<span class=""><span class="ln">164</span></span>
+<span class="covered"><span class="ln">165</span>                    break;</span>
+<span class=""><span class="ln">166</span></span>
+<span class="covered"><span class="ln">167</span>                case &#039;S&#039;:</span>
+<span class="covered"><span class="ln">168</span>                    self::requireArgument($tokens, $pos, $count, $command);</span>
+<span class=""><span class="ln">169</span></span>
+<span class="covered"><span class="ln">170</span>                    while ($pos &lt; $count &amp;&amp; !self::isCommandLetter($tokens[$pos])) {</span>
+<span class="covered"><span class="ln">171</span>                        [$x2, $y2, $pos] = self::readPoint($tokens, $pos, $isRelative, $currentX, $currentY);</span>
+<span class="covered"><span class="ln">172</span>                        [$x, $y, $pos]   = self::readPoint($tokens, $pos, $isRelative, $currentX, $currentY);</span>
+<span class=""><span class="ln">173</span></span>
+<span class="covered"><span class="ln">174</span>                        $x1 = $prevCubicControl !== null ? 2 * $currentX - $prevCubicControl[0] : $currentX;</span>
+<span class="covered"><span class="ln">175</span>                        $y1 = $prevCubicControl !== null ? 2 * $currentY - $prevCubicControl[1] : $currentY;</span>
+<span class=""><span class="ln">176</span></span>
+<span class="covered"><span class="ln">177</span>                        $segments[]       = [&#039;c&#039;, $x1, $y1, $x2, $y2, $x, $y];</span>
+<span class="covered"><span class="ln">178</span>                        $prevCubicControl = [$x2, $y2];</span>
+<span class="covered"><span class="ln">179</span>                        $currentX         = $x;</span>
+<span class="covered"><span class="ln">180</span>                        $currentY         = $y;</span>
+<span class=""><span class="ln">181</span>                    }</span>
+<span class=""><span class="ln">182</span></span>
+<span class="covered"><span class="ln">183</span>                    break;</span>
+<span class=""><span class="ln">184</span></span>
+<span class="covered"><span class="ln">185</span>                case &#039;Q&#039;:</span>
+<span class="covered"><span class="ln">186</span>                    self::requireArgument($tokens, $pos, $count, $command);</span>
+<span class=""><span class="ln">187</span></span>
+<span class="covered"><span class="ln">188</span>                    while ($pos &lt; $count &amp;&amp; !self::isCommandLetter($tokens[$pos])) {</span>
+<span class="covered"><span class="ln">189</span>                        [$qx, $qy, $pos] = self::readPoint($tokens, $pos, $isRelative, $currentX, $currentY);</span>
+<span class="covered"><span class="ln">190</span>                        [$x, $y, $pos]   = self::readPoint($tokens, $pos, $isRelative, $currentX, $currentY);</span>
+<span class=""><span class="ln">191</span></span>
+<span class="covered"><span class="ln">192</span>                        $segments[]      = self::quadToCubic($currentX, $currentY, $qx, $qy, $x, $y);</span>
+<span class="covered"><span class="ln">193</span>                        $prevQuadControl = [$qx, $qy];</span>
+<span class="covered"><span class="ln">194</span>                        $currentX        = $x;</span>
+<span class="covered"><span class="ln">195</span>                        $currentY        = $y;</span>
+<span class=""><span class="ln">196</span>                    }</span>
+<span class=""><span class="ln">197</span></span>
+<span class="covered"><span class="ln">198</span>                    break;</span>
+<span class=""><span class="ln">199</span></span>
+<span class="covered"><span class="ln">200</span>                case &#039;T&#039;:</span>
+<span class="missed"><span class="ln">201</span>                    self::requireArgument($tokens, $pos, $count, $command);</span>
+<span class=""><span class="ln">202</span></span>
+<span class="missed"><span class="ln">203</span>                    while ($pos &lt; $count &amp;&amp; !self::isCommandLetter($tokens[$pos])) {</span>
+<span class="missed"><span class="ln">204</span>                        [$x, $y, $pos] = self::readPoint($tokens, $pos, $isRelative, $currentX, $currentY);</span>
+<span class=""><span class="ln">205</span></span>
+<span class="missed"><span class="ln">206</span>                        $qx = $prevQuadControl !== null ? 2 * $currentX - $prevQuadControl[0] : $currentX;</span>
+<span class="missed"><span class="ln">207</span>                        $qy = $prevQuadControl !== null ? 2 * $currentY - $prevQuadControl[1] : $currentY;</span>
+<span class=""><span class="ln">208</span></span>
+<span class="missed"><span class="ln">209</span>                        $segments[]      = self::quadToCubic($currentX, $currentY, $qx, $qy, $x, $y);</span>
+<span class="missed"><span class="ln">210</span>                        $prevQuadControl = [$qx, $qy];</span>
+<span class="missed"><span class="ln">211</span>                        $currentX        = $x;</span>
+<span class="missed"><span class="ln">212</span>                        $currentY        = $y;</span>
+<span class=""><span class="ln">213</span>                    }</span>
+<span class=""><span class="ln">214</span></span>
+<span class="missed"><span class="ln">215</span>                    break;</span>
+<span class=""><span class="ln">216</span></span>
+<span class="covered"><span class="ln">217</span>                case &#039;A&#039;:</span>
+<span class="covered"><span class="ln">218</span>                    self::requireArgument($tokens, $pos, $count, $command);</span>
+<span class=""><span class="ln">219</span></span>
+<span class="covered"><span class="ln">220</span>                    while ($pos &lt; $count &amp;&amp; !self::isCommandLetter($tokens[$pos])) {</span>
+<span class="covered"><span class="ln">221</span>                        $rx            = self::readNumber($tokens, $pos++);</span>
+<span class="covered"><span class="ln">222</span>                        $ry            = self::readNumber($tokens, $pos++);</span>
+<span class="covered"><span class="ln">223</span>                        $xRotation     = self::readNumber($tokens, $pos++);</span>
+<span class="covered"><span class="ln">224</span>                        $largeArc      = self::readNumber($tokens, $pos++) !== 0.0;</span>
+<span class="covered"><span class="ln">225</span>                        $sweep         = self::readNumber($tokens, $pos++) !== 0.0;</span>
+<span class="covered"><span class="ln">226</span>                        [$x, $y, $pos] = self::readPoint($tokens, $pos, $isRelative, $currentX, $currentY);</span>
+<span class=""><span class="ln">227</span></span>
+<span class="covered"><span class="ln">228</span>                        if ($currentX === $x &amp;&amp; $currentY === $y) {</span>
+<span class=""><span class="ln">229</span>                            // Per spec: identical endpoints omit the arc</span>
+<span class=""><span class="ln">230</span>                            // entirely, not even as a zero-length line.</span>
+<span class="covered"><span class="ln">231</span>                        } elseif ($rx === 0.0 || $ry === 0.0) {</span>
+<span class="covered"><span class="ln">232</span>                            $segments[] = [&#039;l&#039;, $x, $y];</span>
+<span class=""><span class="ln">233</span>                        } else {</span>
+<span class="missed"><span class="ln">234</span>                            foreach (self::arcToBeziers($currentX, $currentY, $rx, $ry, $xRotation, $largeArc, $sweep, $x, $y) as $bezier) {</span>
+<span class="missed"><span class="ln">235</span>                                $segments[] = [&#039;c&#039;, ...$bezier];</span>
+<span class=""><span class="ln">236</span>                            }</span>
+<span class=""><span class="ln">237</span>                        }</span>
+<span class=""><span class="ln">238</span></span>
+<span class="covered"><span class="ln">239</span>                        $currentX = $x;</span>
+<span class="covered"><span class="ln">240</span>                        $currentY = $y;</span>
+<span class=""><span class="ln">241</span>                    }</span>
+<span class=""><span class="ln">242</span></span>
+<span class="covered"><span class="ln">243</span>                    break;</span>
+<span class=""><span class="ln">244</span></span>
+<span class="covered"><span class="ln">245</span>                case &#039;Z&#039;:</span>
+<span class="covered"><span class="ln">246</span>                    $subpaths[] = [&#039;start&#039; =&gt; [$startX, $startY], &#039;segments&#039; =&gt; $segments, &#039;closed&#039; =&gt; true];</span>
+<span class="covered"><span class="ln">247</span>                    $currentX   = $startX;</span>
+<span class="covered"><span class="ln">248</span>                    $currentY   = $startY;</span>
+<span class="covered"><span class="ln">249</span>                    $segments   = [];</span>
+<span class="covered"><span class="ln">250</span>                    $hasOpen    = false;</span>
+<span class=""><span class="ln">251</span></span>
+<span class="covered"><span class="ln">252</span>                    break;</span>
+<span class=""><span class="ln">253</span>            }</span>
+<span class=""><span class="ln">254</span>        }</span>
+<span class=""><span class="ln">255</span></span>
+<span class="covered"><span class="ln">256</span>        if ($hasOpen) {</span>
+<span class="covered"><span class="ln">257</span>            $subpaths[] = [&#039;start&#039; =&gt; [$startX, $startY], &#039;segments&#039; =&gt; $segments, &#039;closed&#039; =&gt; false];</span>
+<span class=""><span class="ln">258</span>        }</span>
+<span class=""><span class="ln">259</span></span>
+<span class="covered"><span class="ln">260</span>        return $subpaths;</span>
+<span class=""><span class="ln">261</span>    }</span>
+<span class=""><span class="ln">262</span></span>
+<span class=""><span class="ln">263</span>    /**</span>
+<span class=""><span class="ln">264</span>     * Converts an SVG elliptical-arc endpoint segment into a list of</span>
+<span class=""><span class="ln">265</span>     * absolute cubic Bézier curves — endpoint-to-center parameterization</span>
+<span class=""><span class="ln">266</span>     * (SVG spec F.6.5/F.6.6) followed by splitting the resulting arc</span>
+<span class=""><span class="ln">267</span>     * into ≤90°-sweep segments, each approximated with the standard</span>
+<span class=""><span class="ln">268</span>     * kappa-derived control-point formula.</span>
+<span class=""><span class="ln">269</span>     *</span>
+<span class=""><span class="ln">270</span>     * @return list&lt;array{float, float, float, float, float, float}&gt; [cp1x, cp1y, cp2x, cp2y, x, y] segments</span>
+<span class=""><span class="ln">271</span>     */</span>
+<span class=""><span class="ln">272</span>    public static function arcToBeziers(</span>
+<span class=""><span class="ln">273</span>        float $x1,</span>
+<span class=""><span class="ln">274</span>        float $y1,</span>
+<span class=""><span class="ln">275</span>        float $rx,</span>
+<span class=""><span class="ln">276</span>        float $ry,</span>
+<span class=""><span class="ln">277</span>        float $xAxisRotationDeg,</span>
+<span class=""><span class="ln">278</span>        bool $largeArc,</span>
+<span class=""><span class="ln">279</span>        bool $sweep,</span>
+<span class=""><span class="ln">280</span>        float $x2,</span>
+<span class=""><span class="ln">281</span>        float $y2,</span>
+<span class=""><span class="ln">282</span>    ): array {</span>
+<span class="covered"><span class="ln">283</span>        $rx  = abs($rx);</span>
+<span class="covered"><span class="ln">284</span>        $ry  = abs($ry);</span>
+<span class="covered"><span class="ln">285</span>        $phi = $xAxisRotationDeg * M_PI / 180.0;</span>
+<span class=""><span class="ln">286</span></span>
+<span class="covered"><span class="ln">287</span>        $cosPhi = cos($phi);</span>
+<span class="covered"><span class="ln">288</span>        $sinPhi = sin($phi);</span>
+<span class=""><span class="ln">289</span></span>
+<span class=""><span class="ln">290</span>        // F.6.5 step 1: move to the rotated coordinate system centered</span>
+<span class=""><span class="ln">291</span>        // between the two endpoints.</span>
+<span class="covered"><span class="ln">292</span>        $dx2 = ($x1 - $x2) / 2.0;</span>
+<span class="covered"><span class="ln">293</span>        $dy2 = ($y1 - $y2) / 2.0;</span>
+<span class="covered"><span class="ln">294</span>        $x1p = $cosPhi * $dx2 + $sinPhi * $dy2;</span>
+<span class="covered"><span class="ln">295</span>        $y1p = -$sinPhi * $dx2 + $cosPhi * $dy2;</span>
+<span class=""><span class="ln">296</span></span>
+<span class=""><span class="ln">297</span>        // F.6.6: scale up rx/ry if the endpoints are further apart than</span>
+<span class=""><span class="ln">298</span>        // the given radii could ever reach.</span>
+<span class="covered"><span class="ln">299</span>        $lambda = ($x1p * $x1p) / ($rx * $rx) + ($y1p * $y1p) / ($ry * $ry);</span>
+<span class="covered"><span class="ln">300</span>        if ($lambda &gt; 1.0) {</span>
+<span class="missed"><span class="ln">301</span>            $scale = sqrt($lambda);</span>
+<span class="missed"><span class="ln">302</span>            $rx *= $scale;</span>
+<span class="missed"><span class="ln">303</span>            $ry *= $scale;</span>
+<span class=""><span class="ln">304</span>        }</span>
+<span class=""><span class="ln">305</span></span>
+<span class=""><span class="ln">306</span>        // F.6.5 step 2: the center in the rotated coordinate system.</span>
+<span class="covered"><span class="ln">307</span>        $rxSq  = $rx * $rx;</span>
+<span class="covered"><span class="ln">308</span>        $rySq  = $ry * $ry;</span>
+<span class="covered"><span class="ln">309</span>        $x1pSq = $x1p * $x1p;</span>
+<span class="covered"><span class="ln">310</span>        $y1pSq = $y1p * $y1p;</span>
+<span class=""><span class="ln">311</span></span>
+<span class="covered"><span class="ln">312</span>        $num = max(0.0, $rxSq * $rySq - $rxSq * $y1pSq - $rySq * $x1pSq);</span>
+<span class="covered"><span class="ln">313</span>        $den = $rxSq * $y1pSq + $rySq * $x1pSq;</span>
+<span class="covered"><span class="ln">314</span>        $co  = $den &gt; 0.0 ? sqrt($num / $den) : 0.0;</span>
+<span class="covered"><span class="ln">315</span>        $co  = $largeArc === $sweep ? -$co : $co;</span>
+<span class=""><span class="ln">316</span></span>
+<span class="covered"><span class="ln">317</span>        $cxp = $co * ($rx * $y1p / $ry);</span>
+<span class="covered"><span class="ln">318</span>        $cyp = $co * -($ry * $x1p / $rx);</span>
+<span class=""><span class="ln">319</span></span>
+<span class=""><span class="ln">320</span>        // F.6.5 step 3: the center in the original coordinate system.</span>
+<span class="covered"><span class="ln">321</span>        $cx = $cosPhi * $cxp - $sinPhi * $cyp + ($x1 + $x2) / 2.0;</span>
+<span class="covered"><span class="ln">322</span>        $cy = $sinPhi * $cxp + $cosPhi * $cyp + ($y1 + $y2) / 2.0;</span>
+<span class=""><span class="ln">323</span></span>
+<span class=""><span class="ln">324</span>        // F.6.5 step 4: start/sweep angles.</span>
+<span class="covered"><span class="ln">325</span>        $theta1 = self::angleBetween(1.0, 0.0, ($x1p - $cxp) / $rx, ($y1p - $cyp) / $ry);</span>
+<span class="covered"><span class="ln">326</span>        $delta  = self::angleBetween(</span>
+<span class="covered"><span class="ln">327</span>            ($x1p - $cxp) / $rx,</span>
+<span class="covered"><span class="ln">328</span>            ($y1p - $cyp) / $ry,</span>
+<span class="covered"><span class="ln">329</span>            (-$x1p - $cxp) / $rx,</span>
+<span class="covered"><span class="ln">330</span>            (-$y1p - $cyp) / $ry,</span>
+<span class=""><span class="ln">331</span>        );</span>
+<span class=""><span class="ln">332</span></span>
+<span class="covered"><span class="ln">333</span>        if (!$sweep &amp;&amp; $delta &gt; 0.0) {</span>
+<span class="missed"><span class="ln">334</span>            $delta -= 2.0 * M_PI;</span>
+<span class="covered"><span class="ln">335</span>        } elseif ($sweep &amp;&amp; $delta &lt; 0.0) {</span>
+<span class="covered"><span class="ln">336</span>            $delta += 2.0 * M_PI;</span>
+<span class=""><span class="ln">337</span>        }</span>
+<span class=""><span class="ln">338</span></span>
+<span class="covered"><span class="ln">339</span>        $segmentCount = (int) ceil(abs($delta) / (M_PI / 2.0));</span>
+<span class="covered"><span class="ln">340</span>        $segmentCount = max($segmentCount, 1);</span>
+<span class="covered"><span class="ln">341</span>        $segmentDelta = $delta / $segmentCount;</span>
+<span class=""><span class="ln">342</span></span>
+<span class="covered"><span class="ln">343</span>        $beziers = [];</span>
+<span class=""><span class="ln">344</span></span>
+<span class="covered"><span class="ln">345</span>        for ($i = 0; $i &lt; $segmentCount; $i++) {</span>
+<span class="covered"><span class="ln">346</span>            $start     = $theta1 + $i * $segmentDelta;</span>
+<span class="covered"><span class="ln">347</span>            $end       = $start + $segmentDelta;</span>
+<span class="covered"><span class="ln">348</span>            $beziers[] = self::unitArcToBezier($start, $end, $rx, $ry, $cx, $cy, $cosPhi, $sinPhi);</span>
+<span class=""><span class="ln">349</span>        }</span>
+<span class=""><span class="ln">350</span></span>
+<span class="covered"><span class="ln">351</span>        return $beziers;</span>
+<span class=""><span class="ln">352</span>    }</span>
+<span class=""><span class="ln">353</span></span>
+<span class=""><span class="ln">354</span>    /**</span>
+<span class=""><span class="ln">355</span>     * One ≤90° arc segment (in the ellipse&#039;s own parameter space, from</span>
+<span class=""><span class="ln">356</span>     * angle $start to $end) as a single cubic Bézier, mapped through the</span>
+<span class=""><span class="ln">357</span>     * ellipse&#039;s radii/rotation/center back into path coordinates. The</span>
+<span class=""><span class="ln">358</span>     * `4/3 * tan(delta/4)` control-point-distance formula is the</span>
+<span class=""><span class="ln">359</span>     * standard circular/elliptical-arc Bézier approximation.</span>
+<span class=""><span class="ln">360</span>     *</span>
+<span class=""><span class="ln">361</span>     * @return array{float, float, float, float, float, float}</span>
+<span class=""><span class="ln">362</span>     */</span>
+<span class=""><span class="ln">363</span>    private static function unitArcToBezier(float $start, float $end, float $rx, float $ry, float $cx, float $cy, float $cosPhi, float $sinPhi): array</span>
+<span class=""><span class="ln">364</span>    {</span>
+<span class="covered"><span class="ln">365</span>        $alpha = 4.0 / 3.0 * tan(($end - $start) / 4.0);</span>
+<span class=""><span class="ln">366</span></span>
+<span class="covered"><span class="ln">367</span>        $cosStart = cos($start);</span>
+<span class="covered"><span class="ln">368</span>        $sinStart = sin($start);</span>
+<span class="covered"><span class="ln">369</span>        $cosEnd   = cos($end);</span>
+<span class="covered"><span class="ln">370</span>        $sinEnd   = sin($end);</span>
+<span class="covered"><span class="ln">371</span>        $p2x      = $cosStart - $alpha * $sinStart;</span>
+<span class="covered"><span class="ln">372</span>        $p2y      = $sinStart + $alpha * $cosStart;</span>
+<span class="covered"><span class="ln">373</span>        $p3x      = $cosEnd + $alpha * $sinEnd;</span>
+<span class="covered"><span class="ln">374</span>        $p3y      = $sinEnd - $alpha * $cosEnd;</span>
+<span class="covered"><span class="ln">375</span>        $p4x      = $cosEnd;</span>
+<span class="covered"><span class="ln">376</span>        $p4y      = $sinEnd;</span>
+<span class=""><span class="ln">377</span></span>
+<span class=""><span class="ln">378</span>        return [</span>
+<span class="covered"><span class="ln">379</span>            ...self::ellipsePoint($p2x, $p2y, $rx, $ry, $cx, $cy, $cosPhi, $sinPhi),</span>
+<span class="covered"><span class="ln">380</span>            ...self::ellipsePoint($p3x, $p3y, $rx, $ry, $cx, $cy, $cosPhi, $sinPhi),</span>
+<span class="covered"><span class="ln">381</span>            ...self::ellipsePoint($p4x, $p4y, $rx, $ry, $cx, $cy, $cosPhi, $sinPhi),</span>
+<span class=""><span class="ln">382</span>        ];</span>
+<span class=""><span class="ln">383</span>    }</span>
+<span class=""><span class="ln">384</span></span>
+<span class=""><span class="ln">385</span>    /** @return array{float, float} */</span>
+<span class=""><span class="ln">386</span>    private static function ellipsePoint(float $unitX, float $unitY, float $rx, float $ry, float $cx, float $cy, float $cosPhi, float $sinPhi): array</span>
+<span class=""><span class="ln">387</span>    {</span>
+<span class="covered"><span class="ln">388</span>        $x = $rx * $unitX;</span>
+<span class="covered"><span class="ln">389</span>        $y = $ry * $unitY;</span>
+<span class=""><span class="ln">390</span></span>
+<span class=""><span class="ln">391</span>        return [</span>
+<span class="covered"><span class="ln">392</span>            $cosPhi * $x - $sinPhi * $y + $cx,</span>
+<span class="covered"><span class="ln">393</span>            $sinPhi * $x + $cosPhi * $y + $cy,</span>
+<span class=""><span class="ln">394</span>        ];</span>
+<span class=""><span class="ln">395</span>    }</span>
+<span class=""><span class="ln">396</span></span>
+<span class=""><span class="ln">397</span>    /** The signed angle (radians) from vector (ux,uy) to vector (vx,vy). */</span>
+<span class=""><span class="ln">398</span>    private static function angleBetween(float $ux, float $uy, float $vx, float $vy): float</span>
+<span class=""><span class="ln">399</span>    {</span>
+<span class="covered"><span class="ln">400</span>        $sign = $ux * $vy - $uy * $vx &lt; 0.0 ? -1.0 : 1.0;</span>
+<span class="covered"><span class="ln">401</span>        $dot  = $ux * $vx + $uy * $vy;</span>
+<span class="covered"><span class="ln">402</span>        $lenU = sqrt($ux * $ux + $uy * $uy);</span>
+<span class="covered"><span class="ln">403</span>        $lenV = sqrt($vx * $vx + $vy * $vy);</span>
+<span class="covered"><span class="ln">404</span>        $cos  = $lenU * $lenV &gt; 0.0 ? max(-1.0, min(1.0, $dot / ($lenU * $lenV))) : 1.0;</span>
+<span class=""><span class="ln">405</span></span>
+<span class="covered"><span class="ln">406</span>        return $sign * acos($cos);</span>
+<span class=""><span class="ln">407</span>    }</span>
+<span class=""><span class="ln">408</span></span>
+<span class=""><span class="ln">409</span>    /** @return array{&#039;c&#039;, float, float, float, float, float, float} */</span>
+<span class=""><span class="ln">410</span>    private static function quadToCubic(float $x0, float $y0, float $qx, float $qy, float $x1, float $y1): array</span>
+<span class=""><span class="ln">411</span>    {</span>
+<span class=""><span class="ln">412</span>        return [</span>
+<span class="covered"><span class="ln">413</span>            &#039;c&#039;,</span>
+<span class="covered"><span class="ln">414</span>            $x0 + 2.0 / 3.0 * ($qx - $x0),</span>
+<span class="covered"><span class="ln">415</span>            $y0 + 2.0 / 3.0 * ($qy - $y0),</span>
+<span class="covered"><span class="ln">416</span>            $x1 + 2.0 / 3.0 * ($qx - $x1),</span>
+<span class="covered"><span class="ln">417</span>            $y1 + 2.0 / 3.0 * ($qy - $y1),</span>
+<span class="covered"><span class="ln">418</span>            $x1,</span>
+<span class="covered"><span class="ln">419</span>            $y1,</span>
+<span class=""><span class="ln">420</span>        ];</span>
+<span class=""><span class="ln">421</span>    }</span>
+<span class=""><span class="ln">422</span></span>
+<span class=""><span class="ln">423</span>    /**</span>
+<span class=""><span class="ln">424</span>     * @param list&lt;string&gt; $tokens</span>
+<span class=""><span class="ln">425</span>     * @return array{float, float, int}</span>
+<span class=""><span class="ln">426</span>     */</span>
+<span class=""><span class="ln">427</span>    private static function readPoint(array $tokens, int $pos, bool $isRelative, float $currentX, float $currentY): array</span>
+<span class=""><span class="ln">428</span>    {</span>
+<span class="covered"><span class="ln">429</span>        $x = self::readNumber($tokens, $pos);</span>
+<span class="covered"><span class="ln">430</span>        $y = self::readNumber($tokens, $pos + 1);</span>
+<span class=""><span class="ln">431</span></span>
+<span class="covered"><span class="ln">432</span>        if ($isRelative) {</span>
+<span class="covered"><span class="ln">433</span>            $x += $currentX;</span>
+<span class="covered"><span class="ln">434</span>            $y += $currentY;</span>
+<span class=""><span class="ln">435</span>        }</span>
+<span class=""><span class="ln">436</span></span>
+<span class="covered"><span class="ln">437</span>        return [$x, $y, $pos + 2];</span>
+<span class=""><span class="ln">438</span>    }</span>
+<span class=""><span class="ln">439</span></span>
+<span class=""><span class="ln">440</span>    /**</span>
+<span class=""><span class="ln">441</span>     * Every repeatable path command (M/L/H/V/C/S/Q/T/A) requires at</span>
+<span class=""><span class="ln">442</span>     * least one argument set — the `while` loops that read repeats</span>
+<span class=""><span class="ln">443</span>     * happily accept zero, so this guards the case the loop itself</span>
+<span class=""><span class="ln">444</span>     * can&#039;t catch: a bare command letter with nothing following it.</span>
+<span class=""><span class="ln">445</span>     *</span>
+<span class=""><span class="ln">446</span>     * @param list&lt;string&gt; $tokens</span>
+<span class=""><span class="ln">447</span>     */</span>
+<span class=""><span class="ln">448</span>    private static function requireArgument(array $tokens, int $pos, int $count, string $command): void</span>
+<span class=""><span class="ln">449</span>    {</span>
+<span class="covered"><span class="ln">450</span>        if ($pos &gt;= $count || self::isCommandLetter($tokens[$pos])) {</span>
+<span class="covered"><span class="ln">451</span>            throw new InvalidArgumentException(&quot;SVG path command \&quot;{$command}\&quot; is missing its required argument(s).&quot;);</span>
+<span class=""><span class="ln">452</span>        }</span>
+<span class=""><span class="ln">453</span>    }</span>
+<span class=""><span class="ln">454</span></span>
+<span class=""><span class="ln">455</span>    /** @param list&lt;string&gt; $tokens */</span>
+<span class=""><span class="ln">456</span>    private static function readNumber(array $tokens, int $pos): float</span>
+<span class=""><span class="ln">457</span>    {</span>
+<span class="covered"><span class="ln">458</span>        if (!isset($tokens[$pos]) || !is_numeric($tokens[$pos])) {</span>
+<span class="missed"><span class="ln">459</span>            throw new InvalidArgumentException(&#039;Malformed SVG path data: expected a number.&#039;);</span>
+<span class=""><span class="ln">460</span>        }</span>
+<span class=""><span class="ln">461</span></span>
+<span class="covered"><span class="ln">462</span>        return (float) $tokens[$pos];</span>
+<span class=""><span class="ln">463</span>    }</span>
+<span class=""><span class="ln">464</span></span>
+<span class=""><span class="ln">465</span>    private static function isCommandLetter(string $token): bool</span>
+<span class=""><span class="ln">466</span>    {</span>
+<span class="covered"><span class="ln">467</span>        return strlen($token) === 1 &amp;&amp; isset(self::COMMAND_LETTERS[strtoupper($token)]);</span>
+<span class=""><span class="ln">468</span>    }</span>
+<span class=""><span class="ln">469</span></span>
+<span class=""><span class="ln">470</span>    /** @var array&lt;string, true&gt; */</span>
+<span class=""><span class="ln">471</span>    private const array COMMAND_LETTERS = [</span>
+<span class=""><span class="ln">472</span>        &#039;M&#039; =&gt; true, &#039;L&#039; =&gt; true, &#039;H&#039; =&gt; true, &#039;V&#039; =&gt; true,</span>
+<span class=""><span class="ln">473</span>        &#039;C&#039; =&gt; true, &#039;S&#039; =&gt; true, &#039;Q&#039; =&gt; true, &#039;T&#039; =&gt; true,</span>
+<span class=""><span class="ln">474</span>        &#039;A&#039; =&gt; true, &#039;Z&#039; =&gt; true,</span>
+<span class=""><span class="ln">475</span>    ];</span>
+<span class=""><span class="ln">476</span></span>
+<span class=""><span class="ln">477</span>    /**</span>
+<span class=""><span class="ln">478</span>     * Splits path data into command letters and numbers. SVG&#039;s loose</span>
+<span class=""><span class="ln">479</span>     * separator rules (commas, whitespace, or nothing at all between a</span>
+<span class=""><span class="ln">480</span>     * sign-prefixed number and its predecessor) are all accepted; the</span>
+<span class=""><span class="ln">481</span>     * one documented gap is packed arc flags with no separator at all</span>
+<span class=""><span class="ln">482</span>     * (e.g. `A5,5,0,0110,10` for large-arc=1,sweep=1) — real-world tool</span>
+<span class=""><span class="ln">483</span>     * output almost always separates them, and unpacking that specific</span>
+<span class=""><span class="ln">484</span>     * ambiguity isn&#039;t attempted here.</span>
+<span class=""><span class="ln">485</span>     *</span>
+<span class=""><span class="ln">486</span>     * @return list&lt;string&gt;</span>
+<span class=""><span class="ln">487</span>     */</span>
+<span class=""><span class="ln">488</span>    private static function tokenize(string $d): array</span>
+<span class=""><span class="ln">489</span>    {</span>
+<span class="covered"><span class="ln">490</span>        preg_match_all(&#039;/[MmLlHhVvCcSsQqTtAaZz]|[-+]?(?:\d*\.\d+|\d+\.?\d*)(?:[eE][-+]?\d+)?/&#039;, $d, $matches);</span>
+<span class=""><span class="ln">491</span></span>
+<span class="covered"><span class="ln">492</span>        return $matches[0];</span>
+<span class=""><span class="ln">493</span>    }</span>
+<span class=""><span class="ln">494</span>}</span>
+<span class="missed"><span class="ln">495</span></span>
+</pre>
+</body>
+</html>

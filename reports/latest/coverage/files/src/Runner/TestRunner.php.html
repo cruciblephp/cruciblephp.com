@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Runner/TestRunner.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/Runner/TestRunner.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Runner;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use Closure;</span>
+<span class=""><span class="ln">14</span>use LucianoPereira\Crucible\Assert\Assert;</span>
+<span class=""><span class="ln">15</span>use LucianoPereira\Crucible\Assert\AssertionFailedError;</span>
+<span class=""><span class="ln">16</span>use LucianoPereira\Crucible\Attributes\BackupGlobals;</span>
+<span class=""><span class="ln">17</span>use LucianoPereira\Crucible\Attributes\BackupStaticProperties;</span>
+<span class=""><span class="ln">18</span>use LucianoPereira\Crucible\Attributes\DoesNotPerformAssertions;</span>
+<span class=""><span class="ln">19</span>use LucianoPereira\Crucible\Attributes\ExcludeGlobalVariableFromBackup;</span>
+<span class=""><span class="ln">20</span>use LucianoPereira\Crucible\Attributes\ExcludeStaticPropertyFromBackup;</span>
+<span class=""><span class="ln">21</span>use LucianoPereira\Crucible\Attributes\ExpectedOutcome;</span>
+<span class=""><span class="ln">22</span>use LucianoPereira\Crucible\Attributes\Quarantined;</span>
+<span class=""><span class="ln">23</span>use LucianoPereira\Crucible\Attributes\Retry;</span>
+<span class=""><span class="ln">24</span>use LucianoPereira\Crucible\Attributes\Todo;</span>
+<span class=""><span class="ln">25</span>use LucianoPereira\Crucible\Browser\Browsing;</span>
+<span class=""><span class="ln">26</span>use LucianoPereira\Crucible\Coverage\CoverageCollector;</span>
+<span class=""><span class="ln">27</span>use LucianoPereira\Crucible\Coverage\CoverageWindow;</span>
+<span class=""><span class="ln">28</span>use LucianoPereira\Crucible\Coverage\CoversTargets;</span>
+<span class=""><span class="ln">29</span>use LucianoPereira\Crucible\Double\Mockery\MockeryContainer;</span>
+<span class=""><span class="ln">30</span>use LucianoPereira\Crucible\Event\Emitter;</span>
+<span class=""><span class="ln">31</span>use LucianoPereira\Crucible\Event\Failure;</span>
+<span class=""><span class="ln">32</span>use LucianoPereira\Crucible\Event\Frame;</span>
+<span class=""><span class="ln">33</span>use LucianoPereira\Crucible\Event\Issue;</span>
+<span class=""><span class="ln">34</span>use LucianoPereira\Crucible\Event\IssueKind;</span>
+<span class=""><span class="ln">35</span>use LucianoPereira\Crucible\Event\Outcome;</span>
+<span class=""><span class="ln">36</span>use LucianoPereira\Crucible\Event\OutputChannel;</span>
+<span class=""><span class="ln">37</span>use LucianoPereira\Crucible\Event\RunFinished;</span>
+<span class=""><span class="ln">38</span>use LucianoPereira\Crucible\Event\RunStarted;</span>
+<span class=""><span class="ln">39</span>use LucianoPereira\Crucible\Event\RunSummary;</span>
+<span class=""><span class="ln">40</span>use LucianoPereira\Crucible\Event\TestFinished;</span>
+<span class=""><span class="ln">41</span>use LucianoPereira\Crucible\Event\TestOutputWritten;</span>
+<span class=""><span class="ln">42</span>use LucianoPereira\Crucible\Event\TestStarted;</span>
+<span class=""><span class="ln">43</span>use LucianoPereira\Crucible\Framework\IncompleteTestError;</span>
+<span class=""><span class="ln">44</span>use LucianoPereira\Crucible\Framework\SkippedTestError;</span>
+<span class=""><span class="ln">45</span>use LucianoPereira\Crucible\Isolation\GlobalStateSnapshot;</span>
+<span class=""><span class="ln">46</span>use LucianoPereira\Crucible\Isolation\StaticRegistry;</span>
+<span class=""><span class="ln">47</span>use LucianoPereira\Crucible\Metadata\MetadataCollection;</span>
+<span class=""><span class="ln">48</span>use LucianoPereira\Crucible\Property\PropertyContext;</span>
+<span class=""><span class="ln">49</span>use LucianoPereira\Crucible\Property\PropertyFailedError;</span>
+<span class=""><span class="ln">50</span>use LucianoPereira\Crucible\Runner\Process\DependencyValues;</span>
+<span class=""><span class="ln">51</span>use LucianoPereira\Crucible\Snapshot\SnapshotRepository;</span>
+<span class=""><span class="ln">52</span>use LucianoPereira\Crucible\Snapshot\Snapshots;</span>
+<span class=""><span class="ln">53</span>use LucianoPereira\Crucible\Test\Requirements;</span>
+<span class=""><span class="ln">54</span>use LucianoPereira\Crucible\Test\TestDefinition;</span>
+<span class=""><span class="ln">55</span>use LucianoPereira\Crucible\Test\TestGroup;</span>
+<span class=""><span class="ln">56</span>use Throwable;</span>
+<span class=""><span class="ln">57</span></span>
+<span class=""><span class="ln">58</span>use function array_any;</span>
+<span class=""><span class="ln">59</span>use function array_map;</span>
+<span class=""><span class="ln">60</span>use function count;</span>
+<span class=""><span class="ln">61</span>use function hrtime;</span>
+<span class=""><span class="ln">62</span>use function implode;</span>
+<span class=""><span class="ln">63</span>use function in_array;</span>
+<span class=""><span class="ln">64</span>use function ob_get_clean;</span>
+<span class=""><span class="ln">65</span>use function ob_start;</span>
+<span class=""><span class="ln">66</span>use function sprintf;</span>
+<span class=""><span class="ln">67</span>use function str_contains;</span>
+<span class=""><span class="ln">68</span>use function trim;</span>
+<span class=""><span class="ln">69</span>use function usleep;</span>
+<span class=""><span class="ln">70</span></span>
+<span class=""><span class="ln">71</span>/**</span>
+<span class=""><span class="ln">72</span> * Walking-skeleton runner: sequential, in-process, single-threaded.</span>
+<span class=""><span class="ln">73</span> * The supervisor/worker pool with isolation and scheduling replaces</span>
+<span class=""><span class="ln">74</span> * the internals in Phase 6; the outcome classification and event</span>
+<span class=""><span class="ln">75</span> * protocol here are the stable part.</span>
+<span class=""><span class="ln">76</span> */</span>
+<span class=""><span class="ln">77</span>final readonly class TestRunner</span>
+<span class=""><span class="ln">78</span>{</span>
+<span class=""><span class="ln">79</span>    private StaticRegistry $statics;</span>
+<span class=""><span class="ln">80</span></span>
+<span class=""><span class="ln">81</span>    private IssueCollector $issues;</span>
+<span class=""><span class="ln">82</span></span>
+<span class=""><span class="ln">83</span>    public function __construct(</span>
+<span class="covered"><span class="ln">84</span>        private Emitter $emitter,</span>
+<span class="covered"><span class="ln">85</span>        private RunnerOptions $options = new RunnerOptions(),</span>
+<span class="covered"><span class="ln">86</span>        private Requirements $requirements = new Requirements(),</span>
+<span class="covered"><span class="ln">87</span>        private ?CoverageCollector $coverage = null,</span>
+<span class="covered"><span class="ln">88</span>        private SnapshotRepository $snapshots = new SnapshotRepository(),</span>
+<span class="covered"><span class="ln">89</span>        private DependencyValues $dependencies = new DependencyValues(),</span>
+<span class=""><span class="ln">90</span>    ) {</span>
+<span class="covered"><span class="ln">91</span>        $this-&gt;statics = new StaticRegistry();</span>
+<span class="covered"><span class="ln">92</span>        $this-&gt;issues  = new IssueCollector(</span>
+<span class="covered"><span class="ln">93</span>            $options-&gt;projectDirectories,</span>
+<span class="covered"><span class="ln">94</span>            $options-&gt;workingDirectory,</span>
+<span class="covered"><span class="ln">95</span>            $options-&gt;deprecationBaseline,</span>
+<span class=""><span class="ln">96</span>        );</span>
+<span class=""><span class="ln">97</span>    }</span>
+<span class=""><span class="ln">98</span></span>
+<span class=""><span class="ln">99</span>    /**</span>
+<span class=""><span class="ln">100</span>     * @param list&lt;TestGroup&gt; $groups</span>
+<span class=""><span class="ln">101</span>     * @param ?callable(): ?RunSummary $afterTests run-scoped work emitted inside the run (checks, and the Vitest fold-in returning its count delta)</span>
+<span class=""><span class="ln">102</span>     *                                      bracket — after the suite, before RunFinished, so their</span>
+<span class=""><span class="ln">103</span>     *                                      events precede the last event of the stream</span>
+<span class=""><span class="ln">104</span>     */</span>
+<span class=""><span class="ln">105</span>    public function run(array $groups, ?callable $afterTests = null): RunSummary</span>
+<span class=""><span class="ln">106</span>    {</span>
+<span class="covered"><span class="ln">107</span>        $started = hrtime(true);</span>
+<span class=""><span class="ln">108</span></span>
+<span class="covered"><span class="ln">109</span>        $planned = 0;</span>
+<span class=""><span class="ln">110</span></span>
+<span class="covered"><span class="ln">111</span>        foreach ($groups as $group) {</span>
+<span class="covered"><span class="ln">112</span>            $planned += count($group-&gt;tests);</span>
+<span class=""><span class="ln">113</span>        }</span>
+<span class=""><span class="ln">114</span></span>
+<span class="covered"><span class="ln">115</span>        $this-&gt;emitter-&gt;emit(new RunStarted(tests: $planned));</span>
+<span class=""><span class="ln">116</span></span>
+<span class="covered"><span class="ln">117</span>        $summary = $this-&gt;execute($groups);</span>
+<span class=""><span class="ln">118</span></span>
+<span class=""><span class="ln">119</span>        // Complete = nothing narrowed the plan (CLI knowledge, carried</span>
+<span class=""><span class="ln">120</span>        // in the options) and nothing halted it (stop-on leaves</span>
+<span class=""><span class="ln">121</span>        // planned tests unfinished) — the D-071 pruning gate. Computed on</span>
+<span class=""><span class="ln">122</span>        // the PHP plan BEFORE any external results (Vitest) fold in, so a</span>
+<span class=""><span class="ln">123</span>        // folded-in suite never touches completeness.</span>
+<span class="covered"><span class="ln">124</span>        $complete = $this-&gt;options-&gt;fullSuite &amp;&amp; $summary-&gt;total() === $planned;</span>
+<span class=""><span class="ln">125</span></span>
+<span class="covered"><span class="ln">126</span>        if ($afterTests !== null) {</span>
+<span class="missed"><span class="ln">127</span>            $delta = $afterTests();</span>
+<span class=""><span class="ln">128</span></span>
+<span class="missed"><span class="ln">129</span>            if ($delta instanceof RunSummary) {</span>
+<span class="missed"><span class="ln">130</span>                $summary = $summary-&gt;plus($delta);</span>
+<span class=""><span class="ln">131</span>            }</span>
+<span class=""><span class="ln">132</span>        }</span>
+<span class=""><span class="ln">133</span></span>
+<span class="covered"><span class="ln">134</span>        $this-&gt;emitter-&gt;emit(new RunFinished(</span>
+<span class="covered"><span class="ln">135</span>            $summary,</span>
+<span class="covered"><span class="ln">136</span>            (hrtime(true) - $started) / 1e9,</span>
+<span class=""><span class="ln">137</span>            $complete,</span>
+<span class=""><span class="ln">138</span>        ));</span>
+<span class=""><span class="ln">139</span></span>
+<span class="covered"><span class="ln">140</span>        return $summary;</span>
+<span class=""><span class="ln">141</span>    }</span>
+<span class=""><span class="ln">142</span></span>
+<span class=""><span class="ln">143</span>    /**</span>
+<span class=""><span class="ln">144</span>     * Runs the groups without opening or closing a stream — run:start</span>
+<span class=""><span class="ln">145</span>     * and run:finish belong to whoever owns the whole run, which is</span>
+<span class=""><span class="ln">146</span>     * this method&#039;s caller when executions are composed (the process</span>
+<span class=""><span class="ln">147</span>     * pool mixing in-process and worker execution on one stream).</span>
+<span class=""><span class="ln">148</span>     *</span>
+<span class=""><span class="ln">149</span>     * @param list&lt;TestGroup&gt; $groups</span>
+<span class=""><span class="ln">150</span>     */</span>
+<span class=""><span class="ln">151</span>    public function execute(array $groups): RunSummary</span>
+<span class=""><span class="ln">152</span>    {</span>
+<span class="covered"><span class="ln">153</span>        $counts = [&#039;pass&#039; =&gt; 0, &#039;fail&#039; =&gt; 0, &#039;error&#039; =&gt; 0, &#039;skip&#039; =&gt; 0, &#039;incomplete&#039; =&gt; 0, &#039;risky&#039; =&gt; 0, &#039;untested&#039; =&gt; 0];</span>
+<span class=""><span class="ln">154</span></span>
+<span class="covered"><span class="ln">155</span>        $this-&gt;issues-&gt;resetTallies();</span>
+<span class=""><span class="ln">156</span></span>
+<span class="covered"><span class="ln">157</span>        foreach ($groups as $group) {</span>
+<span class="covered"><span class="ln">158</span>            if ($this-&gt;runGroup($group, $counts)) {</span>
+<span class="covered"><span class="ln">159</span>                break;</span>
+<span class=""><span class="ln">160</span>            }</span>
+<span class=""><span class="ln">161</span>        }</span>
+<span class=""><span class="ln">162</span></span>
+<span class="covered"><span class="ln">163</span>        $issues = $this-&gt;issues-&gt;tallies();</span>
+<span class=""><span class="ln">164</span></span>
+<span class="covered"><span class="ln">165</span>        return new RunSummary(</span>
+<span class="covered"><span class="ln">166</span>            passed: $counts[&#039;pass&#039;],</span>
+<span class="covered"><span class="ln">167</span>            failed: $counts[&#039;fail&#039;],</span>
+<span class="covered"><span class="ln">168</span>            errored: $counts[&#039;error&#039;],</span>
+<span class="covered"><span class="ln">169</span>            skipped: $counts[&#039;skip&#039;],</span>
+<span class="covered"><span class="ln">170</span>            incomplete: $counts[&#039;incomplete&#039;],</span>
+<span class="covered"><span class="ln">171</span>            risky: $counts[&#039;risky&#039;],</span>
+<span class="covered"><span class="ln">172</span>            deprecations: $issues[&#039;deprecations&#039;],</span>
+<span class="covered"><span class="ln">173</span>            notices: $issues[&#039;notices&#039;],</span>
+<span class="covered"><span class="ln">174</span>            warnings: $issues[&#039;warnings&#039;],</span>
+<span class="covered"><span class="ln">175</span>            untested: $counts[&#039;untested&#039;],</span>
+<span class=""><span class="ln">176</span>        );</span>
+<span class=""><span class="ln">177</span>    }</span>
+<span class=""><span class="ln">178</span></span>
+<span class=""><span class="ln">179</span>    /**</span>
+<span class=""><span class="ln">180</span>     * Returns true when a stop-on option asks the whole run to halt.</span>
+<span class=""><span class="ln">181</span>     * The group&#039;s after-all cleanup still runs before halting.</span>
+<span class=""><span class="ln">182</span>     *</span>
+<span class=""><span class="ln">183</span>     * @param array&lt;string, int&gt; $counts</span>
+<span class=""><span class="ln">184</span>     */</span>
+<span class=""><span class="ln">185</span>    private function runGroup(TestGroup $group, array &amp;$counts): bool</span>
+<span class=""><span class="ln">186</span>    {</span>
+<span class=""><span class="ln">187</span>        try {</span>
+<span class="covered"><span class="ln">188</span>            if ($group-&gt;beforeAll instanceof Closure) {</span>
+<span class="covered"><span class="ln">189</span>                ($group-&gt;beforeAll)();</span>
+<span class=""><span class="ln">190</span>            }</span>
+<span class="missed"><span class="ln">191</span>        } catch (Throwable $throwable) {</span>
+<span class=""><span class="ln">192</span>            // A failing before-all errors every test in the group.</span>
+<span class="missed"><span class="ln">193</span>            foreach ($group-&gt;tests as $definition) {</span>
+<span class="missed"><span class="ln">194</span>                $this-&gt;emitter-&gt;emit(new TestStarted($definition-&gt;id));</span>
+<span class="missed"><span class="ln">195</span>                $this-&gt;emitter-&gt;emit(new TestFinished(</span>
+<span class="missed"><span class="ln">196</span>                    $definition-&gt;id,</span>
+<span class="missed"><span class="ln">197</span>                    Outcome::Errored,</span>
+<span class="missed"><span class="ln">198</span>                    0.0,</span>
+<span class="missed"><span class="ln">199</span>                    $this-&gt;failureFrom($throwable),</span>
+<span class=""><span class="ln">200</span>                ));</span>
+<span class="missed"><span class="ln">201</span>                $counts[&#039;error&#039;]++;</span>
+<span class=""><span class="ln">202</span>            }</span>
+<span class=""><span class="ln">203</span></span>
+<span class="missed"><span class="ln">204</span>            return $this-&gt;shouldStop(Outcome::Errored);</span>
+<span class=""><span class="ln">205</span>        }</span>
+<span class=""><span class="ln">206</span></span>
+<span class=""><span class="ln">207</span>        // Seeded, not empty: under process isolation a prerequisite ran</span>
+<span class=""><span class="ln">208</span>        // in an earlier worker, and its return value came back with it.</span>
+<span class=""><span class="ln">209</span>        /** @var array&lt;string, array{passed: bool, value: mixed}&gt; $results */</span>
+<span class="covered"><span class="ln">210</span>        $results = $this-&gt;dependencies-&gt;seed();</span>
+<span class=""><span class="ln">211</span></span>
+<span class="covered"><span class="ln">212</span>        $halt = false;</span>
+<span class=""><span class="ln">213</span></span>
+<span class="covered"><span class="ln">214</span>        foreach ($group-&gt;tests as $definition) {</span>
+<span class="covered"><span class="ln">215</span>            [$outcome, $blocked, $kinds] = $this-&gt;runTest($definition, $results);</span>
+<span class="covered"><span class="ln">216</span>            $counts[$outcome-&gt;value]++;</span>
+<span class=""><span class="ln">217</span></span>
+<span class="covered"><span class="ln">218</span>            if ($blocked) {</span>
+<span class="covered"><span class="ln">219</span>                $counts[&#039;untested&#039;]++;</span>
+<span class=""><span class="ln">220</span>            }</span>
+<span class=""><span class="ln">221</span></span>
+<span class="covered"><span class="ln">222</span>            if ($this-&gt;shouldStop($outcome, $kinds)) {</span>
+<span class="covered"><span class="ln">223</span>                $halt = true;</span>
+<span class=""><span class="ln">224</span></span>
+<span class="covered"><span class="ln">225</span>                break;</span>
+<span class=""><span class="ln">226</span>            }</span>
+<span class=""><span class="ln">227</span>        }</span>
+<span class=""><span class="ln">228</span></span>
+<span class=""><span class="ln">229</span>        try {</span>
+<span class="covered"><span class="ln">230</span>            if ($group-&gt;afterAll instanceof Closure) {</span>
+<span class="covered"><span class="ln">231</span>                ($group-&gt;afterAll)();</span>
+<span class=""><span class="ln">232</span>            }</span>
+<span class="missed"><span class="ln">233</span>        } catch (Throwable) {</span>
+<span class=""><span class="ln">234</span>            // After-all failures do not change test outcomes.</span>
+<span class=""><span class="ln">235</span>        }</span>
+<span class=""><span class="ln">236</span></span>
+<span class="covered"><span class="ln">237</span>        return $halt;</span>
+<span class=""><span class="ln">238</span>    }</span>
+<span class=""><span class="ln">239</span></span>
+<span class=""><span class="ln">240</span>    /**</span>
+<span class=""><span class="ln">241</span>     * The spec&#039;s stop-on semantics: failure and error each have their</span>
+<span class=""><span class="ln">242</span>     * own switch; defect covers both plus risky. The issue-triggered</span>
+<span class=""><span class="ln">243</span>     * switches read what the test emitted rather than how it ended — a</span>
+<span class=""><span class="ln">244</span>     * passing test that deprecates something still stops the run under</span>
+<span class=""><span class="ln">245</span>     * --stop-on-deprecation, which is the whole point of having it.</span>
+<span class=""><span class="ln">246</span>     *</span>
+<span class=""><span class="ln">247</span>     * @param list&lt;IssueKind&gt; $issues the issues this test triggered</span>
+<span class=""><span class="ln">248</span>     */</span>
+<span class=""><span class="ln">249</span>    private function shouldStop(Outcome $outcome, array $issues = []): bool</span>
+<span class=""><span class="ln">250</span>    {</span>
+<span class="covered"><span class="ln">251</span>        $byOutcome = match ($outcome) {</span>
+<span class="covered"><span class="ln">252</span>            Outcome::Errored    =&gt; $this-&gt;options-&gt;stopOnError || $this-&gt;options-&gt;stopOnDefect,</span>
+<span class="covered"><span class="ln">253</span>            Outcome::Failed     =&gt; $this-&gt;options-&gt;stopOnFailure || $this-&gt;options-&gt;stopOnDefect,</span>
+<span class="covered"><span class="ln">254</span>            Outcome::Risky      =&gt; $this-&gt;options-&gt;stopOnRisky || $this-&gt;options-&gt;stopOnDefect,</span>
+<span class="covered"><span class="ln">255</span>            Outcome::Skipped    =&gt; $this-&gt;options-&gt;stopOnSkipped,</span>
+<span class="covered"><span class="ln">256</span>            Outcome::Incomplete =&gt; $this-&gt;options-&gt;stopOnIncomplete,</span>
+<span class="covered"><span class="ln">257</span>            default             =&gt; false,</span>
+<span class=""><span class="ln">258</span>        };</span>
+<span class=""><span class="ln">259</span></span>
+<span class="covered"><span class="ln">260</span>        if ($byOutcome) {</span>
+<span class="covered"><span class="ln">261</span>            return true;</span>
+<span class=""><span class="ln">262</span>        }</span>
+<span class=""><span class="ln">263</span></span>
+<span class="covered"><span class="ln">264</span>        return array_any($issues, fn(IssueKind $kind): bool =&gt; match ($kind) {</span>
+<span class="covered"><span class="ln">265</span>            IssueKind::Deprecation =&gt; $this-&gt;options-&gt;stopOnDeprecation,</span>
+<span class="missed"><span class="ln">266</span>            IssueKind::Notice      =&gt; $this-&gt;options-&gt;stopOnNotice,</span>
+<span class="covered"><span class="ln">267</span>            IssueKind::Warning     =&gt; $this-&gt;options-&gt;stopOnWarning,</span>
+<span class="covered"><span class="ln">268</span>        });</span>
+<span class=""><span class="ln">269</span>    }</span>
+<span class=""><span class="ln">270</span></span>
+<span class=""><span class="ln">271</span>    /**</span>
+<span class=""><span class="ln">272</span>     * @param array&lt;string, array{passed: bool, value: mixed}&gt; $results per-group results, by test name</span>
+<span class=""><span class="ln">273</span>     *</span>
+<span class=""><span class="ln">274</span>     * @return array{0: Outcome, 1: bool, 2: list&lt;IssueKind&gt;} the terminal outcome, whether it went untested (a gated blocked skip), and the issues it triggered</span>
+<span class=""><span class="ln">275</span>     */</span>
+<span class=""><span class="ln">276</span>    private function runTest(TestDefinition $definition, array &amp;$results): array</span>
+<span class=""><span class="ln">277</span>    {</span>
+<span class="covered"><span class="ln">278</span>        $this-&gt;emitter-&gt;emit(new TestStarted($definition-&gt;id));</span>
+<span class=""><span class="ln">279</span></span>
+<span class=""><span class="ln">280</span>        // A todo marker blocks execution before anything else is even</span>
+<span class=""><span class="ln">281</span>        // considered (D-045): the placeholder reports incomplete with</span>
+<span class=""><span class="ln">282</span>        // its label — requirements and dependencies of a body that will</span>
+<span class=""><span class="ln">283</span>        // not run are irrelevant. wip and done run their bodies (Pest</span>
+<span class=""><span class="ln">284</span>        // parity); a body-less wip/done is folded to a todo upstream.</span>
+<span class="covered"><span class="ln">285</span>        $todo = $definition-&gt;metadata-&gt;first(Todo::class);</span>
+<span class=""><span class="ln">286</span></span>
+<span class="covered"><span class="ln">287</span>        if ($todo instanceof Todo &amp;&amp; $todo-&gt;blocksExecution()) {</span>
+<span class="covered"><span class="ln">288</span>            return $this-&gt;finish($definition, Outcome::Incomplete, 0.0, reason: $todo-&gt;label());</span>
+<span class=""><span class="ln">289</span>        }</span>
+<span class=""><span class="ln">290</span></span>
+<span class="covered"><span class="ln">291</span>        $unmet = $this-&gt;requirements-&gt;unmet($definition-&gt;metadata);</span>
+<span class=""><span class="ln">292</span></span>
+<span class="covered"><span class="ln">293</span>        if ($unmet !== []) {</span>
+<span class="covered"><span class="ln">294</span>            return $this-&gt;finish($definition, Outcome::Skipped, 0.0, reason: implode(&#039; &#039;, $unmet), blocked: true);</span>
+<span class=""><span class="ln">295</span>        }</span>
+<span class=""><span class="ln">296</span></span>
+<span class="covered"><span class="ln">297</span>        $dependencyValues = [];</span>
+<span class=""><span class="ln">298</span></span>
+<span class="covered"><span class="ln">299</span>        foreach ($definition-&gt;dependencies as $dependency) {</span>
+<span class="covered"><span class="ln">300</span>            if (!isset($results[$dependency]) || !$results[$dependency][&#039;passed&#039;]) {</span>
+<span class="covered"><span class="ln">301</span>                return $this-&gt;finish($definition, Outcome::Skipped, 0.0, reason: sprintf(</span>
+<span class=""><span class="ln">302</span>                    &#039;This test depends on &quot;%s&quot;, which did not pass.&#039;,</span>
+<span class="covered"><span class="ln">303</span>                    $dependency,</span>
+<span class="covered"><span class="ln">304</span>                ), blocked: true);</span>
+<span class=""><span class="ln">305</span>            }</span>
+<span class=""><span class="ln">306</span></span>
+<span class="missed"><span class="ln">307</span>            $dependencyValues[] = $results[$dependency][&#039;value&#039;];</span>
+<span class=""><span class="ln">308</span>        }</span>
+<span class=""><span class="ln">309</span></span>
+<span class=""><span class="ln">310</span>        // Retry-with-classification (G4, nextest semantics): a fail or</span>
+<span class=""><span class="ln">311</span>        // error re-runs up to the retry budget; a pass on a retry is</span>
+<span class=""><span class="ln">312</span>        // FLAKY, never silently green — the attempt count travels on</span>
+<span class=""><span class="ln">313</span>        // the event, the reason names the earlier failure, and every</span>
+<span class=""><span class="ln">314</span>        // failed attempt&#039;s Failure rides along for the JUnit flaky</span>
+<span class=""><span class="ln">315</span>        // markup (D-043). Between attempts the policy&#039;s backoff pauses</span>
+<span class=""><span class="ln">316</span>        // (fixed/exponential/jittered).</span>
+<span class="covered"><span class="ln">317</span>        $policy  = $definition-&gt;metadata-&gt;first(Retry::class)?-&gt;policy() ?? $this-&gt;options-&gt;retries;</span>
+<span class="covered"><span class="ln">318</span>        $attempt = 0;</span>
+<span class="covered"><span class="ln">319</span>        $earlier = null;</span>
+<span class=""><span class="ln">320</span></span>
+<span class=""><span class="ln">321</span>        /** @var list&lt;Failure&gt; $retried */</span>
+<span class="covered"><span class="ln">322</span>        $retried = [];</span>
+<span class=""><span class="ln">323</span></span>
+<span class=""><span class="ln">324</span>        do {</span>
+<span class="covered"><span class="ln">325</span>            $attempt++;</span>
+<span class="covered"><span class="ln">326</span>            $run = $this-&gt;attempt($definition, $dependencyValues);</span>
+<span class=""><span class="ln">327</span></span>
+<span class="covered"><span class="ln">328</span>            if ($run[&#039;outcome&#039;] !== Outcome::Failed &amp;&amp; $run[&#039;outcome&#039;] !== Outcome::Errored) {</span>
+<span class="covered"><span class="ln">329</span>                break;</span>
+<span class=""><span class="ln">330</span>            }</span>
+<span class=""><span class="ln">331</span></span>
+<span class="covered"><span class="ln">332</span>            $earlier = $run[&#039;failure&#039;];</span>
+<span class=""><span class="ln">333</span></span>
+<span class="covered"><span class="ln">334</span>            if ($attempt &lt;= $policy-&gt;count) {</span>
+<span class="covered"><span class="ln">335</span>                if ($earlier instanceof Failure) {</span>
+<span class="covered"><span class="ln">336</span>                    $retried[] = $earlier;</span>
+<span class=""><span class="ln">337</span>                }</span>
+<span class=""><span class="ln">338</span></span>
+<span class="covered"><span class="ln">339</span>                $delay = $policy-&gt;delayFor($attempt);</span>
+<span class=""><span class="ln">340</span></span>
+<span class="covered"><span class="ln">341</span>                if ($delay &gt; 0.0) {</span>
+<span class="covered"><span class="ln">342</span>                    usleep((int) ($delay * 1_000_000));</span>
+<span class=""><span class="ln">343</span>                }</span>
+<span class=""><span class="ln">344</span>            }</span>
+<span class="covered"><span class="ln">345</span>        } while ($attempt &lt;= $policy-&gt;count);</span>
+<span class=""><span class="ln">346</span></span>
+<span class="covered"><span class="ln">347</span>        $outcome = $run[&#039;outcome&#039;];</span>
+<span class="covered"><span class="ln">348</span>        $reason  = $run[&#039;reason&#039;];</span>
+<span class="covered"><span class="ln">349</span>        $name    = $definition-&gt;id-&gt;name;</span>
+<span class=""><span class="ln">350</span></span>
+<span class="covered"><span class="ln">351</span>        if ($outcome === Outcome::Passed) {</span>
+<span class=""><span class="ln">352</span>            // Every dataset row must pass for the method to count as a</span>
+<span class=""><span class="ln">353</span>            // passed dependency; the last row&#039;s value is what</span>
+<span class=""><span class="ln">354</span>            // dependents receive.</span>
+<span class="covered"><span class="ln">355</span>            $results[$name] = [</span>
+<span class="covered"><span class="ln">356</span>                &#039;passed&#039; =&gt; !isset($results[$name]) || $results[$name][&#039;passed&#039;],</span>
+<span class="covered"><span class="ln">357</span>                &#039;value&#039;  =&gt; $run[&#039;value&#039;],</span>
+<span class=""><span class="ln">358</span>            ];</span>
+<span class=""><span class="ln">359</span></span>
+<span class="covered"><span class="ln">360</span>            $this-&gt;dependencies-&gt;capture($name, $run[&#039;value&#039;]);</span>
+<span class=""><span class="ln">361</span></span>
+<span class="covered"><span class="ln">362</span>            if ($attempt &gt; 1) {</span>
+<span class="covered"><span class="ln">363</span>                $reason = sprintf(</span>
+<span class=""><span class="ln">364</span>                    &#039;Flaky: passed on attempt %d of %d after: %s&#039;,</span>
+<span class=""><span class="ln">365</span>                    $attempt,</span>
+<span class="covered"><span class="ln">366</span>                    $policy-&gt;count + 1,</span>
+<span class="covered"><span class="ln">367</span>                    $earlier instanceof Failure ? $earlier-&gt;message : &#039;an earlier failure&#039;,</span>
+<span class=""><span class="ln">368</span>                );</span>
+<span class=""><span class="ln">369</span>            }</span>
+<span class="covered"><span class="ln">370</span>        } elseif ($run[&#039;thrown&#039;]) {</span>
+<span class="covered"><span class="ln">371</span>            $results[$name] = [&#039;passed&#039; =&gt; false, &#039;value&#039; =&gt; null];</span>
+<span class=""><span class="ln">372</span>        }</span>
+<span class=""><span class="ln">373</span></span>
+<span class="covered"><span class="ln">374</span>        return $this-&gt;finish(</span>
+<span class="covered"><span class="ln">375</span>            $definition,</span>
+<span class=""><span class="ln">376</span>            $outcome,</span>
+<span class="covered"><span class="ln">377</span>            $run[&#039;duration&#039;],</span>
+<span class="covered"><span class="ln">378</span>            $run[&#039;failure&#039;],</span>
+<span class=""><span class="ln">379</span>            $attempt,</span>
+<span class=""><span class="ln">380</span>            $reason,</span>
+<span class="covered"><span class="ln">381</span>            $run[&#039;issues&#039;],</span>
+<span class="covered"><span class="ln">382</span>            $run[&#039;property&#039;],</span>
+<span class=""><span class="ln">383</span>            $retried,</span>
+<span class="covered"><span class="ln">384</span>            $run[&#039;snapshots&#039;],</span>
+<span class=""><span class="ln">385</span>            // Clean only counts on a first-attempt pass (D-071): a</span>
+<span class=""><span class="ln">386</span>            // flaky pass must not prune a sequence that still catches</span>
+<span class=""><span class="ln">387</span>            // the bug some of the time.</span>
+<span class="covered"><span class="ln">388</span>            $outcome === Outcome::Passed &amp;&amp; $attempt === 1 ? $run[&#039;propertyClean&#039;] : [],</span>
+<span class="covered"><span class="ln">389</span>            $run[&#039;snapshotKeys&#039;],</span>
+<span class=""><span class="ln">390</span>        );</span>
+<span class=""><span class="ln">391</span>    }</span>
+<span class=""><span class="ln">392</span></span>
+<span class=""><span class="ln">393</span>    /**</span>
+<span class=""><span class="ln">394</span>     * One full execution of the test — lifecycle, classification,</span>
+<span class=""><span class="ln">395</span>     * state settlement — with no event emitted: runTest owns the</span>
+<span class=""><span class="ln">396</span>     * one test:finish, whatever the attempt count was.</span>
+<span class=""><span class="ln">397</span>     *</span>
+<span class=""><span class="ln">398</span>     * @param list&lt;mixed&gt; $dependencyValues</span>
+<span class=""><span class="ln">399</span>     *</span>
+<span class=""><span class="ln">400</span>     * @return array{outcome: Outcome, duration: float, failure: ?Failure, reason: ?string, issues: list&lt;\LucianoPereira\Crucible\Event\Issue&gt;, value: mixed, thrown: bool, property: ?array{key: non-empty-string, choices: list&lt;int&gt;}, snapshots: ?array{created: int, updated: int}, propertyClean: list&lt;non-empty-string&gt;, snapshotKeys: list&lt;non-empty-string&gt;}</span>
+<span class=""><span class="ln">401</span>     */</span>
+<span class=""><span class="ln">402</span>    private function attempt(TestDefinition $definition, array $dependencyValues): array</span>
+<span class=""><span class="ln">403</span>    {</span>
+<span class=""><span class="ln">404</span>        // Per-test assertion accounting: the runner owns the counter&#039;s</span>
+<span class=""><span class="ln">405</span>        // window; user code may reset it inside a test without</span>
+<span class=""><span class="ln">406</span>        // corrupting risky detection.</span>
+<span class="covered"><span class="ln">407</span>        Assert::resetAssertionCount();</span>
+<span class=""><span class="ln">408</span></span>
+<span class="covered"><span class="ln">409</span>        $snapshot = $this-&gt;snapshotFor($definition-&gt;metadata);</span>
+<span class=""><span class="ln">410</span></span>
+<span class="covered"><span class="ln">411</span>        $this-&gt;issues-&gt;install();</span>
+<span class=""><span class="ln">412</span></span>
+<span class=""><span class="ln">413</span>        // The property bridge (D-040): opened per attempt so property</span>
+<span class=""><span class="ln">414</span>        // keys count identically on retries. The snapshot context</span>
+<span class=""><span class="ln">415</span>        // (D-042) follows the same rule — snapshot counters restart</span>
+<span class=""><span class="ln">416</span>        // per attempt.</span>
+<span class="covered"><span class="ln">417</span>        PropertyContext::begin($definition-&gt;id, $this-&gt;options-&gt;propertyFailures);</span>
+<span class="covered"><span class="ln">418</span>        Snapshots::begin($definition-&gt;id, $this-&gt;options-&gt;updateSnapshots, $this-&gt;snapshots, $this-&gt;options-&gt;workingDirectory, $this-&gt;options-&gt;inlineSnapshotRewrite);</span>
+<span class="covered"><span class="ln">419</span>        Browsing::begin();</span>
+<span class="covered"><span class="ln">420</span>        MockeryContainer::reset();</span>
+<span class=""><span class="ln">421</span></span>
+<span class=""><span class="ln">422</span>        // Per-test coverage window (D-041): the definition closure is</span>
+<span class=""><span class="ln">423</span>        // the whole lifecycle, so hooks are attributed to their test.</span>
+<span class="covered"><span class="ln">424</span>        $this-&gt;coverage?-&gt;begin();</span>
+<span class=""><span class="ln">425</span></span>
+<span class="covered"><span class="ln">426</span>        $started = hrtime(true);</span>
+<span class="covered"><span class="ln">427</span>        $value   = null;</span>
+<span class="covered"><span class="ln">428</span>        $thrown  = null;</span>
+<span class="covered"><span class="ln">429</span>        $window  = null;</span>
+<span class="covered"><span class="ln">430</span>        $output  = &#039;&#039;;</span>
+<span class=""><span class="ln">431</span></span>
+<span class=""><span class="ln">432</span>        // What the test prints is the test&#039;s, not the runner&#039;s: buffered</span>
+<span class=""><span class="ln">433</span>        // so it can be reported as an event and policed by</span>
+<span class=""><span class="ln">434</span>        // --disallow-test-output, then written back out so capturing it</span>
+<span class=""><span class="ln">435</span>        // never means losing it.</span>
+<span class="covered"><span class="ln">436</span>        ob_start();</span>
+<span class=""><span class="ln">437</span></span>
+<span class=""><span class="ln">438</span>        try {</span>
+<span class="covered"><span class="ln">439</span>            $value = ($definition-&gt;test)($dependencyValues);</span>
+<span class="covered"><span class="ln">440</span>        } catch (Throwable $throwable) {</span>
+<span class="covered"><span class="ln">441</span>            $thrown = $throwable;</span>
+<span class="covered"><span class="ln">442</span>        } finally {</span>
+<span class="covered"><span class="ln">443</span>            $buffered = ob_get_clean();</span>
+<span class="covered"><span class="ln">444</span>            $output   = $buffered === false ? &#039;&#039; : $buffered;</span>
+<span class=""><span class="ln">445</span></span>
+<span class="covered"><span class="ln">446</span>            PropertyContext::end();</span>
+<span class="covered"><span class="ln">447</span>            Snapshots::end();</span>
+<span class=""><span class="ln">448</span>            // Recording waits: what this window may contribute</span>
+<span class=""><span class="ln">449</span>            // depends on the outcome and the covers claim (D-063).</span>
+<span class="covered"><span class="ln">450</span>            $window = $this-&gt;coverage?-&gt;end();</span>
+<span class=""><span class="ln">451</span>        }</span>
+<span class=""><span class="ln">452</span></span>
+<span class="covered"><span class="ln">453</span>        if ($output !== &#039;&#039;) {</span>
+<span class="covered"><span class="ln">454</span>            $this-&gt;emitter-&gt;emit(new TestOutputWritten($definition-&gt;id, OutputChannel::Stdout, $output));</span>
+<span class=""><span class="ln">455</span></span>
+<span class="covered"><span class="ln">456</span>            if (!$this-&gt;options-&gt;disallowTestOutput) {</span>
+<span class="covered"><span class="ln">457</span>                print $output;</span>
+<span class=""><span class="ln">458</span>            }</span>
+<span class=""><span class="ln">459</span>        }</span>
+<span class=""><span class="ln">460</span></span>
+<span class="covered"><span class="ln">461</span>        $duration  = $this-&gt;since($started);</span>
+<span class="covered"><span class="ln">462</span>        $issues    = $this-&gt;issues-&gt;drain();</span>
+<span class="covered"><span class="ln">463</span>        $pollution = $this-&gt;settleGlobalState($definition-&gt;metadata, $snapshot);</span>
+<span class=""><span class="ln">464</span></span>
+<span class=""><span class="ln">465</span>        // Browser failure artifact: captured before the test&#039;s</span>
+<span class=""><span class="ln">466</span>        // contexts close, only when the test actually visited a page</span>
+<span class=""><span class="ln">467</span>        // and genuinely failed (skips and incompletes are not</span>
+<span class=""><span class="ln">468</span>        // failures). The screenshot path joins the failure message —</span>
+<span class=""><span class="ln">469</span>        // the incumbent&#039;s exact courtesy.</span>
+<span class="covered"><span class="ln">470</span>        $browserScreenshot = null;</span>
+<span class=""><span class="ln">471</span></span>
+<span class="covered"><span class="ln">472</span>        if ($thrown instanceof Throwable</span>
+<span class="covered"><span class="ln">473</span>            &amp;&amp; !$thrown instanceof SkippedTestError</span>
+<span class="covered"><span class="ln">474</span>            &amp;&amp; !$thrown instanceof IncompleteTestError</span>
+<span class="covered"><span class="ln">475</span>            &amp;&amp; !RealPhpUnitOutcomes::isSkipped($thrown)</span>
+<span class="covered"><span class="ln">476</span>            &amp;&amp; !RealPhpUnitOutcomes::isIncomplete($thrown)) {</span>
+<span class="covered"><span class="ln">477</span>            $browserScreenshot = Browsing::failureScreenshot($definition-&gt;id);</span>
+<span class=""><span class="ln">478</span>        }</span>
+<span class=""><span class="ln">479</span></span>
+<span class="covered"><span class="ln">480</span>        Browsing::end();</span>
+<span class=""><span class="ln">481</span></span>
+<span class="covered"><span class="ln">482</span>        $result = [</span>
+<span class="covered"><span class="ln">483</span>            &#039;outcome&#039;  =&gt; Outcome::Passed,</span>
+<span class="covered"><span class="ln">484</span>            &#039;duration&#039; =&gt; $duration,</span>
+<span class=""><span class="ln">485</span>            &#039;failure&#039;  =&gt; null,</span>
+<span class=""><span class="ln">486</span>            &#039;reason&#039;   =&gt; null,</span>
+<span class="covered"><span class="ln">487</span>            &#039;issues&#039;   =&gt; $issues,</span>
+<span class="covered"><span class="ln">488</span>            &#039;value&#039;    =&gt; $value,</span>
+<span class="covered"><span class="ln">489</span>            &#039;thrown&#039;   =&gt; $thrown instanceof Throwable,</span>
+<span class="covered"><span class="ln">490</span>            &#039;property&#039; =&gt; $thrown instanceof PropertyFailedError</span>
+<span class="missed"><span class="ln">491</span>                ? [&#039;key&#039; =&gt; $thrown-&gt;key, &#039;choices&#039; =&gt; $thrown-&gt;choices]</span>
+<span class=""><span class="ln">492</span>                : null,</span>
+<span class="covered"><span class="ln">493</span>            &#039;snapshots&#039;     =&gt; Snapshots::recorded(),</span>
+<span class="covered"><span class="ln">494</span>            &#039;propertyClean&#039; =&gt; PropertyContext::replayedClean(),</span>
+<span class="covered"><span class="ln">495</span>            &#039;snapshotKeys&#039;  =&gt; Snapshots::visited(),</span>
+<span class=""><span class="ln">496</span>        ];</span>
+<span class=""><span class="ln">497</span></span>
+<span class="covered"><span class="ln">498</span>        if ($thrown instanceof Throwable) {</span>
+<span class="covered"><span class="ln">499</span>            $result = match (true) {</span>
+<span class="covered"><span class="ln">500</span>                $thrown instanceof SkippedTestError || RealPhpUnitOutcomes::isSkipped($thrown) =&gt; [...$result, &#039;outcome&#039; =&gt; Outcome::Skipped, &#039;reason&#039; =&gt; $thrown-&gt;getMessage()],</span>
+<span class=""><span class="ln">501</span>                // Incomplete carries its trace where skipped does not:</span>
+<span class=""><span class="ln">502</span>                // &quot;not finished yet&quot; is a note about a place in the</span>
+<span class=""><span class="ln">503</span>                // code, and the reader wants to jump to it. A skip is a</span>
+<span class=""><span class="ln">504</span>                // statement about the environment, and points nowhere.</span>
+<span class="covered"><span class="ln">505</span>                $thrown instanceof IncompleteTestError || RealPhpUnitOutcomes::isIncomplete($thrown) =&gt; [...$result, &#039;outcome&#039; =&gt; Outcome::Incomplete, &#039;reason&#039; =&gt; $thrown-&gt;getMessage(), &#039;failure&#039; =&gt; $this-&gt;failureFrom($thrown, $browserScreenshot)],</span>
+<span class="covered"><span class="ln">506</span>                $thrown instanceof AssertionFailedError || RealPhpUnitOutcomes::isFailure($thrown)   =&gt; [...$result, &#039;outcome&#039; =&gt; Outcome::Failed, &#039;failure&#039; =&gt; $this-&gt;failureFrom($thrown, $browserScreenshot)],</span>
+<span class="covered"><span class="ln">507</span>                default                                                                              =&gt; [...$result, &#039;outcome&#039; =&gt; Outcome::Errored, &#039;failure&#039; =&gt; $this-&gt;failureFrom($thrown, $browserScreenshot)],</span>
+<span class=""><span class="ln">508</span>            };</span>
+<span class=""><span class="ln">509</span></span>
+<span class="covered"><span class="ln">510</span>            return $this-&gt;settleCoverage($definition, $result, $window);</span>
+<span class=""><span class="ln">511</span>        }</span>
+<span class=""><span class="ln">512</span></span>
+<span class="covered"><span class="ln">513</span>        if ($pollution !== []) {</span>
+<span class="missed"><span class="ln">514</span>            return $this-&gt;settleCoverage($definition, [...$result, &#039;outcome&#039; =&gt; Outcome::Risky, &#039;reason&#039; =&gt; &#039;This test modified global state: &#039; . implode(&#039;, &#039;, $pollution) . &#039;.&#039;], $window);</span>
+<span class=""><span class="ln">515</span>        }</span>
+<span class=""><span class="ln">516</span></span>
+<span class=""><span class="ln">517</span>        // A test slower than its declared size allows (D-101). Judged on</span>
+<span class=""><span class="ln">518</span>        // the duration already measured, so the budget covers exactly</span>
+<span class=""><span class="ln">519</span>        // what ran and the reason states the measurement.</span>
+<span class="covered"><span class="ln">520</span>        $limit = $this-&gt;options-&gt;enforceTimeLimit</span>
+<span class="covered"><span class="ln">521</span>            ? TimeLimit::forTest($definition-&gt;metadata, $this-&gt;options-&gt;defaultTimeLimit)</span>
+<span class="covered"><span class="ln">522</span>            : null;</span>
+<span class=""><span class="ln">523</span></span>
+<span class=""><span class="ln">524</span>        // --disallow-test-output: a test that prints is a test whose</span>
+<span class=""><span class="ln">525</span>        // result depends on something the assertions do not describe.</span>
+<span class="covered"><span class="ln">526</span>        if ($this-&gt;options-&gt;disallowTestOutput &amp;&amp; $output !== &#039;&#039;) {</span>
+<span class="covered"><span class="ln">527</span>            return $this-&gt;settleCoverage($definition, [</span>
+<span class="covered"><span class="ln">528</span>                ...$result,</span>
+<span class="covered"><span class="ln">529</span>                &#039;outcome&#039; =&gt; Outcome::Risky,</span>
+<span class="covered"><span class="ln">530</span>                &#039;reason&#039;  =&gt; &#039;This test printed unexpected output: &#039; . trim($output),</span>
+<span class=""><span class="ln">531</span>            ], $window);</span>
+<span class=""><span class="ln">532</span>        }</span>
+<span class=""><span class="ln">533</span></span>
+<span class="covered"><span class="ln">534</span>        if ($limit !== null &amp;&amp; $duration &gt; $limit) {</span>
+<span class=""><span class="ln">535</span>            // The budget is judged on a measured duration, so a verdict</span>
+<span class=""><span class="ln">536</span>            // reached under a call-hooking xdebug says so rather than</span>
+<span class=""><span class="ln">537</span>            // blaming the test for the profiler.</span>
+<span class="covered"><span class="ln">538</span>            $notice = TimingOverhead::notice();</span>
+<span class=""><span class="ln">539</span></span>
+<span class="covered"><span class="ln">540</span>            return $this-&gt;settleCoverage($definition, [</span>
+<span class="covered"><span class="ln">541</span>                ...$result,</span>
+<span class="covered"><span class="ln">542</span>                &#039;outcome&#039; =&gt; Outcome::Risky,</span>
+<span class="covered"><span class="ln">543</span>                &#039;reason&#039;  =&gt; sprintf(&#039;This test took %.3f seconds, longer than the %d second(s) its size allows.&#039;, $duration, $limit)</span>
+<span class="covered"><span class="ln">544</span>                    . ($notice === null ? &#039;&#039; : &#039; &#039; . $notice),</span>
+<span class=""><span class="ln">545</span>            ], $window);</span>
+<span class=""><span class="ln">546</span>        }</span>
+<span class=""><span class="ln">547</span></span>
+<span class="covered"><span class="ln">548</span>        $performedAssertions = Assert::assertionCount() &gt; 0;</span>
+<span class=""><span class="ln">549</span></span>
+<span class=""><span class="ln">550</span>        // --do-not-report-useless-tests turns the whole classification off,</span>
+<span class=""><span class="ln">551</span>        // for a suite whose tests assert through something Crucible cannot</span>
+<span class=""><span class="ln">552</span>        // see. #[DoesNotPerformAssertions] stays the per-test way to say it.</span>
+<span class="covered"><span class="ln">553</span>        if ($this-&gt;options-&gt;reportUselessTests &amp;&amp; !$performedAssertions &amp;&amp; !$definition-&gt;metadata-&gt;has(DoesNotPerformAssertions::class)) {</span>
+<span class="covered"><span class="ln">554</span>            return $this-&gt;settleCoverage($definition, [...$result, &#039;outcome&#039; =&gt; Outcome::Risky, &#039;reason&#039; =&gt; &#039;This test did not perform any assertions.&#039;], $window);</span>
+<span class=""><span class="ln">555</span>        }</span>
+<span class=""><span class="ln">556</span></span>
+<span class="covered"><span class="ln">557</span>        return $this-&gt;settleCoverage($definition, $result, $window);</span>
+<span class=""><span class="ln">558</span>    }</span>
+<span class=""><span class="ln">559</span></span>
+<span class=""><span class="ln">560</span>    /**</span>
+<span class=""><span class="ln">561</span>     * The coverage-metadata settlement (D-063), oracle-pinned:</span>
+<span class=""><span class="ln">562</span>     * requireCoverageMetadata reclassifies a passing test without a</span>
+<span class=""><span class="ln">563</span>     * covers claim as risky (with or without a coverage run);</span>
+<span class=""><span class="ln">564</span>     * beStrictAboutCoverageMetadata reclassifies a passing test that</span>
+<span class=""><span class="ln">565</span>     * executed source code outside its covered/used targets, naming</span>
+<span class=""><span class="ln">566</span>     * the stray units. Then the window records — the per-test map</span>
+<span class=""><span class="ln">567</span>     * keeps observed truth, the aggregate takes the covers-filtered</span>
+<span class=""><span class="ln">568</span>     * contribution, and a risky test&#039;s hits are demoted (the oracle</span>
+<span class=""><span class="ln">569</span>     * discards the coverage but keeps the denominators).</span>
+<span class=""><span class="ln">570</span>     *</span>
+<span class=""><span class="ln">571</span>     * @param array{outcome: Outcome, duration: float, failure: ?Failure, reason: ?string, issues: list&lt;\LucianoPereira\Crucible\Event\Issue&gt;, value: mixed, thrown: bool, property: ?array{key: non-empty-string, choices: list&lt;int&gt;}, snapshots: ?array{created: int, updated: int}, propertyClean: list&lt;non-empty-string&gt;, snapshotKeys: list&lt;non-empty-string&gt;} $result</span>
+<span class=""><span class="ln">572</span>     *</span>
+<span class=""><span class="ln">573</span>     * @return array{outcome: Outcome, duration: float, failure: ?Failure, reason: ?string, issues: list&lt;\LucianoPereira\Crucible\Event\Issue&gt;, value: mixed, thrown: bool, property: ?array{key: non-empty-string, choices: list&lt;int&gt;}, snapshots: ?array{created: int, updated: int}, propertyClean: list&lt;non-empty-string&gt;, snapshotKeys: list&lt;non-empty-string&gt;}</span>
+<span class=""><span class="ln">574</span>     */</span>
+<span class=""><span class="ln">575</span>    private function settleCoverage(TestDefinition $definition, array $result, ?CoverageWindow $window): array</span>
+<span class=""><span class="ln">576</span>    {</span>
+<span class="covered"><span class="ln">577</span>        $enforcing = $this-&gt;options-&gt;requireCoverageMetadata || $this-&gt;options-&gt;beStrictAboutCoverageMetadata;</span>
+<span class=""><span class="ln">578</span></span>
+<span class="covered"><span class="ln">579</span>        if (!$enforcing &amp;&amp; !$window instanceof CoverageWindow) {</span>
+<span class="covered"><span class="ln">580</span>            return $result;</span>
+<span class=""><span class="ln">581</span>        }</span>
+<span class=""><span class="ln">582</span></span>
+<span class="covered"><span class="ln">583</span>        $targets = CoversTargets::from($definition-&gt;metadata);</span>
+<span class=""><span class="ln">584</span></span>
+<span class="covered"><span class="ln">585</span>        if ($result[&#039;outcome&#039;] === Outcome::Passed</span>
+<span class="covered"><span class="ln">586</span>            &amp;&amp; $this-&gt;options-&gt;requireCoverageMetadata</span>
+<span class="covered"><span class="ln">587</span>            &amp;&amp; !$targets-&gt;declared) {</span>
+<span class="covered"><span class="ln">588</span>            $result = [...$result, &#039;outcome&#039; =&gt; Outcome::Risky, &#039;reason&#039; =&gt; &#039;This test does not define a code coverage target but is expected to do so&#039;];</span>
+<span class=""><span class="ln">589</span>        }</span>
+<span class=""><span class="ln">590</span></span>
+<span class="covered"><span class="ln">591</span>        if ($result[&#039;outcome&#039;] === Outcome::Passed</span>
+<span class="covered"><span class="ln">592</span>            &amp;&amp; $this-&gt;options-&gt;beStrictAboutCoverageMetadata</span>
+<span class="covered"><span class="ln">593</span>            &amp;&amp; $window instanceof CoverageWindow) {</span>
+<span class="covered"><span class="ln">594</span>            $strays = $targets-&gt;strays($window);</span>
+<span class=""><span class="ln">595</span></span>
+<span class="covered"><span class="ln">596</span>            if ($strays !== []) {</span>
+<span class="covered"><span class="ln">597</span>                $result = [...$result, &#039;outcome&#039; =&gt; Outcome::Risky, &#039;reason&#039; =&gt; &quot;This test executed code that is not listed as code to be covered or used:\n- &quot; . implode(&quot;\n- &quot;, $strays)];</span>
+<span class=""><span class="ln">598</span>            }</span>
+<span class=""><span class="ln">599</span>        }</span>
+<span class=""><span class="ln">600</span></span>
+<span class="covered"><span class="ln">601</span>        if ($window instanceof CoverageWindow) {</span>
+<span class=""><span class="ln">602</span>            // --disable-coverage-targeting: the aggregate takes everything</span>
+<span class=""><span class="ln">603</span>            // the test executed, rather than only what its Covers* claims</span>
+<span class=""><span class="ln">604</span>            // let it contribute.</span>
+<span class="covered"><span class="ln">605</span>            $contribution = $this-&gt;options-&gt;coverageTargeting ? $targets-&gt;contribution($window) : $window;</span>
+<span class=""><span class="ln">606</span></span>
+<span class=""><span class="ln">607</span>            // A test that did not finish did not cover what it</span>
+<span class=""><span class="ln">608</span>            // touched. A skip runs markTestSkipped() and stops; an</span>
+<span class=""><span class="ln">609</span>            // error threw something nobody expected partway through.</span>
+<span class=""><span class="ln">610</span>            // Those lines executed in the literal sense and say nothing</span>
+<span class=""><span class="ln">611</span>            // about the code under test — the incumbent lists them as</span>
+<span class=""><span class="ln">612</span>            // executable with no hits, which is what withoutHits()</span>
+<span class=""><span class="ln">613</span>            // already said for risky. A *failure* is different and</span>
+<span class=""><span class="ln">614</span>            // still counts: the test ran to its assertion and disagreed</span>
+<span class=""><span class="ln">615</span>            // with it, which is a complete measurement.</span>
+<span class="covered"><span class="ln">616</span>            $settled = in_array($result[&#039;outcome&#039;], [Outcome::Risky, Outcome::Skipped, Outcome::Incomplete, Outcome::Errored], true);</span>
+<span class=""><span class="ln">617</span></span>
+<span class="covered"><span class="ln">618</span>            $this-&gt;coverage?-&gt;record(</span>
+<span class="covered"><span class="ln">619</span>                $definition-&gt;id,</span>
+<span class=""><span class="ln">620</span>                $window,</span>
+<span class="covered"><span class="ln">621</span>                $settled ? $window-&gt;withoutHits() : $contribution,</span>
+<span class=""><span class="ln">622</span>            );</span>
+<span class=""><span class="ln">623</span>        }</span>
+<span class=""><span class="ln">624</span></span>
+<span class="covered"><span class="ln">625</span>        return $result;</span>
+<span class=""><span class="ln">626</span>    }</span>
+<span class=""><span class="ln">627</span></span>
+<span class=""><span class="ln">628</span>    /**</span>
+<span class=""><span class="ln">629</span>     * Takes the pre-test snapshot when backup or strict-global-state</span>
+<span class=""><span class="ln">630</span>     * checking asks for one. Method metadata overrides configuration</span>
+<span class=""><span class="ln">631</span>     * (method-before-class precedence is already in the collection).</span>
+<span class=""><span class="ln">632</span>     */</span>
+<span class=""><span class="ln">633</span>    private function snapshotFor(MetadataCollection $metadata): ?GlobalStateSnapshot</span>
+<span class=""><span class="ln">634</span>    {</span>
+<span class="covered"><span class="ln">635</span>        $backupGlobals = $metadata-&gt;first(BackupGlobals::class)-&gt;enabled ?? $this-&gt;options-&gt;backupGlobals;</span>
+<span class="covered"><span class="ln">636</span>        $backupStatics = $metadata-&gt;first(BackupStaticProperties::class)-&gt;enabled ?? $this-&gt;options-&gt;backupStaticProperties;</span>
+<span class=""><span class="ln">637</span></span>
+<span class="covered"><span class="ln">638</span>        if (!$backupGlobals &amp;&amp; !$backupStatics &amp;&amp; !$this-&gt;options-&gt;beStrictAboutChangesToGlobalState) {</span>
+<span class="covered"><span class="ln">639</span>            return null;</span>
+<span class=""><span class="ln">640</span>        }</span>
+<span class=""><span class="ln">641</span></span>
+<span class="missed"><span class="ln">642</span>        $excludedGlobals = [];</span>
+<span class=""><span class="ln">643</span></span>
+<span class="missed"><span class="ln">644</span>        foreach ($metadata-&gt;ofType(ExcludeGlobalVariableFromBackup::class) as $exclusion) {</span>
+<span class="missed"><span class="ln">645</span>            $excludedGlobals[] = $exclusion-&gt;globalVariableName;</span>
+<span class=""><span class="ln">646</span>        }</span>
+<span class=""><span class="ln">647</span></span>
+<span class="missed"><span class="ln">648</span>        $excludedStatics = [];</span>
+<span class=""><span class="ln">649</span></span>
+<span class="missed"><span class="ln">650</span>        foreach ($metadata-&gt;ofType(ExcludeStaticPropertyFromBackup::class) as $exclusion) {</span>
+<span class="missed"><span class="ln">651</span>            $excludedStatics[] = [$exclusion-&gt;className, $exclusion-&gt;propertyName];</span>
+<span class=""><span class="ln">652</span>        }</span>
+<span class=""><span class="ln">653</span></span>
+<span class="missed"><span class="ln">654</span>        return new GlobalStateSnapshot(</span>
+<span class="missed"><span class="ln">655</span>            $this-&gt;statics,</span>
+<span class=""><span class="ln">656</span>            $excludedGlobals,</span>
+<span class=""><span class="ln">657</span>            $excludedStatics,</span>
+<span class="missed"><span class="ln">658</span>            includeStatics: $backupStatics || $this-&gt;options-&gt;beStrictAboutChangesToGlobalState,</span>
+<span class=""><span class="ln">659</span>        );</span>
+<span class=""><span class="ln">660</span>    }</span>
+<span class=""><span class="ln">661</span></span>
+<span class=""><span class="ln">662</span>    /**</span>
+<span class=""><span class="ln">663</span>     * Detects pollution (strict mode) and restores backed-up state.</span>
+<span class=""><span class="ln">664</span>     * Returns the change list when the run is strict, empty otherwise.</span>
+<span class=""><span class="ln">665</span>     *</span>
+<span class=""><span class="ln">666</span>     * @return list&lt;non-empty-string&gt;</span>
+<span class=""><span class="ln">667</span>     */</span>
+<span class=""><span class="ln">668</span>    private function settleGlobalState(MetadataCollection $metadata, ?GlobalStateSnapshot $snapshot): array</span>
+<span class=""><span class="ln">669</span>    {</span>
+<span class="covered"><span class="ln">670</span>        if (!$snapshot instanceof \LucianoPereira\Crucible\Isolation\GlobalStateSnapshot) {</span>
+<span class="covered"><span class="ln">671</span>            return [];</span>
+<span class=""><span class="ln">672</span>        }</span>
+<span class=""><span class="ln">673</span></span>
+<span class="missed"><span class="ln">674</span>        $changes = $this-&gt;options-&gt;beStrictAboutChangesToGlobalState ? $snapshot-&gt;changes() : [];</span>
+<span class=""><span class="ln">675</span></span>
+<span class="missed"><span class="ln">676</span>        $backupGlobals = $metadata-&gt;first(BackupGlobals::class)-&gt;enabled ?? $this-&gt;options-&gt;backupGlobals;</span>
+<span class="missed"><span class="ln">677</span>        $backupStatics = $metadata-&gt;first(BackupStaticProperties::class)-&gt;enabled ?? $this-&gt;options-&gt;backupStaticProperties;</span>
+<span class=""><span class="ln">678</span></span>
+<span class="missed"><span class="ln">679</span>        if ($backupGlobals || $backupStatics) {</span>
+<span class="missed"><span class="ln">680</span>            $snapshot-&gt;restore();</span>
+<span class=""><span class="ln">681</span>        }</span>
+<span class=""><span class="ln">682</span></span>
+<span class="missed"><span class="ln">683</span>        return $changes;</span>
+<span class=""><span class="ln">684</span>    }</span>
+<span class=""><span class="ln">685</span></span>
+<span class=""><span class="ln">686</span>    /**</span>
+<span class=""><span class="ln">687</span>     * @param positive-int                                      $attempt</span>
+<span class=""><span class="ln">688</span>     * @param list&lt;\LucianoPereira\Crucible\Event\Issue&gt;           $issues</span>
+<span class=""><span class="ln">689</span>     * @param ?array{key: non-empty-string, choices: list&lt;int&gt;} $property</span>
+<span class=""><span class="ln">690</span>     * @param list&lt;Failure&gt;                                     $retried</span>
+<span class=""><span class="ln">691</span>     * @param ?array{created: int, updated: int}                $snapshots</span>
+<span class=""><span class="ln">692</span>     * @param list&lt;non-empty-string&gt;                            $propertyClean</span>
+<span class=""><span class="ln">693</span>     * @param list&lt;non-empty-string&gt;                            $snapshotKeys</span>
+<span class=""><span class="ln">694</span>     *</span>
+<span class=""><span class="ln">695</span>     * @return array{0: Outcome, 1: bool, 2: list&lt;IssueKind&gt;} the terminal outcome, whether it went untested (a gated blocked skip), and the kinds of issue it triggered — what the stop-on-issue switches read</span>
+<span class=""><span class="ln">696</span>     */</span>
+<span class=""><span class="ln">697</span>    private function finish(TestDefinition $definition, Outcome $outcome, float $duration, ?Failure $failure = null, int $attempt = 1, ?string $reason = null, array $issues = [], ?array $property = null, array $retried = [], ?array $snapshots = null, array $propertyClean = [], array $snapshotKeys = [], bool $blocked = false): array</span>
+<span class=""><span class="ln">698</span>    {</span>
+<span class=""><span class="ln">699</span>        // Expected-outcome reconciliation (D-073): a test that declared</span>
+<span class=""><span class="ln">700</span>        // how it expects to end is judged against the outcome computed</span>
+<span class=""><span class="ln">701</span>        // above. This is the single choke point every terminal outcome</span>
+<span class=""><span class="ln">702</span>        // passes through — a declared -&gt;skip(), a body markTestSkipped,</span>
+<span class=""><span class="ln">703</span>        // an unmet requirement, and a todo block alike — so the</span>
+<span class=""><span class="ln">704</span>        // inversion needs no cooperation from any of the callers.</span>
+<span class="covered"><span class="ln">705</span>        $expected = $definition-&gt;metadata-&gt;first(ExpectedOutcome::class);</span>
+<span class=""><span class="ln">706</span></span>
+<span class="covered"><span class="ln">707</span>        if ($expected instanceof ExpectedOutcome) {</span>
+<span class="covered"><span class="ln">708</span>            [$outcome, $failure, $reason] = $this-&gt;reconcileExpectedOutcome($expected, $outcome, $reason);</span>
+<span class=""><span class="ln">709</span>        }</span>
+<span class=""><span class="ln">710</span></span>
+<span class=""><span class="ln">711</span>        // The blocked flag (D-075) only rides a skip that stayed a skip:</span>
+<span class=""><span class="ln">712</span>        // an -&gt;expectsSkip() that reconciled a requirement-skip to Passed</span>
+<span class=""><span class="ln">713</span>        // asserted its way out of &quot;untested&quot; and must not carry it.</span>
+<span class="covered"><span class="ln">714</span>        $blocked = $blocked &amp;&amp; $outcome === Outcome::Skipped;</span>
+<span class=""><span class="ln">715</span></span>
+<span class=""><span class="ln">716</span>        // Read and clear here rather than at the measurement: finish()</span>
+<span class=""><span class="ln">717</span>        // is the one path every outcome takes, including the skips that</span>
+<span class=""><span class="ln">718</span>        // never reach attempt() and so never reset it themselves. A</span>
+<span class=""><span class="ln">719</span>        // test that did not run reports 0 because the previous test&#039;s</span>
+<span class=""><span class="ln">720</span>        // finish() left the counter there.</span>
+<span class="covered"><span class="ln">721</span>        $assertions = Assert::assertionCount();</span>
+<span class="covered"><span class="ln">722</span>        Assert::resetAssertionCount();</span>
+<span class=""><span class="ln">723</span></span>
+<span class="covered"><span class="ln">724</span>        $this-&gt;emitter-&gt;emit(new TestFinished(</span>
+<span class="covered"><span class="ln">725</span>            $definition-&gt;id,</span>
+<span class=""><span class="ln">726</span>            $outcome,</span>
+<span class=""><span class="ln">727</span>            $duration,</span>
+<span class=""><span class="ln">728</span>            $failure,</span>
+<span class=""><span class="ln">729</span>            $attempt,</span>
+<span class="covered"><span class="ln">730</span>            $reason !== null &amp;&amp; $reason !== &#039;&#039; ? $reason : null,</span>
+<span class=""><span class="ln">731</span>            $issues,</span>
+<span class="covered"><span class="ln">732</span>            $this-&gt;quarantined($definition),</span>
+<span class=""><span class="ln">733</span>            $property,</span>
+<span class=""><span class="ln">734</span>            $retried,</span>
+<span class=""><span class="ln">735</span>            $snapshots,</span>
+<span class=""><span class="ln">736</span>            $propertyClean,</span>
+<span class=""><span class="ln">737</span>            $snapshotKeys,</span>
+<span class=""><span class="ln">738</span>            $blocked,</span>
+<span class=""><span class="ln">739</span>            $assertions,</span>
+<span class=""><span class="ln">740</span>        ));</span>
+<span class=""><span class="ln">741</span></span>
+<span class="covered"><span class="ln">742</span>        return [$outcome, $blocked, array_map(static fn(Issue $issue): IssueKind =&gt; $issue-&gt;kind, $issues)];</span>
+<span class=""><span class="ln">743</span>    }</span>
+<span class=""><span class="ln">744</span></span>
+<span class=""><span class="ln">745</span>    /**</span>
+<span class=""><span class="ln">746</span>     * Reconcile the actual terminal outcome against a declared</span>
+<span class=""><span class="ln">747</span>     * expectation (D-073): a match is the pass, a mismatch the failure.</span>
+<span class=""><span class="ln">748</span>     * When a reason fragment was declared it must appear in the actual</span>
+<span class=""><span class="ln">749</span>     * reason (the -&gt;fails(&#039;fragment&#039;) symmetry). The returned outcome</span>
+<span class=""><span class="ln">750</span>     * is what finish() emits and returns, so stop-on-failure and the</span>
+<span class=""><span class="ln">751</span>     * exit code see the reconciled result, not the raw one.</span>
+<span class=""><span class="ln">752</span>     *</span>
+<span class=""><span class="ln">753</span>     * @return array{0: Outcome, 1: ?Failure, 2: ?string}</span>
+<span class=""><span class="ln">754</span>     */</span>
+<span class=""><span class="ln">755</span>    private function reconcileExpectedOutcome(ExpectedOutcome $expected, Outcome $actual, ?string $reason): array</span>
+<span class=""><span class="ln">756</span>    {</span>
+<span class="covered"><span class="ln">757</span>        if ($actual !== $expected-&gt;expected) {</span>
+<span class=""><span class="ln">758</span>            return [</span>
+<span class="covered"><span class="ln">759</span>                Outcome::Failed,</span>
+<span class="covered"><span class="ln">760</span>                new Failure(sprintf(</span>
+<span class=""><span class="ln">761</span>                    &#039;Expected the test to %s, but it %s.&#039;,</span>
+<span class="covered"><span class="ln">762</span>                    $expected-&gt;verb(),</span>
+<span class="covered"><span class="ln">763</span>                    $this-&gt;describeOutcome($actual),</span>
+<span class=""><span class="ln">764</span>                )),</span>
+<span class=""><span class="ln">765</span>                null,</span>
+<span class=""><span class="ln">766</span>            ];</span>
+<span class=""><span class="ln">767</span>        }</span>
+<span class=""><span class="ln">768</span></span>
+<span class="covered"><span class="ln">769</span>        if ($expected-&gt;reasonFragment !== null &amp;&amp; !str_contains((string) $reason, $expected-&gt;reasonFragment)) {</span>
+<span class=""><span class="ln">770</span>            return [</span>
+<span class="covered"><span class="ln">771</span>                Outcome::Failed,</span>
+<span class="covered"><span class="ln">772</span>                new Failure(sprintf(</span>
+<span class=""><span class="ln">773</span>                    &#039;Expected the %s reason to contain &quot;%s&quot;, but it was &quot;%s&quot;.&#039;,</span>
+<span class="covered"><span class="ln">774</span>                    $expected-&gt;verb(),</span>
+<span class="covered"><span class="ln">775</span>                    $expected-&gt;reasonFragment,</span>
+<span class="covered"><span class="ln">776</span>                    (string) $reason,</span>
+<span class=""><span class="ln">777</span>                )),</span>
+<span class=""><span class="ln">778</span>                null,</span>
+<span class=""><span class="ln">779</span>            ];</span>
+<span class=""><span class="ln">780</span>        }</span>
+<span class=""><span class="ln">781</span></span>
+<span class=""><span class="ln">782</span>        return [</span>
+<span class="covered"><span class="ln">783</span>            Outcome::Passed,</span>
+<span class=""><span class="ln">784</span>            null,</span>
+<span class="covered"><span class="ln">785</span>            sprintf(&#039;Expected outcome met: %s.&#039;, $actual-&gt;value),</span>
+<span class=""><span class="ln">786</span>        ];</span>
+<span class=""><span class="ln">787</span>    }</span>
+<span class=""><span class="ln">788</span></span>
+<span class=""><span class="ln">789</span>    /**</span>
+<span class=""><span class="ln">790</span>     * The actual outcome read as a past-tense clause, for the</span>
+<span class=""><span class="ln">791</span>     * &quot;but it &lt;clause&gt;&quot; half of a mismatch message.</span>
+<span class=""><span class="ln">792</span>     *</span>
+<span class=""><span class="ln">793</span>     * @return non-empty-string</span>
+<span class=""><span class="ln">794</span>     */</span>
+<span class=""><span class="ln">795</span>    private function describeOutcome(Outcome $outcome): string</span>
+<span class=""><span class="ln">796</span>    {</span>
+<span class=""><span class="ln">797</span>        return match ($outcome) {</span>
+<span class="covered"><span class="ln">798</span>            Outcome::Passed     =&gt; &#039;passed&#039;,</span>
+<span class="covered"><span class="ln">799</span>            Outcome::Failed     =&gt; &#039;failed&#039;,</span>
+<span class="covered"><span class="ln">800</span>            Outcome::Errored    =&gt; &#039;errored&#039;,</span>
+<span class="covered"><span class="ln">801</span>            Outcome::Skipped    =&gt; &#039;was skipped&#039;,</span>
+<span class="missed"><span class="ln">802</span>            Outcome::Incomplete =&gt; &#039;was incomplete&#039;,</span>
+<span class="covered"><span class="ln">803</span>            Outcome::Risky      =&gt; &#039;was risky&#039;,</span>
+<span class=""><span class="ln">804</span>        };</span>
+<span class=""><span class="ln">805</span>    }</span>
+<span class=""><span class="ln">806</span></span>
+<span class=""><span class="ln">807</span>    /**</span>
+<span class=""><span class="ln">808</span>     * Whether the test is quarantined (G4): marked #[Quarantined] in</span>
+<span class=""><span class="ln">809</span>     * code, or listed in the configuration by id — the full</span>
+<span class=""><span class="ln">810</span>     * `file::name#dataset` string, or `file::name` covering every row.</span>
+<span class=""><span class="ln">811</span>     */</span>
+<span class=""><span class="ln">812</span>    private function quarantined(TestDefinition $definition): bool</span>
+<span class=""><span class="ln">813</span>    {</span>
+<span class="covered"><span class="ln">814</span>        if ($definition-&gt;metadata-&gt;has(Quarantined::class)) {</span>
+<span class="covered"><span class="ln">815</span>            return true;</span>
+<span class=""><span class="ln">816</span>        }</span>
+<span class=""><span class="ln">817</span></span>
+<span class="covered"><span class="ln">818</span>        if ($this-&gt;options-&gt;quarantine === []) {</span>
+<span class="covered"><span class="ln">819</span>            return false;</span>
+<span class=""><span class="ln">820</span>        }</span>
+<span class=""><span class="ln">821</span></span>
+<span class="covered"><span class="ln">822</span>        $id = $definition-&gt;id;</span>
+<span class=""><span class="ln">823</span></span>
+<span class="covered"><span class="ln">824</span>        return in_array($id-&gt;toString(), $this-&gt;options-&gt;quarantine, true)</span>
+<span class="covered"><span class="ln">825</span>            || in_array($id-&gt;file . &#039;::&#039; . $id-&gt;name, $this-&gt;options-&gt;quarantine, true);</span>
+<span class=""><span class="ln">826</span>    }</span>
+<span class=""><span class="ln">827</span></span>
+<span class=""><span class="ln">828</span>    private function since(int $startedNanoseconds): float</span>
+<span class=""><span class="ln">829</span>    {</span>
+<span class="covered"><span class="ln">830</span>        return (hrtime(true) - $startedNanoseconds) / 1e9;</span>
+<span class=""><span class="ln">831</span>    }</span>
+<span class=""><span class="ln">832</span></span>
+<span class=""><span class="ln">833</span>    private function failureFrom(Throwable $throwable, ?string $browserScreenshot = null): Failure</span>
+<span class=""><span class="ln">834</span>    {</span>
+<span class="covered"><span class="ln">835</span>        $frames = [];</span>
+<span class=""><span class="ln">836</span></span>
+<span class=""><span class="ln">837</span>        // The throw site first, because getTrace() does not contain it:</span>
+<span class=""><span class="ln">838</span>        // a trace is the call stack, and the line that threw is only on</span>
+<span class=""><span class="ln">839</span>        // the throwable itself. Without it a `throw` written directly in</span>
+<span class=""><span class="ln">840</span>        // a test body reports the frame that called the test — engine</span>
+<span class=""><span class="ln">841</span>        // code — and the formats that need a real file and line (SARIF,</span>
+<span class=""><span class="ln">842</span>        // JSON) point somewhere the author never wrote.</span>
+<span class="covered"><span class="ln">843</span>        if ($throwable-&gt;getFile() !== &#039;&#039; &amp;&amp; $throwable-&gt;getLine() &gt; 0) {</span>
+<span class="covered"><span class="ln">844</span>            $frames[] = new Frame($throwable-&gt;getFile(), $throwable-&gt;getLine());</span>
+<span class=""><span class="ln">845</span>        }</span>
+<span class=""><span class="ln">846</span></span>
+<span class="covered"><span class="ln">847</span>        foreach ($throwable-&gt;getTrace() as $frame) {</span>
+<span class="covered"><span class="ln">848</span>            $file = $frame[&#039;file&#039;] ?? &#039;&#039;;</span>
+<span class="covered"><span class="ln">849</span>            $line = $frame[&#039;line&#039;] ?? 0;</span>
+<span class=""><span class="ln">850</span></span>
+<span class="covered"><span class="ln">851</span>            if ($file === &#039;&#039; || $line &lt; 1) {</span>
+<span class="missed"><span class="ln">852</span>                continue;</span>
+<span class=""><span class="ln">853</span>            }</span>
+<span class=""><span class="ln">854</span></span>
+<span class="covered"><span class="ln">855</span>            $frames[] = new Frame(</span>
+<span class="covered"><span class="ln">856</span>                $file,</span>
+<span class=""><span class="ln">857</span>                $line,</span>
+<span class="covered"><span class="ln">858</span>                $frame[&#039;function&#039;] !== &#039;&#039; ? $frame[&#039;function&#039;] : null,</span>
+<span class=""><span class="ln">859</span>            );</span>
+<span class=""><span class="ln">860</span>        }</span>
+<span class=""><span class="ln">861</span></span>
+<span class="covered"><span class="ln">862</span>        $message = $throwable-&gt;getMessage() !== &#039;&#039; ? $throwable-&gt;getMessage() : $throwable::class;</span>
+<span class=""><span class="ln">863</span></span>
+<span class="covered"><span class="ln">864</span>        if ($browserScreenshot !== null) {</span>
+<span class="missed"><span class="ln">865</span>            $message .= sprintf(&quot;\nA screenshot of the page has been saved to [%s].&quot;, $browserScreenshot);</span>
+<span class=""><span class="ln">866</span>        }</span>
+<span class=""><span class="ln">867</span></span>
+<span class="covered"><span class="ln">868</span>        $comparison = $throwable instanceof AssertionFailedError ? $throwable-&gt;comparison : null;</span>
+<span class="covered"><span class="ln">869</span>        $expected   = $comparison?-&gt;expected;</span>
+<span class="covered"><span class="ln">870</span>        $actual     = $comparison?-&gt;actual;</span>
+<span class=""><span class="ln">871</span></span>
+<span class="covered"><span class="ln">872</span>        return new Failure(</span>
+<span class="covered"><span class="ln">873</span>            $message,</span>
+<span class="covered"><span class="ln">874</span>            $throwable::class,</span>
+<span class=""><span class="ln">875</span>            $frames,</span>
+<span class="covered"><span class="ln">876</span>            $expected === &#039;&#039; ? null : $expected,</span>
+<span class="covered"><span class="ln">877</span>            $actual === &#039;&#039; ? null : $actual,</span>
+<span class=""><span class="ln">878</span>        );</span>
+<span class=""><span class="ln">879</span>    }</span>
+<span class=""><span class="ln">880</span>}</span>
+<span class=""><span class="ln">881</span></span>
+</pre>
+</body>
+</html>

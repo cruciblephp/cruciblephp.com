@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Reporting/Document/PdfPrimitives.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../../index.html">Crucible coverage</a> / src/Reporting/Document/PdfPrimitives.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Reporting\Document;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use DateTimeImmutable;</span>
+<span class=""><span class="ln">14</span>use InvalidArgumentException;</span>
+<span class=""><span class="ln">15</span>use LucianoPereira\Crucible\Reporting\Document\Svg\SvgDocument;</span>
+<span class=""><span class="ln">16</span></span>
+<span class=""><span class="ln">17</span>use function array_keys;</span>
+<span class=""><span class="ln">18</span>use function array_pop;</span>
+<span class=""><span class="ln">19</span>use function chr;</span>
+<span class=""><span class="ln">20</span>use function count;</span>
+<span class=""><span class="ln">21</span>use function end;</span>
+<span class=""><span class="ln">22</span>use function explode;</span>
+<span class=""><span class="ln">23</span>use function floor;</span>
+<span class=""><span class="ln">24</span>use function getimagesizefromstring;</span>
+<span class=""><span class="ln">25</span>use function max;</span>
+<span class=""><span class="ln">26</span>use function md5;</span>
+<span class=""><span class="ln">27</span>use function ord;</span>
+<span class=""><span class="ln">28</span>use function sprintf;</span>
+<span class=""><span class="ln">29</span>use function str_contains;</span>
+<span class=""><span class="ln">30</span>use function str_repeat;</span>
+<span class=""><span class="ln">31</span>use function str_replace;</span>
+<span class=""><span class="ln">32</span>use function str_split;</span>
+<span class=""><span class="ln">33</span>use function strlen;</span>
+<span class=""><span class="ln">34</span>use function substr;</span>
+<span class=""><span class="ln">35</span></span>
+<span class=""><span class="ln">36</span>use const IMAGETYPE_JPEG;</span>
+<span class=""><span class="ln">37</span></span>
+<span class=""><span class="ln">38</span>/**</span>
+<span class=""><span class="ln">39</span> * Ultra-light single-file PDF writer, ported verbatim from</span>
+<span class=""><span class="ln">40</span> * `PdfWriter`&#039;s own primitive methods (D-091&#039;s addendum): the PDF 1.4</span>
+<span class=""><span class="ln">41</span> * document model (output buffer, object offsets, xref table,</span>
+<span class=""><span class="ln">42</span> * trailer), base-14 Helvetica/Courier fonts (metrics are the</span>
+<span class=""><span class="ln">43</span> * published AFM widths, nothing embedded), WinAnsi encoding, and the</span>
+<span class=""><span class="ln">44</span> * native graphics operators (re, m, l, S, f). Zero report-domain</span>
+<span class=""><span class="ln">45</span> * knowledge — everything here is pure PDF mechanics, composed by</span>
+<span class=""><span class="ln">46</span> * `PdfRenderer`, never constructed or read anywhere else.</span>
+<span class=""><span class="ln">47</span> */</span>
+<span class=""><span class="ln">48</span>final class PdfPrimitives</span>
+<span class=""><span class="ln">49</span>{</span>
+<span class=""><span class="ln">50</span>    // A4 portrait, in points.</span>
+<span class=""><span class="ln">51</span>    public const float WIDTH  = 595.28;</span>
+<span class=""><span class="ln">52</span>    public const float HEIGHT = 841.89;</span>
+<span class=""><span class="ln">53</span>    public const float MARGIN = 56.0;</span>
+<span class=""><span class="ln">54</span></span>
+<span class=""><span class="ln">55</span>    public const string HELVETICA = &#039;F1&#039;;</span>
+<span class=""><span class="ln">56</span>    public const string BOLD      = &#039;F2&#039;;</span>
+<span class=""><span class="ln">57</span>    public const string COURIER   = &#039;F3&#039;;</span>
+<span class=""><span class="ln">58</span></span>
+<span class=""><span class="ln">59</span>    /**</span>
+<span class=""><span class="ln">60</span>     * Helvetica glyph widths for characters 32–126, in thousandths of</span>
+<span class=""><span class="ln">61</span>     * the em — the published AFM metrics; base-14 fonts ship no</span>
+<span class=""><span class="ln">62</span>     * widths of their own.</span>
+<span class=""><span class="ln">63</span>     */</span>
+<span class=""><span class="ln">64</span>    private const array HELVETICA_WIDTHS = [</span>
+<span class=""><span class="ln">65</span>        278, 278, 355, 556, 556, 889, 667, 191, 333, 333, 389, 584, 278, 333, 278, 278,</span>
+<span class=""><span class="ln">66</span>        556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 278, 278, 584, 584, 584, 556,</span>
+<span class=""><span class="ln">67</span>        1015, 667, 667, 722, 722, 667, 611, 778, 722, 278, 500, 667, 556, 833, 722, 778,</span>
+<span class=""><span class="ln">68</span>        667, 778, 722, 667, 611, 722, 667, 944, 667, 667, 611, 278, 278, 278, 469, 556,</span>
+<span class=""><span class="ln">69</span>        333, 556, 556, 500, 556, 556, 278, 556, 556, 222, 222, 500, 222, 833, 556, 556,</span>
+<span class=""><span class="ln">70</span>        556, 556, 333, 500, 278, 556, 500, 722, 500, 500, 500, 334, 260, 334, 584,</span>
+<span class=""><span class="ln">71</span>    ];</span>
+<span class=""><span class="ln">72</span></span>
+<span class=""><span class="ln">73</span>    private const array BOLD_WIDTHS = [</span>
+<span class=""><span class="ln">74</span>        278, 333, 474, 556, 556, 889, 722, 238, 333, 333, 389, 584, 278, 333, 278, 278,</span>
+<span class=""><span class="ln">75</span>        556, 556, 556, 556, 556, 556, 556, 556, 556, 556, 333, 333, 584, 584, 584, 611,</span>
+<span class=""><span class="ln">76</span>        975, 722, 722, 722, 722, 667, 611, 778, 722, 278, 556, 722, 611, 833, 722, 778,</span>
+<span class=""><span class="ln">77</span>        667, 778, 722, 667, 611, 722, 667, 944, 667, 667, 611, 333, 278, 333, 584, 556,</span>
+<span class=""><span class="ln">78</span>        333, 556, 611, 556, 611, 556, 333, 611, 611, 278, 278, 556, 278, 889, 611, 611,</span>
+<span class=""><span class="ln">79</span>        611, 611, 389, 556, 333, 611, 556, 778, 556, 556, 500, 389, 280, 389, 584,</span>
+<span class=""><span class="ln">80</span>    ];</span>
+<span class=""><span class="ln">81</span></span>
+<span class=""><span class="ln">82</span>    /** @var list&lt;string&gt; finished pages&#039; content streams */</span>
+<span class=""><span class="ln">83</span>    public array $pages = [];</span>
+<span class=""><span class="ln">84</span></span>
+<span class=""><span class="ln">85</span>    /** the current page&#039;s content stream */</span>
+<span class=""><span class="ln">86</span>    public string $ops = &#039;&#039;;</span>
+<span class=""><span class="ln">87</span></span>
+<span class=""><span class="ln">88</span>    /** the layout cursor: the top of the next line, from the page bottom */</span>
+<span class=""><span class="ln">89</span>    public float $y = self::HEIGHT - self::MARGIN;</span>
+<span class=""><span class="ln">90</span></span>
+<span class=""><span class="ln">91</span>    /** @var array&lt;string, array{data: string, width: int, height: int, colorSpace: string, invert: bool}&gt; registered images by resource name (Im1, Im2, …), insertion order is object order */</span>
+<span class=""><span class="ln">92</span>    private array $images = [];</span>
+<span class=""><span class="ln">93</span></span>
+<span class=""><span class="ln">94</span>    /** @var array&lt;string, string&gt; content hash → resource name, so the same image embeds once even if drawn on several pages */</span>
+<span class=""><span class="ln">95</span>    private array $imageNameByHash = [];</span>
+<span class=""><span class="ln">96</span></span>
+<span class=""><span class="ln">97</span>    /** @var array&lt;string, true&gt; resource names drawn on the current in-progress page */</span>
+<span class=""><span class="ln">98</span>    private array $currentPageImages = [];</span>
+<span class=""><span class="ln">99</span></span>
+<span class=""><span class="ln">100</span>    /** @var list&lt;array&lt;string, true&gt;&gt; finished pages&#039; image resource names, parallel to $pages */</span>
+<span class=""><span class="ln">101</span>    private array $pageImages = [];</span>
+<span class=""><span class="ln">102</span></span>
+<span class=""><span class="ln">103</span>    /** @var list&lt;array{level: int, title: string, pageIndex: int}&gt; headings recorded as PDF outline (bookmark) entries, in document order */</span>
+<span class=""><span class="ln">104</span>    private array $bookmarks = [];</span>
+<span class=""><span class="ln">105</span></span>
+<span class=""><span class="ln">106</span>    /** @var array&lt;string, array{ops: string, minX: float, minY: float, width: float, height: float}&gt; content hash → parsed SVG, so size()+draw() of the same markup only walks its DOM once */</span>
+<span class=""><span class="ln">107</span>    private array $svgCache = [];</span>
+<span class=""><span class="ln">108</span></span>
+<span class=""><span class="ln">109</span>    /**</span>
+<span class=""><span class="ln">110</span>     * A section heading: bold with a hairline rule beneath.</span>
+<span class=""><span class="ln">111</span>     */</span>
+<span class=""><span class="ln">112</span>    public function heading(string $text): void</span>
+<span class=""><span class="ln">113</span>    {</span>
+<span class="covered"><span class="ln">114</span>        $columns = self::WIDTH - 2 * self::MARGIN;</span>
+<span class="covered"><span class="ln">115</span>        $this-&gt;ensure(12.0 * 1.4 + 8.0);</span>
+<span class="covered"><span class="ln">116</span>        $this-&gt;text(self::MARGIN, $this-&gt;y - 12.0, self::BOLD, 12.0, $this-&gt;encode($text));</span>
+<span class="covered"><span class="ln">117</span>        $this-&gt;rule(self::MARGIN, $this-&gt;y - 16.5, self::MARGIN + $columns, $this-&gt;y - 16.5);</span>
+<span class="covered"><span class="ln">118</span>        $this-&gt;y -= 12.0 * 1.4 + 8.0;</span>
+<span class=""><span class="ln">119</span>    }</span>
+<span class=""><span class="ln">120</span></span>
+<span class=""><span class="ln">121</span>    /**</span>
+<span class=""><span class="ln">122</span>     * Records a heading as a PDF outline (bookmark) entry, targeting</span>
+<span class=""><span class="ln">123</span>     * whichever page is currently being built — the page index is</span>
+<span class=""><span class="ln">124</span>     * already known the instant a heading is drawn, so this needs no</span>
+<span class=""><span class="ln">125</span>     * lookahead and costs nothing when a document has no headings.</span>
+<span class=""><span class="ln">126</span>     */</span>
+<span class=""><span class="ln">127</span>    public function bookmark(int $level, string $title): void</span>
+<span class=""><span class="ln">128</span>    {</span>
+<span class="covered"><span class="ln">129</span>        $this-&gt;bookmarks[] = [&#039;level&#039; =&gt; $level, &#039;title&#039; =&gt; $title, &#039;pageIndex&#039; =&gt; count($this-&gt;pages)];</span>
+<span class=""><span class="ln">130</span>    }</span>
+<span class=""><span class="ln">131</span></span>
+<span class=""><span class="ln">132</span>    /**</span>
+<span class=""><span class="ln">133</span>     * The headings recorded so far via `bookmark()` — read back by a TOC</span>
+<span class=""><span class="ln">134</span>     * dry-run pass to learn titles/levels/page numbers before the real</span>
+<span class=""><span class="ln">135</span>     * pass renders an actual table of contents from them.</span>
+<span class=""><span class="ln">136</span>     *</span>
+<span class=""><span class="ln">137</span>     * @return list&lt;array{level: int, title: string, pageIndex: int}&gt;</span>
+<span class=""><span class="ln">138</span>     */</span>
+<span class=""><span class="ln">139</span>    public function bookmarkEntries(): array</span>
+<span class=""><span class="ln">140</span>    {</span>
+<span class="covered"><span class="ln">141</span>        return $this-&gt;bookmarks;</span>
+<span class=""><span class="ln">142</span>    }</span>
+<span class=""><span class="ln">143</span></span>
+<span class=""><span class="ln">144</span>    /**</span>
+<span class=""><span class="ln">145</span>     * A dotted leader starting a fixed 8pt after the name it follows,</span>
+<span class=""><span class="ln">146</span>     * drawn only when there is room for it to read as one.</span>
+<span class=""><span class="ln">147</span>     */</span>
+<span class=""><span class="ln">148</span>    public function leader(float $from, float $to, float $baseline): void</span>
+<span class=""><span class="ln">149</span>    {</span>
+<span class="covered"><span class="ln">150</span>        $dot   = $this-&gt;measure(&#039;.&#039;, self::HELVETICA, 8.0);</span>
+<span class="covered"><span class="ln">151</span>        $count = (int) floor(($to - $from - 12.0) / $dot);</span>
+<span class=""><span class="ln">152</span></span>
+<span class="covered"><span class="ln">153</span>        if ($count &gt; 2) {</span>
+<span class="covered"><span class="ln">154</span>            $this-&gt;text($from + 8.0, $baseline, self::HELVETICA, 8.0, str_repeat(&#039;.&#039;, $count), [0.46, 0.46, 0.46]);</span>
+<span class=""><span class="ln">155</span>        }</span>
+<span class=""><span class="ln">156</span>    }</span>
+<span class=""><span class="ln">157</span></span>
+<span class=""><span class="ln">158</span>    /**</span>
+<span class=""><span class="ln">159</span>     * Writes flowing text at the cursor and advances it: one line when it</span>
+<span class=""><span class="ln">160</span>     * fits, wrapped at word boundaries by flow() when it does not, so a</span>
+<span class=""><span class="ln">161</span>     * long paragraph stays inside the right margin instead of running</span>
+<span class=""><span class="ln">162</span>     * off the page.</span>
+<span class=""><span class="ln">163</span>     *</span>
+<span class=""><span class="ln">164</span>     * @param ?array{float, float, float} $rgb</span>
+<span class=""><span class="ln">165</span>     */</span>
+<span class=""><span class="ln">166</span>    public function line(string $font, float $size, string $text, ?array $rgb = null, float $indent = 0.0): void</span>
+<span class=""><span class="ln">167</span>    {</span>
+<span class="covered"><span class="ln">168</span>        foreach ($this-&gt;flow($this-&gt;encode($text), self::WIDTH - 2 * self::MARGIN - $indent, $font, $size) as $row) {</span>
+<span class="covered"><span class="ln">169</span>            $this-&gt;ensure($size * 1.4);</span>
+<span class="covered"><span class="ln">170</span>            $this-&gt;text(self::MARGIN + $indent, $this-&gt;y - $size, $font, $size, $row, $rgb);</span>
+<span class="covered"><span class="ln">171</span>            $this-&gt;y -= $size * 1.4;</span>
+<span class=""><span class="ln">172</span>        }</span>
+<span class=""><span class="ln">173</span>    }</span>
+<span class=""><span class="ln">174</span></span>
+<span class=""><span class="ln">175</span>    /**</span>
+<span class=""><span class="ln">176</span>     * Breaks the page when fewer than $height points remain above the</span>
+<span class=""><span class="ln">177</span>     * footer. Returns whether it broke.</span>
+<span class=""><span class="ln">178</span>     */</span>
+<span class=""><span class="ln">179</span>    public function ensure(float $height): bool</span>
+<span class=""><span class="ln">180</span>    {</span>
+<span class="covered"><span class="ln">181</span>        if ($this-&gt;y - $height &gt;= self::MARGIN + 20.0) {</span>
+<span class="covered"><span class="ln">182</span>            return false;</span>
+<span class=""><span class="ln">183</span>        }</span>
+<span class=""><span class="ln">184</span></span>
+<span class="covered"><span class="ln">185</span>        $this-&gt;pages[]           = $this-&gt;ops;</span>
+<span class="covered"><span class="ln">186</span>        $this-&gt;pageImages[]      = $this-&gt;currentPageImages;</span>
+<span class="covered"><span class="ln">187</span>        $this-&gt;ops               = &#039;&#039;;</span>
+<span class="covered"><span class="ln">188</span>        $this-&gt;currentPageImages = [];</span>
+<span class="covered"><span class="ln">189</span>        $this-&gt;y                 = self::HEIGHT - self::MARGIN;</span>
+<span class=""><span class="ln">190</span></span>
+<span class="covered"><span class="ln">191</span>        return true;</span>
+<span class=""><span class="ln">192</span>    }</span>
+<span class=""><span class="ln">193</span></span>
+<span class=""><span class="ln">194</span>    /**</span>
+<span class=""><span class="ln">195</span>     * Draws a JPEG at the given box — no re-encoding: the file&#039;s own</span>
+<span class=""><span class="ln">196</span>     * bytes become the XObject stream verbatim (`/Filter /DCTDecode`),</span>
+<span class=""><span class="ln">197</span>     * the trick every PDF/JPEG embedder from FPDF onward relies on. The</span>
+<span class=""><span class="ln">198</span>     * same bytes drawn more than once (e.g. a repeated cover) still</span>
+<span class=""><span class="ln">199</span>     * embed only once, keyed by content hash.</span>
+<span class=""><span class="ln">200</span>     */</span>
+<span class=""><span class="ln">201</span>    public function image(string $jpegBytes, float $x, float $y, float $width, float $height): void</span>
+<span class=""><span class="ln">202</span>    {</span>
+<span class="missed"><span class="ln">203</span>        $name = $this-&gt;registerImage($jpegBytes);</span>
+<span class=""><span class="ln">204</span></span>
+<span class="missed"><span class="ln">205</span>        $this-&gt;ops .= sprintf(</span>
+<span class=""><span class="ln">206</span>            &quot;q %s 0 0 %s %s %s cm /%s Do Q\n&quot;,</span>
+<span class="missed"><span class="ln">207</span>            $this-&gt;number($width),</span>
+<span class="missed"><span class="ln">208</span>            $this-&gt;number($height),</span>
+<span class="missed"><span class="ln">209</span>            $this-&gt;number($x),</span>
+<span class="missed"><span class="ln">210</span>            $this-&gt;number($y),</span>
+<span class="missed"><span class="ln">211</span>            $name,</span>
+<span class=""><span class="ln">212</span>        );</span>
+<span class=""><span class="ln">213</span></span>
+<span class="missed"><span class="ln">214</span>        $this-&gt;currentPageImages[$name] = true;</span>
+<span class=""><span class="ln">215</span>    }</span>
+<span class=""><span class="ln">216</span></span>
+<span class=""><span class="ln">217</span>    /**</span>
+<span class=""><span class="ln">218</span>     * A JPEG&#039;s natural pixel dimensions — callers use this to size the</span>
+<span class=""><span class="ln">219</span>     * placed box (e.g. fit-to-width, preserving aspect ratio) before</span>
+<span class=""><span class="ln">220</span>     * calling `image()`, which needs the box already decided.</span>
+<span class=""><span class="ln">221</span>     *</span>
+<span class=""><span class="ln">222</span>     * @return array{int, int}</span>
+<span class=""><span class="ln">223</span>     */</span>
+<span class=""><span class="ln">224</span>    public function imageSize(string $jpegBytes): array</span>
+<span class=""><span class="ln">225</span>    {</span>
+<span class="missed"><span class="ln">226</span>        [$width, $height] = $this-&gt;jpegInfo($jpegBytes);</span>
+<span class=""><span class="ln">227</span></span>
+<span class="missed"><span class="ln">228</span>        return [$width, $height];</span>
+<span class=""><span class="ln">229</span>    }</span>
+<span class=""><span class="ln">230</span></span>
+<span class=""><span class="ln">231</span>    /**</span>
+<span class=""><span class="ln">232</span>     * Draws an SVG at the given box, mapping its own viewBox coordinate</span>
+<span class=""><span class="ln">233</span>     * space (y-down) into the placed box (y-up, in points) with one</span>
+<span class=""><span class="ln">234</span>     * outer `cm` — the same technique `image()` uses for a JPEG&#039;s unit</span>
+<span class=""><span class="ln">235</span>     * square, computed by hand here since vector shapes have no</span>
+<span class=""><span class="ln">236</span>     * XObject convention to lean on. Every shape then draws as plain</span>
+<span class=""><span class="ln">237</span>     * content-stream operators, nested inside that one `q`/`Q` pair —</span>
+<span class=""><span class="ln">238</span>     * no `/Resources`/`XObject` entry at all, unlike `image()`.</span>
+<span class=""><span class="ln">239</span>     */</span>
+<span class=""><span class="ln">240</span>    public function svg(string $markup, float $x, float $y, float $width, float $height): void</span>
+<span class=""><span class="ln">241</span>    {</span>
+<span class="missed"><span class="ln">242</span>        $rendered = $this-&gt;renderedSvg($markup);</span>
+<span class=""><span class="ln">243</span></span>
+<span class="missed"><span class="ln">244</span>        $scaleX = $width / $rendered[&#039;width&#039;];</span>
+<span class="missed"><span class="ln">245</span>        $scaleY = $height / $rendered[&#039;height&#039;];</span>
+<span class=""><span class="ln">246</span></span>
+<span class="missed"><span class="ln">247</span>        $this-&gt;ops .= sprintf(</span>
+<span class=""><span class="ln">248</span>            &quot;q %s %s %s %s %s %s cm\n%sQ\n&quot;,</span>
+<span class="missed"><span class="ln">249</span>            $this-&gt;number($scaleX),</span>
+<span class="missed"><span class="ln">250</span>            $this-&gt;number(0.0),</span>
+<span class="missed"><span class="ln">251</span>            $this-&gt;number(0.0),</span>
+<span class="missed"><span class="ln">252</span>            $this-&gt;number(-$scaleY),</span>
+<span class="missed"><span class="ln">253</span>            $this-&gt;number($x - $rendered[&#039;minX&#039;] * $scaleX),</span>
+<span class="missed"><span class="ln">254</span>            $this-&gt;number($y + $height + $rendered[&#039;minY&#039;] * $scaleY),</span>
+<span class="missed"><span class="ln">255</span>            $rendered[&#039;ops&#039;],</span>
+<span class=""><span class="ln">256</span>        );</span>
+<span class=""><span class="ln">257</span>    }</span>
+<span class=""><span class="ln">258</span></span>
+<span class=""><span class="ln">259</span>    /**</span>
+<span class=""><span class="ln">260</span>     * An SVG&#039;s own natural aspect ratio (its viewBox, or width/height</span>
+<span class=""><span class="ln">261</span>     * attributes when there&#039;s no viewBox) — callers use this to size</span>
+<span class=""><span class="ln">262</span>     * the placed box (fit-to-width, preserving aspect ratio) before</span>
+<span class=""><span class="ln">263</span>     * calling `svg()`, which needs the box already decided.</span>
+<span class=""><span class="ln">264</span>     *</span>
+<span class=""><span class="ln">265</span>     * @return array{float, float}</span>
+<span class=""><span class="ln">266</span>     */</span>
+<span class=""><span class="ln">267</span>    public function svgSize(string $markup): array</span>
+<span class=""><span class="ln">268</span>    {</span>
+<span class="missed"><span class="ln">269</span>        $rendered = $this-&gt;renderedSvg($markup);</span>
+<span class=""><span class="ln">270</span></span>
+<span class="missed"><span class="ln">271</span>        return [$rendered[&#039;width&#039;], $rendered[&#039;height&#039;]];</span>
+<span class=""><span class="ln">272</span>    }</span>
+<span class=""><span class="ln">273</span></span>
+<span class=""><span class="ln">274</span>    /** @return array{ops: string, minX: float, minY: float, width: float, height: float} */</span>
+<span class=""><span class="ln">275</span>    private function renderedSvg(string $markup): array</span>
+<span class=""><span class="ln">276</span>    {</span>
+<span class="missed"><span class="ln">277</span>        $hash = md5($markup);</span>
+<span class=""><span class="ln">278</span></span>
+<span class="missed"><span class="ln">279</span>        return $this-&gt;svgCache[$hash] ??= (new SvgDocument())-&gt;render($markup);</span>
+<span class=""><span class="ln">280</span>    }</span>
+<span class=""><span class="ln">281</span></span>
+<span class=""><span class="ln">282</span>    private function registerImage(string $jpegBytes): string</span>
+<span class=""><span class="ln">283</span>    {</span>
+<span class="missed"><span class="ln">284</span>        $hash = md5($jpegBytes);</span>
+<span class=""><span class="ln">285</span></span>
+<span class="missed"><span class="ln">286</span>        if (isset($this-&gt;imageNameByHash[$hash])) {</span>
+<span class="missed"><span class="ln">287</span>            return $this-&gt;imageNameByHash[$hash];</span>
+<span class=""><span class="ln">288</span>        }</span>
+<span class=""><span class="ln">289</span></span>
+<span class="missed"><span class="ln">290</span>        [$width, $height, $colorSpace, $invert] = $this-&gt;jpegInfo($jpegBytes);</span>
+<span class="missed"><span class="ln">291</span>        $name                                   = &#039;Im&#039; . (count($this-&gt;images) + 1);</span>
+<span class=""><span class="ln">292</span></span>
+<span class="missed"><span class="ln">293</span>        $this-&gt;images[$name] = [</span>
+<span class="missed"><span class="ln">294</span>            &#039;data&#039;       =&gt; $jpegBytes,</span>
+<span class="missed"><span class="ln">295</span>            &#039;width&#039;      =&gt; $width,</span>
+<span class="missed"><span class="ln">296</span>            &#039;height&#039;     =&gt; $height,</span>
+<span class="missed"><span class="ln">297</span>            &#039;colorSpace&#039; =&gt; $colorSpace,</span>
+<span class="missed"><span class="ln">298</span>            &#039;invert&#039;     =&gt; $invert,</span>
+<span class=""><span class="ln">299</span>        ];</span>
+<span class=""><span class="ln">300</span></span>
+<span class="missed"><span class="ln">301</span>        $this-&gt;imageNameByHash[$hash] = $name;</span>
+<span class=""><span class="ln">302</span></span>
+<span class="missed"><span class="ln">303</span>        return $name;</span>
+<span class=""><span class="ln">304</span>    }</span>
+<span class=""><span class="ln">305</span></span>
+<span class=""><span class="ln">306</span>    /**</span>
+<span class=""><span class="ln">307</span>     * Width, height, and PDF color space straight from the JPEG&#039;s own</span>
+<span class=""><span class="ln">308</span>     * headers — no hand-rolled marker walk needed, `getimagesizefromstring`</span>
+<span class=""><span class="ln">309</span>     * already reports the component count. The one thing it doesn&#039;t</span>
+<span class=""><span class="ln">310</span>     * expose is Adobe&#039;s inverted-CMYK convention (`APP14` present on a</span>
+<span class=""><span class="ln">311</span>     * 4-component JPEG), which every CMYK JPEG out of Adobe tooling</span>
+<span class=""><span class="ln">312</span>     * uses — so `/Decode [1 0 1 0 1 0 1 0]` is applied whenever that</span>
+<span class=""><span class="ln">313</span>     * marker is present, matching FPDF/mPDF&#039;s own long-standing rule.</span>
+<span class=""><span class="ln">314</span>     *</span>
+<span class=""><span class="ln">315</span>     * @return array{int, int, string, bool}</span>
+<span class=""><span class="ln">316</span>     */</span>
+<span class=""><span class="ln">317</span>    private function jpegInfo(string $jpegBytes): array</span>
+<span class=""><span class="ln">318</span>    {</span>
+<span class="missed"><span class="ln">319</span>        $info = @getimagesizefromstring($jpegBytes);</span>
+<span class=""><span class="ln">320</span></span>
+<span class="missed"><span class="ln">321</span>        if ($info === false || $info[2] !== IMAGETYPE_JPEG) {</span>
+<span class="missed"><span class="ln">322</span>            throw new InvalidArgumentException(&#039;Image data is not a JPEG.&#039;);</span>
+<span class=""><span class="ln">323</span>        }</span>
+<span class=""><span class="ln">324</span></span>
+<span class="missed"><span class="ln">325</span>        $components = $info[&#039;channels&#039;] ?? 3;</span>
+<span class="missed"><span class="ln">326</span>        $colorSpace = match ($components) {</span>
+<span class="missed"><span class="ln">327</span>            1       =&gt; &#039;DeviceGray&#039;,</span>
+<span class="missed"><span class="ln">328</span>            4       =&gt; &#039;DeviceCMYK&#039;,</span>
+<span class="missed"><span class="ln">329</span>            default =&gt; &#039;DeviceRGB&#039;,</span>
+<span class=""><span class="ln">330</span>        };</span>
+<span class=""><span class="ln">331</span></span>
+<span class="missed"><span class="ln">332</span>        $invert = $components === 4 &amp;&amp; str_contains($jpegBytes, &#039;Adobe&#039;);</span>
+<span class=""><span class="ln">333</span></span>
+<span class="missed"><span class="ln">334</span>        return [$info[0], $info[1], $colorSpace, $invert];</span>
+<span class=""><span class="ln">335</span>    }</span>
+<span class=""><span class="ln">336</span></span>
+<span class=""><span class="ln">337</span>    /**</span>
+<span class=""><span class="ln">338</span>     * The PDF `/Outlines` bookmark tree, built from the flat `$bookmarks`</span>
+<span class=""><span class="ln">339</span>     * list by walking it once with a level-keyed stack: an entry&#039;s parent</span>
+<span class=""><span class="ln">340</span>     * is the nearest earlier entry with a strictly lower level (or the</span>
+<span class=""><span class="ln">341</span>     * synthetic root when none exists), the same convention every</span>
+<span class=""><span class="ln">342</span>     * heading-outline in Markdown/AsciiDoc/etc. already uses. A second</span>
+<span class=""><span class="ln">343</span>     * pass groups entries by parent to derive `/Prev`/`/Next`/`/First`/</span>
+<span class=""><span class="ln">344</span>     * `/Last`/`/Count`, since siblings aren&#039;t contiguous once a parent</span>
+<span class=""><span class="ln">345</span>     * has grandchildren interleaved in document order.</span>
+<span class=""><span class="ln">346</span>     *</span>
+<span class=""><span class="ln">347</span>     * @return array&lt;int, string&gt; object id =&gt; object body, including the</span>
+<span class=""><span class="ln">348</span>     *                            root `/Type /Outlines` object at $rootId</span>
+<span class=""><span class="ln">349</span>     */</span>
+<span class=""><span class="ln">350</span>    private function outlineObjects(int $rootId): array</span>
+<span class=""><span class="ln">351</span>    {</span>
+<span class="missed"><span class="ln">352</span>        if ($this-&gt;bookmarks === []) {</span>
+<span class="missed"><span class="ln">353</span>            return [];</span>
+<span class=""><span class="ln">354</span>        }</span>
+<span class=""><span class="ln">355</span></span>
+<span class="missed"><span class="ln">356</span>        $ids = [];</span>
+<span class=""><span class="ln">357</span></span>
+<span class="missed"><span class="ln">358</span>        foreach (array_keys($this-&gt;bookmarks) as $index) {</span>
+<span class="missed"><span class="ln">359</span>            $ids[$index] = $rootId + 1 + $index;</span>
+<span class=""><span class="ln">360</span>        }</span>
+<span class=""><span class="ln">361</span></span>
+<span class=""><span class="ln">362</span>        /** @var array&lt;int, int&gt; $parentOf entry index =&gt; parent object id (rootId or another entry&#039;s id) */</span>
+<span class="missed"><span class="ln">363</span>        $parentOf = [];</span>
+<span class=""><span class="ln">364</span>        /** @var list&lt;array{int, int}&gt; $stack open ancestors as [level, objectId] */</span>
+<span class="missed"><span class="ln">365</span>        $stack = [];</span>
+<span class=""><span class="ln">366</span></span>
+<span class="missed"><span class="ln">367</span>        foreach ($this-&gt;bookmarks as $index =&gt; $entry) {</span>
+<span class="missed"><span class="ln">368</span>            while ($stack !== [] &amp;&amp; end($stack)[0] &gt;= $entry[&#039;level&#039;]) {</span>
+<span class="missed"><span class="ln">369</span>                array_pop($stack);</span>
+<span class=""><span class="ln">370</span>            }</span>
+<span class=""><span class="ln">371</span></span>
+<span class="missed"><span class="ln">372</span>            $parentOf[$index] = $stack === [] ? $rootId : end($stack)[1];</span>
+<span class="missed"><span class="ln">373</span>            $stack[]          = [$entry[&#039;level&#039;], $ids[$index]];</span>
+<span class=""><span class="ln">374</span>        }</span>
+<span class=""><span class="ln">375</span></span>
+<span class=""><span class="ln">376</span>        /** @var array&lt;int, list&lt;int&gt;&gt; $childrenOf parent object id =&gt; list of entry indices, in document order */</span>
+<span class="missed"><span class="ln">377</span>        $childrenOf = [];</span>
+<span class=""><span class="ln">378</span>        /** @var array&lt;int, int&gt; $positionOf entry index =&gt; its position among its siblings */</span>
+<span class="missed"><span class="ln">379</span>        $positionOf = [];</span>
+<span class=""><span class="ln">380</span></span>
+<span class="missed"><span class="ln">381</span>        foreach (array_keys($this-&gt;bookmarks) as $index) {</span>
+<span class="missed"><span class="ln">382</span>            $parent                = $parentOf[$index];</span>
+<span class="missed"><span class="ln">383</span>            $childrenOf[$parent][] = $index;</span>
+<span class="missed"><span class="ln">384</span>            $positionOf[$index]    = count($childrenOf[$parent]) - 1;</span>
+<span class=""><span class="ln">385</span>        }</span>
+<span class=""><span class="ln">386</span></span>
+<span class="missed"><span class="ln">387</span>        $rootChildren = $childrenOf[$rootId] ?? [];</span>
+<span class="missed"><span class="ln">388</span>        $objects      = [</span>
+<span class=""><span class="ln">389</span>            $rootId =&gt; sprintf(</span>
+<span class=""><span class="ln">390</span>                &#039;&lt;&lt; /Type /Outlines /First %d 0 R /Last %d 0 R /Count %d &gt;&gt;&#039;,</span>
+<span class="missed"><span class="ln">391</span>                $ids[$rootChildren[0]],</span>
+<span class="missed"><span class="ln">392</span>                $ids[$rootChildren[count($rootChildren) - 1]],</span>
+<span class="missed"><span class="ln">393</span>                count($this-&gt;bookmarks),</span>
+<span class=""><span class="ln">394</span>            ),</span>
+<span class=""><span class="ln">395</span>        ];</span>
+<span class=""><span class="ln">396</span></span>
+<span class="missed"><span class="ln">397</span>        foreach ($this-&gt;bookmarks as $index =&gt; $entry) {</span>
+<span class="missed"><span class="ln">398</span>            $siblings = $childrenOf[$parentOf[$index]];</span>
+<span class="missed"><span class="ln">399</span>            $position = $positionOf[$index];</span>
+<span class="missed"><span class="ln">400</span>            $kids     = $childrenOf[$ids[$index]] ?? [];</span>
+<span class=""><span class="ln">401</span></span>
+<span class="missed"><span class="ln">402</span>            $object = sprintf(</span>
+<span class=""><span class="ln">403</span>                &#039;&lt;&lt; /Title (%s) /Parent %d 0 R&#039;,</span>
+<span class="missed"><span class="ln">404</span>                $this-&gt;escape($this-&gt;encode($entry[&#039;title&#039;])),</span>
+<span class="missed"><span class="ln">405</span>                $parentOf[$index],</span>
+<span class=""><span class="ln">406</span>            );</span>
+<span class=""><span class="ln">407</span></span>
+<span class="missed"><span class="ln">408</span>            if ($position &gt; 0) {</span>
+<span class="missed"><span class="ln">409</span>                $object .= sprintf(&#039; /Prev %d 0 R&#039;, $ids[$siblings[$position - 1]]);</span>
+<span class=""><span class="ln">410</span>            }</span>
+<span class=""><span class="ln">411</span></span>
+<span class="missed"><span class="ln">412</span>            if ($position &lt; count($siblings) - 1) {</span>
+<span class="missed"><span class="ln">413</span>                $object .= sprintf(&#039; /Next %d 0 R&#039;, $ids[$siblings[$position + 1]]);</span>
+<span class=""><span class="ln">414</span>            }</span>
+<span class=""><span class="ln">415</span></span>
+<span class="missed"><span class="ln">416</span>            if ($kids !== []) {</span>
+<span class=""><span class="ln">417</span>                $object .= sprintf(</span>
+<span class=""><span class="ln">418</span>                    &#039; /First %d 0 R /Last %d 0 R /Count %d&#039;,</span>
+<span class="missed"><span class="ln">419</span>                    $ids[$kids[0]],</span>
+<span class="missed"><span class="ln">420</span>                    $ids[$kids[count($kids) - 1]],</span>
+<span class="missed"><span class="ln">421</span>                    count($kids),</span>
+<span class=""><span class="ln">422</span>                );</span>
+<span class=""><span class="ln">423</span>            }</span>
+<span class=""><span class="ln">424</span></span>
+<span class="missed"><span class="ln">425</span>            $object .= sprintf(&#039; /Dest [%d 0 R /XYZ null null null] &gt;&gt;&#039;, 7 + 2 * $entry[&#039;pageIndex&#039;]);</span>
+<span class=""><span class="ln">426</span></span>
+<span class="missed"><span class="ln">427</span>            $objects[$ids[$index]] = $object;</span>
+<span class=""><span class="ln">428</span>        }</span>
+<span class=""><span class="ln">429</span></span>
+<span class="missed"><span class="ln">430</span>        return $objects;</span>
+<span class=""><span class="ln">431</span>    }</span>
+<span class=""><span class="ln">432</span></span>
+<span class=""><span class="ln">433</span>    // -- Content-stream operators ----------------------------------</span>
+<span class=""><span class="ln">434</span></span>
+<span class=""><span class="ln">435</span>    /**</span>
+<span class=""><span class="ln">436</span>     * @param ?array{float, float, float} $rgb fill color; black when null</span>
+<span class=""><span class="ln">437</span>     */</span>
+<span class=""><span class="ln">438</span>    public function text(float $x, float $baseline, string $font, float $size, string $latin1, ?array $rgb = null): void</span>
+<span class=""><span class="ln">439</span>    {</span>
+<span class="covered"><span class="ln">440</span>        [$red, $green, $blue] = $rgb ?? [0.0, 0.0, 0.0];</span>
+<span class=""><span class="ln">441</span></span>
+<span class="missed"><span class="ln">442</span>        $this-&gt;ops .= sprintf(</span>
+<span class=""><span class="ln">443</span>            &quot;BT %s %s %s rg /%s %s Tf %s %s Td (%s) Tj ET\n&quot;,</span>
+<span class="covered"><span class="ln">444</span>            $this-&gt;number($red),</span>
+<span class="covered"><span class="ln">445</span>            $this-&gt;number($green),</span>
+<span class="covered"><span class="ln">446</span>            $this-&gt;number($blue),</span>
+<span class=""><span class="ln">447</span>            $font,</span>
+<span class="covered"><span class="ln">448</span>            $this-&gt;number($size),</span>
+<span class="covered"><span class="ln">449</span>            $this-&gt;number($x),</span>
+<span class="covered"><span class="ln">450</span>            $this-&gt;number($baseline),</span>
+<span class="covered"><span class="ln">451</span>            $this-&gt;escape($latin1),</span>
+<span class=""><span class="ln">452</span>        );</span>
+<span class=""><span class="ln">453</span>    }</span>
+<span class=""><span class="ln">454</span></span>
+<span class=""><span class="ln">455</span>    /**</span>
+<span class=""><span class="ln">456</span>     * Escapes the PDF literal-string delimiters.</span>
+<span class=""><span class="ln">457</span>     */</span>
+<span class=""><span class="ln">458</span>    public function escape(string $latin1): string</span>
+<span class=""><span class="ln">459</span>    {</span>
+<span class="covered"><span class="ln">460</span>        return str_replace([&#039;\\&#039;, &#039;(&#039;, &#039;)&#039;], [&#039;\\\\&#039;, &#039;\\(&#039;, &#039;\\)&#039;], $latin1);</span>
+<span class=""><span class="ln">461</span>    }</span>
+<span class=""><span class="ln">462</span></span>
+<span class=""><span class="ln">463</span>    public function rule(float $x1, float $y1, float $x2, float $y2): void</span>
+<span class=""><span class="ln">464</span>    {</span>
+<span class="missed"><span class="ln">465</span>        $this-&gt;ops .= sprintf(</span>
+<span class=""><span class="ln">466</span>            &quot;0.5 w 0.75 G %s %s m %s %s l S\n&quot;,</span>
+<span class="covered"><span class="ln">467</span>            $this-&gt;number($x1),</span>
+<span class="covered"><span class="ln">468</span>            $this-&gt;number($y1),</span>
+<span class="covered"><span class="ln">469</span>            $this-&gt;number($x2),</span>
+<span class="covered"><span class="ln">470</span>            $this-&gt;number($y2),</span>
+<span class=""><span class="ln">471</span>        );</span>
+<span class=""><span class="ln">472</span>    }</span>
+<span class=""><span class="ln">473</span></span>
+<span class=""><span class="ln">474</span>    /**</span>
+<span class=""><span class="ln">475</span>     * A filled circle around ($x, $y), four Bézier arcs — the tile</span>
+<span class=""><span class="ln">476</span>     * dot, drawn as a vector instead of leaning on a font&#039;s bullet</span>
+<span class=""><span class="ln">477</span>     * glyph.</span>
+<span class=""><span class="ln">478</span>     *</span>
+<span class=""><span class="ln">479</span>     * @param array{float, float, float} $rgb</span>
+<span class=""><span class="ln">480</span>     */</span>
+<span class=""><span class="ln">481</span>    public function disc(float $x, float $y, float $radius, array $rgb): void</span>
+<span class=""><span class="ln">482</span>    {</span>
+<span class="covered"><span class="ln">483</span>        [$red, $green, $blue] = $rgb;</span>
+<span class="covered"><span class="ln">484</span>        $k                    = 0.5523 * $radius;</span>
+<span class=""><span class="ln">485</span></span>
+<span class="missed"><span class="ln">486</span>        $this-&gt;ops .= sprintf(</span>
+<span class=""><span class="ln">487</span>            &quot;%s %s %s rg %s %s m %s %s %s %s %s %s c %s %s %s %s %s %s c %s %s %s %s %s %s c %s %s %s %s %s %s c f\n&quot;,</span>
+<span class="covered"><span class="ln">488</span>            $this-&gt;number($red),</span>
+<span class="covered"><span class="ln">489</span>            $this-&gt;number($green),</span>
+<span class="covered"><span class="ln">490</span>            $this-&gt;number($blue),</span>
+<span class="covered"><span class="ln">491</span>            $this-&gt;number($x + $radius),</span>
+<span class="covered"><span class="ln">492</span>            $this-&gt;number($y),</span>
+<span class="covered"><span class="ln">493</span>            $this-&gt;number($x + $radius),</span>
+<span class="covered"><span class="ln">494</span>            $this-&gt;number($y + $k),</span>
+<span class="covered"><span class="ln">495</span>            $this-&gt;number($x + $k),</span>
+<span class="covered"><span class="ln">496</span>            $this-&gt;number($y + $radius),</span>
+<span class="covered"><span class="ln">497</span>            $this-&gt;number($x),</span>
+<span class="covered"><span class="ln">498</span>            $this-&gt;number($y + $radius),</span>
+<span class="covered"><span class="ln">499</span>            $this-&gt;number($x - $k),</span>
+<span class="covered"><span class="ln">500</span>            $this-&gt;number($y + $radius),</span>
+<span class="covered"><span class="ln">501</span>            $this-&gt;number($x - $radius),</span>
+<span class="covered"><span class="ln">502</span>            $this-&gt;number($y + $k),</span>
+<span class="covered"><span class="ln">503</span>            $this-&gt;number($x - $radius),</span>
+<span class="covered"><span class="ln">504</span>            $this-&gt;number($y),</span>
+<span class="covered"><span class="ln">505</span>            $this-&gt;number($x - $radius),</span>
+<span class="covered"><span class="ln">506</span>            $this-&gt;number($y - $k),</span>
+<span class="covered"><span class="ln">507</span>            $this-&gt;number($x - $k),</span>
+<span class="covered"><span class="ln">508</span>            $this-&gt;number($y - $radius),</span>
+<span class="covered"><span class="ln">509</span>            $this-&gt;number($x),</span>
+<span class="covered"><span class="ln">510</span>            $this-&gt;number($y - $radius),</span>
+<span class="covered"><span class="ln">511</span>            $this-&gt;number($x + $k),</span>
+<span class="covered"><span class="ln">512</span>            $this-&gt;number($y - $radius),</span>
+<span class="covered"><span class="ln">513</span>            $this-&gt;number($x + $radius),</span>
+<span class="covered"><span class="ln">514</span>            $this-&gt;number($y - $k),</span>
+<span class="covered"><span class="ln">515</span>            $this-&gt;number($x + $radius),</span>
+<span class="covered"><span class="ln">516</span>            $this-&gt;number($y),</span>
+<span class=""><span class="ln">517</span>        );</span>
+<span class=""><span class="ln">518</span>    }</span>
+<span class=""><span class="ln">519</span></span>
+<span class=""><span class="ln">520</span>    /**</span>
+<span class=""><span class="ln">521</span>     * A filled rectangle; $y is its bottom edge.</span>
+<span class=""><span class="ln">522</span>     *</span>
+<span class=""><span class="ln">523</span>     * @param array{float, float, float} $rgb</span>
+<span class=""><span class="ln">524</span>     */</span>
+<span class=""><span class="ln">525</span>    public function box(float $x, float $y, float $width, float $height, array $rgb): void</span>
+<span class=""><span class="ln">526</span>    {</span>
+<span class="covered"><span class="ln">527</span>        [$red, $green, $blue] = $rgb;</span>
+<span class=""><span class="ln">528</span></span>
+<span class="missed"><span class="ln">529</span>        $this-&gt;ops .= sprintf(</span>
+<span class=""><span class="ln">530</span>            &quot;%s %s %s rg %s %s %s %s re f\n&quot;,</span>
+<span class="covered"><span class="ln">531</span>            $this-&gt;number($red),</span>
+<span class="covered"><span class="ln">532</span>            $this-&gt;number($green),</span>
+<span class="covered"><span class="ln">533</span>            $this-&gt;number($blue),</span>
+<span class="covered"><span class="ln">534</span>            $this-&gt;number($x),</span>
+<span class="covered"><span class="ln">535</span>            $this-&gt;number($y),</span>
+<span class="covered"><span class="ln">536</span>            $this-&gt;number($width),</span>
+<span class="covered"><span class="ln">537</span>            $this-&gt;number($height),</span>
+<span class=""><span class="ln">538</span>        );</span>
+<span class=""><span class="ln">539</span>    }</span>
+<span class=""><span class="ln">540</span></span>
+<span class=""><span class="ln">541</span>    public function number(float $value): string</span>
+<span class=""><span class="ln">542</span>    {</span>
+<span class="covered"><span class="ln">543</span>        return sprintf(&#039;%.2f&#039;, $value);</span>
+<span class=""><span class="ln">544</span>    }</span>
+<span class=""><span class="ln">545</span></span>
+<span class=""><span class="ln">546</span>    // -- Text metrics and encoding ---------------------------------</span>
+<span class=""><span class="ln">547</span></span>
+<span class=""><span class="ln">548</span>    /**</span>
+<span class=""><span class="ln">549</span>     * UTF-8 to the fonts&#039; WinAnsi encoding: Latin-1 passes through,</span>
+<span class=""><span class="ln">550</span>     * the common typographic points map to their Windows-1252 slots,</span>
+<span class=""><span class="ln">551</span>     * anything else degrades to &#039;?&#039;. Decoded by hand — no ext-iconv,</span>
+<span class=""><span class="ln">552</span>     * no ext-mbstring.</span>
+<span class=""><span class="ln">553</span>     */</span>
+<span class=""><span class="ln">554</span>    public function encode(string $utf8): string</span>
+<span class=""><span class="ln">555</span>    {</span>
+<span class="covered"><span class="ln">556</span>        $out    = &#039;&#039;;</span>
+<span class="covered"><span class="ln">557</span>        $length = strlen($utf8);</span>
+<span class=""><span class="ln">558</span></span>
+<span class="covered"><span class="ln">559</span>        for ($i = 0; $i &lt; $length; $i++) {</span>
+<span class="covered"><span class="ln">560</span>            $byte = ord($utf8[$i]);</span>
+<span class=""><span class="ln">561</span></span>
+<span class="covered"><span class="ln">562</span>            if ($byte &lt; 0x80) {</span>
+<span class="covered"><span class="ln">563</span>                $code = $byte;</span>
+<span class="missed"><span class="ln">564</span>            } elseif (($byte &amp; 0xE0) === 0xC0) {</span>
+<span class="missed"><span class="ln">565</span>                $code = (($byte &amp; 0x1F) &lt;&lt; 6) | (ord(($utf8[++$i] ?? &quot;\0&quot;)[0]) &amp; 0x3F);</span>
+<span class="missed"><span class="ln">566</span>            } elseif (($byte &amp; 0xF0) === 0xE0) {</span>
+<span class="missed"><span class="ln">567</span>                $code = (($byte &amp; 0x0F) &lt;&lt; 12) | ((ord(($utf8[++$i] ?? &quot;\0&quot;)[0]) &amp; 0x3F) &lt;&lt; 6) | (ord(($utf8[++$i] ?? &quot;\0&quot;)[0]) &amp; 0x3F);</span>
+<span class=""><span class="ln">568</span>            } else {</span>
+<span class="missed"><span class="ln">569</span>                $code = 0x10000;</span>
+<span class="missed"><span class="ln">570</span>                $i += 3;</span>
+<span class=""><span class="ln">571</span>            }</span>
+<span class=""><span class="ln">572</span></span>
+<span class=""><span class="ln">573</span>            $out .= match (true) {</span>
+<span class="covered"><span class="ln">574</span>                $code === 0x2018 =&gt; chr(0x91),</span>
+<span class="covered"><span class="ln">575</span>                $code === 0x2019 =&gt; chr(0x92),</span>
+<span class="covered"><span class="ln">576</span>                $code === 0x201C =&gt; chr(0x93),</span>
+<span class="covered"><span class="ln">577</span>                $code === 0x201D =&gt; chr(0x94),</span>
+<span class="covered"><span class="ln">578</span>                $code === 0x2013 =&gt; chr(0x96),</span>
+<span class="covered"><span class="ln">579</span>                $code === 0x2014 =&gt; chr(0x97),</span>
+<span class="covered"><span class="ln">580</span>                $code === 0x2026 =&gt; chr(0x85),</span>
+<span class="covered"><span class="ln">581</span>                $code &lt; 0x20     =&gt; &#039; &#039;,</span>
+<span class="covered"><span class="ln">582</span>                $code &gt; 0xFF     =&gt; &#039;?&#039;,</span>
+<span class="covered"><span class="ln">583</span>                default          =&gt; chr($code),</span>
+<span class=""><span class="ln">584</span>            };</span>
+<span class=""><span class="ln">585</span>        }</span>
+<span class=""><span class="ln">586</span></span>
+<span class="covered"><span class="ln">587</span>        return $out;</span>
+<span class=""><span class="ln">588</span>    }</span>
+<span class=""><span class="ln">589</span></span>
+<span class=""><span class="ln">590</span>    /**</span>
+<span class=""><span class="ln">591</span>     * The rendered width of already-encoded text, in points.</span>
+<span class=""><span class="ln">592</span>     */</span>
+<span class=""><span class="ln">593</span>    public function measure(string $latin1, string $font, float $size): float</span>
+<span class=""><span class="ln">594</span>    {</span>
+<span class="covered"><span class="ln">595</span>        if ($font === self::COURIER) {</span>
+<span class="covered"><span class="ln">596</span>            return strlen($latin1) * 600 * $size / 1000.0;</span>
+<span class=""><span class="ln">597</span>        }</span>
+<span class=""><span class="ln">598</span></span>
+<span class="covered"><span class="ln">599</span>        $widths  = $font === self::BOLD ? self::BOLD_WIDTHS : self::HELVETICA_WIDTHS;</span>
+<span class="covered"><span class="ln">600</span>        $default = $font === self::BOLD ? 611 : 556;</span>
+<span class="covered"><span class="ln">601</span>        $units   = 0;</span>
+<span class=""><span class="ln">602</span></span>
+<span class="covered"><span class="ln">603</span>        foreach (str_split($latin1) as $character) {</span>
+<span class="covered"><span class="ln">604</span>            $code = ord($character[0]);</span>
+<span class="covered"><span class="ln">605</span>            $units += $widths[$code - 32] ?? $default;</span>
+<span class=""><span class="ln">606</span>        }</span>
+<span class=""><span class="ln">607</span></span>
+<span class="covered"><span class="ln">608</span>        return $units * $size / 1000.0;</span>
+<span class=""><span class="ln">609</span>    }</span>
+<span class=""><span class="ln">610</span></span>
+<span class=""><span class="ln">611</span>    /**</span>
+<span class=""><span class="ln">612</span>     * Splits already-encoded text into lines that fit — the report</span>
+<span class=""><span class="ln">613</span>     * never abbreviates with an ellipsis; names wrap instead. An</span>
+<span class=""><span class="ln">614</span>     * overlong single word hard-splits.</span>
+<span class=""><span class="ln">615</span>     *</span>
+<span class=""><span class="ln">616</span>     * @return non-empty-list&lt;string&gt;</span>
+<span class=""><span class="ln">617</span>     */</span>
+<span class=""><span class="ln">618</span>    public function flow(string $latin1, float $width, string $font, float $size): array</span>
+<span class=""><span class="ln">619</span>    {</span>
+<span class="covered"><span class="ln">620</span>        $lines   = [];</span>
+<span class="covered"><span class="ln">621</span>        $current = &#039;&#039;;</span>
+<span class=""><span class="ln">622</span></span>
+<span class="covered"><span class="ln">623</span>        foreach (explode(&#039; &#039;, $latin1) as $word) {</span>
+<span class="covered"><span class="ln">624</span>            $candidate = $current === &#039;&#039; ? $word : $current . &#039; &#039; . $word;</span>
+<span class=""><span class="ln">625</span></span>
+<span class="covered"><span class="ln">626</span>            if ($this-&gt;measure($candidate, $font, $size) &lt;= $width) {</span>
+<span class="covered"><span class="ln">627</span>                $current = $candidate;</span>
+<span class=""><span class="ln">628</span></span>
+<span class="covered"><span class="ln">629</span>                continue;</span>
+<span class=""><span class="ln">630</span>            }</span>
+<span class=""><span class="ln">631</span></span>
+<span class="missed"><span class="ln">632</span>            if ($current !== &#039;&#039;) {</span>
+<span class="missed"><span class="ln">633</span>                $lines[] = $current;</span>
+<span class=""><span class="ln">634</span>            }</span>
+<span class=""><span class="ln">635</span></span>
+<span class="missed"><span class="ln">636</span>            while ($this-&gt;measure($word, $font, $size) &gt; $width) {</span>
+<span class="missed"><span class="ln">637</span>                $kept = &#039;&#039;;</span>
+<span class=""><span class="ln">638</span></span>
+<span class="missed"><span class="ln">639</span>                foreach (str_split($word) as $character) {</span>
+<span class="missed"><span class="ln">640</span>                    if ($kept !== &#039;&#039; &amp;&amp; $this-&gt;measure($kept . $character, $font, $size) &gt; $width) {</span>
+<span class="missed"><span class="ln">641</span>                        break;</span>
+<span class=""><span class="ln">642</span>                    }</span>
+<span class=""><span class="ln">643</span></span>
+<span class="missed"><span class="ln">644</span>                    $kept .= $character;</span>
+<span class=""><span class="ln">645</span>                }</span>
+<span class=""><span class="ln">646</span></span>
+<span class="missed"><span class="ln">647</span>                $lines[] = $kept;</span>
+<span class="missed"><span class="ln">648</span>                $word    = substr($word, strlen($kept));</span>
+<span class=""><span class="ln">649</span>            }</span>
+<span class=""><span class="ln">650</span></span>
+<span class="missed"><span class="ln">651</span>            $current = $word;</span>
+<span class=""><span class="ln">652</span>        }</span>
+<span class=""><span class="ln">653</span></span>
+<span class="covered"><span class="ln">654</span>        $lines[] = $current;</span>
+<span class=""><span class="ln">655</span></span>
+<span class="covered"><span class="ln">656</span>        return $lines;</span>
+<span class=""><span class="ln">657</span>    }</span>
+<span class=""><span class="ln">658</span></span>
+<span class=""><span class="ln">659</span>    /**</span>
+<span class=""><span class="ln">660</span>     * Failure text as encoded Courier lines: newlines respected, long</span>
+<span class=""><span class="ln">661</span>     * lines chunked at the fixed-pitch column budget.</span>
+<span class=""><span class="ln">662</span>     *</span>
+<span class=""><span class="ln">663</span>     * @return list&lt;string&gt;</span>
+<span class=""><span class="ln">664</span>     */</span>
+<span class=""><span class="ln">665</span>    public function wrap(string $utf8, float $size, float $width): array</span>
+<span class=""><span class="ln">666</span>    {</span>
+<span class="covered"><span class="ln">667</span>        $columns = max(1, (int) floor($width / (600 * $size / 1000.0)));</span>
+<span class="covered"><span class="ln">668</span>        $rows    = [];</span>
+<span class=""><span class="ln">669</span></span>
+<span class="covered"><span class="ln">670</span>        foreach (explode(&quot;\n&quot;, str_replace(&quot;\r\n&quot;, &quot;\n&quot;, $utf8)) as $line) {</span>
+<span class="covered"><span class="ln">671</span>            $encoded = $this-&gt;encode($line);</span>
+<span class=""><span class="ln">672</span></span>
+<span class="covered"><span class="ln">673</span>            foreach ($encoded === &#039;&#039; ? [&#039;&#039;] : str_split($encoded, $columns) as $chunk) {</span>
+<span class="covered"><span class="ln">674</span>                $rows[] = $chunk;</span>
+<span class=""><span class="ln">675</span>            }</span>
+<span class=""><span class="ln">676</span>        }</span>
+<span class=""><span class="ln">677</span></span>
+<span class="covered"><span class="ln">678</span>        return $rows;</span>
+<span class=""><span class="ln">679</span>    }</span>
+<span class=""><span class="ln">680</span></span>
+<span class=""><span class="ln">681</span>    // -- The document ----------------------------------------------</span>
+<span class=""><span class="ln">682</span></span>
+<span class=""><span class="ln">683</span>    /**</span>
+<span class=""><span class="ln">684</span>     * The PDF file: header, objects, cross-reference table, trailer.</span>
+<span class=""><span class="ln">685</span>     * Objects 1–6 are fixed (catalog, page tree, three fonts, info);</span>
+<span class=""><span class="ln">686</span>     * each page then contributes a page object and a content stream.</span>
+<span class=""><span class="ln">687</span>     * Finalizes the last in-progress page itself, so a caller never</span>
+<span class=""><span class="ln">688</span>     * has to touch `$pages`/`$ops` directly.</span>
+<span class=""><span class="ln">689</span>     */</span>
+<span class=""><span class="ln">690</span>    public function document(string $title, string $author, string $producer, ?DateTimeImmutable $createdAt): string</span>
+<span class=""><span class="ln">691</span>    {</span>
+<span class="missed"><span class="ln">692</span>        $this-&gt;pages[]      = $this-&gt;ops;</span>
+<span class="missed"><span class="ln">693</span>        $this-&gt;pageImages[] = $this-&gt;currentPageImages;</span>
+<span class=""><span class="ln">694</span></span>
+<span class="missed"><span class="ln">695</span>        $count = count($this-&gt;pages);</span>
+<span class="missed"><span class="ln">696</span>        $kids  = &#039;&#039;;</span>
+<span class=""><span class="ln">697</span></span>
+<span class="missed"><span class="ln">698</span>        for ($i = 0; $i &lt; $count; $i++) {</span>
+<span class="missed"><span class="ln">699</span>            $kids .= sprintf(&#039;%d 0 R &#039;, 7 + 2 * $i);</span>
+<span class=""><span class="ln">700</span>        }</span>
+<span class=""><span class="ln">701</span></span>
+<span class=""><span class="ln">702</span>        // Image XObjects follow every page/content object pair, in</span>
+<span class=""><span class="ln">703</span>        // registration order — their ids only depend on $count, known</span>
+<span class=""><span class="ln">704</span>        // up front, so pages can reference them within the same loop</span>
+<span class=""><span class="ln">705</span>        // that builds the page objects below.</span>
+<span class="missed"><span class="ln">706</span>        $imageBaseId   = 7 + 2 * $count;</span>
+<span class="missed"><span class="ln">707</span>        $imageIdByName = [];</span>
+<span class=""><span class="ln">708</span></span>
+<span class="missed"><span class="ln">709</span>        foreach (array_keys($this-&gt;images) as $index =&gt; $name) {</span>
+<span class="missed"><span class="ln">710</span>            $imageIdByName[$name] = $imageBaseId + $index;</span>
+<span class=""><span class="ln">711</span>        }</span>
+<span class=""><span class="ln">712</span></span>
+<span class=""><span class="ln">713</span>        // The outline (bookmark) tree follows every image XObject, its</span>
+<span class=""><span class="ln">714</span>        // own id block sized by $bookmarks alone — known up front, same</span>
+<span class=""><span class="ln">715</span>        // reasoning as $imageBaseId above.</span>
+<span class="missed"><span class="ln">716</span>        $outlineRootId  = $imageBaseId + count($this-&gt;images);</span>
+<span class="missed"><span class="ln">717</span>        $outlineObjects = $this-&gt;outlineObjects($outlineRootId);</span>
+<span class=""><span class="ln">718</span></span>
+<span class=""><span class="ln">719</span>        // Archival metadata, all derived from the configuration and</span>
+<span class=""><span class="ln">720</span>        // the event stream — never from the wall clock, so the same</span>
+<span class=""><span class="ln">721</span>        // run still produces byte-identical output.</span>
+<span class="missed"><span class="ln">722</span>        $info = sprintf(</span>
+<span class=""><span class="ln">723</span>            &#039;&lt;&lt; /Title (%s) /Author (%s) /Producer (%s)&#039;,</span>
+<span class="missed"><span class="ln">724</span>            $this-&gt;escape($this-&gt;encode($title)),</span>
+<span class="missed"><span class="ln">725</span>            $this-&gt;escape($this-&gt;encode($author)),</span>
+<span class="missed"><span class="ln">726</span>            $producer,</span>
+<span class=""><span class="ln">727</span>        );</span>
+<span class=""><span class="ln">728</span></span>
+<span class="missed"><span class="ln">729</span>        if ($createdAt instanceof DateTimeImmutable) {</span>
+<span class=""><span class="ln">730</span>            $info .= sprintf(</span>
+<span class=""><span class="ln">731</span>                &quot; /CreationDate (D:%s%s&#039;)&quot;,</span>
+<span class="missed"><span class="ln">732</span>                $createdAt-&gt;format(&#039;YmdHis&#039;),</span>
+<span class="missed"><span class="ln">733</span>                str_replace(&#039;:&#039;, &quot;&#039;&quot;, $createdAt-&gt;format(&#039;P&#039;)),</span>
+<span class=""><span class="ln">734</span>            );</span>
+<span class=""><span class="ln">735</span>        }</span>
+<span class=""><span class="ln">736</span></span>
+<span class="missed"><span class="ln">737</span>        $info .= &#039; &gt;&gt;&#039;;</span>
+<span class=""><span class="ln">738</span></span>
+<span class="missed"><span class="ln">739</span>        $objects = [</span>
+<span class=""><span class="ln">740</span>            1 =&gt; sprintf(</span>
+<span class=""><span class="ln">741</span>                &#039;&lt;&lt; /Type /Catalog /Pages 2 0 R%s &gt;&gt;&#039;,</span>
+<span class="missed"><span class="ln">742</span>                $outlineObjects === [] ? &#039;&#039; : sprintf(&#039; /Outlines %d 0 R&#039;, $outlineRootId),</span>
+<span class=""><span class="ln">743</span>            ),</span>
+<span class="missed"><span class="ln">744</span>            2 =&gt; sprintf(&#039;&lt;&lt; /Type /Pages /Kids [ %s] /Count %d &gt;&gt;&#039;, $kids, $count),</span>
+<span class="missed"><span class="ln">745</span>            3 =&gt; &#039;&lt;&lt; /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding &gt;&gt;&#039;,</span>
+<span class="missed"><span class="ln">746</span>            4 =&gt; &#039;&lt;&lt; /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding &gt;&gt;&#039;,</span>
+<span class="missed"><span class="ln">747</span>            5 =&gt; &#039;&lt;&lt; /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding &gt;&gt;&#039;,</span>
+<span class="missed"><span class="ln">748</span>            6 =&gt; $info,</span>
+<span class=""><span class="ln">749</span>        ];</span>
+<span class=""><span class="ln">750</span></span>
+<span class="missed"><span class="ln">751</span>        $brand = $this-&gt;encode($producer);</span>
+<span class=""><span class="ln">752</span></span>
+<span class="missed"><span class="ln">753</span>        foreach ($this-&gt;pages as $i =&gt; $content) {</span>
+<span class=""><span class="ln">754</span>            // The footer sits under a hairline rule, clear of the</span>
+<span class=""><span class="ln">755</span>            // content area ensure() protects.</span>
+<span class="missed"><span class="ln">756</span>            $footer = $this-&gt;encode(sprintf(&#039;Page %d of %d&#039;, $i + 1, $count));</span>
+<span class="missed"><span class="ln">757</span>            $stream = $content . sprintf(</span>
+<span class=""><span class="ln">758</span>                &quot;0.5 w 0.75 G %s 44.00 m %s 44.00 l S\n&quot;,</span>
+<span class="missed"><span class="ln">759</span>                $this-&gt;number(self::MARGIN),</span>
+<span class="missed"><span class="ln">760</span>                $this-&gt;number(self::WIDTH - self::MARGIN),</span>
+<span class=""><span class="ln">761</span>            ) . sprintf(</span>
+<span class=""><span class="ln">762</span>                &quot;BT 0.46 0.46 0.46 rg /F1 8.00 Tf %s 30.00 Td (%s) Tj ET\n&quot;,</span>
+<span class="missed"><span class="ln">763</span>                $this-&gt;number(self::MARGIN),</span>
+<span class="missed"><span class="ln">764</span>                $brand,</span>
+<span class=""><span class="ln">765</span>            ) . sprintf(</span>
+<span class=""><span class="ln">766</span>                &quot;BT 0.46 0.46 0.46 rg /F1 8.00 Tf %s 30.00 Td (%s) Tj ET\n&quot;,</span>
+<span class="missed"><span class="ln">767</span>                $this-&gt;number(self::WIDTH - self::MARGIN - $this-&gt;measure($footer, self::HELVETICA, 8.0)),</span>
+<span class="missed"><span class="ln">768</span>                $footer,</span>
+<span class=""><span class="ln">769</span>            );</span>
+<span class=""><span class="ln">770</span></span>
+<span class="missed"><span class="ln">771</span>            $xobject = &#039;&#039;;</span>
+<span class=""><span class="ln">772</span></span>
+<span class="missed"><span class="ln">773</span>            if ($this-&gt;pageImages[$i] !== []) {</span>
+<span class="missed"><span class="ln">774</span>                $entries = &#039;&#039;;</span>
+<span class=""><span class="ln">775</span></span>
+<span class="missed"><span class="ln">776</span>                foreach (array_keys($this-&gt;pageImages[$i]) as $name) {</span>
+<span class="missed"><span class="ln">777</span>                    $entries .= sprintf(&#039;/%s %d 0 R &#039;, $name, $imageIdByName[$name]);</span>
+<span class=""><span class="ln">778</span>                }</span>
+<span class=""><span class="ln">779</span></span>
+<span class="missed"><span class="ln">780</span>                $xobject = sprintf(&#039; /XObject &lt;&lt; %s&gt;&gt;&#039;, $entries);</span>
+<span class=""><span class="ln">781</span>            }</span>
+<span class=""><span class="ln">782</span></span>
+<span class="missed"><span class="ln">783</span>            $objects[7 + 2 * $i] = sprintf(</span>
+<span class=""><span class="ln">784</span>                &#039;&lt;&lt; /Type /Page /Parent 2 0 R /MediaBox [0 0 %s %s] /Resources &lt;&lt; /Font &lt;&lt; /F1 3 0 R /F2 4 0 R /F3 5 0 R &gt;&gt;%s &gt;&gt; /Contents %d 0 R &gt;&gt;&#039;,</span>
+<span class="missed"><span class="ln">785</span>                $this-&gt;number(self::WIDTH),</span>
+<span class="missed"><span class="ln">786</span>                $this-&gt;number(self::HEIGHT),</span>
+<span class=""><span class="ln">787</span>                $xobject,</span>
+<span class="missed"><span class="ln">788</span>                8 + 2 * $i,</span>
+<span class=""><span class="ln">789</span>            );</span>
+<span class="missed"><span class="ln">790</span>            $objects[8 + 2 * $i] = sprintf(</span>
+<span class=""><span class="ln">791</span>                &quot;&lt;&lt; /Length %d &gt;&gt;\nstream\n%sendstream&quot;,</span>
+<span class="missed"><span class="ln">792</span>                strlen($stream),</span>
+<span class="missed"><span class="ln">793</span>                $stream,</span>
+<span class=""><span class="ln">794</span>            );</span>
+<span class=""><span class="ln">795</span>        }</span>
+<span class=""><span class="ln">796</span></span>
+<span class="missed"><span class="ln">797</span>        foreach ($this-&gt;images as $name =&gt; $image) {</span>
+<span class="missed"><span class="ln">798</span>            $decode = $image[&#039;invert&#039;] ? &#039; /Decode [1 0 1 0 1 0 1 0]&#039; : &#039;&#039;;</span>
+<span class=""><span class="ln">799</span></span>
+<span class="missed"><span class="ln">800</span>            $objects[$imageIdByName[$name]] = sprintf(</span>
+<span class=""><span class="ln">801</span>                &quot;&lt;&lt; /Type /XObject /Subtype /Image /Width %d /Height %d /ColorSpace /%s /BitsPerComponent 8 /Filter /DCTDecode%s /Length %d &gt;&gt;\nstream\n%sendstream&quot;,</span>
+<span class="missed"><span class="ln">802</span>                $image[&#039;width&#039;],</span>
+<span class="missed"><span class="ln">803</span>                $image[&#039;height&#039;],</span>
+<span class="missed"><span class="ln">804</span>                $image[&#039;colorSpace&#039;],</span>
+<span class=""><span class="ln">805</span>                $decode,</span>
+<span class="missed"><span class="ln">806</span>                strlen($image[&#039;data&#039;]),</span>
+<span class="missed"><span class="ln">807</span>                $image[&#039;data&#039;],</span>
+<span class=""><span class="ln">808</span>            );</span>
+<span class=""><span class="ln">809</span>        }</span>
+<span class=""><span class="ln">810</span></span>
+<span class="missed"><span class="ln">811</span>        foreach ($outlineObjects as $id =&gt; $object) {</span>
+<span class="missed"><span class="ln">812</span>            $objects[$id] = $object;</span>
+<span class=""><span class="ln">813</span>        }</span>
+<span class=""><span class="ln">814</span></span>
+<span class="missed"><span class="ln">815</span>        $body    = &quot;%PDF-1.4\n%\xE2\xE3\xCF\xD3\n&quot;;</span>
+<span class="missed"><span class="ln">816</span>        $offsets = [];</span>
+<span class=""><span class="ln">817</span></span>
+<span class="missed"><span class="ln">818</span>        foreach ($objects as $id =&gt; $object) {</span>
+<span class="missed"><span class="ln">819</span>            $offsets[$id] = strlen($body);</span>
+<span class="missed"><span class="ln">820</span>            $body .= sprintf(&quot;%d 0 obj\n%s\nendobj\n&quot;, $id, $object);</span>
+<span class=""><span class="ln">821</span>        }</span>
+<span class=""><span class="ln">822</span></span>
+<span class="missed"><span class="ln">823</span>        $start = strlen($body);</span>
+<span class="missed"><span class="ln">824</span>        $body .= sprintf(&quot;xref\n0 %d\n0000000000 65535 f \n&quot;, count($objects) + 1);</span>
+<span class=""><span class="ln">825</span></span>
+<span class="missed"><span class="ln">826</span>        foreach ($offsets as $offset) {</span>
+<span class="missed"><span class="ln">827</span>            $body .= sprintf(&quot;%010d 00000 n \n&quot;, $offset);</span>
+<span class=""><span class="ln">828</span>        }</span>
+<span class=""><span class="ln">829</span></span>
+<span class=""><span class="ln">830</span>        return $body . sprintf(</span>
+<span class=""><span class="ln">831</span>            &quot;trailer\n&lt;&lt; /Size %d /Root 1 0 R /Info 6 0 R &gt;&gt;\nstartxref\n%d\n%%%%EOF\n&quot;,</span>
+<span class="missed"><span class="ln">832</span>            count($objects) + 1,</span>
+<span class="missed"><span class="ln">833</span>            $start,</span>
+<span class=""><span class="ln">834</span>        );</span>
+<span class=""><span class="ln">835</span>    }</span>
+<span class=""><span class="ln">836</span>}</span>
+<span class="missed"><span class="ln">837</span></span>
+</pre>
+</body>
+</html>

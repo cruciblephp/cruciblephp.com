@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Configuration/Builder.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/Configuration/Builder.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Configuration;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use LucianoPereira\Crucible\Browser\BrowserConfiguration;</span>
+<span class=""><span class="ln">14</span>use LucianoPereira\Crucible\Browser\BrowserEngine;</span>
+<span class=""><span class="ln">15</span>use LucianoPereira\Crucible\Exceptions\ConfigurationException;</span>
+<span class=""><span class="ln">16</span>use LucianoPereira\Crucible\Extension\CommandGate;</span>
+<span class=""><span class="ln">17</span>use LucianoPereira\Crucible\Extension\Extension;</span>
+<span class=""><span class="ln">18</span>use LucianoPereira\Crucible\Filesystem\WorkingDirectory;</span>
+<span class=""><span class="ln">19</span>use LucianoPereira\Crucible\Impact\ImpactRule;</span>
+<span class=""><span class="ln">20</span>use LucianoPereira\Crucible\Reporting\ConsoleReporter;</span>
+<span class=""><span class="ln">21</span>use LucianoPereira\Crucible\Reporting\MapView;</span>
+<span class=""><span class="ln">22</span>use LucianoPereira\Crucible\Reporting\ReportFormat\Formats\{JsonReportFormat, MarkdownReportFormat, PdfReportFormat, SarifReportFormat};</span>
+<span class=""><span class="ln">23</span>use LucianoPereira\Crucible\Reporting\Subscriber\Subscribers\JUnitSubscriber;</span>
+<span class=""><span class="ln">24</span>use LucianoPereira\Crucible\Reporting\Subscriber\Subscribers\OtrSubscriber;</span>
+<span class=""><span class="ln">25</span>use LucianoPereira\Crucible\Reporting\Subscriber\Subscribers\TestDoxHtmlSubscriber;</span>
+<span class=""><span class="ln">26</span>use LucianoPereira\Crucible\Reporting\Subscriber\Subscribers\TestDoxSummarySubscriber;</span>
+<span class=""><span class="ln">27</span>use LucianoPereira\Crucible\Reporting\Subscriber\Subscribers\TestDoxTextSubscriber;</span>
+<span class=""><span class="ln">28</span>use LucianoPereira\Crucible\Reporting\TeamCityReporter;</span>
+<span class=""><span class="ln">29</span>use LucianoPereira\Crucible\Reporting\TestDoxReporter;</span>
+<span class=""><span class="ln">30</span>use LucianoPereira\Crucible\Runner\Backoff;</span>
+<span class=""><span class="ln">31</span>use LucianoPereira\Crucible\Runner\RetryPolicy;</span>
+<span class=""><span class="ln">32</span>use LucianoPereira\Crucible\Types\TypeTestSuite;</span>
+<span class=""><span class="ln">33</span>use LucianoPereira\Crucible\Vitest\VitestSuite;</span>
+<span class=""><span class="ln">34</span></span>
+<span class=""><span class="ln">35</span>use function array_is_list;</span>
+<span class=""><span class="ln">36</span>use function array_values;</span>
+<span class=""><span class="ln">37</span>use function is_string;</span>
+<span class=""><span class="ln">38</span>use function sprintf;</span>
+<span class=""><span class="ln">39</span></span>
+<span class=""><span class="ln">40</span>/**</span>
+<span class=""><span class="ln">41</span> * Fluent builder returned by Crucible::configure() inside a project&#039;s</span>
+<span class=""><span class="ln">42</span> * crucible.php file. Every method maps 1:1 to a phpunit.xml element or</span>
+<span class=""><span class="ln">43</span> * attribute; the mapping is documented per method so migration from</span>
+<span class=""><span class="ln">44</span> * an existing phpunit.xml is mechanical.</span>
+<span class=""><span class="ln">45</span> */</span>
+<span class=""><span class="ln">46</span>final class Builder</span>
+<span class=""><span class="ln">47</span>{</span>
+<span class=""><span class="ln">48</span>    /** @var list&lt;TestSuite&gt; */</span>
+<span class=""><span class="ln">49</span>    private array $testSuites = [];</span>
+<span class=""><span class="ln">50</span></span>
+<span class=""><span class="ln">51</span>    private Source $source;</span>
+<span class=""><span class="ln">52</span>    private ?string $bootstrap = null;</span>
+<span class=""><span class="ln">53</span>    /** @var ?non-empty-string */</span>
+<span class=""><span class="ln">54</span>    private ?string $reportTitle = null;</span>
+<span class=""><span class="ln">55</span>    /** @var non-empty-string */</span>
+<span class=""><span class="ln">56</span>    private string $cacheDirectory         = &#039;.crucible.cache&#039;;</span>
+<span class=""><span class="ln">57</span>    private bool $cacheResult              = true;</span>
+<span class=""><span class="ln">58</span>    private bool $colors                   = false;</span>
+<span class=""><span class="ln">59</span>    private ExecutionOrder $executionOrder = ExecutionOrder::Declared;</span>
+<span class=""><span class="ln">60</span></span>
+<span class=""><span class="ln">61</span>    private bool $failOnDeprecation         = false;</span>
+<span class=""><span class="ln">62</span>    private bool $failOnIncomplete          = false;</span>
+<span class=""><span class="ln">63</span>    private bool $failOnNotice              = false;</span>
+<span class=""><span class="ln">64</span>    private bool $failOnRisky               = false;</span>
+<span class=""><span class="ln">65</span>    private bool $failOnSkipped             = false;</span>
+<span class=""><span class="ln">66</span>    private bool $failOnWarning             = false;</span>
+<span class=""><span class="ln">67</span>    private bool $failOnDirectDeprecation   = false;</span>
+<span class=""><span class="ln">68</span>    private bool $failOnIndirectDeprecation = false;</span>
+<span class=""><span class="ln">69</span>    private bool $failOnSelfDeprecation     = false;</span>
+<span class=""><span class="ln">70</span>    private bool $failOnEmptyTestSuite      = true;</span>
+<span class=""><span class="ln">71</span>    private bool $stopOnDefect              = false;</span>
+<span class=""><span class="ln">72</span>    private bool $stopOnError               = false;</span>
+<span class=""><span class="ln">73</span>    private bool $stopOnFailure             = false;</span>
+<span class=""><span class="ln">74</span>    private bool $stopOnRisky               = false;</span>
+<span class=""><span class="ln">75</span>    private bool $stopOnSkipped             = false;</span>
+<span class=""><span class="ln">76</span>    private bool $stopOnIncomplete          = false;</span>
+<span class=""><span class="ln">77</span>    private bool $stopOnDeprecation         = false;</span>
+<span class=""><span class="ln">78</span>    private bool $stopOnNotice              = false;</span>
+<span class=""><span class="ln">79</span>    private bool $stopOnWarning             = false;</span>
+<span class=""><span class="ln">80</span>    private bool $testdox                   = false;</span>
+<span class=""><span class="ln">81</span>    private ?bool $phpunitCompatibility     = null;</span>
+<span class=""><span class="ln">82</span>    /** @var list&lt;Quirk&gt; */</span>
+<span class=""><span class="ln">83</span>    private array $quirks                           = [];</span>
+<span class=""><span class="ln">84</span>    private bool $backupGlobals                     = false;</span>
+<span class=""><span class="ln">85</span>    private bool $backupStaticProperties            = false;</span>
+<span class=""><span class="ln">86</span>    private bool $beStrictAboutChangesToGlobalState = false;</span>
+<span class=""><span class="ln">87</span></span>
+<span class=""><span class="ln">88</span>    private bool $requireCoverageMetadata = false;</span>
+<span class=""><span class="ln">89</span></span>
+<span class=""><span class="ln">90</span>    private bool $beStrictAboutCoverageMetadata = false;</span>
+<span class=""><span class="ln">91</span>    private ?int $maxSelfDeprecations           = null;</span>
+<span class=""><span class="ln">92</span>    private ?int $maxDirectDeprecations         = null;</span>
+<span class=""><span class="ln">93</span>    private ?int $maxIndirectDeprecations       = null;</span>
+<span class=""><span class="ln">94</span></span>
+<span class=""><span class="ln">95</span>    private RetryPolicy $retries;</span>
+<span class=""><span class="ln">96</span></span>
+<span class=""><span class="ln">97</span>    private BrowserConfiguration $browser;</span>
+<span class=""><span class="ln">98</span></span>
+<span class=""><span class="ln">99</span>    /** @var list&lt;non-empty-string&gt; */</span>
+<span class=""><span class="ln">100</span>    private array $quarantine = [];</span>
+<span class=""><span class="ln">101</span></span>
+<span class=""><span class="ln">102</span>    /** @var array&lt;non-empty-string, string&gt; */</span>
+<span class=""><span class="ln">103</span>    private array $ini = [];</span>
+<span class=""><span class="ln">104</span></span>
+<span class=""><span class="ln">105</span>    /** @var array&lt;non-empty-string, string&gt; */</span>
+<span class=""><span class="ln">106</span>    private array $env = [];</span>
+<span class=""><span class="ln">107</span></span>
+<span class=""><span class="ln">108</span>    /** @var list&lt;CommandGate&gt; */</span>
+<span class=""><span class="ln">109</span>    private array $commandGates = [];</span>
+<span class=""><span class="ln">110</span></span>
+<span class=""><span class="ln">111</span>    /** @var list&lt;Extension&gt; */</span>
+<span class=""><span class="ln">112</span>    private array $extensions = [];</span>
+<span class=""><span class="ln">113</span></span>
+<span class=""><span class="ln">114</span>    /** @var list&lt;VitestSuite&gt; */</span>
+<span class=""><span class="ln">115</span>    private array $vitestSuites = [];</span>
+<span class=""><span class="ln">116</span></span>
+<span class=""><span class="ln">117</span>    /** @var list&lt;TypeTestSuite&gt; */</span>
+<span class=""><span class="ln">118</span>    private array $typeTestSuites = [];</span>
+<span class=""><span class="ln">119</span></span>
+<span class=""><span class="ln">120</span>    /** @var list&lt;ImpactRule&gt; */</span>
+<span class=""><span class="ln">121</span>    private array $impactRules = [];</span>
+<span class=""><span class="ln">122</span></span>
+<span class=""><span class="ln">123</span>    /** @var array&lt;string, array{class: class-string, params: array&lt;string, mixed&gt;}&gt; */</span>
+<span class=""><span class="ln">124</span>    private array $reportFormats;</span>
+<span class=""><span class="ln">125</span></span>
+<span class=""><span class="ln">126</span>    /** @var array&lt;string, array{class: class-string, params: array&lt;string, mixed&gt;}&gt; */</span>
+<span class=""><span class="ln">127</span>    private array $subscribers;</span>
+<span class=""><span class="ln">128</span></span>
+<span class=""><span class="ln">129</span>    /** @var array&lt;string, array{class: class-string, params: array&lt;string, mixed&gt;}&gt; */</span>
+<span class=""><span class="ln">130</span>    private array $progressViews;</span>
+<span class=""><span class="ln">131</span></span>
+<span class=""><span class="ln">132</span>    /** @var ?non-empty-string */</span>
+<span class=""><span class="ln">133</span>    private ?string $retriggerHotFile = null;</span>
+<span class=""><span class="ln">134</span></span>
+<span class=""><span class="ln">135</span>    private int $retriggerPort = 0;</span>
+<span class=""><span class="ln">136</span></span>
+<span class=""><span class="ln">137</span>    /** @var array&lt;non-empty-string, bool|float|int|string|null&gt; */</span>
+<span class=""><span class="ln">138</span>    private array $constants = [];</span>
+<span class=""><span class="ln">139</span></span>
+<span class=""><span class="ln">140</span>    public function __construct()</span>
+<span class=""><span class="ln">141</span>    {</span>
+<span class="covered"><span class="ln">142</span>        $this-&gt;source  = new Source();</span>
+<span class="covered"><span class="ln">143</span>        $this-&gt;retries = new RetryPolicy();</span>
+<span class="covered"><span class="ln">144</span>        $this-&gt;browser = new BrowserConfiguration();</span>
+<span class=""><span class="ln">145</span></span>
+<span class=""><span class="ln">146</span>        // Crucible&#039;s own PDF/Markdown/JSON/SARIF reports, pre-seeded</span>
+<span class=""><span class="ln">147</span>        // through the exact same report-format registration path a</span>
+<span class=""><span class="ln">148</span>        // third party&#039;s own plugin uses — no privileged, hardcoded</span>
+<span class=""><span class="ln">149</span>        // dispatch. A project&#039;s crucible.php overrides any entry by</span>
+<span class=""><span class="ln">150</span>        // calling -&gt;reportFormat() again with the same key.</span>
+<span class="covered"><span class="ln">151</span>        $this-&gt;reportFormats[&#039;pdf&#039;]      = [&#039;class&#039; =&gt; PdfReportFormat::class, &#039;params&#039; =&gt; []];</span>
+<span class="covered"><span class="ln">152</span>        $this-&gt;reportFormats[&#039;markdown&#039;] = [&#039;class&#039; =&gt; MarkdownReportFormat::class, &#039;params&#039; =&gt; []];</span>
+<span class="covered"><span class="ln">153</span>        $this-&gt;reportFormats[&#039;json&#039;]     = [&#039;class&#039; =&gt; JsonReportFormat::class, &#039;params&#039; =&gt; []];</span>
+<span class="covered"><span class="ln">154</span>        $this-&gt;reportFormats[&#039;sarif&#039;]    = [&#039;class&#039; =&gt; SarifReportFormat::class, &#039;params&#039; =&gt; []];</span>
+<span class=""><span class="ln">155</span></span>
+<span class=""><span class="ln">156</span>        // Same non-privileged pre-seeding for the JUnit subscriber — a</span>
+<span class=""><span class="ln">157</span>        // project&#039;s crucible.php overrides it by calling -&gt;subscriber()</span>
+<span class=""><span class="ln">158</span>        // again with the same key.</span>
+<span class="covered"><span class="ln">159</span>        $this-&gt;subscribers[&#039;junit&#039;] = [&#039;class&#039; =&gt; JUnitSubscriber::class, &#039;params&#039; =&gt; []];</span>
+<span class=""><span class="ln">160</span></span>
+<span class=""><span class="ln">161</span>        // The documentation view&#039;s three file targets, registered the</span>
+<span class=""><span class="ln">162</span>        // same way: --testdox-text/html/summary is sugar for these</span>
+<span class=""><span class="ln">163</span>        // keys, exactly as --log-junit is sugar for junit.</span>
+<span class="covered"><span class="ln">164</span>        $this-&gt;subscribers[&#039;testdox-text&#039;]    = [&#039;class&#039; =&gt; TestDoxTextSubscriber::class, &#039;params&#039; =&gt; []];</span>
+<span class="covered"><span class="ln">165</span>        $this-&gt;subscribers[&#039;testdox-html&#039;]    = [&#039;class&#039; =&gt; TestDoxHtmlSubscriber::class, &#039;params&#039; =&gt; []];</span>
+<span class="covered"><span class="ln">166</span>        $this-&gt;subscribers[&#039;testdox-summary&#039;] = [&#039;class&#039; =&gt; TestDoxSummarySubscriber::class, &#039;params&#039; =&gt; []];</span>
+<span class=""><span class="ln">167</span></span>
+<span class=""><span class="ln">168</span>        // Open Test Reporting, the opentest4j event schema (--log-otr).</span>
+<span class="covered"><span class="ln">169</span>        $this-&gt;subscribers[&#039;otr&#039;] = [&#039;class&#039; =&gt; OtrSubscriber::class, &#039;params&#039; =&gt; []];</span>
+<span class=""><span class="ln">170</span></span>
+<span class=""><span class="ln">171</span>        // Same non-privileged pre-seeding for the three built-in</span>
+<span class=""><span class="ln">172</span>        // progress views — a project&#039;s crucible.php overrides one by</span>
+<span class=""><span class="ln">173</span>        // calling -&gt;progressView() again with the same key, which also</span>
+<span class=""><span class="ln">174</span>        // changes what the --testdox/--teamcity flags construct, since</span>
+<span class=""><span class="ln">175</span>        // those flags now just select these same keys (D-023/D-066).</span>
+<span class="covered"><span class="ln">176</span>        $this-&gt;progressViews[&#039;console&#039;]  = [&#039;class&#039; =&gt; ConsoleReporter::class, &#039;params&#039; =&gt; []];</span>
+<span class="covered"><span class="ln">177</span>        $this-&gt;progressViews[&#039;testdox&#039;]  = [&#039;class&#039; =&gt; TestDoxReporter::class, &#039;params&#039; =&gt; []];</span>
+<span class="covered"><span class="ln">178</span>        $this-&gt;progressViews[&#039;teamcity&#039;] = [&#039;class&#039; =&gt; TeamCityReporter::class, &#039;params&#039; =&gt; []];</span>
+<span class=""><span class="ln">179</span></span>
+<span class=""><span class="ln">180</span>        // The map, in its two modes. Two keys rather than a new command-line</span>
+<span class=""><span class="ln">181</span>        // flag: --view already selects a view, and a mode that is only a</span>
+<span class=""><span class="ln">182</span>        // constructor param is one a crucible.php can set as easily.</span>
+<span class="covered"><span class="ln">183</span>        $this-&gt;progressViews[&#039;map&#039;]            = [&#039;class&#039; =&gt; MapView::class, &#039;params&#039; =&gt; []];</span>
+<span class="covered"><span class="ln">184</span>        $this-&gt;progressViews[&#039;map-fullscreen&#039;] = [&#039;class&#039; =&gt; MapView::class, &#039;params&#039; =&gt; [&#039;fullscreen&#039; =&gt; true]];</span>
+<span class=""><span class="ln">185</span>    }</span>
+<span class=""><span class="ln">186</span></span>
+<span class=""><span class="ln">187</span>    /**</span>
+<span class=""><span class="ln">188</span>     * phpunit.xml: &lt;phpunit bootstrap=&quot;...&quot;&gt;</span>
+<span class=""><span class="ln">189</span>     *</span>
+<span class=""><span class="ln">190</span>     * @param non-empty-string $file</span>
+<span class=""><span class="ln">191</span>     */</span>
+<span class=""><span class="ln">192</span>    public function bootstrap(string $file): self</span>
+<span class=""><span class="ln">193</span>    {</span>
+<span class="covered"><span class="ln">194</span>        $this-&gt;bootstrap = $file;</span>
+<span class=""><span class="ln">195</span></span>
+<span class="covered"><span class="ln">196</span>        return $this;</span>
+<span class=""><span class="ln">197</span>    }</span>
+<span class=""><span class="ln">198</span></span>
+<span class=""><span class="ln">199</span>    /**</span>
+<span class=""><span class="ln">200</span>     * phpunit.xml: &lt;testsuite name=&quot;...&quot;&gt;&lt;directory&gt;...&lt;/directory&gt;&lt;/testsuite&gt;</span>
+<span class=""><span class="ln">201</span>     *</span>
+<span class=""><span class="ln">202</span>     * @param non-empty-string                          $name</span>
+<span class=""><span class="ln">203</span>     * @param non-empty-string|array&lt;non-empty-string&gt;  $directories accepts a single path or a list of paths</span>
+<span class=""><span class="ln">204</span>     * @param list&lt;non-empty-string&gt;                    $files</span>
+<span class=""><span class="ln">205</span>     * @param non-empty-string                          $suffix</span>
+<span class=""><span class="ln">206</span>     */</span>
+<span class=""><span class="ln">207</span>    public function testSuite(string $name, string|array $directories, array $files = [], string $suffix = &#039;Test.php&#039;): self</span>
+<span class=""><span class="ln">208</span>    {</span>
+<span class="covered"><span class="ln">209</span>        foreach ($this-&gt;testSuites as $existing) {</span>
+<span class="covered"><span class="ln">210</span>            if ($existing-&gt;name === $name) {</span>
+<span class="covered"><span class="ln">211</span>                throw new ConfigurationException(</span>
+<span class="covered"><span class="ln">212</span>                    sprintf(&#039;Test suite &quot;%s&quot; is defined more than once.&#039;, $name),</span>
+<span class=""><span class="ln">213</span>                );</span>
+<span class=""><span class="ln">214</span>            }</span>
+<span class=""><span class="ln">215</span>        }</span>
+<span class=""><span class="ln">216</span></span>
+<span class="covered"><span class="ln">217</span>        $directories = is_string($directories) ? [$directories] : $directories;</span>
+<span class=""><span class="ln">218</span></span>
+<span class="covered"><span class="ln">219</span>        if (!array_is_list($directories)) {</span>
+<span class="missed"><span class="ln">220</span>            throw new ConfigurationException(</span>
+<span class="missed"><span class="ln">221</span>                sprintf(&#039;Directories of test suite &quot;%s&quot; must be a list of paths.&#039;, $name),</span>
+<span class=""><span class="ln">222</span>            );</span>
+<span class=""><span class="ln">223</span>        }</span>
+<span class=""><span class="ln">224</span></span>
+<span class="covered"><span class="ln">225</span>        $this-&gt;testSuites[] = new TestSuite($name, $directories, $files, $suffix);</span>
+<span class=""><span class="ln">226</span></span>
+<span class="covered"><span class="ln">227</span>        return $this;</span>
+<span class=""><span class="ln">228</span>    }</span>
+<span class=""><span class="ln">229</span></span>
+<span class=""><span class="ln">230</span>    /**</span>
+<span class=""><span class="ln">231</span>     * phpunit.xml: &lt;source&gt;&lt;include&gt;/&lt;exclude&gt;</span>
+<span class=""><span class="ln">232</span>     *</span>
+<span class=""><span class="ln">233</span>     * @param list&lt;non-empty-string&gt; $include</span>
+<span class=""><span class="ln">234</span>     * @param list&lt;non-empty-string&gt; $exclude</span>
+<span class=""><span class="ln">235</span>     * @param list&lt;non-empty-string&gt; $includeFiles</span>
+<span class=""><span class="ln">236</span>     * @param list&lt;non-empty-string&gt; $excludeFiles</span>
+<span class=""><span class="ln">237</span>     */</span>
+<span class=""><span class="ln">238</span>    public function source(array $include = [], array $exclude = [], array $includeFiles = [], array $excludeFiles = []): self</span>
+<span class=""><span class="ln">239</span>    {</span>
+<span class="covered"><span class="ln">240</span>        $this-&gt;source = new Source($include, $includeFiles, $exclude, $excludeFiles);</span>
+<span class=""><span class="ln">241</span></span>
+<span class="covered"><span class="ln">242</span>        return $this;</span>
+<span class=""><span class="ln">243</span>    }</span>
+<span class=""><span class="ln">244</span></span>
+<span class=""><span class="ln">245</span>    /**</span>
+<span class=""><span class="ln">246</span>     * The title line of generated report documents (PDF today) — the</span>
+<span class=""><span class="ln">247</span>     * project name, a release tag, whatever the archive needs to say.</span>
+<span class=""><span class="ln">248</span>     * Unset, reporters fall back to &quot;Test report&quot;.</span>
+<span class=""><span class="ln">249</span>     *</span>
+<span class=""><span class="ln">250</span>     * @param non-empty-string $title</span>
+<span class=""><span class="ln">251</span>     */</span>
+<span class=""><span class="ln">252</span>    public function reportTitle(string $title): self</span>
+<span class=""><span class="ln">253</span>    {</span>
+<span class="missed"><span class="ln">254</span>        $this-&gt;reportTitle = $title;</span>
+<span class=""><span class="ln">255</span></span>
+<span class="missed"><span class="ln">256</span>        return $this;</span>
+<span class=""><span class="ln">257</span>    }</span>
+<span class=""><span class="ln">258</span></span>
+<span class=""><span class="ln">259</span>    /**</span>
+<span class=""><span class="ln">260</span>     * phpunit.xml: &lt;phpunit cacheDirectory=&quot;...&quot;&gt;</span>
+<span class=""><span class="ln">261</span>     *</span>
+<span class=""><span class="ln">262</span>     * @param non-empty-string $directory</span>
+<span class=""><span class="ln">263</span>     */</span>
+<span class=""><span class="ln">264</span>    public function cacheDirectory(string $directory): self</span>
+<span class=""><span class="ln">265</span>    {</span>
+<span class="covered"><span class="ln">266</span>        $this-&gt;cacheDirectory = $directory;</span>
+<span class=""><span class="ln">267</span></span>
+<span class="covered"><span class="ln">268</span>        return $this;</span>
+<span class=""><span class="ln">269</span>    }</span>
+<span class=""><span class="ln">270</span></span>
+<span class=""><span class="ln">271</span>    /**</span>
+<span class=""><span class="ln">272</span>     * phpunit.xml: &lt;phpunit cacheResult=&quot;...&quot;&gt;. Default matches the</span>
+<span class=""><span class="ln">273</span>     * spec (true). Disabling also empties the history that defects and</span>
+<span class=""><span class="ln">274</span>     * duration ordering read from.</span>
+<span class=""><span class="ln">275</span>     */</span>
+<span class=""><span class="ln">276</span>    public function cacheResult(bool $enabled = true): self</span>
+<span class=""><span class="ln">277</span>    {</span>
+<span class="missed"><span class="ln">278</span>        $this-&gt;cacheResult = $enabled;</span>
+<span class=""><span class="ln">279</span></span>
+<span class="missed"><span class="ln">280</span>        return $this;</span>
+<span class=""><span class="ln">281</span>    }</span>
+<span class=""><span class="ln">282</span></span>
+<span class=""><span class="ln">283</span>    /**</span>
+<span class=""><span class="ln">284</span>     * phpunit.xml: &lt;phpunit colors=&quot;...&quot;&gt;. Default matches the spec (false).</span>
+<span class=""><span class="ln">285</span>     */</span>
+<span class=""><span class="ln">286</span>    public function colors(bool $colors = true): self</span>
+<span class=""><span class="ln">287</span>    {</span>
+<span class="missed"><span class="ln">288</span>        $this-&gt;colors = $colors;</span>
+<span class=""><span class="ln">289</span></span>
+<span class="missed"><span class="ln">290</span>        return $this;</span>
+<span class=""><span class="ln">291</span>    }</span>
+<span class=""><span class="ln">292</span></span>
+<span class=""><span class="ln">293</span>    /**</span>
+<span class=""><span class="ln">294</span>     * phpunit.xml: &lt;phpunit executionOrder=&quot;...&quot;&gt;</span>
+<span class=""><span class="ln">295</span>     */</span>
+<span class=""><span class="ln">296</span>    public function executionOrder(ExecutionOrder $order): self</span>
+<span class=""><span class="ln">297</span>    {</span>
+<span class="covered"><span class="ln">298</span>        $this-&gt;executionOrder = $order;</span>
+<span class=""><span class="ln">299</span></span>
+<span class="covered"><span class="ln">300</span>        return $this;</span>
+<span class=""><span class="ln">301</span>    }</span>
+<span class=""><span class="ln">302</span></span>
+<span class=""><span class="ln">303</span>    /**</span>
+<span class=""><span class="ln">304</span>     * Enables every failOn* flag at once. Builder sugar over six</span>
+<span class=""><span class="ln">305</span>     * parity flags — adds no capability phpunit.xml doesn&#039;t have.</span>
+<span class=""><span class="ln">306</span>     */</span>
+<span class=""><span class="ln">307</span>    public function strict(): self</span>
+<span class=""><span class="ln">308</span>    {</span>
+<span class="covered"><span class="ln">309</span>        $this-&gt;failOnDeprecation = true;</span>
+<span class="covered"><span class="ln">310</span>        $this-&gt;failOnIncomplete  = true;</span>
+<span class="covered"><span class="ln">311</span>        $this-&gt;failOnNotice      = true;</span>
+<span class="covered"><span class="ln">312</span>        $this-&gt;failOnRisky       = true;</span>
+<span class="covered"><span class="ln">313</span>        $this-&gt;failOnSkipped     = true;</span>
+<span class="covered"><span class="ln">314</span>        $this-&gt;failOnWarning     = true;</span>
+<span class=""><span class="ln">315</span></span>
+<span class="covered"><span class="ln">316</span>        return $this;</span>
+<span class=""><span class="ln">317</span>    }</span>
+<span class=""><span class="ln">318</span></span>
+<span class=""><span class="ln">319</span>    public function failOnDeprecation(bool $enabled = true): self</span>
+<span class=""><span class="ln">320</span>    {</span>
+<span class="missed"><span class="ln">321</span>        $this-&gt;failOnDeprecation = $enabled;</span>
+<span class=""><span class="ln">322</span></span>
+<span class="missed"><span class="ln">323</span>        return $this;</span>
+<span class=""><span class="ln">324</span>    }</span>
+<span class=""><span class="ln">325</span></span>
+<span class=""><span class="ln">326</span>    public function failOnIncomplete(bool $enabled = true): self</span>
+<span class=""><span class="ln">327</span>    {</span>
+<span class="missed"><span class="ln">328</span>        $this-&gt;failOnIncomplete = $enabled;</span>
+<span class=""><span class="ln">329</span></span>
+<span class="missed"><span class="ln">330</span>        return $this;</span>
+<span class=""><span class="ln">331</span>    }</span>
+<span class=""><span class="ln">332</span></span>
+<span class=""><span class="ln">333</span>    public function failOnNotice(bool $enabled = true): self</span>
+<span class=""><span class="ln">334</span>    {</span>
+<span class="missed"><span class="ln">335</span>        $this-&gt;failOnNotice = $enabled;</span>
+<span class=""><span class="ln">336</span></span>
+<span class="missed"><span class="ln">337</span>        return $this;</span>
+<span class=""><span class="ln">338</span>    }</span>
+<span class=""><span class="ln">339</span></span>
+<span class=""><span class="ln">340</span>    public function failOnRisky(bool $enabled = true): self</span>
+<span class=""><span class="ln">341</span>    {</span>
+<span class="missed"><span class="ln">342</span>        $this-&gt;failOnRisky = $enabled;</span>
+<span class=""><span class="ln">343</span></span>
+<span class="missed"><span class="ln">344</span>        return $this;</span>
+<span class=""><span class="ln">345</span>    }</span>
+<span class=""><span class="ln">346</span></span>
+<span class=""><span class="ln">347</span>    public function failOnSkipped(bool $enabled = true): self</span>
+<span class=""><span class="ln">348</span>    {</span>
+<span class="missed"><span class="ln">349</span>        $this-&gt;failOnSkipped = $enabled;</span>
+<span class=""><span class="ln">350</span></span>
+<span class="missed"><span class="ln">351</span>        return $this;</span>
+<span class=""><span class="ln">352</span>    }</span>
+<span class=""><span class="ln">353</span></span>
+<span class=""><span class="ln">354</span>    public function failOnWarning(bool $enabled = true): self</span>
+<span class=""><span class="ln">355</span>    {</span>
+<span class="missed"><span class="ln">356</span>        $this-&gt;failOnWarning = $enabled;</span>
+<span class=""><span class="ln">357</span></span>
+<span class="missed"><span class="ln">358</span>        return $this;</span>
+<span class=""><span class="ln">359</span>    }</span>
+<span class=""><span class="ln">360</span></span>
+<span class=""><span class="ln">361</span>    public function failOnDirectDeprecation(bool $enabled = true): self</span>
+<span class=""><span class="ln">362</span>    {</span>
+<span class="missed"><span class="ln">363</span>        $this-&gt;failOnDirectDeprecation = $enabled;</span>
+<span class=""><span class="ln">364</span></span>
+<span class="missed"><span class="ln">365</span>        return $this;</span>
+<span class=""><span class="ln">366</span>    }</span>
+<span class=""><span class="ln">367</span></span>
+<span class=""><span class="ln">368</span>    public function failOnIndirectDeprecation(bool $enabled = true): self</span>
+<span class=""><span class="ln">369</span>    {</span>
+<span class="missed"><span class="ln">370</span>        $this-&gt;failOnIndirectDeprecation = $enabled;</span>
+<span class=""><span class="ln">371</span></span>
+<span class="missed"><span class="ln">372</span>        return $this;</span>
+<span class=""><span class="ln">373</span>    }</span>
+<span class=""><span class="ln">374</span></span>
+<span class=""><span class="ln">375</span>    public function failOnSelfDeprecation(bool $enabled = true): self</span>
+<span class=""><span class="ln">376</span>    {</span>
+<span class="missed"><span class="ln">377</span>        $this-&gt;failOnSelfDeprecation = $enabled;</span>
+<span class=""><span class="ln">378</span></span>
+<span class="missed"><span class="ln">379</span>        return $this;</span>
+<span class=""><span class="ln">380</span>    }</span>
+<span class=""><span class="ln">381</span></span>
+<span class=""><span class="ln">382</span>    public function failOnEmptyTestSuite(bool $enabled = true): self</span>
+<span class=""><span class="ln">383</span>    {</span>
+<span class="missed"><span class="ln">384</span>        $this-&gt;failOnEmptyTestSuite = $enabled;</span>
+<span class=""><span class="ln">385</span></span>
+<span class="missed"><span class="ln">386</span>        return $this;</span>
+<span class=""><span class="ln">387</span>    }</span>
+<span class=""><span class="ln">388</span></span>
+<span class=""><span class="ln">389</span>    public function stopOnDefect(bool $enabled = true): self</span>
+<span class=""><span class="ln">390</span>    {</span>
+<span class="missed"><span class="ln">391</span>        $this-&gt;stopOnDefect = $enabled;</span>
+<span class=""><span class="ln">392</span></span>
+<span class="missed"><span class="ln">393</span>        return $this;</span>
+<span class=""><span class="ln">394</span>    }</span>
+<span class=""><span class="ln">395</span></span>
+<span class=""><span class="ln">396</span>    public function stopOnError(bool $enabled = true): self</span>
+<span class=""><span class="ln">397</span>    {</span>
+<span class="missed"><span class="ln">398</span>        $this-&gt;stopOnError = $enabled;</span>
+<span class=""><span class="ln">399</span></span>
+<span class="missed"><span class="ln">400</span>        return $this;</span>
+<span class=""><span class="ln">401</span>    }</span>
+<span class=""><span class="ln">402</span></span>
+<span class=""><span class="ln">403</span>    public function stopOnFailure(bool $enabled = true): self</span>
+<span class=""><span class="ln">404</span>    {</span>
+<span class="covered"><span class="ln">405</span>        $this-&gt;stopOnFailure = $enabled;</span>
+<span class=""><span class="ln">406</span></span>
+<span class="covered"><span class="ln">407</span>        return $this;</span>
+<span class=""><span class="ln">408</span>    }</span>
+<span class=""><span class="ln">409</span></span>
+<span class=""><span class="ln">410</span>    public function stopOnRisky(bool $enabled = true): self</span>
+<span class=""><span class="ln">411</span>    {</span>
+<span class="missed"><span class="ln">412</span>        $this-&gt;stopOnRisky = $enabled;</span>
+<span class=""><span class="ln">413</span></span>
+<span class="missed"><span class="ln">414</span>        return $this;</span>
+<span class=""><span class="ln">415</span>    }</span>
+<span class=""><span class="ln">416</span></span>
+<span class=""><span class="ln">417</span>    public function stopOnSkipped(bool $enabled = true): self</span>
+<span class=""><span class="ln">418</span>    {</span>
+<span class="missed"><span class="ln">419</span>        $this-&gt;stopOnSkipped = $enabled;</span>
+<span class=""><span class="ln">420</span></span>
+<span class="missed"><span class="ln">421</span>        return $this;</span>
+<span class=""><span class="ln">422</span>    }</span>
+<span class=""><span class="ln">423</span></span>
+<span class=""><span class="ln">424</span>    public function stopOnIncomplete(bool $enabled = true): self</span>
+<span class=""><span class="ln">425</span>    {</span>
+<span class="missed"><span class="ln">426</span>        $this-&gt;stopOnIncomplete = $enabled;</span>
+<span class=""><span class="ln">427</span></span>
+<span class="missed"><span class="ln">428</span>        return $this;</span>
+<span class=""><span class="ln">429</span>    }</span>
+<span class=""><span class="ln">430</span></span>
+<span class=""><span class="ln">431</span>    public function stopOnDeprecation(bool $enabled = true): self</span>
+<span class=""><span class="ln">432</span>    {</span>
+<span class="missed"><span class="ln">433</span>        $this-&gt;stopOnDeprecation = $enabled;</span>
+<span class=""><span class="ln">434</span></span>
+<span class="missed"><span class="ln">435</span>        return $this;</span>
+<span class=""><span class="ln">436</span>    }</span>
+<span class=""><span class="ln">437</span></span>
+<span class=""><span class="ln">438</span>    public function stopOnNotice(bool $enabled = true): self</span>
+<span class=""><span class="ln">439</span>    {</span>
+<span class="missed"><span class="ln">440</span>        $this-&gt;stopOnNotice = $enabled;</span>
+<span class=""><span class="ln">441</span></span>
+<span class="missed"><span class="ln">442</span>        return $this;</span>
+<span class=""><span class="ln">443</span>    }</span>
+<span class=""><span class="ln">444</span></span>
+<span class=""><span class="ln">445</span>    public function stopOnWarning(bool $enabled = true): self</span>
+<span class=""><span class="ln">446</span>    {</span>
+<span class="missed"><span class="ln">447</span>        $this-&gt;stopOnWarning = $enabled;</span>
+<span class=""><span class="ln">448</span></span>
+<span class="missed"><span class="ln">449</span>        return $this;</span>
+<span class=""><span class="ln">450</span>    }</span>
+<span class=""><span class="ln">451</span></span>
+<span class=""><span class="ln">452</span>    /**</span>
+<span class=""><span class="ln">453</span>     * phpunit.xml: &lt;phpunit testdox=&quot;...&quot;&gt;</span>
+<span class=""><span class="ln">454</span>     */</span>
+<span class=""><span class="ln">455</span>    public function testdox(bool $enabled = true): self</span>
+<span class=""><span class="ln">456</span>    {</span>
+<span class="covered"><span class="ln">457</span>        $this-&gt;testdox = $enabled;</span>
+<span class=""><span class="ln">458</span></span>
+<span class="covered"><span class="ln">459</span>        return $this;</span>
+<span class=""><span class="ln">460</span>    }</span>
+<span class=""><span class="ln">461</span></span>
+<span class=""><span class="ln">462</span>    /**</span>
+<span class=""><span class="ln">463</span>     * phpunit.xml: &lt;php&gt;&lt;ini name=&quot;...&quot; value=&quot;...&quot;/&gt;&lt;/php&gt;</span>
+<span class=""><span class="ln">464</span>     *</span>
+<span class=""><span class="ln">465</span>     * @param non-empty-string $name</span>
+<span class=""><span class="ln">466</span>     */</span>
+<span class=""><span class="ln">467</span>    public function ini(string $name, string $value): self</span>
+<span class=""><span class="ln">468</span>    {</span>
+<span class="covered"><span class="ln">469</span>        $this-&gt;ini[$name] = $value;</span>
+<span class=""><span class="ln">470</span></span>
+<span class="covered"><span class="ln">471</span>        return $this;</span>
+<span class=""><span class="ln">472</span>    }</span>
+<span class=""><span class="ln">473</span></span>
+<span class=""><span class="ln">474</span>    /**</span>
+<span class=""><span class="ln">475</span>     * phpunit.xml: &lt;php&gt;&lt;env name=&quot;...&quot; value=&quot;...&quot;/&gt;&lt;/php&gt;</span>
+<span class=""><span class="ln">476</span>     *</span>
+<span class=""><span class="ln">477</span>     * @param non-empty-string $name</span>
+<span class=""><span class="ln">478</span>     */</span>
+<span class=""><span class="ln">479</span>    public function env(string $name, string $value): self</span>
+<span class=""><span class="ln">480</span>    {</span>
+<span class="covered"><span class="ln">481</span>        $this-&gt;env[$name] = $value;</span>
+<span class=""><span class="ln">482</span></span>
+<span class="covered"><span class="ln">483</span>        return $this;</span>
+<span class=""><span class="ln">484</span>    }</span>
+<span class=""><span class="ln">485</span></span>
+<span class=""><span class="ln">486</span>    /**</span>
+<span class=""><span class="ln">487</span>     * phpunit.xml: &lt;php&gt;&lt;const name=&quot;...&quot; value=&quot;...&quot;/&gt;&lt;/php&gt;</span>
+<span class=""><span class="ln">488</span>     *</span>
+<span class=""><span class="ln">489</span>     * @param non-empty-string $name</span>
+<span class=""><span class="ln">490</span>     */</span>
+<span class=""><span class="ln">491</span>    public function constant(string $name, bool|float|int|string|null $value): self</span>
+<span class=""><span class="ln">492</span>    {</span>
+<span class="covered"><span class="ln">493</span>        $this-&gt;constants[$name] = $value;</span>
+<span class=""><span class="ln">494</span></span>
+<span class="covered"><span class="ln">495</span>        return $this;</span>
+<span class=""><span class="ln">496</span>    }</span>
+<span class=""><span class="ln">497</span></span>
+<span class=""><span class="ln">498</span>    /**</span>
+<span class=""><span class="ln">499</span>     * phpunit.xml: &lt;phpunit backupGlobals=&quot;...&quot;&gt;</span>
+<span class=""><span class="ln">500</span>     */</span>
+<span class=""><span class="ln">501</span>    public function backupGlobals(bool $enabled = true): self</span>
+<span class=""><span class="ln">502</span>    {</span>
+<span class="missed"><span class="ln">503</span>        $this-&gt;backupGlobals = $enabled;</span>
+<span class=""><span class="ln">504</span></span>
+<span class="missed"><span class="ln">505</span>        return $this;</span>
+<span class=""><span class="ln">506</span>    }</span>
+<span class=""><span class="ln">507</span></span>
+<span class=""><span class="ln">508</span>    /**</span>
+<span class=""><span class="ln">509</span>     * phpunit.xml: &lt;phpunit backupStaticProperties=&quot;...&quot;&gt;</span>
+<span class=""><span class="ln">510</span>     */</span>
+<span class=""><span class="ln">511</span>    public function backupStaticProperties(bool $enabled = true): self</span>
+<span class=""><span class="ln">512</span>    {</span>
+<span class="missed"><span class="ln">513</span>        $this-&gt;backupStaticProperties = $enabled;</span>
+<span class=""><span class="ln">514</span></span>
+<span class="missed"><span class="ln">515</span>        return $this;</span>
+<span class=""><span class="ln">516</span>    }</span>
+<span class=""><span class="ln">517</span></span>
+<span class=""><span class="ln">518</span>    /**</span>
+<span class=""><span class="ln">519</span>     * phpunit.xml: &lt;phpunit beStrictAboutChangesToGlobalState=&quot;...&quot;&gt;</span>
+<span class=""><span class="ln">520</span>     */</span>
+<span class=""><span class="ln">521</span>    public function beStrictAboutChangesToGlobalState(bool $enabled = true): self</span>
+<span class=""><span class="ln">522</span>    {</span>
+<span class="missed"><span class="ln">523</span>        $this-&gt;beStrictAboutChangesToGlobalState = $enabled;</span>
+<span class=""><span class="ln">524</span></span>
+<span class="missed"><span class="ln">525</span>        return $this;</span>
+<span class=""><span class="ln">526</span>    }</span>
+<span class=""><span class="ln">527</span></span>
+<span class=""><span class="ln">528</span>    /**</span>
+<span class=""><span class="ln">529</span>     * phpunit.xml: &lt;phpunit requireCoverageMetadata=&quot;...&quot;&gt; — a test</span>
+<span class=""><span class="ln">530</span>     * without any Covers or Uses metadata settles risky (D-063).</span>
+<span class=""><span class="ln">531</span>     */</span>
+<span class=""><span class="ln">532</span>    public function requireCoverageMetadata(bool $enabled = true): self</span>
+<span class=""><span class="ln">533</span>    {</span>
+<span class="missed"><span class="ln">534</span>        $this-&gt;requireCoverageMetadata = $enabled;</span>
+<span class=""><span class="ln">535</span></span>
+<span class="missed"><span class="ln">536</span>        return $this;</span>
+<span class=""><span class="ln">537</span>    }</span>
+<span class=""><span class="ln">538</span></span>
+<span class=""><span class="ln">539</span>    /**</span>
+<span class=""><span class="ln">540</span>     * phpunit.xml: &lt;phpunit beStrictAboutCoverageMetadata=&quot;...&quot;&gt; —</span>
+<span class=""><span class="ln">541</span>     * a test executing source code outside its covered/used targets</span>
+<span class=""><span class="ln">542</span>     * settles risky, naming the stray units (D-063). Needs a</span>
+<span class=""><span class="ln">543</span>     * coverage run to compare against.</span>
+<span class=""><span class="ln">544</span>     */</span>
+<span class=""><span class="ln">545</span>    public function beStrictAboutCoverageMetadata(bool $enabled = true): self</span>
+<span class=""><span class="ln">546</span>    {</span>
+<span class="missed"><span class="ln">547</span>        $this-&gt;beStrictAboutCoverageMetadata = $enabled;</span>
+<span class=""><span class="ln">548</span></span>
+<span class="missed"><span class="ln">549</span>        return $this;</span>
+<span class=""><span class="ln">550</span>    }</span>
+<span class=""><span class="ln">551</span></span>
+<span class=""><span class="ln">552</span>    /**</span>
+<span class=""><span class="ln">553</span>     * Crucible-native: per-scope deprecation budgets, the typed form of</span>
+<span class=""><span class="ln">554</span>     * the Symfony bridge&#039;s max[self|direct|indirect] grammar. The run</span>
+<span class=""><span class="ln">555</span>     * exits non-zero when a scope exceeds its budget; null means no</span>
+<span class=""><span class="ln">556</span>     * limit for that scope. Baselined deprecations never count.</span>
+<span class=""><span class="ln">557</span>     */</span>
+<span class=""><span class="ln">558</span>    public function deprecationThresholds(?int $self = null, ?int $direct = null, ?int $indirect = null): self</span>
+<span class=""><span class="ln">559</span>    {</span>
+<span class="missed"><span class="ln">560</span>        $this-&gt;maxSelfDeprecations     = $self;</span>
+<span class="missed"><span class="ln">561</span>        $this-&gt;maxDirectDeprecations   = $direct;</span>
+<span class="missed"><span class="ln">562</span>        $this-&gt;maxIndirectDeprecations = $indirect;</span>
+<span class=""><span class="ln">563</span></span>
+<span class="missed"><span class="ln">564</span>        return $this;</span>
+<span class=""><span class="ln">565</span>    }</span>
+<span class=""><span class="ln">566</span></span>
+<span class=""><span class="ln">567</span>    /**</span>
+<span class=""><span class="ln">568</span>     * Crucible-native (growth G4/D-043): re-run failing tests up to</span>
+<span class=""><span class="ln">569</span>     * $count extra times, optionally pausing between attempts —</span>
+<span class=""><span class="ln">570</span>     * fixed or exponential backoff from $delay seconds, capped by</span>
+<span class=""><span class="ln">571</span>     * $maxDelay, jittered for network-flavored suites. A pass on a</span>
+<span class=""><span class="ln">572</span>     * retry is classified FLAKY, never silently green. #[Retry] on a</span>
+<span class=""><span class="ln">573</span>     * test overrides this per test.</span>
+<span class=""><span class="ln">574</span>     *</span>
+<span class=""><span class="ln">575</span>     * @param int&lt;0, max&gt; $count</span>
+<span class=""><span class="ln">576</span>     */</span>
+<span class=""><span class="ln">577</span>    public function retries(int $count, Backoff $backoff = Backoff::None, float $delay = 0.0, ?float $maxDelay = null, bool $jitter = false): self</span>
+<span class=""><span class="ln">578</span>    {</span>
+<span class="missed"><span class="ln">579</span>        $this-&gt;retries = new RetryPolicy($count, $backoff, $delay, $maxDelay, $jitter);</span>
+<span class=""><span class="ln">580</span></span>
+<span class="missed"><span class="ln">581</span>        return $this;</span>
+<span class=""><span class="ln">582</span>    }</span>
+<span class=""><span class="ln">583</span></span>
+<span class=""><span class="ln">584</span>    /**</span>
+<span class=""><span class="ln">585</span>     * Crucible-native (growth G4): known-flaky tests whose failures do</span>
+<span class=""><span class="ln">586</span>     * not affect the exit code. Ids are `file::name` (a dataset</span>
+<span class=""><span class="ln">587</span>     * suffix `#name` pins one row). The tests still run and report;</span>
+<span class=""><span class="ln">588</span>     * quarantined tests that pass are named as release candidates.</span>
+<span class=""><span class="ln">589</span>     * #[Quarantined] on the test itself is the code-local equivalent.</span>
+<span class=""><span class="ln">590</span>     *</span>
+<span class=""><span class="ln">591</span>     * @param non-empty-string ...$testIds</span>
+<span class=""><span class="ln">592</span>     */</span>
+<span class=""><span class="ln">593</span>    public function quarantine(string ...$testIds): self</span>
+<span class=""><span class="ln">594</span>    {</span>
+<span class=""><span class="ln">595</span>        // Variadics accept named arguments, which would make the</span>
+<span class=""><span class="ln">596</span>        // spread reintroduce string keys.</span>
+<span class="missed"><span class="ln">597</span>        $this-&gt;quarantine = [...$this-&gt;quarantine, ...array_values($testIds)];</span>
+<span class=""><span class="ln">598</span></span>
+<span class="missed"><span class="ln">599</span>        return $this;</span>
+<span class=""><span class="ln">600</span>    }</span>
+<span class=""><span class="ln">601</span></span>
+<span class=""><span class="ln">602</span>    /**</span>
+<span class=""><span class="ln">603</span>     * PHPUnit-namespace compatibility aliases (Crucible-native option).</span>
+<span class=""><span class="ln">604</span>     * Default (null) is the coexistence policy: aliases load</span>
+<span class=""><span class="ln">605</span>     * automatically when phpunit/phpunit is not installed, and stay</span>
+<span class=""><span class="ln">606</span>     * off when it is. true forces migration mode (fails fast if</span>
+<span class=""><span class="ln">607</span>     * PHPUnit classes are already loaded); false disables aliasing.</span>
+<span class=""><span class="ln">608</span>     */</span>
+<span class=""><span class="ln">609</span>    public function phpunitCompatibility(?bool $enabled = true): self</span>
+<span class=""><span class="ln">610</span>    {</span>
+<span class="missed"><span class="ln">611</span>        $this-&gt;phpunitCompatibility = $enabled;</span>
+<span class=""><span class="ln">612</span></span>
+<span class="missed"><span class="ln">613</span>        return $this;</span>
+<span class=""><span class="ln">614</span>    }</span>
+<span class=""><span class="ln">615</span></span>
+<span class=""><span class="ln">616</span>    /**</span>
+<span class=""><span class="ln">617</span>     * Reproduce a named incumbent bug instead of correcting it</span>
+<span class=""><span class="ln">618</span>     * (Crucible-native option).</span>
+<span class=""><span class="ln">619</span>     *</span>
+<span class=""><span class="ln">620</span>     * Opted into one at a time and never as a mode: a single</span>
+<span class=""><span class="ln">621</span>     * &quot;compatibility&quot; switch becomes a bucket nobody can audit, and</span>
+<span class=""><span class="ln">622</span>     * flipping it to silence one failure silently accepts every other</span>
+<span class=""><span class="ln">623</span>     * bug inside it. See {@see Quirk} for what each name buys and what</span>
+<span class=""><span class="ln">624</span>     * it costs.</span>
+<span class=""><span class="ln">625</span>     */</span>
+<span class=""><span class="ln">626</span>    public function quirks(Quirk ...$quirks): self</span>
+<span class=""><span class="ln">627</span>    {</span>
+<span class="missed"><span class="ln">628</span>        $this-&gt;quirks = array_values($quirks);</span>
+<span class=""><span class="ln">629</span></span>
+<span class="missed"><span class="ln">630</span>        return $this;</span>
+<span class=""><span class="ln">631</span>    }</span>
+<span class=""><span class="ln">632</span></span>
+<span class=""><span class="ln">633</span>    /**</span>
+<span class=""><span class="ln">634</span>     * Crucible-native (browser tier): explicit opt-in for browser tests.</span>
+<span class=""><span class="ln">635</span>     * Off by default — a `visit()` in the suite never activates the</span>
+<span class=""><span class="ln">636</span>     * tier by itself, and the default state costs nothing (no npm, no</span>
+<span class=""><span class="ln">637</span>     * browser downloads, Node untouched). `enabled: false` is the</span>
+<span class=""><span class="ln">638</span>     * deterministic-skip state for lanes without browsers. Nothing is</span>
+<span class=""><span class="ln">639</span>     * ever installed automatically.</span>
+<span class=""><span class="ln">640</span>     *</span>
+<span class=""><span class="ln">641</span>     * @param int&lt;1, max&gt;           $timeoutMs</span>
+<span class=""><span class="ln">642</span>     * @param non-empty-string|null $playwrightRoot directory whose node_modules provides the</span>
+<span class=""><span class="ln">643</span>     *                                              playwright CLI; null = the working directory</span>
+<span class=""><span class="ln">644</span>     * @param non-empty-string|null $requestHandler class implementing Browser\Server\RequestHandler;</span>
+<span class=""><span class="ln">645</span>     *                                              relative visit() URLs serve through it in-process</span>
+<span class=""><span class="ln">646</span>     *                                              (D-065 — the Laravel bridge ships one)</span>
+<span class=""><span class="ln">647</span>     */</span>
+<span class=""><span class="ln">648</span>    public function browser(</span>
+<span class=""><span class="ln">649</span>        bool $enabled = true,</span>
+<span class=""><span class="ln">650</span>        BrowserEngine $engine = BrowserEngine::Chrome,</span>
+<span class=""><span class="ln">651</span>        int $timeoutMs = 5_000,</span>
+<span class=""><span class="ln">652</span>        ?string $playwrightRoot = null,</span>
+<span class=""><span class="ln">653</span>        bool $headed = false,</span>
+<span class=""><span class="ln">654</span>        ?string $requestHandler = null,</span>
+<span class=""><span class="ln">655</span>    ): self {</span>
+<span class="missed"><span class="ln">656</span>        $this-&gt;browser = new BrowserConfiguration($enabled, $engine, $timeoutMs, $playwrightRoot, $headed, $requestHandler);</span>
+<span class=""><span class="ln">657</span></span>
+<span class="missed"><span class="ln">658</span>        return $this;</span>
+<span class=""><span class="ln">659</span>    }</span>
+<span class=""><span class="ln">660</span></span>
+<span class=""><span class="ln">661</span>    /**</span>
+<span class=""><span class="ln">662</span>     * Crucible-native (extension surface, Tier 0): orchestrate an external</span>
+<span class=""><span class="ln">663</span>     * command as part of the run — a static analyser, a JS test runner,</span>
+<span class=""><span class="ln">664</span>     * a linter, any tool with a meaningful exit code. The command runs</span>
+<span class=""><span class="ln">665</span>     * after the PHP suite, its output streams through to the console</span>
+<span class=""><span class="ln">666</span>     * verbatim, and its **exit code is the verdict**: zero passes,</span>
+<span class=""><span class="ln">667</span>     * non-zero fails the run with a named reason. Crucible never parses the</span>
+<span class=""><span class="ln">668</span>     * command&#039;s output — exit code is the one contract that does not</span>
+<span class=""><span class="ln">669</span>     * break across tool versions. Tools wanting their results folded into</span>
+<span class=""><span class="ln">670</span>     * the test tree write a PHP Extension instead; this is the robust,</span>
+<span class=""><span class="ln">671</span>     * no-plugin floor.</span>
+<span class=""><span class="ln">672</span>     *</span>
+<span class=""><span class="ln">673</span>     *     -&gt;command(&#039;larastan&#039;, [&#039;vendor/bin/phpstan&#039;, &#039;analyse&#039;])</span>
+<span class=""><span class="ln">674</span>     *     -&gt;command(&#039;js&#039;,       [&#039;npx&#039;, &#039;vitest&#039;, &#039;run&#039;])</span>
+<span class=""><span class="ln">675</span>     *</span>
+<span class=""><span class="ln">676</span>     * @param non-empty-string       $label            names the check in the summary, the reason, and the report</span>
+<span class=""><span class="ln">677</span>     * @param list&lt;non-empty-string&gt; $argv             argv form — no shell, no quoting, no injection</span>
+<span class=""><span class="ln">678</span>     * @param ?WorkingDirectory      $workingDirectory null = the run&#039;s working directory</span>
+<span class=""><span class="ln">679</span>     * @param ?positive-int          $timeout          seconds before Crucible kills the command; null = no limit</span>
+<span class=""><span class="ln">680</span>     */</span>
+<span class=""><span class="ln">681</span>    public function command(string $label, array $argv, ?WorkingDirectory $workingDirectory = null, ?int $timeout = null): self</span>
+<span class=""><span class="ln">682</span>    {</span>
+<span class="missed"><span class="ln">683</span>        foreach ($this-&gt;commandGates as $existing) {</span>
+<span class="missed"><span class="ln">684</span>            if ($existing-&gt;label === $label) {</span>
+<span class="missed"><span class="ln">685</span>                throw new ConfigurationException(</span>
+<span class="missed"><span class="ln">686</span>                    sprintf(&#039;Command gate &quot;%s&quot; is defined more than once.&#039;, $label),</span>
+<span class=""><span class="ln">687</span>                );</span>
+<span class=""><span class="ln">688</span>            }</span>
+<span class=""><span class="ln">689</span>        }</span>
+<span class=""><span class="ln">690</span></span>
+<span class="missed"><span class="ln">691</span>        if ($argv === []) {</span>
+<span class="missed"><span class="ln">692</span>            throw new ConfigurationException(</span>
+<span class="missed"><span class="ln">693</span>                sprintf(&#039;Command gate &quot;%s&quot; needs a non-empty list of argv parts.&#039;, $label),</span>
+<span class=""><span class="ln">694</span>            );</span>
+<span class=""><span class="ln">695</span>        }</span>
+<span class=""><span class="ln">696</span></span>
+<span class="missed"><span class="ln">697</span>        $this-&gt;commandGates[] = new CommandGate($label, $argv, $workingDirectory, $timeout);</span>
+<span class=""><span class="ln">698</span></span>
+<span class="missed"><span class="ln">699</span>        return $this;</span>
+<span class=""><span class="ln">700</span>    }</span>
+<span class=""><span class="ln">701</span></span>
+<span class=""><span class="ln">702</span>    /**</span>
+<span class=""><span class="ln">703</span>     * Register a PHP-native extension (D-078) — an instance, constructed</span>
+<span class=""><span class="ln">704</span>     * with its own typed configuration. Crucible dispatches it by the roles</span>
+<span class=""><span class="ln">705</span>     * it implements: a {@see Check} inspects the project after the suite</span>
+<span class=""><span class="ln">706</span>     * and presents a run-scoped artifact Crucible tests. Unlike a command</span>
+<span class=""><span class="ln">707</span>     * gate it runs in-process, with no shelling out.</span>
+<span class=""><span class="ln">708</span>     *</span>
+<span class=""><span class="ln">709</span>     *     -&gt;extension(new PhpcpdCheck(paths: [&#039;src&#039;], minTokens: 70))</span>
+<span class=""><span class="ln">710</span>     */</span>
+<span class=""><span class="ln">711</span>    public function extension(Extension $extension): self</span>
+<span class=""><span class="ln">712</span>    {</span>
+<span class="missed"><span class="ln">713</span>        $this-&gt;extensions[] = $extension;</span>
+<span class=""><span class="ln">714</span></span>
+<span class="missed"><span class="ln">715</span>        return $this;</span>
+<span class=""><span class="ln">716</span>    }</span>
+<span class=""><span class="ln">717</span></span>
+<span class=""><span class="ln">718</span>    /**</span>
+<span class=""><span class="ln">719</span>     * Orchestrate a JavaScript suite through Vitest (D-079). A normal</span>
+<span class=""><span class="ln">720</span>     * `crucible` run spawns `vitest run --reporter=json` in this directory</span>
+<span class=""><span class="ln">721</span>     * after the PHP suite and folds its results into the same run,</span>
+<span class=""><span class="ln">722</span>     * report, and exit code — one command for the whole stack.</span>
+<span class=""><span class="ln">723</span>     *</span>
+<span class=""><span class="ln">724</span>     *     -&gt;vitest(&#039;resources/js&#039;)</span>
+<span class=""><span class="ln">725</span>     *</span>
+<span class=""><span class="ln">726</span>     * The suite is named `vitest` unless told otherwise, and that name is</span>
+<span class=""><span class="ln">727</span>     * what `--testsuite` and `--exclude-testsuite` select it by (D-125).</span>
+<span class=""><span class="ln">728</span>     *</span>
+<span class=""><span class="ln">729</span>     * @param non-empty-string  $directory the JS project root (holds package.json and vitest)</span>
+<span class=""><span class="ln">730</span>     * @param ?non-empty-string $binary    the vitest executable; null = `&lt;directory&gt;/node_modules/.bin/vitest`</span>
+<span class=""><span class="ln">731</span>     * @param non-empty-string  $name      the suite&#039;s name on the command line</span>
+<span class=""><span class="ln">732</span>     */</span>
+<span class=""><span class="ln">733</span>    public function vitest(string $directory = &#039;.&#039;, ?string $binary = null, string $name = &#039;vitest&#039;): self</span>
+<span class=""><span class="ln">734</span>    {</span>
+<span class="missed"><span class="ln">735</span>        $this-&gt;vitestSuites[] = new VitestSuite($directory, $binary, name: $name);</span>
+<span class=""><span class="ln">736</span></span>
+<span class="missed"><span class="ln">737</span>        return $this;</span>
+<span class=""><span class="ln">738</span>    }</span>
+<span class=""><span class="ln">739</span></span>
+<span class=""><span class="ln">740</span>    /**</span>
+<span class=""><span class="ln">741</span>     * Type tests (D-130): every `assertType(&#039;list&lt;int&gt;&#039;, $value)` call in a</span>
+<span class=""><span class="ln">742</span>     * `*.types.php` file under $directory is a test, and so is every line</span>
+<span class=""><span class="ln">743</span>     * marked `// crucible-type-error &lt;identifier&gt;`. PHPStan analyses the</span>
+<span class=""><span class="ln">744</span>     * files once — through the project&#039;s own phpstan.neon when there is</span>
+<span class=""><span class="ln">745</span>     * one — and each assertion folds into the run with its own verdict.</span>
+<span class=""><span class="ln">746</span>     *</span>
+<span class=""><span class="ln">747</span>     *     -&gt;typeTests(&#039;tests/Types&#039;)</span>
+<span class=""><span class="ln">748</span>     *</span>
+<span class=""><span class="ln">749</span>     * @param non-empty-string  $directory     where the *.types.php files live</span>
+<span class=""><span class="ln">750</span>     * @param non-empty-string  $name          the suite&#039;s name on the command line</span>
+<span class=""><span class="ln">751</span>     * @param ?non-empty-string $phpstan       the phpstan executable; null = vendor/bin/phpstan</span>
+<span class=""><span class="ln">752</span>     * @param ?non-empty-string $configuration a phpstan configuration; null = phpstan.neon(.dist) when present</span>
+<span class=""><span class="ln">753</span>     */</span>
+<span class=""><span class="ln">754</span>    public function typeTests(string $directory = &#039;tests&#039;, string $name = &#039;types&#039;, ?string $phpstan = null, ?string $configuration = null): self</span>
+<span class=""><span class="ln">755</span>    {</span>
+<span class="missed"><span class="ln">756</span>        $this-&gt;typeTestSuites[] = new TypeTestSuite($directory, $name, $phpstan, $configuration);</span>
+<span class=""><span class="ln">757</span></span>
+<span class="missed"><span class="ln">758</span>        return $this;</span>
+<span class=""><span class="ln">759</span>    }</span>
+<span class=""><span class="ln">760</span></span>
+<span class=""><span class="ln">761</span>    /**</span>
+<span class=""><span class="ln">762</span>     * Declare that changing these files puts these test groups in doubt</span>
+<span class=""><span class="ln">763</span>     * (D-083). The dependency graph resolves *class references*, so a</span>
+<span class=""><span class="ln">764</span>     * file reached by convention or at runtime — an asset, a Blade</span>
+<span class=""><span class="ln">765</span>     * template, a translation, a fixture — is invisible to it whatever</span>
+<span class=""><span class="ln">766</span>     * its extension. Only the author knows what such a change endangers.</span>
+<span class=""><span class="ln">767</span>     *</span>
+<span class=""><span class="ln">768</span>     *     -&gt;impactRule(&#039;resources/js&#039;, [&#039;browser&#039;])</span>
+<span class=""><span class="ln">769</span>     *     -&gt;impactRule(&#039;resources/lang&#039;, [&#039;i18n&#039;])</span>
+<span class=""><span class="ln">770</span>     *     -&gt;impactRule(&#039;resources/views/mail/*.blade.php&#039;, [&#039;mail&#039;])</span>
+<span class=""><span class="ln">771</span>     *</span>
+<span class=""><span class="ln">772</span>     * Rules are **additive**: a match adds groups under `--changed` and</span>
+<span class=""><span class="ln">773</span>     * in watch mode, and can never remove one, so a missing rule is</span>
+<span class=""><span class="ln">774</span>     * never worse than declaring none.</span>
+<span class=""><span class="ln">775</span>     *</span>
+<span class=""><span class="ln">776</span>     * @param non-empty-string       $pattern project-relative path; a directory covers everything</span>
+<span class=""><span class="ln">777</span>     *                                        beneath it, and `*`/`?` glob (matching across `/`)</span>
+<span class=""><span class="ln">778</span>     * @param list&lt;non-empty-string&gt; $groups</span>
+<span class=""><span class="ln">779</span>     */</span>
+<span class=""><span class="ln">780</span>    public function impactRule(string $pattern, array $groups): self</span>
+<span class=""><span class="ln">781</span>    {</span>
+<span class="missed"><span class="ln">782</span>        $this-&gt;impactRules[] = new ImpactRule($pattern, $groups);</span>
+<span class=""><span class="ln">783</span></span>
+<span class="missed"><span class="ln">784</span>        return $this;</span>
+<span class=""><span class="ln">785</span>    }</span>
+<span class=""><span class="ln">786</span></span>
+<span class=""><span class="ln">787</span>    /**</span>
+<span class=""><span class="ln">788</span>     * Register a report-format plugin by class-string + params — the</span>
+<span class=""><span class="ln">789</span>     * report-format extension surface, deliberately kept separate from</span>
+<span class=""><span class="ln">790</span>     * {@see extension()} above: a class-string + reflection-read</span>
+<span class=""><span class="ln">791</span>     * `#[ReportFormat]` attribute + validated params array, not an</span>
+<span class=""><span class="ln">792</span>     * already-constructed instance. Crucible&#039;s own PDF/Markdown formats</span>
+<span class=""><span class="ln">793</span>     * are registered this same way, pre-seeded by the constructor —</span>
+<span class=""><span class="ln">794</span>     * calling this again with the same key overrides that default.</span>
+<span class=""><span class="ln">795</span>     *</span>
+<span class=""><span class="ln">796</span>     *     -&gt;reportFormat(&#039;pdf&#039;, PdfReportFormat::class, [&#039;output&#039; =&gt; &#039;report.pdf&#039;])</span>
+<span class=""><span class="ln">797</span>     *</span>
+<span class=""><span class="ln">798</span>     * @param  non-empty-string  $key</span>
+<span class=""><span class="ln">799</span>     * @param  class-string  $class</span>
+<span class=""><span class="ln">800</span>     * @param  array&lt;string, mixed&gt;  $params</span>
+<span class=""><span class="ln">801</span>     */</span>
+<span class=""><span class="ln">802</span>    public function reportFormat(string $key, string $class, array $params = []): self</span>
+<span class=""><span class="ln">803</span>    {</span>
+<span class="covered"><span class="ln">804</span>        $this-&gt;reportFormats[$key] = [&#039;class&#039; =&gt; $class, &#039;params&#039; =&gt; $params];</span>
+<span class=""><span class="ln">805</span></span>
+<span class="covered"><span class="ln">806</span>        return $this;</span>
+<span class=""><span class="ln">807</span>    }</span>
+<span class=""><span class="ln">808</span></span>
+<span class=""><span class="ln">809</span>    /**</span>
+<span class=""><span class="ln">810</span>     * Register a subscriber plugin by class-string + params — the</span>
+<span class=""><span class="ln">811</span>     * subscriber extension surface, the same class-string + reflection</span>
+<span class=""><span class="ln">812</span>     * pattern as {@see reportFormat()} above, kept separate from</span>
+<span class=""><span class="ln">813</span>     * {@see extension()} for the same reason. Unlike a report format&#039;s</span>
+<span class=""><span class="ln">814</span>     * params (read at render() call time), a subscriber&#039;s params reach</span>
+<span class=""><span class="ln">815</span>     * its constructor, since `Listener::handle()` has no room for them.</span>
+<span class=""><span class="ln">816</span>     * Crucible&#039;s own JUnit subscriber is registered this same way,</span>
+<span class=""><span class="ln">817</span>     * pre-seeded by the constructor — calling this again with the same</span>
+<span class=""><span class="ln">818</span>     * key overrides that default.</span>
+<span class=""><span class="ln">819</span>     *</span>
+<span class=""><span class="ln">820</span>     *     -&gt;subscriber(&#039;junit&#039;, JUnitSubscriber::class, [&#039;output&#039; =&gt; &#039;report.xml&#039;])</span>
+<span class=""><span class="ln">821</span>     *</span>
+<span class=""><span class="ln">822</span>     * @param  non-empty-string  $key</span>
+<span class=""><span class="ln">823</span>     * @param  class-string  $class</span>
+<span class=""><span class="ln">824</span>     * @param  array&lt;string, mixed&gt;  $params</span>
+<span class=""><span class="ln">825</span>     */</span>
+<span class=""><span class="ln">826</span>    public function subscriber(string $key, string $class, array $params = []): self</span>
+<span class=""><span class="ln">827</span>    {</span>
+<span class="covered"><span class="ln">828</span>        $this-&gt;subscribers[$key] = [&#039;class&#039; =&gt; $class, &#039;params&#039; =&gt; $params];</span>
+<span class=""><span class="ln">829</span></span>
+<span class="covered"><span class="ln">830</span>        return $this;</span>
+<span class=""><span class="ln">831</span>    }</span>
+<span class=""><span class="ln">832</span></span>
+<span class=""><span class="ln">833</span>    /**</span>
+<span class=""><span class="ln">834</span>     * Register a progress-view plugin by class-string + params — the</span>
+<span class=""><span class="ln">835</span>     * live, STDOUT-facing printer during a run, the same class-string +</span>
+<span class=""><span class="ln">836</span>     * reflection pattern as {@see reportFormat()}/{@see subscriber()}</span>
+<span class=""><span class="ln">837</span>     * above. Unlike a subscriber (every selected one runs, additively),</span>
+<span class=""><span class="ln">838</span>     * exactly one progress view is selected per run (D-023/D-066).</span>
+<span class=""><span class="ln">839</span>     * Crucible&#039;s own console/testdox/teamcity views are registered this</span>
+<span class=""><span class="ln">840</span>     * same way, pre-seeded by the constructor — calling this again with</span>
+<span class=""><span class="ln">841</span>     * the same key overrides that default, including for `console`,</span>
+<span class=""><span class="ln">842</span>     * `testdox`, or `teamcity` themselves.</span>
+<span class=""><span class="ln">843</span>     *</span>
+<span class=""><span class="ln">844</span>     *     -&gt;progressView(&#039;console&#039;, CustomDotsReporter::class)</span>
+<span class=""><span class="ln">845</span>     *</span>
+<span class=""><span class="ln">846</span>     * @param  non-empty-string  $key</span>
+<span class=""><span class="ln">847</span>     * @param  class-string  $class</span>
+<span class=""><span class="ln">848</span>     * @param  array&lt;string, mixed&gt;  $params</span>
+<span class=""><span class="ln">849</span>     */</span>
+<span class=""><span class="ln">850</span>    public function progressView(string $key, string $class, array $params = []): self</span>
+<span class=""><span class="ln">851</span>    {</span>
+<span class="missed"><span class="ln">852</span>        $this-&gt;progressViews[$key] = [&#039;class&#039; =&gt; $class, &#039;params&#039; =&gt; $params];</span>
+<span class=""><span class="ln">853</span></span>
+<span class="missed"><span class="ln">854</span>        return $this;</span>
+<span class=""><span class="ln">855</span>    }</span>
+<span class=""><span class="ln">856</span></span>
+<span class=""><span class="ln">857</span>    /**</span>
+<span class=""><span class="ln">858</span>     * Let whoever already knows what changed push a change set into</span>
+<span class=""><span class="ln">859</span>     * `crucible --watch` (D-083), instead of Crucible reconstructing one from</span>
+<span class=""><span class="ln">860</span>     * artifacts it would have to understand. A bundler plugin, a build</span>
+<span class=""><span class="ln">861</span>     * step, a git hook — see `integration/` for a ready-made producer.</span>
+<span class=""><span class="ln">862</span>     *</span>
+<span class=""><span class="ln">863</span>     *     -&gt;retrigger()</span>
+<span class=""><span class="ln">864</span>     *</span>
+<span class=""><span class="ln">865</span>     * **Off by default**: a test tool must not open a socket unasked.</span>
+<span class=""><span class="ln">866</span>     * When enabled, watch binds 127.0.0.1 on an ephemeral port and</span>
+<span class=""><span class="ln">867</span>     * writes the full URL (token included) to the hot file, whose very</span>
+<span class=""><span class="ln">868</span>     * presence tells a producer that Crucible is listening. It is removed</span>
+<span class=""><span class="ln">869</span>     * on exit, and a failure to bind is never fatal — the session just</span>
+<span class=""><span class="ln">870</span>     * runs without it.</span>
+<span class=""><span class="ln">871</span>     *</span>
+<span class=""><span class="ln">872</span>     * @param non-empty-string $hotFile where the address is published; relative to the working directory</span>
+<span class=""><span class="ln">873</span>     * @param int              $port    0 = ephemeral, which never collides between projects</span>
+<span class=""><span class="ln">874</span>     */</span>
+<span class=""><span class="ln">875</span>    public function retrigger(string $hotFile = &#039;.crucible.hot&#039;, int $port = 0): self</span>
+<span class=""><span class="ln">876</span>    {</span>
+<span class="missed"><span class="ln">877</span>        $this-&gt;retriggerHotFile = $hotFile;</span>
+<span class="missed"><span class="ln">878</span>        $this-&gt;retriggerPort    = $port;</span>
+<span class=""><span class="ln">879</span></span>
+<span class="missed"><span class="ln">880</span>        return $this;</span>
+<span class=""><span class="ln">881</span>    }</span>
+<span class=""><span class="ln">882</span></span>
+<span class=""><span class="ln">883</span>    public function build(): Configuration</span>
+<span class=""><span class="ln">884</span>    {</span>
+<span class="covered"><span class="ln">885</span>        return new Configuration(</span>
+<span class="covered"><span class="ln">886</span>            testSuites: $this-&gt;testSuites,</span>
+<span class="covered"><span class="ln">887</span>            source: $this-&gt;source,</span>
+<span class="covered"><span class="ln">888</span>            php: new Php($this-&gt;ini, $this-&gt;env, $this-&gt;constants),</span>
+<span class="covered"><span class="ln">889</span>            bootstrap: $this-&gt;bootstrap,</span>
+<span class="covered"><span class="ln">890</span>            reportTitle: $this-&gt;reportTitle,</span>
+<span class="covered"><span class="ln">891</span>            cacheDirectory: $this-&gt;cacheDirectory,</span>
+<span class="covered"><span class="ln">892</span>            cacheResult: $this-&gt;cacheResult,</span>
+<span class="covered"><span class="ln">893</span>            colors: $this-&gt;colors,</span>
+<span class="covered"><span class="ln">894</span>            executionOrder: $this-&gt;executionOrder,</span>
+<span class="covered"><span class="ln">895</span>            failOnDeprecation: $this-&gt;failOnDeprecation,</span>
+<span class="covered"><span class="ln">896</span>            failOnIncomplete: $this-&gt;failOnIncomplete,</span>
+<span class="covered"><span class="ln">897</span>            failOnNotice: $this-&gt;failOnNotice,</span>
+<span class="covered"><span class="ln">898</span>            failOnRisky: $this-&gt;failOnRisky,</span>
+<span class="covered"><span class="ln">899</span>            failOnSkipped: $this-&gt;failOnSkipped,</span>
+<span class="covered"><span class="ln">900</span>            failOnWarning: $this-&gt;failOnWarning,</span>
+<span class="covered"><span class="ln">901</span>            failOnDirectDeprecation: $this-&gt;failOnDirectDeprecation,</span>
+<span class="covered"><span class="ln">902</span>            failOnIndirectDeprecation: $this-&gt;failOnIndirectDeprecation,</span>
+<span class="covered"><span class="ln">903</span>            failOnSelfDeprecation: $this-&gt;failOnSelfDeprecation,</span>
+<span class="covered"><span class="ln">904</span>            failOnEmptyTestSuite: $this-&gt;failOnEmptyTestSuite,</span>
+<span class="covered"><span class="ln">905</span>            stopOnDefect: $this-&gt;stopOnDefect,</span>
+<span class="covered"><span class="ln">906</span>            stopOnError: $this-&gt;stopOnError,</span>
+<span class="covered"><span class="ln">907</span>            stopOnFailure: $this-&gt;stopOnFailure,</span>
+<span class="covered"><span class="ln">908</span>            stopOnRisky: $this-&gt;stopOnRisky,</span>
+<span class="covered"><span class="ln">909</span>            stopOnSkipped: $this-&gt;stopOnSkipped,</span>
+<span class="covered"><span class="ln">910</span>            stopOnIncomplete: $this-&gt;stopOnIncomplete,</span>
+<span class="covered"><span class="ln">911</span>            stopOnDeprecation: $this-&gt;stopOnDeprecation,</span>
+<span class="covered"><span class="ln">912</span>            stopOnNotice: $this-&gt;stopOnNotice,</span>
+<span class="covered"><span class="ln">913</span>            stopOnWarning: $this-&gt;stopOnWarning,</span>
+<span class="covered"><span class="ln">914</span>            testdox: $this-&gt;testdox,</span>
+<span class="covered"><span class="ln">915</span>            phpunitCompatibility: $this-&gt;phpunitCompatibility,</span>
+<span class="covered"><span class="ln">916</span>            quirks: $this-&gt;quirks,</span>
+<span class="covered"><span class="ln">917</span>            backupGlobals: $this-&gt;backupGlobals,</span>
+<span class="covered"><span class="ln">918</span>            backupStaticProperties: $this-&gt;backupStaticProperties,</span>
+<span class="covered"><span class="ln">919</span>            beStrictAboutChangesToGlobalState: $this-&gt;beStrictAboutChangesToGlobalState,</span>
+<span class="covered"><span class="ln">920</span>            requireCoverageMetadata: $this-&gt;requireCoverageMetadata,</span>
+<span class="covered"><span class="ln">921</span>            beStrictAboutCoverageMetadata: $this-&gt;beStrictAboutCoverageMetadata,</span>
+<span class="covered"><span class="ln">922</span>            maxSelfDeprecations: $this-&gt;maxSelfDeprecations,</span>
+<span class="covered"><span class="ln">923</span>            maxDirectDeprecations: $this-&gt;maxDirectDeprecations,</span>
+<span class="covered"><span class="ln">924</span>            maxIndirectDeprecations: $this-&gt;maxIndirectDeprecations,</span>
+<span class="covered"><span class="ln">925</span>            retries: $this-&gt;retries,</span>
+<span class="covered"><span class="ln">926</span>            quarantine: $this-&gt;quarantine,</span>
+<span class="covered"><span class="ln">927</span>            browser: $this-&gt;browser,</span>
+<span class="covered"><span class="ln">928</span>            commandGates: $this-&gt;commandGates,</span>
+<span class="covered"><span class="ln">929</span>            extensions: $this-&gt;extensions,</span>
+<span class="covered"><span class="ln">930</span>            vitest: $this-&gt;vitestSuites,</span>
+<span class="covered"><span class="ln">931</span>            typeTests: $this-&gt;typeTestSuites,</span>
+<span class="covered"><span class="ln">932</span>            impactRules: $this-&gt;impactRules,</span>
+<span class="covered"><span class="ln">933</span>            reportFormats: $this-&gt;reportFormats,</span>
+<span class="covered"><span class="ln">934</span>            subscribers: $this-&gt;subscribers,</span>
+<span class="covered"><span class="ln">935</span>            progressViews: $this-&gt;progressViews,</span>
+<span class="covered"><span class="ln">936</span>            retriggerHotFile: $this-&gt;retriggerHotFile,</span>
+<span class="covered"><span class="ln">937</span>            retriggerPort: $this-&gt;retriggerPort,</span>
+<span class=""><span class="ln">938</span>        );</span>
+<span class=""><span class="ln">939</span>    }</span>
+<span class=""><span class="ln">940</span>}</span>
+<span class=""><span class="ln">941</span></span>
+</pre>
+</body>
+</html>

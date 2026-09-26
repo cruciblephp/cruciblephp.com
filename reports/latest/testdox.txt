@@ -1,0 +1,1992 @@
+ArchDependency (tests/unit/Architecture/ArchDependencyTest.php)
+ ✔ A sibling reference inside the target is not a use
+ ✔ A reference out of the target is a use
+ ✔ A sibling reference does make a class used
+ ✔ A reference from outside makes a class used
+ ✔ Both spellings agree on every case
+
+ArchRule (tests/unit/Architecture/ArchRuleTest.php)
+ ✔ A namespace prefix targets everything beneath it
+ ✔ The dependency rule names the offending pair
+ ✔ A real layering rule holds
+ ✔ Ignoring removes classes from the target set
+ ✔ Wildcards match within and across segments
+ ✔ A rule that matches nothing fails
+ ✔ A rule with no expectation fails
+ ✔ The inverse layering rule finds the far side crossing
+ ✔ A violation of the inverse rule is reported
+ ✔ Traits are traits and not classes
+ ✔ A trait namespace is not classes
+ ✔ An enum is an enum
+ ✔ Backing is part of the shape
+ ✔ An int backed enum is not string backed
+ ✔ An unbacked enum is backed by nothing
+ ✔ Extending and implementing nothing
+ ✔ Strict equality is read from the source
+ ✔ Used in nothing is an empty allowlist
+ ✔ Every class is named as its path implies
+ ✔ Methods are checked only where they are declared
+ ✔ An undocumented method is reported
+ ✔ Properties skip promoted ones
+
+rules.pest (tests/unit/Architecture/rules.pest.php)
+ ✔ Event objects are immutable
+ ✔ The impact tier never reaches the browser tier
+ ✔ The retrigger endpoint stays inside the watch tier
+
+Assert (tests/unit/Assert/AssertTest.php)
+ ✔ Identity and counting
+ ✔ Same on strings carries structured diff
+ ✔ Equality families
+ ✔ Boolean null and emptiness
+ ✔ Counts and sizes
+ ✔ Comparisons
+ ✔ Iterable families
+ ✔ String families
+ ✔ Object and type families
+ ✔ Filesystem families
+ ✔ Fail throws and prepends custom messages
+
+AssertTranche (tests/unit/Assert/AssertTrancheTest.php)
+ ✔ Case and line ending insensitive equality
+ ✔ Float specials
+ ✔ Object equals uses the declared protocol
+ ✔ String matches format
+ ✔ File content equality
+ ✔ Missing file is a failure not an error
+ ✔ Json comparisons
+ ✔ Readability and writability
+
+Differ (tests/unit/Assert/DifferTest.php)
+ ✔ Marks removals additions and context
+ ✔ Pure addition and removal
+ ✔ Context collapses the unchanged runs around each change
+ ✔ Without context every unchanged line survives
+
+EqualitySemantics (tests/unit/Assert/EqualitySemanticsTest.php)
+ ✔ Numeric juggling between number and numeric string
+ ✔ Two strings never juggle numerically
+ ✔ Nan is never equal
+ ✔ Delta applies to numbers and recurses into arrays
+ ✔ Arrays compare by keys order insensitive
+ ✔ Canonicalize compares lists as multisets
+ ✔ Date times compare by instant
+ ✔ Objects compare by class and properties recursively
+ ✔ Cyclic object graphs do not recurse forever
+ ✔ A stringable object equals its string form
+ ✔ A non stringable object is never equal to a string
+
+Exporter (tests/unit/Assert/ExporterTest.php)
+ ✔ Scalars
+ ✔ Arrays are multiline and nested
+ ✔ Objects export class and properties
+ ✔ Object recursion is guarded
+ ✔ Enums export as class and case
+ ✔ Describe is short for compound values
+
+BrowserKernelHandler (tests/unit/Bridge/Laravel/BrowserKernelHandlerTest.php)
+ ✔ An unbooted application is named rather than fatal
+ ✔ The kernels response is carried back whole
+ ✔ The response headers arrive without the ones the renderer owns
+ ✔ The kernel is terminated after the response
+ ✔ The request reaches the kernel intact
+
+CrucibleServiceProvider (tests/unit/Bridge/Laravel/CrucibleServiceProviderTest.php)
+ ✔ The artisan test command is registered on boot
+ ✔ A worker token arms laravels parallel testing flag
+ ✔ A sequential run leaves the parallel flag alone
+
+Functions (tests/unit/Bridge/PestLaravel/FunctionsTest.php)
+ ✔ Each proxy forwards to the current test instance
+ ✔ Calling a proxy outside a running test throws
+
+AutoMixedTrait (tests/unit/Bridge/PestSnapshots/AutoMixedTraitTest.php)
+ ✔ Returns nothing when the snapshots package is not installed
+ ✔ Returns nothing for a final class either
+
+Functions (tests/unit/Bridge/PestSnapshots/FunctionsTest.php)
+ ✔ Calling a proxy outside a running test throws
+ ✔ Proxy refuses an instance that does not actually use the real trait
+ ✔ Expect matcher refuses an instance that does not actually use the real trait
+ ✔ To match snapshot resolves to crucibles own native matcher not spaties
+
+SnapshotIdentityWrapper (tests/unit/Bridge/PestSnapshots/SnapshotIdentityWrapperTest.php)
+ ✔ A class using the trait is wrapped in a subclass of it
+ ✔ A class without the trait is left alone
+ ✔ The trait counts wherever it is inherited
+ ✔ The trait counts when another trait brings it
+ ✔ Each class gets its own wrapper even sharing a parent
+ ✔ A final class is refused rather than compiled into a fatal
+ ✔ The generated identity resolves for a test with no dataset
+ ✔ Each dataset row gets its own snapshot identity
+ ✔ A named dataset row carries its label
+
+Browsing (tests/unit/Browser/BrowsingTest.php)
+ ✔ Explicitly disabled means skip
+ ✔ Relative urls are a named refusal
+ ✔ Failure screenshot is null without a visit
+ ✔ Failure screenshot writes the png
+ ✔ A missing screenshot says why and only a dead session is a precondition
+
+DriverSession (tests/unit/Browser/DriverSessionTest.php)
+ ✔ Drives a real browser end to end
+ ✔ The interaction surface against a real page
+
+EnvironmentSimulation (tests/unit/Browser/EnvironmentSimulationTest.php)
+ ✔ Device city dark mode and overrides
+ ✔ Every preset produces a context
+
+FrameBuffer (tests/unit/Browser/FrameBufferTest.php)
+ ✔ Frames emerge only when complete
+ ✔ Several frames in one chunk
+ ✔ Garbage payload is a named protocol error
+
+FrameStream (tests/unit/Browser/FrameStreamTest.php)
+ ✔ Round trips a message
+ ✔ Round trips several frames in sequence
+ ✔ Short length prefix is a named protocol error
+ ✔ Truncated payload is a named protocol error
+ ✔ Non json payload is a named protocol error
+
+HealthChecks (tests/unit/Browser/HealthChecksTest.php)
+ ✔ Console log semantics
+ ✔ Java script error semantics
+ ✔ Accessibility via axe
+ ✔ Screenshot bytes are png
+
+InProcessServer (tests/unit/Browser/InProcessServerTest.php)
+ ✔ Served requests share the test process state
+
+Inertia (tests/unit/Browser/InertiaTest.php)
+ ✔ The server rendered page is read from the dom
+ ✔ A client side visit is seen though data page never changes
+ ✔ A non inertia page is named not mistaken for a failed match
+
+InitScript (tests/unit/Browser/InitScriptTest.php)
+ ✔ An init script on the context runs before page scripts
+ ✔ An init script applies to every page in the context
+
+InteractionTail (tests/unit/Browser/InteractionTailTest.php)
+ ✔ Drag attach key down frames and submit
+ ✔ The visit fan out surface
+
+JsValue (tests/unit/Browser/JsValueTest.php)
+ ✔ Scalars
+ ✔ The probe pinned object shape
+ ✔ Unknown envelope is a named error
+
+Livewire (tests/unit/Browser/LivewireTest.php)
+ ✔ A components state is read from its snapshot
+ ✔ A round trip is waited for and changes the state
+ ✔ A component can be addressed by name
+
+NetworkIdle (tests/unit/Browser/NetworkIdleTest.php)
+ ✔ A page that settles returns once it is quiet
+ ✔ A wait outlasts a request that has not started yet
+ ✔ A page that never goes quiet is a named failure
+ ✔ A failed request still ends the wait
+
+PageAssertionsSurface (tests/unit/Browser/PageAssertionsSurfaceTest.php)
+ ✔ The url decomposes into every component the surface exposes
+ ✔ Every url negation disagrees with its positive
+ ✔ An absent url component reads as empty rather than null
+ ✔ Url is compares the whole url or just the path
+ ✔ Path prefix suffix and fragment prefix read the decomposed part
+ ✔ Query parameters are split and percent decoded
+ ✔ A url with no query has no parameters
+ ✔ Title and text comparisons both directions
+ ✔ Text reads from body for the unscoped form
+ ✔ Attribute comparisons including absence
+ ✔ Form state reads through the field grammar
+ ✔ Select and indeterminate state go through the matched elements
+ ✔ Buttons ask the target grammar rather than the field grammar
+ ✔ Presence and visibility are different questions
+ ✔ Count reads the matched elements and refuses a non integer
+ ✔ Links are matched by visible text with quotes escaped
+ ✔ Source assertions read the raw content
+ ✔ Script compares strictly and defaults to true
+ ✔ Inertia props resolve through dot paths including list indexes
+ ✔ A page that is not inertia says so rather than not matching
+ ✔ Livewire state is read from the snapshot the component carries
+ ✔ A page with no livewire component is null rather than empty
+ ✔ Wire click waits for the cycle it started
+ ✔ Only log type console entries trip the console check
+ ✔ Java script errors and smoke are the same check
+ ✔ Every assertion returns the page so they chain
+
+PageAssertions (tests/unit/Browser/PageAssertionsTest.php)
+ ✔ The assertion surface against a real page
+ ✔ Failures land in the assertion machinery
+
+RelativeVisit (tests/unit/Browser/RelativeVisitTest.php)
+ ✔ Without a handler a relative visit is a named error
+ ✔ A misconfigured handler class is a named error
+ ✔ Relative visits serve through the handler and share the world
+
+Selector (tests/unit/Browser/SelectorTest.php)
+ ✔ Data test shorthand
+ ✔ Css passes through
+ ✔ Bare words mean visible text
+ ✔ Bare html element names stay elements
+ ✔ Fields try name id and data test
+ ✔ Explicit field selectors pass through
+
+CgiVariables (tests/unit/Browser/Server/CgiVariablesTest.php)
+ ✔ The method is uppercased and the uri kept
+ ✔ The host falls back to the loopback when no host header arrives
+ ✔ The host header wins when it arrives
+ ✔ Headers become uppercased underscored http variables
+ ✔ The content type is carried both prefixed and unprefixed
+ ✔ A response header keeps its hyphenated title casing
+ ✔ The headers the renderer owns are dropped
+ ✔ A non iterable or empty named entry is skipped rather than fatal
+ ✔ The last value of a repeated header wins
+
+SessionGate (tests/unit/Browser/SessionGateTest.php)
+ ✔ The tier is off by default
+ ✔ Default state is a named error naming the config line
+ ✔ Explicitly disabled is its own named state
+ ✔ Enabled without playwright names the exact commands
+ ✔ Builder carries the browser block
+ ✔ Engine maps to playwright types
+
+VisitDialect.pest (tests/unit/Browser/VisitDialect.pest.php)
+ ✔ It may visit a page and chain assertions
+ ✔ It refuses relative urls until a server bridge exists
+
+AnsweredOptions (tests/unit/CLI/AnsweredOptionsTest.php)
+ ✔ Disable coverage ignore has nothing to disable
+ ✔ All has no configuration level selection to ignore
+ ✔ Check version answers and exits without running anything
+ ✔ The phpunit issue family has no issue to judge
+
+CliOptions (tests/unit/CLI/CliOptionsTest.php)
+ ✔ Absent options are null so configuration wins
+ ✔ Valued options accept space and equals forms
+ ✔ View is a valued option selecting a progress view key
+ ✔ Repeatable options accumulate and split on commas
+ ✔ Boolean flags parse to true not null
+ ✔ Unknown options and stray arguments are errors
+ ✔ Last occurrence of a valued option wins
+ ✔ Changed takes an optional reference
+ ✔ Bare changed never consumes the next argument
+ ✔ An empty changed reference is an error
+ ✔ Related accumulates
+ ✔ Watch is a flag
+ ✔ Retries is a numeric option
+ ✔ Fail on flaky is a flag
+ ✔ Flakes is a command with rounds
+ ✔ Compat check is a command with auto fix and revert
+ ✔ Coverage is opt in
+ ✔ Todo listing flags parse
+ ✔ Profile and dirty parse as flags
+ ✔ Neither flag takes a value
+ ✔ The specs retry spelling counts total attempts
+ ✔ The two retry spellings are mutually exclusive
+ ✔ Aliases are rewritten to the option they point at
+ ✔ An alias still accepts what the option it points at accepts
+ ✔ Do not fail on is the off half of the fail on tri state
+ ✔ A spec spelling resolves when written with an equals
+ ✔ A fail on switch and its negation together is an error
+ ✔ The specs configuration switches parse as tri states
+ ✔ Bootstrap is valued and extension repeats
+ ✔ No coverage wins over every coverage spelling on the same command line
+ ✔ Every stop on switch parses as a tri state
+ ✔ The blanket off switches suppress what the same command line asked
+ ✔ The event stream takes three independent file targets
+ ✔ The dependency switches are a tri state and isolation is run wide
+ ✔ The coverage surface answers one question about collecting
+ ✔ No coverage suppresses every coverage target and the filter
+ ✔ Include path splits on the platform separator
+ ✔ Useless test reporting is on until turned off
+ ✔ The coverage floor is a percentage not an integer
+ ✔ The coverage floor collects coverage on its own
+ ✔ A coverage floor outside zero to one hundred is an error
+ ✔ The coverage floor and no coverage are mutually exclusive
+
+CompatCheckCommand (tests/unit/CLI/Commands/CompatCheckCommandTest.php)
+ ✔ Fails fast when php unit is not installed
+ ✔ An oracle that ran nothing is not agreement
+ ✔ The candidate files are scanned for classes including pest shaped ones
+ ✔ Revert restores files from an existing manifest
+ ✔ Revert with nothing to revert is still successful
+
+CompletionCommand (tests/unit/CLI/Commands/CompletionCommandTest.php)
+ ✔ Each shell offers every option the parser accepts
+ ✔ The script is only script
+ ✔ An unknown shell is refused with the list
+
+ExtensionsCommand (tests/unit/CLI/Commands/ExtensionsCommandTest.php)
+ ✔ List shows all three kinds with a kind column
+ ✔ List json tags each entry with its kind
+ ✔ Detail finds a report format by key
+ ✔ Detail finds a subscriber by key
+ ✔ Detail finds a progress view by key
+ ✔ Detail unknown key errors across all registries
+ ✔ Preview without key errors
+ ✔ Preview without a key asks and previews the answer
+ ✔ Preview report format writes the rendered document
+ ✔ Preview subscriber writes a real well formed j unit report
+ ✔ Preview progress view writes real team city service messages
+
+InitCommand (tests/unit/CLI/Commands/InitCommandTest.php)
+ ✔ Non interactive terminal writes the prior static template unchanged
+ ✔ Interactive prompts customize the generated config
+ ✔ Declined overwrite keeps the existing file
+ ✔ Confirmed overwrite replaces the file
+ ✔ Unsafe characters are rejected until corrected
+ ✔ Existing phpunit xml is converted instead of prompting
+
+DocumentedOptions (tests/unit/CLI/DocumentedOptionsTest.php)
+ ✔ Every option appears in the built in help
+ ✔ Every option appears in the manual
+ ✔ The manual documents no option that does not exist
+
+PhpConfigurationCheck (tests/unit/CLI/PhpConfigurationCheckTest.php)
+ ✔ It reports the specs settings and nothing else
+ ✔ Every result carries its own verdict
+ ✔ Only the settings that are off produce a warning
+
+PhpstanNeon (tests/unit/CLI/PhpstanNeonTest.php)
+ ✔ A fresh file wires the extension and the project paths
+ ✔ Wiring inserts into an existing includes section
+ ✔ Wiring prepends a section when none exists
+ ✔ Already wired is detected
+ ✔ The inline list shape is refused not mangled
+ ✔ Comments and unusual indentation survive
+ ✔ The indent is the next entrys even on the first line
+ ✔ A prepended section leaves the file ending in one newline
+ ✔ An analysis configuration is written as given
+ ✔ A fresh file leaves the include to the installer
+ ✔ Crucible declares its extension to the installer
+
+PostRunReport (tests/unit/CLI/PostRunReportTest.php)
+ ✔ A scoped deprecation policy judges only its own scope
+ ✔ The negation beats a configuration that turned the policy on
+ ✔ Fail on all issues covers every policy and still yields to a negation
+ ✔ An empty suite fails by default and the negation turns that off
+ ✔ The display family names what the tally counted
+ ✔ No display switch prints nothing
+ ✔ Exactly the minimum passes
+ ✔ A shortfall names the numbers
+ ✔ No minimum is no gate
+ ✔ Dead lines do not dilute the score
+ ✔ The gate judges the printed percentage
+ ✔ A floor of zero cannot be breached
+ ✔ An empty scope is a breach
+
+ReproducibleOutput (tests/unit/CLI/ReproducibleOutputTest.php)
+ ✔ The flag is off until asked for
+ ✔ A frozen clock settles the timestamp a writer would otherwise read
+ ✔ A wall clock writer still reports the real instant
+
+CompositeEqualsPattern (tests/unit/Compat/Migration/CompositeEqualsPatternTest.php)
+ ✔ Real introspection processor shape drops coupled keys keeps the rest
+ ✔ No backing array assignment is not auto fixed
+ ✔ Non variable argument is not auto fixed
+ ✔ A third argument is not auto fixed
+ ✔ Every key coupled is not auto fixed
+ ✔ Long array syntax is not auto fixed
+ ✔ Static call prefix is preserved on every generated statement
+ ✔ Preview does not touch the source
+
+CrucibleRun (tests/unit/Compat/Migration/CrucibleRunTest.php)
+ ✔ The child carries the pest vocabulary prelude
+ ✔ Keeps only test finish events keyed by id
+ ✔ Malformed lines are ignored
+ ✔ No events file yields no outcomes
+
+FixManifest (tests/unit/Compat/Migration/FixManifestTest.php)
+ ✔ Backup then revert restores original content
+ ✔ Revert clears the manifest
+ ✔ A second backup of the same file is a no op
+ ✔ Multiple files revert together
+ ✔ Empty manifest has nothing to revert
+
+OracleRun (tests/unit/Compat/Migration/OracleRunTest.php)
+ ✔ Keys by relative file path and method not method alone
+ ✔ Outcome classification
+ ✔ Dataset suffix is appended to the key
+ ✔ File outside the working directory stays absolute
+ ✔ Pest reports the id itself in the file attribute
+ ✔ A positional pest dataset is counted and a named one is read
+ ✔ A classic class inside a pest run is reported unmapped not guessed
+ ✔ The oracle binary is pest wherever pest is installed
+
+OutcomeDiff (tests/unit/Compat/Migration/OutcomeDiffTest.php)
+ ✔ Flags only oracle pass crucible fail or error
+ ✔ No drift when everything agrees
+ ✔ Oracle non pass outcomes are never candidates regardless of crucible side
+ ✔ A test the oracle ran and crucible did not is reported missing
+ ✔ An empty crucible run is every oracle pass missing rather than no drift
+ ✔ A test the oracle did not pass is not owed an outcome
+ ✔ Nothing is missing when crucible answered every oracle pass
+
+PhpUnitEventLog (tests/unit/Compat/Migration/PhpUnitEventLogTest.php)
+ ✔ It reads the class based rows and leaves pests own to junit
+ ✔ The verdict is by precedence not by arrival
+ ✔ A class is placed by the file that declares it and never by resemblance
+
+SourceRewriter (tests/unit/Compat/Migration/SourceRewriterTest.php)
+ ✔ Locate method finds the declaration to closing brace span
+ ✔ Locate method ignores a call to the same name elsewhere
+ ✔ Locate method returns null for an abstract method
+ ✔ Locate method returns null when not found
+ ✔ Vendor path assertion on an array indexed higher frame weakens to a string check
+ ✔ Vendor path assertion with a frame number prefix on a higher frame keeps only the frame marker
+ ✔ Vendor path assertion becomes a wildcard regex
+ ✔ No equivalent filename becomes a structural frame check
+ ✔ Unrelated assertion is a byte exact no op
+ ✔ Out of range line is ignored
+ ✔ Preview does not touch the source
+
+Builder (tests/unit/Configuration/BuilderTest.php)
+ ✔ Defaults match the phpunit spec
+ ✔ Maps the phpunit xml core surface
+ ✔ Strict enables every fail on flag
+ ✔ Rejects duplicate test suite names
+ ✔ Report format registers a class string and params
+ ✔ Report format calling twice with the same key overrides rather than throws
+ ✔ Subscriber registers a class string and params
+ ✔ Subscriber calling twice with the same key overrides rather than throws
+
+Loader (tests/unit/Configuration/LoaderTest.php)
+ ✔ Loads a configuration file that returns a builder
+ ✔ Falls back to dist file
+ ✔ Explicit path wins over default file names
+ ✔ Rejects a missing explicit path
+ ✔ Rejects a directory without configuration
+ ✔ Rejects a configuration file with a wrong return type
+ ✔ A configuration that throws is reported not fatal
+ ✔ A configuration throwing a string code is reported not a type error
+ ✔ Exists checks default file names
+
+Quirk (tests/unit/Configuration/QuirkTest.php)
+ ✔ No quirk is declared
+ ✔ A removed quirk is not accepted as a name
+ ✔ The configuration still carries an empty list
+ ✔ The falsy zero is not a special case but is empty
+ ✔ The hostname trap is the same emptiness one layer down
+ ✔ The cast is the default and not an opt in
+ ✔ Everything the incumbent casts is cast
+ ✔ The refusal is not a verdict and never was quirk gated
+
+XmlMigrator (tests/unit/Configuration/XmlMigratorTest.php)
+ ✔ Migrated configuration loads with the right typed values
+ ✔ Everything without a crucible equivalent is named in the notes
+ ✔ Defaults are not restated in the generated code
+ ✔ Unparseable xml throws
+
+SelectPrompt (tests/unit/Console/Components/SelectPromptTest.php)
+ ✔ The list is drawn with every option and the hint
+ ✔ One option at a time carries the marker
+ ✔ The arrow keys choose and enter answers
+ ✔ The list wraps at both ends
+ ✔ Without a default it refuses to answer for a script
+ ✔ A default is an answer a script can use
+
+Splash (tests/unit/Console/Components/SplashTest.php)
+ ✔ A non interactive terminal gets one static line
+ ✔ An interactive terminal sweeps and settles
+ ✔ Fewer sweeps is proportionally fewer frames
+ ✔ A frame carries all three states
+ ✔ It settles with the whole wordmark lit
+ ✔ A classic terminal gets no truecolor sequences
+ ✔ A single character wordmark terminates
+ ✔ An empty wordmark writes nothing
+ ✔ The suffix follows the wordmark on every frame
+ ✔ The sweep bounces on a single cell per tick
+ ✔ A single cell sweep stays put
+ ✔ Every frame carries the suffix
+ ✔ A wide character is one cell
+
+Help (tests/unit/Console/Output/HelpTest.php)
+ ✔ Descriptions share one column
+ ✔ A term too wide for the column takes its own line
+ ✔ A long description wraps into the same column
+ ✔ A list nested under an option is laid out on its own
+ ✔ An unbreakable description is not split mid word
+ ✔ Colour is worn only when the terminal can render it
+ ✔ Prose is untouched
+
+Markdown (tests/unit/Console/Output/MarkdownTest.php)
+ ✔ Strips bold markers
+ ✔ Strips inline code and italics
+ ✔ Headings
+ ✔ Bullet list
+ ✔ Collects links as numbered references
+ ✔ External and local links are both collected in order
+ ✔ Wraps long paragraphs
+ ✔ Bold span crossing a hard wrapped source line is still parsed
+ ✔ Bullet continuation line joins the same item
+ ✔ Blank line ends a bullet continuation
+ ✔ Table renders as a bordered grid with a header row
+ ✔ Table cells keep followable link references
+
+TextPdf (tests/unit/Console/Output/TextPdfTest.php)
+ ✔ It produces a readable pdf
+ ✔ Long text is paginated
+ ✔ The manual itself renders
+
+ModalPresenter (tests/unit/Console/Runtime/ModalPresenterTest.php)
+ ✔ It takes the alternate screen and hands it back
+ ✔ The surface is taken only once
+ ✔ The dialog is boxed and centred
+ ✔ It draws its own frame so prompts render bare
+ ✔ The dialog never fills the screen edge to edge
+
+Str (tests/unit/Console/Support/StrTest.php)
+ ✔ Every width range edge holds on both sides
+ ✔ An emoji presentation sequence is one emoji wide
+ ✔ Dingbats below the emoji range measure one column
+ ✔ Char width of nothing is zero
+ ✔ Width counts columns not characters
+ ✔ Width ignores ansi sequences
+ ✔ Length counts characters and not columns
+ ✔ Truncate keeps what fits and marks what it cut
+ ✔ Padding measures columns not bytes
+ ✔ Padding at or over the width is left alone
+ ✔ Wrap breaks on words and keeps paragraphs
+ ✔ Wrap hard breaks a word too long to fit
+ ✔ Wrap with no room returns the input whole
+ ✔ Substr counts characters
+ ✔ Width stays correct once the memo is full
+
+Capabilities (tests/unit/Console/Terminal/CapabilitiesTest.php)
+ ✔ A terminal gets both
+ ✔ A pipe gets neither
+ ✔ Continuous integration keeps colour and loses animation
+ ✔ A false ci marker is not continuous integration
+ ✔ A dumb terminal gets neither despite being a tty
+ ✔ An empty term is treated as dumb
+ ✔ A known term is fine
+ ✔ No color beats force color
+ ✔ Force color paints a pipe
+ ✔ The overrides win and reset together
+
+CoverageMetadataEnforcement (tests/unit/Coverage/CoverageMetadataEnforcementTest.php)
+ ✔ Require coverage metadata reclassifies even without a coverage run
+ ✔ Strict check and discard over scoped windows
+
+Coverage (tests/unit/Coverage/CoverageTest.php)
+ ✔ The collector filters to scope and attributes execution only
+ ✔ Branches merge by any hit and round trip
+ ✔ Data merges by max and totals
+ ✔ The text report renders relative paths and totals
+ ✔ The text report elides uncovered files unless asked
+ ✔ The text report summary drops the rows and keeps the totals
+ ✔ The open clover variant names the file and stamps the root
+ ✔ The serialized php report returns the data it was given
+ ✔ Path entries travel beside branches and tally separately
+ ✔ The text report omits paths when none were collected
+ ✔ The crap4j writer pairs complexity with coverage
+ ✔ The xml report writes an index and one document per file
+ ✔ The clover writer emits statement metrics
+ ✔ The map derives relative edges and round trips
+ ✔ The line map answers the mutation query and round trips
+ ✔ The text report renders branch totals when collected
+ ✔ The clover writer fills conditionals from branches
+ ✔ The cobertura writer emits rates packages and condition coverage
+ ✔ The html report writes index and annotated pages
+ ✔ The xdebug driver collects when in coverage mode
+ ✔ The xdebug driver collects branches when asked
+
+CoversTargets (tests/unit/Coverage/CoversTargetsTest.php)
+ ✔ No claim means identity contribution and no strays
+ ✔ Covers class filters contribution by demoting stray hits
+ ✔ Strays name the declaring unit
+ ✔ Uses class allows execution but not contribution
+ ✔ Covers nothing declares contributes nothing and is exempt from strict
+ ✔ Unknown targets resolve to no range not an error
+ ✔ A target that cannot load resolves to no range too
+ ✔ Window without hits keeps denominators
+
+ExternalCoverageArtifact (tests/unit/Coverage/ExternalCoverageArtifactTest.php)
+ ✔ An artifact contributes its lines and claims no test
+ ✔ The conformance prelude writes what a child executed
+
+MutationIndex (tests/unit/Coverage/MutationIndexTest.php)
+ ✔ Inverts the map and orders covering tests fastest first
+ ✔ Untimed tests sort last and ties break deterministically
+ ✔ An uncovered line or file has no tests
+
+SourceAnalysis (tests/unit/Coverage/SourceAnalysisTest.php)
+ ✔ A straight line method is one
+ ✔ Each branch adds one
+ ✔ Ternaries count but nullable types and coalesce do not
+ ✔ Match counts its arms and switch counts its default
+ ✔ Reserved words used as names open no branch
+ ✔ Boundaries survive interpolation and attributes
+ ✔ A method reports its coverage and crap over the line map
+ ✔ The analysis cache answers twice and notices an edit
+ ✔ Warming parses every file it is given and skips what is not there
+ ✔ A method with no executable line is not divided by zero
+
+CrucibleDialect.crucible (tests/unit/Dialect/CrucibleDialect.crucible.php)
+ ✔ \check(fn(): int => 1 + 2)->to be(3);
+ ✔ \check(fn(): ?string => null)->to be null()->group('crucible-dialect');
+ ✔ \check(fn() => throw new  runtime exception('boom'))->to throw( runtime exception::class, 'boom');
+ ✔ \check(fn(): array => [1, 2, 3])->to be list()->to have count(3)->to contain(2)->not->to contain(9);
+ ✔ An explicit description wins
+ ✔ A trailing comment is the name
+ ✔ Slashes in strings cannot fool the tokenizer
+ ✔ \check(fn(): bool => true)->to be true();
+ ✔ \check(fn(): bool => true)->to be true(); #2
+ ✔ \check(fn(): mixed => $this->from suite config)->to be('loaded');
+ ✔ Str repeat('ab', 2) = 'abab'
+ ✔ Str repeat('x', 3) = 'xxx'
+ ✔ Strtoupper: uppercases
+ ✔ Strtoupper: leaves digits be
+ ✔ Array sum(an array) = 6
+ ✔ Array sum(an array) = 0
+ ✔ Pest-style tests coexist
+ ✔ Described blocks too > it nests as usual
+ ✔ Described blocks too > \check(fn() => $this->dialect)->to be('crucible');
+
+DoctestShadow (tests/unit/Dialect/DoctestShadowTest.php)
+ ✔ Shadows carry namespace expressions and the line map
+ ✔ A one line docblock loses its closer
+ ✔ A global namespace file gets no namespace statement
+ ✔ Crucible mentions outside docblocks are not doctests
+
+InlineDialect (tests/unit/Dialect/InlineDialectTest.php)
+ ✔ One source file yields checks and doctests in declaration order
+ ✔ Only a real doctest makes discovery load a source file
+ ✔ Returns claim compares with equality semantics
+ ✔ Named arguments bind by parameter name
+ ✔ Throws claim accepts the expected exception
+ ✔ Bare check claims the call completes
+ ✔ Instance methods run on a fresh instance
+ ✔ Non public methods are checkable
+ ✔ Free functions are checkable
+ ✔ Doctests run on the expect surface
+ ✔ Group attributes travel into metadata
+ ✔ A wrong returns claim fails the test
+ ✔ An unthrown exception fails the test
+ ✔ An unexpected exception escapes unwrapped
+ ✔ A failing doctest fails the test
+ ✔ Claiming both returns and throws is a load error
+ ✔ A required constructor argument is a load error
+ ✔ A doctest that does not parse is a load error
+ ✔ A doctest that escapes the wrapper is a load error
+ ✔ The wrappers parentheses are neutral over the expression forms
+ ✔ Discovery scans the source includes
+ ✔ Testsuite selection skips inline tests
+ ✔ Source excludes are honored
+
+ArchExpectation (tests/unit/Dialect/Pest/ArchExpectationTest.php)
+ ✔ A subject naming nothing passes and says so
+ ✔ The empty case passes under negation as well
+ ✔ A named symbol still answers about itself
+ ✔ A namespace answers for everything beneath it
+ ✔ Both spellings agree
+ ✔ The dependency matchers reach the same source
+ ✔ Documentation and casing answer in the expect spelling too
+ ✔ An enum is not readonly in either spelling
+ ✔ Every plural spelling agrees with its singular
+ ✔ The remaining wrappers answer in the expect spelling
+
+CurrentTest (tests/unit/Dialect/Pest/CurrentTestTest.php)
+ ✔ Get throws when no test is running
+ ✔ Get returns whatever was set
+ ✔ Set null clears it
+ ✔ Call reaches a protected method on the running test
+ ✔ Call returning hands back a value of the promised type
+ ✔ Call returning names the method the type and what it got instead
+ ✔ Call returning object accepts any object
+ ✔ Call returning object refuses a non object
+
+ExpectationFilesystem (tests/unit/Dialect/Pest/ExpectationFilesystemTest.php)
+ ✔ A directory is a directory and not a file
+ ✔ A file is a file and not a directory
+ ✔ A path that does not exist is neither
+ ✔ A readable and writable path answers for its kind only
+ ✔ An unreadable file is not a readable file
+ ✔ An unwritable directory is not a writable directory
+
+PestBuilderAssertionBridge (tests/unit/Dialect/Pest/PestBuilderAssertionBridgeTest.php)
+ ✔ Assertions verified during a test cases tear down bridge into crucibles own counter
+
+PestBuilderCurrentTestBridge (tests/unit/Dialect/Pest/PestBuilderCurrentTestBridgeTest.php)
+ ✔ Current test is set to the running instance during the test body
+ ✔ Current test is cleared once the test finishes
+
+PestClassLifecycle (tests/unit/Dialect/Pest/PestClassLifecycleTest.php)
+ ✔ The class lifecycle wraps the files own hooks
+
+PestCovers (tests/unit/Dialect/Pest/PestCoversTest.php)
+ ✔ Covers names the class under test for every test in the file
+ ✔ The coverage reader actually consumes it
+ ✔ A function target becomes covers function rather than covers class
+ ✔ A target that does not exist is refused rather than covering nothing
+ ✔ Mutates names the source the mutation run narrows to
+ ✔ A mutates target that does not exist is refused
+
+PestFileSniffer (tests/unit/Dialect/Pest/PestFileSnifferTest.php)
+ ✔ Detects a top level it call
+ ✔ Detects a backslash prefixed call
+ ✔ Detects a top level dataset only call
+ ✔ Detects a file whose only test is a top level todo
+ ✔ Detects a file whose only pest spelling is covers
+ ✔ Returns false when there are no entry calls
+ ✔ Ignores a method call of the same name
+ ✔ Ignores a static call of the same name
+ ✔ Ignores a user declared function of the same name
+ ✔ Ignores a call nested inside a closure body
+
+PestFixture (tests/unit/Dialect/Pest/PestFixtureTest.php)
+ ✔ Fixture always resolves under the projects tests fixtures
+ ✔ The name is joined to fixtures rather than containing it
+ ✔ A missing fixture is refused and says where it looked
+ ✔ Fixture outside collection says so rather than guessing a directory
+
+PestRegistry (tests/unit/Dialect/Pest/PestRegistryTest.php)
+ ✔ Every global refuses outside a file being loaded
+ ✔ Drain folds the files registrations last class winning
+ ✔ Drain closes the bracket so the next call refuses
+ ✔ Begin discards whatever the previous file left
+ ✔ Describe nests the path and pops it even when the body throws
+ ✔ Arch registers an ordinary test and hands back the rule
+ ✔ Check takes its name from a trailing comment when there is one
+ ✔ Check falls back to the source line and then to the line number
+ ✔ A long source line is truncated rather than used whole
+ ✔ Two derived names that agree get an occurrence suffix
+ ✔ A duplicate description is refused the way the incumbent refuses it
+ ✔ Scoping separates names that would otherwise collide
+ ✔ Property refuses every argument shape it cannot run
+ ✔ Property registers one test when the arguments are right
+ ✔ Table names each row from its arguments or its key
+ ✔ Table refuses a row that is not arguments and an expected value
+ ✔ Table names its subject by whatever kind of callable it is
+ ✔ Fixture resolves under the project root and refuses what is not there
+ ✔ Fixture refuses outside a file being collected
+
+PestScopes (tests/unit/Dialect/Pest/PestScopesTest.php)
+ ✔ Keeps every row from multiple composed generators
+ ✔ Preserves string keys from a single generator
+ ✔ Returns a plain array unchanged
+ ✔ Configuration loads outermost first and once per directory
+ ✔ Pest belongs to a configuration file
+ ✔ The nearest declaration of a dataset name wins
+ ✔ An unknown dataset names itself and where to declare it
+ ✔ A closure dataset replays on every use
+ ✔ A closure dataset must return something iterable
+ ✔ A bare registration is selected only when it carries hooks
+ ✔ A glob selects only beneath the declaring directory
+ ✔ The suite declared printer is whatever a configuration chose
+ ✔ Configuring says whether a configuration file is loading
+ ✔ Dataset files beside a pest file are loaded too
+ ✔ Uses is the legacy spelling of the same chain
+ ✔ A dataset needs a file that owns it
+ ✔ A dataset key must be an int or a string
+ ✔ A wildcard glob does not cross a directory separator
+ ✔ A directory outside the root is its own chain
+
+PestTodoGlobal (tests/unit/Dialect/Pest/PestTodoGlobalTest.php)
+ ✔ A top level todo carries the same metadata as the chained form
+ ✔ A top level todo carries its assignee issue and note
+
+RealPhpUnitBootstrap (tests/unit/Dialect/Pest/RealPhpUnitBootstrapTest.php)
+ ✔ The drop in alias is not mistaken for the real package
+ ✔ Bridging leaves the instance alone when the real package is absent
+ ✔ Bridging ignores an instance that cannot count
+ ✔ Configuring looks for php units cli classes and leaves them alone when absent
+ ✔ Configuring is attempted only once
+
+RealPhpUnitExceptionExpectations (tests/unit/Dialect/Pest/RealPhpUnitExceptionExpectationsTest.php)
+ ✔ Was expected returns false when nothing was set
+ ✔ Was expected returns false for an instance without the php unit shape
+ ✔ Was expected returns true when the thrown exception matches the expected class
+ ✔ Was expected fails when the thrown exception is the wrong class
+ ✔ Was expected checks the message contains
+ ✔ Was expected fails when the message does not contain
+ ✔ Was expected checks the message regular expression
+ ✔ Was expected checks the exception code
+ ✔ Was expected fails when the code differs
+ ✔ Verify not unraised is a no op when nothing was expected
+ ✔ Verify not unraised fails when an exception was expected but none was thrown
+ ✔ Was expected finds expectations declared on an ancestor class
+
+ScopeRegistration (tests/unit/Dialect/Pest/ScopeRegistrationTest.php)
+ ✔ Extend takes the class and refuses a second one
+ ✔ Use accumulates traits and refuses what is not one
+ ✔ Assign splits names by what they actually are
+ ✔ Assign refuses a name that is neither
+ ✔ In belongs to a configuration file only
+ ✔ In starts null and merges across calls
+ ✔ Groups accumulate in declaration order
+ ✔ Hooks accumulate per kind and answer has hooks
+ ✔ Each hook kind is separate
+ ✔ The printer chain starts
+
+TestCall (tests/unit/Dialect/Pest/TestCallTest.php)
+ ✔ The declared name carries the it prefix and the describe path
+ ✔ Higher order chaining records methods and property reads
+ ✔ Chaining on a test with a body is a typo rather than a higher order step
+ ✔ Each with call is one cartesian factor and keeps its row keys
+ ✔ With accepts any iterable and materialises it
+ ✔ Skip distinguishes all four of its argument shapes
+ ✔ A closure skip is kept unevaluated with its reason beside
+ ✔ The platform skips agree with this machine
+ ✔ Ci skips read the environment and treat falsey values as not ci
+ ✔ Skip on php understands every operator the spec writes
+ ✔ A constraint naming no version is refused
+ ✔ Todo wip and done carry their status and metadata
+ ✔ Fails records the expectation and its optional fragment
+ ✔ Expects skip and expects incomplete record the outcome they demand
+ ✔ Throws records a class or a fragment and an optional message
+ ✔ Throws if and throws unless are opposites over both condition forms
+ ✔ Repeat takes a positive count and refuses anything else
+ ✔ Groups and dependencies accumulate across calls
+
+TraitComposer (tests/unit/Dialect/Pest/TraitComposerTest.php)
+ ✔ No shape ends the process
+ ✔ A collision names both traits and the method
+ ✔ An abstract base names what nobody implements
+ ✔ The composed class carries every trait and the base
+ ✔ The same combination is composed once whatever the order
+ ✔ No traits means no generated class at all
+ ✔ A final base is refused with its name
+
+PestDialect.pest (tests/unit/Dialect/PestDialect.pest.php)
+ ✔ A plain test with bound state
+ ✔ It prefixes descriptions
+ ✔ Chained expectations on one value
+ ✔ Negation applies to exactly one matcher
+ ✔ Common matchers
+ ✔ The argument matchers the parity grid has no axis for
+ ✔ To throw catches and verifies
+ ✔ Datasets spread list rows as arguments with data set "small"
+ ✔ Datasets spread list rows as arguments with data set "zero"
+ ✔ Datasets spread list rows as arguments with data set "negative"
+ ✔ Single-value dataset rows arrive as one argument with data set #0
+ ✔ Single-value dataset rows arrive as one argument with data set #1
+ ✔ Inside a describe block > names carry the describe path
+ ✔ Inside a describe block > nested deeper > it still works
+ ✔ A producer
+ ✔ A consumer receives the producer value
+ ✔ A skip is the expected outcome
+ ✔ Expected exceptions via throws
+ ✔ Grouped for selection
+ ✔ The matcher long tail > equality variants
+ ✔ The matcher long tail > comparison and ranges
+ ✔ The matcher long tail > numeric specials and resources
+ ✔ The matcher long tail > string shapes
+ ✔ The matcher long tail > the compact printer declaration registered from  pest.php
+ ✔ The matcher long tail > architecture presets over class strings
+ ✔ The matcher long tail > urls, uuids, json strings
+ ✔ The matcher long tail > identifiers and network formats
+ ✔ The matcher long tail > a hostname is not always a domain
+ ✔ The matcher long tail > sluggable, not already a slug
+ ✔ The matcher long tail > hexadecimal without a prefix
+ ✔ The matcher long tail > class-shape matchers that reflection alone can answer
+ ✔ The matcher long tail > collection membership and shape
+ ✔ The matcher long tail > keys, dot notation, key cases
+ ✔ The matcher long tail > array and object subsets
+ ✔ The wrong-typed-subject refusal > the string matchers refuse a non-string in both forms
+ ✔ The wrong-typed-subject refusal > the key-case matchers refuse a non-iterable in both forms
+ ✔ The wrong-typed-subject refusal > the four calls that reported green where the incumbent reports red
+ ✔ The wrong-typed-subject refusal > each refuses the item rather than the container
+ ✔ The wrong-typed-subject refusal > a key-case matcher answers about any iterable, not only an array
+ ✔ The wrong-typed-subject refusal > the cast family refuses a subject  p h p cannot render as a string
+ ✔ The wrong-typed-subject refusal > a subject  p h p can render is not refused
+ ✔ The wrong-typed-subject refusal > a rendering  p h p endorses is read by default, with no quirk
+ ✔ The wrong-typed-subject refusal > the matchers the incumbent does not guard stay unguarded
+ ✔ Modifiers > each as a property fans matchers over items
+ ✔ Modifiers > each with a callback
+ ✔ Modifiers > sequence pairs expectations with items in order
+ ✔ Modifiers > when and unless gate parts of a chain
+ ✔ Modifiers > json decodes and continues the chain
+ ✔ Higher-order expectations > property access descends into the value
+ ✔ Higher-order expectations > method calls forward to the value
+ ✔ Higher-order expectations > scoped asserts mid-chain
+ ✔ Higher-order expectations > extend registers a custom matcher
+
+PestDialectConfig.pest (tests/unit/Dialect/PestDialectConfig.pest.php)
+ ✔ The scoped extend() provides the binding class
+ ✔ The scoped use() mixes the trait in
+ ✔ Global hooks run before file hooks
+ ✔ A named dataset from  pest.php resolves with data set #0
+ ✔ A named dataset from  pest.php resolves with data set #1
+ ✔ A dataset from a  datasets file resolves with its keys with data set "short"
+ ✔ A dataset from a  datasets file resolves with its keys with data set "longer"
+ ✔ A lazy dataset closure materializes at build time with data set #0
+ ✔ A lazy dataset closure materializes at build time with data set #1
+ ✔ Bound rows resolve after before each, bound to the instance with data set #0
+ ✔ Associative rows bind to parameters by name with data set #0
+ ✔ Named and inline factors multiply with data set "0 / 0"
+ ✔ Named and inline factors multiply with data set "0 / 1"
+ ✔ Named and inline factors multiply with data set "1 / 0"
+ ✔ Named and inline factors multiply with data set "1 / 1"
+ ✔ A dataset composed of multiple yield from sub-generators runs every row with data set #0
+ ✔ A dataset composed of multiple yield from sub-generators runs every row with data set #1
+ ✔ A dataset composed of multiple yield from sub-generators runs every row with data set #2
+ ✔ A dataset composed of multiple yield from sub-generators runs every row with data set #3
+ ✔ A dataset composed of multiple yield from sub-generators runs every row with data set #4
+
+PestDialectLongTail.pest (tests/unit/Dialect/PestDialectLongTail.pest.php)
+ ✔ A bare description is a todo
+ ✔ It will get a body eventually
+ ✔ Work in progress runs its body like  pest
+ ✔ A body-less wip folds to a todo
+ ✔ A done todo runs its body
+ ✔ It chains methods on the test case
+ ✔ Lazy expectation chains
+ ✔ Higher-order expect receives dataset arguments with data set #0
+ ✔ Higher-order expect receives dataset arguments with data set #1
+ ✔ Closure skips are decided after before each
+ ✔ Skip on php with an operator constraint
+ ✔ Skip on windows leaves other platforms running
+ ✔ Fails() inverts the outcome
+ ✔ Throws() accepts a message fragment
+ ✔ Throws unless() with a truthy condition expects nothing
+ ✔ Repeat() runs the body once per repetition with data set "repetition 1 of 3"
+ ✔ Repeat() runs the body once per repetition with data set "repetition 2 of 3"
+ ✔ Repeat() runs the body once per repetition with data set "repetition 3 of 3"
+ ✔ Multiple with() calls form a  cartesian product with data set "0 / 0"
+ ✔ Multiple with() calls form a  cartesian product with data set "0 / 1"
+ ✔ Multiple with() calls form a  cartesian product with data set "1 / 0"
+ ✔ Multiple with() calls form a  cartesian product with data set "1 / 1"
+ ✔ A configured block > inherits the block group and dataset with data set #0
+ ✔ A configured block > inherits the block group and dataset with data set #1
+ ✔ A configured block > it applies to every contained test with data set #0
+ ✔ A configured block > it applies to every contained test with data set #1
+ ✔ A property chain re-roots to the original subject after each matcher
+ ✔ ->not() works as a method call, not only as a property
+ ✔ A missing property or key is null, not a failure
+ ✔ An uninitialized typed property is null, not a fatal
+ ✔ Not()->to contain() with multiple needles fails only when all are present
+ ✔ Not()->to contain() with multiple needles, all present
+ ✔ Not()->to have keys() fails as soon as any single key is found, even last in the list
+ ✔ Not()->to have properties() fails only when every property is present
+
+ClassLocator (tests/unit/Dialect/PhpUnit/ClassLocatorTest.php)
+ ✔ Excludes the nested class in the real spatie regression fixture
+ ✔ Excludes a class nested inside a closure body
+ ✔ Excludes a class nested inside a function body
+ ✔ Still finds a true top level class
+ ✔ Still excludes an anonymous class
+ ✔ Finds a top level class declared after a nested one
+
+Double (tests/unit/Double/DoubleTest.php)
+ ✔ Stub returns configured and default values
+ ✔ Object return types yield recursive stubs
+ ✔ With matchers select behavior per arguments
+ ✔ Consecutive calls map and throw
+ ✔ Abstract class double stubs all public methods
+ ✔ Mock expectation satisfied
+ ✔ Layered expectation keeps earlier configured return value
+ ✔ Exceeded expectation fails at call time
+ ✔ Unmet expectation fails verification
+ ✔ Final classes cannot be doubled
+
+GeneratedShapes (tests/unit/Double/GeneratedShapesTest.php)
+ ✔ Every shape generates or is recorded as not generating
+ ✔ A by ref parameter keeps its signature and is forwarded by value
+ ✔ A static method is refused rather than doubled
+ ✔ A void method dispatches
+ ✔ A tentative return type reaches the signature and the return value
+ ✔ An object default keeps what the initializer said
+ ✔ Defaults survive into the signature
+ ✔ A variadic stays variadic
+
+MockBuilder (tests/unit/Double/MockBuilderTest.php)
+ ✔ The original constructor runs by default
+ ✔ Constructor args reach the original constructor
+ ✔ Disable original constructor bypasses it
+ ✔ Only methods leaves unlisted methods real
+ ✔ Empty only methods doubles nothing
+ ✔ Unknown method in only methods is a named error
+ ✔ Only methods on an interface is a named error
+ ✔ Configuring an undoubled method is a named error
+ ✔ Expects on an undoubled method is a named error too
+ ✔ Expectations on builder mocks verify
+ ✔ The original clone runs by default and can be disabled
+ ✔ Disabled auto return generation refuses unconfigured calls
+ ✔ Set mock class name names the generated class
+ ✔ A trait name is refused rather than compiled into a fatal
+ ✔ A generated double is named by its specification not by call order
+ ✔ Create partial mock bypasses the constructor and keeps the rest real
+ ✔ Intersection mocks implement every interface
+ ✔ Expectationless mocks are named and stubs are not
+ ✔ The stub builder is the mock builder with stub spellings
+
+MockeryMatchers (tests/unit/Double/MockeryMatchersTest.php)
+ ✔ Contains is loose and order insensitive
+ ✔ Contains on a non array is a clean no match
+ ✔ Has value is strict unlike contains
+ ✔ Has key refuses non arrays
+ ✔ Any of is strict but not any of is loose
+ ✔ Not is strict so identity falls out for objects
+ ✔ Subset recurses with extra keys allowed at every depth
+ ✔ Subset loose flag and positional keys
+ ✔ Type follows the function existence rule
+ ✔ Pattern casts scalars and stringables
+ ✔ Ducktype requires every real method
+ ✔ Capture assigns by reference last call wins
+ ✔ Capture assigns during the failed match attempt
+ ✔ Capture composes with counts and return using
+ ✔ Any is per argument so arity still holds
+ ✔ On and with args predicates must return true strictly
+ ✔ With args array form is bare with
+ ✔ With args refuses other types in the oracles words
+ ✔ With some of args is strict and all must be present
+ ✔ Matchers mix with literals inside with
+ ✔ Must be stays a named error
+
+MockerySurface (tests/unit/Double/MockerySurfaceTest.php)
+ ✔ The pest mocking chapter shape
+ ✔ First declared wins
+ ✔ Count exhaustion falls through
+ ✔ Exceeded count settles at close not call time
+ ✔ Should not receive violation settles at close
+ ✔ Unconfigured method is bad method call
+ ✔ Argument mismatch is no matching expectation
+ ✔ Mockery equality loose scalars identity objects
+ ✔ Typed defaults match the oracle
+ ✔ Consecutive returns repeat the last
+ ✔ And throw with class and message
+ ✔ Count vocabulary
+ ✔ Between unmet settles as failure
+ ✔ Expects defaults to once
+ ✔ Allows is never verified
+ ✔ Quick definitions match any arguments
+ ✔ Quick definitions toggle makes them mocks
+ ✔ Unknown types are declared like the oracle
+ ✔ Constructor arguments run the original constructor
+ ✔ Allow mocking non existent methods false refuses
+ ✔ The global aliases are installed
+ ✔ Ditched surface answers with named errors
+ ✔ A mock name is a name
+ ✔ The shapes a mock name can take
+ ✔ A trait mock uses the trait and keeps its methods real
+
+Emitter (tests/unit/Event/EmitterTest.php)
+ ✔ Stamps gapless one based sequence and clock time
+ ✔ Delivers to listeners in subscription order
+
+EventPayload (tests/unit/Event/EventPayloadTest.php)
+ ✔ Optional fields are omitted not null
+ ✔ Retry attempt and skip reason appear when set
+ ✔ Blocked appears only when set
+ ✔ Untested is a subset of skipped not an extra outcome
+ ✔ Untested rides run finished as an additive field
+ ✔ Run summary plus sums every field for the vitest fold
+ ✔ Failure payload omits absent parts
+ ✔ Run summary counts and verdict
+
+EventTextWriter (tests/unit/Event/EventTextWriterTest.php)
+ ✔ Terse form is sequence and name only
+ ✔ Verbose form keeps the payload fields
+ ✔ Telemetry prefixes each line with elapsed time and peak memory
+
+NdjsonStream (tests/unit/Event/NdjsonStreamTest.php)
+ ✔ Miniature run produces the exact golden stream
+ ✔ Incomplete carries its origin and skipped does not
+ ✔ Output chunk concatenation is exact
+ ✔ Invalid utf8 in chunks is substituted not fatal
+
+AssertNoDuplication (tests/unit/Extension/AssertNoDuplicationTest.php)
+ ✔ Clean source passes
+ ✔ A cloned body fails and is named
+ ✔ The callers message is kept
+ ↩ The absent tool says which package is missing
+ ✔ The constraint refuses what is not a clone map
+
+CheckExtension (tests/unit/Extension/CheckExtensionTest.php)
+ ✔ A satisfied claim passes
+ ✔ An unsatisfied claim fails naming both operands and the detail
+ ✔ A throwing check errors instead of crashing
+
+CommandGate (tests/unit/Extension/CommandGateTest.php)
+ ✔ A zero exit is a passed check with no reason
+ ✔ A non zero exit is a failed check naming the exit code
+ ✔ A command past its deadline is killed and errors
+ ✔ The event carries name and duration
+ ✔ The builder records command gates
+ ✔ A duplicate command label is rejected
+ ✔ An empty argv is rejected
+
+DuplicationCheck (tests/unit/Extension/DuplicationCheckTest.php)
+ ✔ It names itself without needing the tool
+ ↩ Asking for the check without the tool says which package is missing
+ ✔ Clean source presents nothing to judge
+ ✔ Duplication is presented as facts rather than a verdict
+ ✔ A tolerant threshold is still the callers to set
+
+WorkingDirectory (tests/unit/Filesystem/WorkingDirectoryTest.php)
+ ✔ An empty path is refused at construction
+ ✔ The path is kept verbatim
+ ✔ Relative paths resolve against the directory
+ ✔ An absolute path is returned untouched
+ ✔ The ugly shapes are preserved rather than fixed
+ ✔ Current reads the process directory
+ ✔ Two directories are equal by path
+ ✔ A path inside the directory is named from it
+
+FailureOutsideDiff (tests/unit/Flakiness/FailureOutsideDiffTest.php)
+ ✔ A failure that executed no changed file is a suspect
+ ✔ A failure that executed a changed file is never a suspect
+ ✔ A failing test whose own file changed is never a suspect
+ ✔ A changed declaring file of another test does not suppress the check
+ ✔ Unobservable changed code silences the check entirely
+ ✔ A test only diff produces no hint
+ ✔ A failure unknown to the map is skipped
+ ✔ Empty inputs are silence
+ ✔ A whole file scope entry matches exactly
+
+OrderDependencyHunter (tests/unit/Flakiness/OrderDependencyHunterTest.php)
+ ✔ A seed reproduced failure that passes alone is order dependent
+ ✔ A failure the seed cannot reproduce is non deterministic
+ ✔ A failure that fails alone is broken not flaky
+ ✔ Baseline failures are named and excluded from the hunt
+ ✔ A clean suite reports clean
+
+LifecycleCompatibility (tests/unit/Framework/LifecycleCompatibilityTest.php)
+ ✔ A traits before reset runs ahead of set up
+ ✔ The plan places each template at priority zero
+ ✔ An attribute on a template method does not run it twice
+ ✔ An error from the test passes through transform exception
+ ✔ An error from set up passes through transform exception
+ ✔ A failure is an outcome and is not transformed
+ ✔ An expected exception is not transformed
+ ✔ The incumbents logical not is aliased
+ ✔ A framework constraint fails in the incumbents sentence
+ ✔ Its negation negates the wording and not the data
+ ✔ The negation passes
+
+GeneratedCode (tests/unit/Generated/GeneratedCodeTest.php)
+ ✔ It compiles and hands back what the source returns
+ ✔ Source that does not parse names what it was for and shows it
+ ✔ Recording writes the source with what it was for
+ ✔ The same shape twice is one recorded file
+ ✔ Recording stops when the scope ends
+ ✔ Recording stops even when the work throws
+ ✔ A failure inside the generated code is not a generation failure
+
+ChangedFiles (tests/unit/Impact/ChangedFilesTest.php)
+ ✔ Modified untracked and deleted files are reported
+ ✔ A clean tree reports nothing
+ ✔ An unknown reference is an error
+ ✔ Outside a repository is an error
+
+DependencyGraph (tests/unit/Impact/DependencyGraphTest.php)
+ ✔ The closure follows references transitively
+ ✔ An island reaches only itself
+ ✔ Vendor files are never graph nodes
+ ✔ Vendor is excluded by path segment not only at the root
+ ✔ Observed edges apply one hop from the root only
+ ✔ Pest family files depend on the suite configuration above them
+
+DependencyIndex (tests/unit/Impact/DependencyIndexTest.php)
+ ✔ A warm index produces the identical closure
+ ✔ A changed file is not replayed from the index
+ ✔ A different configuration lands on a different index
+ ✔ A suite configuration appearing changes the fingerprint
+ ✔ An index survives the checkout moving to another path
+ ✔ The fingerprint does not depend on where the project sits
+ ✔ An entry reaching outside the project is not stored
+ ✔ An entry wholly inside the project is still stored
+
+ImpactFingerprint (tests/unit/Impact/ImpactFingerprintTest.php)
+ ✔ Adding a suite configuration changes the fingerprint
+ ✔ The same tree fingerprints the same
+ ✔ Configuration above the file counts too
+
+ImpactSelection (tests/unit/Impact/ImpactSelectionTest.php)
+ ✔ A change selects the groups whose closure reaches it
+ ✔ A changed test file selects itself
+ ✔ An untouched graph selects nothing
+ ✔ A change a vitest suite answers for is not called unaccounted for
+ ✔ A change no test reaches says so rather than going quiet
+ ✔ Deletions widen to the full suite
+ ✔ Composer changes widen to the full suite
+ ✔ A javascript dependency bump widens too
+ ✔ Environment files widen to the full suite
+ ✔ A non php change is reported in the notes
+ ✔ A rule selects its groups for an unreachable file
+ ✔ A rule matches templates that end in php
+ ✔ Rules only widen never narrow
+ ✔ A group selected by both sources is not duplicated
+ ✔ A rule match is not counted as an ignored change
+ ✔ A rule for a group no test carries is reported
+ ✔ A glob pattern matches across directories
+ ✔ A change matching no rule selects nothing
+
+ReferenceScanner (tests/unit/Impact/ReferenceScannerTest.php)
+ ✔ Use imports resolve fully
+ ✔ Aliases resolve to the imported name
+ ✔ Group use expands the prefix
+ ✔ Unimported names resolve against the namespace
+ ✔ Fully qualified names pass through
+ ✔ Qualified names join the namespace
+ ✔ Extends implements and attributes are references
+ ✔ Declarations are not references
+ ✔ Member access is not a reference
+ ✔ Lowercase identifiers are not candidates
+ ✔ Global fallback only without a namespace
+ ✔ Use function imports are skipped
+ ✔ Closure capture lists are not imports
+ ✔ Trait use inside a class is a reference
+
+VitestImpact (tests/unit/Impact/VitestImpactTest.php)
+ ✔ A change under a suite narrows it to that related file
+ ✔ A suite with no js change is dropped but named
+ ✔ Deletions widen every suite to a full run
+ ✔ No configured suites yields nothing
+ ✔ Each suite is scoped independently
+
+GlobalStateExport (tests/unit/Isolation/GlobalStateExportTest.php)
+ ✔ A global survives the round trip through the manifest
+ ✔ A null global round trips as a value rather than as absent
+ ✔ What no serializer can carry is skipped by name not fatal
+ ✔ Superglobals are left to the process they describe
+ ✔ Only user constants travel and restoring never redefines
+ ✔ Garbage from the manifest is ignored rather than trusted
+
+MetadataParser (tests/unit/Metadata/MetadataParserTest.php)
+ ✔ Collects class level attributes including inherited
+ ✔ Collects method attributes in declaration order
+ ✔ Method metadata precedes class metadata in merged view
+ ✔ Foreign attributes are ignored
+ ✔ Programmatic construction for dialect frontends
+
+ColdMutantExecutor (tests/unit/Mutation/ColdMutantExecutorTest.php)
+ ✔ A mutant a covering test catches is killed coldly
+ ✔ A mutant the tests cannot see is escaped coldly
+ ✔ A mutant no test covers is not covered
+
+CoveringTestRunner (tests/unit/Mutation/CoveringTestRunnerTest.php)
+ ✔ The first failing covering test is the killer
+ ✔ All covering tests surviving yields no killer
+ ✔ Covering ids that match nothing yield no killer
+ ✔ The cheapest covering test gets the first shot at the kill
+
+EquivalentMarkers (tests/unit/Mutation/EquivalentMarkersTest.php)
+ ✔ Each form covers its lines with its reason
+ ✔ Each range starts and ends where its declaration does
+ ✔ Generated mutants carry the reason and are never run
+ ✔ The manuals example declares the mutants it says
+
+MutantApplier (tests/unit/Mutation/MutantApplierTest.php)
+ ✔ A mutant the weak test cannot see is escaped
+ ✔ A mutant the covering test catches is killed
+ ✔ A mutant that crashes the run is errored not escaped
+ ✔ A mutant that hangs is timed out
+ ✔ An already loaded class is not warm applicable
+
+MutantGenerator (tests/unit/Mutation/MutantGeneratorTest.php)
+ ✔ A mutant swaps exactly one operator and preserves everything else
+ ✔ Every operator on a line becomes its own mutant
+ ✔ Comparison and logical rules each fire
+ ✔ Source with no operators yields no mutants
+ ✔ The catalog is injectable
+
+MutationJournal (tests/unit/Mutation/MutationJournalTest.php)
+ ✔ An absent journal is empty rather than an error
+ ✔ A verdict survives being reloaded
+ ✔ Every outcome round trips
+ ✔ Two mutants on one line are two entries
+ ✔ Verdicts outside the scope are left out
+ ✔ A different judge does not match a recorded verdict
+ ✔ A changed source invalidates its own verdict
+ ✔ A half written last line is skipped not fatal
+ ✔ A record missing its identity is ignored
+
+MutationReport (tests/unit/Mutation/MutationReportTest.php)
+ ✔ The score is detected over covered mutants
+ ✔ All uncovered scores zero not a divide by zero
+
+MutationRunner (tests/unit/Mutation/MutationRunnerTest.php)
+ ✔ Each verdict is handed over as it lands
+ ✔ A mutant no test covers is still handed over
+ ✔ The runner still works with no callback
+ ✔ A warmable mutant runs warm not cold
+ ✔ A mutant warm cannot run falls back to cold
+ ✔ With no warm executor everything runs cold
+ ✔ An uncovered mutant spawns nothing
+
+ShapeMutator (tests/unit/Mutation/ShapeMutatorTest.php)
+ ✔ Each string key is dropped once and the result still parses
+ ✔ Only a string keyed element is dropped and exactly it
+
+ApprovedEvalRule (tests/unit/PHPStan/ApprovedEvalRuleTest.php)
+ ✔ An unapproved eval is reported and an approved one is not
+
+ApprovedGeneratorRule (tests/unit/PHPStan/ApprovedGeneratorRuleTest.php)
+ ✔ An unregistered generator is reported and a registered one is not
+
+DataRowRules (tests/unit/PHPStan/DataRowRulesTest.php)
+ ✔ Every mistake is reported and nothing else
+
+ExtensionBlackBox (tests/unit/PHPStan/ExtensionBlackBoxTest.php)
+ ✔ The fixture analyses to exactly the sentinel
+ ✔ A spread each leaves the value to the items
+ ✔ Scoped uses in resolves through ancestor pest configs
+ ✔ The method level magic and mockery surfaces resolve
+
+ExtensionParity (tests/unit/PHPStan/ExtensionParityTest.php)
+ ✔ The extension agrees with the incumbents line for line
+
+UsesResolver (tests/unit/PHPStan/UsesResolverTest.php)
+ ✔ Resolves imports aliases and both call spellings
+ ✔ Group and comma list imports resolve as php reads them
+ ✔ A scoped registration reads group imports too
+ ✔ Namespace relative and string literal arguments
+ ✔ Foreign uses spellings are ignored
+ ✔ A scoped registration is the whole chain and only a chain with in
+ ✔ Only class references count and each namespace resolves its own
+ ✔ A source cut off mid statement reads what it can and never fails
+ ✔ A file without uses resolves to nothing
+
+ArrayFunctions (tests/unit/Polyfill/Php84/ArrayFunctionsTest.php)
+ ✔ Any is false on an empty array
+ ✔ Any is false when no element matches
+ ✔ Any is true when an element matches
+ ✔ Any passes the key to the callback
+ ✔ All is true on an empty array
+ ✔ All is true when every element matches
+ ✔ All is false when any element fails
+ ✔ All passes the key to the callback
+ ✔ Find returns null on an empty array
+ ✔ Find returns null when no element matches
+ ✔ Find returns the first matching value
+ ✔ Find passes the key to the callback
+ ✔ Find key returns null on an empty array
+ ✔ Find key returns null when no element matches
+ ✔ Find key returns the first matching key
+ ✔ Find key short circuits on the first match
+
+ArrayFunctions (tests/unit/Polyfill/Php85/ArrayFunctionsTest.php)
+ ✔ First returns null on an empty array
+ ✔ First returns the first value of a list array
+ ✔ First returns the first value of an associative array
+ ✔ First returns null when the first value is itself null
+ ✔ Last returns null on an empty array
+ ✔ Last returns the last value of a list array
+ ✔ Last returns the last value of an associative array
+ ✔ Last returns null when the last value is itself null
+
+GenOf (tests/unit/Property/GenOfTest.php)
+ ✔ Every drawn value fits its type with data set "a DTO shape"
+ ✔ Every drawn value fits its type with data set "a range"
+ ✔ Every drawn value fits its type with data set "nullable"
+ ✔ Every drawn value fits its type with data set "string keys"
+ ✔ Every drawn value fits its type with data set "a non-empty list of literals"
+ ✔ Every drawn value fits its type with data set "nested"
+ ✔ Every drawn value fits its type with data set "numeric strings"
+ ✔ Every drawn value fits its type with data set "a range open below"
+ ✔ Every drawn value fits its type with data set "a range open above"
+ ✔ Every drawn value fits its type with data set "int keys"
+ ✔ Every drawn value fits its type with data set "any keys"
+ ✔ Every drawn value fits its type with data set "non-empty with keys"
+ ✔ A type with no sound way to draw is refused
+ ✔ A non empty type whose every key php rewrites is refused
+ ✔ A failing property shrinks to the smallest shape
+
+PropertyDatabase (tests/unit/Property/PropertyDatabaseTest.php)
+ ✔ A stored sequence replays before any random case
+ ✔ Each check in a test claims its own key
+ ✔ Without a context there is no key and no database
+ ✔ The runner puts the replay data on the event
+ ✔ A clean replay rides the passing finish event
+ ✔ An inert stored sequence is not reported clean
+ ✔ A failing test reports no clean keys
+ ✔ The writer prunes clean and orphaned keys on a complete run
+ ✔ An incomplete run prunes clean keys but never orphans
+ ✔ The database round trips merges and bounds
+
+PropertyDialect.crucible (tests/unit/Property/PropertyDialect.crucible.php)
+ ✔ String concatenation is associative
+ ✔ Sorting is idempotent
+ ✔ Json round-trips lists of ints
+
+Property (tests/unit/Property/PropertyTest.php)
+ ✔ A true property holds
+ ✔ List reversal round trips
+ ✔ A false property is falsified and shrunk to the boundary
+ ✔ Shrinking finds the minimal list
+ ✔ Shrinking survives map
+ ✔ Returning false falsifies
+ ✔ The same seed reproduces the same counterexample
+ ✔ Such that filters and stays shrinkable
+ ✔ An impossible filter is a configuration problem
+ ✔ Generators produce their declared shapes
+ ✔ Integers shrink toward zero not the lower bound
+ ✔ Choice source replays and clamps scripts
+ ✔ Floats stay in range and shape up
+ ✔ Floats shrink to the simplest special value
+ ✔ Narrow float ranges resolve
+ ✔ Narrow float falsifies inside the range and shrinks to its edge
+ ✔ Float rejects a non finite or inverted range
+ ✔ For all needs a generator
+ ✔ Int rejects an inverted range
+
+Badge (tests/unit/Reporting/Document/Blocks/BadgeTest.php)
+ ✔ Ok when nothing failed and nothing was flaky
+ ✔ Flaky when a passed only on retry and nothing failed
+ ✔ Failed wins over flaky when both apply
+ ✔ Errored alone is also failed
+ ✔ Skips and incompletes never change the verdict
+ ✔ Sample returns a valid instance
+
+FoldingTree (tests/unit/Reporting/Document/Blocks/FoldingTreeTest.php)
+ ✔ Single child chains collapse into one label
+ ✔ Absolute paths fold instead of recursing forever
+ ✔ Absolute siblings still split at their common root
+ ✔ Siblings order by descending subtree time
+ ✔ Sub threshold tail folds
+ ✔ A fold of exactly one stays visible
+ ✔ A directory holding a flagged file never folds
+ ✔ Sample returns a valid instance
+
+Image (tests/unit/Reporting/Document/Blocks/ImageTest.php)
+ ✔ Carries the jpeg bytes and no explicit width by default
+ ✔ Width can narrow the default fit to content width
+ ✔ Sample returns a real decodable jpeg
+
+PdfPrimitives (tests/unit/Reporting/Document/PdfPrimitivesTest.php)
+ ✔ The cursor starts one margin below the page top
+ ✔ A heading places its baseline rule and advance exactly
+ ✔ A line advances by its leading
+ ✔ An indent moves the line right without changing the advance
+ ✔ Ensure breaks exactly at the footer reserve
+ ✔ Measure sums the afm widths and scales by size
+ ✔ Bold uses its own width table
+ ✔ A leader fills the gap with measured dots
+ ✔ A narrow gap gets no leader at all
+ ✔ A disc places every arc control point
+ ✔ A box is a filled rectangle in its own colour
+ ✔ Numbers are two decimal places
+ ✔ Escape protects the string delimiters
+ ✔ Wrap chunks at the fixed pitch column budget
+ ✔ Wrap keeps newlines as rows and normalises crlf
+ ✔ Wrap never drops to zero columns
+ ✔ Bookmarks carry their level title and page
+
+JsonRenderer (tests/unit/Reporting/Document/Renderers/JsonRendererTest.php)
+ ✔ Summary counts and problems match the run
+ ✔ All passing run has an empty problems list
+
+PdfRenderer (tests/unit/Reporting/Document/Renderers/PdfRendererTest.php)
+ ✔ Embeds the jpeg as an x object with dct decode and the jpegs own dimensions
+ ✔ The page that draws the image lists it in its resources and paints it
+ ✔ The same bytes drawn twice embed only once
+ ✔ Non jpeg bytes are rejected
+ ✔ Page break starts a fresh page
+ ✔ Headings produce outline bookmarks
+ ✔ No headings produces no outlines
+ ✔ Toc block renders a table of contents page with shifted page numbers
+ ✔ Toc is ignored unless it is the first block
+ ✔ Svg draws shapes fit to width preserving aspect ratio
+ ✔ Malformed svg markup is rejected
+ ✔ Svg with an unsupported feature is rejected
+ ✔ The tile grid places every column label and stat
+ ✔ A tiles rank decides its dot and colour
+ ✔ The table of contents indents and sizes by level
+ ✔ Toc page numbers are right aligned in the column
+
+SarifRenderer (tests/unit/Reporting/Document/Renderers/SarifRendererTest.php)
+ ✔ Failed test becomes an error level result at the real call site
+ ✔ Skipped test omits a region when there is no trace frame
+ ✔ Declares both rules up front regardless of what fired
+ ✔ Invocation carries the runs real start and end time
+
+SarifSchema (tests/unit/Reporting/Document/Renderers/SarifSchemaTest.php)
+ ✔ A mixed run validates against the sarif schema
+
+FailureLocation (tests/unit/Reporting/Document/Renderers/Support/FailureLocationTest.php)
+ ✔ Picks the frame matching the tests own declaring file
+ ✔ Falls back to the innermost frame when none matches the test file
+ ✔ Returns null when there is no failure at all
+
+SampleDocument (tests/unit/Reporting/Document/SampleDocumentTest.php)
+ ✔ Build includes every known block type exactly once
+ ✔ Toc is the first block
+ ✔ Renders through pdf without throwing
+ ✔ Renders through markdown without throwing
+
+SvgDocument (tests/unit/Reporting/Document/Svg/SvgDocumentTest.php)
+ ✔ View box is read from the view box attribute
+ ✔ View box falls back to width and height attributes
+ ✔ No view box or dimensions throws
+ ✔ A rect emits the re operator and a fill color
+ ✔ A rounded rect emits every bezier corner coordinate
+ ✔ A single radius rounds both axes
+ ✔ A circle emits every bezier arc coordinate
+ ✔ An ellipse uses each radius on its own axis
+ ✔ A non positive radius falls back to the re operator
+ ✔ A polygon closes its path
+ ✔ A polyline does not close
+ ✔ A line draws as a stroke by default since lines have no fill area
+ ✔ A path with an arc renders curve operators
+ ✔ Fill and stroke both present use the b operator
+ ✔ Fill none with stroke uses the s operator
+ ✔ Fill rule evenodd uses the star operator
+ ✔ Stroke width emits the w operator
+ ✔ Rgb function color syntax
+ ✔ Short hex color syntax
+ ✔ Inline style attribute is honored for presentation properties
+ ✔ A translate transform nests a q cm block
+ ✔ A scale transform
+ ✔ Fill is inherited from an ancestor group
+ ✔ A child overrides the inherited fill
+ ✔ An unused defs block renders nothing
+ ✔ Default fill is black when unspecified
+ ✔ Gradient fill throws
+ ✔ Filter attribute throws
+ ✔ Clip path attribute throws
+ ✔ Mask attribute throws
+ ✔ Text element throws
+ ✔ Embedded image element throws
+ ✔ Style element throws
+ ✔ Non one opacity throws
+ ✔ Full opacity does not throw
+
+SvgPathData (tests/unit/Reporting/Document/Svg/SvgPathDataTest.php)
+ ✔ Absolute move and line commands with close
+ ✔ Relative move and line commands produce the same shape as absolute
+ ✔ Implicit linetos following a moveto
+ ✔ Horizontal and vertical line commands
+ ✔ Cubic bezier command
+ ✔ Smooth cubic reflects the previous control point
+ ✔ Smooth cubic with no preceding cubic uses the current point as the reflection
+ ✔ Quadratic bezier is upgraded to cubic
+ ✔ Multiple subpaths from separate move commands
+ ✔ A zero radius arc degenerates to a straight line
+ ✔ Malformed path data throws
+ ✔ Arc to beziers matches the known quarter circle kappa constant
+ ✔ A half circle arc splits into two segments
+ ✔ Large arc flag changes arc extent
+ ✔ Degenerate same start and end arc in path data
+
+MapView (tests/unit/Reporting/MapViewTest.php)
+ ✔ The first frame reserves a cell for every test
+ ✔ An unknown total draws nothing
+ ✔ A non animated terminal gets the report and no frame
+ ✔ The report follows the frame
+ ✔ Every outcome gets its own glyph
+ ✔ The frame never changes height
+ ✔ A population larger than the window is paged
+ ✔ A page turn is not throttled
+ ✔ The running test is named on one line
+ ✔ A small suite gets a short frame
+ ✔ The readouts are always present
+ ✔ A terminal too narrow for the frame draws nothing
+ ✔ The frame carries a wall clock
+ ✔ The clock separators pulse with the second
+ ✔ The configuration is named on the frame
+ ✔ The mark cycles through its phases
+ ✔ The frame opens before the run with a note
+ ✔ An opening frame is closed when no run follows
+ ✔ The cursor is never shown while the frame is up
+ ✔ The alternate screen is restored
+
+ProgressViewRegistry (tests/unit/Reporting/ProgressView/ProgressViewRegistryTest.php)
+ ✔ Describe returns metadata for a valid view
+ ✔ Describe unknown key throws
+ ✔ Describe is unavailable when a required extension is missing
+ ✔ Describe is unavailable when the class does not exist
+ ✔ Describe is unavailable when the class has no attribute
+ ✔ Describe is unavailable when the class does not implement the contract
+ ✔ All lists every configured view regardless of availability
+ ✔ Is available matches describe
+ ✔ Has reflects what is configured
+ ✔ Resolve constructs with the given stream and validated params
+ ✔ Resolve throws when unavailable
+ ✔ Resolve throws on missing required param
+ ✔ Resolve throws on wrong param type
+ ✔ Resolve throws on an unknown param
+
+ReportFormatRegistry (tests/unit/Reporting/ReportFormat/ReportFormatRegistryTest.php)
+ ✔ Describe returns metadata for a valid format
+ ✔ Describe unknown key throws
+ ✔ Describe is unavailable when a required extension is missing
+ ✔ Describe is unavailable when the class does not exist
+ ✔ Describe is unavailable when the class has no attribute
+ ✔ Describe is unavailable when the class does not implement the contract
+ ✔ All lists every configured format regardless of availability
+ ✔ Is available matches describe
+ ✔ Has reflects what is configured
+ ✔ Resolve instantiates and applies default params
+ ✔ Resolve throws when unavailable
+ ✔ Resolve throws on missing required param
+ ✔ Resolve throws on wrong param type
+ ✔ Resolve throws on an unknown param
+ ✔ Resolved instance can actually render
+
+Reporters (tests/unit/Reporting/ReportersTest.php)
+ ✔ Console lifts blocked skips into a quiet untested section
+ ✔ Console colors output only when enabled
+ ✔ Markdown splits untested from skipped and problems
+ ✔ Test dox marks untested distinctly and splits the tally
+ ✔ Test dox renders prettified sections and marks
+ ✔ Team city escapes the service message characters
+ ✔ J unit report is well formed with spec granularity
+ ✔ J unit carries surefire flaky and rerun markup
+ ✔ Markdown report carries summary table problems and escaped cells
+ ✔ The slowest section states when the profiler is what it ranked
+ ✔ Pdf report is well formed and carries the run content
+ ✔ Pdf report title is configurable
+ ✔ Pdf verdict is flaky only on pass after retry
+ ✔ Pdf groups directories once and elides flag only files
+ ✔ The profile lists the slowest tests first
+ ✔ The profile shows each tests share of the run
+ ✔ The profile honours its limit
+ ✔ A profile of nothing prints nothing
+
+RunModel (tests/unit/Reporting/RunModelTest.php)
+ ✔ Groups finished tests by file in first seen order
+ ✔ Passed tests are neither problems nor untested
+ ✔ Non passed unblocked tests are problems
+ ✔ Blocked tests are untested not problems regardless of outcome
+ ✔ Untested groups by reason in first seen order
+ ✔ Untested with no reason falls back to a could not run label
+
+FileBackedSubscriber (tests/unit/Reporting/Subscriber/FileBackedSubscriberTest.php)
+ ✔ Open failure throws naming the given label
+ ✔ Write receives every envelope and the stream closes on run finished
+
+OtrSchema (tests/unit/Reporting/Subscriber/OtrSchemaTest.php)
+ ✔ A mixed run validates against the open test reporting schema
+
+SubscriberRegistry (tests/unit/Reporting/Subscriber/SubscriberRegistryTest.php)
+ ✔ Describe returns metadata for a valid subscriber
+ ✔ Describe unknown key throws
+ ✔ Describe is unavailable when a required extension is missing
+ ✔ Describe is unavailable when the class does not exist
+ ✔ Describe is unavailable when the class has no attribute
+ ✔ Describe is unavailable when the class does not implement the contract
+ ✔ All lists every configured subscriber regardless of availability
+ ✔ Is available matches describe
+ ✔ Has reflects what is configured
+ ✔ Resolve constructs with validated and defaulted params
+ ✔ Resolve throws when unavailable
+ ✔ Resolve throws on missing required param
+ ✔ Resolve throws on wrong param type
+ ✔ Resolve throws on an unknown param
+
+ExpectedOutcome (tests/unit/Runner/ExpectedOutcomeTest.php)
+ ✔ An expected skip that skips passes
+ ✔ An expected skip that does not skip fails
+ ✔ The declared reason fragment must appear in the skip reason
+ ✔ A matching reason fragment passes
+ ✔ An expected incomplete that is incomplete passes
+ ✔ An expected incomplete that skips fails naming both outcomes
+ ✔ Only skip and incomplete can be expected
+
+IssueCollector (tests/unit/Runner/IssueCollectorTest.php)
+ ✔ Captures all three kinds without disturbing the test
+ ✔ Silenced errors are not counted
+ ✔ Deprecations triggered in project code are self
+ ✔ Baselined deprecations are suppressed at capture
+ ✔ Drain resets per test but tallies accumulate
+
+DependencyValues (tests/unit/Runner/Process/DependencyValuesTest.php)
+ ✔ Only wanted values are carried
+ ✔ A value round trips into the runner results map
+ ✔ The supervisor can ask after the runner was built
+ ✔ An unserializable value is dropped rather than fatal
+ ✔ Garbage from the artifact is ignored not trusted
+
+WorkerProtocol (tests/unit/Runner/Process/WorkerProtocolTest.php)
+ ✔ Test id round trips through its string form
+ ✔ Malformed test id strings parse to null
+ ✔ Manifest round trips through json
+ ✔ Overrides survive the manifest with false distinct from absent
+ ✔ Garbage manifests parse to null
+ ✔ Manifest filter keeps only named tests and their dataset rows
+ ✔ Parser reconstructs a finished test with its failure
+ ✔ Parser round trips the pruning signals
+ ✔ Parser handles start run finish and foreign lines
+
+Repetition (tests/unit/Runner/RepetitionTest.php)
+ ✔ Repetitions are adjacent per test not per group
+ ✔ Anything under two leaves the plan untouched
+ ✔ The group keeps its name and lifecycle hooks
+
+ResultCache (tests/unit/Runner/ResultCacheTest.php)
+ ✔ Round trip preserves outcome history and duration
+ ✔ Missing file loads as empty cache
+ ✔ Corrupt file loads as empty cache
+ ✔ Incompatible version is discarded not misread
+ ✔ Unknown outcome values are skipped on load
+ ✔ History is bounded most recent first
+
+RetryAndQuarantine (tests/unit/Runner/RetryAndQuarantineTest.php)
+ ✔ A pass on retry is flaky not silently green
+ ✔ Backoff delays shape up
+ ✔ The cli count override keeps the configured shape
+ ✔ The runner actually pauses between attempts
+ ✔ A retry attribute carries its own backoff
+ ✔ The retry budget runs out
+ ✔ A retry attribute overrides the run wide budget
+ ✔ Skips are never retried
+ ✔ The quarantined attribute marks the event
+ ✔ The configuration quarantine list matches by file and name
+ ✔ The flakiness log tallies from the stream
+
+Scheduler (tests/unit/Runner/SchedulerTest.php)
+ ✔ Declared order is untouched
+ ✔ Reverse reverses groups and tests within groups
+ ✔ Random order is replayable from its seed
+ ✔ Random order is a permutation of the suite
+ ✔ Defects first weighs recency over severity
+ ✔ Defects first breaks ties toward shorter tests
+ ✔ Duration order runs fastest first
+ ✔ Size order runs small before medium before large before unsized
+ ✔ Reordering never runs a dependent before its dependency
+ ✔ Dataset rows travel as one block through repair
+ ✔ Ignoring dependencies leaves the ordering alone
+
+Shard (tests/unit/Runner/ShardTest.php)
+ ✔ Shards partition the suite completely and disjointly
+ ✔ Membership is stable when other tests come and go
+ ✔ Malformed shard strings parse to null
+
+TestDiscoverer (tests/unit/Runner/TestDiscovererTest.php)
+ ✔ Routes a plain test php file with only pest calls to the pest dialect
+ ✔ Routes the nested class regression fixture to the pest dialect without crashing
+ ✔ Skips a file with neither a class nor pest calls silently
+ ✔ Routes a file with a top level helper class and top level pest calls to pest dialect
+ ✔ Collects the class when the only pest call declares no test
+
+TestRunner (tests/unit/Runner/TestRunnerTest.php)
+ ✔ Discovery expands datasets and skips helpers
+ ✔ Outcomes are classified per the spec
+ ✔ Failure carries structured diff on the event
+ ✔ Lifecycle and class hooks
+ ✔ Stream discipline first and last events
+ ✔ Run finish reports complete only for a full finished suite
+ ✔ Stop on halts on the outcome it names
+ ✔ Stop on issue reads what the test emitted not how it ended
+ ✔ Disallowed output is risky and is reported rather than printed
+ ✔ A test slower than its size allows is risky
+
+TestSelection (tests/unit/Runner/TestSelectionTest.php)
+ ✔ Plain pattern is a case insensitive substring match
+ ✔ Pattern matches class qualified names and wildcards
+ ✔ Pattern reaches dataset spellings
+ ✔ Regular expression patterns pass through verbatim
+ ✔ Group selection includes members and exclusion wins
+ ✔ Emptied groups disappear from the selection
+ ✔ Todo listing selects only marked tests whatever the status
+ ✔ Assignee and issue narrow by the marker fields and imply membership
+ ✔ No wip drops work in progress but keeps todo done and ordinary
+ ✔ Exclude filter is the negated filter
+ ✔ Covers and uses select on declared intent
+ ✔ Requires php extension selects on the declared requirement
+ ✔ Id and file selection tell no filter from a filter that matched nothing
+
+TimeLimit (tests/unit/Runner/TimeLimitTest.php)
+ ✔ Each declared size carries the specs budget
+ ✔ A declared size wins over the default
+ ✔ Without a size the default decides and nothing is not zero
+
+TimingOverhead (tests/unit/Runner/TimingOverheadTest.php)
+ ✔ Off is the only mode that leaves a duration alone
+ ✔ An empty mode is the clean answer and not a missing one
+ ✔ The notice names the mode and the way out
+ ✔ The mode is read from the ini the extension runs with
+ ✔ The default answer and the asked one agree
+
+Todo (tests/unit/Runner/TodoTest.php)
+ ✔ A todo never executes and reports incomplete
+ ✔ A wip runs its body like pest
+ ✔ A done todo runs its body normally
+ ✔ The todo marker wins over unmet requirements
+ ✔ The attribute form on a real suite method
+
+UntestedClassification (tests/unit/Runner/UntestedClassificationTest.php)
+ ✔ An unmet extension requirement is blocked and reads as missing
+ ✔ An unmet dependency is blocked
+ ✔ A deliberate skip is not blocked
+ ✔ An expected skip reconciling to passed drops the blocked flag
+
+SkipReasons (tests/unit/SkipReasonsTest.php)
+ ✔ Every skip names a missing capability
+ ✔ No skip hides its reason behind a variable
+
+InlineSnapshot (tests/unit/Snapshot/InlineSnapshotTest.php)
+ ✔ A matching recorded value passes without queuing a rewrite
+ ✔ A mismatch fails when not updating
+ ✔ An absent value fails naming the flag
+ ✔ Recording when rewriting is forbidden fails naming the constraint
+ ✔ Recording sequentially queues the rewrite
+ ✔ A scalar inline snapshot compares live
+ ✔ An array inline snapshot compares live
+
+InlineSnapshotWriter (tests/unit/Snapshot/InlineSnapshotWriterTest.php)
+ ✔ Records into an empty call
+ ✔ Replaces an existing literal
+ ✔ The phpunit spelling preserves the value and appends the snapshot
+ ✔ A multi line value becomes a nowdoc
+ ✔ An unpreserved chain after the call survives
+ ✔ No matching call leaves the source byte exact
+ ✔ Single quote escaping round trips
+ ✔ The nowdoc marker avoids collision with content
+ ✔ Flush applies every queued edit bottom up
+
+SnapshotDialect.crucible (tests/unit/Snapshot/SnapshotDialect.crucible.php)
+ ✔ A receipt keeps its shape
+ ✔ An inline snapshot compares against the value recorded in the call
+ ✔ Negating an inline snapshot is refused
+ ✔ Several snapshots number themselves
+
+SnapshotPruner (tests/unit/Snapshot/SnapshotPrunerTest.php)
+ ✔ A complete run prunes unvisited entries
+ ✔ An incomplete run prunes nothing
+ ✔ A failed test shields its whole snapshot file
+ ✔ A fully obsolete file is deleted with its empty directories
+ ✔ A pruned screenshot entry takes its images along
+
+Snapshot (tests/unit/Snapshot/SnapshotTest.php)
+ ✔ The format round trips hostile content
+ ✔ Editor trimmed blank lines still parse
+ ✔ Missing snapshot fails and names the flag
+ ✔ Update records then a normal run matches
+ ✔ A changed value fails with the stored expectation
+ ✔ The screenshot flavor stores the reference and renders a visual diff
+ ✔ Update runs report created and updated counts
+ ✔ Visited keys ride the finish event
+ ✔ A filtered update keeps unvisited keys
+ ✔ Named and counted snapshots coexist
+ ✔ Outside the runner snapshots refuse loudly
+ ✔ The dogfood snapshot matches
+
+TestId (tests/unit/Test/TestIdTest.php)
+ ✔ String form is file name and optional dataset
+ ✔ Hash is stable and discriminates
+ ✔ Equality
+
+TypeExpressionAgreement (tests/unit/Types/TypeExpressionAgreementTest.php)
+ ✔ The run time reading agrees with phpstans
+
+TypeExpression (tests/unit/Types/TypeExpressionTest.php)
+ ✔ A fitting value has no mismatch
+ ✔ Each boundary falls on the side its type says
+ ✔ The first misfit is named by its path
+ ✔ Keys are checked where the type names them
+ ✔ A type that does not read is refused with its position
+ ✔ The refusal points at the token that did not read
+ ✔ Shape keys are read in every quoting and as integers
+ ✔ An unknown generic is refused rather than guessed
+
+TypeTestRunner (tests/unit/Types/TypeTestRunnerTest.php)
+ ✔ Every assertion is a test with its own verdict
+ ✔ A name filter keeps only the assertions it names
+
+VitestReport (tests/unit/Vitest/VitestReportTest.php)
+ ✔ Translates each assertion result to a test finished
+ ✔ A failed test carries the failure message
+ ✔ Todo maps to incomplete and other statuses to skipped
+ ✔ A file outside the base keeps its absolute path so it round trips through related
+ ✔ Malformed entries are skipped not fatal
+
+VitestRunner (tests/unit/Vitest/VitestRunnerTest.php)
+ ✔ An unfiltered suite runs whole and reports every skip
+ ✔ A filter becomes the test name pattern and its leftovers are not reported
+ ✔ A substring filter keeps its wildcard and escapes the rest
+ ✔ A regular expression filter passes its body through
+
+FileWatcher (tests/unit/Watch/FileWatcherTest.php)
+ ✔ Vendor node modules and hidden directories are not watched
+ ✔ Modifications additions and deletions are diffed
+ ✔ A touch alone is a change
+ ✔ Explicit files are watched too
+
+RetriggerEndpoint (tests/unit/Watch/RetriggerEndpointTest.php)
+ ✔ A pushed change set is accepted and handed over once
+ ✔ The token is required
+ ✔ A missing token is refused
+ ✔ Only post is accepted
+ ✔ A malformed body is refused rather than guessed
+ ✔ Non string entries are dropped not coerced
+ ✔ The payload carries paths and nothing command shaped
+
+RetriggerListener (tests/unit/Watch/RetriggerListenerTest.php)
+ ✔ The hot file is written while listening and removed on close
+ ✔ A real push over the socket reaches the loop
+ ✔ A push with the wrong token is refused over the socket
+ ✔ The shipped node producer pushes through the documented contract
+ ✔ A producer finding no hot file does nothing
+
+WatchSession (tests/unit/Watch/WatchSessionTest.php)
+ ✔ A green session runs the affected files
+ ✔ Deletions widen to the full suite
+ ✔ Non php changes widen to the full suite
+ ✔ A file a declared rule names runs related not full
+ ✔ A file no rule names still widens
+ ✔ A rule does not rescue a deletion
+ ✔ A js change under a vitest suite runs related not full
+ ✔ A non php change outside every vitest suite still widens to full
+ ✔ The failed set is sticky across changes
+ ✔ A green partial run after red earns one full confirmation
+ ✔ A green partial run without prior failures needs no confirmation
+ ✔ A still red run waits instead of looping
+ ✔ The failed only run is null when green
+ ✔ The failed only run targets exactly the failed files
+
+Calculator (examples/01-phpunit-dialect/CalculatorTest.php)
+ ✔ Adds two numbers
+ ✔ Sums a list with data set "empty"
+ ✔ Sums a list with data set "one item"
+ ✔ Sums a list with data set "several"
+ ✔ Multiplies
+ ✔ Uses the product of its dependency
+
+basics.pest (examples/02-pest-dialect/basics.pest.php)
+ ✔ A test is a description and a closure
+ ✔ It rounds up
+ ✔ Expectations > it chains
+ ✔ Expectations > it negates with not
+ ✔ Expectations > it reaches into values with higher-order expectations
+ ✔ Hooks > it sees the value the hook set
+ ✔ Hooks > it sees it again, freshly
+ ✔ It uppercases with data set "lowercase"
+ ✔ It uppercases with data set "mixed"
+ ✔ It uppercases with data set "already"
+ ✔ It adds any two positives with data set "0 / 0"
+ ✔ It adds any two positives with data set "0 / 1"
+ ✔ It adds any two positives with data set "1 / 0"
+ ✔ It adds any two positives with data set "1 / 1"
+ ✔ It fails on purpose
+ ✔ It belongs to a group
+
+Payments (examples/03-doubles/PaymentsTest.php)
+ ✔ A stub answers without being verified
+ ✔ A mock verifies how it was called
+ ✔ Unconfigured methods return usable defaults
+ ✔ Consecutive calls can differentiate
+
+rules.pest (examples/04-architecture/rules.pest.php)
+ ✔ Every event object declares strict types
+ ✔ The impact tier does not reach the browser tier
+ ✔ The retrigger endpoint stays inside the watch tier
+ ✔ Impact value objects are immutable
+
+shapes.pest (examples/05-shapes/shapes.pest.php)
+ ✔ It states the shape of a value once, for the run and for the analyser
+ ✔ It names where a value stops fitting
+ ✔ Draws data from the same type
+
+Inventory (examples/06-equivalent-mutants/InventoryTest.php)
+ ✔ First is the first item or null
+ ✔ Restock returns the count
+
+PrettyName (src/Reporting/PrettyName.php)
+ ✔ Pretty name::of file with data set "check 1"
+ ✔ Pretty name::of file with data set "a file just called Test keeps its name"
+
+TestId (src/Test/TestId.php)
+ ✔ Test id::from string with data set "crucible 1"
+ ✔ Test id::from string with data set "crucible 2"
+
+WorkerTiming (tests/unit/Runner/Process/WorkerTimingTest.php)
+ ✔ A worker does not time its tests through xdebug
+
+ids.types (examples/07-type-tests/ids.types.php)
+ ✔ Line 21: list<int>
+ ✔ Line 23: type error binary op.invalid
+
+Tests: 1583. Passed: 1581, Failed: 0, Errors: 0, Skipped: 2, Incomplete: 0, Risky: 0. Time: 101.023s

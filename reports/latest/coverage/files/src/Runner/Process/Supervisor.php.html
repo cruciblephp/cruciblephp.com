@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Runner/Process/Supervisor.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../../index.html">Crucible coverage</a> / src/Runner/Process/Supervisor.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Runner\Process;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use LucianoPereira\Crucible\Attributes\PreserveGlobalState;</span>
+<span class=""><span class="ln">14</span>use LucianoPereira\Crucible\Attributes\RunClassInSeparateProcess;</span>
+<span class=""><span class="ln">15</span>use LucianoPereira\Crucible\Attributes\RunInSeparateProcess;</span>
+<span class=""><span class="ln">16</span>use LucianoPereira\Crucible\Attributes\RunTestsInSeparateProcesses;</span>
+<span class=""><span class="ln">17</span>use LucianoPereira\Crucible\Configuration\ExecutionOrder;</span>
+<span class=""><span class="ln">18</span>use LucianoPereira\Crucible\Configuration\Overrides;</span>
+<span class=""><span class="ln">19</span>use LucianoPereira\Crucible\Event\Emitter;</span>
+<span class=""><span class="ln">20</span>use LucianoPereira\Crucible\Event\Failure;</span>
+<span class=""><span class="ln">21</span>use LucianoPereira\Crucible\Event\IssueKind;</span>
+<span class=""><span class="ln">22</span>use LucianoPereira\Crucible\Event\Outcome;</span>
+<span class=""><span class="ln">23</span>use LucianoPereira\Crucible\Event\RunFinished;</span>
+<span class=""><span class="ln">24</span>use LucianoPereira\Crucible\Event\RunStarted;</span>
+<span class=""><span class="ln">25</span>use LucianoPereira\Crucible\Event\RunSummary;</span>
+<span class=""><span class="ln">26</span>use LucianoPereira\Crucible\Event\TestFinished;</span>
+<span class=""><span class="ln">27</span>use LucianoPereira\Crucible\Event\TestStarted;</span>
+<span class=""><span class="ln">28</span>use LucianoPereira\Crucible\Filesystem\WorkingDirectory;</span>
+<span class=""><span class="ln">29</span>use LucianoPereira\Crucible\Isolation\GlobalStateExport;</span>
+<span class=""><span class="ln">30</span>use LucianoPereira\Crucible\Runner\ResultCache;</span>
+<span class=""><span class="ln">31</span>use LucianoPereira\Crucible\Runner\TestRunner;</span>
+<span class=""><span class="ln">32</span>use LucianoPereira\Crucible\Runner\TimingOverhead;</span>
+<span class=""><span class="ln">33</span>use LucianoPereira\Crucible\Test\TestDefinition;</span>
+<span class=""><span class="ln">34</span>use LucianoPereira\Crucible\Test\TestGroup;</span>
+<span class=""><span class="ln">35</span>use LucianoPereira\Crucible\Test\TestId;</span>
+<span class=""><span class="ln">36</span></span>
+<span class=""><span class="ln">37</span>use function array_map;</span>
+<span class=""><span class="ln">38</span>use function array_shift;</span>
+<span class=""><span class="ln">39</span>use function array_values;</span>
+<span class=""><span class="ln">40</span>use function bin2hex;</span>
+<span class=""><span class="ln">41</span>use function count;</span>
+<span class=""><span class="ln">42</span>use function extension_loaded;</span>
+<span class=""><span class="ln">43</span>use function file_get_contents;</span>
+<span class=""><span class="ln">44</span>use function fwrite;</span>
+<span class=""><span class="ln">45</span>use function hrtime;</span>
+<span class=""><span class="ln">46</span>use function in_array;</span>
+<span class=""><span class="ln">47</span>use function is_array;</span>
+<span class=""><span class="ln">48</span>use function is_file;</span>
+<span class=""><span class="ln">49</span>use function json_decode;</span>
+<span class=""><span class="ln">50</span>use function max;</span>
+<span class=""><span class="ln">51</span>use function random_bytes;</span>
+<span class=""><span class="ln">52</span>use function range;</span>
+<span class=""><span class="ln">53</span>use function spl_object_id;</span>
+<span class=""><span class="ln">54</span>use function sprintf;</span>
+<span class=""><span class="ln">55</span>use function str_contains;</span>
+<span class=""><span class="ln">56</span>use function stream_select;</span>
+<span class=""><span class="ln">57</span>use function sys_get_temp_dir;</span>
+<span class=""><span class="ln">58</span>use function trim;</span>
+<span class=""><span class="ln">59</span>use function unlink;</span>
+<span class=""><span class="ln">60</span>use function usort;</span>
+<span class=""><span class="ln">61</span></span>
+<span class=""><span class="ln">62</span>use const PHP_EOL;</span>
+<span class=""><span class="ln">63</span>use const STDERR;</span>
+<span class=""><span class="ln">64</span></span>
+<span class=""><span class="ln">65</span>/**</span>
+<span class=""><span class="ln">66</span> * The supervisor of the worker pool (nextest architecture): plans</span>
+<span class=""><span class="ln">67</span> * which tests run in-process and which run in spawned workers, feeds</span>
+<span class=""><span class="ln">68</span> * workers manifests, multiplexes their NDJSON streams, and re-emits</span>
+<span class=""><span class="ln">69</span> * every test-scoped event onto the one supervisor-owned stream —</span>
+<span class=""><span class="ln">70</span> * listeners (console, NDJSON log, result cache) cannot tell where a</span>
+<span class=""><span class="ln">71</span> * test ran.</span>
+<span class=""><span class="ln">72</span> *</span>
+<span class=""><span class="ln">73</span> * Workers are consumed from a queue in LPT order (Graham 1969):</span>
+<span class=""><span class="ln">74</span> * costliest unit first, next unit to the first free slot — cached</span>
+<span class=""><span class="ln">75</span> * durations make the estimate. A worker that reaches EOF without its</span>
+<span class=""><span class="ln">76</span> * run:finish handshake crashed: every expected-but-unfinished test is</span>
+<span class=""><span class="ln">77</span> * reported as errored, with the worker&#039;s stderr tail as the reason.</span>
+<span class=""><span class="ln">78</span> * The crash is contained; the run continues.</span>
+<span class=""><span class="ln">79</span> */</span>
+<span class=""><span class="ln">80</span>final class Supervisor</span>
+<span class=""><span class="ln">81</span>{</span>
+<span class=""><span class="ln">82</span>    private const float SELECT_TIMEOUT_SECONDS = 0.05;</span>
+<span class=""><span class="ln">83</span></span>
+<span class=""><span class="ln">84</span>    /** @var array&lt;string, int&gt; */</span>
+<span class=""><span class="ln">85</span>    private array $counts = [</span>
+<span class=""><span class="ln">86</span>        &#039;pass&#039; =&gt; 0, &#039;fail&#039; =&gt; 0, &#039;error&#039; =&gt; 0, &#039;skip&#039; =&gt; 0, &#039;incomplete&#039; =&gt; 0, &#039;risky&#039; =&gt; 0, &#039;untested&#039; =&gt; 0,</span>
+<span class=""><span class="ln">87</span>    ];</span>
+<span class=""><span class="ln">88</span></span>
+<span class=""><span class="ln">89</span>    /** @var array&lt;string, int&gt; */</span>
+<span class=""><span class="ln">90</span>    private array $issueCounts = [&#039;deprecations&#039; =&gt; 0, &#039;notices&#039; =&gt; 0, &#039;warnings&#039; =&gt; 0];</span>
+<span class=""><span class="ln">91</span></span>
+<span class=""><span class="ln">92</span>    /**</span>
+<span class=""><span class="ln">93</span>     * @param non-empty-string  $crucibleBinary</span>
+<span class=""><span class="ln">94</span>     * @param non-empty-string  $configurationPath</span>
+<span class=""><span class="ln">95</span>     * @param ?int&lt;0, max&gt;      $retries           the run&#039;s resolved retry budget (G4), carried into every manifest</span>
+<span class=""><span class="ln">96</span>     * @param ?non-empty-string $browserOverride   CLI --browser engine, carried into every manifest (D-064)</span>
+<span class=""><span class="ln">97</span>     * @param Overrides         $overrides         configuration values the CLI overrode, carried into every manifest</span>
+<span class=""><span class="ln">98</span>     * @param list&lt;non-empty-string&gt; $includePaths the spec&#039;s --include-path, carried into every manifest</span>
+<span class=""><span class="ln">99</span>     * @param bool              $fullSuite         no CLI selection narrowed the plan (D-071); with every planned test finished, run:finish reports complete</span>
+<span class=""><span class="ln">100</span>     * @param bool              $processIsolation  the spec&#039;s --process-isolation: every test gets its own worker, as if it carried #[RunInSeparateProcess]</span>
+<span class=""><span class="ln">101</span>     * @param DependencyValues  $dependencyValues  shared with the in-process runner, so a prerequisite that ran here reaches a dependent that runs in a worker</span>
+<span class=""><span class="ln">102</span>     */</span>
+<span class=""><span class="ln">103</span>    public function __construct(</span>
+<span class="missed"><span class="ln">104</span>        private readonly Emitter $emitter,</span>
+<span class="missed"><span class="ln">105</span>        private readonly TestRunner $inProcessRunner,</span>
+<span class="missed"><span class="ln">106</span>        private readonly ResultCache $history,</span>
+<span class="missed"><span class="ln">107</span>        private readonly EventParser $parser,</span>
+<span class="missed"><span class="ln">108</span>        private readonly string $crucibleBinary,</span>
+<span class="missed"><span class="ln">109</span>        private readonly string $configurationPath,</span>
+<span class="missed"><span class="ln">110</span>        private readonly WorkingDirectory $workingDirectory,</span>
+<span class="missed"><span class="ln">111</span>        private readonly ExecutionOrder $order = ExecutionOrder::Declared,</span>
+<span class="missed"><span class="ln">112</span>        private readonly int $seed = 0,</span>
+<span class="missed"><span class="ln">113</span>        private readonly int $parallel = 1,</span>
+<span class="missed"><span class="ln">114</span>        private readonly ?int $retries = null,</span>
+<span class="missed"><span class="ln">115</span>        private readonly ?string $coverageDirectory = null,</span>
+<span class="missed"><span class="ln">116</span>        private readonly bool $updateSnapshots = false,</span>
+<span class="missed"><span class="ln">117</span>        private readonly bool $coverageBranch = false,</span>
+<span class="missed"><span class="ln">118</span>        private readonly bool $pathCoverage = false,</span>
+<span class="missed"><span class="ln">119</span>        private readonly ?bool $strictCoverage = null,</span>
+<span class="missed"><span class="ln">120</span>        private readonly ?string $browserOverride = null,</span>
+<span class="missed"><span class="ln">121</span>        private readonly bool $debugOverride = false,</span>
+<span class="missed"><span class="ln">122</span>        private readonly bool $fullSuite = false,</span>
+<span class="missed"><span class="ln">123</span>        private readonly Overrides $overrides = new Overrides(),</span>
+<span class="missed"><span class="ln">124</span>        private readonly array $includePaths = [],</span>
+<span class="missed"><span class="ln">125</span>        private readonly bool $processIsolation = false,</span>
+<span class="missed"><span class="ln">126</span>        private readonly DependencyValues $dependencyValues = new DependencyValues(),</span>
+<span class="missed"><span class="ln">127</span>    ) {}</span>
+<span class=""><span class="ln">128</span></span>
+<span class=""><span class="ln">129</span>    /**</span>
+<span class=""><span class="ln">130</span>     * Workers do not inherit the parent&#039;s -d flags, so whichever</span>
+<span class=""><span class="ln">131</span>     * driver the parent is running with is re-created on the child</span>
+<span class=""><span class="ln">132</span>     * command line (D-041). A driver the child&#039;s php.ini already</span>
+<span class=""><span class="ln">133</span>     * loads produces a harmless already-loaded notice.</span>
+<span class=""><span class="ln">134</span>     *</span>
+<span class=""><span class="ln">135</span>     * Without coverage the child gets the opposite instruction: an</span>
+<span class=""><span class="ln">136</span>     * xdebug hooking every call inflates every duration the worker</span>
+<span class=""><span class="ln">137</span>     * reports, and the durations feed the result cache the scheduler</span>
+<span class=""><span class="ln">138</span>     * plans from. Step debugging is left alone — a mode carrying</span>
+<span class=""><span class="ln">139</span>     * `debug` is an operator with a debugger attached, not a default.</span>
+<span class=""><span class="ln">140</span>     *</span>
+<span class=""><span class="ln">141</span>     * @return list&lt;non-empty-string&gt;</span>
+<span class=""><span class="ln">142</span>     */</span>
+<span class=""><span class="ln">143</span>    private function phpArguments(): array</span>
+<span class=""><span class="ln">144</span>    {</span>
+<span class="missed"><span class="ln">145</span>        if ($this-&gt;coverageDirectory === null) {</span>
+<span class="missed"><span class="ln">146</span>            return extension_loaded(&#039;xdebug&#039;) &amp;&amp; !str_contains(TimingOverhead::mode(), &#039;debug&#039;)</span>
+<span class="missed"><span class="ln">147</span>                ? [&#039;-d&#039;, &#039;xdebug.mode=off&#039;]</span>
+<span class="missed"><span class="ln">148</span>                : [];</span>
+<span class=""><span class="ln">149</span>        }</span>
+<span class=""><span class="ln">150</span></span>
+<span class=""><span class="ln">151</span>        // Branch analysis is xdebug territory (D-062) — a pcov child</span>
+<span class=""><span class="ln">152</span>        // could collect lines but never branches, so the supervisor</span>
+<span class=""><span class="ln">153</span>        // recreates the driver its own detection chose.</span>
+<span class="missed"><span class="ln">154</span>        if (extension_loaded(&#039;pcov&#039;) &amp;&amp; !$this-&gt;coverageBranch) {</span>
+<span class="missed"><span class="ln">155</span>            return [&#039;-d&#039;, &#039;extension=pcov.so&#039;, &#039;-d&#039;, &#039;pcov.enabled=1&#039;];</span>
+<span class=""><span class="ln">156</span>        }</span>
+<span class=""><span class="ln">157</span></span>
+<span class="missed"><span class="ln">158</span>        if (extension_loaded(&#039;xdebug&#039;)) {</span>
+<span class="missed"><span class="ln">159</span>            return [&#039;-d&#039;, &#039;zend_extension=xdebug.so&#039;, &#039;-d&#039;, &#039;xdebug.mode=coverage&#039;];</span>
+<span class=""><span class="ln">160</span>        }</span>
+<span class=""><span class="ln">161</span></span>
+<span class="missed"><span class="ln">162</span>        return [];</span>
+<span class=""><span class="ln">163</span>    }</span>
+<span class=""><span class="ln">164</span></span>
+<span class=""><span class="ln">165</span>    /**</span>
+<span class=""><span class="ln">166</span>     * @param list&lt;TestGroup&gt;  $groups     already scheduled</span>
+<span class=""><span class="ln">167</span>     * @param ?callable(): ?RunSummary $afterTests run-scoped work emitted inside the run (checks, and the Vitest fold-in returning its count delta)</span>
+<span class=""><span class="ln">168</span>     *                                      bracket — after the workers, before RunFinished</span>
+<span class=""><span class="ln">169</span>     */</span>
+<span class=""><span class="ln">170</span>    public function run(array $groups, ?callable $afterTests = null): RunSummary</span>
+<span class=""><span class="ln">171</span>    {</span>
+<span class="missed"><span class="ln">172</span>        $started = hrtime(true);</span>
+<span class=""><span class="ln">173</span></span>
+<span class="missed"><span class="ln">174</span>        $planned = 0;</span>
+<span class=""><span class="ln">175</span></span>
+<span class="missed"><span class="ln">176</span>        foreach ($groups as $group) {</span>
+<span class="missed"><span class="ln">177</span>            $planned += count($group-&gt;tests);</span>
+<span class=""><span class="ln">178</span>        }</span>
+<span class=""><span class="ln">179</span></span>
+<span class=""><span class="ln">180</span>        // Same plan size the sequential runner announces: a reader</span>
+<span class=""><span class="ln">181</span>        // showing progress against a total must not lose it because the</span>
+<span class=""><span class="ln">182</span>        // run happened to be parallel.</span>
+<span class="missed"><span class="ln">183</span>        $this-&gt;emitter-&gt;emit(new RunStarted(tests: $planned));</span>
+<span class=""><span class="ln">184</span></span>
+<span class="missed"><span class="ln">185</span>        [$inProcess, $units] = $this-&gt;plan($groups);</span>
+<span class=""><span class="ln">186</span></span>
+<span class=""><span class="ln">187</span>        // #[Depends] across the process boundary: a unit that needs a</span>
+<span class=""><span class="ln">188</span>        // value some other unit produces makes that producer record it.</span>
+<span class=""><span class="ln">189</span>        // Asked for before anything runs, so the in-process portion —</span>
+<span class=""><span class="ln">190</span>        // which goes first — keeps what the workers will need.</span>
+<span class="missed"><span class="ln">191</span>        $needed = [];</span>
+<span class=""><span class="ln">192</span></span>
+<span class="missed"><span class="ln">193</span>        foreach ($units as $unit) {</span>
+<span class="missed"><span class="ln">194</span>            foreach ($unit-&gt;dependsOn as $name) {</span>
+<span class="missed"><span class="ln">195</span>                if (!in_array($name, $needed, true)) {</span>
+<span class="missed"><span class="ln">196</span>                    $needed[] = $name;</span>
+<span class=""><span class="ln">197</span>                }</span>
+<span class=""><span class="ln">198</span>            }</span>
+<span class=""><span class="ln">199</span>        }</span>
+<span class=""><span class="ln">200</span></span>
+<span class="missed"><span class="ln">201</span>        $this-&gt;dependencyValues-&gt;want($needed);</span>
+<span class=""><span class="ln">202</span></span>
+<span class="missed"><span class="ln">203</span>        $units = array_map(</span>
+<span class="missed"><span class="ln">204</span>            static function (PlannedUnit $planned) use ($needed): PlannedUnit {</span>
+<span class="missed"><span class="ln">205</span>                $provides = [];</span>
+<span class=""><span class="ln">206</span></span>
+<span class="missed"><span class="ln">207</span>                foreach ($planned-&gt;expected as $id) {</span>
+<span class="missed"><span class="ln">208</span>                    if (in_array($id-&gt;name, $needed, true) &amp;&amp; !in_array($id-&gt;name, $provides, true)) {</span>
+<span class="missed"><span class="ln">209</span>                        $provides[] = $id-&gt;name;</span>
+<span class=""><span class="ln">210</span>                    }</span>
+<span class=""><span class="ln">211</span>                }</span>
+<span class=""><span class="ln">212</span></span>
+<span class="missed"><span class="ln">213</span>                return $planned-&gt;providing($provides);</span>
+<span class="missed"><span class="ln">214</span>            },</span>
+<span class="missed"><span class="ln">215</span>            $units,</span>
+<span class=""><span class="ln">216</span>        );</span>
+<span class=""><span class="ln">217</span></span>
+<span class="missed"><span class="ln">218</span>        if ($inProcess !== []) {</span>
+<span class="missed"><span class="ln">219</span>            $this-&gt;tallySummary($this-&gt;inProcessRunner-&gt;execute($inProcess));</span>
+<span class=""><span class="ln">220</span>        }</span>
+<span class=""><span class="ln">221</span></span>
+<span class="missed"><span class="ln">222</span>        $this-&gt;runUnits($units);</span>
+<span class=""><span class="ln">223</span></span>
+<span class="missed"><span class="ln">224</span>        $delta = $afterTests !== null ? $afterTests() : null;</span>
+<span class=""><span class="ln">225</span></span>
+<span class="missed"><span class="ln">226</span>        $summary = new RunSummary(</span>
+<span class="missed"><span class="ln">227</span>            passed: $this-&gt;counts[&#039;pass&#039;],</span>
+<span class="missed"><span class="ln">228</span>            failed: $this-&gt;counts[&#039;fail&#039;],</span>
+<span class="missed"><span class="ln">229</span>            errored: $this-&gt;counts[&#039;error&#039;],</span>
+<span class="missed"><span class="ln">230</span>            skipped: $this-&gt;counts[&#039;skip&#039;],</span>
+<span class="missed"><span class="ln">231</span>            incomplete: $this-&gt;counts[&#039;incomplete&#039;],</span>
+<span class="missed"><span class="ln">232</span>            risky: $this-&gt;counts[&#039;risky&#039;],</span>
+<span class="missed"><span class="ln">233</span>            deprecations: $this-&gt;issueCounts[&#039;deprecations&#039;],</span>
+<span class="missed"><span class="ln">234</span>            notices: $this-&gt;issueCounts[&#039;notices&#039;],</span>
+<span class="missed"><span class="ln">235</span>            warnings: $this-&gt;issueCounts[&#039;warnings&#039;],</span>
+<span class="missed"><span class="ln">236</span>            untested: $this-&gt;counts[&#039;untested&#039;],</span>
+<span class=""><span class="ln">237</span>        );</span>
+<span class=""><span class="ln">238</span></span>
+<span class=""><span class="ln">239</span>        // Same D-071 completeness rule as the sequential runner: lost</span>
+<span class=""><span class="ln">240</span>        // workers report their tests as errored, so the tally only falls</span>
+<span class=""><span class="ln">241</span>        // short of the plan when something halted the run. Computed on</span>
+<span class=""><span class="ln">242</span>        // the PHP plan before external results (Vitest) fold in.</span>
+<span class="missed"><span class="ln">243</span>        $complete = $this-&gt;fullSuite &amp;&amp; $summary-&gt;total() === $planned;</span>
+<span class=""><span class="ln">244</span></span>
+<span class="missed"><span class="ln">245</span>        if ($delta instanceof RunSummary) {</span>
+<span class="missed"><span class="ln">246</span>            $summary = $summary-&gt;plus($delta);</span>
+<span class=""><span class="ln">247</span>        }</span>
+<span class=""><span class="ln">248</span></span>
+<span class="missed"><span class="ln">249</span>        $this-&gt;emitter-&gt;emit(new RunFinished(</span>
+<span class="missed"><span class="ln">250</span>            $summary,</span>
+<span class="missed"><span class="ln">251</span>            (hrtime(true) - $started) / 1e9,</span>
+<span class=""><span class="ln">252</span>            $complete,</span>
+<span class=""><span class="ln">253</span>        ));</span>
+<span class=""><span class="ln">254</span></span>
+<span class="missed"><span class="ln">255</span>        return $summary;</span>
+<span class=""><span class="ln">256</span>    }</span>
+<span class=""><span class="ln">257</span></span>
+<span class=""><span class="ln">258</span>    /**</span>
+<span class=""><span class="ln">259</span>     * Splits the scheduled groups into the in-process remainder and</span>
+<span class=""><span class="ln">260</span>     * the worker units, honoring the spec&#039;s three isolation levels:</span>
+<span class=""><span class="ln">261</span>     * #[RunClassInSeparateProcess] sends the whole group to one</span>
+<span class=""><span class="ln">262</span>     * worker; #[RunTestsInSeparateProcesses] (class) and</span>
+<span class=""><span class="ln">263</span>     * #[RunInSeparateProcess] (method) send each marked test to its</span>
+<span class=""><span class="ln">264</span>     * own worker. --process-isolation is the run-wide form of the</span>
+<span class=""><span class="ln">265</span>     * last one: every test is marked. With --parallel above 1 there</span>
+<span class=""><span class="ln">266</span>     * is no in-process remainder: every group becomes a unit.</span>
+<span class=""><span class="ln">267</span>     *</span>
+<span class=""><span class="ln">268</span>     * @param list&lt;TestGroup&gt; $groups</span>
+<span class=""><span class="ln">269</span>     *</span>
+<span class=""><span class="ln">270</span>     * @return array{list&lt;TestGroup&gt;, list&lt;PlannedUnit&gt;}</span>
+<span class=""><span class="ln">271</span>     */</span>
+<span class=""><span class="ln">272</span>    private function plan(array $groups): array</span>
+<span class=""><span class="ln">273</span>    {</span>
+<span class="missed"><span class="ln">274</span>        $inProcess = [];</span>
+<span class="missed"><span class="ln">275</span>        $units     = [];</span>
+<span class=""><span class="ln">276</span></span>
+<span class="missed"><span class="ln">277</span>        foreach ($groups as $group) {</span>
+<span class="missed"><span class="ln">278</span>            if ($group-&gt;tests === []) {</span>
+<span class="missed"><span class="ln">279</span>                continue;</span>
+<span class=""><span class="ln">280</span>            }</span>
+<span class=""><span class="ln">281</span></span>
+<span class="missed"><span class="ln">282</span>            $file = $group-&gt;tests[0]-&gt;id-&gt;file;</span>
+<span class=""><span class="ln">283</span></span>
+<span class="missed"><span class="ln">284</span>            $wholeClass = false;</span>
+<span class=""><span class="ln">285</span></span>
+<span class="missed"><span class="ln">286</span>            foreach ($group-&gt;tests as $test) {</span>
+<span class="missed"><span class="ln">287</span>                if ($test-&gt;metadata-&gt;has(RunClassInSeparateProcess::class)) {</span>
+<span class="missed"><span class="ln">288</span>                    $wholeClass = true;</span>
+<span class=""><span class="ln">289</span></span>
+<span class="missed"><span class="ln">290</span>                    break;</span>
+<span class=""><span class="ln">291</span>                }</span>
+<span class=""><span class="ln">292</span>            }</span>
+<span class=""><span class="ln">293</span></span>
+<span class="missed"><span class="ln">294</span>            if ($wholeClass) {</span>
+<span class="missed"><span class="ln">295</span>                $units[] = $this-&gt;unitFor($file, $group-&gt;tests, isolated: true);</span>
+<span class=""><span class="ln">296</span></span>
+<span class="missed"><span class="ln">297</span>                continue;</span>
+<span class=""><span class="ln">298</span>            }</span>
+<span class=""><span class="ln">299</span></span>
+<span class="missed"><span class="ln">300</span>            $remaining     = [];</span>
+<span class="missed"><span class="ln">301</span>            $isolatedNames = [];</span>
+<span class=""><span class="ln">302</span></span>
+<span class="missed"><span class="ln">303</span>            foreach ($group-&gt;tests as $test) {</span>
+<span class="missed"><span class="ln">304</span>                $isolated = $this-&gt;processIsolation</span>
+<span class="missed"><span class="ln">305</span>                    || $test-&gt;metadata-&gt;has(RunInSeparateProcess::class)</span>
+<span class="missed"><span class="ln">306</span>                    || $test-&gt;metadata-&gt;has(RunTestsInSeparateProcesses::class);</span>
+<span class=""><span class="ln">307</span></span>
+<span class="missed"><span class="ln">308</span>                if (!$isolated) {</span>
+<span class="missed"><span class="ln">309</span>                    $remaining[] = $test;</span>
+<span class=""><span class="ln">310</span></span>
+<span class="missed"><span class="ln">311</span>                    continue;</span>
+<span class=""><span class="ln">312</span>                }</span>
+<span class=""><span class="ln">313</span></span>
+<span class=""><span class="ln">314</span>                // Dataset rows share a declared name and one worker.</span>
+<span class="missed"><span class="ln">315</span>                if (!in_array($test-&gt;id-&gt;name, $isolatedNames, true)) {</span>
+<span class="missed"><span class="ln">316</span>                    $isolatedNames[] = $test-&gt;id-&gt;name;</span>
+<span class=""><span class="ln">317</span>                }</span>
+<span class=""><span class="ln">318</span>            }</span>
+<span class=""><span class="ln">319</span></span>
+<span class="missed"><span class="ln">320</span>            foreach ($isolatedNames as $name) {</span>
+<span class="missed"><span class="ln">321</span>                $rows = [];</span>
+<span class=""><span class="ln">322</span></span>
+<span class="missed"><span class="ln">323</span>                foreach ($group-&gt;tests as $test) {</span>
+<span class="missed"><span class="ln">324</span>                    if ($test-&gt;id-&gt;name === $name) {</span>
+<span class="missed"><span class="ln">325</span>                        $rows[] = $test;</span>
+<span class=""><span class="ln">326</span>                    }</span>
+<span class=""><span class="ln">327</span>                }</span>
+<span class=""><span class="ln">328</span></span>
+<span class="missed"><span class="ln">329</span>                $units[] = $this-&gt;unitFor($file, $rows, isolated: true);</span>
+<span class=""><span class="ln">330</span>            }</span>
+<span class=""><span class="ln">331</span></span>
+<span class="missed"><span class="ln">332</span>            if ($remaining === []) {</span>
+<span class="missed"><span class="ln">333</span>                continue;</span>
+<span class=""><span class="ln">334</span>            }</span>
+<span class=""><span class="ln">335</span></span>
+<span class="missed"><span class="ln">336</span>            if ($this-&gt;parallel &gt; 1) {</span>
+<span class="missed"><span class="ln">337</span>                $units[] = $this-&gt;unitFor($file, $remaining);</span>
+<span class=""><span class="ln">338</span></span>
+<span class="missed"><span class="ln">339</span>                continue;</span>
+<span class=""><span class="ln">340</span>            }</span>
+<span class=""><span class="ln">341</span></span>
+<span class="missed"><span class="ln">342</span>            $inProcess[] = count($remaining) === count($group-&gt;tests)</span>
+<span class="missed"><span class="ln">343</span>                ? $group</span>
+<span class="missed"><span class="ln">344</span>                : new TestGroup($group-&gt;name, $remaining, $group-&gt;beforeAll, $group-&gt;afterAll);</span>
+<span class=""><span class="ln">345</span>        }</span>
+<span class=""><span class="ln">346</span></span>
+<span class="missed"><span class="ln">347</span>        return [$inProcess, $units];</span>
+<span class=""><span class="ln">348</span>    }</span>
+<span class=""><span class="ln">349</span></span>
+<span class=""><span class="ln">350</span>    /**</span>
+<span class=""><span class="ln">351</span>     * Units always carry exact id strings, never &quot;the whole file&quot; —</span>
+<span class=""><span class="ln">352</span>     * whatever selection (--filter, --group) removed on the</span>
+<span class=""><span class="ln">353</span>     * supervisor side must stay removed on the worker side.</span>
+<span class=""><span class="ln">354</span>     *</span>
+<span class=""><span class="ln">355</span>     * @param non-empty-string     $file</span>
+<span class=""><span class="ln">356</span>     * @param list&lt;TestDefinition&gt; $tests</span>
+<span class=""><span class="ln">357</span>     * @param bool                 $isolated the tests asked for their own process (see {@see attributeStderr()})</span>
+<span class=""><span class="ln">358</span>     */</span>
+<span class=""><span class="ln">359</span>    private function unitFor(string $file, array $tests, bool $isolated = false): PlannedUnit</span>
+<span class=""><span class="ln">360</span>    {</span>
+<span class="missed"><span class="ln">361</span>        $cost     = 0.0;</span>
+<span class="missed"><span class="ln">362</span>        $ids      = [];</span>
+<span class="missed"><span class="ln">363</span>        $expected = [];</span>
+<span class="missed"><span class="ln">364</span>        $own      = [];</span>
+<span class=""><span class="ln">365</span></span>
+<span class="missed"><span class="ln">366</span>        foreach ($tests as $test) {</span>
+<span class="missed"><span class="ln">367</span>            $expected[] = $test-&gt;id;</span>
+<span class="missed"><span class="ln">368</span>            $ids[]      = $test-&gt;id-&gt;toString();</span>
+<span class="missed"><span class="ln">369</span>            $own[]      = $test-&gt;id-&gt;name;</span>
+<span class="missed"><span class="ln">370</span>            $cost += $this-&gt;history-&gt;duration($test-&gt;id-&gt;toString()) ?? 0.0;</span>
+<span class=""><span class="ln">371</span>        }</span>
+<span class=""><span class="ln">372</span></span>
+<span class=""><span class="ln">373</span>        // A prerequisite this unit runs itself resolves in-process; only</span>
+<span class=""><span class="ln">374</span>        // what it cannot produce has to arrive from an earlier unit.</span>
+<span class="missed"><span class="ln">375</span>        $dependsOn = [];</span>
+<span class=""><span class="ln">376</span></span>
+<span class="missed"><span class="ln">377</span>        foreach ($tests as $test) {</span>
+<span class="missed"><span class="ln">378</span>            foreach ($test-&gt;dependencies as $dependency) {</span>
+<span class="missed"><span class="ln">379</span>                if (!in_array($dependency, $own, true) &amp;&amp; !in_array($dependency, $dependsOn, true)) {</span>
+<span class="missed"><span class="ln">380</span>                    $dependsOn[] = $dependency;</span>
+<span class=""><span class="ln">381</span>                }</span>
+<span class=""><span class="ln">382</span>            }</span>
+<span class=""><span class="ln">383</span>        }</span>
+<span class=""><span class="ln">384</span></span>
+<span class=""><span class="ln">385</span>        // Method-before-class precedence is already settled in the</span>
+<span class=""><span class="ln">386</span>        // collection, so the first match is the effective one.</span>
+<span class="missed"><span class="ln">387</span>        $preserve = false;</span>
+<span class=""><span class="ln">388</span></span>
+<span class="missed"><span class="ln">389</span>        foreach ($tests as $test) {</span>
+<span class="missed"><span class="ln">390</span>            if ($test-&gt;metadata-&gt;first(PreserveGlobalState::class)?-&gt;enabled === true) {</span>
+<span class="missed"><span class="ln">391</span>                $preserve = true;</span>
+<span class=""><span class="ln">392</span></span>
+<span class="missed"><span class="ln">393</span>                break;</span>
+<span class=""><span class="ln">394</span>            }</span>
+<span class=""><span class="ln">395</span>        }</span>
+<span class=""><span class="ln">396</span></span>
+<span class="missed"><span class="ln">397</span>        return new PlannedUnit(new WorkUnit($file, $ids, $cost), $expected, $dependsOn, [], $preserve, $isolated);</span>
+<span class=""><span class="ln">398</span>    }</span>
+<span class=""><span class="ln">399</span></span>
+<span class=""><span class="ln">400</span>    /**</span>
+<span class=""><span class="ln">401</span>     * @param list&lt;PlannedUnit&gt; $units</span>
+<span class=""><span class="ln">402</span>     */</span>
+<span class=""><span class="ln">403</span>    private function runUnits(array $units): void</span>
+<span class=""><span class="ln">404</span>    {</span>
+<span class=""><span class="ln">405</span>        // LPT: costliest unit first, next unit to the first free slot.</span>
+<span class=""><span class="ln">406</span>        // The sort is stable, so unknown costs keep scheduled order.</span>
+<span class="missed"><span class="ln">407</span>        usort($units, static fn(PlannedUnit $a, PlannedUnit $b): int =&gt; $b-&gt;unit-&gt;estimatedCost &lt;=&gt; $a-&gt;unit-&gt;estimatedCost);</span>
+<span class=""><span class="ln">408</span></span>
+<span class=""><span class="ln">409</span>        /** @var array&lt;int, WorkerProcess&gt; $active */</span>
+<span class="missed"><span class="ln">410</span>        $active = [];</span>
+<span class=""><span class="ln">411</span></span>
+<span class=""><span class="ln">412</span>        /** @var array&lt;int, array&lt;string, true&gt;&gt; $finished finished test ids per worker */</span>
+<span class="missed"><span class="ln">413</span>        $finished = [];</span>
+<span class=""><span class="ln">414</span></span>
+<span class="missed"><span class="ln">415</span>        $slots = max($this-&gt;parallel, 1);</span>
+<span class=""><span class="ln">416</span></span>
+<span class=""><span class="ln">417</span>        // ParaTest&#039;s parallel contract: each worker slot carries a</span>
+<span class=""><span class="ln">418</span>        // stable TEST_TOKEN (1..N, reused as slots free up, so</span>
+<span class=""><span class="ln">419</span>        // token-keyed databases and caches are reused, not</span>
+<span class=""><span class="ln">420</span>        // multiplied) plus a run-unique UNIQUE_TEST_TOKEN. Only a</span>
+<span class=""><span class="ln">421</span>        // parallel run sets them.</span>
+<span class=""><span class="ln">422</span>        /** @var list&lt;int&lt;1, max&gt;&gt; $freeSlots */</span>
+<span class="missed"><span class="ln">423</span>        $freeSlots = range(1, $slots);</span>
+<span class=""><span class="ln">424</span></span>
+<span class=""><span class="ln">425</span>        /** @var array&lt;int, int&lt;1, max&gt;&gt; $slotOf worker object id =&gt; slot */</span>
+<span class="missed"><span class="ln">426</span>        $slotOf = [];</span>
+<span class=""><span class="ln">427</span></span>
+<span class="missed"><span class="ln">428</span>        $runToken = bin2hex(random_bytes(8));</span>
+<span class=""><span class="ln">429</span></span>
+<span class=""><span class="ln">430</span>        // What earlier units (and the in-process portion) produced.</span>
+<span class="missed"><span class="ln">431</span>        $available = $this-&gt;dependencyValues-&gt;provided();</span>
+<span class=""><span class="ln">432</span></span>
+<span class="missed"><span class="ln">433</span>        $exported = null;</span>
+<span class=""><span class="ln">434</span></span>
+<span class=""><span class="ln">435</span>        /** @var array&lt;int, ?non-empty-string&gt; $artifactOf worker object id =&gt; where it writes its values */</span>
+<span class="missed"><span class="ln">436</span>        $artifactOf = [];</span>
+<span class=""><span class="ln">437</span></span>
+<span class=""><span class="ln">438</span>        /** @var array&lt;int, bool&gt; $isolatedOf worker object id =&gt; its unit asked for its own process */</span>
+<span class="missed"><span class="ln">439</span>        $isolatedOf = [];</span>
+<span class=""><span class="ln">440</span></span>
+<span class="missed"><span class="ln">441</span>        while ($units !== [] || $active !== []) {</span>
+<span class="missed"><span class="ln">442</span>            while ($units !== [] &amp;&amp; count($active) &lt; $slots) {</span>
+<span class=""><span class="ln">443</span>                // A unit whose prerequisites have not been produced yet</span>
+<span class=""><span class="ln">444</span>                // waits for them, so long as something is still running</span>
+<span class=""><span class="ln">445</span>                // that might produce them. When nothing is active the</span>
+<span class=""><span class="ln">446</span>                // head goes anyway: an unsatisfiable dependency must</span>
+<span class=""><span class="ln">447</span>                // report untested, not stall the run.</span>
+<span class="missed"><span class="ln">448</span>                $index = $this-&gt;nextReady($units, $available, $active === []);</span>
+<span class=""><span class="ln">449</span></span>
+<span class="missed"><span class="ln">450</span>                if ($index === null) {</span>
+<span class="missed"><span class="ln">451</span>                    break;</span>
+<span class=""><span class="ln">452</span>                }</span>
+<span class=""><span class="ln">453</span></span>
+<span class="missed"><span class="ln">454</span>                $planned = $units[$index];</span>
+<span class="missed"><span class="ln">455</span>                unset($units[$index]);</span>
+<span class="missed"><span class="ln">456</span>                $units = array_values($units);</span>
+<span class="missed"><span class="ln">457</span>                $slot  = array_shift($freeSlots) ?? 1;</span>
+<span class=""><span class="ln">458</span></span>
+<span class="missed"><span class="ln">459</span>                $artifact = $planned-&gt;provides === []</span>
+<span class="missed"><span class="ln">460</span>                    ? null</span>
+<span class="missed"><span class="ln">461</span>                    : sys_get_temp_dir() . &#039;/crucible-depends-&#039; . bin2hex(random_bytes(6)) . &#039;.json&#039;;</span>
+<span class=""><span class="ln">462</span></span>
+<span class="missed"><span class="ln">463</span>                $incoming = [];</span>
+<span class=""><span class="ln">464</span></span>
+<span class="missed"><span class="ln">465</span>                foreach ($planned-&gt;dependsOn as $name) {</span>
+<span class="missed"><span class="ln">466</span>                    if (isset($available[$name])) {</span>
+<span class="missed"><span class="ln">467</span>                        $incoming[$name] = $available[$name];</span>
+<span class=""><span class="ln">468</span>                    }</span>
+<span class=""><span class="ln">469</span>                }</span>
+<span class=""><span class="ln">470</span></span>
+<span class=""><span class="ln">471</span>                // #[PreserveGlobalState(true)]: captured at dispatch, so</span>
+<span class=""><span class="ln">472</span>                // the worker sees the state as it stands now rather than</span>
+<span class=""><span class="ln">473</span>                // as it stood when the run was planned. Captured once —</span>
+<span class=""><span class="ln">474</span>                // every later unit that asks gets the same snapshot,</span>
+<span class=""><span class="ln">475</span>                // which is also what makes the skip warnings print once.</span>
+<span class="missed"><span class="ln">476</span>                $globalState = null;</span>
+<span class=""><span class="ln">477</span></span>
+<span class="missed"><span class="ln">478</span>                if ($planned-&gt;preserveGlobalState) {</span>
+<span class="missed"><span class="ln">479</span>                    if (!$exported instanceof GlobalStateExport) {</span>
+<span class="missed"><span class="ln">480</span>                        $exported = GlobalStateExport::capture();</span>
+<span class=""><span class="ln">481</span></span>
+<span class=""><span class="ln">482</span>                        // On stderr: stdout is the progress view&#039;s, and a</span>
+<span class=""><span class="ln">483</span>                        // note about the run is not a test event — it has</span>
+<span class=""><span class="ln">484</span>                        // no place in the NDJSON contract.</span>
+<span class="missed"><span class="ln">485</span>                        foreach ($exported-&gt;skipped as $name) {</span>
+<span class="missed"><span class="ln">486</span>                            fwrite(STDERR, sprintf(</span>
+<span class=""><span class="ln">487</span>                                &#039;Global state was not preserved for %s: no serializer can carry it.&#039; . PHP_EOL,</span>
+<span class="missed"><span class="ln">488</span>                                $name,</span>
+<span class=""><span class="ln">489</span>                            ));</span>
+<span class=""><span class="ln">490</span>                        }</span>
+<span class=""><span class="ln">491</span>                    }</span>
+<span class=""><span class="ln">492</span></span>
+<span class="missed"><span class="ln">493</span>                    $globalState = $exported-&gt;toJson();</span>
+<span class=""><span class="ln">494</span>                }</span>
+<span class=""><span class="ln">495</span></span>
+<span class="missed"><span class="ln">496</span>                $worker = WorkerProcess::spawn(</span>
+<span class="missed"><span class="ln">497</span>                    $this-&gt;crucibleBinary,</span>
+<span class="missed"><span class="ln">498</span>                    $this-&gt;workingDirectory,</span>
+<span class="missed"><span class="ln">499</span>                    new WorkerManifest(</span>
+<span class="missed"><span class="ln">500</span>                        $this-&gt;configurationPath,</span>
+<span class="missed"><span class="ln">501</span>                        [$planned-&gt;unit],</span>
+<span class="missed"><span class="ln">502</span>                        $this-&gt;order,</span>
+<span class="missed"><span class="ln">503</span>                        $this-&gt;seed,</span>
+<span class="missed"><span class="ln">504</span>                        $this-&gt;parallel &gt; 1 ? $slot : null,</span>
+<span class="missed"><span class="ln">505</span>                        $this-&gt;parallel &gt; 1 ? $runToken . &#039;_&#039; . $slot : null,</span>
+<span class="missed"><span class="ln">506</span>                        $this-&gt;retries,</span>
+<span class="missed"><span class="ln">507</span>                        $this-&gt;coverageDirectory !== null</span>
+<span class="missed"><span class="ln">508</span>                            ? $this-&gt;coverageDirectory . &#039;/worker-&#039; . bin2hex(random_bytes(6)) . &#039;.json&#039;</span>
+<span class="missed"><span class="ln">509</span>                            : null,</span>
+<span class="missed"><span class="ln">510</span>                        $this-&gt;updateSnapshots,</span>
+<span class="missed"><span class="ln">511</span>                        $this-&gt;coverageBranch,</span>
+<span class="missed"><span class="ln">512</span>                        $this-&gt;strictCoverage,</span>
+<span class="missed"><span class="ln">513</span>                        $this-&gt;browserOverride,</span>
+<span class="missed"><span class="ln">514</span>                        $this-&gt;debugOverride,</span>
+<span class="missed"><span class="ln">515</span>                        $this-&gt;overrides,</span>
+<span class="missed"><span class="ln">516</span>                        $this-&gt;includePaths,</span>
+<span class=""><span class="ln">517</span>                        $incoming,</span>
+<span class="missed"><span class="ln">518</span>                        $planned-&gt;provides,</span>
+<span class=""><span class="ln">519</span>                        $artifact,</span>
+<span class="missed"><span class="ln">520</span>                        $this-&gt;pathCoverage,</span>
+<span class=""><span class="ln">521</span>                        $globalState,</span>
+<span class=""><span class="ln">522</span>                    ),</span>
+<span class="missed"><span class="ln">523</span>                    $planned-&gt;expected,</span>
+<span class="missed"><span class="ln">524</span>                    $this-&gt;phpArguments(),</span>
+<span class=""><span class="ln">525</span>                );</span>
+<span class=""><span class="ln">526</span></span>
+<span class="missed"><span class="ln">527</span>                if (!$worker instanceof WorkerProcess) {</span>
+<span class="missed"><span class="ln">528</span>                    $freeSlots[] = $slot;</span>
+<span class="missed"><span class="ln">529</span>                    $this-&gt;reportLost($planned-&gt;expected, [], &#039;The worker process for this test could not be started.&#039;);</span>
+<span class=""><span class="ln">530</span></span>
+<span class="missed"><span class="ln">531</span>                    continue;</span>
+<span class=""><span class="ln">532</span>                }</span>
+<span class=""><span class="ln">533</span></span>
+<span class="missed"><span class="ln">534</span>                $active[spl_object_id($worker)]     = $worker;</span>
+<span class="missed"><span class="ln">535</span>                $finished[spl_object_id($worker)]   = [];</span>
+<span class="missed"><span class="ln">536</span>                $slotOf[spl_object_id($worker)]     = $slot;</span>
+<span class="missed"><span class="ln">537</span>                $artifactOf[spl_object_id($worker)] = $artifact;</span>
+<span class="missed"><span class="ln">538</span>                $isolatedOf[spl_object_id($worker)] = $planned-&gt;isolated;</span>
+<span class=""><span class="ln">539</span>            }</span>
+<span class=""><span class="ln">540</span></span>
+<span class="missed"><span class="ln">541</span>            if ($active === []) {</span>
+<span class="missed"><span class="ln">542</span>                continue;</span>
+<span class=""><span class="ln">543</span>            }</span>
+<span class=""><span class="ln">544</span></span>
+<span class="missed"><span class="ln">545</span>            $this-&gt;await($active);</span>
+<span class=""><span class="ln">546</span></span>
+<span class="missed"><span class="ln">547</span>            foreach ($active as $key =&gt; $worker) {</span>
+<span class="missed"><span class="ln">548</span>                foreach ($worker-&gt;readLines() as $line) {</span>
+<span class="missed"><span class="ln">549</span>                    if ($this-&gt;parser-&gt;isRunFinished($line)) {</span>
+<span class="missed"><span class="ln">550</span>                        $worker-&gt;markFinished();</span>
+<span class=""><span class="ln">551</span></span>
+<span class="missed"><span class="ln">552</span>                        continue;</span>
+<span class=""><span class="ln">553</span>                    }</span>
+<span class=""><span class="ln">554</span></span>
+<span class="missed"><span class="ln">555</span>                    $event = $this-&gt;parser-&gt;parse($line);</span>
+<span class=""><span class="ln">556</span></span>
+<span class="missed"><span class="ln">557</span>                    if (!$event instanceof \LucianoPereira\Crucible\Event\Event) {</span>
+<span class="missed"><span class="ln">558</span>                        continue;</span>
+<span class=""><span class="ln">559</span>                    }</span>
+<span class=""><span class="ln">560</span></span>
+<span class=""><span class="ln">561</span>                    // What the worker wrote before a test started (a</span>
+<span class=""><span class="ln">562</span>                    // startup notice, the bootstrap) belongs to no test;</span>
+<span class=""><span class="ln">563</span>                    // what it wrote while one ran belongs to that test.</span>
+<span class="missed"><span class="ln">564</span>                    if ($event instanceof TestStarted) {</span>
+<span class="missed"><span class="ln">565</span>                        $this-&gt;forwardStderr($worker-&gt;takeStderr());</span>
+<span class=""><span class="ln">566</span>                    }</span>
+<span class=""><span class="ln">567</span></span>
+<span class="missed"><span class="ln">568</span>                    if ($event instanceof TestFinished &amp;&amp; $isolatedOf[$key]) {</span>
+<span class="missed"><span class="ln">569</span>                        $event = $this-&gt;attributeStderr($event, $worker-&gt;takeStderr());</span>
+<span class="missed"><span class="ln">570</span>                    } elseif ($event instanceof TestFinished) {</span>
+<span class="missed"><span class="ln">571</span>                        $this-&gt;forwardStderr($worker-&gt;takeStderr());</span>
+<span class=""><span class="ln">572</span>                    }</span>
+<span class=""><span class="ln">573</span></span>
+<span class="missed"><span class="ln">574</span>                    $this-&gt;emitter-&gt;emit($event);</span>
+<span class=""><span class="ln">575</span></span>
+<span class="missed"><span class="ln">576</span>                    if ($event instanceof TestFinished) {</span>
+<span class="missed"><span class="ln">577</span>                        $finished[$key][$event-&gt;test-&gt;toString()] = true;</span>
+<span class="missed"><span class="ln">578</span>                        $this-&gt;tally($event-&gt;outcome);</span>
+<span class=""><span class="ln">579</span></span>
+<span class="missed"><span class="ln">580</span>                        if ($event-&gt;blocked) {</span>
+<span class="missed"><span class="ln">581</span>                            $this-&gt;counts[&#039;untested&#039;]++;</span>
+<span class=""><span class="ln">582</span>                        }</span>
+<span class=""><span class="ln">583</span></span>
+<span class="missed"><span class="ln">584</span>                        $this-&gt;tallyIssues($event);</span>
+<span class=""><span class="ln">585</span>                    }</span>
+<span class=""><span class="ln">586</span>                }</span>
+<span class=""><span class="ln">587</span></span>
+<span class="missed"><span class="ln">588</span>                $worker-&gt;drainStderr();</span>
+<span class=""><span class="ln">589</span></span>
+<span class="missed"><span class="ln">590</span>                if (!$worker-&gt;atEof()) {</span>
+<span class="missed"><span class="ln">591</span>                    continue;</span>
+<span class=""><span class="ln">592</span>                }</span>
+<span class=""><span class="ln">593</span></span>
+<span class="missed"><span class="ln">594</span>                $worker-&gt;close();</span>
+<span class=""><span class="ln">595</span></span>
+<span class=""><span class="ln">596</span>                // A crash carries the tail in its reason already; a clean</span>
+<span class=""><span class="ln">597</span>                // exit hands over whatever came after the last test.</span>
+<span class="missed"><span class="ln">598</span>                if ($worker-&gt;hasFinished()) {</span>
+<span class="missed"><span class="ln">599</span>                    $this-&gt;forwardStderr($worker-&gt;takeStderr());</span>
+<span class=""><span class="ln">600</span>                }</span>
+<span class=""><span class="ln">601</span></span>
+<span class="missed"><span class="ln">602</span>                if (!$worker-&gt;hasFinished()) {</span>
+<span class="missed"><span class="ln">603</span>                    $this-&gt;reportLost(</span>
+<span class="missed"><span class="ln">604</span>                        $worker-&gt;expected,</span>
+<span class="missed"><span class="ln">605</span>                        $finished[$key],</span>
+<span class=""><span class="ln">606</span>                        &#039;The worker process running this test exited unexpectedly.&#039;</span>
+<span class="missed"><span class="ln">607</span>                            . ($worker-&gt;stderrTail() !== &#039;&#039; ? &#039; Worker stderr: &#039; . $worker-&gt;stderrTail() : &#039;&#039;),</span>
+<span class=""><span class="ln">608</span>                    );</span>
+<span class=""><span class="ln">609</span>                }</span>
+<span class=""><span class="ln">610</span></span>
+<span class="missed"><span class="ln">611</span>                $freeSlots[] = $slotOf[$key];</span>
+<span class=""><span class="ln">612</span></span>
+<span class=""><span class="ln">613</span>                // Whatever this unit was asked to produce is now</span>
+<span class=""><span class="ln">614</span>                // available to the units that were waiting for it.</span>
+<span class="missed"><span class="ln">615</span>                $artifact = $artifactOf[$key] ?? null;</span>
+<span class=""><span class="ln">616</span></span>
+<span class="missed"><span class="ln">617</span>                if ($artifact !== null) {</span>
+<span class="missed"><span class="ln">618</span>                    $available = [...$available, ...$this-&gt;readValues($artifact)];</span>
+<span class=""><span class="ln">619</span>                }</span>
+<span class=""><span class="ln">620</span></span>
+<span class="missed"><span class="ln">621</span>                unset($active[$key], $finished[$key], $slotOf[$key], $artifactOf[$key], $isolatedOf[$key]);</span>
+<span class=""><span class="ln">622</span>            }</span>
+<span class=""><span class="ln">623</span>        }</span>
+<span class=""><span class="ln">624</span>    }</span>
+<span class=""><span class="ln">625</span></span>
+<span class=""><span class="ln">626</span>    /**</span>
+<span class=""><span class="ln">627</span>     * A test that asked for its own process and wrote to STDERR there (D-124)</span>
+<span class=""><span class="ln">628</span>     * errors, with that text as the message — PHPUnit&#039;s rule for a</span>
+<span class=""><span class="ln">629</span>     * child process (ChildProcessResultProcessor), so a suite moving</span>
+<span class=""><span class="ln">630</span>     * across keeps its verdicts. The output is never dropped: dropping</span>
+<span class=""><span class="ln">631</span>     * it hid a debugging probe with nothing saying it was lost.</span>
+<span class=""><span class="ln">632</span>     */</span>
+<span class=""><span class="ln">633</span>    private function attributeStderr(TestFinished $event, string $stderr): TestFinished</span>
+<span class=""><span class="ln">634</span>    {</span>
+<span class="missed"><span class="ln">635</span>        $text = trim($stderr);</span>
+<span class=""><span class="ln">636</span></span>
+<span class="missed"><span class="ln">637</span>        if ($text === &#039;&#039;) {</span>
+<span class="missed"><span class="ln">638</span>            return $event;</span>
+<span class=""><span class="ln">639</span>        }</span>
+<span class=""><span class="ln">640</span></span>
+<span class="missed"><span class="ln">641</span>        $message = &#039;The test wrote to STDERR in its separate process:&#039; . PHP_EOL . $text;</span>
+<span class=""><span class="ln">642</span></span>
+<span class="missed"><span class="ln">643</span>        if ($event-&gt;failure instanceof Failure) {</span>
+<span class="missed"><span class="ln">644</span>            $message .= PHP_EOL . PHP_EOL . &#039;The test itself also reported: &#039; . $event-&gt;failure-&gt;message;</span>
+<span class=""><span class="ln">645</span>        }</span>
+<span class=""><span class="ln">646</span></span>
+<span class="missed"><span class="ln">647</span>        return new TestFinished(</span>
+<span class="missed"><span class="ln">648</span>            $event-&gt;test,</span>
+<span class="missed"><span class="ln">649</span>            Outcome::Errored,</span>
+<span class="missed"><span class="ln">650</span>            $event-&gt;duration,</span>
+<span class="missed"><span class="ln">651</span>            new Failure($message),</span>
+<span class="missed"><span class="ln">652</span>            $event-&gt;attempt,</span>
+<span class="missed"><span class="ln">653</span>            null,</span>
+<span class="missed"><span class="ln">654</span>            $event-&gt;issues,</span>
+<span class="missed"><span class="ln">655</span>            $event-&gt;quarantined,</span>
+<span class="missed"><span class="ln">656</span>            $event-&gt;property,</span>
+<span class="missed"><span class="ln">657</span>            $event-&gt;retried,</span>
+<span class="missed"><span class="ln">658</span>            $event-&gt;snapshots,</span>
+<span class="missed"><span class="ln">659</span>            $event-&gt;propertyClean,</span>
+<span class="missed"><span class="ln">660</span>            $event-&gt;snapshotKeys,</span>
+<span class="missed"><span class="ln">661</span>            false,</span>
+<span class="missed"><span class="ln">662</span>            $event-&gt;assertions,</span>
+<span class=""><span class="ln">663</span>        );</span>
+<span class=""><span class="ln">664</span>    }</span>
+<span class=""><span class="ln">665</span></span>
+<span class=""><span class="ln">666</span>    /**</span>
+<span class=""><span class="ln">667</span>     * Output that belongs to no isolated test reaches the console as it</span>
+<span class=""><span class="ln">668</span>     * would have in process: on STDERR, verbatim. A --parallel worker is</span>
+<span class=""><span class="ln">669</span>     * only a share of the run, so its tests keep the in-process rule.</span>
+<span class=""><span class="ln">670</span>     */</span>
+<span class=""><span class="ln">671</span>    private function forwardStderr(string $stderr): void</span>
+<span class=""><span class="ln">672</span>    {</span>
+<span class="missed"><span class="ln">673</span>        if ($stderr !== &#039;&#039;) {</span>
+<span class="missed"><span class="ln">674</span>            fwrite(STDERR, $stderr);</span>
+<span class=""><span class="ln">675</span>        }</span>
+<span class=""><span class="ln">676</span>    }</span>
+<span class=""><span class="ln">677</span></span>
+<span class=""><span class="ln">678</span>    /**</span>
+<span class=""><span class="ln">679</span>     * The first unit whose prerequisites are all available, or — when</span>
+<span class=""><span class="ln">680</span>     * nothing is running that could still satisfy one — the first unit</span>
+<span class=""><span class="ln">681</span>     * regardless, so an unproducible dependency ends as a reported</span>
+<span class=""><span class="ln">682</span>     * untested rather than a stalled run.</span>
+<span class=""><span class="ln">683</span>     *</span>
+<span class=""><span class="ln">684</span>     * @param list&lt;PlannedUnit&gt;     $units</span>
+<span class=""><span class="ln">685</span>     * @param array&lt;string, string&gt; $available</span>
+<span class=""><span class="ln">686</span>     */</span>
+<span class=""><span class="ln">687</span>    private function nextReady(array $units, array $available, bool $nothingActive): ?int</span>
+<span class=""><span class="ln">688</span>    {</span>
+<span class="missed"><span class="ln">689</span>        foreach ($units as $index =&gt; $planned) {</span>
+<span class="missed"><span class="ln">690</span>            $ready = true;</span>
+<span class=""><span class="ln">691</span></span>
+<span class="missed"><span class="ln">692</span>            foreach ($planned-&gt;dependsOn as $name) {</span>
+<span class="missed"><span class="ln">693</span>                if (!isset($available[$name])) {</span>
+<span class="missed"><span class="ln">694</span>                    $ready = false;</span>
+<span class=""><span class="ln">695</span></span>
+<span class="missed"><span class="ln">696</span>                    break;</span>
+<span class=""><span class="ln">697</span>                }</span>
+<span class=""><span class="ln">698</span>            }</span>
+<span class=""><span class="ln">699</span></span>
+<span class="missed"><span class="ln">700</span>            if ($ready) {</span>
+<span class="missed"><span class="ln">701</span>                return $index;</span>
+<span class=""><span class="ln">702</span>            }</span>
+<span class=""><span class="ln">703</span>        }</span>
+<span class=""><span class="ln">704</span></span>
+<span class="missed"><span class="ln">705</span>        return $nothingActive &amp;&amp; $units !== [] ? 0 : null;</span>
+<span class=""><span class="ln">706</span>    }</span>
+<span class=""><span class="ln">707</span></span>
+<span class=""><span class="ln">708</span>    /**</span>
+<span class=""><span class="ln">709</span>     * @return array&lt;string, string&gt;</span>
+<span class=""><span class="ln">710</span>     */</span>
+<span class=""><span class="ln">711</span>    private function readValues(string $artifact): array</span>
+<span class=""><span class="ln">712</span>    {</span>
+<span class="missed"><span class="ln">713</span>        if (!is_file($artifact)) {</span>
+<span class="missed"><span class="ln">714</span>            return [];</span>
+<span class=""><span class="ln">715</span>        }</span>
+<span class=""><span class="ln">716</span></span>
+<span class="missed"><span class="ln">717</span>        $decoded = json_decode((string) file_get_contents($artifact), true);</span>
+<span class="missed"><span class="ln">718</span>        @unlink($artifact);</span>
+<span class=""><span class="ln">719</span></span>
+<span class="missed"><span class="ln">720</span>        return is_array($decoded) ? DependencyValues::fromArray($decoded) : [];</span>
+<span class=""><span class="ln">721</span>    }</span>
+<span class=""><span class="ln">722</span></span>
+<span class=""><span class="ln">723</span>    /**</span>
+<span class=""><span class="ln">724</span>     * Blocks until any active worker has data (or the timeout passes).</span>
+<span class=""><span class="ln">725</span>     *</span>
+<span class=""><span class="ln">726</span>     * @param array&lt;int, WorkerProcess&gt; $active</span>
+<span class=""><span class="ln">727</span>     */</span>
+<span class=""><span class="ln">728</span>    private function await(array $active): void</span>
+<span class=""><span class="ln">729</span>    {</span>
+<span class="missed"><span class="ln">730</span>        $read = [];</span>
+<span class=""><span class="ln">731</span></span>
+<span class="missed"><span class="ln">732</span>        foreach ($active as $worker) {</span>
+<span class="missed"><span class="ln">733</span>            $read[] = $worker-&gt;stdout();</span>
+<span class="missed"><span class="ln">734</span>            $read[] = $worker-&gt;stderr();</span>
+<span class=""><span class="ln">735</span>        }</span>
+<span class=""><span class="ln">736</span></span>
+<span class="missed"><span class="ln">737</span>        $write  = null;</span>
+<span class="missed"><span class="ln">738</span>        $except = null;</span>
+<span class=""><span class="ln">739</span></span>
+<span class="missed"><span class="ln">740</span>        @stream_select($read, $write, $except, 0, (int) (self::SELECT_TIMEOUT_SECONDS * 1_000_000));</span>
+<span class=""><span class="ln">741</span>    }</span>
+<span class=""><span class="ln">742</span></span>
+<span class=""><span class="ln">743</span>    /**</span>
+<span class=""><span class="ln">744</span>     * Every expected test the dead worker never finished is errored —</span>
+<span class=""><span class="ln">745</span>     * visibly, on the stream, with the crash diagnostics. A lost</span>
+<span class=""><span class="ln">746</span>     * worker must never mean silently lost tests.</span>
+<span class=""><span class="ln">747</span>     *</span>
+<span class=""><span class="ln">748</span>     * @param list&lt;TestId&gt;        $expected</span>
+<span class=""><span class="ln">749</span>     * @param array&lt;string, true&gt; $finished</span>
+<span class=""><span class="ln">750</span>     * @param non-empty-string    $reason</span>
+<span class=""><span class="ln">751</span>     */</span>
+<span class=""><span class="ln">752</span>    private function reportLost(array $expected, array $finished, string $reason): void</span>
+<span class=""><span class="ln">753</span>    {</span>
+<span class="missed"><span class="ln">754</span>        foreach ($expected as $id) {</span>
+<span class="missed"><span class="ln">755</span>            if (isset($finished[$id-&gt;toString()])) {</span>
+<span class="missed"><span class="ln">756</span>                continue;</span>
+<span class=""><span class="ln">757</span>            }</span>
+<span class=""><span class="ln">758</span></span>
+<span class="missed"><span class="ln">759</span>            $this-&gt;emitter-&gt;emit(new TestStarted($id));</span>
+<span class="missed"><span class="ln">760</span>            $this-&gt;emitter-&gt;emit(new TestFinished($id, Outcome::Errored, 0.0, reason: $reason));</span>
+<span class="missed"><span class="ln">761</span>            $this-&gt;tally(Outcome::Errored);</span>
+<span class=""><span class="ln">762</span>        }</span>
+<span class=""><span class="ln">763</span>    }</span>
+<span class=""><span class="ln">764</span></span>
+<span class=""><span class="ln">765</span>    private function tally(Outcome $outcome): void</span>
+<span class=""><span class="ln">766</span>    {</span>
+<span class="missed"><span class="ln">767</span>        $this-&gt;counts[$outcome-&gt;value]++;</span>
+<span class=""><span class="ln">768</span>    }</span>
+<span class=""><span class="ln">769</span></span>
+<span class=""><span class="ln">770</span>    private function tallyIssues(TestFinished $event): void</span>
+<span class=""><span class="ln">771</span>    {</span>
+<span class="missed"><span class="ln">772</span>        foreach ($event-&gt;issues as $issue) {</span>
+<span class="missed"><span class="ln">773</span>            $this-&gt;issueCounts[match ($issue-&gt;kind) {</span>
+<span class="missed"><span class="ln">774</span>                IssueKind::Deprecation =&gt; &#039;deprecations&#039;,</span>
+<span class="missed"><span class="ln">775</span>                IssueKind::Notice      =&gt; &#039;notices&#039;,</span>
+<span class="missed"><span class="ln">776</span>                IssueKind::Warning     =&gt; &#039;warnings&#039;,</span>
+<span class=""><span class="ln">777</span>            }]++;</span>
+<span class=""><span class="ln">778</span>        }</span>
+<span class=""><span class="ln">779</span>    }</span>
+<span class=""><span class="ln">780</span></span>
+<span class=""><span class="ln">781</span>    private function tallySummary(RunSummary $summary): void</span>
+<span class=""><span class="ln">782</span>    {</span>
+<span class="missed"><span class="ln">783</span>        $this-&gt;counts[&#039;pass&#039;] += $summary-&gt;passed;</span>
+<span class="missed"><span class="ln">784</span>        $this-&gt;counts[&#039;fail&#039;] += $summary-&gt;failed;</span>
+<span class="missed"><span class="ln">785</span>        $this-&gt;counts[&#039;error&#039;] += $summary-&gt;errored;</span>
+<span class="missed"><span class="ln">786</span>        $this-&gt;counts[&#039;skip&#039;] += $summary-&gt;skipped;</span>
+<span class="missed"><span class="ln">787</span>        $this-&gt;counts[&#039;incomplete&#039;] += $summary-&gt;incomplete;</span>
+<span class="missed"><span class="ln">788</span>        $this-&gt;counts[&#039;risky&#039;] += $summary-&gt;risky;</span>
+<span class="missed"><span class="ln">789</span>        $this-&gt;counts[&#039;untested&#039;] += $summary-&gt;untested;</span>
+<span class="missed"><span class="ln">790</span>        $this-&gt;issueCounts[&#039;deprecations&#039;] += $summary-&gt;deprecations;</span>
+<span class="missed"><span class="ln">791</span>        $this-&gt;issueCounts[&#039;notices&#039;] += $summary-&gt;notices;</span>
+<span class="missed"><span class="ln">792</span>        $this-&gt;issueCounts[&#039;warnings&#039;] += $summary-&gt;warnings;</span>
+<span class=""><span class="ln">793</span>    }</span>
+<span class=""><span class="ln">794</span>}</span>
+<span class=""><span class="ln">795</span></span>
+</pre>
+</body>
+</html>

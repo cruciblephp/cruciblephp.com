@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Double/MethodConfigurator.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/Double/MethodConfigurator.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Double;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use Closure;</span>
+<span class=""><span class="ln">14</span>use LucianoPereira\Crucible\Assert\Assert;</span>
+<span class=""><span class="ln">15</span>use LucianoPereira\Crucible\Assert\AssertionFailedError;</span>
+<span class=""><span class="ln">16</span>use LucianoPereira\Crucible\Assert\Constraint\Constraint;</span>
+<span class=""><span class="ln">17</span>use LucianoPereira\Crucible\Assert\Constraint\IsEqual;</span>
+<span class=""><span class="ln">18</span>use LucianoPereira\Crucible\Assert\Constraint\IsTrue;</span>
+<span class=""><span class="ln">19</span>use Throwable;</span>
+<span class=""><span class="ln">20</span></span>
+<span class=""><span class="ln">21</span>use function array_last;</span>
+<span class=""><span class="ln">22</span>use function array_slice;</span>
+<span class=""><span class="ln">23</span>use function array_values;</span>
+<span class=""><span class="ln">24</span>use function count;</span>
+<span class=""><span class="ln">25</span>use function in_array;</span>
+<span class=""><span class="ln">26</span>use function sprintf;</span>
+<span class=""><span class="ln">27</span></span>
+<span class=""><span class="ln">28</span>/**</span>
+<span class=""><span class="ln">29</span> * The fluent configuration of one stubbed/expected method — the</span>
+<span class=""><span class="ln">30</span> * spec&#039;s InvocationMocker surface: with(), willReturn*(),</span>
+<span class=""><span class="ln">31</span> * willThrowException(), backed by an optional invocation-count</span>
+<span class=""><span class="ln">32</span> * expectation.</span>
+<span class=""><span class="ln">33</span> */</span>
+<span class=""><span class="ln">34</span>final class MethodConfigurator</span>
+<span class=""><span class="ln">35</span>{</span>
+<span class=""><span class="ln">36</span>    /** @var ?non-empty-string */</span>
+<span class=""><span class="ln">37</span>    private ?string $method = null;</span>
+<span class=""><span class="ln">38</span></span>
+<span class=""><span class="ln">39</span>    /** @var ?list&lt;mixed&gt; */</span>
+<span class=""><span class="ln">40</span>    private ?array $argumentMatchers = null;</span>
+<span class=""><span class="ln">41</span></span>
+<span class=""><span class="ln">42</span>    private ?Constraint $argumentListMatcher = null;</span>
+<span class=""><span class="ln">43</span></span>
+<span class=""><span class="ln">44</span>    /** @var ?Closure(list&lt;mixed&gt;, object): mixed */</span>
+<span class=""><span class="ln">45</span>    private ?Closure $behavior = null;</span>
+<span class=""><span class="ln">46</span></span>
+<span class=""><span class="ln">47</span>    private int $invocations = 0;</span>
+<span class=""><span class="ln">48</span></span>
+<span class=""><span class="ln">49</span>    /**</span>
+<span class=""><span class="ln">50</span>     * @param ?list&lt;non-empty-string&gt; $configurable           methods the double&#039;s</span>
+<span class=""><span class="ln">51</span>     *                                                        specification doubled; null = all</span>
+<span class=""><span class="ln">52</span>     * @param bool                    $prefixArgumentMatching with() constraints match as a</span>
+<span class=""><span class="ln">53</span>     *                                                        positional prefix, not exact arity</span>
+<span class=""><span class="ln">54</span>     *                                                        (off = Mockery&#039;s oracle-pinned exact</span>
+<span class=""><span class="ln">55</span>     *                                                        match; see DoubleSpecification)</span>
+<span class=""><span class="ln">56</span>     */</span>
+<span class=""><span class="ln">57</span>    public function __construct(</span>
+<span class="covered"><span class="ln">58</span>        private ?InvocationCount $count = null,</span>
+<span class="covered"><span class="ln">59</span>        private readonly ?array $configurable = null,</span>
+<span class="covered"><span class="ln">60</span>        private readonly bool $prefixArgumentMatching = false,</span>
+<span class="covered"><span class="ln">61</span>    ) {}</span>
+<span class=""><span class="ln">62</span></span>
+<span class=""><span class="ln">63</span>    /**</span>
+<span class=""><span class="ln">64</span>     * The Mockery grammar attaches counts fluently after creation</span>
+<span class=""><span class="ln">65</span>     * (`-&gt;once()`, `-&gt;between(2, 3)`); the PHPUnit grammar fixes them</span>
+<span class=""><span class="ln">66</span>     * at construction. Latest declaration wins, like every other</span>
+<span class=""><span class="ln">67</span>     * fluent reconfiguration.</span>
+<span class=""><span class="ln">68</span>     */</span>
+<span class=""><span class="ln">69</span>    public function expectCount(InvocationCount $count): void</span>
+<span class=""><span class="ln">70</span>    {</span>
+<span class="missed"><span class="ln">71</span>        $this-&gt;count = $count;</span>
+<span class=""><span class="ln">72</span>    }</span>
+<span class=""><span class="ln">73</span></span>
+<span class=""><span class="ln">74</span>    /** Count window fully consumed — the Mockery fall-through signal. */</span>
+<span class=""><span class="ln">75</span>    public function exhausted(): bool</span>
+<span class=""><span class="ln">76</span>    {</span>
+<span class="missed"><span class="ln">77</span>        return $this-&gt;count instanceof InvocationCount</span>
+<span class="missed"><span class="ln">78</span>            &amp;&amp; $this-&gt;count-&gt;max !== null</span>
+<span class="missed"><span class="ln">79</span>            &amp;&amp; $this-&gt;invocations &gt;= $this-&gt;count-&gt;max;</span>
+<span class=""><span class="ln">80</span>    }</span>
+<span class=""><span class="ln">81</span></span>
+<span class=""><span class="ln">82</span>    /**</span>
+<span class=""><span class="ln">83</span>     * @param non-empty-string $method</span>
+<span class=""><span class="ln">84</span>     */</span>
+<span class=""><span class="ln">85</span>    public function method(string $method): self</span>
+<span class=""><span class="ln">86</span>    {</span>
+<span class=""><span class="ln">87</span>        // A method the specification left real never reaches dispatch —</span>
+<span class=""><span class="ln">88</span>        // configuring it would be a silent no-op, so it is a named</span>
+<span class=""><span class="ln">89</span>        // error instead (the spec errors here too).</span>
+<span class="covered"><span class="ln">90</span>        if ($this-&gt;configurable !== null &amp;&amp; !in_array($method, $this-&gt;configurable, true)) {</span>
+<span class="missed"><span class="ln">91</span>            throw new DoubleConfigurationException(sprintf(</span>
+<span class=""><span class="ln">92</span>                &#039;%s() cannot be configured: it is not among the doubled methods.&#039;,</span>
+<span class="missed"><span class="ln">93</span>                $method,</span>
+<span class=""><span class="ln">94</span>            ));</span>
+<span class=""><span class="ln">95</span>        }</span>
+<span class=""><span class="ln">96</span></span>
+<span class="covered"><span class="ln">97</span>        $this-&gt;method = $method;</span>
+<span class=""><span class="ln">98</span></span>
+<span class="covered"><span class="ln">99</span>        return $this;</span>
+<span class=""><span class="ln">100</span>    }</span>
+<span class=""><span class="ln">101</span></span>
+<span class=""><span class="ln">102</span>    /**</span>
+<span class=""><span class="ln">103</span>     * Argument expectations: plain values compare by the equality</span>
+<span class=""><span class="ln">104</span>     * spec; Constraint instances match directly.</span>
+<span class=""><span class="ln">105</span>     */</span>
+<span class=""><span class="ln">106</span>    public function with(mixed ...$arguments): self</span>
+<span class=""><span class="ln">107</span>    {</span>
+<span class="covered"><span class="ln">108</span>        $this-&gt;argumentMatchers    = array_values($arguments);</span>
+<span class="covered"><span class="ln">109</span>        $this-&gt;argumentListMatcher = null;</span>
+<span class=""><span class="ln">110</span></span>
+<span class="covered"><span class="ln">111</span>        return $this;</span>
+<span class=""><span class="ln">112</span>    }</span>
+<span class=""><span class="ln">113</span></span>
+<span class=""><span class="ln">114</span>    public function withAnyParameters(): self</span>
+<span class=""><span class="ln">115</span>    {</span>
+<span class="missed"><span class="ln">116</span>        $this-&gt;argumentMatchers    = null;</span>
+<span class="missed"><span class="ln">117</span>        $this-&gt;argumentListMatcher = null;</span>
+<span class=""><span class="ln">118</span></span>
+<span class="missed"><span class="ln">119</span>        return $this;</span>
+<span class=""><span class="ln">120</span>    }</span>
+<span class=""><span class="ln">121</span></span>
+<span class=""><span class="ln">122</span>    /**</span>
+<span class=""><span class="ln">123</span>     * One constraint over the WHOLE argument list — the Mockery</span>
+<span class=""><span class="ln">124</span>     * grammar&#039;s withArgs($closure)/withSomeOfArgs() shape (no</span>
+<span class=""><span class="ln">125</span>     * per-index arity: the matcher owns the entire call signature).</span>
+<span class=""><span class="ln">126</span>     * Latest declaration wins, like every with() respelling.</span>
+<span class=""><span class="ln">127</span>     */</span>
+<span class=""><span class="ln">128</span>    public function withArgumentList(Constraint $matcher): self</span>
+<span class=""><span class="ln">129</span>    {</span>
+<span class="missed"><span class="ln">130</span>        $this-&gt;argumentListMatcher = $matcher;</span>
+<span class="missed"><span class="ln">131</span>        $this-&gt;argumentMatchers    = null;</span>
+<span class=""><span class="ln">132</span></span>
+<span class="missed"><span class="ln">133</span>        return $this;</span>
+<span class=""><span class="ln">134</span>    }</span>
+<span class=""><span class="ln">135</span></span>
+<span class=""><span class="ln">136</span>    public function willReturn(mixed $value): self</span>
+<span class=""><span class="ln">137</span>    {</span>
+<span class="covered"><span class="ln">138</span>        $this-&gt;behavior = static fn(array $args, object $double): mixed =&gt; $value;</span>
+<span class=""><span class="ln">139</span></span>
+<span class="covered"><span class="ln">140</span>        return $this;</span>
+<span class=""><span class="ln">141</span>    }</span>
+<span class=""><span class="ln">142</span></span>
+<span class=""><span class="ln">143</span>    public function willReturnSelf(): self</span>
+<span class=""><span class="ln">144</span>    {</span>
+<span class="missed"><span class="ln">145</span>        $this-&gt;behavior = static fn(array $args, object $double): object =&gt; $double;</span>
+<span class=""><span class="ln">146</span></span>
+<span class="missed"><span class="ln">147</span>        return $this;</span>
+<span class=""><span class="ln">148</span>    }</span>
+<span class=""><span class="ln">149</span></span>
+<span class=""><span class="ln">150</span>    public function willReturnArgument(int $index): self</span>
+<span class=""><span class="ln">151</span>    {</span>
+<span class="missed"><span class="ln">152</span>        $this-&gt;behavior = static fn(array $args, object $double): mixed =&gt; $args[$index] ?? null;</span>
+<span class=""><span class="ln">153</span></span>
+<span class="missed"><span class="ln">154</span>        return $this;</span>
+<span class=""><span class="ln">155</span>    }</span>
+<span class=""><span class="ln">156</span></span>
+<span class=""><span class="ln">157</span>    /**</span>
+<span class=""><span class="ln">158</span>     * @param callable(mixed...): mixed $callback</span>
+<span class=""><span class="ln">159</span>     */</span>
+<span class=""><span class="ln">160</span>    public function willReturnCallback(callable $callback): self</span>
+<span class=""><span class="ln">161</span>    {</span>
+<span class="missed"><span class="ln">162</span>        $this-&gt;behavior = static fn(array $args, object $double): mixed =&gt; $callback(...$args);</span>
+<span class=""><span class="ln">163</span></span>
+<span class="missed"><span class="ln">164</span>        return $this;</span>
+<span class=""><span class="ln">165</span>    }</span>
+<span class=""><span class="ln">166</span></span>
+<span class=""><span class="ln">167</span>    /**</span>
+<span class=""><span class="ln">168</span>     * @param list&lt;array&lt;int, mixed&gt;&gt; $map rows of arguments with the return value last</span>
+<span class=""><span class="ln">169</span>     */</span>
+<span class=""><span class="ln">170</span>    public function willReturnMap(array $map): self</span>
+<span class=""><span class="ln">171</span>    {</span>
+<span class="missed"><span class="ln">172</span>        $this-&gt;behavior = static function (array $args, object $double) use ($map): mixed {</span>
+<span class="missed"><span class="ln">173</span>            foreach ($map as $row) {</span>
+<span class="missed"><span class="ln">174</span>                $expected = array_slice($row, 0, -1);</span>
+<span class=""><span class="ln">175</span></span>
+<span class="missed"><span class="ln">176</span>                if ((new IsEqual($expected))-&gt;matches($args)) {</span>
+<span class="missed"><span class="ln">177</span>                    return array_last($row);</span>
+<span class=""><span class="ln">178</span>                }</span>
+<span class=""><span class="ln">179</span>            }</span>
+<span class=""><span class="ln">180</span></span>
+<span class="missed"><span class="ln">181</span>            return null;</span>
+<span class="dead"><span class="ln">182</span>        };</span>
+<span class=""><span class="ln">183</span></span>
+<span class="missed"><span class="ln">184</span>        return $this;</span>
+<span class=""><span class="ln">185</span>    }</span>
+<span class=""><span class="ln">186</span></span>
+<span class=""><span class="ln">187</span>    public function willReturnOnConsecutiveCalls(mixed ...$values): self</span>
+<span class=""><span class="ln">188</span>    {</span>
+<span class="covered"><span class="ln">189</span>        $call = 0;</span>
+<span class=""><span class="ln">190</span></span>
+<span class="covered"><span class="ln">191</span>        $this-&gt;behavior = static function (array $args, object $double) use (&amp;$call, $values): mixed {</span>
+<span class="covered"><span class="ln">192</span>            $value = $values[$call] ?? null;</span>
+<span class="covered"><span class="ln">193</span>            $call++;</span>
+<span class=""><span class="ln">194</span></span>
+<span class="covered"><span class="ln">195</span>            return $value;</span>
+<span class="dead"><span class="ln">196</span>        };</span>
+<span class=""><span class="ln">197</span></span>
+<span class="covered"><span class="ln">198</span>        return $this;</span>
+<span class=""><span class="ln">199</span>    }</span>
+<span class=""><span class="ln">200</span></span>
+<span class=""><span class="ln">201</span>    public function willThrowException(Throwable $throwable): self</span>
+<span class=""><span class="ln">202</span>    {</span>
+<span class="missed"><span class="ln">203</span>        $this-&gt;behavior = static fn(array $args, object $double): mixed =&gt; throw $throwable;</span>
+<span class=""><span class="ln">204</span></span>
+<span class="missed"><span class="ln">205</span>        return $this;</span>
+<span class=""><span class="ln">206</span>    }</span>
+<span class=""><span class="ln">207</span></span>
+<span class=""><span class="ln">208</span>    /**</span>
+<span class=""><span class="ln">209</span>     * The legacy pairing (`-&gt;will($this-&gt;throwException($e))`) real-world</span>
+<span class=""><span class="ln">210</span>     * PHPUnit suites still use alongside the modern willThrowException()/</span>
+<span class=""><span class="ln">211</span>     * willReturn*() calls this project&#039;s own tests use — a thin adapter</span>
+<span class=""><span class="ln">212</span>     * over the same behavior shape, not a second implementation.</span>
+<span class=""><span class="ln">213</span>     */</span>
+<span class=""><span class="ln">214</span>    public function will(Stub $stub): self</span>
+<span class=""><span class="ln">215</span>    {</span>
+<span class="missed"><span class="ln">216</span>        $this-&gt;behavior = $stub-&gt;behavior;</span>
+<span class=""><span class="ln">217</span></span>
+<span class="missed"><span class="ln">218</span>        return $this;</span>
+<span class=""><span class="ln">219</span>    }</span>
+<span class=""><span class="ln">220</span></span>
+<span class=""><span class="ln">221</span>    // --- Engine side -----------------------------------------------------</span>
+<span class=""><span class="ln">222</span></span>
+<span class=""><span class="ln">223</span>    /**</span>
+<span class=""><span class="ln">224</span>     * Whether this configuration carries an invocation-count</span>
+<span class=""><span class="ln">225</span>     * expectation (came from expects(), not method()).</span>
+<span class=""><span class="ln">226</span>     */</span>
+<span class=""><span class="ln">227</span>    public function isExpectation(): bool</span>
+<span class=""><span class="ln">228</span>    {</span>
+<span class="covered"><span class="ln">229</span>        return $this-&gt;count instanceof InvocationCount;</span>
+<span class=""><span class="ln">230</span>    }</span>
+<span class=""><span class="ln">231</span></span>
+<span class=""><span class="ln">232</span>    /** Whether a willReturn*()/will()/willThrowException() was configured. */</span>
+<span class=""><span class="ln">233</span>    public function hasBehavior(): bool</span>
+<span class=""><span class="ln">234</span>    {</span>
+<span class="covered"><span class="ln">235</span>        return $this-&gt;behavior instanceof Closure;</span>
+<span class=""><span class="ln">236</span>    }</span>
+<span class=""><span class="ln">237</span></span>
+<span class=""><span class="ln">238</span>    /**</span>
+<span class=""><span class="ln">239</span>     * @param non-empty-string $method</span>
+<span class=""><span class="ln">240</span>     * @param list&lt;mixed&gt;      $arguments</span>
+<span class=""><span class="ln">241</span>     */</span>
+<span class=""><span class="ln">242</span>    public function appliesTo(string $method, array $arguments): bool</span>
+<span class=""><span class="ln">243</span>    {</span>
+<span class="covered"><span class="ln">244</span>        if ($this-&gt;method !== $method) {</span>
+<span class="covered"><span class="ln">245</span>            return false;</span>
+<span class=""><span class="ln">246</span>        }</span>
+<span class=""><span class="ln">247</span></span>
+<span class="covered"><span class="ln">248</span>        if ($this-&gt;argumentListMatcher instanceof Constraint) {</span>
+<span class=""><span class="ln">249</span>            // evaluate(..., returnResult: true), not matches() directly:</span>
+<span class=""><span class="ln">250</span>            // $this-&gt;argumentListMatcher may be a user-supplied,</span>
+<span class=""><span class="ln">251</span>            // real-PHPUnit-descended constraint (withArgumentList()&#039;s</span>
+<span class=""><span class="ln">252</span>            // own public contract accepts any Constraint) whose own</span>
+<span class=""><span class="ln">253</span>            // matches() override is protected, matching real PHPUnit&#039;s</span>
+<span class=""><span class="ln">254</span>            // convention — calling it here, from outside the Constraint</span>
+<span class=""><span class="ln">255</span>            // hierarchy, would fatal (PHP forbids protected access</span>
+<span class=""><span class="ln">256</span>            // across unrelated classes) even though matches() itself is</span>
+<span class=""><span class="ln">257</span>            // declared validly. evaluate() is Constraint&#039;s own public</span>
+<span class=""><span class="ln">258</span>            // entry point for exactly this.</span>
+<span class="missed"><span class="ln">259</span>            return $this-&gt;argumentListMatcher-&gt;evaluate($arguments, &#039;&#039;, true) === true;</span>
+<span class=""><span class="ln">260</span>        }</span>
+<span class=""><span class="ln">261</span></span>
+<span class="covered"><span class="ln">262</span>        if ($this-&gt;argumentMatchers === null) {</span>
+<span class="covered"><span class="ln">263</span>            return true;</span>
+<span class=""><span class="ln">264</span>        }</span>
+<span class=""><span class="ln">265</span></span>
+<span class="covered"><span class="ln">266</span>        $matcherCount = count($this-&gt;argumentMatchers);</span>
+<span class=""><span class="ln">267</span></span>
+<span class=""><span class="ln">268</span>        // The PHPUnit grammar&#039;s with() constraints are a positional</span>
+<span class=""><span class="ln">269</span>        // prefix, not a full arity match (oracle-verified against</span>
+<span class=""><span class="ln">270</span>        // PHPUnit&#039;s own Parameters rule: it only rejects a call with</span>
+<span class=""><span class="ln">271</span>        // FEWER arguments than constraints — trailing, unconstrained</span>
+<span class=""><span class="ln">272</span>        // real arguments are never checked). The Mockery grammar keeps</span>
+<span class=""><span class="ln">273</span>        // exact arity: with(any()) matching a call with an extra,</span>
+<span class=""><span class="ln">274</span>        // unmatched argument is oracle-pinned as a non-match</span>
+<span class=""><span class="ln">275</span>        // (spec/mockery-api.md).</span>
+<span class="covered"><span class="ln">276</span>        $arityMismatch = $this-&gt;prefixArgumentMatching</span>
+<span class="covered"><span class="ln">277</span>            ? $matcherCount &gt; count($arguments)</span>
+<span class="missed"><span class="ln">278</span>            : $matcherCount !== count($arguments);</span>
+<span class=""><span class="ln">279</span></span>
+<span class="covered"><span class="ln">280</span>        if ($arityMismatch) {</span>
+<span class="missed"><span class="ln">281</span>            return false;</span>
+<span class=""><span class="ln">282</span>        }</span>
+<span class=""><span class="ln">283</span></span>
+<span class="covered"><span class="ln">284</span>        foreach ($this-&gt;argumentMatchers as $index =&gt; $matcher) {</span>
+<span class="covered"><span class="ln">285</span>            $constraint = $matcher instanceof Constraint ? $matcher : new IsEqual($matcher);</span>
+<span class=""><span class="ln">286</span></span>
+<span class=""><span class="ln">287</span>            // Same reasoning as appliesTo()&#039;s argumentListMatcher branch</span>
+<span class=""><span class="ln">288</span>            // above: $matcher may be a user-supplied, real-PHPUnit-descended</span>
+<span class=""><span class="ln">289</span>            // constraint with a protected matches() override.</span>
+<span class="covered"><span class="ln">290</span>            if ($constraint-&gt;evaluate($arguments[$index], &#039;&#039;, true) !== true) {</span>
+<span class="missed"><span class="ln">291</span>                return false;</span>
+<span class=""><span class="ln">292</span>            }</span>
+<span class=""><span class="ln">293</span>        }</span>
+<span class=""><span class="ln">294</span></span>
+<span class="covered"><span class="ln">295</span>        return true;</span>
+<span class=""><span class="ln">296</span>    }</span>
+<span class=""><span class="ln">297</span></span>
+<span class=""><span class="ln">298</span>    /**</span>
+<span class=""><span class="ln">299</span>     * @param bool $failFast the PHPUnit-spec posture: an exceeded maximum</span>
+<span class=""><span class="ln">300</span>     *                       fails at call time. The Mockery grammar passes</span>
+<span class=""><span class="ln">301</span>     *                       false — every count violation settles at close</span>
+<span class=""><span class="ln">302</span>     *                       (oracle-pinned, spec/mockery-api.md §5).</span>
+<span class=""><span class="ln">303</span>     *</span>
+<span class=""><span class="ln">304</span>     * @throws AssertionFailedError when the call exceeds the expected maximum</span>
+<span class=""><span class="ln">305</span>     */</span>
+<span class=""><span class="ln">306</span>    public function registerInvocation(bool $failFast = true): void</span>
+<span class=""><span class="ln">307</span>    {</span>
+<span class="covered"><span class="ln">308</span>        $this-&gt;invocations++;</span>
+<span class="covered"><span class="ln">309</span>        $this-&gt;count?-&gt;recordInvocation();</span>
+<span class=""><span class="ln">310</span></span>
+<span class="covered"><span class="ln">311</span>        if ($failFast &amp;&amp; $this-&gt;count instanceof \LucianoPereira\Crucible\Double\InvocationCount &amp;&amp; $this-&gt;count-&gt;exceededBy($this-&gt;invocations)) {</span>
+<span class="missed"><span class="ln">312</span>            throw new AssertionFailedError(sprintf(</span>
+<span class=""><span class="ln">313</span>                &#039;%s() was not expected to be called more than %s.&#039;,</span>
+<span class="missed"><span class="ln">314</span>                $this-&gt;method ?? &#039;{method}&#039;,</span>
+<span class="missed"><span class="ln">315</span>                $this-&gt;count-&gt;description,</span>
+<span class=""><span class="ln">316</span>            ));</span>
+<span class=""><span class="ln">317</span>        }</span>
+<span class=""><span class="ln">318</span>    }</span>
+<span class=""><span class="ln">319</span></span>
+<span class=""><span class="ln">320</span>    /** @return ?non-empty-string */</span>
+<span class=""><span class="ln">321</span>    public function methodName(): ?string</span>
+<span class=""><span class="ln">322</span>    {</span>
+<span class="missed"><span class="ln">323</span>        return $this-&gt;method;</span>
+<span class=""><span class="ln">324</span>    }</span>
+<span class=""><span class="ln">325</span></span>
+<span class=""><span class="ln">326</span>    /**</span>
+<span class=""><span class="ln">327</span>     * @param list&lt;mixed&gt;       $arguments</span>
+<span class=""><span class="ln">328</span>     * @param Closure(): mixed  $default</span>
+<span class=""><span class="ln">329</span>     */</span>
+<span class=""><span class="ln">330</span>    public function invoke(object $double, array $arguments, Closure $default): mixed</span>
+<span class=""><span class="ln">331</span>    {</span>
+<span class="covered"><span class="ln">332</span>        return $this-&gt;behavior instanceof Closure ? ($this-&gt;behavior)($arguments, $double) : $default();</span>
+<span class=""><span class="ln">333</span>    }</span>
+<span class=""><span class="ln">334</span></span>
+<span class=""><span class="ln">335</span>    /**</span>
+<span class=""><span class="ln">336</span>     * @throws AssertionFailedError when the expectation was not met</span>
+<span class=""><span class="ln">337</span>     */</span>
+<span class=""><span class="ln">338</span>    public function verify(): void</span>
+<span class=""><span class="ln">339</span>    {</span>
+<span class="covered"><span class="ln">340</span>        if (!$this-&gt;count instanceof \LucianoPereira\Crucible\Double\InvocationCount) {</span>
+<span class="covered"><span class="ln">341</span>            return;</span>
+<span class=""><span class="ln">342</span>        }</span>
+<span class=""><span class="ln">343</span></span>
+<span class="covered"><span class="ln">344</span>        if (!$this-&gt;count-&gt;satisfiedBy($this-&gt;invocations)) {</span>
+<span class="missed"><span class="ln">345</span>            throw new AssertionFailedError(sprintf(</span>
+<span class=""><span class="ln">346</span>                &#039;%s() was expected to be called %s, but was called %d time(s).&#039;,</span>
+<span class="missed"><span class="ln">347</span>                $this-&gt;method ?? &#039;{method}&#039;,</span>
+<span class="missed"><span class="ln">348</span>                $this-&gt;count-&gt;description,</span>
+<span class="missed"><span class="ln">349</span>                $this-&gt;invocations,</span>
+<span class=""><span class="ln">350</span>            ));</span>
+<span class=""><span class="ln">351</span>        }</span>
+<span class=""><span class="ln">352</span></span>
+<span class=""><span class="ln">353</span>        // A met expectation is a verified assertion.</span>
+<span class="covered"><span class="ln">354</span>        Assert::assertThat(true, new IsTrue());</span>
+<span class=""><span class="ln">355</span>    }</span>
+<span class=""><span class="ln">356</span>}</span>
+<span class="missed"><span class="ln">357</span></span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Dialect/Pest/PestBuilder.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../../index.html">Crucible coverage</a> / src/Dialect/Pest/PestBuilder.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Dialect\Pest;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use Closure;</span>
+<span class=""><span class="ln">14</span>use LucianoPereira\Crucible\Assert\Assert;</span>
+<span class=""><span class="ln">15</span>use LucianoPereira\Crucible\Attributes\CoversClass;</span>
+<span class=""><span class="ln">16</span>use LucianoPereira\Crucible\Attributes\CoversFunction;</span>
+<span class=""><span class="ln">17</span>use LucianoPereira\Crucible\Attributes\ExpectedOutcome;</span>
+<span class=""><span class="ln">18</span>use LucianoPereira\Crucible\Attributes\Group;</span>
+<span class=""><span class="ln">19</span>use LucianoPereira\Crucible\Attributes\MutatesClass;</span>
+<span class=""><span class="ln">20</span>use LucianoPereira\Crucible\Attributes\Todo;</span>
+<span class=""><span class="ln">21</span>use LucianoPereira\Crucible\Attributes\TodoStatus;</span>
+<span class=""><span class="ln">22</span>use LucianoPereira\Crucible\Bridge\PestSnapshots\AutoMixedTrait;</span>
+<span class=""><span class="ln">23</span>use LucianoPereira\Crucible\Bridge\PestSnapshots\SnapshotFileContext;</span>
+<span class=""><span class="ln">24</span>use LucianoPereira\Crucible\Bridge\PestSnapshots\SnapshotIdentityWrapper;</span>
+<span class=""><span class="ln">25</span>use LucianoPereira\Crucible\Exceptions\ConfigurationException;</span>
+<span class=""><span class="ln">26</span>use LucianoPereira\Crucible\Filesystem\WorkingDirectory;</span>
+<span class=""><span class="ln">27</span>use LucianoPereira\Crucible\Framework\HookPlan;</span>
+<span class=""><span class="ln">28</span>use LucianoPereira\Crucible\Framework\HookPlanner;</span>
+<span class=""><span class="ln">29</span>use LucianoPereira\Crucible\Framework\IncompleteTestError;</span>
+<span class=""><span class="ln">30</span>use LucianoPereira\Crucible\Framework\SkippedTestError;</span>
+<span class=""><span class="ln">31</span>use LucianoPereira\Crucible\Framework\TestCase;</span>
+<span class=""><span class="ln">32</span>use LucianoPereira\Crucible\Metadata\MetadataCollection;</span>
+<span class=""><span class="ln">33</span>use LucianoPereira\Crucible\Test\TestDefinition;</span>
+<span class=""><span class="ln">34</span>use LucianoPereira\Crucible\Test\TestGroup;</span>
+<span class=""><span class="ln">35</span>use LucianoPereira\Crucible\Test\TestId;</span>
+<span class=""><span class="ln">36</span>use ReflectionClass;</span>
+<span class=""><span class="ln">37</span>use ReflectionFunction;</span>
+<span class=""><span class="ln">38</span>use ReflectionMethod;</span>
+<span class=""><span class="ln">39</span>use ReflectionNamedType;</span>
+<span class=""><span class="ln">40</span>use ReflectionType;</span>
+<span class=""><span class="ln">41</span>use ReflectionUnionType;</span>
+<span class=""><span class="ln">42</span>use Throwable;</span>
+<span class=""><span class="ln">43</span></span>
+<span class=""><span class="ln">44</span>use function array_map;</span>
+<span class=""><span class="ln">45</span>use function array_search;</span>
+<span class=""><span class="ln">46</span>use function array_slice;</span>
+<span class=""><span class="ln">47</span>use function basename;</span>
+<span class=""><span class="ln">48</span>use function class_exists;</span>
+<span class=""><span class="ln">49</span>use function count;</span>
+<span class=""><span class="ln">50</span>use function dirname;</span>
+<span class=""><span class="ln">51</span>use function function_exists;</span>
+<span class=""><span class="ln">52</span>use function in_array;</span>
+<span class=""><span class="ln">53</span>use function interface_exists;</span>
+<span class=""><span class="ln">54</span>use function is_array;</span>
+<span class=""><span class="ln">55</span>use function is_int;</span>
+<span class=""><span class="ln">56</span>use function is_iterable;</span>
+<span class=""><span class="ln">57</span>use function is_string;</span>
+<span class=""><span class="ln">58</span>use function method_exists;</span>
+<span class=""><span class="ln">59</span>use function rtrim;</span>
+<span class=""><span class="ln">60</span>use function sprintf;</span>
+<span class=""><span class="ln">61</span>use function strlen;</span>
+<span class=""><span class="ln">62</span>use function strpos;</span>
+<span class=""><span class="ln">63</span>use function substr;</span>
+<span class=""><span class="ln">64</span>use function trait_exists;</span>
+<span class=""><span class="ln">65</span></span>
+<span class=""><span class="ln">66</span>use const DIRECTORY_SEPARATOR;</span>
+<span class=""><span class="ln">67</span></span>
+<span class=""><span class="ln">68</span>/**</span>
+<span class=""><span class="ln">69</span> * The pest dialect frontend (growth G2): turns a *.pest.php file into</span>
+<span class=""><span class="ln">70</span> * the same dialect-neutral TestGroup every other frontend produces</span>
+<span class=""><span class="ln">71</span> * (D-008) — the engine cannot tell a test() closure from a TestCase</span>
+<span class=""><span class="ln">72</span> * method. Lifecycle is composed *inside* the definition closure:</span>
+<span class=""><span class="ln">73</span> * beforeEach/afterEach run bound to a fresh instance of the uses()</span>
+<span class=""><span class="ln">74</span> * class around each test body, so the engine needs no pest-specific</span>
+<span class=""><span class="ln">75</span> * hooks.</span>
+<span class=""><span class="ln">76</span> */</span>
+<span class=""><span class="ln">77</span>final readonly class PestBuilder</span>
+<span class=""><span class="ln">78</span>{</span>
+<span class=""><span class="ln">79</span>    /**</span>
+<span class=""><span class="ln">80</span>     * @param non-empty-string $file     absolute path</span>
+<span class=""><span class="ln">81</span>     * @param non-empty-string $relative project-relative path, used for TestIds</span>
+<span class=""><span class="ln">82</span>     */</span>
+<span class=""><span class="ln">83</span>    public function build(string $file, string $relative): TestGroup</span>
+<span class=""><span class="ln">84</span>    {</span>
+<span class="covered"><span class="ln">85</span>        self::ensureUsable();</span>
+<span class="covered"><span class="ln">86</span>        RealPhpUnitBootstrap::ensureConfigured();</span>
+<span class=""><span class="ln">87</span></span>
+<span class=""><span class="ln">88</span>        // One separator from here on: on Windows the discovered path</span>
+<span class=""><span class="ln">89</span>        // can arrive mixed (getcwd() gives &#039;\&#039;, config joins with &#039;/&#039;),</span>
+<span class=""><span class="ln">90</span>        // and every scope and dataset lookup below compares prefixes.</span>
+<span class="covered"><span class="ln">91</span>        $file = WorkingDirectory::native($file);</span>
+<span class=""><span class="ln">92</span></span>
+<span class=""><span class="ln">93</span>        // Suite-level configuration first: Pest.php and Datasets/*.php</span>
+<span class=""><span class="ln">94</span>        // from every directory above the file, outermost first.</span>
+<span class="covered"><span class="ln">95</span>        $root = rtrim(substr($file, 0, strlen($file) - strlen($relative)), &#039;/&#039; . DIRECTORY_SEPARATOR);</span>
+<span class=""><span class="ln">96</span></span>
+<span class="covered"><span class="ln">97</span>        if ($root !== &#039;&#039;) {</span>
+<span class="covered"><span class="ln">98</span>            PestScopes::loadConfiguration($root, dirname($file));</span>
+<span class=""><span class="ln">99</span>        }</span>
+<span class=""><span class="ln">100</span></span>
+<span class="covered"><span class="ln">101</span>        PestRegistry::begin($file, $root);</span>
+<span class=""><span class="ln">102</span></span>
+<span class="covered"><span class="ln">103</span>        require $file;</span>
+<span class=""><span class="ln">104</span></span>
+<span class="covered"><span class="ln">105</span>        $state = $this-&gt;effectiveState(PestRegistry::drain(), $file);</span>
+<span class="covered"><span class="ln">106</span>        $class = $state-&gt;uses ?? PestTestCase::class;</span>
+<span class=""><span class="ln">107</span></span>
+<span class="covered"><span class="ln">108</span>        if (!class_exists($class)) {</span>
+<span class="missed"><span class="ln">109</span>            throw new ConfigurationException(sprintf(&#039;uses(%s) in %s: the class does not exist.&#039;, $class, $relative));</span>
+<span class=""><span class="ln">110</span>        }</span>
+<span class=""><span class="ln">111</span></span>
+<span class="covered"><span class="ln">112</span>        $reflection = new ReflectionClass($class);</span>
+<span class=""><span class="ln">113</span></span>
+<span class="covered"><span class="ln">114</span>        if ($reflection-&gt;isAbstract()) {</span>
+<span class="missed"><span class="ln">115</span>            throw new ConfigurationException(sprintf(&#039;uses(%s) in %s: the class is abstract.&#039;, $class, $relative));</span>
+<span class=""><span class="ln">116</span>        }</span>
+<span class=""><span class="ln">117</span></span>
+<span class="covered"><span class="ln">118</span>        $class = TraitComposer::compose($class, [...$state-&gt;traits, ...AutoMixedTrait::forClass($reflection)]);</span>
+<span class="covered"><span class="ln">119</span>        $class = SnapshotIdentityWrapper::wrap($class);</span>
+<span class=""><span class="ln">120</span></span>
+<span class=""><span class="ln">121</span>        // Real Pest&#039;s own equivalent (spatie/pest-plugin-snapshots&#039;</span>
+<span class=""><span class="ln">122</span>        // override of SnapshotDirectoryAware) hardcodes this same</span>
+<span class=""><span class="ln">123</span>        // &#039;tests&#039; literal relative to the project root, not the</span>
+<span class=""><span class="ln">124</span>        // individual test file&#039;s own directory — confirmed against a</span>
+<span class=""><span class="ln">125</span>        // real pestphp/pest + spatie/pest-plugin-snapshots run</span>
+<span class=""><span class="ln">126</span>        // (every snapshot landed in one project-root-level</span>
+<span class=""><span class="ln">127</span>        // tests/__snapshots__/, regardless of how deeply nested the</span>
+<span class=""><span class="ln">128</span>        // test file itself was). $testFileBasename mirrors real</span>
+<span class=""><span class="ln">129</span>        // Pest&#039;s own TestCaseFactory::evaluate(), which names its</span>
+<span class=""><span class="ln">130</span>        // generated class after the test file&#039;s own basename up to</span>
+<span class=""><span class="ln">131</span>        // the first dot (so both SomeTest.php and SomeTest.pest.php</span>
+<span class=""><span class="ln">132</span>        // become &quot;SomeTest&quot;) — SnapshotIdAware&#039;s real, unoverridden</span>
+<span class=""><span class="ln">133</span>        // id format bakes the running class&#039;s short name in, and</span>
+<span class=""><span class="ln">134</span>        // real Pest&#039;s generated class is literally named after the</span>
+<span class=""><span class="ln">135</span>        // file for exactly this reason.</span>
+<span class="covered"><span class="ln">136</span>        $snapshotsDirectory = $root . &#039;/tests/__snapshots__&#039;;</span>
+<span class="covered"><span class="ln">137</span>        $testFileBasename   = basename($relative);</span>
+<span class="covered"><span class="ln">138</span>        $dotPosition        = strpos($testFileBasename, &#039;.&#039;);</span>
+<span class=""><span class="ln">139</span></span>
+<span class="covered"><span class="ln">140</span>        if ($dotPosition !== false) {</span>
+<span class="missed"><span class="ln">141</span>            $testFileBasename = substr($testFileBasename, 0, $dotPosition);</span>
+<span class=""><span class="ln">142</span>        }</span>
+<span class=""><span class="ln">143</span></span>
+<span class="covered"><span class="ln">144</span>        $definitions = [];</span>
+<span class=""><span class="ln">145</span></span>
+<span class="covered"><span class="ln">146</span>        foreach ($state-&gt;calls as $call) {</span>
+<span class=""><span class="ln">147</span>            // wip and done run their bodies like Pest; a todo, and any</span>
+<span class=""><span class="ln">148</span>            // body-less call (nothing to run), stay pending. So a bare</span>
+<span class=""><span class="ln">149</span>            // body-less call auto-todos, and a body-less wip/done is</span>
+<span class=""><span class="ln">150</span>            // folded to a plain todo — its fields kept, its runnable</span>
+<span class=""><span class="ln">151</span>            // status dropped. The marker travels as engine-visible</span>
+<span class=""><span class="ln">152</span>            // metadata (D-045): --todos still selects on it and the</span>
+<span class=""><span class="ln">153</span>            // runner blocks a todo before anything runs, every dialect</span>
+<span class=""><span class="ln">154</span>            // alike.</span>
+<span class="covered"><span class="ln">155</span>            $bodyless = !$call-&gt;test instanceof Closure &amp;&amp; $call-&gt;chain === [];</span>
+<span class="covered"><span class="ln">156</span>            $todo     = match (true) {</span>
+<span class="covered"><span class="ln">157</span>                $bodyless &amp;&amp; $call-&gt;todo instanceof Todo =&gt; new Todo(</span>
+<span class="covered"><span class="ln">158</span>                    TodoStatus::Todo,</span>
+<span class="covered"><span class="ln">159</span>                    $call-&gt;todo-&gt;assignee,</span>
+<span class="covered"><span class="ln">160</span>                    $call-&gt;todo-&gt;issue,</span>
+<span class="covered"><span class="ln">161</span>                    $call-&gt;todo-&gt;note,</span>
+<span class=""><span class="ln">162</span>                ),</span>
+<span class="covered"><span class="ln">163</span>                $bodyless =&gt; new Todo(),</span>
+<span class="covered"><span class="ln">164</span>                default   =&gt; $call-&gt;todo,</span>
+<span class=""><span class="ln">165</span>            };</span>
+<span class=""><span class="ln">166</span></span>
+<span class="covered"><span class="ln">167</span>            $metadata = MetadataCollection::from(</span>
+<span class="covered"><span class="ln">168</span>                ...array_map(</span>
+<span class="covered"><span class="ln">169</span>                    static fn(string $group): Group =&gt; new Group($group),</span>
+<span class="covered"><span class="ln">170</span>                    [...$state-&gt;groups, ...$call-&gt;groups],</span>
+<span class=""><span class="ln">171</span>                ),</span>
+<span class="covered"><span class="ln">172</span>                ...$this-&gt;coversOf($state),</span>
+<span class="covered"><span class="ln">173</span>                ...($todo instanceof Todo ? [$todo] : []),</span>
+<span class="covered"><span class="ln">174</span>                ...($call-&gt;expectedOutcome instanceof ExpectedOutcome ? [$call-&gt;expectedOutcome] : []),</span>
+<span class=""><span class="ln">175</span>            );</span>
+<span class=""><span class="ln">176</span></span>
+<span class=""><span class="ln">177</span>            // A dataset that throws while it is built fails its own test,</span>
+<span class=""><span class="ln">178</span>            // not the run: real Pest reports the test and runs the rest of</span>
+<span class=""><span class="ln">179</span>            // the suite. An uncaught throw here was a fatal for everything.</span>
+<span class=""><span class="ln">180</span>            try {</span>
+<span class="covered"><span class="ln">181</span>                $rows = $this-&gt;rows($call, dirname($file));</span>
+<span class="missed"><span class="ln">182</span>            } catch (Throwable $datasetError) {</span>
+<span class="missed"><span class="ln">183</span>                $definitions[] = new TestDefinition(</span>
+<span class="missed"><span class="ln">184</span>                    new TestId($relative, $call-&gt;name()),</span>
+<span class="missed"><span class="ln">185</span>                    static function () use ($datasetError): never {</span>
+<span class="missed"><span class="ln">186</span>                        throw $datasetError;</span>
+<span class="missed"><span class="ln">187</span>                    },</span>
+<span class=""><span class="ln">188</span>                    $metadata,</span>
+<span class="missed"><span class="ln">189</span>                    $call-&gt;dependsOn,</span>
+<span class=""><span class="ln">190</span>                );</span>
+<span class=""><span class="ln">191</span></span>
+<span class="missed"><span class="ln">192</span>                continue;</span>
+<span class=""><span class="ln">193</span>            }</span>
+<span class=""><span class="ln">194</span></span>
+<span class="covered"><span class="ln">195</span>            foreach ($rows as $datasetKey =&gt; $arguments) {</span>
+<span class=""><span class="ln">196</span>                // PHP silently converts numeric-string array keys back</span>
+<span class=""><span class="ln">197</span>                // to ints; the TestId wants the string form.</span>
+<span class="covered"><span class="ln">198</span>                $datasetKey = (string) $datasetKey;</span>
+<span class=""><span class="ln">199</span></span>
+<span class="covered"><span class="ln">200</span>                $id = new TestId($relative, $call-&gt;name(), $datasetKey === &#039;&#039; ? null : $datasetKey);</span>
+<span class=""><span class="ln">201</span></span>
+<span class="covered"><span class="ln">202</span>                $definitions[] = new TestDefinition(</span>
+<span class="covered"><span class="ln">203</span>                    $id,</span>
+<span class="covered"><span class="ln">204</span>                    $this-&gt;definition($call, $arguments, $state, $class, $snapshotsDirectory, $testFileBasename, $id-&gt;dataset),</span>
+<span class=""><span class="ln">205</span>                    $metadata,</span>
+<span class="covered"><span class="ln">206</span>                    $call-&gt;dependsOn,</span>
+<span class=""><span class="ln">207</span>                );</span>
+<span class=""><span class="ln">208</span>            }</span>
+<span class=""><span class="ln">209</span>        }</span>
+<span class=""><span class="ln">210</span></span>
+<span class=""><span class="ln">211</span>        // A Pest file is a class (D-133): real Pest generates one extending</span>
+<span class=""><span class="ln">212</span>        // the uses() class, and the runner calls its setUpBeforeClass() and</span>
+<span class=""><span class="ln">213</span>        // tearDownAfterClass() around the file — the parent&#039;s first on the</span>
+<span class=""><span class="ln">214</span>        // way in, the file&#039;s beforeAll() hooks after; afterAll() before the</span>
+<span class=""><span class="ln">215</span>        // parent&#039;s on the way out. A base class that clears per-class state</span>
+<span class=""><span class="ln">216</span>        // there (Orchestra Testbench) otherwise never clears it.</span>
+<span class=""><span class="ln">217</span>        // The uses() class need not be a TestCase, so either may be absent.</span>
+<span class="covered"><span class="ln">218</span>        $setUp    = method_exists($class, &#039;setUpBeforeClass&#039;) ? static fn(): mixed =&gt; $class::setUpBeforeClass() : null;</span>
+<span class="covered"><span class="ln">219</span>        $tearDown = method_exists($class, &#039;tearDownAfterClass&#039;) ? static fn(): mixed =&gt; $class::tearDownAfterClass() : null;</span>
+<span class=""><span class="ln">220</span></span>
+<span class="covered"><span class="ln">221</span>        return new TestGroup(</span>
+<span class="covered"><span class="ln">222</span>            $relative,</span>
+<span class=""><span class="ln">223</span>            $definitions,</span>
+<span class="covered"><span class="ln">224</span>            $state-&gt;beforeAll === [] &amp;&amp; $setUp === null ? null : static function () use ($state, $setUp): void {</span>
+<span class="covered"><span class="ln">225</span>                if ($setUp !== null) {</span>
+<span class="covered"><span class="ln">226</span>                    $setUp();</span>
+<span class=""><span class="ln">227</span>                }</span>
+<span class=""><span class="ln">228</span></span>
+<span class="covered"><span class="ln">229</span>                foreach ($state-&gt;beforeAll as $hook) {</span>
+<span class="covered"><span class="ln">230</span>                    $hook();</span>
+<span class=""><span class="ln">231</span>                }</span>
+<span class="covered"><span class="ln">232</span>            },</span>
+<span class="covered"><span class="ln">233</span>            $state-&gt;afterAll === [] &amp;&amp; $tearDown === null ? null : static function () use ($state, $tearDown): void {</span>
+<span class="covered"><span class="ln">234</span>                foreach ($state-&gt;afterAll as $hook) {</span>
+<span class="covered"><span class="ln">235</span>                    $hook();</span>
+<span class=""><span class="ln">236</span>                }</span>
+<span class=""><span class="ln">237</span></span>
+<span class="covered"><span class="ln">238</span>                if ($tearDown !== null) {</span>
+<span class="covered"><span class="ln">239</span>                    $tearDown();</span>
+<span class=""><span class="ln">240</span>                }</span>
+<span class="covered"><span class="ln">241</span>            },</span>
+<span class=""><span class="ln">242</span>        );</span>
+<span class=""><span class="ln">243</span>    }</span>
+<span class=""><span class="ln">244</span></span>
+<span class=""><span class="ln">245</span>    /**</span>
+<span class=""><span class="ln">246</span>     * Folds the matching Pest.php scopes into the file&#039;s own state:</span>
+<span class=""><span class="ln">247</span>     * the file&#039;s uses() beats scoped extend(), traits and groups</span>
+<span class=""><span class="ln">248</span>     * accumulate, global before-hooks run before file-level ones and</span>
+<span class=""><span class="ln">249</span>     * global after-hooks after (spec §3). Bare registrations</span>
+<span class=""><span class="ln">250</span>     * contribute hooks only.</span>
+<span class=""><span class="ln">251</span>     *</span>
+<span class=""><span class="ln">252</span>     * @param non-empty-string $file</span>
+<span class=""><span class="ln">253</span>     */</span>
+<span class=""><span class="ln">254</span>    private function effectiveState(PestFileState $state, string $file): PestFileState</span>
+<span class=""><span class="ln">255</span>    {</span>
+<span class="covered"><span class="ln">256</span>        $scopes = PestScopes::matching($file);</span>
+<span class=""><span class="ln">257</span></span>
+<span class="covered"><span class="ln">258</span>        if ($scopes === []) {</span>
+<span class="covered"><span class="ln">259</span>            return $state;</span>
+<span class=""><span class="ln">260</span>        }</span>
+<span class=""><span class="ln">261</span></span>
+<span class="missed"><span class="ln">262</span>        $class      = null;</span>
+<span class="missed"><span class="ln">263</span>        $traits     = [];</span>
+<span class="missed"><span class="ln">264</span>        $groups     = [];</span>
+<span class="missed"><span class="ln">265</span>        $beforeEach = [];</span>
+<span class="missed"><span class="ln">266</span>        $afterEach  = [];</span>
+<span class="missed"><span class="ln">267</span>        $beforeAll  = [];</span>
+<span class="missed"><span class="ln">268</span>        $afterAll   = [];</span>
+<span class=""><span class="ln">269</span></span>
+<span class="missed"><span class="ln">270</span>        foreach ($scopes as $scope) {</span>
+<span class="missed"><span class="ln">271</span>            if ($scope-&gt;globs !== null) {</span>
+<span class="missed"><span class="ln">272</span>                $class  = $scope-&gt;class ?? $class;</span>
+<span class="missed"><span class="ln">273</span>                $traits = [...$traits, ...$scope-&gt;traits];</span>
+<span class="missed"><span class="ln">274</span>                $groups = [...$groups, ...$scope-&gt;groups];</span>
+<span class=""><span class="ln">275</span>            }</span>
+<span class=""><span class="ln">276</span></span>
+<span class="missed"><span class="ln">277</span>            $beforeEach = [...$beforeEach, ...$scope-&gt;beforeEach];</span>
+<span class="missed"><span class="ln">278</span>            $afterEach  = [...$afterEach, ...$scope-&gt;afterEach];</span>
+<span class="missed"><span class="ln">279</span>            $beforeAll  = [...$beforeAll, ...$scope-&gt;beforeAll];</span>
+<span class="missed"><span class="ln">280</span>            $afterAll   = [...$afterAll, ...$scope-&gt;afterAll];</span>
+<span class=""><span class="ln">281</span>        }</span>
+<span class=""><span class="ln">282</span></span>
+<span class="missed"><span class="ln">283</span>        return new PestFileState(</span>
+<span class="missed"><span class="ln">284</span>            $state-&gt;calls,</span>
+<span class="missed"><span class="ln">285</span>            [...$beforeEach, ...$state-&gt;beforeEach],</span>
+<span class="missed"><span class="ln">286</span>            [...$state-&gt;afterEach, ...$afterEach],</span>
+<span class="missed"><span class="ln">287</span>            [...$beforeAll, ...$state-&gt;beforeAll],</span>
+<span class="missed"><span class="ln">288</span>            [...$state-&gt;afterAll, ...$afterAll],</span>
+<span class="missed"><span class="ln">289</span>            $state-&gt;uses ?? $class,</span>
+<span class="missed"><span class="ln">290</span>            [...$traits, ...$state-&gt;traits],</span>
+<span class="missed"><span class="ln">291</span>            [...$groups, ...$state-&gt;groups],</span>
+<span class="missed"><span class="ln">292</span>            $state-&gt;covers,</span>
+<span class="missed"><span class="ln">293</span>            $state-&gt;mutates,</span>
+<span class=""><span class="ln">294</span>        );</span>
+<span class=""><span class="ln">295</span>    }</span>
+<span class=""><span class="ln">296</span></span>
+<span class=""><span class="ln">297</span>    /**</span>
+<span class=""><span class="ln">298</span>     * covers() as the attributes the coverage reader already consumes.</span>
+<span class=""><span class="ln">299</span>     * A target that names a live function becomes CoversFunction, and</span>
+<span class=""><span class="ln">300</span>     * everything else CoversClass — the same split #[CoversClass] and</span>
+<span class=""><span class="ln">301</span>     * #[CoversFunction] express, spelled file-scoped.</span>
+<span class=""><span class="ln">302</span>     *</span>
+<span class=""><span class="ln">303</span>     * @return list&lt;CoversClass|CoversFunction|MutatesClass&gt;</span>
+<span class=""><span class="ln">304</span>     */</span>
+<span class=""><span class="ln">305</span>    private function coversOf(PestFileState $state): array</span>
+<span class=""><span class="ln">306</span>    {</span>
+<span class="covered"><span class="ln">307</span>        $attributes = [];</span>
+<span class=""><span class="ln">308</span></span>
+<span class="covered"><span class="ln">309</span>        foreach ($state-&gt;mutates as $target) {</span>
+<span class="covered"><span class="ln">310</span>            if (!class_exists($target)) {</span>
+<span class="covered"><span class="ln">311</span>                throw new ConfigurationException(sprintf(</span>
+<span class=""><span class="ln">312</span>                    &#039;mutates(%s): no such class. mutates() names the source to mutate, so a target &#039;</span>
+<span class=""><span class="ln">313</span>                    . &#039;that does not exist would silently narrow the run to nothing.&#039;,</span>
+<span class="covered"><span class="ln">314</span>                    $target,</span>
+<span class=""><span class="ln">315</span>                ));</span>
+<span class=""><span class="ln">316</span>            }</span>
+<span class=""><span class="ln">317</span></span>
+<span class="covered"><span class="ln">318</span>            $attributes[] = new MutatesClass($target);</span>
+<span class=""><span class="ln">319</span>        }</span>
+<span class=""><span class="ln">320</span></span>
+<span class="covered"><span class="ln">321</span>        foreach ($state-&gt;covers as $target) {</span>
+<span class="covered"><span class="ln">322</span>            if (function_exists($target) &amp;&amp; !class_exists($target)) {</span>
+<span class="covered"><span class="ln">323</span>                $attributes[] = new CoversFunction($target);</span>
+<span class=""><span class="ln">324</span></span>
+<span class="covered"><span class="ln">325</span>                continue;</span>
+<span class=""><span class="ln">326</span>            }</span>
+<span class=""><span class="ln">327</span></span>
+<span class="covered"><span class="ln">328</span>            if (class_exists($target) || interface_exists($target) || trait_exists($target)) {</span>
+<span class="covered"><span class="ln">329</span>                $attributes[] = new CoversClass($target);</span>
+<span class=""><span class="ln">330</span></span>
+<span class="covered"><span class="ln">331</span>                continue;</span>
+<span class=""><span class="ln">332</span>            }</span>
+<span class=""><span class="ln">333</span></span>
+<span class="covered"><span class="ln">334</span>            throw new ConfigurationException(sprintf(</span>
+<span class=""><span class="ln">335</span>                &#039;covers(%s): no such class or function. covers() names the code under test, so a &#039;</span>
+<span class=""><span class="ln">336</span>                . &#039;target that does not exist would silently cover nothing.&#039;,</span>
+<span class="covered"><span class="ln">337</span>                $target,</span>
+<span class=""><span class="ln">338</span>            ));</span>
+<span class=""><span class="ln">339</span>        }</span>
+<span class=""><span class="ln">340</span></span>
+<span class="covered"><span class="ln">341</span>        return $attributes;</span>
+<span class=""><span class="ln">342</span>    }</span>
+<span class=""><span class="ln">343</span></span>
+<span class=""><span class="ln">344</span>    /**</span>
+<span class=""><span class="ln">345</span>     * The D-019 coexistence rule, pest edition: with the real Pest</span>
+<span class=""><span class="ln">346</span>     * installed the dialect refuses — two owners of test()/expect()</span>
+<span class=""><span class="ln">347</span>     * in one process can only end badly. Public static because the</span>
+<span class=""><span class="ln">348</span>     * inline dialect&#039;s doctests run on the same expect() surface.</span>
+<span class=""><span class="ln">349</span>     */</span>
+<span class=""><span class="ln">350</span>    /**</span>
+<span class=""><span class="ln">351</span>     * Whether this process defined the pest vocabulary itself.</span>
+<span class=""><span class="ln">352</span>     *</span>
+<span class=""><span class="ln">353</span>     * The invariant D-019 protects is &quot;never mask a real package&quot;, and</span>
+<span class=""><span class="ln">354</span>     * the thing that would do the masking is REDEFINING a name the real</span>
+<span class=""><span class="ln">355</span>     * package owns — not the package being present on disk. Keying the</span>
+<span class=""><span class="ln">356</span>     * refusal on installation was a proxy for that, and it was wrong in</span>
+<span class=""><span class="ln">357</span>     * both directions: it refused where the names were free, and it</span>
+<span class=""><span class="ln">358</span>     * would have said nothing if some other package had taken them.</span>
+<span class=""><span class="ln">359</span>     */</span>
+<span class=""><span class="ln">360</span>    private static function vocabularyIsOurs(bool ...$set): bool</span>
+<span class=""><span class="ln">361</span>    {</span>
+<span class=""><span class="ln">362</span>        /** @var bool $ours */</span>
+<span class="covered"><span class="ln">363</span>        static $ours = false;</span>
+<span class=""><span class="ln">364</span></span>
+<span class="covered"><span class="ln">365</span>        if ($set !== []) {</span>
+<span class="missed"><span class="ln">366</span>            $ours = $set[0];</span>
+<span class=""><span class="ln">367</span>        }</span>
+<span class=""><span class="ln">368</span></span>
+<span class="covered"><span class="ln">369</span>        return $ours;</span>
+<span class=""><span class="ln">370</span>    }</span>
+<span class=""><span class="ln">371</span></span>
+<span class=""><span class="ln">372</span>    /**</span>
+<span class=""><span class="ln">373</span>     * Define the pest vocabulary if the names are free; never throw.</span>
+<span class=""><span class="ln">374</span>     *</span>
+<span class=""><span class="ln">375</span>     * The real package loads its globals through Composer&#039;s `files`</span>
+<span class=""><span class="ln">376</span>     * autoload, so in a Pest project they exist from the moment</span>
+<span class=""><span class="ln">377</span>     * `vendor/autoload.php` runs. Crucible defines them lazily instead,</span>
+<span class=""><span class="ln">378</span>     * which is why discovery has to be able to ask for them without</span>
+<span class=""><span class="ln">379</span>     * risking an exception.</span>
+<span class=""><span class="ln">380</span>     */</span>
+<span class=""><span class="ln">381</span>    public static function loadVocabulary(): void</span>
+<span class=""><span class="ln">382</span>    {</span>
+<span class="covered"><span class="ln">383</span>        if (function_exists(&#039;test&#039;)) {</span>
+<span class="covered"><span class="ln">384</span>            return;</span>
+<span class=""><span class="ln">385</span>        }</span>
+<span class=""><span class="ln">386</span></span>
+<span class="missed"><span class="ln">387</span>        require __DIR__ . &#039;/functions.php&#039;;</span>
+<span class="missed"><span class="ln">388</span>        require __DIR__ . &#039;/crucible-functions.php&#039;;</span>
+<span class="missed"><span class="ln">389</span>        self::vocabularyIsOurs(true);</span>
+<span class=""><span class="ln">390</span>    }</span>
+<span class=""><span class="ln">391</span></span>
+<span class=""><span class="ln">392</span>    public static function ensureUsable(): void</span>
+<span class=""><span class="ln">393</span>    {</span>
+<span class=""><span class="ln">394</span>        // `test()` already declared and not by us: the real package (or</span>
+<span class=""><span class="ln">395</span>        // something else) owns the name, and PHP has no function_alias()</span>
+<span class=""><span class="ln">396</span>        // to stand beside it. Redeclaring is an uncatchable fatal, so</span>
+<span class=""><span class="ln">397</span>        // this is a refusal, not a preference.</span>
+<span class="covered"><span class="ln">398</span>        if (function_exists(&#039;test&#039;) &amp;&amp; !self::vocabularyIsOurs()) {</span>
+<span class="missed"><span class="ln">399</span>            throw new ConfigurationException(</span>
+<span class=""><span class="ln">400</span>                &#039;the pest dialect stays off: test() is already declared, so its global functions &#039;</span>
+<span class=""><span class="ln">401</span>                . &#039;would mask whatever owns that name (pestphp/pest, normally). PHP has no &#039;</span>
+<span class=""><span class="ln">402</span>                . &#039;function_alias(), so they cannot coexist in one process. Either remove &#039;</span>
+<span class=""><span class="ln">403</span>                . &#039;pestphp/pest, or run Crucible with the vocabulary prelude, which asks Composer &#039;</span>
+<span class=""><span class="ln">404</span>                . &quot;not to load Pest&#039;s two function files while leaving its classes intact:&quot;</span>
+<span class="missed"><span class="ln">405</span>                . PHP_EOL . PHP_EOL</span>
+<span class="missed"><span class="ln">406</span>                . &#039;    php -d auto_prepend_file=&#039; . __DIR__ . &#039;/vocabulary-prelude.php vendor/bin/crucible&#039;</span>
+<span class="missed"><span class="ln">407</span>                . PHP_EOL,</span>
+<span class=""><span class="ln">408</span>            );</span>
+<span class=""><span class="ln">409</span>        }</span>
+<span class=""><span class="ln">410</span></span>
+<span class="covered"><span class="ln">411</span>        self::loadVocabulary();</span>
+<span class=""><span class="ln">412</span></span>
+<span class=""><span class="ln">413</span>        // Pest\Laravel\* and Pest\Livewire\livewire() (growth G2</span>
+<span class=""><span class="ln">414</span>        // follow-up): the real plugin packages that export these</span>
+<span class=""><span class="ln">415</span>        // hard-require pestphp/pest itself, which the guard above</span>
+<span class=""><span class="ln">416</span>        // already refuses to coexist with — so they can never</span>
+<span class=""><span class="ln">417</span>        // actually be installed alongside this dialect, and these</span>
+<span class=""><span class="ln">418</span>        // proxy files are safe to load unconditionally rather than</span>
+<span class=""><span class="ln">419</span>        // gated on some other package&#039;s presence.</span>
+<span class="covered"><span class="ln">420</span>        if (!function_exists(&#039;Pest\Laravel\mock&#039;)) {</span>
+<span class="missed"><span class="ln">421</span>            require dirname(__DIR__, 2) . &#039;/Bridge/PestLaravel/functions.php&#039;;</span>
+<span class=""><span class="ln">422</span>        }</span>
+<span class=""><span class="ln">423</span></span>
+<span class="covered"><span class="ln">424</span>        if (!function_exists(&#039;Pest\Livewire\livewire&#039;)) {</span>
+<span class="missed"><span class="ln">425</span>            require dirname(__DIR__, 2) . &#039;/Bridge/PestLivewire/functions.php&#039;;</span>
+<span class=""><span class="ln">426</span>        }</span>
+<span class=""><span class="ln">427</span></span>
+<span class="covered"><span class="ln">428</span>        if (!function_exists(&#039;Spatie\Snapshots\assertMatchesSnapshot&#039;)) {</span>
+<span class="missed"><span class="ln">429</span>            require dirname(__DIR__, 2) . &#039;/Bridge/PestSnapshots/functions.php&#039;;</span>
+<span class=""><span class="ln">430</span>        }</span>
+<span class=""><span class="ln">431</span>    }</span>
+<span class=""><span class="ln">432</span></span>
+<span class=""><span class="ln">433</span>    /**</span>
+<span class=""><span class="ln">434</span>     * Dataset rows keyed for TestIds: &#039;&#039; means no dataset. A list row</span>
+<span class=""><span class="ln">435</span>     * spreads as positional arguments, an associative row binds to</span>
+<span class=""><span class="ln">436</span>     * closure parameters by name (spec §4), anything else is one</span>
+<span class=""><span class="ln">437</span>     * argument. Multiple -&gt;with() calls multiply (the spec&#039;s</span>
+<span class=""><span class="ln">438</span>     * Cartesian product; keys join with &#039; / &#039;), and -&gt;repeat(n) is</span>
+<span class=""><span class="ln">439</span>     * one more factor.</span>
+<span class=""><span class="ln">440</span>     *</span>
+<span class=""><span class="ln">441</span>     * PHP degrades numeric-string keys to ints at runtime, so the</span>
+<span class=""><span class="ln">442</span>     * declared key type is array-key even though only strings are</span>
+<span class=""><span class="ln">443</span>     * ever assigned.</span>
+<span class=""><span class="ln">444</span>     *</span>
+<span class=""><span class="ln">445</span>     * @param non-empty-string $fileDirectory</span>
+<span class=""><span class="ln">446</span>     *</span>
+<span class=""><span class="ln">447</span>     * @return array&lt;array-key, array&lt;array-key, mixed&gt;&gt;</span>
+<span class=""><span class="ln">448</span>     */</span>
+<span class=""><span class="ln">449</span>    private function rows(TestCall $call, string $fileDirectory): array</span>
+<span class=""><span class="ln">450</span>    {</span>
+<span class="covered"><span class="ln">451</span>        $rows = [&#039;&#039; =&gt; []];</span>
+<span class=""><span class="ln">452</span></span>
+<span class="covered"><span class="ln">453</span>        foreach ($call-&gt;datasets as $dataset) {</span>
+<span class="missed"><span class="ln">454</span>            $factor = $this-&gt;materializeFactor($dataset, $fileDirectory);</span>
+<span class="missed"><span class="ln">455</span>            $next   = [];</span>
+<span class=""><span class="ln">456</span></span>
+<span class="missed"><span class="ln">457</span>            foreach ($rows as $key =&gt; $arguments) {</span>
+<span class="missed"><span class="ln">458</span>                foreach ($factor as $rowKey =&gt; $row) {</span>
+<span class="missed"><span class="ln">459</span>                    $rowArguments = is_array($row) ? $row : [$row];</span>
+<span class=""><span class="ln">460</span></span>
+<span class="missed"><span class="ln">461</span>                    $next[$this-&gt;joinKeys($key, (string) $rowKey)] = [...$arguments, ...$rowArguments];</span>
+<span class=""><span class="ln">462</span>                }</span>
+<span class=""><span class="ln">463</span>            }</span>
+<span class=""><span class="ln">464</span></span>
+<span class="missed"><span class="ln">465</span>            $rows = $next;</span>
+<span class=""><span class="ln">466</span>        }</span>
+<span class=""><span class="ln">467</span></span>
+<span class="covered"><span class="ln">468</span>        if ($call-&gt;repetitions &gt; 1) {</span>
+<span class="missed"><span class="ln">469</span>            $next = [];</span>
+<span class=""><span class="ln">470</span></span>
+<span class="missed"><span class="ln">471</span>            foreach ($rows as $key =&gt; $arguments) {</span>
+<span class="missed"><span class="ln">472</span>                for ($repetition = 1; $repetition &lt;= $call-&gt;repetitions; ++$repetition) {</span>
+<span class="missed"><span class="ln">473</span>                    $label = sprintf(&#039;repetition %d of %d&#039;, $repetition, $call-&gt;repetitions);</span>
+<span class=""><span class="ln">474</span></span>
+<span class="missed"><span class="ln">475</span>                    $next[$this-&gt;joinKeys($key, $label)] = $arguments;</span>
+<span class=""><span class="ln">476</span>                }</span>
+<span class=""><span class="ln">477</span>            }</span>
+<span class=""><span class="ln">478</span></span>
+<span class="missed"><span class="ln">479</span>            $rows = $next;</span>
+<span class=""><span class="ln">480</span>        }</span>
+<span class=""><span class="ln">481</span></span>
+<span class="covered"><span class="ln">482</span>        return $rows;</span>
+<span class=""><span class="ln">483</span>    }</span>
+<span class=""><span class="ln">484</span></span>
+<span class=""><span class="ln">485</span>    /**</span>
+<span class=""><span class="ln">486</span>     * PHP degrades numeric-string array keys to ints, so the left</span>
+<span class=""><span class="ln">487</span>     * side (an accumulated key read back from an array) arrives as</span>
+<span class=""><span class="ln">488</span>     * either type.</span>
+<span class=""><span class="ln">489</span>     */</span>
+<span class=""><span class="ln">490</span>    private function joinKeys(int|string $left, string $right): string</span>
+<span class=""><span class="ln">491</span>    {</span>
+<span class="missed"><span class="ln">492</span>        return $left === &#039;&#039; ? $right : $left . &#039; / &#039; . $right;</span>
+<span class=""><span class="ln">493</span>    }</span>
+<span class=""><span class="ln">494</span></span>
+<span class=""><span class="ln">495</span>    /**</span>
+<span class=""><span class="ln">496</span>     * One -&gt;with() factor as rows: inline arrays pass through, a</span>
+<span class=""><span class="ln">497</span>     * string resolves a shared dataset() (nearest folder wins), a</span>
+<span class=""><span class="ln">498</span>     * closure is a lazy factory invoked now.</span>
+<span class=""><span class="ln">499</span>     *</span>
+<span class=""><span class="ln">500</span>     * @param array&lt;array-key, mixed&gt;|non-empty-string|Closure $dataset</span>
+<span class=""><span class="ln">501</span>     * @param non-empty-string                                 $fileDirectory</span>
+<span class=""><span class="ln">502</span>     *</span>
+<span class=""><span class="ln">503</span>     * @return array&lt;array-key, mixed&gt;</span>
+<span class=""><span class="ln">504</span>     */</span>
+<span class=""><span class="ln">505</span>    private function materializeFactor(array|string|Closure $dataset, string $fileDirectory): array</span>
+<span class=""><span class="ln">506</span>    {</span>
+<span class="missed"><span class="ln">507</span>        if (is_string($dataset)) {</span>
+<span class="missed"><span class="ln">508</span>            return PestScopes::resolveDataset($dataset, $fileDirectory);</span>
+<span class=""><span class="ln">509</span>        }</span>
+<span class=""><span class="ln">510</span></span>
+<span class="missed"><span class="ln">511</span>        if ($dataset instanceof Closure) {</span>
+<span class="missed"><span class="ln">512</span>            $rows = $dataset();</span>
+<span class=""><span class="ln">513</span></span>
+<span class="missed"><span class="ln">514</span>            if (!is_iterable($rows)) {</span>
+<span class="missed"><span class="ln">515</span>                throw new ConfigurationException(&#039;with(closure): the closure must return an iterable of rows.&#039;);</span>
+<span class=""><span class="ln">516</span>            }</span>
+<span class=""><span class="ln">517</span></span>
+<span class="missed"><span class="ln">518</span>            return PestScopes::materialize($rows);</span>
+<span class=""><span class="ln">519</span>        }</span>
+<span class=""><span class="ln">520</span></span>
+<span class="missed"><span class="ln">521</span>        return $dataset;</span>
+<span class=""><span class="ln">522</span>    }</span>
+<span class=""><span class="ln">523</span></span>
+<span class=""><span class="ln">524</span>    /**</span>
+<span class=""><span class="ln">525</span>     * @param array&lt;array-key, mixed&gt; $arguments dataset arguments (string keys bind by name), before dependency injections</span>
+<span class=""><span class="ln">526</span>     * @param class-string            $class</span>
+<span class=""><span class="ln">527</span>     * @param non-empty-string        $snapshotsDirectory</span>
+<span class=""><span class="ln">528</span>     * @param ?non-empty-string       $dataset</span>
+<span class=""><span class="ln">529</span>     *</span>
+<span class=""><span class="ln">530</span>     * @return Closure(list&lt;mixed&gt;): mixed</span>
+<span class=""><span class="ln">531</span>     */</span>
+<span class=""><span class="ln">532</span>    private function definition(TestCall $call, array $arguments, PestFileState $state, string $class, string $snapshotsDirectory, string $testFileBasename, ?string $dataset = null): Closure</span>
+<span class=""><span class="ln">533</span>    {</span>
+<span class=""><span class="ln">534</span>        // The real PHPUnit\Framework\TestCase::__construct() requires</span>
+<span class=""><span class="ln">535</span>        // its $name argument (Orchestra Testbench&#039;s TestCase inherits</span>
+<span class=""><span class="ln">536</span>        // it unchanged, being final); Crucible&#039;s own TestCase declares</span>
+<span class=""><span class="ln">537</span>        // no constructor at all, so passing an argument it doesn&#039;t</span>
+<span class=""><span class="ln">538</span>        // expect would itself be the error. Checked once per call, at</span>
+<span class=""><span class="ln">539</span>        // build time, not per invocation.</span>
+<span class="covered"><span class="ln">540</span>        $classReflection = new ReflectionClass($class);</span>
+<span class="covered"><span class="ln">541</span>        $needsName       = ($classReflection-&gt;getConstructor()?-&gt;getNumberOfRequiredParameters() ?? 0) &gt; 0;</span>
+<span class=""><span class="ln">542</span></span>
+<span class=""><span class="ln">543</span>        // #[Before]/#[PreCondition]/#[PostCondition]/#[After] — real</span>
+<span class=""><span class="ln">544</span>        // PHPUnit&#039;s own attributes too (HookPlanner, via</span>
+<span class=""><span class="ln">545</span>        // MetadataParser/RealPhpUnitHookAttributes), not just</span>
+<span class=""><span class="ln">546</span>        // Crucible&#039;s. A separate mechanism from beforeEach/afterEach</span>
+<span class=""><span class="ln">547</span>        // above: those are pest&#039;s own dialect-level hooks; these are</span>
+<span class=""><span class="ln">548</span>        // attributed methods on the uses() class itself, or on a</span>
+<span class=""><span class="ln">549</span>        // trait mixed into it (Spatie\Snapshots\MatchesSnapshots&#039;s</span>
+<span class=""><span class="ln">550</span>        // real #[PostCondition] method, the case this was built for</span>
+<span class=""><span class="ln">551</span>        // — verified against a real phpunit/phpunit run first, then</span>
+<span class=""><span class="ln">552</span>        // confirmed Crucible produced a different result before this</span>
+<span class=""><span class="ln">553</span>        // existed). Computed once per TestCall, reused across every</span>
+<span class=""><span class="ln">554</span>        // dataset row, matching $needsName above.</span>
+<span class="covered"><span class="ln">555</span>        $hooks = HookPlanner::forClass($classReflection);</span>
+<span class=""><span class="ln">556</span></span>
+<span class="covered"><span class="ln">557</span>        return static function (array $dependencyValues) use ($call, $arguments, $state, $class, $needsName, $hooks, $snapshotsDirectory, $testFileBasename, $dataset): mixed {</span>
+<span class=""><span class="ln">558</span>            /** @var list&lt;mixed&gt; $dependencyValues */</span>
+<span class="covered"><span class="ln">559</span>            if ($call-&gt;skipped === true || is_string($call-&gt;skipped)) {</span>
+<span class="missed"><span class="ln">560</span>                throw new SkippedTestError(is_string($call-&gt;skipped) ? $call-&gt;skipped : &#039;Skipped.&#039;);</span>
+<span class=""><span class="ln">561</span>            }</span>
+<span class=""><span class="ln">562</span></span>
+<span class="covered"><span class="ln">563</span>            $instance = $needsName ? new $class($call-&gt;name()) : new $class();</span>
+<span class=""><span class="ln">564</span></span>
+<span class=""><span class="ln">565</span>            // Named before setUp(), matching invokeTest()&#039;s contract —</span>
+<span class=""><span class="ln">566</span>            // the phpunit dialect&#039;s seam for the same thing. Without</span>
+<span class=""><span class="ln">567</span>            // it a pest test has no name to answer with, which is what</span>
+<span class=""><span class="ln">568</span>            // the snapshot bridge&#039;s identity is built from.</span>
+<span class="covered"><span class="ln">569</span>            if ($instance instanceof TestCase) {</span>
+<span class="covered"><span class="ln">570</span>                $instance-&gt;nameTest($call-&gt;name(), $dataset);</span>
+<span class=""><span class="ln">571</span>            }</span>
+<span class=""><span class="ln">572</span></span>
+<span class="covered"><span class="ln">573</span>            $invoke = static function (Closure $closure, array $args = []) use ($instance, $class): mixed {</span>
+<span class="covered"><span class="ln">574</span>                $bound = @Closure::bind($closure, $instance, $class);</span>
+<span class=""><span class="ln">575</span></span>
+<span class="covered"><span class="ln">576</span>                return ($bound ?? $closure)(...$args);</span>
+<span class="dead"><span class="ln">577</span>            };</span>
+<span class=""><span class="ln">578</span></span>
+<span class=""><span class="ln">579</span>            // A uses() class may be a real setUp()/tearDown()-based</span>
+<span class=""><span class="ln">580</span>            // TestCase — Crucible&#039;s own, or (via phpunit/phpunit,</span>
+<span class=""><span class="ln">581</span>            // e.g. Orchestra Testbench) the real PHPUnit one. Real</span>
+<span class=""><span class="ln">582</span>            // Pest runs those as genuine PHPUnit test cases, so their</span>
+<span class=""><span class="ln">583</span>            // setUp() is what boots the app; skipping it silently</span>
+<span class=""><span class="ln">584</span>            // starved every Laravel-package Pest suite of its</span>
+<span class=""><span class="ln">585</span>            // container (confirmed against spatie/laravel-data).</span>
+<span class=""><span class="ln">586</span>            // Duck-typed, not an instanceof check, since either</span>
+<span class=""><span class="ln">587</span>            // TestCase family satisfies the same contract. Invoked by</span>
+<span class=""><span class="ln">588</span>            // reflection, not a bound closure, since setUp/tearDown</span>
+<span class=""><span class="ln">589</span>            // are protected and PHP has allowed reflection to reach</span>
+<span class=""><span class="ln">590</span>            // non-public methods without setAccessible() since 8.1.</span>
+<span class="covered"><span class="ln">591</span>            $hasLifecycle  = method_exists($instance, &#039;setUp&#039;) &amp;&amp; method_exists($instance, &#039;tearDown&#039;);</span>
+<span class="covered"><span class="ln">592</span>            $isRealPhpUnit = method_exists($instance, &#039;numberOfAssertionsPerformed&#039;);</span>
+<span class=""><span class="ln">593</span></span>
+<span class=""><span class="ln">594</span>            // Scoped for Pest\Laravel\* (src/Bridge/PestLaravel), which</span>
+<span class=""><span class="ln">595</span>            // reaches &quot;the instance currently running a test&quot; the same</span>
+<span class=""><span class="ln">596</span>            // way real Pest&#039;s own plugin proxies do (test()&#039;s zero-arg</span>
+<span class=""><span class="ln">597</span>            // form) — cleared in the finally block below regardless of</span>
+<span class=""><span class="ln">598</span>            // outcome, so a failure never leaks the instance into the</span>
+<span class=""><span class="ln">599</span>            // next test.</span>
+<span class="covered"><span class="ln">600</span>            CurrentTest::set($instance);</span>
+<span class=""><span class="ln">601</span></span>
+<span class=""><span class="ln">602</span>            // Scoped the same way, for SnapshotIdentityWrapper&#039;s</span>
+<span class=""><span class="ln">603</span>            // generated overrides (src/Bridge/PestSnapshots) — see</span>
+<span class=""><span class="ln">604</span>            // SnapshotFileContext&#039;s own docblock for why this exists</span>
+<span class=""><span class="ln">605</span>            // at all.</span>
+<span class="covered"><span class="ln">606</span>            SnapshotFileContext::set($snapshotsDirectory, $testFileBasename);</span>
+<span class=""><span class="ln">607</span></span>
+<span class="covered"><span class="ln">608</span>            if ($hasLifecycle &amp;&amp; $isRealPhpUnit) {</span>
+<span class="covered"><span class="ln">609</span>                RealPhpUnitBootstrap::resetAssertionCount();</span>
+<span class=""><span class="ln">610</span>            }</span>
+<span class=""><span class="ln">611</span></span>
+<span class=""><span class="ln">612</span>            // The before list carries setUp() at its priority-0 place</span>
+<span class=""><span class="ln">613</span>            // (HookPlan): the #[Before] hooks ahead of it run first, as</span>
+<span class=""><span class="ln">614</span>            // under the incumbent, and beforeEach runs right after it,</span>
+<span class=""><span class="ln">615</span>            // since real Pest&#039;s setUp() is what calls beforeEach. The</span>
+<span class=""><span class="ln">616</span>            // hooks behind setUp() wait for the closure-form skip.</span>
+<span class="covered"><span class="ln">617</span>            $setUpAt     = array_search(HookPlan::SET_UP, $hooks-&gt;before, true);</span>
+<span class="covered"><span class="ln">618</span>            $beforeSetUp = $setUpAt === false ? [] : array_slice($hooks-&gt;before, 0, $setUpAt);</span>
+<span class="covered"><span class="ln">619</span>            $behindSetUp = $setUpAt === false ? $hooks-&gt;before : array_slice($hooks-&gt;before, $setUpAt + 1);</span>
+<span class=""><span class="ln">620</span></span>
+<span class="covered"><span class="ln">621</span>            foreach ($beforeSetUp as $hook) {</span>
+<span class="missed"><span class="ln">622</span>                (new ReflectionMethod($instance, $hook))-&gt;invoke($instance);</span>
+<span class=""><span class="ln">623</span>            }</span>
+<span class=""><span class="ln">624</span></span>
+<span class="covered"><span class="ln">625</span>            if ($hasLifecycle) {</span>
+<span class="covered"><span class="ln">626</span>                (new ReflectionMethod($instance, &#039;setUp&#039;))-&gt;invoke($instance);</span>
+<span class=""><span class="ln">627</span>            }</span>
+<span class=""><span class="ln">628</span></span>
+<span class="covered"><span class="ln">629</span>            foreach ($state-&gt;beforeEach as $hook) {</span>
+<span class="covered"><span class="ln">630</span>                $invoke($hook);</span>
+<span class=""><span class="ln">631</span>            }</span>
+<span class=""><span class="ln">632</span></span>
+<span class=""><span class="ln">633</span>            try {</span>
+<span class=""><span class="ln">634</span>                // The spec evaluates closure-form skips after beforeEach,</span>
+<span class=""><span class="ln">635</span>                // so the condition can read hook-provided state.</span>
+<span class="covered"><span class="ln">636</span>                if ($call-&gt;skipped instanceof Closure) {</span>
+<span class="covered"><span class="ln">637</span>                    $verdict = $invoke($call-&gt;skipped);</span>
+<span class=""><span class="ln">638</span></span>
+<span class="covered"><span class="ln">639</span>                    if ($verdict !== false &amp;&amp; $verdict !== null) {</span>
+<span class="missed"><span class="ln">640</span>                        throw new SkippedTestError(match (true) {</span>
+<span class="missed"><span class="ln">641</span>                            is_string($verdict)      =&gt; $verdict,</span>
+<span class="missed"><span class="ln">642</span>                            $call-&gt;skipReason !== &#039;&#039; =&gt; $call-&gt;skipReason,</span>
+<span class="missed"><span class="ln">643</span>                            default                  =&gt; &#039;Skipped.&#039;,</span>
+<span class=""><span class="ln">644</span>                        });</span>
+<span class=""><span class="ln">645</span>                    }</span>
+<span class=""><span class="ln">646</span>                }</span>
+<span class=""><span class="ln">647</span></span>
+<span class="covered"><span class="ln">648</span>                foreach ($behindSetUp as $hook) {</span>
+<span class="missed"><span class="ln">649</span>                    (new ReflectionMethod($instance, $hook))-&gt;invoke($instance);</span>
+<span class=""><span class="ln">650</span>                }</span>
+<span class=""><span class="ln">651</span></span>
+<span class="covered"><span class="ln">652</span>                foreach ($hooks-&gt;preConditions as $hook) {</span>
+<span class="covered"><span class="ln">653</span>                    self::invokeHook($instance, $hook);</span>
+<span class=""><span class="ln">654</span>                }</span>
+<span class=""><span class="ln">655</span></span>
+<span class=""><span class="ln">656</span>                // Bound rows (spec §4): a closure-valued dataset argument</span>
+<span class=""><span class="ln">657</span>                // resolves after beforeEach, bound to the instance — but</span>
+<span class=""><span class="ln">658</span>                // only when BOTH: it takes zero required parameters</span>
+<span class=""><span class="ln">659</span>                // (`fn() =&gt; new ArrayObject([$this-&gt;x])`, DESIGN.md&#039;s own</span>
+<span class=""><span class="ln">660</span>                // example — a closure requiring parameters can&#039;t be</span>
+<span class=""><span class="ln">661</span>                // zero-arg-invoked at all, confirmed against a real</span>
+<span class=""><span class="ln">662</span>                // spatie/laravel-data case, -&gt;with(fn () =&gt; yield [...,</span>
+<span class=""><span class="ln">663</span>                // fn (LazyData $data) =&gt; $data-&gt;include(&#039;name&#039;), ...]));</span>
+<span class=""><span class="ln">664</span>                // AND the test&#039;s own parameter at this position isn&#039;t</span>
+<span class=""><span class="ln">665</span>                // itself typed to accept a callable — `Closure</span>
+<span class=""><span class="ln">666</span>                // $temporaryPartial` (another real spatie/laravel-data</span>
+<span class=""><span class="ln">667</span>                // case) or `callable|null $setDefaults` wants the closure</span>
+<span class=""><span class="ln">668</span>                // itself, not what calling it produces, even when the</span>
+<span class=""><span class="ln">669</span>                // closure happens to take zero arguments. Named arguments</span>
+<span class=""><span class="ln">670</span>                // go last so positional ones stay positional.</span>
+<span class="covered"><span class="ln">671</span>                $positional = [];</span>
+<span class="covered"><span class="ln">672</span>                $named      = [];</span>
+<span class=""><span class="ln">673</span></span>
+<span class="covered"><span class="ln">674</span>                foreach ($arguments as $key =&gt; $argument) {</span>
+<span class="covered"><span class="ln">675</span>                    $argument = $argument instanceof Closure</span>
+<span class="covered"><span class="ln">676</span>                        &amp;&amp; (new ReflectionFunction($argument))-&gt;getNumberOfRequiredParameters() === 0</span>
+<span class="covered"><span class="ln">677</span>                        &amp;&amp; !self::targetParameterAcceptsCallable($call-&gt;test, $key)</span>
+<span class="covered"><span class="ln">678</span>                        ? $invoke($argument)</span>
+<span class="covered"><span class="ln">679</span>                        : $argument;</span>
+<span class=""><span class="ln">680</span></span>
+<span class="covered"><span class="ln">681</span>                    if (is_int($key)) {</span>
+<span class="covered"><span class="ln">682</span>                        $positional[] = $argument;</span>
+<span class=""><span class="ln">683</span>                    } else {</span>
+<span class="covered"><span class="ln">684</span>                        $named[$key] = $argument;</span>
+<span class=""><span class="ln">685</span>                    }</span>
+<span class=""><span class="ln">686</span>                }</span>
+<span class=""><span class="ln">687</span></span>
+<span class="covered"><span class="ln">688</span>                $args = [...$positional, ...$dependencyValues, ...$named];</span>
+<span class="covered"><span class="ln">689</span>                $body = self::body($call, $instance, $class);</span>
+<span class=""><span class="ln">690</span></span>
+<span class="covered"><span class="ln">691</span>                if ($call-&gt;fails) {</span>
+<span class=""><span class="ln">692</span>                    try {</span>
+<span class="covered"><span class="ln">693</span>                        $body($args);</span>
+<span class=""><span class="ln">694</span></span>
+<span class=""><span class="ln">695</span>                        // Verification failures are test failures, so</span>
+<span class=""><span class="ln">696</span>                        // fails() must cover them too (D-046).</span>
+<span class="missed"><span class="ln">697</span>                        if ($instance instanceof TestCase) {</span>
+<span class="missed"><span class="ln">698</span>                            $instance-&gt;verifyTestDoubles();</span>
+<span class=""><span class="ln">699</span>                        }</span>
+<span class="covered"><span class="ln">700</span>                    } catch (SkippedTestError|IncompleteTestError $signal) {</span>
+<span class="missed"><span class="ln">701</span>                        throw $signal;</span>
+<span class="covered"><span class="ln">702</span>                    } catch (Throwable $thrown) {</span>
+<span class="covered"><span class="ln">703</span>                        if ($call-&gt;failsMessage !== null) {</span>
+<span class="covered"><span class="ln">704</span>                            Assert::assertStringContainsString($call-&gt;failsMessage, $thrown-&gt;getMessage());</span>
+<span class=""><span class="ln">705</span>                        }</span>
+<span class=""><span class="ln">706</span></span>
+<span class="covered"><span class="ln">707</span>                        Assert::countSatisfiedAssertion(); // the expected failure happened</span>
+<span class=""><span class="ln">708</span></span>
+<span class="covered"><span class="ln">709</span>                        return null;</span>
+<span class=""><span class="ln">710</span>                    }</span>
+<span class=""><span class="ln">711</span></span>
+<span class="missed"><span class="ln">712</span>                    Assert::fail(&#039;Expected the test to fail, but it passed.&#039;);</span>
+<span class=""><span class="ln">713</span>                }</span>
+<span class=""><span class="ln">714</span></span>
+<span class=""><span class="ln">715</span>                try {</span>
+<span class="covered"><span class="ln">716</span>                    $value = $body($args);</span>
+<span class="covered"><span class="ln">717</span>                } catch (SkippedTestError|IncompleteTestError $signal) {</span>
+<span class="missed"><span class="ln">718</span>                    throw $signal;</span>
+<span class="covered"><span class="ln">719</span>                } catch (Throwable $thrown) {</span>
+<span class="covered"><span class="ln">720</span>                    if ($call-&gt;throws !== null) {</span>
+<span class="covered"><span class="ln">721</span>                        self::assertThrown($thrown, $call-&gt;throws, $call-&gt;throwsMessage);</span>
+<span class=""><span class="ln">722</span></span>
+<span class="covered"><span class="ln">723</span>                        return null;</span>
+<span class=""><span class="ln">724</span>                    }</span>
+<span class=""><span class="ln">725</span></span>
+<span class=""><span class="ln">726</span>                    // Real PHPUnit&#039;s own $this-&gt;expectException() family</span>
+<span class=""><span class="ln">727</span>                    // (PHPUnit\Framework\Assert, on a real</span>
+<span class=""><span class="ln">728</span>                    // PHPUnit-descended uses() class) — a separate</span>
+<span class=""><span class="ln">729</span>                    // mechanism from -&gt;throws() above, only ever</span>
+<span class=""><span class="ln">730</span>                    // verified by real PHPUnit&#039;s own runner, which</span>
+<span class=""><span class="ln">731</span>                    // PestBuilder never delegates to. Rethrows its own</span>
+<span class=""><span class="ln">732</span>                    // AssertionFailedError when set but mismatched,</span>
+<span class=""><span class="ln">733</span>                    // same as real PHPUnit would fail the test rather</span>
+<span class=""><span class="ln">734</span>                    // than silently accept a wrong-shaped exception.</span>
+<span class="missed"><span class="ln">735</span>                    if (RealPhpUnitExceptionExpectations::wasExpected($instance, $thrown)) {</span>
+<span class="missed"><span class="ln">736</span>                        return null;</span>
+<span class=""><span class="ln">737</span>                    }</span>
+<span class=""><span class="ln">738</span></span>
+<span class="missed"><span class="ln">739</span>                    throw $thrown;</span>
+<span class=""><span class="ln">740</span>                }</span>
+<span class=""><span class="ln">741</span></span>
+<span class="covered"><span class="ln">742</span>                if ($call-&gt;throws !== null) {</span>
+<span class="missed"><span class="ln">743</span>                    Assert::fail(sprintf(&#039;Expected %s to be thrown, but nothing was.&#039;, $call-&gt;throws));</span>
+<span class=""><span class="ln">744</span>                }</span>
+<span class=""><span class="ln">745</span></span>
+<span class="covered"><span class="ln">746</span>                RealPhpUnitExceptionExpectations::verifyNotUnraised($instance);</span>
+<span class=""><span class="ln">747</span></span>
+<span class="covered"><span class="ln">748</span>                if ($call-&gt;throwsNothing) {</span>
+<span class="missed"><span class="ln">749</span>                    Assert::countSatisfiedAssertion(); // the absence was verified</span>
+<span class=""><span class="ln">750</span>                }</span>
+<span class=""><span class="ln">751</span></span>
+<span class=""><span class="ln">752</span>                // End-of-test double settlement (D-046) — the seam the</span>
+<span class=""><span class="ln">753</span>                // phpunit dialect gets from invokeTest. Skipped on the</span>
+<span class=""><span class="ln">754</span>                // expected-exception paths above, matching that spec.</span>
+<span class="covered"><span class="ln">755</span>                if ($instance instanceof TestCase) {</span>
+<span class="covered"><span class="ln">756</span>                    $instance-&gt;verifyTestDoubles();</span>
+<span class=""><span class="ln">757</span>                }</span>
+<span class=""><span class="ln">758</span></span>
+<span class=""><span class="ln">759</span>                // Success-path only, same as TestCase::invokeTest()&#039;s</span>
+<span class=""><span class="ln">760</span>                // own placement — unlike before/preConditions, a</span>
+<span class=""><span class="ln">761</span>                // postCondition does not run on the fails()/throws()</span>
+<span class=""><span class="ln">762</span>                // early-return paths above, matching real PHPUnit:</span>
+<span class=""><span class="ln">763</span>                // it only fires once the test method itself completed</span>
+<span class=""><span class="ln">764</span>                // normally.</span>
+<span class="covered"><span class="ln">765</span>                foreach ($hooks-&gt;postConditions as $hook) {</span>
+<span class="covered"><span class="ln">766</span>                    self::invokeHook($instance, $hook);</span>
+<span class=""><span class="ln">767</span>                }</span>
+<span class=""><span class="ln">768</span></span>
+<span class="covered"><span class="ln">769</span>                return $value;</span>
+<span class="dead"><span class="ln">770</span>            } finally {</span>
+<span class=""><span class="ln">771</span>                // Unconditional, matching TestCase::invokeTest()&#039;s own</span>
+<span class=""><span class="ln">772</span>                // &quot;the after phase always runs&quot; contract. tearDown()</span>
+<span class=""><span class="ln">773</span>                // holds its priority-0 place in the list (HookPlan), and</span>
+<span class=""><span class="ln">774</span>                // afterEach runs right before it, since real Pest&#039;s</span>
+<span class=""><span class="ln">775</span>                // tearDown() is what calls afterEach.</span>
+<span class="covered"><span class="ln">776</span>                foreach ($hooks-&gt;after as $hook) {</span>
+<span class="covered"><span class="ln">777</span>                    if ($hook !== HookPlan::TEAR_DOWN) {</span>
+<span class="missed"><span class="ln">778</span>                        (new ReflectionMethod($instance, $hook))-&gt;invoke($instance);</span>
+<span class=""><span class="ln">779</span></span>
+<span class="missed"><span class="ln">780</span>                        continue;</span>
+<span class=""><span class="ln">781</span>                    }</span>
+<span class=""><span class="ln">782</span></span>
+<span class="covered"><span class="ln">783</span>                    foreach ($state-&gt;afterEach as $afterEach) {</span>
+<span class="covered"><span class="ln">784</span>                        $invoke($afterEach);</span>
+<span class=""><span class="ln">785</span>                    }</span>
+<span class=""><span class="ln">786</span></span>
+<span class="covered"><span class="ln">787</span>                    if ($hasLifecycle) {</span>
+<span class="covered"><span class="ln">788</span>                        (new ReflectionMethod($instance, &#039;tearDown&#039;))-&gt;invoke($instance);</span>
+<span class=""><span class="ln">789</span>                    }</span>
+<span class=""><span class="ln">790</span>                }</span>
+<span class=""><span class="ln">791</span></span>
+<span class=""><span class="ln">792</span>                // Real PHPUnit&#039;s own TestCase tracks assertions</span>
+<span class=""><span class="ln">793</span>                // separately from Crucible&#039;s. Two sources feed it,</span>
+<span class=""><span class="ln">794</span>                // both invisible to Crucible&#039;s own counter without</span>
+<span class=""><span class="ln">795</span>                // bridging: Orchestra Testbench&#039;s Mockery integration</span>
+<span class=""><span class="ln">796</span>                // verifies expectations during tearDown() and reports</span>
+<span class=""><span class="ln">797</span>                // them via addToAssertionCount() directly; and</span>
+<span class=""><span class="ln">798</span>                // $this-&gt;assertSame()-style calls made anywhere in the</span>
+<span class=""><span class="ln">799</span>                // test count through a separate static counter that</span>
+<span class=""><span class="ln">800</span>                // only ever reaches the instance via</span>
+<span class=""><span class="ln">801</span>                // RealPhpUnitBootstrap::bridgeAssertionCount() (see its</span>
+<span class=""><span class="ln">802</span>                // own docblock). Without either, such tests are wrongly</span>
+<span class=""><span class="ln">803</span>                // flagged risky. Bridged the same way real Laravel test</span>
+<span class=""><span class="ln">804</span>                // helpers report into PHPUnit&#039;s counter</span>
+<span class=""><span class="ln">805</span>                // (Assert::addToAssertionCount()&#039;s own docblock).</span>
+<span class="covered"><span class="ln">806</span>                if ($isRealPhpUnit) {</span>
+<span class="covered"><span class="ln">807</span>                    RealPhpUnitBootstrap::bridgeAssertionCount($instance);</span>
+<span class=""><span class="ln">808</span></span>
+<span class="covered"><span class="ln">809</span>                    $performed = $instance-&gt;numberOfAssertionsPerformed();</span>
+<span class=""><span class="ln">810</span></span>
+<span class="covered"><span class="ln">811</span>                    if (is_int($performed)) {</span>
+<span class="covered"><span class="ln">812</span>                        (new class extends Assert {})-&gt;addToAssertionCount($performed);</span>
+<span class=""><span class="ln">813</span>                    }</span>
+<span class=""><span class="ln">814</span>                }</span>
+<span class=""><span class="ln">815</span></span>
+<span class=""><span class="ln">816</span>                // Cleared last, after afterEach/tearDown have both had</span>
+<span class=""><span class="ln">817</span>                // their chance to still reach it — matching real Pest&#039;s</span>
+<span class=""><span class="ln">818</span>                // own scoping, where the instance stays &quot;current&quot; for</span>
+<span class=""><span class="ln">819</span>                // the whole test lifecycle, not just its body.</span>
+<span class="covered"><span class="ln">820</span>                CurrentTest::set(null);</span>
+<span class="covered"><span class="ln">821</span>                SnapshotFileContext::set(null, null);</span>
+<span class=""><span class="ln">822</span>            }</span>
+<span class="covered"><span class="ln">823</span>        };</span>
+<span class=""><span class="ln">824</span>    }</span>
+<span class=""><span class="ln">825</span></span>
+<span class=""><span class="ln">826</span>    /**</span>
+<span class=""><span class="ln">827</span>     * Whether the test closure&#039;s own parameter at this dataset slot is</span>
+<span class=""><span class="ln">828</span>     * itself typed to accept a callable — `Closure`/`callable`, bare or</span>
+<span class=""><span class="ln">829</span>     * inside a union — in which case a zero-arg closure-valued row must</span>
+<span class=""><span class="ln">830</span>     * be passed through as-is, not auto-invoked (see definition()&#039;s</span>
+<span class=""><span class="ln">831</span>     * bound-rows comment). Only positional slots resolve; a named row</span>
+<span class=""><span class="ln">832</span>     * key can&#039;t be matched to a parameter by position.</span>
+<span class=""><span class="ln">833</span>     */</span>
+<span class=""><span class="ln">834</span>    /**</span>
+<span class=""><span class="ln">835</span>     * A condition hook, or the condition template of its phase — which a</span>
+<span class=""><span class="ln">836</span>     * uses() class may not have (it need not be a TestCase), and which</span>
+<span class=""><span class="ln">837</span>     * then has nothing to run.</span>
+<span class=""><span class="ln">838</span>     */</span>
+<span class=""><span class="ln">839</span>    private static function invokeHook(object $instance, string $hook): void</span>
+<span class=""><span class="ln">840</span>    {</span>
+<span class="covered"><span class="ln">841</span>        if (HookPlan::isTemplate($hook) &amp;&amp; !method_exists($instance, $hook)) {</span>
+<span class="covered"><span class="ln">842</span>            return;</span>
+<span class=""><span class="ln">843</span>        }</span>
+<span class=""><span class="ln">844</span></span>
+<span class="covered"><span class="ln">845</span>        (new ReflectionMethod($instance, $hook))-&gt;invoke($instance);</span>
+<span class=""><span class="ln">846</span>    }</span>
+<span class=""><span class="ln">847</span></span>
+<span class=""><span class="ln">848</span>    private static function targetParameterAcceptsCallable(?Closure $test, int|string $key): bool</span>
+<span class=""><span class="ln">849</span>    {</span>
+<span class="covered"><span class="ln">850</span>        if (!$test instanceof Closure || !is_int($key)) {</span>
+<span class="missed"><span class="ln">851</span>            return false;</span>
+<span class=""><span class="ln">852</span>        }</span>
+<span class=""><span class="ln">853</span></span>
+<span class="covered"><span class="ln">854</span>        $parameters = (new ReflectionFunction($test))-&gt;getParameters();</span>
+<span class="covered"><span class="ln">855</span>        $type       = ($parameters[$key] ?? null)?-&gt;getType();</span>
+<span class=""><span class="ln">856</span></span>
+<span class="covered"><span class="ln">857</span>        return $type !== null &amp;&amp; self::typeAcceptsCallable($type);</span>
+<span class=""><span class="ln">858</span>    }</span>
+<span class=""><span class="ln">859</span></span>
+<span class=""><span class="ln">860</span>    private static function typeAcceptsCallable(ReflectionType $type): bool</span>
+<span class=""><span class="ln">861</span>    {</span>
+<span class="covered"><span class="ln">862</span>        if ($type instanceof ReflectionNamedType) {</span>
+<span class="covered"><span class="ln">863</span>            return in_array($type-&gt;getName(), [&#039;callable&#039;, &#039;Closure&#039;], true);</span>
+<span class=""><span class="ln">864</span>        }</span>
+<span class=""><span class="ln">865</span></span>
+<span class="missed"><span class="ln">866</span>        if (!$type instanceof ReflectionUnionType) {</span>
+<span class=""><span class="ln">867</span>            // An intersection type: callable/Closure can&#039;t be a member</span>
+<span class=""><span class="ln">868</span>            // of one (both are non-interface types), so it never matches.</span>
+<span class="missed"><span class="ln">869</span>            return false;</span>
+<span class=""><span class="ln">870</span>        }</span>
+<span class=""><span class="ln">871</span></span>
+<span class="missed"><span class="ln">872</span>        foreach ($type-&gt;getTypes() as $member) {</span>
+<span class="missed"><span class="ln">873</span>            if ($member instanceof ReflectionNamedType &amp;&amp; self::typeAcceptsCallable($member)) {</span>
+<span class="missed"><span class="ln">874</span>                return true;</span>
+<span class=""><span class="ln">875</span>            }</span>
+<span class=""><span class="ln">876</span>        }</span>
+<span class=""><span class="ln">877</span></span>
+<span class="missed"><span class="ln">878</span>        return false;</span>
+<span class=""><span class="ln">879</span>    }</span>
+<span class=""><span class="ln">880</span></span>
+<span class=""><span class="ln">881</span>    /**</span>
+<span class=""><span class="ln">882</span>     * The runnable body: the test closure, or — higher-order tests —</span>
+<span class=""><span class="ln">883</span>     * the collected chain replayed against the instance. `-&gt;expect()`</span>
+<span class=""><span class="ln">884</span>     * re-roots the chain on an Expectation (its closure receives the</span>
+<span class=""><span class="ln">885</span>     * dataset/dependency arguments); every other step is called on</span>
+<span class=""><span class="ln">886</span>     * the running subject, so `get(&#039;/&#039;)-&gt;assertStatus(200)` reads the</span>
+<span class=""><span class="ln">887</span>     * way the spec writes it.</span>
+<span class=""><span class="ln">888</span>     *</span>
+<span class=""><span class="ln">889</span>     * @param class-string $class</span>
+<span class=""><span class="ln">890</span>     *</span>
+<span class=""><span class="ln">891</span>     * @return Closure(array&lt;array-key, mixed&gt;): mixed</span>
+<span class=""><span class="ln">892</span>     */</span>
+<span class=""><span class="ln">893</span>    private static function body(TestCall $call, object $instance, string $class): Closure</span>
+<span class=""><span class="ln">894</span>    {</span>
+<span class="covered"><span class="ln">895</span>        $test = $call-&gt;test;</span>
+<span class=""><span class="ln">896</span></span>
+<span class="covered"><span class="ln">897</span>        if ($test instanceof Closure) {</span>
+<span class="covered"><span class="ln">898</span>            return static function (array $args) use ($test, $instance, $class): mixed {</span>
+<span class="covered"><span class="ln">899</span>                $bound = @Closure::bind($test, $instance, $class);</span>
+<span class=""><span class="ln">900</span></span>
+<span class="covered"><span class="ln">901</span>                return ($bound ?? $test)(...$args);</span>
+<span class="covered"><span class="ln">902</span>            };</span>
+<span class=""><span class="ln">903</span>        }</span>
+<span class=""><span class="ln">904</span></span>
+<span class="covered"><span class="ln">905</span>        return static function (array $args) use ($call, $instance, $class): mixed {</span>
+<span class="covered"><span class="ln">906</span>            $subject = $instance;</span>
+<span class=""><span class="ln">907</span></span>
+<span class="covered"><span class="ln">908</span>            foreach ($call-&gt;chain as $position =&gt; [$member, $stepArguments, $isProperty]) {</span>
+<span class="covered"><span class="ln">909</span>                if ($isProperty) {</span>
+<span class="covered"><span class="ln">910</span>                    $subject = $subject-&gt;{$member};</span>
+<span class=""><span class="ln">911</span></span>
+<span class="covered"><span class="ln">912</span>                    continue;</span>
+<span class=""><span class="ln">913</span>                }</span>
+<span class=""><span class="ln">914</span></span>
+<span class="covered"><span class="ln">915</span>                $stepArguments = array_map(</span>
+<span class="covered"><span class="ln">916</span>                    static fn(mixed $argument): mixed =&gt; $argument instanceof Closure</span>
+<span class="covered"><span class="ln">917</span>                        ? (@Closure::bind($argument, $instance, $class) ?? $argument)</span>
+<span class="covered"><span class="ln">918</span>                        : $argument,</span>
+<span class="covered"><span class="ln">919</span>                    $stepArguments,</span>
+<span class=""><span class="ln">920</span>                );</span>
+<span class=""><span class="ln">921</span></span>
+<span class="covered"><span class="ln">922</span>                if ($subject === $instance &amp;&amp; $member === &#039;expect&#039;) {</span>
+<span class="covered"><span class="ln">923</span>                    $value = $stepArguments[0] ?? null;</span>
+<span class=""><span class="ln">924</span></span>
+<span class=""><span class="ln">925</span>                    // toThrow needs the closure unevaluated — it invokes</span>
+<span class=""><span class="ln">926</span>                    // and observes it itself. Everything else expects the</span>
+<span class=""><span class="ln">927</span>                    // produced value.</span>
+<span class="covered"><span class="ln">928</span>                    $subject = new Expectation(</span>
+<span class="covered"><span class="ln">929</span>                        $value instanceof Closure &amp;&amp; !self::nextMatcherIsToThrow($call-&gt;chain, $position)</span>
+<span class="covered"><span class="ln">930</span>                            ? $value(...$args)</span>
+<span class="covered"><span class="ln">931</span>                            : $value,</span>
+<span class=""><span class="ln">932</span>                    );</span>
+<span class=""><span class="ln">933</span></span>
+<span class="covered"><span class="ln">934</span>                    continue;</span>
+<span class=""><span class="ln">935</span>                }</span>
+<span class=""><span class="ln">936</span></span>
+<span class="covered"><span class="ln">937</span>                $subject = $subject-&gt;{$member}(...$stepArguments);</span>
+<span class=""><span class="ln">938</span>            }</span>
+<span class=""><span class="ln">939</span></span>
+<span class="covered"><span class="ln">940</span>            return null;</span>
+<span class="covered"><span class="ln">941</span>        };</span>
+<span class=""><span class="ln">942</span>    }</span>
+<span class=""><span class="ln">943</span></span>
+<span class=""><span class="ln">944</span>    /**</span>
+<span class=""><span class="ln">945</span>     * Whether the first matcher after the expect step (skipping</span>
+<span class=""><span class="ln">946</span>     * property reads like -&gt;not) is toThrow.</span>
+<span class=""><span class="ln">947</span>     *</span>
+<span class=""><span class="ln">948</span>     * @param list&lt;array{non-empty-string, list&lt;mixed&gt;, bool}&gt; $chain</span>
+<span class=""><span class="ln">949</span>     */</span>
+<span class=""><span class="ln">950</span>    private static function nextMatcherIsToThrow(array $chain, int $expectPosition): bool</span>
+<span class=""><span class="ln">951</span>    {</span>
+<span class="covered"><span class="ln">952</span>        for ($i = $expectPosition + 1, $count = count($chain); $i &lt; $count; ++$i) {</span>
+<span class="covered"><span class="ln">953</span>            [$member, , $isProperty] = $chain[$i];</span>
+<span class=""><span class="ln">954</span></span>
+<span class="covered"><span class="ln">955</span>            if ($isProperty) {</span>
+<span class="missed"><span class="ln">956</span>                continue;</span>
+<span class=""><span class="ln">957</span>            }</span>
+<span class=""><span class="ln">958</span></span>
+<span class="covered"><span class="ln">959</span>            return $member === &#039;toThrow&#039;;</span>
+<span class=""><span class="ln">960</span>        }</span>
+<span class=""><span class="ln">961</span></span>
+<span class="missed"><span class="ln">962</span>        return false;</span>
+<span class=""><span class="ln">963</span>    }</span>
+<span class=""><span class="ln">964</span></span>
+<span class=""><span class="ln">965</span>    /**</span>
+<span class=""><span class="ln">966</span>     * The spec&#039;s throws() dual reading: a class name checks the type,</span>
+<span class=""><span class="ln">967</span>     * anything else is a message fragment.</span>
+<span class=""><span class="ln">968</span>     *</span>
+<span class=""><span class="ln">969</span>     * @param non-empty-string $exception</span>
+<span class=""><span class="ln">970</span>     */</span>
+<span class=""><span class="ln">971</span>    private static function assertThrown(Throwable $thrown, string $exception, ?string $message): void</span>
+<span class=""><span class="ln">972</span>    {</span>
+<span class="covered"><span class="ln">973</span>        if (class_exists($exception) || interface_exists($exception)) {</span>
+<span class="covered"><span class="ln">974</span>            Assert::assertInstanceOf($exception, $thrown);</span>
+<span class=""><span class="ln">975</span>        } else {</span>
+<span class="covered"><span class="ln">976</span>            $message ??= $exception;</span>
+<span class=""><span class="ln">977</span>        }</span>
+<span class=""><span class="ln">978</span></span>
+<span class="covered"><span class="ln">979</span>        if ($message !== null) {</span>
+<span class="covered"><span class="ln">980</span>            Assert::assertStringContainsString($message, $thrown-&gt;getMessage());</span>
+<span class=""><span class="ln">981</span>        }</span>
+<span class=""><span class="ln">982</span>    }</span>
+<span class=""><span class="ln">983</span>}</span>
+<span class=""><span class="ln">984</span></span>
+</pre>
+</body>
+</html>

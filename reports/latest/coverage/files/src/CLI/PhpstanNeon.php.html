@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/CLI/PhpstanNeon.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/CLI/PhpstanNeon.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\CLI;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use LucianoPereira\Crucible\Filesystem\WorkingDirectory;</span>
+<span class=""><span class="ln">14</span></span>
+<span class=""><span class="ln">15</span>use function array_splice;</span>
+<span class=""><span class="ln">16</span>use function explode;</span>
+<span class=""><span class="ln">17</span>use function file_get_contents;</span>
+<span class=""><span class="ln">18</span>use function implode;</span>
+<span class=""><span class="ln">19</span>use function in_array;</span>
+<span class=""><span class="ln">20</span>use function is_array;</span>
+<span class=""><span class="ln">21</span>use function is_dir;</span>
+<span class=""><span class="ln">22</span>use function is_file;</span>
+<span class=""><span class="ln">23</span>use function json_decode;</span>
+<span class=""><span class="ln">24</span>use function preg_match;</span>
+<span class=""><span class="ln">25</span>use function str_contains;</span>
+<span class=""><span class="ln">26</span>use function str_ends_with;</span>
+<span class=""><span class="ln">27</span></span>
+<span class=""><span class="ln">28</span>/**</span>
+<span class=""><span class="ln">29</span> * Pure neon wiring for `crucible phpstan-init` (D-049): build a fresh</span>
+<span class=""><span class="ln">30</span> * phpstan.neon from the project&#039;s own configuration, or insert the</span>
+<span class=""><span class="ln">31</span> * one includes line into an existing file. Editing is deliberately</span>
+<span class=""><span class="ln">32</span> * conservative — neon is indentation-sensitive and full of user</span>
+<span class=""><span class="ln">33</span> * comments, so a full parse-and-rewrite would need a dependency and</span>
+<span class=""><span class="ln">34</span> * would destroy formatting on round-trip. A minimal line insertion</span>
+<span class=""><span class="ln">35</span> * covers the real shapes; anything structurally surprising returns</span>
+<span class=""><span class="ln">36</span> * null, and the caller prints the line for the user to place — the</span>
+<span class=""><span class="ln">37</span> * migrate-config principle: never silently lossy.</span>
+<span class=""><span class="ln">38</span> */</span>
+<span class=""><span class="ln">39</span>final readonly class PhpstanNeon</span>
+<span class=""><span class="ln">40</span>{</span>
+<span class=""><span class="ln">41</span>    /**</span>
+<span class=""><span class="ln">42</span>     * A fresh phpstan.neon: the extension wired, the paths taken</span>
+<span class=""><span class="ln">43</span>     * from what the crucible configuration already declares.</span>
+<span class=""><span class="ln">44</span>     *</span>
+<span class=""><span class="ln">45</span>     * @param ?non-empty-string      $include null = the installer wires it</span>
+<span class=""><span class="ln">46</span>     * @param list&lt;non-empty-string&gt; $paths</span>
+<span class=""><span class="ln">47</span>     */</span>
+<span class=""><span class="ln">48</span>    public static function create(?string $include, array $paths): string</span>
+<span class=""><span class="ln">49</span>    {</span>
+<span class="covered"><span class="ln">50</span>        $lines = [</span>
+<span class="covered"><span class="ln">51</span>            ...self::includes($include === null ? [] : [$include]),</span>
+<span class="covered"><span class="ln">52</span>            &#039;parameters:&#039;,</span>
+<span class="covered"><span class="ln">53</span>            &#039;    # Crucible\&#039;s own position: max, honestly earned. Lower it to&#039;,</span>
+<span class="covered"><span class="ln">54</span>            &#039;    # get started on an existing suite, raise it back as the&#039;,</span>
+<span class="covered"><span class="ln">55</span>            &#039;    # annotations catch up.&#039;,</span>
+<span class="covered"><span class="ln">56</span>            &#039;    level: max&#039;,</span>
+<span class="covered"><span class="ln">57</span>            &#039;    paths:&#039;,</span>
+<span class=""><span class="ln">58</span>        ];</span>
+<span class=""><span class="ln">59</span></span>
+<span class="covered"><span class="ln">60</span>        foreach ($paths as $path) {</span>
+<span class="covered"><span class="ln">61</span>            $lines[] = &#039;        - &#039; . $path;</span>
+<span class=""><span class="ln">62</span>        }</span>
+<span class=""><span class="ln">63</span></span>
+<span class="covered"><span class="ln">64</span>        return implode(&quot;\n&quot;, $lines) . &quot;\n&quot;;</span>
+<span class=""><span class="ln">65</span>    }</span>
+<span class=""><span class="ln">66</span></span>
+<span class=""><span class="ln">67</span>    /**</span>
+<span class=""><span class="ln">68</span>     * A configuration Crucible writes for its own analysis — type tests</span>
+<span class=""><span class="ln">69</span>     * (D-130), lint-inline&#039;s shadow files (D-052) — never for a person to</span>
+<span class=""><span class="ln">70</span>     * edit: the extension include, then each parameter, a list parameter</span>
+<span class=""><span class="ln">71</span>     * as a neon list. An empty list is left out; PHPStan reads an empty</span>
+<span class=""><span class="ln">72</span>     * `paths:` as null and refuses it.</span>
+<span class=""><span class="ln">73</span>     *</span>
+<span class=""><span class="ln">74</span>     * @param list&lt;string&gt;                                  $includes   none when phpstan/extension-installer loads the extension</span>
+<span class=""><span class="ln">75</span>     * @param array&lt;non-empty-string, string|list&lt;string&gt;&gt; $parameters</span>
+<span class=""><span class="ln">76</span>     * @param list&lt;class-string&gt;                            $rules      rules registered on their own, outside any include</span>
+<span class=""><span class="ln">77</span>     */</span>
+<span class=""><span class="ln">78</span>    public static function analysis(array $includes, array $parameters, array $rules = []): string</span>
+<span class=""><span class="ln">79</span>    {</span>
+<span class="covered"><span class="ln">80</span>        $lines = [...self::includes($includes), &#039;parameters:&#039;];</span>
+<span class=""><span class="ln">81</span></span>
+<span class="covered"><span class="ln">82</span>        foreach ($parameters as $name =&gt; $value) {</span>
+<span class="covered"><span class="ln">83</span>            if (!is_array($value)) {</span>
+<span class="covered"><span class="ln">84</span>                $lines[] = &#039;    &#039; . $name . &#039;: &#039; . $value;</span>
+<span class=""><span class="ln">85</span></span>
+<span class="covered"><span class="ln">86</span>                continue;</span>
+<span class=""><span class="ln">87</span>            }</span>
+<span class=""><span class="ln">88</span></span>
+<span class="covered"><span class="ln">89</span>            if ($value !== []) {</span>
+<span class="covered"><span class="ln">90</span>                $lines[] = &#039;    &#039; . $name . &#039;:&#039;;</span>
+<span class=""><span class="ln">91</span></span>
+<span class="covered"><span class="ln">92</span>                foreach ($value as $item) {</span>
+<span class="covered"><span class="ln">93</span>                    $lines[] = &#039;        - &#039; . $item;</span>
+<span class=""><span class="ln">94</span>                }</span>
+<span class=""><span class="ln">95</span>            }</span>
+<span class=""><span class="ln">96</span>        }</span>
+<span class=""><span class="ln">97</span></span>
+<span class="covered"><span class="ln">98</span>        if ($rules !== []) {</span>
+<span class="covered"><span class="ln">99</span>            $lines = [...$lines, &#039;&#039;, &#039;rules:&#039;];</span>
+<span class=""><span class="ln">100</span></span>
+<span class="covered"><span class="ln">101</span>            foreach ($rules as $rule) {</span>
+<span class="covered"><span class="ln">102</span>                $lines[] = &#039;    - &#039; . $rule;</span>
+<span class=""><span class="ln">103</span>            }</span>
+<span class=""><span class="ln">104</span>        }</span>
+<span class=""><span class="ln">105</span></span>
+<span class="covered"><span class="ln">106</span>        return implode(&quot;\n&quot;, $lines) . &quot;\n&quot;;</span>
+<span class=""><span class="ln">107</span>    }</span>
+<span class=""><span class="ln">108</span></span>
+<span class=""><span class="ln">109</span>    /**</span>
+<span class=""><span class="ln">110</span>     * The include block. Crucible&#039;s extension is left out when</span>
+<span class=""><span class="ln">111</span>     * phpstan/extension-installer loads it (D-127) — an include written</span>
+<span class=""><span class="ln">112</span>     * as well loads it twice.</span>
+<span class=""><span class="ln">113</span>     *</span>
+<span class=""><span class="ln">114</span>     * @param list&lt;string&gt; $includes</span>
+<span class=""><span class="ln">115</span>     *</span>
+<span class=""><span class="ln">116</span>     * @return list&lt;string&gt;</span>
+<span class=""><span class="ln">117</span>     */</span>
+<span class=""><span class="ln">118</span>    private static function includes(array $includes): array</span>
+<span class=""><span class="ln">119</span>    {</span>
+<span class="covered"><span class="ln">120</span>        if ($includes === []) {</span>
+<span class="covered"><span class="ln">121</span>            return [];</span>
+<span class=""><span class="ln">122</span>        }</span>
+<span class=""><span class="ln">123</span></span>
+<span class="covered"><span class="ln">124</span>        $lines = [&#039;includes:&#039;];</span>
+<span class=""><span class="ln">125</span></span>
+<span class="covered"><span class="ln">126</span>        foreach ($includes as $include) {</span>
+<span class="covered"><span class="ln">127</span>            $lines[] = &#039;    - &#039; . $include;</span>
+<span class=""><span class="ln">128</span>        }</span>
+<span class=""><span class="ln">129</span></span>
+<span class="covered"><span class="ln">130</span>        return [...$lines, &#039;&#039;];</span>
+<span class=""><span class="ln">131</span>    }</span>
+<span class=""><span class="ln">132</span></span>
+<span class=""><span class="ln">133</span>    /**</span>
+<span class=""><span class="ln">134</span>     * @param non-empty-string $include</span>
+<span class=""><span class="ln">135</span>     */</span>
+<span class=""><span class="ln">136</span>    public static function alreadyWired(string $existing, string $include): bool</span>
+<span class=""><span class="ln">137</span>    {</span>
+<span class="covered"><span class="ln">138</span>        return str_contains($existing, $include);</span>
+<span class=""><span class="ln">139</span>    }</span>
+<span class=""><span class="ln">140</span></span>
+<span class=""><span class="ln">141</span>    /**</span>
+<span class=""><span class="ln">142</span>     * The existing file with the includes entry inserted, or null</span>
+<span class=""><span class="ln">143</span>     * when the file&#039;s shape cannot be edited safely.</span>
+<span class=""><span class="ln">144</span>     *</span>
+<span class=""><span class="ln">145</span>     * @param non-empty-string $include</span>
+<span class=""><span class="ln">146</span>     */</span>
+<span class=""><span class="ln">147</span>    public static function wire(string $existing, string $include): ?string</span>
+<span class=""><span class="ln">148</span>    {</span>
+<span class="covered"><span class="ln">149</span>        $lines = explode(&quot;\n&quot;, $existing);</span>
+<span class=""><span class="ln">150</span></span>
+<span class="covered"><span class="ln">151</span>        foreach ($lines as $index =&gt; $line) {</span>
+<span class=""><span class="ln">152</span>            // The inline list form `includes: [...]` — editable only</span>
+<span class=""><span class="ln">153</span>            // by rewriting the expression; hands off.</span>
+<span class="covered"><span class="ln">154</span>            if (preg_match(&#039;/^includes:\s*\[/&#039;, $line) === 1) {</span>
+<span class="covered"><span class="ln">155</span>                return null;</span>
+<span class=""><span class="ln">156</span>            }</span>
+<span class=""><span class="ln">157</span></span>
+<span class="covered"><span class="ln">158</span>            if (preg_match(&#039;/^includes:\s*(#.*)?$/&#039;, $line) !== 1) {</span>
+<span class="covered"><span class="ln">159</span>                continue;</span>
+<span class=""><span class="ln">160</span>            }</span>
+<span class=""><span class="ln">161</span></span>
+<span class=""><span class="ln">162</span>            // Match the indentation of the first existing entry so</span>
+<span class=""><span class="ln">163</span>            // the insertion reads as if it was always there.</span>
+<span class="covered"><span class="ln">164</span>            $indent = &#039;    &#039;;</span>
+<span class=""><span class="ln">165</span></span>
+<span class="covered"><span class="ln">166</span>            if (isset($lines[$index + 1]) &amp;&amp; preg_match(&#039;/^(\s+)-\s/&#039;, $lines[$index + 1], $matches) === 1) {</span>
+<span class="covered"><span class="ln">167</span>                $indent = $matches[1];</span>
+<span class=""><span class="ln">168</span>            }</span>
+<span class=""><span class="ln">169</span></span>
+<span class="covered"><span class="ln">170</span>            array_splice($lines, $index + 1, 0, [$indent . &#039;- &#039; . $include]);</span>
+<span class=""><span class="ln">171</span></span>
+<span class="covered"><span class="ln">172</span>            return implode(&quot;\n&quot;, $lines);</span>
+<span class=""><span class="ln">173</span>        }</span>
+<span class=""><span class="ln">174</span></span>
+<span class=""><span class="ln">175</span>        // No includes section: prepend one. Top-level key order is</span>
+<span class=""><span class="ln">176</span>        // free in neon, and a leading section above existing comments</span>
+<span class=""><span class="ln">177</span>        // parses fine.</span>
+<span class="covered"><span class="ln">178</span>        $prefix = &quot;includes:\n    - &quot; . $include . &quot;\n\n&quot;;</span>
+<span class=""><span class="ln">179</span></span>
+<span class="covered"><span class="ln">180</span>        return $prefix . $existing . (str_ends_with($existing, &quot;\n&quot;) || $existing === &#039;&#039; ? &#039;&#039; : &quot;\n&quot;);</span>
+<span class=""><span class="ln">181</span>    }</span>
+<span class=""><span class="ln">182</span></span>
+<span class=""><span class="ln">183</span>    /**</span>
+<span class=""><span class="ln">184</span>     * Whether phpstan/extension-installer is installed and has not been</span>
+<span class=""><span class="ln">185</span>     * told to skip Crucible (its `ignore` list in the project&#039;s</span>
+<span class=""><span class="ln">186</span>     * composer.json). When it has, the installer loads extension.neon</span>
+<span class=""><span class="ln">187</span>     * (D-127), and a configuration that includes it as well is refused</span>
+<span class=""><span class="ln">188</span>     * by PHPStan: a file included twice.</span>
+<span class=""><span class="ln">189</span>     *</span>
+<span class=""><span class="ln">190</span>     * The working directory&#039;s vendor/, not Composer\InstalledVersions:</span>
+<span class=""><span class="ln">191</span>     * that answers for the autoloader this process started from, which</span>
+<span class=""><span class="ln">192</span>     * is the project&#039;s only when Crucible runs from the project&#039;s own</span>
+<span class=""><span class="ln">193</span>     * vendor/bin. The question here is about the project being analysed.</span>
+<span class=""><span class="ln">194</span>     */</span>
+<span class=""><span class="ln">195</span>    public static function installerLoadsExtension(WorkingDirectory $workingDirectory): bool</span>
+<span class=""><span class="ln">196</span>    {</span>
+<span class="missed"><span class="ln">197</span>        if (!is_dir($workingDirectory-&gt;path . &#039;/vendor/phpstan/extension-installer&#039;)) {</span>
+<span class="missed"><span class="ln">198</span>            return false;</span>
+<span class=""><span class="ln">199</span>        }</span>
+<span class=""><span class="ln">200</span></span>
+<span class="missed"><span class="ln">201</span>        $manifest = is_file($workingDirectory-&gt;path . &#039;/composer.json&#039;)</span>
+<span class="missed"><span class="ln">202</span>            ? json_decode((string) file_get_contents($workingDirectory-&gt;path . &#039;/composer.json&#039;), true)</span>
+<span class="missed"><span class="ln">203</span>            : null;</span>
+<span class="missed"><span class="ln">204</span>        $extra     = is_array($manifest) &amp;&amp; is_array($manifest[&#039;extra&#039;] ?? null) ? $manifest[&#039;extra&#039;] : [];</span>
+<span class="missed"><span class="ln">205</span>        $installer = is_array($extra[&#039;phpstan/extension-installer&#039;] ?? null) ? $extra[&#039;phpstan/extension-installer&#039;] : [];</span>
+<span class="missed"><span class="ln">206</span>        $ignored   = is_array($installer[&#039;ignore&#039;] ?? null) ? $installer[&#039;ignore&#039;] : [];</span>
+<span class=""><span class="ln">207</span></span>
+<span class="missed"><span class="ln">208</span>        return !in_array(&#039;cruciblephp/crucible&#039;, $ignored, true);</span>
+<span class=""><span class="ln">209</span>    }</span>
+<span class=""><span class="ln">210</span>}</span>
+<span class="missed"><span class="ln">211</span></span>
+</pre>
+</body>
+</html>

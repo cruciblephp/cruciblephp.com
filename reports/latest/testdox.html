@@ -1,0 +1,2226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Crucible test documentation</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h2 { font-size: 1rem; margin-bottom: .25rem; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+h2 small { font-weight: 400; color: #777; }
+ul { list-style: none; padding-left: 1rem; margin-top: 0; }
+li { padding: .1rem 0; font-size: .9rem; }
+li.passed .mark { color: #2f6f31; } li.failed .mark { color: #a12a2a; }
+li.untested .mark, li.skipped .mark { color: #8a6d1f; }
+.badge { font-size: .85rem; font-weight: 700; color: #fff; padding: .15rem .55rem; }
+.badge.success { background: #2e7d32; } .badge.caution { background: #b36b00; } .badge.danger { background: #c62828; }
+pre { background: #f6f6f6; padding: .75rem; font-size: .85rem; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span>Test documentation <span class="badge success">OK</span></h1>
+<h2>ArchDependency <small>tests/unit/Architecture/ArchDependencyTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A sibling reference inside the target is not a use</li>
+  <li class="passed"><span class="mark">✔</span> A reference out of the target is a use</li>
+  <li class="passed"><span class="mark">✔</span> A sibling reference does make a class used</li>
+  <li class="passed"><span class="mark">✔</span> A reference from outside makes a class used</li>
+  <li class="passed"><span class="mark">✔</span> Both spellings agree on every case</li>
+</ul>
+<h2>ArchRule <small>tests/unit/Architecture/ArchRuleTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A namespace prefix targets everything beneath it</li>
+  <li class="passed"><span class="mark">✔</span> The dependency rule names the offending pair</li>
+  <li class="passed"><span class="mark">✔</span> A real layering rule holds</li>
+  <li class="passed"><span class="mark">✔</span> Ignoring removes classes from the target set</li>
+  <li class="passed"><span class="mark">✔</span> Wildcards match within and across segments</li>
+  <li class="passed"><span class="mark">✔</span> A rule that matches nothing fails</li>
+  <li class="passed"><span class="mark">✔</span> A rule with no expectation fails</li>
+  <li class="passed"><span class="mark">✔</span> The inverse layering rule finds the far side crossing</li>
+  <li class="passed"><span class="mark">✔</span> A violation of the inverse rule is reported</li>
+  <li class="passed"><span class="mark">✔</span> Traits are traits and not classes</li>
+  <li class="passed"><span class="mark">✔</span> A trait namespace is not classes</li>
+  <li class="passed"><span class="mark">✔</span> An enum is an enum</li>
+  <li class="passed"><span class="mark">✔</span> Backing is part of the shape</li>
+  <li class="passed"><span class="mark">✔</span> An int backed enum is not string backed</li>
+  <li class="passed"><span class="mark">✔</span> An unbacked enum is backed by nothing</li>
+  <li class="passed"><span class="mark">✔</span> Extending and implementing nothing</li>
+  <li class="passed"><span class="mark">✔</span> Strict equality is read from the source</li>
+  <li class="passed"><span class="mark">✔</span> Used in nothing is an empty allowlist</li>
+  <li class="passed"><span class="mark">✔</span> Every class is named as its path implies</li>
+  <li class="passed"><span class="mark">✔</span> Methods are checked only where they are declared</li>
+  <li class="passed"><span class="mark">✔</span> An undocumented method is reported</li>
+  <li class="passed"><span class="mark">✔</span> Properties skip promoted ones</li>
+</ul>
+<h2>rules.pest <small>tests/unit/Architecture/rules.pest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Event objects are immutable</li>
+  <li class="passed"><span class="mark">✔</span> The impact tier never reaches the browser tier</li>
+  <li class="passed"><span class="mark">✔</span> The retrigger endpoint stays inside the watch tier</li>
+</ul>
+<h2>Assert <small>tests/unit/Assert/AssertTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Identity and counting</li>
+  <li class="passed"><span class="mark">✔</span> Same on strings carries structured diff</li>
+  <li class="passed"><span class="mark">✔</span> Equality families</li>
+  <li class="passed"><span class="mark">✔</span> Boolean null and emptiness</li>
+  <li class="passed"><span class="mark">✔</span> Counts and sizes</li>
+  <li class="passed"><span class="mark">✔</span> Comparisons</li>
+  <li class="passed"><span class="mark">✔</span> Iterable families</li>
+  <li class="passed"><span class="mark">✔</span> String families</li>
+  <li class="passed"><span class="mark">✔</span> Object and type families</li>
+  <li class="passed"><span class="mark">✔</span> Filesystem families</li>
+  <li class="passed"><span class="mark">✔</span> Fail throws and prepends custom messages</li>
+</ul>
+<h2>AssertTranche <small>tests/unit/Assert/AssertTrancheTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Case and line ending insensitive equality</li>
+  <li class="passed"><span class="mark">✔</span> Float specials</li>
+  <li class="passed"><span class="mark">✔</span> Object equals uses the declared protocol</li>
+  <li class="passed"><span class="mark">✔</span> String matches format</li>
+  <li class="passed"><span class="mark">✔</span> File content equality</li>
+  <li class="passed"><span class="mark">✔</span> Missing file is a failure not an error</li>
+  <li class="passed"><span class="mark">✔</span> Json comparisons</li>
+  <li class="passed"><span class="mark">✔</span> Readability and writability</li>
+</ul>
+<h2>Differ <small>tests/unit/Assert/DifferTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Marks removals additions and context</li>
+  <li class="passed"><span class="mark">✔</span> Pure addition and removal</li>
+  <li class="passed"><span class="mark">✔</span> Context collapses the unchanged runs around each change</li>
+  <li class="passed"><span class="mark">✔</span> Without context every unchanged line survives</li>
+</ul>
+<h2>EqualitySemantics <small>tests/unit/Assert/EqualitySemanticsTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Numeric juggling between number and numeric string</li>
+  <li class="passed"><span class="mark">✔</span> Two strings never juggle numerically</li>
+  <li class="passed"><span class="mark">✔</span> Nan is never equal</li>
+  <li class="passed"><span class="mark">✔</span> Delta applies to numbers and recurses into arrays</li>
+  <li class="passed"><span class="mark">✔</span> Arrays compare by keys order insensitive</li>
+  <li class="passed"><span class="mark">✔</span> Canonicalize compares lists as multisets</li>
+  <li class="passed"><span class="mark">✔</span> Date times compare by instant</li>
+  <li class="passed"><span class="mark">✔</span> Objects compare by class and properties recursively</li>
+  <li class="passed"><span class="mark">✔</span> Cyclic object graphs do not recurse forever</li>
+  <li class="passed"><span class="mark">✔</span> A stringable object equals its string form</li>
+  <li class="passed"><span class="mark">✔</span> A non stringable object is never equal to a string</li>
+</ul>
+<h2>Exporter <small>tests/unit/Assert/ExporterTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Scalars</li>
+  <li class="passed"><span class="mark">✔</span> Arrays are multiline and nested</li>
+  <li class="passed"><span class="mark">✔</span> Objects export class and properties</li>
+  <li class="passed"><span class="mark">✔</span> Object recursion is guarded</li>
+  <li class="passed"><span class="mark">✔</span> Enums export as class and case</li>
+  <li class="passed"><span class="mark">✔</span> Describe is short for compound values</li>
+</ul>
+<h2>BrowserKernelHandler <small>tests/unit/Bridge/Laravel/BrowserKernelHandlerTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> An unbooted application is named rather than fatal</li>
+  <li class="passed"><span class="mark">✔</span> The kernels response is carried back whole</li>
+  <li class="passed"><span class="mark">✔</span> The response headers arrive without the ones the renderer owns</li>
+  <li class="passed"><span class="mark">✔</span> The kernel is terminated after the response</li>
+  <li class="passed"><span class="mark">✔</span> The request reaches the kernel intact</li>
+</ul>
+<h2>CrucibleServiceProvider <small>tests/unit/Bridge/Laravel/CrucibleServiceProviderTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The artisan test command is registered on boot</li>
+  <li class="passed"><span class="mark">✔</span> A worker token arms laravels parallel testing flag</li>
+  <li class="passed"><span class="mark">✔</span> A sequential run leaves the parallel flag alone</li>
+</ul>
+<h2>Functions <small>tests/unit/Bridge/PestLaravel/FunctionsTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Each proxy forwards to the current test instance</li>
+  <li class="passed"><span class="mark">✔</span> Calling a proxy outside a running test throws</li>
+</ul>
+<h2>AutoMixedTrait <small>tests/unit/Bridge/PestSnapshots/AutoMixedTraitTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Returns nothing when the snapshots package is not installed</li>
+  <li class="passed"><span class="mark">✔</span> Returns nothing for a final class either</li>
+</ul>
+<h2>Functions <small>tests/unit/Bridge/PestSnapshots/FunctionsTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Calling a proxy outside a running test throws</li>
+  <li class="passed"><span class="mark">✔</span> Proxy refuses an instance that does not actually use the real trait</li>
+  <li class="passed"><span class="mark">✔</span> Expect matcher refuses an instance that does not actually use the real trait</li>
+  <li class="passed"><span class="mark">✔</span> To match snapshot resolves to crucibles own native matcher not spaties</li>
+</ul>
+<h2>SnapshotIdentityWrapper <small>tests/unit/Bridge/PestSnapshots/SnapshotIdentityWrapperTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A class using the trait is wrapped in a subclass of it</li>
+  <li class="passed"><span class="mark">✔</span> A class without the trait is left alone</li>
+  <li class="passed"><span class="mark">✔</span> The trait counts wherever it is inherited</li>
+  <li class="passed"><span class="mark">✔</span> The trait counts when another trait brings it</li>
+  <li class="passed"><span class="mark">✔</span> Each class gets its own wrapper even sharing a parent</li>
+  <li class="passed"><span class="mark">✔</span> A final class is refused rather than compiled into a fatal</li>
+  <li class="passed"><span class="mark">✔</span> The generated identity resolves for a test with no dataset</li>
+  <li class="passed"><span class="mark">✔</span> Each dataset row gets its own snapshot identity</li>
+  <li class="passed"><span class="mark">✔</span> A named dataset row carries its label</li>
+</ul>
+<h2>Browsing <small>tests/unit/Browser/BrowsingTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Explicitly disabled means skip</li>
+  <li class="passed"><span class="mark">✔</span> Relative urls are a named refusal</li>
+  <li class="passed"><span class="mark">✔</span> Failure screenshot is null without a visit</li>
+  <li class="passed"><span class="mark">✔</span> Failure screenshot writes the png</li>
+  <li class="passed"><span class="mark">✔</span> A missing screenshot says why and only a dead session is a precondition</li>
+</ul>
+<h2>DriverSession <small>tests/unit/Browser/DriverSessionTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Drives a real browser end to end</li>
+  <li class="passed"><span class="mark">✔</span> The interaction surface against a real page</li>
+</ul>
+<h2>EnvironmentSimulation <small>tests/unit/Browser/EnvironmentSimulationTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Device city dark mode and overrides</li>
+  <li class="passed"><span class="mark">✔</span> Every preset produces a context</li>
+</ul>
+<h2>FrameBuffer <small>tests/unit/Browser/FrameBufferTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Frames emerge only when complete</li>
+  <li class="passed"><span class="mark">✔</span> Several frames in one chunk</li>
+  <li class="passed"><span class="mark">✔</span> Garbage payload is a named protocol error</li>
+</ul>
+<h2>FrameStream <small>tests/unit/Browser/FrameStreamTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Round trips a message</li>
+  <li class="passed"><span class="mark">✔</span> Round trips several frames in sequence</li>
+  <li class="passed"><span class="mark">✔</span> Short length prefix is a named protocol error</li>
+  <li class="passed"><span class="mark">✔</span> Truncated payload is a named protocol error</li>
+  <li class="passed"><span class="mark">✔</span> Non json payload is a named protocol error</li>
+</ul>
+<h2>HealthChecks <small>tests/unit/Browser/HealthChecksTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Console log semantics</li>
+  <li class="passed"><span class="mark">✔</span> Java script error semantics</li>
+  <li class="passed"><span class="mark">✔</span> Accessibility via axe</li>
+  <li class="passed"><span class="mark">✔</span> Screenshot bytes are png</li>
+</ul>
+<h2>InProcessServer <small>tests/unit/Browser/InProcessServerTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Served requests share the test process state</li>
+</ul>
+<h2>Inertia <small>tests/unit/Browser/InertiaTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The server rendered page is read from the dom</li>
+  <li class="passed"><span class="mark">✔</span> A client side visit is seen though data page never changes</li>
+  <li class="passed"><span class="mark">✔</span> A non inertia page is named not mistaken for a failed match</li>
+</ul>
+<h2>InitScript <small>tests/unit/Browser/InitScriptTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> An init script on the context runs before page scripts</li>
+  <li class="passed"><span class="mark">✔</span> An init script applies to every page in the context</li>
+</ul>
+<h2>InteractionTail <small>tests/unit/Browser/InteractionTailTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Drag attach key down frames and submit</li>
+  <li class="passed"><span class="mark">✔</span> The visit fan out surface</li>
+</ul>
+<h2>JsValue <small>tests/unit/Browser/JsValueTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Scalars</li>
+  <li class="passed"><span class="mark">✔</span> The probe pinned object shape</li>
+  <li class="passed"><span class="mark">✔</span> Unknown envelope is a named error</li>
+</ul>
+<h2>Livewire <small>tests/unit/Browser/LivewireTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A components state is read from its snapshot</li>
+  <li class="passed"><span class="mark">✔</span> A round trip is waited for and changes the state</li>
+  <li class="passed"><span class="mark">✔</span> A component can be addressed by name</li>
+</ul>
+<h2>NetworkIdle <small>tests/unit/Browser/NetworkIdleTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A page that settles returns once it is quiet</li>
+  <li class="passed"><span class="mark">✔</span> A wait outlasts a request that has not started yet</li>
+  <li class="passed"><span class="mark">✔</span> A page that never goes quiet is a named failure</li>
+  <li class="passed"><span class="mark">✔</span> A failed request still ends the wait</li>
+</ul>
+<h2>PageAssertionsSurface <small>tests/unit/Browser/PageAssertionsSurfaceTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The url decomposes into every component the surface exposes</li>
+  <li class="passed"><span class="mark">✔</span> Every url negation disagrees with its positive</li>
+  <li class="passed"><span class="mark">✔</span> An absent url component reads as empty rather than null</li>
+  <li class="passed"><span class="mark">✔</span> Url is compares the whole url or just the path</li>
+  <li class="passed"><span class="mark">✔</span> Path prefix suffix and fragment prefix read the decomposed part</li>
+  <li class="passed"><span class="mark">✔</span> Query parameters are split and percent decoded</li>
+  <li class="passed"><span class="mark">✔</span> A url with no query has no parameters</li>
+  <li class="passed"><span class="mark">✔</span> Title and text comparisons both directions</li>
+  <li class="passed"><span class="mark">✔</span> Text reads from body for the unscoped form</li>
+  <li class="passed"><span class="mark">✔</span> Attribute comparisons including absence</li>
+  <li class="passed"><span class="mark">✔</span> Form state reads through the field grammar</li>
+  <li class="passed"><span class="mark">✔</span> Select and indeterminate state go through the matched elements</li>
+  <li class="passed"><span class="mark">✔</span> Buttons ask the target grammar rather than the field grammar</li>
+  <li class="passed"><span class="mark">✔</span> Presence and visibility are different questions</li>
+  <li class="passed"><span class="mark">✔</span> Count reads the matched elements and refuses a non integer</li>
+  <li class="passed"><span class="mark">✔</span> Links are matched by visible text with quotes escaped</li>
+  <li class="passed"><span class="mark">✔</span> Source assertions read the raw content</li>
+  <li class="passed"><span class="mark">✔</span> Script compares strictly and defaults to true</li>
+  <li class="passed"><span class="mark">✔</span> Inertia props resolve through dot paths including list indexes</li>
+  <li class="passed"><span class="mark">✔</span> A page that is not inertia says so rather than not matching</li>
+  <li class="passed"><span class="mark">✔</span> Livewire state is read from the snapshot the component carries</li>
+  <li class="passed"><span class="mark">✔</span> A page with no livewire component is null rather than empty</li>
+  <li class="passed"><span class="mark">✔</span> Wire click waits for the cycle it started</li>
+  <li class="passed"><span class="mark">✔</span> Only log type console entries trip the console check</li>
+  <li class="passed"><span class="mark">✔</span> Java script errors and smoke are the same check</li>
+  <li class="passed"><span class="mark">✔</span> Every assertion returns the page so they chain</li>
+</ul>
+<h2>PageAssertions <small>tests/unit/Browser/PageAssertionsTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The assertion surface against a real page</li>
+  <li class="passed"><span class="mark">✔</span> Failures land in the assertion machinery</li>
+</ul>
+<h2>RelativeVisit <small>tests/unit/Browser/RelativeVisitTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Without a handler a relative visit is a named error</li>
+  <li class="passed"><span class="mark">✔</span> A misconfigured handler class is a named error</li>
+  <li class="passed"><span class="mark">✔</span> Relative visits serve through the handler and share the world</li>
+</ul>
+<h2>Selector <small>tests/unit/Browser/SelectorTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Data test shorthand</li>
+  <li class="passed"><span class="mark">✔</span> Css passes through</li>
+  <li class="passed"><span class="mark">✔</span> Bare words mean visible text</li>
+  <li class="passed"><span class="mark">✔</span> Bare html element names stay elements</li>
+  <li class="passed"><span class="mark">✔</span> Fields try name id and data test</li>
+  <li class="passed"><span class="mark">✔</span> Explicit field selectors pass through</li>
+</ul>
+<h2>CgiVariables <small>tests/unit/Browser/Server/CgiVariablesTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The method is uppercased and the uri kept</li>
+  <li class="passed"><span class="mark">✔</span> The host falls back to the loopback when no host header arrives</li>
+  <li class="passed"><span class="mark">✔</span> The host header wins when it arrives</li>
+  <li class="passed"><span class="mark">✔</span> Headers become uppercased underscored http variables</li>
+  <li class="passed"><span class="mark">✔</span> The content type is carried both prefixed and unprefixed</li>
+  <li class="passed"><span class="mark">✔</span> A response header keeps its hyphenated title casing</li>
+  <li class="passed"><span class="mark">✔</span> The headers the renderer owns are dropped</li>
+  <li class="passed"><span class="mark">✔</span> A non iterable or empty named entry is skipped rather than fatal</li>
+  <li class="passed"><span class="mark">✔</span> The last value of a repeated header wins</li>
+</ul>
+<h2>SessionGate <small>tests/unit/Browser/SessionGateTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The tier is off by default</li>
+  <li class="passed"><span class="mark">✔</span> Default state is a named error naming the config line</li>
+  <li class="passed"><span class="mark">✔</span> Explicitly disabled is its own named state</li>
+  <li class="passed"><span class="mark">✔</span> Enabled without playwright names the exact commands</li>
+  <li class="passed"><span class="mark">✔</span> Builder carries the browser block</li>
+  <li class="passed"><span class="mark">✔</span> Engine maps to playwright types</li>
+</ul>
+<h2>VisitDialect.pest <small>tests/unit/Browser/VisitDialect.pest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> It may visit a page and chain assertions</li>
+  <li class="passed"><span class="mark">✔</span> It refuses relative urls until a server bridge exists</li>
+</ul>
+<h2>AnsweredOptions <small>tests/unit/CLI/AnsweredOptionsTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Disable coverage ignore has nothing to disable</li>
+  <li class="passed"><span class="mark">✔</span> All has no configuration level selection to ignore</li>
+  <li class="passed"><span class="mark">✔</span> Check version answers and exits without running anything</li>
+  <li class="passed"><span class="mark">✔</span> The phpunit issue family has no issue to judge</li>
+</ul>
+<h2>CliOptions <small>tests/unit/CLI/CliOptionsTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Absent options are null so configuration wins</li>
+  <li class="passed"><span class="mark">✔</span> Valued options accept space and equals forms</li>
+  <li class="passed"><span class="mark">✔</span> View is a valued option selecting a progress view key</li>
+  <li class="passed"><span class="mark">✔</span> Repeatable options accumulate and split on commas</li>
+  <li class="passed"><span class="mark">✔</span> Boolean flags parse to true not null</li>
+  <li class="passed"><span class="mark">✔</span> Unknown options and stray arguments are errors</li>
+  <li class="passed"><span class="mark">✔</span> Last occurrence of a valued option wins</li>
+  <li class="passed"><span class="mark">✔</span> Changed takes an optional reference</li>
+  <li class="passed"><span class="mark">✔</span> Bare changed never consumes the next argument</li>
+  <li class="passed"><span class="mark">✔</span> An empty changed reference is an error</li>
+  <li class="passed"><span class="mark">✔</span> Related accumulates</li>
+  <li class="passed"><span class="mark">✔</span> Watch is a flag</li>
+  <li class="passed"><span class="mark">✔</span> Retries is a numeric option</li>
+  <li class="passed"><span class="mark">✔</span> Fail on flaky is a flag</li>
+  <li class="passed"><span class="mark">✔</span> Flakes is a command with rounds</li>
+  <li class="passed"><span class="mark">✔</span> Compat check is a command with auto fix and revert</li>
+  <li class="passed"><span class="mark">✔</span> Coverage is opt in</li>
+  <li class="passed"><span class="mark">✔</span> Todo listing flags parse</li>
+  <li class="passed"><span class="mark">✔</span> Profile and dirty parse as flags</li>
+  <li class="passed"><span class="mark">✔</span> Neither flag takes a value</li>
+  <li class="passed"><span class="mark">✔</span> The specs retry spelling counts total attempts</li>
+  <li class="passed"><span class="mark">✔</span> The two retry spellings are mutually exclusive</li>
+  <li class="passed"><span class="mark">✔</span> Aliases are rewritten to the option they point at</li>
+  <li class="passed"><span class="mark">✔</span> An alias still accepts what the option it points at accepts</li>
+  <li class="passed"><span class="mark">✔</span> Do not fail on is the off half of the fail on tri state</li>
+  <li class="passed"><span class="mark">✔</span> A spec spelling resolves when written with an equals</li>
+  <li class="passed"><span class="mark">✔</span> A fail on switch and its negation together is an error</li>
+  <li class="passed"><span class="mark">✔</span> The specs configuration switches parse as tri states</li>
+  <li class="passed"><span class="mark">✔</span> Bootstrap is valued and extension repeats</li>
+  <li class="passed"><span class="mark">✔</span> No coverage wins over every coverage spelling on the same command line</li>
+  <li class="passed"><span class="mark">✔</span> Every stop on switch parses as a tri state</li>
+  <li class="passed"><span class="mark">✔</span> The blanket off switches suppress what the same command line asked</li>
+  <li class="passed"><span class="mark">✔</span> The event stream takes three independent file targets</li>
+  <li class="passed"><span class="mark">✔</span> The dependency switches are a tri state and isolation is run wide</li>
+  <li class="passed"><span class="mark">✔</span> The coverage surface answers one question about collecting</li>
+  <li class="passed"><span class="mark">✔</span> No coverage suppresses every coverage target and the filter</li>
+  <li class="passed"><span class="mark">✔</span> Include path splits on the platform separator</li>
+  <li class="passed"><span class="mark">✔</span> Useless test reporting is on until turned off</li>
+  <li class="passed"><span class="mark">✔</span> The coverage floor is a percentage not an integer</li>
+  <li class="passed"><span class="mark">✔</span> The coverage floor collects coverage on its own</li>
+  <li class="passed"><span class="mark">✔</span> A coverage floor outside zero to one hundred is an error</li>
+  <li class="passed"><span class="mark">✔</span> The coverage floor and no coverage are mutually exclusive</li>
+</ul>
+<h2>CompatCheckCommand <small>tests/unit/CLI/Commands/CompatCheckCommandTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Fails fast when php unit is not installed</li>
+  <li class="passed"><span class="mark">✔</span> An oracle that ran nothing is not agreement</li>
+  <li class="passed"><span class="mark">✔</span> The candidate files are scanned for classes including pest shaped ones</li>
+  <li class="passed"><span class="mark">✔</span> Revert restores files from an existing manifest</li>
+  <li class="passed"><span class="mark">✔</span> Revert with nothing to revert is still successful</li>
+</ul>
+<h2>CompletionCommand <small>tests/unit/CLI/Commands/CompletionCommandTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Each shell offers every option the parser accepts</li>
+  <li class="passed"><span class="mark">✔</span> The script is only script</li>
+  <li class="passed"><span class="mark">✔</span> An unknown shell is refused with the list</li>
+</ul>
+<h2>ExtensionsCommand <small>tests/unit/CLI/Commands/ExtensionsCommandTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> List shows all three kinds with a kind column</li>
+  <li class="passed"><span class="mark">✔</span> List json tags each entry with its kind</li>
+  <li class="passed"><span class="mark">✔</span> Detail finds a report format by key</li>
+  <li class="passed"><span class="mark">✔</span> Detail finds a subscriber by key</li>
+  <li class="passed"><span class="mark">✔</span> Detail finds a progress view by key</li>
+  <li class="passed"><span class="mark">✔</span> Detail unknown key errors across all registries</li>
+  <li class="passed"><span class="mark">✔</span> Preview without key errors</li>
+  <li class="passed"><span class="mark">✔</span> Preview without a key asks and previews the answer</li>
+  <li class="passed"><span class="mark">✔</span> Preview report format writes the rendered document</li>
+  <li class="passed"><span class="mark">✔</span> Preview subscriber writes a real well formed j unit report</li>
+  <li class="passed"><span class="mark">✔</span> Preview progress view writes real team city service messages</li>
+</ul>
+<h2>InitCommand <small>tests/unit/CLI/Commands/InitCommandTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Non interactive terminal writes the prior static template unchanged</li>
+  <li class="passed"><span class="mark">✔</span> Interactive prompts customize the generated config</li>
+  <li class="passed"><span class="mark">✔</span> Declined overwrite keeps the existing file</li>
+  <li class="passed"><span class="mark">✔</span> Confirmed overwrite replaces the file</li>
+  <li class="passed"><span class="mark">✔</span> Unsafe characters are rejected until corrected</li>
+  <li class="passed"><span class="mark">✔</span> Existing phpunit xml is converted instead of prompting</li>
+</ul>
+<h2>DocumentedOptions <small>tests/unit/CLI/DocumentedOptionsTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Every option appears in the built in help</li>
+  <li class="passed"><span class="mark">✔</span> Every option appears in the manual</li>
+  <li class="passed"><span class="mark">✔</span> The manual documents no option that does not exist</li>
+</ul>
+<h2>PhpConfigurationCheck <small>tests/unit/CLI/PhpConfigurationCheckTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> It reports the specs settings and nothing else</li>
+  <li class="passed"><span class="mark">✔</span> Every result carries its own verdict</li>
+  <li class="passed"><span class="mark">✔</span> Only the settings that are off produce a warning</li>
+</ul>
+<h2>PhpstanNeon <small>tests/unit/CLI/PhpstanNeonTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A fresh file wires the extension and the project paths</li>
+  <li class="passed"><span class="mark">✔</span> Wiring inserts into an existing includes section</li>
+  <li class="passed"><span class="mark">✔</span> Wiring prepends a section when none exists</li>
+  <li class="passed"><span class="mark">✔</span> Already wired is detected</li>
+  <li class="passed"><span class="mark">✔</span> The inline list shape is refused not mangled</li>
+  <li class="passed"><span class="mark">✔</span> Comments and unusual indentation survive</li>
+  <li class="passed"><span class="mark">✔</span> The indent is the next entrys even on the first line</li>
+  <li class="passed"><span class="mark">✔</span> A prepended section leaves the file ending in one newline</li>
+  <li class="passed"><span class="mark">✔</span> An analysis configuration is written as given</li>
+  <li class="passed"><span class="mark">✔</span> A fresh file leaves the include to the installer</li>
+  <li class="passed"><span class="mark">✔</span> Crucible declares its extension to the installer</li>
+</ul>
+<h2>PostRunReport <small>tests/unit/CLI/PostRunReportTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A scoped deprecation policy judges only its own scope</li>
+  <li class="passed"><span class="mark">✔</span> The negation beats a configuration that turned the policy on</li>
+  <li class="passed"><span class="mark">✔</span> Fail on all issues covers every policy and still yields to a negation</li>
+  <li class="passed"><span class="mark">✔</span> An empty suite fails by default and the negation turns that off</li>
+  <li class="passed"><span class="mark">✔</span> The display family names what the tally counted</li>
+  <li class="passed"><span class="mark">✔</span> No display switch prints nothing</li>
+  <li class="passed"><span class="mark">✔</span> Exactly the minimum passes</li>
+  <li class="passed"><span class="mark">✔</span> A shortfall names the numbers</li>
+  <li class="passed"><span class="mark">✔</span> No minimum is no gate</li>
+  <li class="passed"><span class="mark">✔</span> Dead lines do not dilute the score</li>
+  <li class="passed"><span class="mark">✔</span> The gate judges the printed percentage</li>
+  <li class="passed"><span class="mark">✔</span> A floor of zero cannot be breached</li>
+  <li class="passed"><span class="mark">✔</span> An empty scope is a breach</li>
+</ul>
+<h2>ReproducibleOutput <small>tests/unit/CLI/ReproducibleOutputTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The flag is off until asked for</li>
+  <li class="passed"><span class="mark">✔</span> A frozen clock settles the timestamp a writer would otherwise read</li>
+  <li class="passed"><span class="mark">✔</span> A wall clock writer still reports the real instant</li>
+</ul>
+<h2>CompositeEqualsPattern <small>tests/unit/Compat/Migration/CompositeEqualsPatternTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Real introspection processor shape drops coupled keys keeps the rest</li>
+  <li class="passed"><span class="mark">✔</span> No backing array assignment is not auto fixed</li>
+  <li class="passed"><span class="mark">✔</span> Non variable argument is not auto fixed</li>
+  <li class="passed"><span class="mark">✔</span> A third argument is not auto fixed</li>
+  <li class="passed"><span class="mark">✔</span> Every key coupled is not auto fixed</li>
+  <li class="passed"><span class="mark">✔</span> Long array syntax is not auto fixed</li>
+  <li class="passed"><span class="mark">✔</span> Static call prefix is preserved on every generated statement</li>
+  <li class="passed"><span class="mark">✔</span> Preview does not touch the source</li>
+</ul>
+<h2>CrucibleRun <small>tests/unit/Compat/Migration/CrucibleRunTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The child carries the pest vocabulary prelude</li>
+  <li class="passed"><span class="mark">✔</span> Keeps only test finish events keyed by id</li>
+  <li class="passed"><span class="mark">✔</span> Malformed lines are ignored</li>
+  <li class="passed"><span class="mark">✔</span> No events file yields no outcomes</li>
+</ul>
+<h2>FixManifest <small>tests/unit/Compat/Migration/FixManifestTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Backup then revert restores original content</li>
+  <li class="passed"><span class="mark">✔</span> Revert clears the manifest</li>
+  <li class="passed"><span class="mark">✔</span> A second backup of the same file is a no op</li>
+  <li class="passed"><span class="mark">✔</span> Multiple files revert together</li>
+  <li class="passed"><span class="mark">✔</span> Empty manifest has nothing to revert</li>
+</ul>
+<h2>OracleRun <small>tests/unit/Compat/Migration/OracleRunTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Keys by relative file path and method not method alone</li>
+  <li class="passed"><span class="mark">✔</span> Outcome classification</li>
+  <li class="passed"><span class="mark">✔</span> Dataset suffix is appended to the key</li>
+  <li class="passed"><span class="mark">✔</span> File outside the working directory stays absolute</li>
+  <li class="passed"><span class="mark">✔</span> Pest reports the id itself in the file attribute</li>
+  <li class="passed"><span class="mark">✔</span> A positional pest dataset is counted and a named one is read</li>
+  <li class="passed"><span class="mark">✔</span> A classic class inside a pest run is reported unmapped not guessed</li>
+  <li class="passed"><span class="mark">✔</span> The oracle binary is pest wherever pest is installed</li>
+</ul>
+<h2>OutcomeDiff <small>tests/unit/Compat/Migration/OutcomeDiffTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Flags only oracle pass crucible fail or error</li>
+  <li class="passed"><span class="mark">✔</span> No drift when everything agrees</li>
+  <li class="passed"><span class="mark">✔</span> Oracle non pass outcomes are never candidates regardless of crucible side</li>
+  <li class="passed"><span class="mark">✔</span> A test the oracle ran and crucible did not is reported missing</li>
+  <li class="passed"><span class="mark">✔</span> An empty crucible run is every oracle pass missing rather than no drift</li>
+  <li class="passed"><span class="mark">✔</span> A test the oracle did not pass is not owed an outcome</li>
+  <li class="passed"><span class="mark">✔</span> Nothing is missing when crucible answered every oracle pass</li>
+</ul>
+<h2>PhpUnitEventLog <small>tests/unit/Compat/Migration/PhpUnitEventLogTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> It reads the class based rows and leaves pests own to junit</li>
+  <li class="passed"><span class="mark">✔</span> The verdict is by precedence not by arrival</li>
+  <li class="passed"><span class="mark">✔</span> A class is placed by the file that declares it and never by resemblance</li>
+</ul>
+<h2>SourceRewriter <small>tests/unit/Compat/Migration/SourceRewriterTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Locate method finds the declaration to closing brace span</li>
+  <li class="passed"><span class="mark">✔</span> Locate method ignores a call to the same name elsewhere</li>
+  <li class="passed"><span class="mark">✔</span> Locate method returns null for an abstract method</li>
+  <li class="passed"><span class="mark">✔</span> Locate method returns null when not found</li>
+  <li class="passed"><span class="mark">✔</span> Vendor path assertion on an array indexed higher frame weakens to a string check</li>
+  <li class="passed"><span class="mark">✔</span> Vendor path assertion with a frame number prefix on a higher frame keeps only the frame marker</li>
+  <li class="passed"><span class="mark">✔</span> Vendor path assertion becomes a wildcard regex</li>
+  <li class="passed"><span class="mark">✔</span> No equivalent filename becomes a structural frame check</li>
+  <li class="passed"><span class="mark">✔</span> Unrelated assertion is a byte exact no op</li>
+  <li class="passed"><span class="mark">✔</span> Out of range line is ignored</li>
+  <li class="passed"><span class="mark">✔</span> Preview does not touch the source</li>
+</ul>
+<h2>Builder <small>tests/unit/Configuration/BuilderTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Defaults match the phpunit spec</li>
+  <li class="passed"><span class="mark">✔</span> Maps the phpunit xml core surface</li>
+  <li class="passed"><span class="mark">✔</span> Strict enables every fail on flag</li>
+  <li class="passed"><span class="mark">✔</span> Rejects duplicate test suite names</li>
+  <li class="passed"><span class="mark">✔</span> Report format registers a class string and params</li>
+  <li class="passed"><span class="mark">✔</span> Report format calling twice with the same key overrides rather than throws</li>
+  <li class="passed"><span class="mark">✔</span> Subscriber registers a class string and params</li>
+  <li class="passed"><span class="mark">✔</span> Subscriber calling twice with the same key overrides rather than throws</li>
+</ul>
+<h2>Loader <small>tests/unit/Configuration/LoaderTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Loads a configuration file that returns a builder</li>
+  <li class="passed"><span class="mark">✔</span> Falls back to dist file</li>
+  <li class="passed"><span class="mark">✔</span> Explicit path wins over default file names</li>
+  <li class="passed"><span class="mark">✔</span> Rejects a missing explicit path</li>
+  <li class="passed"><span class="mark">✔</span> Rejects a directory without configuration</li>
+  <li class="passed"><span class="mark">✔</span> Rejects a configuration file with a wrong return type</li>
+  <li class="passed"><span class="mark">✔</span> A configuration that throws is reported not fatal</li>
+  <li class="passed"><span class="mark">✔</span> A configuration throwing a string code is reported not a type error</li>
+  <li class="passed"><span class="mark">✔</span> Exists checks default file names</li>
+</ul>
+<h2>Quirk <small>tests/unit/Configuration/QuirkTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> No quirk is declared</li>
+  <li class="passed"><span class="mark">✔</span> A removed quirk is not accepted as a name</li>
+  <li class="passed"><span class="mark">✔</span> The configuration still carries an empty list</li>
+  <li class="passed"><span class="mark">✔</span> The falsy zero is not a special case but is empty</li>
+  <li class="passed"><span class="mark">✔</span> The hostname trap is the same emptiness one layer down</li>
+  <li class="passed"><span class="mark">✔</span> The cast is the default and not an opt in</li>
+  <li class="passed"><span class="mark">✔</span> Everything the incumbent casts is cast</li>
+  <li class="passed"><span class="mark">✔</span> The refusal is not a verdict and never was quirk gated</li>
+</ul>
+<h2>XmlMigrator <small>tests/unit/Configuration/XmlMigratorTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Migrated configuration loads with the right typed values</li>
+  <li class="passed"><span class="mark">✔</span> Everything without a crucible equivalent is named in the notes</li>
+  <li class="passed"><span class="mark">✔</span> Defaults are not restated in the generated code</li>
+  <li class="passed"><span class="mark">✔</span> Unparseable xml throws</li>
+</ul>
+<h2>SelectPrompt <small>tests/unit/Console/Components/SelectPromptTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The list is drawn with every option and the hint</li>
+  <li class="passed"><span class="mark">✔</span> One option at a time carries the marker</li>
+  <li class="passed"><span class="mark">✔</span> The arrow keys choose and enter answers</li>
+  <li class="passed"><span class="mark">✔</span> The list wraps at both ends</li>
+  <li class="passed"><span class="mark">✔</span> Without a default it refuses to answer for a script</li>
+  <li class="passed"><span class="mark">✔</span> A default is an answer a script can use</li>
+</ul>
+<h2>Splash <small>tests/unit/Console/Components/SplashTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A non interactive terminal gets one static line</li>
+  <li class="passed"><span class="mark">✔</span> An interactive terminal sweeps and settles</li>
+  <li class="passed"><span class="mark">✔</span> Fewer sweeps is proportionally fewer frames</li>
+  <li class="passed"><span class="mark">✔</span> A frame carries all three states</li>
+  <li class="passed"><span class="mark">✔</span> It settles with the whole wordmark lit</li>
+  <li class="passed"><span class="mark">✔</span> A classic terminal gets no truecolor sequences</li>
+  <li class="passed"><span class="mark">✔</span> A single character wordmark terminates</li>
+  <li class="passed"><span class="mark">✔</span> An empty wordmark writes nothing</li>
+  <li class="passed"><span class="mark">✔</span> The suffix follows the wordmark on every frame</li>
+  <li class="passed"><span class="mark">✔</span> The sweep bounces on a single cell per tick</li>
+  <li class="passed"><span class="mark">✔</span> A single cell sweep stays put</li>
+  <li class="passed"><span class="mark">✔</span> Every frame carries the suffix</li>
+  <li class="passed"><span class="mark">✔</span> A wide character is one cell</li>
+</ul>
+<h2>Help <small>tests/unit/Console/Output/HelpTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Descriptions share one column</li>
+  <li class="passed"><span class="mark">✔</span> A term too wide for the column takes its own line</li>
+  <li class="passed"><span class="mark">✔</span> A long description wraps into the same column</li>
+  <li class="passed"><span class="mark">✔</span> A list nested under an option is laid out on its own</li>
+  <li class="passed"><span class="mark">✔</span> An unbreakable description is not split mid word</li>
+  <li class="passed"><span class="mark">✔</span> Colour is worn only when the terminal can render it</li>
+  <li class="passed"><span class="mark">✔</span> Prose is untouched</li>
+</ul>
+<h2>Markdown <small>tests/unit/Console/Output/MarkdownTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Strips bold markers</li>
+  <li class="passed"><span class="mark">✔</span> Strips inline code and italics</li>
+  <li class="passed"><span class="mark">✔</span> Headings</li>
+  <li class="passed"><span class="mark">✔</span> Bullet list</li>
+  <li class="passed"><span class="mark">✔</span> Collects links as numbered references</li>
+  <li class="passed"><span class="mark">✔</span> External and local links are both collected in order</li>
+  <li class="passed"><span class="mark">✔</span> Wraps long paragraphs</li>
+  <li class="passed"><span class="mark">✔</span> Bold span crossing a hard wrapped source line is still parsed</li>
+  <li class="passed"><span class="mark">✔</span> Bullet continuation line joins the same item</li>
+  <li class="passed"><span class="mark">✔</span> Blank line ends a bullet continuation</li>
+  <li class="passed"><span class="mark">✔</span> Table renders as a bordered grid with a header row</li>
+  <li class="passed"><span class="mark">✔</span> Table cells keep followable link references</li>
+</ul>
+<h2>TextPdf <small>tests/unit/Console/Output/TextPdfTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> It produces a readable pdf</li>
+  <li class="passed"><span class="mark">✔</span> Long text is paginated</li>
+  <li class="passed"><span class="mark">✔</span> The manual itself renders</li>
+</ul>
+<h2>ModalPresenter <small>tests/unit/Console/Runtime/ModalPresenterTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> It takes the alternate screen and hands it back</li>
+  <li class="passed"><span class="mark">✔</span> The surface is taken only once</li>
+  <li class="passed"><span class="mark">✔</span> The dialog is boxed and centred</li>
+  <li class="passed"><span class="mark">✔</span> It draws its own frame so prompts render bare</li>
+  <li class="passed"><span class="mark">✔</span> The dialog never fills the screen edge to edge</li>
+</ul>
+<h2>Str <small>tests/unit/Console/Support/StrTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Every width range edge holds on both sides</li>
+  <li class="passed"><span class="mark">✔</span> An emoji presentation sequence is one emoji wide</li>
+  <li class="passed"><span class="mark">✔</span> Dingbats below the emoji range measure one column</li>
+  <li class="passed"><span class="mark">✔</span> Char width of nothing is zero</li>
+  <li class="passed"><span class="mark">✔</span> Width counts columns not characters</li>
+  <li class="passed"><span class="mark">✔</span> Width ignores ansi sequences</li>
+  <li class="passed"><span class="mark">✔</span> Length counts characters and not columns</li>
+  <li class="passed"><span class="mark">✔</span> Truncate keeps what fits and marks what it cut</li>
+  <li class="passed"><span class="mark">✔</span> Padding measures columns not bytes</li>
+  <li class="passed"><span class="mark">✔</span> Padding at or over the width is left alone</li>
+  <li class="passed"><span class="mark">✔</span> Wrap breaks on words and keeps paragraphs</li>
+  <li class="passed"><span class="mark">✔</span> Wrap hard breaks a word too long to fit</li>
+  <li class="passed"><span class="mark">✔</span> Wrap with no room returns the input whole</li>
+  <li class="passed"><span class="mark">✔</span> Substr counts characters</li>
+  <li class="passed"><span class="mark">✔</span> Width stays correct once the memo is full</li>
+</ul>
+<h2>Capabilities <small>tests/unit/Console/Terminal/CapabilitiesTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A terminal gets both</li>
+  <li class="passed"><span class="mark">✔</span> A pipe gets neither</li>
+  <li class="passed"><span class="mark">✔</span> Continuous integration keeps colour and loses animation</li>
+  <li class="passed"><span class="mark">✔</span> A false ci marker is not continuous integration</li>
+  <li class="passed"><span class="mark">✔</span> A dumb terminal gets neither despite being a tty</li>
+  <li class="passed"><span class="mark">✔</span> An empty term is treated as dumb</li>
+  <li class="passed"><span class="mark">✔</span> A known term is fine</li>
+  <li class="passed"><span class="mark">✔</span> No color beats force color</li>
+  <li class="passed"><span class="mark">✔</span> Force color paints a pipe</li>
+  <li class="passed"><span class="mark">✔</span> The overrides win and reset together</li>
+</ul>
+<h2>CoverageMetadataEnforcement <small>tests/unit/Coverage/CoverageMetadataEnforcementTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Require coverage metadata reclassifies even without a coverage run</li>
+  <li class="passed"><span class="mark">✔</span> Strict check and discard over scoped windows</li>
+</ul>
+<h2>Coverage <small>tests/unit/Coverage/CoverageTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The collector filters to scope and attributes execution only</li>
+  <li class="passed"><span class="mark">✔</span> Branches merge by any hit and round trip</li>
+  <li class="passed"><span class="mark">✔</span> Data merges by max and totals</li>
+  <li class="passed"><span class="mark">✔</span> The text report renders relative paths and totals</li>
+  <li class="passed"><span class="mark">✔</span> The text report elides uncovered files unless asked</li>
+  <li class="passed"><span class="mark">✔</span> The text report summary drops the rows and keeps the totals</li>
+  <li class="passed"><span class="mark">✔</span> The open clover variant names the file and stamps the root</li>
+  <li class="passed"><span class="mark">✔</span> The serialized php report returns the data it was given</li>
+  <li class="passed"><span class="mark">✔</span> Path entries travel beside branches and tally separately</li>
+  <li class="passed"><span class="mark">✔</span> The text report omits paths when none were collected</li>
+  <li class="passed"><span class="mark">✔</span> The crap4j writer pairs complexity with coverage</li>
+  <li class="passed"><span class="mark">✔</span> The xml report writes an index and one document per file</li>
+  <li class="passed"><span class="mark">✔</span> The clover writer emits statement metrics</li>
+  <li class="passed"><span class="mark">✔</span> The map derives relative edges and round trips</li>
+  <li class="passed"><span class="mark">✔</span> The line map answers the mutation query and round trips</li>
+  <li class="passed"><span class="mark">✔</span> The text report renders branch totals when collected</li>
+  <li class="passed"><span class="mark">✔</span> The clover writer fills conditionals from branches</li>
+  <li class="passed"><span class="mark">✔</span> The cobertura writer emits rates packages and condition coverage</li>
+  <li class="passed"><span class="mark">✔</span> The html report writes index and annotated pages</li>
+  <li class="passed"><span class="mark">✔</span> The xdebug driver collects when in coverage mode</li>
+  <li class="passed"><span class="mark">✔</span> The xdebug driver collects branches when asked</li>
+</ul>
+<h2>CoversTargets <small>tests/unit/Coverage/CoversTargetsTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> No claim means identity contribution and no strays</li>
+  <li class="passed"><span class="mark">✔</span> Covers class filters contribution by demoting stray hits</li>
+  <li class="passed"><span class="mark">✔</span> Strays name the declaring unit</li>
+  <li class="passed"><span class="mark">✔</span> Uses class allows execution but not contribution</li>
+  <li class="passed"><span class="mark">✔</span> Covers nothing declares contributes nothing and is exempt from strict</li>
+  <li class="passed"><span class="mark">✔</span> Unknown targets resolve to no range not an error</li>
+  <li class="passed"><span class="mark">✔</span> A target that cannot load resolves to no range too</li>
+  <li class="passed"><span class="mark">✔</span> Window without hits keeps denominators</li>
+</ul>
+<h2>ExternalCoverageArtifact <small>tests/unit/Coverage/ExternalCoverageArtifactTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> An artifact contributes its lines and claims no test</li>
+  <li class="passed"><span class="mark">✔</span> The conformance prelude writes what a child executed</li>
+</ul>
+<h2>MutationIndex <small>tests/unit/Coverage/MutationIndexTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Inverts the map and orders covering tests fastest first</li>
+  <li class="passed"><span class="mark">✔</span> Untimed tests sort last and ties break deterministically</li>
+  <li class="passed"><span class="mark">✔</span> An uncovered line or file has no tests</li>
+</ul>
+<h2>SourceAnalysis <small>tests/unit/Coverage/SourceAnalysisTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A straight line method is one</li>
+  <li class="passed"><span class="mark">✔</span> Each branch adds one</li>
+  <li class="passed"><span class="mark">✔</span> Ternaries count but nullable types and coalesce do not</li>
+  <li class="passed"><span class="mark">✔</span> Match counts its arms and switch counts its default</li>
+  <li class="passed"><span class="mark">✔</span> Reserved words used as names open no branch</li>
+  <li class="passed"><span class="mark">✔</span> Boundaries survive interpolation and attributes</li>
+  <li class="passed"><span class="mark">✔</span> A method reports its coverage and crap over the line map</li>
+  <li class="passed"><span class="mark">✔</span> The analysis cache answers twice and notices an edit</li>
+  <li class="passed"><span class="mark">✔</span> Warming parses every file it is given and skips what is not there</li>
+  <li class="passed"><span class="mark">✔</span> A method with no executable line is not divided by zero</li>
+</ul>
+<h2>CrucibleDialect.crucible <small>tests/unit/Dialect/CrucibleDialect.crucible.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> \check(fn(): int =&gt; 1 + 2)-&gt;to be(3);</li>
+  <li class="passed"><span class="mark">✔</span> \check(fn(): ?string =&gt; null)-&gt;to be null()-&gt;group(&#039;crucible-dialect&#039;);</li>
+  <li class="passed"><span class="mark">✔</span> \check(fn() =&gt; throw new  runtime exception(&#039;boom&#039;))-&gt;to throw( runtime exception::class, &#039;boom&#039;);</li>
+  <li class="passed"><span class="mark">✔</span> \check(fn(): array =&gt; [1, 2, 3])-&gt;to be list()-&gt;to have count(3)-&gt;to contain(2)-&gt;not-&gt;to contain(9);</li>
+  <li class="passed"><span class="mark">✔</span> An explicit description wins</li>
+  <li class="passed"><span class="mark">✔</span> A trailing comment is the name</li>
+  <li class="passed"><span class="mark">✔</span> Slashes in strings cannot fool the tokenizer</li>
+  <li class="passed"><span class="mark">✔</span> \check(fn(): bool =&gt; true)-&gt;to be true();</li>
+  <li class="passed"><span class="mark">✔</span> \check(fn(): bool =&gt; true)-&gt;to be true(); #2</li>
+  <li class="passed"><span class="mark">✔</span> \check(fn(): mixed =&gt; $this-&gt;from suite config)-&gt;to be(&#039;loaded&#039;);</li>
+  <li class="passed"><span class="mark">✔</span> Str repeat(&#039;ab&#039;, 2) = &#039;abab&#039;</li>
+  <li class="passed"><span class="mark">✔</span> Str repeat(&#039;x&#039;, 3) = &#039;xxx&#039;</li>
+  <li class="passed"><span class="mark">✔</span> Strtoupper: uppercases</li>
+  <li class="passed"><span class="mark">✔</span> Strtoupper: leaves digits be</li>
+  <li class="passed"><span class="mark">✔</span> Array sum(an array) = 6</li>
+  <li class="passed"><span class="mark">✔</span> Array sum(an array) = 0</li>
+  <li class="passed"><span class="mark">✔</span> Pest-style tests coexist</li>
+  <li class="passed"><span class="mark">✔</span> Described blocks too &gt; it nests as usual</li>
+  <li class="passed"><span class="mark">✔</span> Described blocks too &gt; \check(fn() =&gt; $this-&gt;dialect)-&gt;to be(&#039;crucible&#039;);</li>
+</ul>
+<h2>DoctestShadow <small>tests/unit/Dialect/DoctestShadowTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Shadows carry namespace expressions and the line map</li>
+  <li class="passed"><span class="mark">✔</span> A one line docblock loses its closer</li>
+  <li class="passed"><span class="mark">✔</span> A global namespace file gets no namespace statement</li>
+  <li class="passed"><span class="mark">✔</span> Crucible mentions outside docblocks are not doctests</li>
+</ul>
+<h2>InlineDialect <small>tests/unit/Dialect/InlineDialectTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> One source file yields checks and doctests in declaration order</li>
+  <li class="passed"><span class="mark">✔</span> Only a real doctest makes discovery load a source file</li>
+  <li class="passed"><span class="mark">✔</span> Returns claim compares with equality semantics</li>
+  <li class="passed"><span class="mark">✔</span> Named arguments bind by parameter name</li>
+  <li class="passed"><span class="mark">✔</span> Throws claim accepts the expected exception</li>
+  <li class="passed"><span class="mark">✔</span> Bare check claims the call completes</li>
+  <li class="passed"><span class="mark">✔</span> Instance methods run on a fresh instance</li>
+  <li class="passed"><span class="mark">✔</span> Non public methods are checkable</li>
+  <li class="passed"><span class="mark">✔</span> Free functions are checkable</li>
+  <li class="passed"><span class="mark">✔</span> Doctests run on the expect surface</li>
+  <li class="passed"><span class="mark">✔</span> Group attributes travel into metadata</li>
+  <li class="passed"><span class="mark">✔</span> A wrong returns claim fails the test</li>
+  <li class="passed"><span class="mark">✔</span> An unthrown exception fails the test</li>
+  <li class="passed"><span class="mark">✔</span> An unexpected exception escapes unwrapped</li>
+  <li class="passed"><span class="mark">✔</span> A failing doctest fails the test</li>
+  <li class="passed"><span class="mark">✔</span> Claiming both returns and throws is a load error</li>
+  <li class="passed"><span class="mark">✔</span> A required constructor argument is a load error</li>
+  <li class="passed"><span class="mark">✔</span> A doctest that does not parse is a load error</li>
+  <li class="passed"><span class="mark">✔</span> A doctest that escapes the wrapper is a load error</li>
+  <li class="passed"><span class="mark">✔</span> The wrappers parentheses are neutral over the expression forms</li>
+  <li class="passed"><span class="mark">✔</span> Discovery scans the source includes</li>
+  <li class="passed"><span class="mark">✔</span> Testsuite selection skips inline tests</li>
+  <li class="passed"><span class="mark">✔</span> Source excludes are honored</li>
+</ul>
+<h2>ArchExpectation <small>tests/unit/Dialect/Pest/ArchExpectationTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A subject naming nothing passes and says so</li>
+  <li class="passed"><span class="mark">✔</span> The empty case passes under negation as well</li>
+  <li class="passed"><span class="mark">✔</span> A named symbol still answers about itself</li>
+  <li class="passed"><span class="mark">✔</span> A namespace answers for everything beneath it</li>
+  <li class="passed"><span class="mark">✔</span> Both spellings agree</li>
+  <li class="passed"><span class="mark">✔</span> The dependency matchers reach the same source</li>
+  <li class="passed"><span class="mark">✔</span> Documentation and casing answer in the expect spelling too</li>
+  <li class="passed"><span class="mark">✔</span> An enum is not readonly in either spelling</li>
+  <li class="passed"><span class="mark">✔</span> Every plural spelling agrees with its singular</li>
+  <li class="passed"><span class="mark">✔</span> The remaining wrappers answer in the expect spelling</li>
+</ul>
+<h2>CurrentTest <small>tests/unit/Dialect/Pest/CurrentTestTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Get throws when no test is running</li>
+  <li class="passed"><span class="mark">✔</span> Get returns whatever was set</li>
+  <li class="passed"><span class="mark">✔</span> Set null clears it</li>
+  <li class="passed"><span class="mark">✔</span> Call reaches a protected method on the running test</li>
+  <li class="passed"><span class="mark">✔</span> Call returning hands back a value of the promised type</li>
+  <li class="passed"><span class="mark">✔</span> Call returning names the method the type and what it got instead</li>
+  <li class="passed"><span class="mark">✔</span> Call returning object accepts any object</li>
+  <li class="passed"><span class="mark">✔</span> Call returning object refuses a non object</li>
+</ul>
+<h2>ExpectationFilesystem <small>tests/unit/Dialect/Pest/ExpectationFilesystemTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A directory is a directory and not a file</li>
+  <li class="passed"><span class="mark">✔</span> A file is a file and not a directory</li>
+  <li class="passed"><span class="mark">✔</span> A path that does not exist is neither</li>
+  <li class="passed"><span class="mark">✔</span> A readable and writable path answers for its kind only</li>
+  <li class="passed"><span class="mark">✔</span> An unreadable file is not a readable file</li>
+  <li class="passed"><span class="mark">✔</span> An unwritable directory is not a writable directory</li>
+</ul>
+<h2>PestBuilderAssertionBridge <small>tests/unit/Dialect/Pest/PestBuilderAssertionBridgeTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Assertions verified during a test cases tear down bridge into crucibles own counter</li>
+</ul>
+<h2>PestBuilderCurrentTestBridge <small>tests/unit/Dialect/Pest/PestBuilderCurrentTestBridgeTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Current test is set to the running instance during the test body</li>
+  <li class="passed"><span class="mark">✔</span> Current test is cleared once the test finishes</li>
+</ul>
+<h2>PestClassLifecycle <small>tests/unit/Dialect/Pest/PestClassLifecycleTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The class lifecycle wraps the files own hooks</li>
+</ul>
+<h2>PestCovers <small>tests/unit/Dialect/Pest/PestCoversTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Covers names the class under test for every test in the file</li>
+  <li class="passed"><span class="mark">✔</span> The coverage reader actually consumes it</li>
+  <li class="passed"><span class="mark">✔</span> A function target becomes covers function rather than covers class</li>
+  <li class="passed"><span class="mark">✔</span> A target that does not exist is refused rather than covering nothing</li>
+  <li class="passed"><span class="mark">✔</span> Mutates names the source the mutation run narrows to</li>
+  <li class="passed"><span class="mark">✔</span> A mutates target that does not exist is refused</li>
+</ul>
+<h2>PestFileSniffer <small>tests/unit/Dialect/Pest/PestFileSnifferTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Detects a top level it call</li>
+  <li class="passed"><span class="mark">✔</span> Detects a backslash prefixed call</li>
+  <li class="passed"><span class="mark">✔</span> Detects a top level dataset only call</li>
+  <li class="passed"><span class="mark">✔</span> Detects a file whose only test is a top level todo</li>
+  <li class="passed"><span class="mark">✔</span> Detects a file whose only pest spelling is covers</li>
+  <li class="passed"><span class="mark">✔</span> Returns false when there are no entry calls</li>
+  <li class="passed"><span class="mark">✔</span> Ignores a method call of the same name</li>
+  <li class="passed"><span class="mark">✔</span> Ignores a static call of the same name</li>
+  <li class="passed"><span class="mark">✔</span> Ignores a user declared function of the same name</li>
+  <li class="passed"><span class="mark">✔</span> Ignores a call nested inside a closure body</li>
+</ul>
+<h2>PestFixture <small>tests/unit/Dialect/Pest/PestFixtureTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Fixture always resolves under the projects tests fixtures</li>
+  <li class="passed"><span class="mark">✔</span> The name is joined to fixtures rather than containing it</li>
+  <li class="passed"><span class="mark">✔</span> A missing fixture is refused and says where it looked</li>
+  <li class="passed"><span class="mark">✔</span> Fixture outside collection says so rather than guessing a directory</li>
+</ul>
+<h2>PestRegistry <small>tests/unit/Dialect/Pest/PestRegistryTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Every global refuses outside a file being loaded</li>
+  <li class="passed"><span class="mark">✔</span> Drain folds the files registrations last class winning</li>
+  <li class="passed"><span class="mark">✔</span> Drain closes the bracket so the next call refuses</li>
+  <li class="passed"><span class="mark">✔</span> Begin discards whatever the previous file left</li>
+  <li class="passed"><span class="mark">✔</span> Describe nests the path and pops it even when the body throws</li>
+  <li class="passed"><span class="mark">✔</span> Arch registers an ordinary test and hands back the rule</li>
+  <li class="passed"><span class="mark">✔</span> Check takes its name from a trailing comment when there is one</li>
+  <li class="passed"><span class="mark">✔</span> Check falls back to the source line and then to the line number</li>
+  <li class="passed"><span class="mark">✔</span> A long source line is truncated rather than used whole</li>
+  <li class="passed"><span class="mark">✔</span> Two derived names that agree get an occurrence suffix</li>
+  <li class="passed"><span class="mark">✔</span> A duplicate description is refused the way the incumbent refuses it</li>
+  <li class="passed"><span class="mark">✔</span> Scoping separates names that would otherwise collide</li>
+  <li class="passed"><span class="mark">✔</span> Property refuses every argument shape it cannot run</li>
+  <li class="passed"><span class="mark">✔</span> Property registers one test when the arguments are right</li>
+  <li class="passed"><span class="mark">✔</span> Table names each row from its arguments or its key</li>
+  <li class="passed"><span class="mark">✔</span> Table refuses a row that is not arguments and an expected value</li>
+  <li class="passed"><span class="mark">✔</span> Table names its subject by whatever kind of callable it is</li>
+  <li class="passed"><span class="mark">✔</span> Fixture resolves under the project root and refuses what is not there</li>
+  <li class="passed"><span class="mark">✔</span> Fixture refuses outside a file being collected</li>
+</ul>
+<h2>PestScopes <small>tests/unit/Dialect/Pest/PestScopesTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Keeps every row from multiple composed generators</li>
+  <li class="passed"><span class="mark">✔</span> Preserves string keys from a single generator</li>
+  <li class="passed"><span class="mark">✔</span> Returns a plain array unchanged</li>
+  <li class="passed"><span class="mark">✔</span> Configuration loads outermost first and once per directory</li>
+  <li class="passed"><span class="mark">✔</span> Pest belongs to a configuration file</li>
+  <li class="passed"><span class="mark">✔</span> The nearest declaration of a dataset name wins</li>
+  <li class="passed"><span class="mark">✔</span> An unknown dataset names itself and where to declare it</li>
+  <li class="passed"><span class="mark">✔</span> A closure dataset replays on every use</li>
+  <li class="passed"><span class="mark">✔</span> A closure dataset must return something iterable</li>
+  <li class="passed"><span class="mark">✔</span> A bare registration is selected only when it carries hooks</li>
+  <li class="passed"><span class="mark">✔</span> A glob selects only beneath the declaring directory</li>
+  <li class="passed"><span class="mark">✔</span> The suite declared printer is whatever a configuration chose</li>
+  <li class="passed"><span class="mark">✔</span> Configuring says whether a configuration file is loading</li>
+  <li class="passed"><span class="mark">✔</span> Dataset files beside a pest file are loaded too</li>
+  <li class="passed"><span class="mark">✔</span> Uses is the legacy spelling of the same chain</li>
+  <li class="passed"><span class="mark">✔</span> A dataset needs a file that owns it</li>
+  <li class="passed"><span class="mark">✔</span> A dataset key must be an int or a string</li>
+  <li class="passed"><span class="mark">✔</span> A wildcard glob does not cross a directory separator</li>
+  <li class="passed"><span class="mark">✔</span> A directory outside the root is its own chain</li>
+</ul>
+<h2>PestTodoGlobal <small>tests/unit/Dialect/Pest/PestTodoGlobalTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A top level todo carries the same metadata as the chained form</li>
+  <li class="passed"><span class="mark">✔</span> A top level todo carries its assignee issue and note</li>
+</ul>
+<h2>RealPhpUnitBootstrap <small>tests/unit/Dialect/Pest/RealPhpUnitBootstrapTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The drop in alias is not mistaken for the real package</li>
+  <li class="passed"><span class="mark">✔</span> Bridging leaves the instance alone when the real package is absent</li>
+  <li class="passed"><span class="mark">✔</span> Bridging ignores an instance that cannot count</li>
+  <li class="passed"><span class="mark">✔</span> Configuring looks for php units cli classes and leaves them alone when absent</li>
+  <li class="passed"><span class="mark">✔</span> Configuring is attempted only once</li>
+</ul>
+<h2>RealPhpUnitExceptionExpectations <small>tests/unit/Dialect/Pest/RealPhpUnitExceptionExpectationsTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Was expected returns false when nothing was set</li>
+  <li class="passed"><span class="mark">✔</span> Was expected returns false for an instance without the php unit shape</li>
+  <li class="passed"><span class="mark">✔</span> Was expected returns true when the thrown exception matches the expected class</li>
+  <li class="passed"><span class="mark">✔</span> Was expected fails when the thrown exception is the wrong class</li>
+  <li class="passed"><span class="mark">✔</span> Was expected checks the message contains</li>
+  <li class="passed"><span class="mark">✔</span> Was expected fails when the message does not contain</li>
+  <li class="passed"><span class="mark">✔</span> Was expected checks the message regular expression</li>
+  <li class="passed"><span class="mark">✔</span> Was expected checks the exception code</li>
+  <li class="passed"><span class="mark">✔</span> Was expected fails when the code differs</li>
+  <li class="passed"><span class="mark">✔</span> Verify not unraised is a no op when nothing was expected</li>
+  <li class="passed"><span class="mark">✔</span> Verify not unraised fails when an exception was expected but none was thrown</li>
+  <li class="passed"><span class="mark">✔</span> Was expected finds expectations declared on an ancestor class</li>
+</ul>
+<h2>ScopeRegistration <small>tests/unit/Dialect/Pest/ScopeRegistrationTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Extend takes the class and refuses a second one</li>
+  <li class="passed"><span class="mark">✔</span> Use accumulates traits and refuses what is not one</li>
+  <li class="passed"><span class="mark">✔</span> Assign splits names by what they actually are</li>
+  <li class="passed"><span class="mark">✔</span> Assign refuses a name that is neither</li>
+  <li class="passed"><span class="mark">✔</span> In belongs to a configuration file only</li>
+  <li class="passed"><span class="mark">✔</span> In starts null and merges across calls</li>
+  <li class="passed"><span class="mark">✔</span> Groups accumulate in declaration order</li>
+  <li class="passed"><span class="mark">✔</span> Hooks accumulate per kind and answer has hooks</li>
+  <li class="passed"><span class="mark">✔</span> Each hook kind is separate</li>
+  <li class="passed"><span class="mark">✔</span> The printer chain starts</li>
+</ul>
+<h2>TestCall <small>tests/unit/Dialect/Pest/TestCallTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The declared name carries the it prefix and the describe path</li>
+  <li class="passed"><span class="mark">✔</span> Higher order chaining records methods and property reads</li>
+  <li class="passed"><span class="mark">✔</span> Chaining on a test with a body is a typo rather than a higher order step</li>
+  <li class="passed"><span class="mark">✔</span> Each with call is one cartesian factor and keeps its row keys</li>
+  <li class="passed"><span class="mark">✔</span> With accepts any iterable and materialises it</li>
+  <li class="passed"><span class="mark">✔</span> Skip distinguishes all four of its argument shapes</li>
+  <li class="passed"><span class="mark">✔</span> A closure skip is kept unevaluated with its reason beside</li>
+  <li class="passed"><span class="mark">✔</span> The platform skips agree with this machine</li>
+  <li class="passed"><span class="mark">✔</span> Ci skips read the environment and treat falsey values as not ci</li>
+  <li class="passed"><span class="mark">✔</span> Skip on php understands every operator the spec writes</li>
+  <li class="passed"><span class="mark">✔</span> A constraint naming no version is refused</li>
+  <li class="passed"><span class="mark">✔</span> Todo wip and done carry their status and metadata</li>
+  <li class="passed"><span class="mark">✔</span> Fails records the expectation and its optional fragment</li>
+  <li class="passed"><span class="mark">✔</span> Expects skip and expects incomplete record the outcome they demand</li>
+  <li class="passed"><span class="mark">✔</span> Throws records a class or a fragment and an optional message</li>
+  <li class="passed"><span class="mark">✔</span> Throws if and throws unless are opposites over both condition forms</li>
+  <li class="passed"><span class="mark">✔</span> Repeat takes a positive count and refuses anything else</li>
+  <li class="passed"><span class="mark">✔</span> Groups and dependencies accumulate across calls</li>
+</ul>
+<h2>TraitComposer <small>tests/unit/Dialect/Pest/TraitComposerTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> No shape ends the process</li>
+  <li class="passed"><span class="mark">✔</span> A collision names both traits and the method</li>
+  <li class="passed"><span class="mark">✔</span> An abstract base names what nobody implements</li>
+  <li class="passed"><span class="mark">✔</span> The composed class carries every trait and the base</li>
+  <li class="passed"><span class="mark">✔</span> The same combination is composed once whatever the order</li>
+  <li class="passed"><span class="mark">✔</span> No traits means no generated class at all</li>
+  <li class="passed"><span class="mark">✔</span> A final base is refused with its name</li>
+</ul>
+<h2>PestDialect.pest <small>tests/unit/Dialect/PestDialect.pest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A plain test with bound state</li>
+  <li class="passed"><span class="mark">✔</span> It prefixes descriptions</li>
+  <li class="passed"><span class="mark">✔</span> Chained expectations on one value</li>
+  <li class="passed"><span class="mark">✔</span> Negation applies to exactly one matcher</li>
+  <li class="passed"><span class="mark">✔</span> Common matchers</li>
+  <li class="passed"><span class="mark">✔</span> The argument matchers the parity grid has no axis for</li>
+  <li class="passed"><span class="mark">✔</span> To throw catches and verifies</li>
+  <li class="passed"><span class="mark">✔</span> Datasets spread list rows as arguments with data set &quot;small&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Datasets spread list rows as arguments with data set &quot;zero&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Datasets spread list rows as arguments with data set &quot;negative&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Single-value dataset rows arrive as one argument with data set #0</li>
+  <li class="passed"><span class="mark">✔</span> Single-value dataset rows arrive as one argument with data set #1</li>
+  <li class="passed"><span class="mark">✔</span> Inside a describe block &gt; names carry the describe path</li>
+  <li class="passed"><span class="mark">✔</span> Inside a describe block &gt; nested deeper &gt; it still works</li>
+  <li class="passed"><span class="mark">✔</span> A producer</li>
+  <li class="passed"><span class="mark">✔</span> A consumer receives the producer value</li>
+  <li class="passed"><span class="mark">✔</span> A skip is the expected outcome</li>
+  <li class="passed"><span class="mark">✔</span> Expected exceptions via throws</li>
+  <li class="passed"><span class="mark">✔</span> Grouped for selection</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; equality variants</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; comparison and ranges</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; numeric specials and resources</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; string shapes</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; the compact printer declaration registered from  pest.php</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; architecture presets over class strings</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; urls, uuids, json strings</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; identifiers and network formats</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; a hostname is not always a domain</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; sluggable, not already a slug</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; hexadecimal without a prefix</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; class-shape matchers that reflection alone can answer</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; collection membership and shape</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; keys, dot notation, key cases</li>
+  <li class="passed"><span class="mark">✔</span> The matcher long tail &gt; array and object subsets</li>
+  <li class="passed"><span class="mark">✔</span> The wrong-typed-subject refusal &gt; the string matchers refuse a non-string in both forms</li>
+  <li class="passed"><span class="mark">✔</span> The wrong-typed-subject refusal &gt; the key-case matchers refuse a non-iterable in both forms</li>
+  <li class="passed"><span class="mark">✔</span> The wrong-typed-subject refusal &gt; the four calls that reported green where the incumbent reports red</li>
+  <li class="passed"><span class="mark">✔</span> The wrong-typed-subject refusal &gt; each refuses the item rather than the container</li>
+  <li class="passed"><span class="mark">✔</span> The wrong-typed-subject refusal &gt; a key-case matcher answers about any iterable, not only an array</li>
+  <li class="passed"><span class="mark">✔</span> The wrong-typed-subject refusal &gt; the cast family refuses a subject  p h p cannot render as a string</li>
+  <li class="passed"><span class="mark">✔</span> The wrong-typed-subject refusal &gt; a subject  p h p can render is not refused</li>
+  <li class="passed"><span class="mark">✔</span> The wrong-typed-subject refusal &gt; a rendering  p h p endorses is read by default, with no quirk</li>
+  <li class="passed"><span class="mark">✔</span> The wrong-typed-subject refusal &gt; the matchers the incumbent does not guard stay unguarded</li>
+  <li class="passed"><span class="mark">✔</span> Modifiers &gt; each as a property fans matchers over items</li>
+  <li class="passed"><span class="mark">✔</span> Modifiers &gt; each with a callback</li>
+  <li class="passed"><span class="mark">✔</span> Modifiers &gt; sequence pairs expectations with items in order</li>
+  <li class="passed"><span class="mark">✔</span> Modifiers &gt; when and unless gate parts of a chain</li>
+  <li class="passed"><span class="mark">✔</span> Modifiers &gt; json decodes and continues the chain</li>
+  <li class="passed"><span class="mark">✔</span> Higher-order expectations &gt; property access descends into the value</li>
+  <li class="passed"><span class="mark">✔</span> Higher-order expectations &gt; method calls forward to the value</li>
+  <li class="passed"><span class="mark">✔</span> Higher-order expectations &gt; scoped asserts mid-chain</li>
+  <li class="passed"><span class="mark">✔</span> Higher-order expectations &gt; extend registers a custom matcher</li>
+</ul>
+<h2>PestDialectConfig.pest <small>tests/unit/Dialect/PestDialectConfig.pest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The scoped extend() provides the binding class</li>
+  <li class="passed"><span class="mark">✔</span> The scoped use() mixes the trait in</li>
+  <li class="passed"><span class="mark">✔</span> Global hooks run before file hooks</li>
+  <li class="passed"><span class="mark">✔</span> A named dataset from  pest.php resolves with data set #0</li>
+  <li class="passed"><span class="mark">✔</span> A named dataset from  pest.php resolves with data set #1</li>
+  <li class="passed"><span class="mark">✔</span> A dataset from a  datasets file resolves with its keys with data set &quot;short&quot;</li>
+  <li class="passed"><span class="mark">✔</span> A dataset from a  datasets file resolves with its keys with data set &quot;longer&quot;</li>
+  <li class="passed"><span class="mark">✔</span> A lazy dataset closure materializes at build time with data set #0</li>
+  <li class="passed"><span class="mark">✔</span> A lazy dataset closure materializes at build time with data set #1</li>
+  <li class="passed"><span class="mark">✔</span> Bound rows resolve after before each, bound to the instance with data set #0</li>
+  <li class="passed"><span class="mark">✔</span> Associative rows bind to parameters by name with data set #0</li>
+  <li class="passed"><span class="mark">✔</span> Named and inline factors multiply with data set &quot;0 / 0&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Named and inline factors multiply with data set &quot;0 / 1&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Named and inline factors multiply with data set &quot;1 / 0&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Named and inline factors multiply with data set &quot;1 / 1&quot;</li>
+  <li class="passed"><span class="mark">✔</span> A dataset composed of multiple yield from sub-generators runs every row with data set #0</li>
+  <li class="passed"><span class="mark">✔</span> A dataset composed of multiple yield from sub-generators runs every row with data set #1</li>
+  <li class="passed"><span class="mark">✔</span> A dataset composed of multiple yield from sub-generators runs every row with data set #2</li>
+  <li class="passed"><span class="mark">✔</span> A dataset composed of multiple yield from sub-generators runs every row with data set #3</li>
+  <li class="passed"><span class="mark">✔</span> A dataset composed of multiple yield from sub-generators runs every row with data set #4</li>
+</ul>
+<h2>PestDialectLongTail.pest <small>tests/unit/Dialect/PestDialectLongTail.pest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A bare description is a todo</li>
+  <li class="passed"><span class="mark">✔</span> It will get a body eventually</li>
+  <li class="passed"><span class="mark">✔</span> Work in progress runs its body like  pest</li>
+  <li class="passed"><span class="mark">✔</span> A body-less wip folds to a todo</li>
+  <li class="passed"><span class="mark">✔</span> A done todo runs its body</li>
+  <li class="passed"><span class="mark">✔</span> It chains methods on the test case</li>
+  <li class="passed"><span class="mark">✔</span> Lazy expectation chains</li>
+  <li class="passed"><span class="mark">✔</span> Higher-order expect receives dataset arguments with data set #0</li>
+  <li class="passed"><span class="mark">✔</span> Higher-order expect receives dataset arguments with data set #1</li>
+  <li class="passed"><span class="mark">✔</span> Closure skips are decided after before each</li>
+  <li class="passed"><span class="mark">✔</span> Skip on php with an operator constraint</li>
+  <li class="passed"><span class="mark">✔</span> Skip on windows leaves other platforms running</li>
+  <li class="passed"><span class="mark">✔</span> Fails() inverts the outcome</li>
+  <li class="passed"><span class="mark">✔</span> Throws() accepts a message fragment</li>
+  <li class="passed"><span class="mark">✔</span> Throws unless() with a truthy condition expects nothing</li>
+  <li class="passed"><span class="mark">✔</span> Repeat() runs the body once per repetition with data set &quot;repetition 1 of 3&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Repeat() runs the body once per repetition with data set &quot;repetition 2 of 3&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Repeat() runs the body once per repetition with data set &quot;repetition 3 of 3&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Multiple with() calls form a  cartesian product with data set &quot;0 / 0&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Multiple with() calls form a  cartesian product with data set &quot;0 / 1&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Multiple with() calls form a  cartesian product with data set &quot;1 / 0&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Multiple with() calls form a  cartesian product with data set &quot;1 / 1&quot;</li>
+  <li class="passed"><span class="mark">✔</span> A configured block &gt; inherits the block group and dataset with data set #0</li>
+  <li class="passed"><span class="mark">✔</span> A configured block &gt; inherits the block group and dataset with data set #1</li>
+  <li class="passed"><span class="mark">✔</span> A configured block &gt; it applies to every contained test with data set #0</li>
+  <li class="passed"><span class="mark">✔</span> A configured block &gt; it applies to every contained test with data set #1</li>
+  <li class="passed"><span class="mark">✔</span> A property chain re-roots to the original subject after each matcher</li>
+  <li class="passed"><span class="mark">✔</span> -&gt;not() works as a method call, not only as a property</li>
+  <li class="passed"><span class="mark">✔</span> A missing property or key is null, not a failure</li>
+  <li class="passed"><span class="mark">✔</span> An uninitialized typed property is null, not a fatal</li>
+  <li class="passed"><span class="mark">✔</span> Not()-&gt;to contain() with multiple needles fails only when all are present</li>
+  <li class="passed"><span class="mark">✔</span> Not()-&gt;to contain() with multiple needles, all present</li>
+  <li class="passed"><span class="mark">✔</span> Not()-&gt;to have keys() fails as soon as any single key is found, even last in the list</li>
+  <li class="passed"><span class="mark">✔</span> Not()-&gt;to have properties() fails only when every property is present</li>
+</ul>
+<h2>ClassLocator <small>tests/unit/Dialect/PhpUnit/ClassLocatorTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Excludes the nested class in the real spatie regression fixture</li>
+  <li class="passed"><span class="mark">✔</span> Excludes a class nested inside a closure body</li>
+  <li class="passed"><span class="mark">✔</span> Excludes a class nested inside a function body</li>
+  <li class="passed"><span class="mark">✔</span> Still finds a true top level class</li>
+  <li class="passed"><span class="mark">✔</span> Still excludes an anonymous class</li>
+  <li class="passed"><span class="mark">✔</span> Finds a top level class declared after a nested one</li>
+</ul>
+<h2>Double <small>tests/unit/Double/DoubleTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Stub returns configured and default values</li>
+  <li class="passed"><span class="mark">✔</span> Object return types yield recursive stubs</li>
+  <li class="passed"><span class="mark">✔</span> With matchers select behavior per arguments</li>
+  <li class="passed"><span class="mark">✔</span> Consecutive calls map and throw</li>
+  <li class="passed"><span class="mark">✔</span> Abstract class double stubs all public methods</li>
+  <li class="passed"><span class="mark">✔</span> Mock expectation satisfied</li>
+  <li class="passed"><span class="mark">✔</span> Layered expectation keeps earlier configured return value</li>
+  <li class="passed"><span class="mark">✔</span> Exceeded expectation fails at call time</li>
+  <li class="passed"><span class="mark">✔</span> Unmet expectation fails verification</li>
+  <li class="passed"><span class="mark">✔</span> Final classes cannot be doubled</li>
+</ul>
+<h2>GeneratedShapes <small>tests/unit/Double/GeneratedShapesTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Every shape generates or is recorded as not generating</li>
+  <li class="passed"><span class="mark">✔</span> A by ref parameter keeps its signature and is forwarded by value</li>
+  <li class="passed"><span class="mark">✔</span> A static method is refused rather than doubled</li>
+  <li class="passed"><span class="mark">✔</span> A void method dispatches</li>
+  <li class="passed"><span class="mark">✔</span> A tentative return type reaches the signature and the return value</li>
+  <li class="passed"><span class="mark">✔</span> An object default keeps what the initializer said</li>
+  <li class="passed"><span class="mark">✔</span> Defaults survive into the signature</li>
+  <li class="passed"><span class="mark">✔</span> A variadic stays variadic</li>
+</ul>
+<h2>MockBuilder <small>tests/unit/Double/MockBuilderTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The original constructor runs by default</li>
+  <li class="passed"><span class="mark">✔</span> Constructor args reach the original constructor</li>
+  <li class="passed"><span class="mark">✔</span> Disable original constructor bypasses it</li>
+  <li class="passed"><span class="mark">✔</span> Only methods leaves unlisted methods real</li>
+  <li class="passed"><span class="mark">✔</span> Empty only methods doubles nothing</li>
+  <li class="passed"><span class="mark">✔</span> Unknown method in only methods is a named error</li>
+  <li class="passed"><span class="mark">✔</span> Only methods on an interface is a named error</li>
+  <li class="passed"><span class="mark">✔</span> Configuring an undoubled method is a named error</li>
+  <li class="passed"><span class="mark">✔</span> Expects on an undoubled method is a named error too</li>
+  <li class="passed"><span class="mark">✔</span> Expectations on builder mocks verify</li>
+  <li class="passed"><span class="mark">✔</span> The original clone runs by default and can be disabled</li>
+  <li class="passed"><span class="mark">✔</span> Disabled auto return generation refuses unconfigured calls</li>
+  <li class="passed"><span class="mark">✔</span> Set mock class name names the generated class</li>
+  <li class="passed"><span class="mark">✔</span> A trait name is refused rather than compiled into a fatal</li>
+  <li class="passed"><span class="mark">✔</span> A generated double is named by its specification not by call order</li>
+  <li class="passed"><span class="mark">✔</span> Create partial mock bypasses the constructor and keeps the rest real</li>
+  <li class="passed"><span class="mark">✔</span> Intersection mocks implement every interface</li>
+  <li class="passed"><span class="mark">✔</span> Expectationless mocks are named and stubs are not</li>
+  <li class="passed"><span class="mark">✔</span> The stub builder is the mock builder with stub spellings</li>
+</ul>
+<h2>MockeryMatchers <small>tests/unit/Double/MockeryMatchersTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Contains is loose and order insensitive</li>
+  <li class="passed"><span class="mark">✔</span> Contains on a non array is a clean no match</li>
+  <li class="passed"><span class="mark">✔</span> Has value is strict unlike contains</li>
+  <li class="passed"><span class="mark">✔</span> Has key refuses non arrays</li>
+  <li class="passed"><span class="mark">✔</span> Any of is strict but not any of is loose</li>
+  <li class="passed"><span class="mark">✔</span> Not is strict so identity falls out for objects</li>
+  <li class="passed"><span class="mark">✔</span> Subset recurses with extra keys allowed at every depth</li>
+  <li class="passed"><span class="mark">✔</span> Subset loose flag and positional keys</li>
+  <li class="passed"><span class="mark">✔</span> Type follows the function existence rule</li>
+  <li class="passed"><span class="mark">✔</span> Pattern casts scalars and stringables</li>
+  <li class="passed"><span class="mark">✔</span> Ducktype requires every real method</li>
+  <li class="passed"><span class="mark">✔</span> Capture assigns by reference last call wins</li>
+  <li class="passed"><span class="mark">✔</span> Capture assigns during the failed match attempt</li>
+  <li class="passed"><span class="mark">✔</span> Capture composes with counts and return using</li>
+  <li class="passed"><span class="mark">✔</span> Any is per argument so arity still holds</li>
+  <li class="passed"><span class="mark">✔</span> On and with args predicates must return true strictly</li>
+  <li class="passed"><span class="mark">✔</span> With args array form is bare with</li>
+  <li class="passed"><span class="mark">✔</span> With args refuses other types in the oracles words</li>
+  <li class="passed"><span class="mark">✔</span> With some of args is strict and all must be present</li>
+  <li class="passed"><span class="mark">✔</span> Matchers mix with literals inside with</li>
+  <li class="passed"><span class="mark">✔</span> Must be stays a named error</li>
+</ul>
+<h2>MockerySurface <small>tests/unit/Double/MockerySurfaceTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The pest mocking chapter shape</li>
+  <li class="passed"><span class="mark">✔</span> First declared wins</li>
+  <li class="passed"><span class="mark">✔</span> Count exhaustion falls through</li>
+  <li class="passed"><span class="mark">✔</span> Exceeded count settles at close not call time</li>
+  <li class="passed"><span class="mark">✔</span> Should not receive violation settles at close</li>
+  <li class="passed"><span class="mark">✔</span> Unconfigured method is bad method call</li>
+  <li class="passed"><span class="mark">✔</span> Argument mismatch is no matching expectation</li>
+  <li class="passed"><span class="mark">✔</span> Mockery equality loose scalars identity objects</li>
+  <li class="passed"><span class="mark">✔</span> Typed defaults match the oracle</li>
+  <li class="passed"><span class="mark">✔</span> Consecutive returns repeat the last</li>
+  <li class="passed"><span class="mark">✔</span> And throw with class and message</li>
+  <li class="passed"><span class="mark">✔</span> Count vocabulary</li>
+  <li class="passed"><span class="mark">✔</span> Between unmet settles as failure</li>
+  <li class="passed"><span class="mark">✔</span> Expects defaults to once</li>
+  <li class="passed"><span class="mark">✔</span> Allows is never verified</li>
+  <li class="passed"><span class="mark">✔</span> Quick definitions match any arguments</li>
+  <li class="passed"><span class="mark">✔</span> Quick definitions toggle makes them mocks</li>
+  <li class="passed"><span class="mark">✔</span> Unknown types are declared like the oracle</li>
+  <li class="passed"><span class="mark">✔</span> Constructor arguments run the original constructor</li>
+  <li class="passed"><span class="mark">✔</span> Allow mocking non existent methods false refuses</li>
+  <li class="passed"><span class="mark">✔</span> The global aliases are installed</li>
+  <li class="passed"><span class="mark">✔</span> Ditched surface answers with named errors</li>
+  <li class="passed"><span class="mark">✔</span> A mock name is a name</li>
+  <li class="passed"><span class="mark">✔</span> The shapes a mock name can take</li>
+  <li class="passed"><span class="mark">✔</span> A trait mock uses the trait and keeps its methods real</li>
+</ul>
+<h2>Emitter <small>tests/unit/Event/EmitterTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Stamps gapless one based sequence and clock time</li>
+  <li class="passed"><span class="mark">✔</span> Delivers to listeners in subscription order</li>
+</ul>
+<h2>EventPayload <small>tests/unit/Event/EventPayloadTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Optional fields are omitted not null</li>
+  <li class="passed"><span class="mark">✔</span> Retry attempt and skip reason appear when set</li>
+  <li class="passed"><span class="mark">✔</span> Blocked appears only when set</li>
+  <li class="passed"><span class="mark">✔</span> Untested is a subset of skipped not an extra outcome</li>
+  <li class="passed"><span class="mark">✔</span> Untested rides run finished as an additive field</li>
+  <li class="passed"><span class="mark">✔</span> Run summary plus sums every field for the vitest fold</li>
+  <li class="passed"><span class="mark">✔</span> Failure payload omits absent parts</li>
+  <li class="passed"><span class="mark">✔</span> Run summary counts and verdict</li>
+</ul>
+<h2>EventTextWriter <small>tests/unit/Event/EventTextWriterTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Terse form is sequence and name only</li>
+  <li class="passed"><span class="mark">✔</span> Verbose form keeps the payload fields</li>
+  <li class="passed"><span class="mark">✔</span> Telemetry prefixes each line with elapsed time and peak memory</li>
+</ul>
+<h2>NdjsonStream <small>tests/unit/Event/NdjsonStreamTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Miniature run produces the exact golden stream</li>
+  <li class="passed"><span class="mark">✔</span> Incomplete carries its origin and skipped does not</li>
+  <li class="passed"><span class="mark">✔</span> Output chunk concatenation is exact</li>
+  <li class="passed"><span class="mark">✔</span> Invalid utf8 in chunks is substituted not fatal</li>
+</ul>
+<h2>AssertNoDuplication <small>tests/unit/Extension/AssertNoDuplicationTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Clean source passes</li>
+  <li class="passed"><span class="mark">✔</span> A cloned body fails and is named</li>
+  <li class="passed"><span class="mark">✔</span> The callers message is kept</li>
+  <li class="skipped"><span class="mark">↩</span> The absent tool says which package is missing</li>
+  <li class="passed"><span class="mark">✔</span> The constraint refuses what is not a clone map</li>
+</ul>
+<h2>CheckExtension <small>tests/unit/Extension/CheckExtensionTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A satisfied claim passes</li>
+  <li class="passed"><span class="mark">✔</span> An unsatisfied claim fails naming both operands and the detail</li>
+  <li class="passed"><span class="mark">✔</span> A throwing check errors instead of crashing</li>
+</ul>
+<h2>CommandGate <small>tests/unit/Extension/CommandGateTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A zero exit is a passed check with no reason</li>
+  <li class="passed"><span class="mark">✔</span> A non zero exit is a failed check naming the exit code</li>
+  <li class="passed"><span class="mark">✔</span> A command past its deadline is killed and errors</li>
+  <li class="passed"><span class="mark">✔</span> The event carries name and duration</li>
+  <li class="passed"><span class="mark">✔</span> The builder records command gates</li>
+  <li class="passed"><span class="mark">✔</span> A duplicate command label is rejected</li>
+  <li class="passed"><span class="mark">✔</span> An empty argv is rejected</li>
+</ul>
+<h2>DuplicationCheck <small>tests/unit/Extension/DuplicationCheckTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> It names itself without needing the tool</li>
+  <li class="skipped"><span class="mark">↩</span> Asking for the check without the tool says which package is missing</li>
+  <li class="passed"><span class="mark">✔</span> Clean source presents nothing to judge</li>
+  <li class="passed"><span class="mark">✔</span> Duplication is presented as facts rather than a verdict</li>
+  <li class="passed"><span class="mark">✔</span> A tolerant threshold is still the callers to set</li>
+</ul>
+<h2>WorkingDirectory <small>tests/unit/Filesystem/WorkingDirectoryTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> An empty path is refused at construction</li>
+  <li class="passed"><span class="mark">✔</span> The path is kept verbatim</li>
+  <li class="passed"><span class="mark">✔</span> Relative paths resolve against the directory</li>
+  <li class="passed"><span class="mark">✔</span> An absolute path is returned untouched</li>
+  <li class="passed"><span class="mark">✔</span> The ugly shapes are preserved rather than fixed</li>
+  <li class="passed"><span class="mark">✔</span> Current reads the process directory</li>
+  <li class="passed"><span class="mark">✔</span> Two directories are equal by path</li>
+  <li class="passed"><span class="mark">✔</span> A path inside the directory is named from it</li>
+</ul>
+<h2>FailureOutsideDiff <small>tests/unit/Flakiness/FailureOutsideDiffTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A failure that executed no changed file is a suspect</li>
+  <li class="passed"><span class="mark">✔</span> A failure that executed a changed file is never a suspect</li>
+  <li class="passed"><span class="mark">✔</span> A failing test whose own file changed is never a suspect</li>
+  <li class="passed"><span class="mark">✔</span> A changed declaring file of another test does not suppress the check</li>
+  <li class="passed"><span class="mark">✔</span> Unobservable changed code silences the check entirely</li>
+  <li class="passed"><span class="mark">✔</span> A test only diff produces no hint</li>
+  <li class="passed"><span class="mark">✔</span> A failure unknown to the map is skipped</li>
+  <li class="passed"><span class="mark">✔</span> Empty inputs are silence</li>
+  <li class="passed"><span class="mark">✔</span> A whole file scope entry matches exactly</li>
+</ul>
+<h2>OrderDependencyHunter <small>tests/unit/Flakiness/OrderDependencyHunterTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A seed reproduced failure that passes alone is order dependent</li>
+  <li class="passed"><span class="mark">✔</span> A failure the seed cannot reproduce is non deterministic</li>
+  <li class="passed"><span class="mark">✔</span> A failure that fails alone is broken not flaky</li>
+  <li class="passed"><span class="mark">✔</span> Baseline failures are named and excluded from the hunt</li>
+  <li class="passed"><span class="mark">✔</span> A clean suite reports clean</li>
+</ul>
+<h2>LifecycleCompatibility <small>tests/unit/Framework/LifecycleCompatibilityTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A traits before reset runs ahead of set up</li>
+  <li class="passed"><span class="mark">✔</span> The plan places each template at priority zero</li>
+  <li class="passed"><span class="mark">✔</span> An attribute on a template method does not run it twice</li>
+  <li class="passed"><span class="mark">✔</span> An error from the test passes through transform exception</li>
+  <li class="passed"><span class="mark">✔</span> An error from set up passes through transform exception</li>
+  <li class="passed"><span class="mark">✔</span> A failure is an outcome and is not transformed</li>
+  <li class="passed"><span class="mark">✔</span> An expected exception is not transformed</li>
+  <li class="passed"><span class="mark">✔</span> The incumbents logical not is aliased</li>
+  <li class="passed"><span class="mark">✔</span> A framework constraint fails in the incumbents sentence</li>
+  <li class="passed"><span class="mark">✔</span> Its negation negates the wording and not the data</li>
+  <li class="passed"><span class="mark">✔</span> The negation passes</li>
+</ul>
+<h2>GeneratedCode <small>tests/unit/Generated/GeneratedCodeTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> It compiles and hands back what the source returns</li>
+  <li class="passed"><span class="mark">✔</span> Source that does not parse names what it was for and shows it</li>
+  <li class="passed"><span class="mark">✔</span> Recording writes the source with what it was for</li>
+  <li class="passed"><span class="mark">✔</span> The same shape twice is one recorded file</li>
+  <li class="passed"><span class="mark">✔</span> Recording stops when the scope ends</li>
+  <li class="passed"><span class="mark">✔</span> Recording stops even when the work throws</li>
+  <li class="passed"><span class="mark">✔</span> A failure inside the generated code is not a generation failure</li>
+</ul>
+<h2>ChangedFiles <small>tests/unit/Impact/ChangedFilesTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Modified untracked and deleted files are reported</li>
+  <li class="passed"><span class="mark">✔</span> A clean tree reports nothing</li>
+  <li class="passed"><span class="mark">✔</span> An unknown reference is an error</li>
+  <li class="passed"><span class="mark">✔</span> Outside a repository is an error</li>
+</ul>
+<h2>DependencyGraph <small>tests/unit/Impact/DependencyGraphTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The closure follows references transitively</li>
+  <li class="passed"><span class="mark">✔</span> An island reaches only itself</li>
+  <li class="passed"><span class="mark">✔</span> Vendor files are never graph nodes</li>
+  <li class="passed"><span class="mark">✔</span> Vendor is excluded by path segment not only at the root</li>
+  <li class="passed"><span class="mark">✔</span> Observed edges apply one hop from the root only</li>
+  <li class="passed"><span class="mark">✔</span> Pest family files depend on the suite configuration above them</li>
+</ul>
+<h2>DependencyIndex <small>tests/unit/Impact/DependencyIndexTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A warm index produces the identical closure</li>
+  <li class="passed"><span class="mark">✔</span> A changed file is not replayed from the index</li>
+  <li class="passed"><span class="mark">✔</span> A different configuration lands on a different index</li>
+  <li class="passed"><span class="mark">✔</span> A suite configuration appearing changes the fingerprint</li>
+  <li class="passed"><span class="mark">✔</span> An index survives the checkout moving to another path</li>
+  <li class="passed"><span class="mark">✔</span> The fingerprint does not depend on where the project sits</li>
+  <li class="passed"><span class="mark">✔</span> An entry reaching outside the project is not stored</li>
+  <li class="passed"><span class="mark">✔</span> An entry wholly inside the project is still stored</li>
+</ul>
+<h2>ImpactFingerprint <small>tests/unit/Impact/ImpactFingerprintTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Adding a suite configuration changes the fingerprint</li>
+  <li class="passed"><span class="mark">✔</span> The same tree fingerprints the same</li>
+  <li class="passed"><span class="mark">✔</span> Configuration above the file counts too</li>
+</ul>
+<h2>ImpactSelection <small>tests/unit/Impact/ImpactSelectionTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A change selects the groups whose closure reaches it</li>
+  <li class="passed"><span class="mark">✔</span> A changed test file selects itself</li>
+  <li class="passed"><span class="mark">✔</span> An untouched graph selects nothing</li>
+  <li class="passed"><span class="mark">✔</span> A change a vitest suite answers for is not called unaccounted for</li>
+  <li class="passed"><span class="mark">✔</span> A change no test reaches says so rather than going quiet</li>
+  <li class="passed"><span class="mark">✔</span> Deletions widen to the full suite</li>
+  <li class="passed"><span class="mark">✔</span> Composer changes widen to the full suite</li>
+  <li class="passed"><span class="mark">✔</span> A javascript dependency bump widens too</li>
+  <li class="passed"><span class="mark">✔</span> Environment files widen to the full suite</li>
+  <li class="passed"><span class="mark">✔</span> A non php change is reported in the notes</li>
+  <li class="passed"><span class="mark">✔</span> A rule selects its groups for an unreachable file</li>
+  <li class="passed"><span class="mark">✔</span> A rule matches templates that end in php</li>
+  <li class="passed"><span class="mark">✔</span> Rules only widen never narrow</li>
+  <li class="passed"><span class="mark">✔</span> A group selected by both sources is not duplicated</li>
+  <li class="passed"><span class="mark">✔</span> A rule match is not counted as an ignored change</li>
+  <li class="passed"><span class="mark">✔</span> A rule for a group no test carries is reported</li>
+  <li class="passed"><span class="mark">✔</span> A glob pattern matches across directories</li>
+  <li class="passed"><span class="mark">✔</span> A change matching no rule selects nothing</li>
+</ul>
+<h2>ReferenceScanner <small>tests/unit/Impact/ReferenceScannerTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Use imports resolve fully</li>
+  <li class="passed"><span class="mark">✔</span> Aliases resolve to the imported name</li>
+  <li class="passed"><span class="mark">✔</span> Group use expands the prefix</li>
+  <li class="passed"><span class="mark">✔</span> Unimported names resolve against the namespace</li>
+  <li class="passed"><span class="mark">✔</span> Fully qualified names pass through</li>
+  <li class="passed"><span class="mark">✔</span> Qualified names join the namespace</li>
+  <li class="passed"><span class="mark">✔</span> Extends implements and attributes are references</li>
+  <li class="passed"><span class="mark">✔</span> Declarations are not references</li>
+  <li class="passed"><span class="mark">✔</span> Member access is not a reference</li>
+  <li class="passed"><span class="mark">✔</span> Lowercase identifiers are not candidates</li>
+  <li class="passed"><span class="mark">✔</span> Global fallback only without a namespace</li>
+  <li class="passed"><span class="mark">✔</span> Use function imports are skipped</li>
+  <li class="passed"><span class="mark">✔</span> Closure capture lists are not imports</li>
+  <li class="passed"><span class="mark">✔</span> Trait use inside a class is a reference</li>
+</ul>
+<h2>VitestImpact <small>tests/unit/Impact/VitestImpactTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A change under a suite narrows it to that related file</li>
+  <li class="passed"><span class="mark">✔</span> A suite with no js change is dropped but named</li>
+  <li class="passed"><span class="mark">✔</span> Deletions widen every suite to a full run</li>
+  <li class="passed"><span class="mark">✔</span> No configured suites yields nothing</li>
+  <li class="passed"><span class="mark">✔</span> Each suite is scoped independently</li>
+</ul>
+<h2>GlobalStateExport <small>tests/unit/Isolation/GlobalStateExportTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A global survives the round trip through the manifest</li>
+  <li class="passed"><span class="mark">✔</span> A null global round trips as a value rather than as absent</li>
+  <li class="passed"><span class="mark">✔</span> What no serializer can carry is skipped by name not fatal</li>
+  <li class="passed"><span class="mark">✔</span> Superglobals are left to the process they describe</li>
+  <li class="passed"><span class="mark">✔</span> Only user constants travel and restoring never redefines</li>
+  <li class="passed"><span class="mark">✔</span> Garbage from the manifest is ignored rather than trusted</li>
+</ul>
+<h2>MetadataParser <small>tests/unit/Metadata/MetadataParserTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Collects class level attributes including inherited</li>
+  <li class="passed"><span class="mark">✔</span> Collects method attributes in declaration order</li>
+  <li class="passed"><span class="mark">✔</span> Method metadata precedes class metadata in merged view</li>
+  <li class="passed"><span class="mark">✔</span> Foreign attributes are ignored</li>
+  <li class="passed"><span class="mark">✔</span> Programmatic construction for dialect frontends</li>
+</ul>
+<h2>ColdMutantExecutor <small>tests/unit/Mutation/ColdMutantExecutorTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A mutant a covering test catches is killed coldly</li>
+  <li class="passed"><span class="mark">✔</span> A mutant the tests cannot see is escaped coldly</li>
+  <li class="passed"><span class="mark">✔</span> A mutant no test covers is not covered</li>
+</ul>
+<h2>CoveringTestRunner <small>tests/unit/Mutation/CoveringTestRunnerTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The first failing covering test is the killer</li>
+  <li class="passed"><span class="mark">✔</span> All covering tests surviving yields no killer</li>
+  <li class="passed"><span class="mark">✔</span> Covering ids that match nothing yield no killer</li>
+  <li class="passed"><span class="mark">✔</span> The cheapest covering test gets the first shot at the kill</li>
+</ul>
+<h2>EquivalentMarkers <small>tests/unit/Mutation/EquivalentMarkersTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Each form covers its lines with its reason</li>
+  <li class="passed"><span class="mark">✔</span> Each range starts and ends where its declaration does</li>
+  <li class="passed"><span class="mark">✔</span> Generated mutants carry the reason and are never run</li>
+  <li class="passed"><span class="mark">✔</span> The manuals example declares the mutants it says</li>
+</ul>
+<h2>MutantApplier <small>tests/unit/Mutation/MutantApplierTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A mutant the weak test cannot see is escaped</li>
+  <li class="passed"><span class="mark">✔</span> A mutant the covering test catches is killed</li>
+  <li class="passed"><span class="mark">✔</span> A mutant that crashes the run is errored not escaped</li>
+  <li class="passed"><span class="mark">✔</span> A mutant that hangs is timed out</li>
+  <li class="passed"><span class="mark">✔</span> An already loaded class is not warm applicable</li>
+</ul>
+<h2>MutantGenerator <small>tests/unit/Mutation/MutantGeneratorTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A mutant swaps exactly one operator and preserves everything else</li>
+  <li class="passed"><span class="mark">✔</span> Every operator on a line becomes its own mutant</li>
+  <li class="passed"><span class="mark">✔</span> Comparison and logical rules each fire</li>
+  <li class="passed"><span class="mark">✔</span> Source with no operators yields no mutants</li>
+  <li class="passed"><span class="mark">✔</span> The catalog is injectable</li>
+</ul>
+<h2>MutationJournal <small>tests/unit/Mutation/MutationJournalTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> An absent journal is empty rather than an error</li>
+  <li class="passed"><span class="mark">✔</span> A verdict survives being reloaded</li>
+  <li class="passed"><span class="mark">✔</span> Every outcome round trips</li>
+  <li class="passed"><span class="mark">✔</span> Two mutants on one line are two entries</li>
+  <li class="passed"><span class="mark">✔</span> Verdicts outside the scope are left out</li>
+  <li class="passed"><span class="mark">✔</span> A different judge does not match a recorded verdict</li>
+  <li class="passed"><span class="mark">✔</span> A changed source invalidates its own verdict</li>
+  <li class="passed"><span class="mark">✔</span> A half written last line is skipped not fatal</li>
+  <li class="passed"><span class="mark">✔</span> A record missing its identity is ignored</li>
+</ul>
+<h2>MutationReport <small>tests/unit/Mutation/MutationReportTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The score is detected over covered mutants</li>
+  <li class="passed"><span class="mark">✔</span> All uncovered scores zero not a divide by zero</li>
+</ul>
+<h2>MutationRunner <small>tests/unit/Mutation/MutationRunnerTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Each verdict is handed over as it lands</li>
+  <li class="passed"><span class="mark">✔</span> A mutant no test covers is still handed over</li>
+  <li class="passed"><span class="mark">✔</span> The runner still works with no callback</li>
+  <li class="passed"><span class="mark">✔</span> A warmable mutant runs warm not cold</li>
+  <li class="passed"><span class="mark">✔</span> A mutant warm cannot run falls back to cold</li>
+  <li class="passed"><span class="mark">✔</span> With no warm executor everything runs cold</li>
+  <li class="passed"><span class="mark">✔</span> An uncovered mutant spawns nothing</li>
+</ul>
+<h2>ShapeMutator <small>tests/unit/Mutation/ShapeMutatorTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Each string key is dropped once and the result still parses</li>
+  <li class="passed"><span class="mark">✔</span> Only a string keyed element is dropped and exactly it</li>
+</ul>
+<h2>ApprovedEvalRule <small>tests/unit/PHPStan/ApprovedEvalRuleTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> An unapproved eval is reported and an approved one is not</li>
+</ul>
+<h2>ApprovedGeneratorRule <small>tests/unit/PHPStan/ApprovedGeneratorRuleTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> An unregistered generator is reported and a registered one is not</li>
+</ul>
+<h2>DataRowRules <small>tests/unit/PHPStan/DataRowRulesTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Every mistake is reported and nothing else</li>
+</ul>
+<h2>ExtensionBlackBox <small>tests/unit/PHPStan/ExtensionBlackBoxTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The fixture analyses to exactly the sentinel</li>
+  <li class="passed"><span class="mark">✔</span> A spread each leaves the value to the items</li>
+  <li class="passed"><span class="mark">✔</span> Scoped uses in resolves through ancestor pest configs</li>
+  <li class="passed"><span class="mark">✔</span> The method level magic and mockery surfaces resolve</li>
+</ul>
+<h2>ExtensionParity <small>tests/unit/PHPStan/ExtensionParityTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The extension agrees with the incumbents line for line</li>
+</ul>
+<h2>UsesResolver <small>tests/unit/PHPStan/UsesResolverTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Resolves imports aliases and both call spellings</li>
+  <li class="passed"><span class="mark">✔</span> Group and comma list imports resolve as php reads them</li>
+  <li class="passed"><span class="mark">✔</span> A scoped registration reads group imports too</li>
+  <li class="passed"><span class="mark">✔</span> Namespace relative and string literal arguments</li>
+  <li class="passed"><span class="mark">✔</span> Foreign uses spellings are ignored</li>
+  <li class="passed"><span class="mark">✔</span> A scoped registration is the whole chain and only a chain with in</li>
+  <li class="passed"><span class="mark">✔</span> Only class references count and each namespace resolves its own</li>
+  <li class="passed"><span class="mark">✔</span> A source cut off mid statement reads what it can and never fails</li>
+  <li class="passed"><span class="mark">✔</span> A file without uses resolves to nothing</li>
+</ul>
+<h2>ArrayFunctions <small>tests/unit/Polyfill/Php84/ArrayFunctionsTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Any is false on an empty array</li>
+  <li class="passed"><span class="mark">✔</span> Any is false when no element matches</li>
+  <li class="passed"><span class="mark">✔</span> Any is true when an element matches</li>
+  <li class="passed"><span class="mark">✔</span> Any passes the key to the callback</li>
+  <li class="passed"><span class="mark">✔</span> All is true on an empty array</li>
+  <li class="passed"><span class="mark">✔</span> All is true when every element matches</li>
+  <li class="passed"><span class="mark">✔</span> All is false when any element fails</li>
+  <li class="passed"><span class="mark">✔</span> All passes the key to the callback</li>
+  <li class="passed"><span class="mark">✔</span> Find returns null on an empty array</li>
+  <li class="passed"><span class="mark">✔</span> Find returns null when no element matches</li>
+  <li class="passed"><span class="mark">✔</span> Find returns the first matching value</li>
+  <li class="passed"><span class="mark">✔</span> Find passes the key to the callback</li>
+  <li class="passed"><span class="mark">✔</span> Find key returns null on an empty array</li>
+  <li class="passed"><span class="mark">✔</span> Find key returns null when no element matches</li>
+  <li class="passed"><span class="mark">✔</span> Find key returns the first matching key</li>
+  <li class="passed"><span class="mark">✔</span> Find key short circuits on the first match</li>
+</ul>
+<h2>ArrayFunctions <small>tests/unit/Polyfill/Php85/ArrayFunctionsTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> First returns null on an empty array</li>
+  <li class="passed"><span class="mark">✔</span> First returns the first value of a list array</li>
+  <li class="passed"><span class="mark">✔</span> First returns the first value of an associative array</li>
+  <li class="passed"><span class="mark">✔</span> First returns null when the first value is itself null</li>
+  <li class="passed"><span class="mark">✔</span> Last returns null on an empty array</li>
+  <li class="passed"><span class="mark">✔</span> Last returns the last value of a list array</li>
+  <li class="passed"><span class="mark">✔</span> Last returns the last value of an associative array</li>
+  <li class="passed"><span class="mark">✔</span> Last returns null when the last value is itself null</li>
+</ul>
+<h2>GenOf <small>tests/unit/Property/GenOfTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Every drawn value fits its type with data set &quot;a DTO shape&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Every drawn value fits its type with data set &quot;a range&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Every drawn value fits its type with data set &quot;nullable&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Every drawn value fits its type with data set &quot;string keys&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Every drawn value fits its type with data set &quot;a non-empty list of literals&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Every drawn value fits its type with data set &quot;nested&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Every drawn value fits its type with data set &quot;numeric strings&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Every drawn value fits its type with data set &quot;a range open below&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Every drawn value fits its type with data set &quot;a range open above&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Every drawn value fits its type with data set &quot;int keys&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Every drawn value fits its type with data set &quot;any keys&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Every drawn value fits its type with data set &quot;non-empty with keys&quot;</li>
+  <li class="passed"><span class="mark">✔</span> A type with no sound way to draw is refused</li>
+  <li class="passed"><span class="mark">✔</span> A non empty type whose every key php rewrites is refused</li>
+  <li class="passed"><span class="mark">✔</span> A failing property shrinks to the smallest shape</li>
+</ul>
+<h2>PropertyDatabase <small>tests/unit/Property/PropertyDatabaseTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A stored sequence replays before any random case</li>
+  <li class="passed"><span class="mark">✔</span> Each check in a test claims its own key</li>
+  <li class="passed"><span class="mark">✔</span> Without a context there is no key and no database</li>
+  <li class="passed"><span class="mark">✔</span> The runner puts the replay data on the event</li>
+  <li class="passed"><span class="mark">✔</span> A clean replay rides the passing finish event</li>
+  <li class="passed"><span class="mark">✔</span> An inert stored sequence is not reported clean</li>
+  <li class="passed"><span class="mark">✔</span> A failing test reports no clean keys</li>
+  <li class="passed"><span class="mark">✔</span> The writer prunes clean and orphaned keys on a complete run</li>
+  <li class="passed"><span class="mark">✔</span> An incomplete run prunes clean keys but never orphans</li>
+  <li class="passed"><span class="mark">✔</span> The database round trips merges and bounds</li>
+</ul>
+<h2>PropertyDialect.crucible <small>tests/unit/Property/PropertyDialect.crucible.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> String concatenation is associative</li>
+  <li class="passed"><span class="mark">✔</span> Sorting is idempotent</li>
+  <li class="passed"><span class="mark">✔</span> Json round-trips lists of ints</li>
+</ul>
+<h2>Property <small>tests/unit/Property/PropertyTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A true property holds</li>
+  <li class="passed"><span class="mark">✔</span> List reversal round trips</li>
+  <li class="passed"><span class="mark">✔</span> A false property is falsified and shrunk to the boundary</li>
+  <li class="passed"><span class="mark">✔</span> Shrinking finds the minimal list</li>
+  <li class="passed"><span class="mark">✔</span> Shrinking survives map</li>
+  <li class="passed"><span class="mark">✔</span> Returning false falsifies</li>
+  <li class="passed"><span class="mark">✔</span> The same seed reproduces the same counterexample</li>
+  <li class="passed"><span class="mark">✔</span> Such that filters and stays shrinkable</li>
+  <li class="passed"><span class="mark">✔</span> An impossible filter is a configuration problem</li>
+  <li class="passed"><span class="mark">✔</span> Generators produce their declared shapes</li>
+  <li class="passed"><span class="mark">✔</span> Integers shrink toward zero not the lower bound</li>
+  <li class="passed"><span class="mark">✔</span> Choice source replays and clamps scripts</li>
+  <li class="passed"><span class="mark">✔</span> Floats stay in range and shape up</li>
+  <li class="passed"><span class="mark">✔</span> Floats shrink to the simplest special value</li>
+  <li class="passed"><span class="mark">✔</span> Narrow float ranges resolve</li>
+  <li class="passed"><span class="mark">✔</span> Narrow float falsifies inside the range and shrinks to its edge</li>
+  <li class="passed"><span class="mark">✔</span> Float rejects a non finite or inverted range</li>
+  <li class="passed"><span class="mark">✔</span> For all needs a generator</li>
+  <li class="passed"><span class="mark">✔</span> Int rejects an inverted range</li>
+</ul>
+<h2>Badge <small>tests/unit/Reporting/Document/Blocks/BadgeTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Ok when nothing failed and nothing was flaky</li>
+  <li class="passed"><span class="mark">✔</span> Flaky when a passed only on retry and nothing failed</li>
+  <li class="passed"><span class="mark">✔</span> Failed wins over flaky when both apply</li>
+  <li class="passed"><span class="mark">✔</span> Errored alone is also failed</li>
+  <li class="passed"><span class="mark">✔</span> Skips and incompletes never change the verdict</li>
+  <li class="passed"><span class="mark">✔</span> Sample returns a valid instance</li>
+</ul>
+<h2>FoldingTree <small>tests/unit/Reporting/Document/Blocks/FoldingTreeTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Single child chains collapse into one label</li>
+  <li class="passed"><span class="mark">✔</span> Absolute paths fold instead of recursing forever</li>
+  <li class="passed"><span class="mark">✔</span> Absolute siblings still split at their common root</li>
+  <li class="passed"><span class="mark">✔</span> Siblings order by descending subtree time</li>
+  <li class="passed"><span class="mark">✔</span> Sub threshold tail folds</li>
+  <li class="passed"><span class="mark">✔</span> A fold of exactly one stays visible</li>
+  <li class="passed"><span class="mark">✔</span> A directory holding a flagged file never folds</li>
+  <li class="passed"><span class="mark">✔</span> Sample returns a valid instance</li>
+</ul>
+<h2>Image <small>tests/unit/Reporting/Document/Blocks/ImageTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Carries the jpeg bytes and no explicit width by default</li>
+  <li class="passed"><span class="mark">✔</span> Width can narrow the default fit to content width</li>
+  <li class="passed"><span class="mark">✔</span> Sample returns a real decodable jpeg</li>
+</ul>
+<h2>PdfPrimitives <small>tests/unit/Reporting/Document/PdfPrimitivesTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The cursor starts one margin below the page top</li>
+  <li class="passed"><span class="mark">✔</span> A heading places its baseline rule and advance exactly</li>
+  <li class="passed"><span class="mark">✔</span> A line advances by its leading</li>
+  <li class="passed"><span class="mark">✔</span> An indent moves the line right without changing the advance</li>
+  <li class="passed"><span class="mark">✔</span> Ensure breaks exactly at the footer reserve</li>
+  <li class="passed"><span class="mark">✔</span> Measure sums the afm widths and scales by size</li>
+  <li class="passed"><span class="mark">✔</span> Bold uses its own width table</li>
+  <li class="passed"><span class="mark">✔</span> A leader fills the gap with measured dots</li>
+  <li class="passed"><span class="mark">✔</span> A narrow gap gets no leader at all</li>
+  <li class="passed"><span class="mark">✔</span> A disc places every arc control point</li>
+  <li class="passed"><span class="mark">✔</span> A box is a filled rectangle in its own colour</li>
+  <li class="passed"><span class="mark">✔</span> Numbers are two decimal places</li>
+  <li class="passed"><span class="mark">✔</span> Escape protects the string delimiters</li>
+  <li class="passed"><span class="mark">✔</span> Wrap chunks at the fixed pitch column budget</li>
+  <li class="passed"><span class="mark">✔</span> Wrap keeps newlines as rows and normalises crlf</li>
+  <li class="passed"><span class="mark">✔</span> Wrap never drops to zero columns</li>
+  <li class="passed"><span class="mark">✔</span> Bookmarks carry their level title and page</li>
+</ul>
+<h2>JsonRenderer <small>tests/unit/Reporting/Document/Renderers/JsonRendererTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Summary counts and problems match the run</li>
+  <li class="passed"><span class="mark">✔</span> All passing run has an empty problems list</li>
+</ul>
+<h2>PdfRenderer <small>tests/unit/Reporting/Document/Renderers/PdfRendererTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Embeds the jpeg as an x object with dct decode and the jpegs own dimensions</li>
+  <li class="passed"><span class="mark">✔</span> The page that draws the image lists it in its resources and paints it</li>
+  <li class="passed"><span class="mark">✔</span> The same bytes drawn twice embed only once</li>
+  <li class="passed"><span class="mark">✔</span> Non jpeg bytes are rejected</li>
+  <li class="passed"><span class="mark">✔</span> Page break starts a fresh page</li>
+  <li class="passed"><span class="mark">✔</span> Headings produce outline bookmarks</li>
+  <li class="passed"><span class="mark">✔</span> No headings produces no outlines</li>
+  <li class="passed"><span class="mark">✔</span> Toc block renders a table of contents page with shifted page numbers</li>
+  <li class="passed"><span class="mark">✔</span> Toc is ignored unless it is the first block</li>
+  <li class="passed"><span class="mark">✔</span> Svg draws shapes fit to width preserving aspect ratio</li>
+  <li class="passed"><span class="mark">✔</span> Malformed svg markup is rejected</li>
+  <li class="passed"><span class="mark">✔</span> Svg with an unsupported feature is rejected</li>
+  <li class="passed"><span class="mark">✔</span> The tile grid places every column label and stat</li>
+  <li class="passed"><span class="mark">✔</span> A tiles rank decides its dot and colour</li>
+  <li class="passed"><span class="mark">✔</span> The table of contents indents and sizes by level</li>
+  <li class="passed"><span class="mark">✔</span> Toc page numbers are right aligned in the column</li>
+</ul>
+<h2>SarifRenderer <small>tests/unit/Reporting/Document/Renderers/SarifRendererTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Failed test becomes an error level result at the real call site</li>
+  <li class="passed"><span class="mark">✔</span> Skipped test omits a region when there is no trace frame</li>
+  <li class="passed"><span class="mark">✔</span> Declares both rules up front regardless of what fired</li>
+  <li class="passed"><span class="mark">✔</span> Invocation carries the runs real start and end time</li>
+</ul>
+<h2>SarifSchema <small>tests/unit/Reporting/Document/Renderers/SarifSchemaTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A mixed run validates against the sarif schema</li>
+</ul>
+<h2>FailureLocation <small>tests/unit/Reporting/Document/Renderers/Support/FailureLocationTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Picks the frame matching the tests own declaring file</li>
+  <li class="passed"><span class="mark">✔</span> Falls back to the innermost frame when none matches the test file</li>
+  <li class="passed"><span class="mark">✔</span> Returns null when there is no failure at all</li>
+</ul>
+<h2>SampleDocument <small>tests/unit/Reporting/Document/SampleDocumentTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Build includes every known block type exactly once</li>
+  <li class="passed"><span class="mark">✔</span> Toc is the first block</li>
+  <li class="passed"><span class="mark">✔</span> Renders through pdf without throwing</li>
+  <li class="passed"><span class="mark">✔</span> Renders through markdown without throwing</li>
+</ul>
+<h2>SvgDocument <small>tests/unit/Reporting/Document/Svg/SvgDocumentTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> View box is read from the view box attribute</li>
+  <li class="passed"><span class="mark">✔</span> View box falls back to width and height attributes</li>
+  <li class="passed"><span class="mark">✔</span> No view box or dimensions throws</li>
+  <li class="passed"><span class="mark">✔</span> A rect emits the re operator and a fill color</li>
+  <li class="passed"><span class="mark">✔</span> A rounded rect emits every bezier corner coordinate</li>
+  <li class="passed"><span class="mark">✔</span> A single radius rounds both axes</li>
+  <li class="passed"><span class="mark">✔</span> A circle emits every bezier arc coordinate</li>
+  <li class="passed"><span class="mark">✔</span> An ellipse uses each radius on its own axis</li>
+  <li class="passed"><span class="mark">✔</span> A non positive radius falls back to the re operator</li>
+  <li class="passed"><span class="mark">✔</span> A polygon closes its path</li>
+  <li class="passed"><span class="mark">✔</span> A polyline does not close</li>
+  <li class="passed"><span class="mark">✔</span> A line draws as a stroke by default since lines have no fill area</li>
+  <li class="passed"><span class="mark">✔</span> A path with an arc renders curve operators</li>
+  <li class="passed"><span class="mark">✔</span> Fill and stroke both present use the b operator</li>
+  <li class="passed"><span class="mark">✔</span> Fill none with stroke uses the s operator</li>
+  <li class="passed"><span class="mark">✔</span> Fill rule evenodd uses the star operator</li>
+  <li class="passed"><span class="mark">✔</span> Stroke width emits the w operator</li>
+  <li class="passed"><span class="mark">✔</span> Rgb function color syntax</li>
+  <li class="passed"><span class="mark">✔</span> Short hex color syntax</li>
+  <li class="passed"><span class="mark">✔</span> Inline style attribute is honored for presentation properties</li>
+  <li class="passed"><span class="mark">✔</span> A translate transform nests a q cm block</li>
+  <li class="passed"><span class="mark">✔</span> A scale transform</li>
+  <li class="passed"><span class="mark">✔</span> Fill is inherited from an ancestor group</li>
+  <li class="passed"><span class="mark">✔</span> A child overrides the inherited fill</li>
+  <li class="passed"><span class="mark">✔</span> An unused defs block renders nothing</li>
+  <li class="passed"><span class="mark">✔</span> Default fill is black when unspecified</li>
+  <li class="passed"><span class="mark">✔</span> Gradient fill throws</li>
+  <li class="passed"><span class="mark">✔</span> Filter attribute throws</li>
+  <li class="passed"><span class="mark">✔</span> Clip path attribute throws</li>
+  <li class="passed"><span class="mark">✔</span> Mask attribute throws</li>
+  <li class="passed"><span class="mark">✔</span> Text element throws</li>
+  <li class="passed"><span class="mark">✔</span> Embedded image element throws</li>
+  <li class="passed"><span class="mark">✔</span> Style element throws</li>
+  <li class="passed"><span class="mark">✔</span> Non one opacity throws</li>
+  <li class="passed"><span class="mark">✔</span> Full opacity does not throw</li>
+</ul>
+<h2>SvgPathData <small>tests/unit/Reporting/Document/Svg/SvgPathDataTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Absolute move and line commands with close</li>
+  <li class="passed"><span class="mark">✔</span> Relative move and line commands produce the same shape as absolute</li>
+  <li class="passed"><span class="mark">✔</span> Implicit linetos following a moveto</li>
+  <li class="passed"><span class="mark">✔</span> Horizontal and vertical line commands</li>
+  <li class="passed"><span class="mark">✔</span> Cubic bezier command</li>
+  <li class="passed"><span class="mark">✔</span> Smooth cubic reflects the previous control point</li>
+  <li class="passed"><span class="mark">✔</span> Smooth cubic with no preceding cubic uses the current point as the reflection</li>
+  <li class="passed"><span class="mark">✔</span> Quadratic bezier is upgraded to cubic</li>
+  <li class="passed"><span class="mark">✔</span> Multiple subpaths from separate move commands</li>
+  <li class="passed"><span class="mark">✔</span> A zero radius arc degenerates to a straight line</li>
+  <li class="passed"><span class="mark">✔</span> Malformed path data throws</li>
+  <li class="passed"><span class="mark">✔</span> Arc to beziers matches the known quarter circle kappa constant</li>
+  <li class="passed"><span class="mark">✔</span> A half circle arc splits into two segments</li>
+  <li class="passed"><span class="mark">✔</span> Large arc flag changes arc extent</li>
+  <li class="passed"><span class="mark">✔</span> Degenerate same start and end arc in path data</li>
+</ul>
+<h2>MapView <small>tests/unit/Reporting/MapViewTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The first frame reserves a cell for every test</li>
+  <li class="passed"><span class="mark">✔</span> An unknown total draws nothing</li>
+  <li class="passed"><span class="mark">✔</span> A non animated terminal gets the report and no frame</li>
+  <li class="passed"><span class="mark">✔</span> The report follows the frame</li>
+  <li class="passed"><span class="mark">✔</span> Every outcome gets its own glyph</li>
+  <li class="passed"><span class="mark">✔</span> The frame never changes height</li>
+  <li class="passed"><span class="mark">✔</span> A population larger than the window is paged</li>
+  <li class="passed"><span class="mark">✔</span> A page turn is not throttled</li>
+  <li class="passed"><span class="mark">✔</span> The running test is named on one line</li>
+  <li class="passed"><span class="mark">✔</span> A small suite gets a short frame</li>
+  <li class="passed"><span class="mark">✔</span> The readouts are always present</li>
+  <li class="passed"><span class="mark">✔</span> A terminal too narrow for the frame draws nothing</li>
+  <li class="passed"><span class="mark">✔</span> The frame carries a wall clock</li>
+  <li class="passed"><span class="mark">✔</span> The clock separators pulse with the second</li>
+  <li class="passed"><span class="mark">✔</span> The configuration is named on the frame</li>
+  <li class="passed"><span class="mark">✔</span> The mark cycles through its phases</li>
+  <li class="passed"><span class="mark">✔</span> The frame opens before the run with a note</li>
+  <li class="passed"><span class="mark">✔</span> An opening frame is closed when no run follows</li>
+  <li class="passed"><span class="mark">✔</span> The cursor is never shown while the frame is up</li>
+  <li class="passed"><span class="mark">✔</span> The alternate screen is restored</li>
+</ul>
+<h2>ProgressViewRegistry <small>tests/unit/Reporting/ProgressView/ProgressViewRegistryTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Describe returns metadata for a valid view</li>
+  <li class="passed"><span class="mark">✔</span> Describe unknown key throws</li>
+  <li class="passed"><span class="mark">✔</span> Describe is unavailable when a required extension is missing</li>
+  <li class="passed"><span class="mark">✔</span> Describe is unavailable when the class does not exist</li>
+  <li class="passed"><span class="mark">✔</span> Describe is unavailable when the class has no attribute</li>
+  <li class="passed"><span class="mark">✔</span> Describe is unavailable when the class does not implement the contract</li>
+  <li class="passed"><span class="mark">✔</span> All lists every configured view regardless of availability</li>
+  <li class="passed"><span class="mark">✔</span> Is available matches describe</li>
+  <li class="passed"><span class="mark">✔</span> Has reflects what is configured</li>
+  <li class="passed"><span class="mark">✔</span> Resolve constructs with the given stream and validated params</li>
+  <li class="passed"><span class="mark">✔</span> Resolve throws when unavailable</li>
+  <li class="passed"><span class="mark">✔</span> Resolve throws on missing required param</li>
+  <li class="passed"><span class="mark">✔</span> Resolve throws on wrong param type</li>
+  <li class="passed"><span class="mark">✔</span> Resolve throws on an unknown param</li>
+</ul>
+<h2>ReportFormatRegistry <small>tests/unit/Reporting/ReportFormat/ReportFormatRegistryTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Describe returns metadata for a valid format</li>
+  <li class="passed"><span class="mark">✔</span> Describe unknown key throws</li>
+  <li class="passed"><span class="mark">✔</span> Describe is unavailable when a required extension is missing</li>
+  <li class="passed"><span class="mark">✔</span> Describe is unavailable when the class does not exist</li>
+  <li class="passed"><span class="mark">✔</span> Describe is unavailable when the class has no attribute</li>
+  <li class="passed"><span class="mark">✔</span> Describe is unavailable when the class does not implement the contract</li>
+  <li class="passed"><span class="mark">✔</span> All lists every configured format regardless of availability</li>
+  <li class="passed"><span class="mark">✔</span> Is available matches describe</li>
+  <li class="passed"><span class="mark">✔</span> Has reflects what is configured</li>
+  <li class="passed"><span class="mark">✔</span> Resolve instantiates and applies default params</li>
+  <li class="passed"><span class="mark">✔</span> Resolve throws when unavailable</li>
+  <li class="passed"><span class="mark">✔</span> Resolve throws on missing required param</li>
+  <li class="passed"><span class="mark">✔</span> Resolve throws on wrong param type</li>
+  <li class="passed"><span class="mark">✔</span> Resolve throws on an unknown param</li>
+  <li class="passed"><span class="mark">✔</span> Resolved instance can actually render</li>
+</ul>
+<h2>Reporters <small>tests/unit/Reporting/ReportersTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Console lifts blocked skips into a quiet untested section</li>
+  <li class="passed"><span class="mark">✔</span> Console colors output only when enabled</li>
+  <li class="passed"><span class="mark">✔</span> Markdown splits untested from skipped and problems</li>
+  <li class="passed"><span class="mark">✔</span> Test dox marks untested distinctly and splits the tally</li>
+  <li class="passed"><span class="mark">✔</span> Test dox renders prettified sections and marks</li>
+  <li class="passed"><span class="mark">✔</span> Team city escapes the service message characters</li>
+  <li class="passed"><span class="mark">✔</span> J unit report is well formed with spec granularity</li>
+  <li class="passed"><span class="mark">✔</span> J unit carries surefire flaky and rerun markup</li>
+  <li class="passed"><span class="mark">✔</span> Markdown report carries summary table problems and escaped cells</li>
+  <li class="passed"><span class="mark">✔</span> The slowest section states when the profiler is what it ranked</li>
+  <li class="passed"><span class="mark">✔</span> Pdf report is well formed and carries the run content</li>
+  <li class="passed"><span class="mark">✔</span> Pdf report title is configurable</li>
+  <li class="passed"><span class="mark">✔</span> Pdf verdict is flaky only on pass after retry</li>
+  <li class="passed"><span class="mark">✔</span> Pdf groups directories once and elides flag only files</li>
+  <li class="passed"><span class="mark">✔</span> The profile lists the slowest tests first</li>
+  <li class="passed"><span class="mark">✔</span> The profile shows each tests share of the run</li>
+  <li class="passed"><span class="mark">✔</span> The profile honours its limit</li>
+  <li class="passed"><span class="mark">✔</span> A profile of nothing prints nothing</li>
+</ul>
+<h2>RunModel <small>tests/unit/Reporting/RunModelTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Groups finished tests by file in first seen order</li>
+  <li class="passed"><span class="mark">✔</span> Passed tests are neither problems nor untested</li>
+  <li class="passed"><span class="mark">✔</span> Non passed unblocked tests are problems</li>
+  <li class="passed"><span class="mark">✔</span> Blocked tests are untested not problems regardless of outcome</li>
+  <li class="passed"><span class="mark">✔</span> Untested groups by reason in first seen order</li>
+  <li class="passed"><span class="mark">✔</span> Untested with no reason falls back to a could not run label</li>
+</ul>
+<h2>FileBackedSubscriber <small>tests/unit/Reporting/Subscriber/FileBackedSubscriberTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Open failure throws naming the given label</li>
+  <li class="passed"><span class="mark">✔</span> Write receives every envelope and the stream closes on run finished</li>
+</ul>
+<h2>OtrSchema <small>tests/unit/Reporting/Subscriber/OtrSchemaTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A mixed run validates against the open test reporting schema</li>
+</ul>
+<h2>SubscriberRegistry <small>tests/unit/Reporting/Subscriber/SubscriberRegistryTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Describe returns metadata for a valid subscriber</li>
+  <li class="passed"><span class="mark">✔</span> Describe unknown key throws</li>
+  <li class="passed"><span class="mark">✔</span> Describe is unavailable when a required extension is missing</li>
+  <li class="passed"><span class="mark">✔</span> Describe is unavailable when the class does not exist</li>
+  <li class="passed"><span class="mark">✔</span> Describe is unavailable when the class has no attribute</li>
+  <li class="passed"><span class="mark">✔</span> Describe is unavailable when the class does not implement the contract</li>
+  <li class="passed"><span class="mark">✔</span> All lists every configured subscriber regardless of availability</li>
+  <li class="passed"><span class="mark">✔</span> Is available matches describe</li>
+  <li class="passed"><span class="mark">✔</span> Has reflects what is configured</li>
+  <li class="passed"><span class="mark">✔</span> Resolve constructs with validated and defaulted params</li>
+  <li class="passed"><span class="mark">✔</span> Resolve throws when unavailable</li>
+  <li class="passed"><span class="mark">✔</span> Resolve throws on missing required param</li>
+  <li class="passed"><span class="mark">✔</span> Resolve throws on wrong param type</li>
+  <li class="passed"><span class="mark">✔</span> Resolve throws on an unknown param</li>
+</ul>
+<h2>ExpectedOutcome <small>tests/unit/Runner/ExpectedOutcomeTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> An expected skip that skips passes</li>
+  <li class="passed"><span class="mark">✔</span> An expected skip that does not skip fails</li>
+  <li class="passed"><span class="mark">✔</span> The declared reason fragment must appear in the skip reason</li>
+  <li class="passed"><span class="mark">✔</span> A matching reason fragment passes</li>
+  <li class="passed"><span class="mark">✔</span> An expected incomplete that is incomplete passes</li>
+  <li class="passed"><span class="mark">✔</span> An expected incomplete that skips fails naming both outcomes</li>
+  <li class="passed"><span class="mark">✔</span> Only skip and incomplete can be expected</li>
+</ul>
+<h2>IssueCollector <small>tests/unit/Runner/IssueCollectorTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Captures all three kinds without disturbing the test</li>
+  <li class="passed"><span class="mark">✔</span> Silenced errors are not counted</li>
+  <li class="passed"><span class="mark">✔</span> Deprecations triggered in project code are self</li>
+  <li class="passed"><span class="mark">✔</span> Baselined deprecations are suppressed at capture</li>
+  <li class="passed"><span class="mark">✔</span> Drain resets per test but tallies accumulate</li>
+</ul>
+<h2>DependencyValues <small>tests/unit/Runner/Process/DependencyValuesTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Only wanted values are carried</li>
+  <li class="passed"><span class="mark">✔</span> A value round trips into the runner results map</li>
+  <li class="passed"><span class="mark">✔</span> The supervisor can ask after the runner was built</li>
+  <li class="passed"><span class="mark">✔</span> An unserializable value is dropped rather than fatal</li>
+  <li class="passed"><span class="mark">✔</span> Garbage from the artifact is ignored not trusted</li>
+</ul>
+<h2>WorkerProtocol <small>tests/unit/Runner/Process/WorkerProtocolTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Test id round trips through its string form</li>
+  <li class="passed"><span class="mark">✔</span> Malformed test id strings parse to null</li>
+  <li class="passed"><span class="mark">✔</span> Manifest round trips through json</li>
+  <li class="passed"><span class="mark">✔</span> Overrides survive the manifest with false distinct from absent</li>
+  <li class="passed"><span class="mark">✔</span> Garbage manifests parse to null</li>
+  <li class="passed"><span class="mark">✔</span> Manifest filter keeps only named tests and their dataset rows</li>
+  <li class="passed"><span class="mark">✔</span> Parser reconstructs a finished test with its failure</li>
+  <li class="passed"><span class="mark">✔</span> Parser round trips the pruning signals</li>
+  <li class="passed"><span class="mark">✔</span> Parser handles start run finish and foreign lines</li>
+</ul>
+<h2>Repetition <small>tests/unit/Runner/RepetitionTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Repetitions are adjacent per test not per group</li>
+  <li class="passed"><span class="mark">✔</span> Anything under two leaves the plan untouched</li>
+  <li class="passed"><span class="mark">✔</span> The group keeps its name and lifecycle hooks</li>
+</ul>
+<h2>ResultCache <small>tests/unit/Runner/ResultCacheTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Round trip preserves outcome history and duration</li>
+  <li class="passed"><span class="mark">✔</span> Missing file loads as empty cache</li>
+  <li class="passed"><span class="mark">✔</span> Corrupt file loads as empty cache</li>
+  <li class="passed"><span class="mark">✔</span> Incompatible version is discarded not misread</li>
+  <li class="passed"><span class="mark">✔</span> Unknown outcome values are skipped on load</li>
+  <li class="passed"><span class="mark">✔</span> History is bounded most recent first</li>
+</ul>
+<h2>RetryAndQuarantine <small>tests/unit/Runner/RetryAndQuarantineTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A pass on retry is flaky not silently green</li>
+  <li class="passed"><span class="mark">✔</span> Backoff delays shape up</li>
+  <li class="passed"><span class="mark">✔</span> The cli count override keeps the configured shape</li>
+  <li class="passed"><span class="mark">✔</span> The runner actually pauses between attempts</li>
+  <li class="passed"><span class="mark">✔</span> A retry attribute carries its own backoff</li>
+  <li class="passed"><span class="mark">✔</span> The retry budget runs out</li>
+  <li class="passed"><span class="mark">✔</span> A retry attribute overrides the run wide budget</li>
+  <li class="passed"><span class="mark">✔</span> Skips are never retried</li>
+  <li class="passed"><span class="mark">✔</span> The quarantined attribute marks the event</li>
+  <li class="passed"><span class="mark">✔</span> The configuration quarantine list matches by file and name</li>
+  <li class="passed"><span class="mark">✔</span> The flakiness log tallies from the stream</li>
+</ul>
+<h2>Scheduler <small>tests/unit/Runner/SchedulerTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Declared order is untouched</li>
+  <li class="passed"><span class="mark">✔</span> Reverse reverses groups and tests within groups</li>
+  <li class="passed"><span class="mark">✔</span> Random order is replayable from its seed</li>
+  <li class="passed"><span class="mark">✔</span> Random order is a permutation of the suite</li>
+  <li class="passed"><span class="mark">✔</span> Defects first weighs recency over severity</li>
+  <li class="passed"><span class="mark">✔</span> Defects first breaks ties toward shorter tests</li>
+  <li class="passed"><span class="mark">✔</span> Duration order runs fastest first</li>
+  <li class="passed"><span class="mark">✔</span> Size order runs small before medium before large before unsized</li>
+  <li class="passed"><span class="mark">✔</span> Reordering never runs a dependent before its dependency</li>
+  <li class="passed"><span class="mark">✔</span> Dataset rows travel as one block through repair</li>
+  <li class="passed"><span class="mark">✔</span> Ignoring dependencies leaves the ordering alone</li>
+</ul>
+<h2>Shard <small>tests/unit/Runner/ShardTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Shards partition the suite completely and disjointly</li>
+  <li class="passed"><span class="mark">✔</span> Membership is stable when other tests come and go</li>
+  <li class="passed"><span class="mark">✔</span> Malformed shard strings parse to null</li>
+</ul>
+<h2>TestDiscoverer <small>tests/unit/Runner/TestDiscovererTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Routes a plain test php file with only pest calls to the pest dialect</li>
+  <li class="passed"><span class="mark">✔</span> Routes the nested class regression fixture to the pest dialect without crashing</li>
+  <li class="passed"><span class="mark">✔</span> Skips a file with neither a class nor pest calls silently</li>
+  <li class="passed"><span class="mark">✔</span> Routes a file with a top level helper class and top level pest calls to pest dialect</li>
+  <li class="passed"><span class="mark">✔</span> Collects the class when the only pest call declares no test</li>
+</ul>
+<h2>TestRunner <small>tests/unit/Runner/TestRunnerTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Discovery expands datasets and skips helpers</li>
+  <li class="passed"><span class="mark">✔</span> Outcomes are classified per the spec</li>
+  <li class="passed"><span class="mark">✔</span> Failure carries structured diff on the event</li>
+  <li class="passed"><span class="mark">✔</span> Lifecycle and class hooks</li>
+  <li class="passed"><span class="mark">✔</span> Stream discipline first and last events</li>
+  <li class="passed"><span class="mark">✔</span> Run finish reports complete only for a full finished suite</li>
+  <li class="passed"><span class="mark">✔</span> Stop on halts on the outcome it names</li>
+  <li class="passed"><span class="mark">✔</span> Stop on issue reads what the test emitted not how it ended</li>
+  <li class="passed"><span class="mark">✔</span> Disallowed output is risky and is reported rather than printed</li>
+  <li class="passed"><span class="mark">✔</span> A test slower than its size allows is risky</li>
+</ul>
+<h2>TestSelection <small>tests/unit/Runner/TestSelectionTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Plain pattern is a case insensitive substring match</li>
+  <li class="passed"><span class="mark">✔</span> Pattern matches class qualified names and wildcards</li>
+  <li class="passed"><span class="mark">✔</span> Pattern reaches dataset spellings</li>
+  <li class="passed"><span class="mark">✔</span> Regular expression patterns pass through verbatim</li>
+  <li class="passed"><span class="mark">✔</span> Group selection includes members and exclusion wins</li>
+  <li class="passed"><span class="mark">✔</span> Emptied groups disappear from the selection</li>
+  <li class="passed"><span class="mark">✔</span> Todo listing selects only marked tests whatever the status</li>
+  <li class="passed"><span class="mark">✔</span> Assignee and issue narrow by the marker fields and imply membership</li>
+  <li class="passed"><span class="mark">✔</span> No wip drops work in progress but keeps todo done and ordinary</li>
+  <li class="passed"><span class="mark">✔</span> Exclude filter is the negated filter</li>
+  <li class="passed"><span class="mark">✔</span> Covers and uses select on declared intent</li>
+  <li class="passed"><span class="mark">✔</span> Requires php extension selects on the declared requirement</li>
+  <li class="passed"><span class="mark">✔</span> Id and file selection tell no filter from a filter that matched nothing</li>
+</ul>
+<h2>TimeLimit <small>tests/unit/Runner/TimeLimitTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Each declared size carries the specs budget</li>
+  <li class="passed"><span class="mark">✔</span> A declared size wins over the default</li>
+  <li class="passed"><span class="mark">✔</span> Without a size the default decides and nothing is not zero</li>
+</ul>
+<h2>TimingOverhead <small>tests/unit/Runner/TimingOverheadTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Off is the only mode that leaves a duration alone</li>
+  <li class="passed"><span class="mark">✔</span> An empty mode is the clean answer and not a missing one</li>
+  <li class="passed"><span class="mark">✔</span> The notice names the mode and the way out</li>
+  <li class="passed"><span class="mark">✔</span> The mode is read from the ini the extension runs with</li>
+  <li class="passed"><span class="mark">✔</span> The default answer and the asked one agree</li>
+</ul>
+<h2>Todo <small>tests/unit/Runner/TodoTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A todo never executes and reports incomplete</li>
+  <li class="passed"><span class="mark">✔</span> A wip runs its body like pest</li>
+  <li class="passed"><span class="mark">✔</span> A done todo runs its body normally</li>
+  <li class="passed"><span class="mark">✔</span> The todo marker wins over unmet requirements</li>
+  <li class="passed"><span class="mark">✔</span> The attribute form on a real suite method</li>
+</ul>
+<h2>UntestedClassification <small>tests/unit/Runner/UntestedClassificationTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> An unmet extension requirement is blocked and reads as missing</li>
+  <li class="passed"><span class="mark">✔</span> An unmet dependency is blocked</li>
+  <li class="passed"><span class="mark">✔</span> A deliberate skip is not blocked</li>
+  <li class="passed"><span class="mark">✔</span> An expected skip reconciling to passed drops the blocked flag</li>
+</ul>
+<h2>SkipReasons <small>tests/unit/SkipReasonsTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Every skip names a missing capability</li>
+  <li class="passed"><span class="mark">✔</span> No skip hides its reason behind a variable</li>
+</ul>
+<h2>InlineSnapshot <small>tests/unit/Snapshot/InlineSnapshotTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A matching recorded value passes without queuing a rewrite</li>
+  <li class="passed"><span class="mark">✔</span> A mismatch fails when not updating</li>
+  <li class="passed"><span class="mark">✔</span> An absent value fails naming the flag</li>
+  <li class="passed"><span class="mark">✔</span> Recording when rewriting is forbidden fails naming the constraint</li>
+  <li class="passed"><span class="mark">✔</span> Recording sequentially queues the rewrite</li>
+  <li class="passed"><span class="mark">✔</span> A scalar inline snapshot compares live</li>
+  <li class="passed"><span class="mark">✔</span> An array inline snapshot compares live</li>
+</ul>
+<h2>InlineSnapshotWriter <small>tests/unit/Snapshot/InlineSnapshotWriterTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Records into an empty call</li>
+  <li class="passed"><span class="mark">✔</span> Replaces an existing literal</li>
+  <li class="passed"><span class="mark">✔</span> The phpunit spelling preserves the value and appends the snapshot</li>
+  <li class="passed"><span class="mark">✔</span> A multi line value becomes a nowdoc</li>
+  <li class="passed"><span class="mark">✔</span> An unpreserved chain after the call survives</li>
+  <li class="passed"><span class="mark">✔</span> No matching call leaves the source byte exact</li>
+  <li class="passed"><span class="mark">✔</span> Single quote escaping round trips</li>
+  <li class="passed"><span class="mark">✔</span> The nowdoc marker avoids collision with content</li>
+  <li class="passed"><span class="mark">✔</span> Flush applies every queued edit bottom up</li>
+</ul>
+<h2>SnapshotDialect.crucible <small>tests/unit/Snapshot/SnapshotDialect.crucible.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A receipt keeps its shape</li>
+  <li class="passed"><span class="mark">✔</span> An inline snapshot compares against the value recorded in the call</li>
+  <li class="passed"><span class="mark">✔</span> Negating an inline snapshot is refused</li>
+  <li class="passed"><span class="mark">✔</span> Several snapshots number themselves</li>
+</ul>
+<h2>SnapshotPruner <small>tests/unit/Snapshot/SnapshotPrunerTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A complete run prunes unvisited entries</li>
+  <li class="passed"><span class="mark">✔</span> An incomplete run prunes nothing</li>
+  <li class="passed"><span class="mark">✔</span> A failed test shields its whole snapshot file</li>
+  <li class="passed"><span class="mark">✔</span> A fully obsolete file is deleted with its empty directories</li>
+  <li class="passed"><span class="mark">✔</span> A pruned screenshot entry takes its images along</li>
+</ul>
+<h2>Snapshot <small>tests/unit/Snapshot/SnapshotTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The format round trips hostile content</li>
+  <li class="passed"><span class="mark">✔</span> Editor trimmed blank lines still parse</li>
+  <li class="passed"><span class="mark">✔</span> Missing snapshot fails and names the flag</li>
+  <li class="passed"><span class="mark">✔</span> Update records then a normal run matches</li>
+  <li class="passed"><span class="mark">✔</span> A changed value fails with the stored expectation</li>
+  <li class="passed"><span class="mark">✔</span> The screenshot flavor stores the reference and renders a visual diff</li>
+  <li class="passed"><span class="mark">✔</span> Update runs report created and updated counts</li>
+  <li class="passed"><span class="mark">✔</span> Visited keys ride the finish event</li>
+  <li class="passed"><span class="mark">✔</span> A filtered update keeps unvisited keys</li>
+  <li class="passed"><span class="mark">✔</span> Named and counted snapshots coexist</li>
+  <li class="passed"><span class="mark">✔</span> Outside the runner snapshots refuse loudly</li>
+  <li class="passed"><span class="mark">✔</span> The dogfood snapshot matches</li>
+</ul>
+<h2>TestId <small>tests/unit/Test/TestIdTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> String form is file name and optional dataset</li>
+  <li class="passed"><span class="mark">✔</span> Hash is stable and discriminates</li>
+  <li class="passed"><span class="mark">✔</span> Equality</li>
+</ul>
+<h2>TypeExpressionAgreement <small>tests/unit/Types/TypeExpressionAgreementTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The run time reading agrees with phpstans</li>
+</ul>
+<h2>TypeExpression <small>tests/unit/Types/TypeExpressionTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A fitting value has no mismatch</li>
+  <li class="passed"><span class="mark">✔</span> Each boundary falls on the side its type says</li>
+  <li class="passed"><span class="mark">✔</span> The first misfit is named by its path</li>
+  <li class="passed"><span class="mark">✔</span> Keys are checked where the type names them</li>
+  <li class="passed"><span class="mark">✔</span> A type that does not read is refused with its position</li>
+  <li class="passed"><span class="mark">✔</span> The refusal points at the token that did not read</li>
+  <li class="passed"><span class="mark">✔</span> Shape keys are read in every quoting and as integers</li>
+  <li class="passed"><span class="mark">✔</span> An unknown generic is refused rather than guessed</li>
+</ul>
+<h2>TypeTestRunner <small>tests/unit/Types/TypeTestRunnerTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Every assertion is a test with its own verdict</li>
+  <li class="passed"><span class="mark">✔</span> A name filter keeps only the assertions it names</li>
+</ul>
+<h2>VitestReport <small>tests/unit/Vitest/VitestReportTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Translates each assertion result to a test finished</li>
+  <li class="passed"><span class="mark">✔</span> A failed test carries the failure message</li>
+  <li class="passed"><span class="mark">✔</span> Todo maps to incomplete and other statuses to skipped</li>
+  <li class="passed"><span class="mark">✔</span> A file outside the base keeps its absolute path so it round trips through related</li>
+  <li class="passed"><span class="mark">✔</span> Malformed entries are skipped not fatal</li>
+</ul>
+<h2>VitestRunner <small>tests/unit/Vitest/VitestRunnerTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> An unfiltered suite runs whole and reports every skip</li>
+  <li class="passed"><span class="mark">✔</span> A filter becomes the test name pattern and its leftovers are not reported</li>
+  <li class="passed"><span class="mark">✔</span> A substring filter keeps its wildcard and escapes the rest</li>
+  <li class="passed"><span class="mark">✔</span> A regular expression filter passes its body through</li>
+</ul>
+<h2>FileWatcher <small>tests/unit/Watch/FileWatcherTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Vendor node modules and hidden directories are not watched</li>
+  <li class="passed"><span class="mark">✔</span> Modifications additions and deletions are diffed</li>
+  <li class="passed"><span class="mark">✔</span> A touch alone is a change</li>
+  <li class="passed"><span class="mark">✔</span> Explicit files are watched too</li>
+</ul>
+<h2>RetriggerEndpoint <small>tests/unit/Watch/RetriggerEndpointTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A pushed change set is accepted and handed over once</li>
+  <li class="passed"><span class="mark">✔</span> The token is required</li>
+  <li class="passed"><span class="mark">✔</span> A missing token is refused</li>
+  <li class="passed"><span class="mark">✔</span> Only post is accepted</li>
+  <li class="passed"><span class="mark">✔</span> A malformed body is refused rather than guessed</li>
+  <li class="passed"><span class="mark">✔</span> Non string entries are dropped not coerced</li>
+  <li class="passed"><span class="mark">✔</span> The payload carries paths and nothing command shaped</li>
+</ul>
+<h2>RetriggerListener <small>tests/unit/Watch/RetriggerListenerTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> The hot file is written while listening and removed on close</li>
+  <li class="passed"><span class="mark">✔</span> A real push over the socket reaches the loop</li>
+  <li class="passed"><span class="mark">✔</span> A push with the wrong token is refused over the socket</li>
+  <li class="passed"><span class="mark">✔</span> The shipped node producer pushes through the documented contract</li>
+  <li class="passed"><span class="mark">✔</span> A producer finding no hot file does nothing</li>
+</ul>
+<h2>WatchSession <small>tests/unit/Watch/WatchSessionTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A green session runs the affected files</li>
+  <li class="passed"><span class="mark">✔</span> Deletions widen to the full suite</li>
+  <li class="passed"><span class="mark">✔</span> Non php changes widen to the full suite</li>
+  <li class="passed"><span class="mark">✔</span> A file a declared rule names runs related not full</li>
+  <li class="passed"><span class="mark">✔</span> A file no rule names still widens</li>
+  <li class="passed"><span class="mark">✔</span> A rule does not rescue a deletion</li>
+  <li class="passed"><span class="mark">✔</span> A js change under a vitest suite runs related not full</li>
+  <li class="passed"><span class="mark">✔</span> A non php change outside every vitest suite still widens to full</li>
+  <li class="passed"><span class="mark">✔</span> The failed set is sticky across changes</li>
+  <li class="passed"><span class="mark">✔</span> A green partial run after red earns one full confirmation</li>
+  <li class="passed"><span class="mark">✔</span> A green partial run without prior failures needs no confirmation</li>
+  <li class="passed"><span class="mark">✔</span> A still red run waits instead of looping</li>
+  <li class="passed"><span class="mark">✔</span> The failed only run is null when green</li>
+  <li class="passed"><span class="mark">✔</span> The failed only run targets exactly the failed files</li>
+</ul>
+<h2>Calculator <small>examples/01-phpunit-dialect/CalculatorTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Adds two numbers</li>
+  <li class="passed"><span class="mark">✔</span> Sums a list with data set &quot;empty&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Sums a list with data set &quot;one item&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Sums a list with data set &quot;several&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Multiplies</li>
+  <li class="passed"><span class="mark">✔</span> Uses the product of its dependency</li>
+</ul>
+<h2>basics.pest <small>examples/02-pest-dialect/basics.pest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A test is a description and a closure</li>
+  <li class="passed"><span class="mark">✔</span> It rounds up</li>
+  <li class="passed"><span class="mark">✔</span> Expectations &gt; it chains</li>
+  <li class="passed"><span class="mark">✔</span> Expectations &gt; it negates with not</li>
+  <li class="passed"><span class="mark">✔</span> Expectations &gt; it reaches into values with higher-order expectations</li>
+  <li class="passed"><span class="mark">✔</span> Hooks &gt; it sees the value the hook set</li>
+  <li class="passed"><span class="mark">✔</span> Hooks &gt; it sees it again, freshly</li>
+  <li class="passed"><span class="mark">✔</span> It uppercases with data set &quot;lowercase&quot;</li>
+  <li class="passed"><span class="mark">✔</span> It uppercases with data set &quot;mixed&quot;</li>
+  <li class="passed"><span class="mark">✔</span> It uppercases with data set &quot;already&quot;</li>
+  <li class="passed"><span class="mark">✔</span> It adds any two positives with data set &quot;0 / 0&quot;</li>
+  <li class="passed"><span class="mark">✔</span> It adds any two positives with data set &quot;0 / 1&quot;</li>
+  <li class="passed"><span class="mark">✔</span> It adds any two positives with data set &quot;1 / 0&quot;</li>
+  <li class="passed"><span class="mark">✔</span> It adds any two positives with data set &quot;1 / 1&quot;</li>
+  <li class="passed"><span class="mark">✔</span> It fails on purpose</li>
+  <li class="passed"><span class="mark">✔</span> It belongs to a group</li>
+</ul>
+<h2>Payments <small>examples/03-doubles/PaymentsTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A stub answers without being verified</li>
+  <li class="passed"><span class="mark">✔</span> A mock verifies how it was called</li>
+  <li class="passed"><span class="mark">✔</span> Unconfigured methods return usable defaults</li>
+  <li class="passed"><span class="mark">✔</span> Consecutive calls can differentiate</li>
+</ul>
+<h2>rules.pest <small>examples/04-architecture/rules.pest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Every event object declares strict types</li>
+  <li class="passed"><span class="mark">✔</span> The impact tier does not reach the browser tier</li>
+  <li class="passed"><span class="mark">✔</span> The retrigger endpoint stays inside the watch tier</li>
+  <li class="passed"><span class="mark">✔</span> Impact value objects are immutable</li>
+</ul>
+<h2>shapes.pest <small>examples/05-shapes/shapes.pest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> It states the shape of a value once, for the run and for the analyser</li>
+  <li class="passed"><span class="mark">✔</span> It names where a value stops fitting</li>
+  <li class="passed"><span class="mark">✔</span> Draws data from the same type</li>
+</ul>
+<h2>Inventory <small>examples/06-equivalent-mutants/InventoryTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> First is the first item or null</li>
+  <li class="passed"><span class="mark">✔</span> Restock returns the count</li>
+</ul>
+<h2>PrettyName <small>src/Reporting/PrettyName.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Pretty name::of file with data set &quot;check 1&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Pretty name::of file with data set &quot;a file just called Test keeps its name&quot;</li>
+</ul>
+<h2>TestId <small>src/Test/TestId.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Test id::from string with data set &quot;crucible 1&quot;</li>
+  <li class="passed"><span class="mark">✔</span> Test id::from string with data set &quot;crucible 2&quot;</li>
+</ul>
+<h2>WorkerTiming <small>tests/unit/Runner/Process/WorkerTimingTest.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> A worker does not time its tests through xdebug</li>
+</ul>
+<h2>ids.types <small>examples/07-type-tests/ids.types.php</small></h2>
+<ul>
+  <li class="passed"><span class="mark">✔</span> Line 21: list&lt;int&gt;</li>
+  <li class="passed"><span class="mark">✔</span> Line 23: type error binary op.invalid</li>
+</ul>
+<pre>Tests: 1583. Passed: 1581, Failed: 0, Errors: 0, Skipped: 2, Incomplete: 0, Risky: 0. Time: 101.023s
+</pre>
+</body>
+</html>

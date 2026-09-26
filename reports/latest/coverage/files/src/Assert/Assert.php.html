@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/Assert/Assert.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/Assert/Assert.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\Assert;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use ArrayAccess;</span>
+<span class=""><span class="ln">14</span>use Closure;</span>
+<span class=""><span class="ln">15</span>use Countable;</span>
+<span class=""><span class="ln">16</span>use LucianoPereira\Crucible\Assert\Constraint\ArrayComparison;</span>
+<span class=""><span class="ln">17</span>use LucianoPereira\Crucible\Assert\Constraint\ArrayHasKey;</span>
+<span class=""><span class="ln">18</span>use LucianoPereira\Crucible\Assert\Constraint\Callback;</span>
+<span class=""><span class="ln">19</span>use LucianoPereira\Crucible\Assert\Constraint\Constraint;</span>
+<span class=""><span class="ln">20</span>use LucianoPereira\Crucible\Assert\Constraint\DirectoryExists;</span>
+<span class=""><span class="ln">21</span>use LucianoPereira\Crucible\Assert\Constraint\FileExists;</span>
+<span class=""><span class="ln">22</span>use LucianoPereira\Crucible\Assert\Constraint\GreaterThan;</span>
+<span class=""><span class="ln">23</span>use LucianoPereira\Crucible\Assert\Constraint\HasCount;</span>
+<span class=""><span class="ln">24</span>use LucianoPereira\Crucible\Assert\Constraint\IsAnything;</span>
+<span class=""><span class="ln">25</span>use LucianoPereira\Crucible\Assert\Constraint\IsEmpty;</span>
+<span class=""><span class="ln">26</span>use LucianoPereira\Crucible\Assert\Constraint\IsEqual;</span>
+<span class=""><span class="ln">27</span>use LucianoPereira\Crucible\Assert\Constraint\IsFalse;</span>
+<span class=""><span class="ln">28</span>use LucianoPereira\Crucible\Assert\Constraint\IsFinite;</span>
+<span class=""><span class="ln">29</span>use LucianoPereira\Crucible\Assert\Constraint\IsIdentical;</span>
+<span class=""><span class="ln">30</span>use LucianoPereira\Crucible\Assert\Constraint\IsInfinite;</span>
+<span class=""><span class="ln">31</span>use LucianoPereira\Crucible\Assert\Constraint\IsInstanceOf;</span>
+<span class=""><span class="ln">32</span>use LucianoPereira\Crucible\Assert\Constraint\IsJson;</span>
+<span class=""><span class="ln">33</span>use LucianoPereira\Crucible\Assert\Constraint\IsList;</span>
+<span class=""><span class="ln">34</span>use LucianoPereira\Crucible\Assert\Constraint\IsNan;</span>
+<span class=""><span class="ln">35</span>use LucianoPereira\Crucible\Assert\Constraint\IsNull;</span>
+<span class=""><span class="ln">36</span>use LucianoPereira\Crucible\Assert\Constraint\IsReadable;</span>
+<span class=""><span class="ln">37</span>use LucianoPereira\Crucible\Assert\Constraint\IsTrue;</span>
+<span class=""><span class="ln">38</span>use LucianoPereira\Crucible\Assert\Constraint\IsType;</span>
+<span class=""><span class="ln">39</span>use LucianoPereira\Crucible\Assert\Constraint\IsWritable;</span>
+<span class=""><span class="ln">40</span>use LucianoPereira\Crucible\Assert\Constraint\JsonMatches;</span>
+<span class=""><span class="ln">41</span>use LucianoPereira\Crucible\Assert\Constraint\LessThan;</span>
+<span class=""><span class="ln">42</span>use LucianoPereira\Crucible\Assert\Constraint\LogicalNot;</span>
+<span class=""><span class="ln">43</span>use LucianoPereira\Crucible\Assert\Constraint\MatchesRegularExpression;</span>
+<span class=""><span class="ln">44</span>use LucianoPereira\Crucible\Assert\Constraint\MatchesShape;</span>
+<span class=""><span class="ln">45</span>use LucianoPereira\Crucible\Assert\Constraint\ObjectEquals;</span>
+<span class=""><span class="ln">46</span>use LucianoPereira\Crucible\Assert\Constraint\ObjectHasProperty;</span>
+<span class=""><span class="ln">47</span>use LucianoPereira\Crucible\Assert\Constraint\StringContains;</span>
+<span class=""><span class="ln">48</span>use LucianoPereira\Crucible\Assert\Constraint\StringEndsWith;</span>
+<span class=""><span class="ln">49</span>use LucianoPereira\Crucible\Assert\Constraint\StringEqualsStringIgnoringLineEndings;</span>
+<span class=""><span class="ln">50</span>use LucianoPereira\Crucible\Assert\Constraint\StringEqualsStringIgnoringWhitespace;</span>
+<span class=""><span class="ln">51</span>use LucianoPereira\Crucible\Assert\Constraint\StringMatchesFormat;</span>
+<span class=""><span class="ln">52</span>use LucianoPereira\Crucible\Assert\Constraint\StringStartsWith;</span>
+<span class=""><span class="ln">53</span>use LucianoPereira\Crucible\Assert\Constraint\TraversableContains;</span>
+<span class=""><span class="ln">54</span>use LucianoPereira\Crucible\Assert\Constraint\TraversableContainsOnlyInstancesOf;</span>
+<span class=""><span class="ln">55</span>use LucianoPereira\Crucible\Assert\Constraint\TraversableContainsOnlyType;</span>
+<span class=""><span class="ln">56</span>use LucianoPereira\Crucible\Assert\Constraint\XmlEqualsXml;</span>
+<span class=""><span class="ln">57</span>use LucianoPereira\Crucible\Double\Stub;</span>
+<span class=""><span class="ln">58</span>use LucianoPereira\Crucible\Snapshot\Snapshots;</span>
+<span class=""><span class="ln">59</span>use Throwable;</span>
+<span class=""><span class="ln">60</span></span>
+<span class=""><span class="ln">61</span>use function array_first;</span>
+<span class=""><span class="ln">62</span>use function array_key_exists;</span>
+<span class=""><span class="ln">63</span>use function count;</span>
+<span class=""><span class="ln">64</span>use function debug_backtrace;</span>
+<span class=""><span class="ln">65</span>use function file_get_contents;</span>
+<span class=""><span class="ln">66</span>use function is_countable;</span>
+<span class=""><span class="ln">67</span>use function is_file;</span>
+<span class=""><span class="ln">68</span>use function is_int;</span>
+<span class=""><span class="ln">69</span>use function is_readable;</span>
+<span class=""><span class="ln">70</span>use function is_string;</span>
+<span class=""><span class="ln">71</span>use function iterator_count;</span>
+<span class=""><span class="ln">72</span>use function sprintf;</span>
+<span class=""><span class="ln">73</span></span>
+<span class=""><span class="ln">74</span>/**</span>
+<span class=""><span class="ln">75</span> * The assertion API of the PHPUnit 13 spec, implemented on Crucible&#039;s</span>
+<span class=""><span class="ln">76</span> * constraint engine. Every method funnels through assertThat(), which</span>
+<span class=""><span class="ln">77</span> * is also where assertions are counted.</span>
+<span class=""><span class="ln">78</span> *</span>
+<span class=""><span class="ln">79</span> * Coverage status vs the ~176-method spec surface is tracked in</span>
+<span class=""><span class="ln">80</span> * ROADMAP.md Phase 2.</span>
+<span class=""><span class="ln">81</span> */</span>
+<span class=""><span class="ln">82</span>abstract class Assert</span>
+<span class=""><span class="ln">83</span>{</span>
+<span class=""><span class="ln">84</span>    /** @var int&lt;0, max&gt; */</span>
+<span class=""><span class="ln">85</span>    private static int $count = 0;</span>
+<span class=""><span class="ln">86</span></span>
+<span class=""><span class="ln">87</span>    public static function assertThat(mixed $value, Constraint $constraint, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">88</span>    {</span>
+<span class="covered"><span class="ln">89</span>        self::$count++;</span>
+<span class=""><span class="ln">90</span></span>
+<span class="covered"><span class="ln">91</span>        $constraint-&gt;evaluate($value, $message);</span>
+<span class=""><span class="ln">92</span>    }</span>
+<span class=""><span class="ln">93</span></span>
+<span class=""><span class="ln">94</span>    public static function fail(string $message = &#039;&#039;): never</span>
+<span class=""><span class="ln">95</span>    {</span>
+<span class="covered"><span class="ln">96</span>        self::$count++;</span>
+<span class=""><span class="ln">97</span></span>
+<span class="covered"><span class="ln">98</span>        throw new AssertionFailedError($message !== &#039;&#039; ? $message : &#039;Failed asserting that a test did not fail.&#039;);</span>
+<span class=""><span class="ln">99</span>    }</span>
+<span class=""><span class="ln">100</span></span>
+<span class=""><span class="ln">101</span>    /**</span>
+<span class=""><span class="ln">102</span>     * Spec method: frameworks layering their own assertion helpers on</span>
+<span class=""><span class="ln">103</span>     * top (Laravel&#039;s TestResponse, for one) report their assertions</span>
+<span class=""><span class="ln">104</span>     * through this, keeping risky-test detection honest.</span>
+<span class=""><span class="ln">105</span>     */</span>
+<span class=""><span class="ln">106</span>    public function addToAssertionCount(int $count): void</span>
+<span class=""><span class="ln">107</span>    {</span>
+<span class="missed"><span class="ln">108</span>        if ($count &gt; 0) {</span>
+<span class="missed"><span class="ln">109</span>            self::$count += $count;</span>
+<span class=""><span class="ln">110</span>        }</span>
+<span class=""><span class="ln">111</span>    }</span>
+<span class=""><span class="ln">112</span></span>
+<span class=""><span class="ln">113</span>    /**</span>
+<span class=""><span class="ln">114</span>     * Engine-internal: count one satisfied assertion without</span>
+<span class=""><span class="ln">115</span>     * evaluating anything — the &quot;this observed outcome IS the claim&quot;</span>
+<span class=""><span class="ln">116</span>     * tick (an expected failure happened, a snapshot was recorded).</span>
+<span class=""><span class="ln">117</span>     * Introduced by D-049 to replace the assertTrue(true) idiom,</span>
+<span class=""><span class="ln">118</span>     * which the narrowing extension rightly reports as a tautology.</span>
+<span class=""><span class="ln">119</span>     * User helpers layering assertions use addToAssertionCount().</span>
+<span class=""><span class="ln">120</span>     */</span>
+<span class=""><span class="ln">121</span>    public static function countSatisfiedAssertion(): void</span>
+<span class=""><span class="ln">122</span>    {</span>
+<span class="covered"><span class="ln">123</span>        self::$count++;</span>
+<span class=""><span class="ln">124</span>    }</span>
+<span class=""><span class="ln">125</span></span>
+<span class=""><span class="ln">126</span>    /**</span>
+<span class=""><span class="ln">127</span>     * @return int&lt;0, max&gt;</span>
+<span class=""><span class="ln">128</span>     */</span>
+<span class=""><span class="ln">129</span>    public static function assertionCount(): int</span>
+<span class=""><span class="ln">130</span>    {</span>
+<span class="covered"><span class="ln">131</span>        return self::$count;</span>
+<span class=""><span class="ln">132</span>    }</span>
+<span class=""><span class="ln">133</span></span>
+<span class=""><span class="ln">134</span>    public static function resetAssertionCount(): void</span>
+<span class=""><span class="ln">135</span>    {</span>
+<span class="covered"><span class="ln">136</span>        self::$count = 0;</span>
+<span class=""><span class="ln">137</span>    }</span>
+<span class=""><span class="ln">138</span></span>
+<span class=""><span class="ln">139</span>    // --- Identity &amp; equality --------------------------------------------</span>
+<span class=""><span class="ln">140</span></span>
+<span class=""><span class="ln">141</span>    public static function assertSame(mixed $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">142</span>    {</span>
+<span class="covered"><span class="ln">143</span>        self::assertThat($actual, new IsIdentical($expected), $message);</span>
+<span class=""><span class="ln">144</span>    }</span>
+<span class=""><span class="ln">145</span></span>
+<span class=""><span class="ln">146</span>    public static function assertNotSame(mixed $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">147</span>    {</span>
+<span class="covered"><span class="ln">148</span>        self::assertThat($actual, new LogicalNot(new IsIdentical($expected)), $message);</span>
+<span class=""><span class="ln">149</span>    }</span>
+<span class=""><span class="ln">150</span></span>
+<span class=""><span class="ln">151</span>    public static function assertEquals(mixed $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">152</span>    {</span>
+<span class="covered"><span class="ln">153</span>        self::assertThat($actual, new IsEqual($expected), $message);</span>
+<span class=""><span class="ln">154</span>    }</span>
+<span class=""><span class="ln">155</span></span>
+<span class=""><span class="ln">156</span>    public static function assertNotEquals(mixed $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">157</span>    {</span>
+<span class="covered"><span class="ln">158</span>        self::assertThat($actual, new LogicalNot(new IsEqual($expected)), $message);</span>
+<span class=""><span class="ln">159</span>    }</span>
+<span class=""><span class="ln">160</span></span>
+<span class=""><span class="ln">161</span>    public static function assertEqualsWithDelta(mixed $expected, mixed $actual, float $delta, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">162</span>    {</span>
+<span class="covered"><span class="ln">163</span>        self::assertThat($actual, new IsEqual($expected, delta: $delta), $message);</span>
+<span class=""><span class="ln">164</span>    }</span>
+<span class=""><span class="ln">165</span></span>
+<span class=""><span class="ln">166</span>    public static function assertNotEqualsWithDelta(mixed $expected, mixed $actual, float $delta, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">167</span>    {</span>
+<span class="covered"><span class="ln">168</span>        self::assertThat($actual, new LogicalNot(new IsEqual($expected, delta: $delta)), $message);</span>
+<span class=""><span class="ln">169</span>    }</span>
+<span class=""><span class="ln">170</span></span>
+<span class=""><span class="ln">171</span>    public static function assertEqualsCanonicalizing(mixed $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">172</span>    {</span>
+<span class="covered"><span class="ln">173</span>        self::assertThat($actual, new IsEqual($expected, canonicalize: true), $message);</span>
+<span class=""><span class="ln">174</span>    }</span>
+<span class=""><span class="ln">175</span></span>
+<span class=""><span class="ln">176</span>    public static function assertNotEqualsCanonicalizing(mixed $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">177</span>    {</span>
+<span class="covered"><span class="ln">178</span>        self::assertThat($actual, new LogicalNot(new IsEqual($expected, canonicalize: true)), $message);</span>
+<span class=""><span class="ln">179</span>    }</span>
+<span class=""><span class="ln">180</span></span>
+<span class=""><span class="ln">181</span>    // --- Booleans &amp; null --------------------------------------------------</span>
+<span class=""><span class="ln">182</span></span>
+<span class=""><span class="ln">183</span>    public static function assertTrue(mixed $condition, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">184</span>    {</span>
+<span class="covered"><span class="ln">185</span>        self::assertThat($condition, new IsTrue(), $message);</span>
+<span class=""><span class="ln">186</span>    }</span>
+<span class=""><span class="ln">187</span></span>
+<span class=""><span class="ln">188</span>    public static function assertNotTrue(mixed $condition, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">189</span>    {</span>
+<span class="covered"><span class="ln">190</span>        self::assertThat($condition, new LogicalNot(new IsTrue()), $message);</span>
+<span class=""><span class="ln">191</span>    }</span>
+<span class=""><span class="ln">192</span></span>
+<span class=""><span class="ln">193</span>    public static function assertFalse(mixed $condition, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">194</span>    {</span>
+<span class="covered"><span class="ln">195</span>        self::assertThat($condition, new IsFalse(), $message);</span>
+<span class=""><span class="ln">196</span>    }</span>
+<span class=""><span class="ln">197</span></span>
+<span class=""><span class="ln">198</span>    public static function assertNotFalse(mixed $condition, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">199</span>    {</span>
+<span class="covered"><span class="ln">200</span>        self::assertThat($condition, new LogicalNot(new IsFalse()), $message);</span>
+<span class=""><span class="ln">201</span>    }</span>
+<span class=""><span class="ln">202</span></span>
+<span class=""><span class="ln">203</span>    public static function assertNull(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">204</span>    {</span>
+<span class="covered"><span class="ln">205</span>        self::assertThat($actual, new IsNull(), $message);</span>
+<span class=""><span class="ln">206</span>    }</span>
+<span class=""><span class="ln">207</span></span>
+<span class=""><span class="ln">208</span>    public static function assertNotNull(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">209</span>    {</span>
+<span class="covered"><span class="ln">210</span>        self::assertThat($actual, new LogicalNot(new IsNull()), $message);</span>
+<span class=""><span class="ln">211</span>    }</span>
+<span class=""><span class="ln">212</span></span>
+<span class=""><span class="ln">213</span>    // --- Emptiness, counts, sizes ----------------------------------------</span>
+<span class=""><span class="ln">214</span></span>
+<span class=""><span class="ln">215</span>    public static function assertEmpty(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">216</span>    {</span>
+<span class="covered"><span class="ln">217</span>        self::assertThat($actual, new IsEmpty(), $message);</span>
+<span class=""><span class="ln">218</span>    }</span>
+<span class=""><span class="ln">219</span></span>
+<span class=""><span class="ln">220</span>    public static function assertNotEmpty(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">221</span>    {</span>
+<span class="covered"><span class="ln">222</span>        self::assertThat($actual, new LogicalNot(new IsEmpty()), $message);</span>
+<span class=""><span class="ln">223</span>    }</span>
+<span class=""><span class="ln">224</span></span>
+<span class=""><span class="ln">225</span>    /**</span>
+<span class=""><span class="ln">226</span>     * @param Countable|iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">227</span>     */</span>
+<span class=""><span class="ln">228</span>    public static function assertCount(int $expectedCount, Countable|iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">229</span>    {</span>
+<span class="covered"><span class="ln">230</span>        self::assertThat($haystack, new HasCount($expectedCount), $message);</span>
+<span class=""><span class="ln">231</span>    }</span>
+<span class=""><span class="ln">232</span></span>
+<span class=""><span class="ln">233</span>    /**</span>
+<span class=""><span class="ln">234</span>     * @param Countable|iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">235</span>     */</span>
+<span class=""><span class="ln">236</span>    public static function assertNotCount(int $expectedCount, Countable|iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">237</span>    {</span>
+<span class="covered"><span class="ln">238</span>        self::assertThat($haystack, new LogicalNot(new HasCount($expectedCount)), $message);</span>
+<span class=""><span class="ln">239</span>    }</span>
+<span class=""><span class="ln">240</span></span>
+<span class=""><span class="ln">241</span>    /**</span>
+<span class=""><span class="ln">242</span>     * @param Countable|iterable&lt;mixed&gt; $expected</span>
+<span class=""><span class="ln">243</span>     * @param Countable|iterable&lt;mixed&gt; $actual</span>
+<span class=""><span class="ln">244</span>     */</span>
+<span class=""><span class="ln">245</span>    public static function assertSameSize(Countable|iterable $expected, Countable|iterable $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">246</span>    {</span>
+<span class="covered"><span class="ln">247</span>        self::assertThat($actual, new HasCount(self::sizeOf($expected)), $message);</span>
+<span class=""><span class="ln">248</span>    }</span>
+<span class=""><span class="ln">249</span></span>
+<span class=""><span class="ln">250</span>    /**</span>
+<span class=""><span class="ln">251</span>     * @param Countable|iterable&lt;mixed&gt; $expected</span>
+<span class=""><span class="ln">252</span>     * @param Countable|iterable&lt;mixed&gt; $actual</span>
+<span class=""><span class="ln">253</span>     */</span>
+<span class=""><span class="ln">254</span>    public static function assertNotSameSize(Countable|iterable $expected, Countable|iterable $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">255</span>    {</span>
+<span class="covered"><span class="ln">256</span>        self::assertThat($actual, new LogicalNot(new HasCount(self::sizeOf($expected))), $message);</span>
+<span class=""><span class="ln">257</span>    }</span>
+<span class=""><span class="ln">258</span></span>
+<span class=""><span class="ln">259</span>    // --- Comparisons -------------------------------------------------------</span>
+<span class=""><span class="ln">260</span></span>
+<span class=""><span class="ln">261</span>    public static function assertGreaterThan(mixed $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">262</span>    {</span>
+<span class="covered"><span class="ln">263</span>        self::assertThat($actual, new GreaterThan($expected), $message);</span>
+<span class=""><span class="ln">264</span>    }</span>
+<span class=""><span class="ln">265</span></span>
+<span class=""><span class="ln">266</span>    public static function assertGreaterThanOrEqual(mixed $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">267</span>    {</span>
+<span class="covered"><span class="ln">268</span>        self::assertThat($actual, new LogicalNot(new LessThan($expected)), $message);</span>
+<span class=""><span class="ln">269</span>    }</span>
+<span class=""><span class="ln">270</span></span>
+<span class=""><span class="ln">271</span>    public static function assertLessThan(mixed $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">272</span>    {</span>
+<span class="covered"><span class="ln">273</span>        self::assertThat($actual, new LessThan($expected), $message);</span>
+<span class=""><span class="ln">274</span>    }</span>
+<span class=""><span class="ln">275</span></span>
+<span class=""><span class="ln">276</span>    public static function assertLessThanOrEqual(mixed $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">277</span>    {</span>
+<span class="covered"><span class="ln">278</span>        self::assertThat($actual, new LogicalNot(new GreaterThan($expected)), $message);</span>
+<span class=""><span class="ln">279</span>    }</span>
+<span class=""><span class="ln">280</span></span>
+<span class=""><span class="ln">281</span>    // --- Iterables ----------------------------------------------------------</span>
+<span class=""><span class="ln">282</span></span>
+<span class=""><span class="ln">283</span>    /**</span>
+<span class=""><span class="ln">284</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">285</span>     */</span>
+<span class=""><span class="ln">286</span>    public static function assertContains(mixed $needle, iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">287</span>    {</span>
+<span class="covered"><span class="ln">288</span>        self::assertThat($haystack, new TraversableContains($needle), $message);</span>
+<span class=""><span class="ln">289</span>    }</span>
+<span class=""><span class="ln">290</span></span>
+<span class=""><span class="ln">291</span>    /**</span>
+<span class=""><span class="ln">292</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">293</span>     */</span>
+<span class=""><span class="ln">294</span>    public static function assertNotContains(mixed $needle, iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">295</span>    {</span>
+<span class="covered"><span class="ln">296</span>        self::assertThat($haystack, new LogicalNot(new TraversableContains($needle)), $message);</span>
+<span class=""><span class="ln">297</span>    }</span>
+<span class=""><span class="ln">298</span></span>
+<span class=""><span class="ln">299</span>    /**</span>
+<span class=""><span class="ln">300</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">301</span>     */</span>
+<span class=""><span class="ln">302</span>    public static function assertContainsEquals(mixed $needle, iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">303</span>    {</span>
+<span class="covered"><span class="ln">304</span>        self::assertThat($haystack, new TraversableContains($needle, strict: false), $message);</span>
+<span class=""><span class="ln">305</span>    }</span>
+<span class=""><span class="ln">306</span></span>
+<span class=""><span class="ln">307</span>    /**</span>
+<span class=""><span class="ln">308</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">309</span>     */</span>
+<span class=""><span class="ln">310</span>    public static function assertNotContainsEquals(mixed $needle, iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">311</span>    {</span>
+<span class="missed"><span class="ln">312</span>        self::assertThat($haystack, new LogicalNot(new TraversableContains($needle, strict: false)), $message);</span>
+<span class=""><span class="ln">313</span>    }</span>
+<span class=""><span class="ln">314</span></span>
+<span class=""><span class="ln">315</span>    /**</span>
+<span class=""><span class="ln">316</span>     * @param class-string    $className</span>
+<span class=""><span class="ln">317</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">318</span>     */</span>
+<span class=""><span class="ln">319</span>    public static function assertContainsOnlyInstancesOf(string $className, iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">320</span>    {</span>
+<span class="covered"><span class="ln">321</span>        self::assertThat($haystack, new TraversableContainsOnlyInstancesOf($className), $message);</span>
+<span class=""><span class="ln">322</span>    }</span>
+<span class=""><span class="ln">323</span></span>
+<span class=""><span class="ln">324</span>    /**</span>
+<span class=""><span class="ln">325</span>     * @param class-string    $className</span>
+<span class=""><span class="ln">326</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">327</span>     */</span>
+<span class=""><span class="ln">328</span>    public static function assertContainsNotOnlyInstancesOf(string $className, iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">329</span>    {</span>
+<span class="missed"><span class="ln">330</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyInstancesOf($className)), $message);</span>
+<span class=""><span class="ln">331</span>    }</span>
+<span class=""><span class="ln">332</span></span>
+<span class=""><span class="ln">333</span>    /**</span>
+<span class=""><span class="ln">334</span>     * @param array&lt;array-key, mixed&gt;|ArrayAccess&lt;array-key, mixed&gt; $array</span>
+<span class=""><span class="ln">335</span>     */</span>
+<span class=""><span class="ln">336</span>    public static function assertArrayHasKey(int|string $key, array|ArrayAccess $array, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">337</span>    {</span>
+<span class="covered"><span class="ln">338</span>        self::assertThat($array, new ArrayHasKey($key), $message);</span>
+<span class=""><span class="ln">339</span>    }</span>
+<span class=""><span class="ln">340</span></span>
+<span class=""><span class="ln">341</span>    /**</span>
+<span class=""><span class="ln">342</span>     * @param array&lt;array-key, mixed&gt;|ArrayAccess&lt;array-key, mixed&gt; $array</span>
+<span class=""><span class="ln">343</span>     */</span>
+<span class=""><span class="ln">344</span>    public static function assertArrayNotHasKey(int|string $key, array|ArrayAccess $array, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">345</span>    {</span>
+<span class="covered"><span class="ln">346</span>        self::assertThat($array, new LogicalNot(new ArrayHasKey($key)), $message);</span>
+<span class=""><span class="ln">347</span>    }</span>
+<span class=""><span class="ln">348</span></span>
+<span class=""><span class="ln">349</span>    public static function assertIsList(mixed $array, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">350</span>    {</span>
+<span class="covered"><span class="ln">351</span>        self::assertThat($array, new IsList(), $message);</span>
+<span class=""><span class="ln">352</span>    }</span>
+<span class=""><span class="ln">353</span></span>
+<span class=""><span class="ln">354</span>    /**</span>
+<span class=""><span class="ln">355</span>     * The value fits a PHPStan type string, `array{id: positive-int,</span>
+<span class=""><span class="ln">356</span>     * tags: list&lt;string&gt;}` (D-131). Crucible&#039;s own assertion, not the</span>
+<span class=""><span class="ln">357</span>     * incumbent&#039;s: it checks the value at run time, and Crucible&#039;s PHPStan</span>
+<span class=""><span class="ln">358</span>     * extension narrows it to the same type afterwards.</span>
+<span class=""><span class="ln">359</span>     */</span>
+<span class=""><span class="ln">360</span>    public static function assertMatchesShape(string $shape, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">361</span>    {</span>
+<span class="missed"><span class="ln">362</span>        self::assertThat($actual, new MatchesShape($shape), $message);</span>
+<span class=""><span class="ln">363</span>    }</span>
+<span class=""><span class="ln">364</span></span>
+<span class=""><span class="ln">365</span>    // --- Strings -------------------------------------------------------------</span>
+<span class=""><span class="ln">366</span></span>
+<span class=""><span class="ln">367</span>    public static function assertStringContainsString(string $needle, string $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">368</span>    {</span>
+<span class="covered"><span class="ln">369</span>        self::assertThat($haystack, new StringContains($needle), $message);</span>
+<span class=""><span class="ln">370</span>    }</span>
+<span class=""><span class="ln">371</span></span>
+<span class=""><span class="ln">372</span>    public static function assertStringNotContainsString(string $needle, string $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">373</span>    {</span>
+<span class="covered"><span class="ln">374</span>        self::assertThat($haystack, new LogicalNot(new StringContains($needle)), $message);</span>
+<span class=""><span class="ln">375</span>    }</span>
+<span class=""><span class="ln">376</span></span>
+<span class=""><span class="ln">377</span>    public static function assertStringContainsStringIgnoringCase(string $needle, string $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">378</span>    {</span>
+<span class="covered"><span class="ln">379</span>        self::assertThat($haystack, new StringContains($needle, ignoreCase: true), $message);</span>
+<span class=""><span class="ln">380</span>    }</span>
+<span class=""><span class="ln">381</span></span>
+<span class=""><span class="ln">382</span>    public static function assertStringNotContainsStringIgnoringCase(string $needle, string $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">383</span>    {</span>
+<span class="missed"><span class="ln">384</span>        self::assertThat($haystack, new LogicalNot(new StringContains($needle, ignoreCase: true)), $message);</span>
+<span class=""><span class="ln">385</span>    }</span>
+<span class=""><span class="ln">386</span></span>
+<span class=""><span class="ln">387</span>    /**</span>
+<span class=""><span class="ln">388</span>     * @param non-empty-string $prefix</span>
+<span class=""><span class="ln">389</span>     */</span>
+<span class=""><span class="ln">390</span>    public static function assertStringStartsWith(string $prefix, string $string, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">391</span>    {</span>
+<span class="covered"><span class="ln">392</span>        self::assertThat($string, new StringStartsWith($prefix), $message);</span>
+<span class=""><span class="ln">393</span>    }</span>
+<span class=""><span class="ln">394</span></span>
+<span class=""><span class="ln">395</span>    /**</span>
+<span class=""><span class="ln">396</span>     * @param non-empty-string $prefix</span>
+<span class=""><span class="ln">397</span>     */</span>
+<span class=""><span class="ln">398</span>    public static function assertStringStartsNotWith(string $prefix, string $string, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">399</span>    {</span>
+<span class="covered"><span class="ln">400</span>        self::assertThat($string, new LogicalNot(new StringStartsWith($prefix)), $message);</span>
+<span class=""><span class="ln">401</span>    }</span>
+<span class=""><span class="ln">402</span></span>
+<span class=""><span class="ln">403</span>    /**</span>
+<span class=""><span class="ln">404</span>     * @param non-empty-string $suffix</span>
+<span class=""><span class="ln">405</span>     */</span>
+<span class=""><span class="ln">406</span>    public static function assertStringEndsWith(string $suffix, string $string, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">407</span>    {</span>
+<span class="covered"><span class="ln">408</span>        self::assertThat($string, new StringEndsWith($suffix), $message);</span>
+<span class=""><span class="ln">409</span>    }</span>
+<span class=""><span class="ln">410</span></span>
+<span class=""><span class="ln">411</span>    /**</span>
+<span class=""><span class="ln">412</span>     * @param non-empty-string $suffix</span>
+<span class=""><span class="ln">413</span>     */</span>
+<span class=""><span class="ln">414</span>    public static function assertStringEndsNotWith(string $suffix, string $string, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">415</span>    {</span>
+<span class="covered"><span class="ln">416</span>        self::assertThat($string, new LogicalNot(new StringEndsWith($suffix)), $message);</span>
+<span class=""><span class="ln">417</span>    }</span>
+<span class=""><span class="ln">418</span></span>
+<span class=""><span class="ln">419</span>    /**</span>
+<span class=""><span class="ln">420</span>     * @param non-empty-string $pattern</span>
+<span class=""><span class="ln">421</span>     */</span>
+<span class=""><span class="ln">422</span>    public static function assertMatchesRegularExpression(string $pattern, string $string, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">423</span>    {</span>
+<span class="covered"><span class="ln">424</span>        self::assertThat($string, new MatchesRegularExpression($pattern), $message);</span>
+<span class=""><span class="ln">425</span>    }</span>
+<span class=""><span class="ln">426</span></span>
+<span class=""><span class="ln">427</span>    /**</span>
+<span class=""><span class="ln">428</span>     * @param non-empty-string $pattern</span>
+<span class=""><span class="ln">429</span>     */</span>
+<span class=""><span class="ln">430</span>    public static function assertDoesNotMatchRegularExpression(string $pattern, string $string, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">431</span>    {</span>
+<span class="covered"><span class="ln">432</span>        self::assertThat($string, new LogicalNot(new MatchesRegularExpression($pattern)), $message);</span>
+<span class=""><span class="ln">433</span>    }</span>
+<span class=""><span class="ln">434</span></span>
+<span class=""><span class="ln">435</span>    public static function assertJson(string $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">436</span>    {</span>
+<span class="covered"><span class="ln">437</span>        self::assertThat($actual, new IsJson(), $message);</span>
+<span class=""><span class="ln">438</span>    }</span>
+<span class=""><span class="ln">439</span></span>
+<span class=""><span class="ln">440</span>    // --- Objects &amp; types --------------------------------------------------------</span>
+<span class=""><span class="ln">441</span></span>
+<span class=""><span class="ln">442</span>    /**</span>
+<span class=""><span class="ln">443</span>     * @param class-string $expected</span>
+<span class=""><span class="ln">444</span>     */</span>
+<span class=""><span class="ln">445</span>    public static function assertInstanceOf(string $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">446</span>    {</span>
+<span class="covered"><span class="ln">447</span>        self::assertThat($actual, new IsInstanceOf($expected), $message);</span>
+<span class=""><span class="ln">448</span>    }</span>
+<span class=""><span class="ln">449</span></span>
+<span class=""><span class="ln">450</span>    /**</span>
+<span class=""><span class="ln">451</span>     * @param class-string $expected</span>
+<span class=""><span class="ln">452</span>     */</span>
+<span class=""><span class="ln">453</span>    public static function assertNotInstanceOf(string $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">454</span>    {</span>
+<span class="covered"><span class="ln">455</span>        self::assertThat($actual, new LogicalNot(new IsInstanceOf($expected)), $message);</span>
+<span class=""><span class="ln">456</span>    }</span>
+<span class=""><span class="ln">457</span></span>
+<span class=""><span class="ln">458</span>    /**</span>
+<span class=""><span class="ln">459</span>     * @param non-empty-string $property</span>
+<span class=""><span class="ln">460</span>     */</span>
+<span class=""><span class="ln">461</span>    public static function assertObjectHasProperty(string $property, object $object, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">462</span>    {</span>
+<span class="covered"><span class="ln">463</span>        self::assertThat($object, new ObjectHasProperty($property), $message);</span>
+<span class=""><span class="ln">464</span>    }</span>
+<span class=""><span class="ln">465</span></span>
+<span class=""><span class="ln">466</span>    /**</span>
+<span class=""><span class="ln">467</span>     * @param non-empty-string $property</span>
+<span class=""><span class="ln">468</span>     */</span>
+<span class=""><span class="ln">469</span>    public static function assertObjectNotHasProperty(string $property, object $object, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">470</span>    {</span>
+<span class="covered"><span class="ln">471</span>        self::assertThat($object, new LogicalNot(new ObjectHasProperty($property)), $message);</span>
+<span class=""><span class="ln">472</span>    }</span>
+<span class=""><span class="ln">473</span></span>
+<span class=""><span class="ln">474</span>    // --- Filesystem ----------------------------------------------------------------</span>
+<span class=""><span class="ln">475</span></span>
+<span class=""><span class="ln">476</span>    public static function assertFileExists(string $filename, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">477</span>    {</span>
+<span class="covered"><span class="ln">478</span>        self::assertThat($filename, new FileExists(), $message);</span>
+<span class=""><span class="ln">479</span>    }</span>
+<span class=""><span class="ln">480</span></span>
+<span class=""><span class="ln">481</span>    public static function assertFileDoesNotExist(string $filename, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">482</span>    {</span>
+<span class="covered"><span class="ln">483</span>        self::assertThat($filename, new LogicalNot(new FileExists()), $message);</span>
+<span class=""><span class="ln">484</span>    }</span>
+<span class=""><span class="ln">485</span></span>
+<span class=""><span class="ln">486</span>    public static function assertDirectoryExists(string $directory, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">487</span>    {</span>
+<span class="covered"><span class="ln">488</span>        self::assertThat($directory, new DirectoryExists(), $message);</span>
+<span class=""><span class="ln">489</span>    }</span>
+<span class=""><span class="ln">490</span></span>
+<span class=""><span class="ln">491</span>    public static function assertDirectoryDoesNotExist(string $directory, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">492</span>    {</span>
+<span class="covered"><span class="ln">493</span>        self::assertThat($directory, new LogicalNot(new DirectoryExists()), $message);</span>
+<span class=""><span class="ln">494</span>    }</span>
+<span class=""><span class="ln">495</span></span>
+<span class=""><span class="ln">496</span>    // --- assertIs*() type family ------------------------------------------------------</span>
+<span class=""><span class="ln">497</span></span>
+<span class=""><span class="ln">498</span>    public static function assertIsArray(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">499</span>    {</span>
+<span class="covered"><span class="ln">500</span>        self::assertThat($actual, new IsType(ValueType::Array), $message);</span>
+<span class=""><span class="ln">501</span>    }</span>
+<span class=""><span class="ln">502</span></span>
+<span class=""><span class="ln">503</span>    public static function assertIsNotArray(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">504</span>    {</span>
+<span class="covered"><span class="ln">505</span>        self::assertThat($actual, new LogicalNot(new IsType(ValueType::Array)), $message);</span>
+<span class=""><span class="ln">506</span>    }</span>
+<span class=""><span class="ln">507</span></span>
+<span class=""><span class="ln">508</span>    public static function assertIsBool(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">509</span>    {</span>
+<span class="covered"><span class="ln">510</span>        self::assertThat($actual, new IsType(ValueType::Bool), $message);</span>
+<span class=""><span class="ln">511</span>    }</span>
+<span class=""><span class="ln">512</span></span>
+<span class=""><span class="ln">513</span>    public static function assertIsNotBool(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">514</span>    {</span>
+<span class="missed"><span class="ln">515</span>        self::assertThat($actual, new LogicalNot(new IsType(ValueType::Bool)), $message);</span>
+<span class=""><span class="ln">516</span>    }</span>
+<span class=""><span class="ln">517</span></span>
+<span class=""><span class="ln">518</span>    public static function assertIsCallable(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">519</span>    {</span>
+<span class="covered"><span class="ln">520</span>        self::assertThat($actual, new IsType(ValueType::Callable), $message);</span>
+<span class=""><span class="ln">521</span>    }</span>
+<span class=""><span class="ln">522</span></span>
+<span class=""><span class="ln">523</span>    public static function assertIsNotCallable(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">524</span>    {</span>
+<span class="missed"><span class="ln">525</span>        self::assertThat($actual, new LogicalNot(new IsType(ValueType::Callable)), $message);</span>
+<span class=""><span class="ln">526</span>    }</span>
+<span class=""><span class="ln">527</span></span>
+<span class=""><span class="ln">528</span>    public static function assertIsClosedResource(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">529</span>    {</span>
+<span class="missed"><span class="ln">530</span>        self::assertThat($actual, new IsType(ValueType::ClosedResource), $message);</span>
+<span class=""><span class="ln">531</span>    }</span>
+<span class=""><span class="ln">532</span></span>
+<span class=""><span class="ln">533</span>    public static function assertIsNotClosedResource(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">534</span>    {</span>
+<span class="missed"><span class="ln">535</span>        self::assertThat($actual, new LogicalNot(new IsType(ValueType::ClosedResource)), $message);</span>
+<span class=""><span class="ln">536</span>    }</span>
+<span class=""><span class="ln">537</span></span>
+<span class=""><span class="ln">538</span>    public static function assertIsFloat(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">539</span>    {</span>
+<span class="covered"><span class="ln">540</span>        self::assertThat($actual, new IsType(ValueType::Float), $message);</span>
+<span class=""><span class="ln">541</span>    }</span>
+<span class=""><span class="ln">542</span></span>
+<span class=""><span class="ln">543</span>    public static function assertIsNotFloat(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">544</span>    {</span>
+<span class="missed"><span class="ln">545</span>        self::assertThat($actual, new LogicalNot(new IsType(ValueType::Float)), $message);</span>
+<span class=""><span class="ln">546</span>    }</span>
+<span class=""><span class="ln">547</span></span>
+<span class=""><span class="ln">548</span>    public static function assertIsInt(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">549</span>    {</span>
+<span class="covered"><span class="ln">550</span>        self::assertThat($actual, new IsType(ValueType::Int), $message);</span>
+<span class=""><span class="ln">551</span>    }</span>
+<span class=""><span class="ln">552</span></span>
+<span class=""><span class="ln">553</span>    public static function assertIsNotInt(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">554</span>    {</span>
+<span class="missed"><span class="ln">555</span>        self::assertThat($actual, new LogicalNot(new IsType(ValueType::Int)), $message);</span>
+<span class=""><span class="ln">556</span>    }</span>
+<span class=""><span class="ln">557</span></span>
+<span class=""><span class="ln">558</span>    public static function assertIsIterable(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">559</span>    {</span>
+<span class="covered"><span class="ln">560</span>        self::assertThat($actual, new IsType(ValueType::Iterable), $message);</span>
+<span class=""><span class="ln">561</span>    }</span>
+<span class=""><span class="ln">562</span></span>
+<span class=""><span class="ln">563</span>    public static function assertIsNotIterable(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">564</span>    {</span>
+<span class="missed"><span class="ln">565</span>        self::assertThat($actual, new LogicalNot(new IsType(ValueType::Iterable)), $message);</span>
+<span class=""><span class="ln">566</span>    }</span>
+<span class=""><span class="ln">567</span></span>
+<span class=""><span class="ln">568</span>    public static function assertIsNumeric(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">569</span>    {</span>
+<span class="covered"><span class="ln">570</span>        self::assertThat($actual, new IsType(ValueType::Numeric), $message);</span>
+<span class=""><span class="ln">571</span>    }</span>
+<span class=""><span class="ln">572</span></span>
+<span class=""><span class="ln">573</span>    public static function assertIsNotNumeric(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">574</span>    {</span>
+<span class="missed"><span class="ln">575</span>        self::assertThat($actual, new LogicalNot(new IsType(ValueType::Numeric)), $message);</span>
+<span class=""><span class="ln">576</span>    }</span>
+<span class=""><span class="ln">577</span></span>
+<span class=""><span class="ln">578</span>    public static function assertIsObject(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">579</span>    {</span>
+<span class="covered"><span class="ln">580</span>        self::assertThat($actual, new IsType(ValueType::Object), $message);</span>
+<span class=""><span class="ln">581</span>    }</span>
+<span class=""><span class="ln">582</span></span>
+<span class=""><span class="ln">583</span>    public static function assertIsNotObject(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">584</span>    {</span>
+<span class="missed"><span class="ln">585</span>        self::assertThat($actual, new LogicalNot(new IsType(ValueType::Object)), $message);</span>
+<span class=""><span class="ln">586</span>    }</span>
+<span class=""><span class="ln">587</span></span>
+<span class=""><span class="ln">588</span>    public static function assertIsResource(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">589</span>    {</span>
+<span class="missed"><span class="ln">590</span>        self::assertThat($actual, new IsType(ValueType::Resource), $message);</span>
+<span class=""><span class="ln">591</span>    }</span>
+<span class=""><span class="ln">592</span></span>
+<span class=""><span class="ln">593</span>    public static function assertIsNotResource(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">594</span>    {</span>
+<span class="missed"><span class="ln">595</span>        self::assertThat($actual, new LogicalNot(new IsType(ValueType::Resource)), $message);</span>
+<span class=""><span class="ln">596</span>    }</span>
+<span class=""><span class="ln">597</span></span>
+<span class=""><span class="ln">598</span>    public static function assertIsScalar(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">599</span>    {</span>
+<span class="covered"><span class="ln">600</span>        self::assertThat($actual, new IsType(ValueType::Scalar), $message);</span>
+<span class=""><span class="ln">601</span>    }</span>
+<span class=""><span class="ln">602</span></span>
+<span class=""><span class="ln">603</span>    public static function assertIsNotScalar(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">604</span>    {</span>
+<span class="missed"><span class="ln">605</span>        self::assertThat($actual, new LogicalNot(new IsType(ValueType::Scalar)), $message);</span>
+<span class=""><span class="ln">606</span>    }</span>
+<span class=""><span class="ln">607</span></span>
+<span class=""><span class="ln">608</span>    public static function assertIsString(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">609</span>    {</span>
+<span class="covered"><span class="ln">610</span>        self::assertThat($actual, new IsType(ValueType::String), $message);</span>
+<span class=""><span class="ln">611</span>    }</span>
+<span class=""><span class="ln">612</span></span>
+<span class=""><span class="ln">613</span>    public static function assertIsNotString(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">614</span>    {</span>
+<span class="covered"><span class="ln">615</span>        self::assertThat($actual, new LogicalNot(new IsType(ValueType::String)), $message);</span>
+<span class=""><span class="ln">616</span>    }</span>
+<span class=""><span class="ln">617</span></span>
+<span class=""><span class="ln">618</span>    // --- assertContainsOnly*() family ------------------------------------------------</span>
+<span class=""><span class="ln">619</span></span>
+<span class=""><span class="ln">620</span>    /**</span>
+<span class=""><span class="ln">621</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">622</span>     */</span>
+<span class=""><span class="ln">623</span>    public static function assertContainsOnlyArray(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">624</span>    {</span>
+<span class="missed"><span class="ln">625</span>        self::assertThat($haystack, new TraversableContainsOnlyType(ValueType::Array), $message);</span>
+<span class=""><span class="ln">626</span>    }</span>
+<span class=""><span class="ln">627</span></span>
+<span class=""><span class="ln">628</span>    /**</span>
+<span class=""><span class="ln">629</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">630</span>     */</span>
+<span class=""><span class="ln">631</span>    public static function assertContainsOnlyBool(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">632</span>    {</span>
+<span class="missed"><span class="ln">633</span>        self::assertThat($haystack, new TraversableContainsOnlyType(ValueType::Bool), $message);</span>
+<span class=""><span class="ln">634</span>    }</span>
+<span class=""><span class="ln">635</span></span>
+<span class=""><span class="ln">636</span>    /**</span>
+<span class=""><span class="ln">637</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">638</span>     */</span>
+<span class=""><span class="ln">639</span>    public static function assertContainsOnlyCallable(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">640</span>    {</span>
+<span class="missed"><span class="ln">641</span>        self::assertThat($haystack, new TraversableContainsOnlyType(ValueType::Callable), $message);</span>
+<span class=""><span class="ln">642</span>    }</span>
+<span class=""><span class="ln">643</span></span>
+<span class=""><span class="ln">644</span>    /**</span>
+<span class=""><span class="ln">645</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">646</span>     */</span>
+<span class=""><span class="ln">647</span>    public static function assertContainsOnlyFloat(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">648</span>    {</span>
+<span class="missed"><span class="ln">649</span>        self::assertThat($haystack, new TraversableContainsOnlyType(ValueType::Float), $message);</span>
+<span class=""><span class="ln">650</span>    }</span>
+<span class=""><span class="ln">651</span></span>
+<span class=""><span class="ln">652</span>    /**</span>
+<span class=""><span class="ln">653</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">654</span>     */</span>
+<span class=""><span class="ln">655</span>    public static function assertContainsOnlyInt(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">656</span>    {</span>
+<span class="covered"><span class="ln">657</span>        self::assertThat($haystack, new TraversableContainsOnlyType(ValueType::Int), $message);</span>
+<span class=""><span class="ln">658</span>    }</span>
+<span class=""><span class="ln">659</span></span>
+<span class=""><span class="ln">660</span>    /**</span>
+<span class=""><span class="ln">661</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">662</span>     */</span>
+<span class=""><span class="ln">663</span>    public static function assertContainsOnlyIterable(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">664</span>    {</span>
+<span class="missed"><span class="ln">665</span>        self::assertThat($haystack, new TraversableContainsOnlyType(ValueType::Iterable), $message);</span>
+<span class=""><span class="ln">666</span>    }</span>
+<span class=""><span class="ln">667</span></span>
+<span class=""><span class="ln">668</span>    /**</span>
+<span class=""><span class="ln">669</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">670</span>     */</span>
+<span class=""><span class="ln">671</span>    public static function assertContainsOnlyNull(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">672</span>    {</span>
+<span class="missed"><span class="ln">673</span>        self::assertThat($haystack, new TraversableContainsOnlyType(ValueType::Null), $message);</span>
+<span class=""><span class="ln">674</span>    }</span>
+<span class=""><span class="ln">675</span></span>
+<span class=""><span class="ln">676</span>    /**</span>
+<span class=""><span class="ln">677</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">678</span>     */</span>
+<span class=""><span class="ln">679</span>    public static function assertContainsOnlyNumeric(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">680</span>    {</span>
+<span class="missed"><span class="ln">681</span>        self::assertThat($haystack, new TraversableContainsOnlyType(ValueType::Numeric), $message);</span>
+<span class=""><span class="ln">682</span>    }</span>
+<span class=""><span class="ln">683</span></span>
+<span class=""><span class="ln">684</span>    /**</span>
+<span class=""><span class="ln">685</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">686</span>     */</span>
+<span class=""><span class="ln">687</span>    public static function assertContainsOnlyObject(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">688</span>    {</span>
+<span class="missed"><span class="ln">689</span>        self::assertThat($haystack, new TraversableContainsOnlyType(ValueType::Object), $message);</span>
+<span class=""><span class="ln">690</span>    }</span>
+<span class=""><span class="ln">691</span></span>
+<span class=""><span class="ln">692</span>    /**</span>
+<span class=""><span class="ln">693</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">694</span>     */</span>
+<span class=""><span class="ln">695</span>    public static function assertContainsOnlyResource(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">696</span>    {</span>
+<span class="missed"><span class="ln">697</span>        self::assertThat($haystack, new TraversableContainsOnlyType(ValueType::Resource), $message);</span>
+<span class=""><span class="ln">698</span>    }</span>
+<span class=""><span class="ln">699</span></span>
+<span class=""><span class="ln">700</span>    /**</span>
+<span class=""><span class="ln">701</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">702</span>     */</span>
+<span class=""><span class="ln">703</span>    public static function assertContainsOnlyClosedResource(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">704</span>    {</span>
+<span class="missed"><span class="ln">705</span>        self::assertThat($haystack, new TraversableContainsOnlyType(ValueType::ClosedResource), $message);</span>
+<span class=""><span class="ln">706</span>    }</span>
+<span class=""><span class="ln">707</span></span>
+<span class=""><span class="ln">708</span>    /**</span>
+<span class=""><span class="ln">709</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">710</span>     */</span>
+<span class=""><span class="ln">711</span>    public static function assertContainsOnlyScalar(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">712</span>    {</span>
+<span class="missed"><span class="ln">713</span>        self::assertThat($haystack, new TraversableContainsOnlyType(ValueType::Scalar), $message);</span>
+<span class=""><span class="ln">714</span>    }</span>
+<span class=""><span class="ln">715</span></span>
+<span class=""><span class="ln">716</span>    /**</span>
+<span class=""><span class="ln">717</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">718</span>     */</span>
+<span class=""><span class="ln">719</span>    public static function assertContainsOnlyString(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">720</span>    {</span>
+<span class="covered"><span class="ln">721</span>        self::assertThat($haystack, new TraversableContainsOnlyType(ValueType::String), $message);</span>
+<span class=""><span class="ln">722</span>    }</span>
+<span class=""><span class="ln">723</span></span>
+<span class=""><span class="ln">724</span></span>
+<span class=""><span class="ln">725</span>    // --- assertContainsNotOnly*() family ---------------------------------------------</span>
+<span class=""><span class="ln">726</span>    //</span>
+<span class=""><span class="ln">727</span>    // &quot;Not only&quot; is the negation of the whole claim, not a claim about</span>
+<span class=""><span class="ln">728</span>    // each element: a haystack fails these when every element is of the</span>
+<span class=""><span class="ln">729</span>    // named type, and passes as soon as one is not — an empty haystack</span>
+<span class=""><span class="ln">730</span>    // contains only, so it is not &quot;not only&quot;.</span>
+<span class=""><span class="ln">731</span></span>
+<span class=""><span class="ln">732</span>    /**</span>
+<span class=""><span class="ln">733</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">734</span>     */</span>
+<span class=""><span class="ln">735</span>    public static function assertContainsNotOnlyArray(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">736</span>    {</span>
+<span class="missed"><span class="ln">737</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyType(ValueType::Array)), $message);</span>
+<span class=""><span class="ln">738</span>    }</span>
+<span class=""><span class="ln">739</span></span>
+<span class=""><span class="ln">740</span>    /**</span>
+<span class=""><span class="ln">741</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">742</span>     */</span>
+<span class=""><span class="ln">743</span>    public static function assertContainsNotOnlyBool(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">744</span>    {</span>
+<span class="missed"><span class="ln">745</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyType(ValueType::Bool)), $message);</span>
+<span class=""><span class="ln">746</span>    }</span>
+<span class=""><span class="ln">747</span></span>
+<span class=""><span class="ln">748</span>    /**</span>
+<span class=""><span class="ln">749</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">750</span>     */</span>
+<span class=""><span class="ln">751</span>    public static function assertContainsNotOnlyCallable(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">752</span>    {</span>
+<span class="missed"><span class="ln">753</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyType(ValueType::Callable)), $message);</span>
+<span class=""><span class="ln">754</span>    }</span>
+<span class=""><span class="ln">755</span></span>
+<span class=""><span class="ln">756</span>    /**</span>
+<span class=""><span class="ln">757</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">758</span>     */</span>
+<span class=""><span class="ln">759</span>    public static function assertContainsNotOnlyFloat(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">760</span>    {</span>
+<span class="missed"><span class="ln">761</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyType(ValueType::Float)), $message);</span>
+<span class=""><span class="ln">762</span>    }</span>
+<span class=""><span class="ln">763</span></span>
+<span class=""><span class="ln">764</span>    /**</span>
+<span class=""><span class="ln">765</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">766</span>     */</span>
+<span class=""><span class="ln">767</span>    public static function assertContainsNotOnlyInt(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">768</span>    {</span>
+<span class="missed"><span class="ln">769</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyType(ValueType::Int)), $message);</span>
+<span class=""><span class="ln">770</span>    }</span>
+<span class=""><span class="ln">771</span></span>
+<span class=""><span class="ln">772</span>    /**</span>
+<span class=""><span class="ln">773</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">774</span>     */</span>
+<span class=""><span class="ln">775</span>    public static function assertContainsNotOnlyIterable(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">776</span>    {</span>
+<span class="missed"><span class="ln">777</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyType(ValueType::Iterable)), $message);</span>
+<span class=""><span class="ln">778</span>    }</span>
+<span class=""><span class="ln">779</span></span>
+<span class=""><span class="ln">780</span>    /**</span>
+<span class=""><span class="ln">781</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">782</span>     */</span>
+<span class=""><span class="ln">783</span>    public static function assertContainsNotOnlyNull(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">784</span>    {</span>
+<span class="missed"><span class="ln">785</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyType(ValueType::Null)), $message);</span>
+<span class=""><span class="ln">786</span>    }</span>
+<span class=""><span class="ln">787</span></span>
+<span class=""><span class="ln">788</span>    /**</span>
+<span class=""><span class="ln">789</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">790</span>     */</span>
+<span class=""><span class="ln">791</span>    public static function assertContainsNotOnlyNumeric(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">792</span>    {</span>
+<span class="missed"><span class="ln">793</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyType(ValueType::Numeric)), $message);</span>
+<span class=""><span class="ln">794</span>    }</span>
+<span class=""><span class="ln">795</span></span>
+<span class=""><span class="ln">796</span>    /**</span>
+<span class=""><span class="ln">797</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">798</span>     */</span>
+<span class=""><span class="ln">799</span>    public static function assertContainsNotOnlyObject(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">800</span>    {</span>
+<span class="missed"><span class="ln">801</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyType(ValueType::Object)), $message);</span>
+<span class=""><span class="ln">802</span>    }</span>
+<span class=""><span class="ln">803</span></span>
+<span class=""><span class="ln">804</span>    /**</span>
+<span class=""><span class="ln">805</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">806</span>     */</span>
+<span class=""><span class="ln">807</span>    public static function assertContainsNotOnlyResource(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">808</span>    {</span>
+<span class="missed"><span class="ln">809</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyType(ValueType::Resource)), $message);</span>
+<span class=""><span class="ln">810</span>    }</span>
+<span class=""><span class="ln">811</span></span>
+<span class=""><span class="ln">812</span>    /**</span>
+<span class=""><span class="ln">813</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">814</span>     */</span>
+<span class=""><span class="ln">815</span>    public static function assertContainsNotOnlyClosedResource(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">816</span>    {</span>
+<span class="missed"><span class="ln">817</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyType(ValueType::ClosedResource)), $message);</span>
+<span class=""><span class="ln">818</span>    }</span>
+<span class=""><span class="ln">819</span></span>
+<span class=""><span class="ln">820</span>    /**</span>
+<span class=""><span class="ln">821</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">822</span>     */</span>
+<span class=""><span class="ln">823</span>    public static function assertContainsNotOnlyScalar(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">824</span>    {</span>
+<span class="missed"><span class="ln">825</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyType(ValueType::Scalar)), $message);</span>
+<span class=""><span class="ln">826</span>    }</span>
+<span class=""><span class="ln">827</span></span>
+<span class=""><span class="ln">828</span>    /**</span>
+<span class=""><span class="ln">829</span>     * @param iterable&lt;mixed&gt; $haystack</span>
+<span class=""><span class="ln">830</span>     */</span>
+<span class=""><span class="ln">831</span>    public static function assertContainsNotOnlyString(iterable $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">832</span>    {</span>
+<span class="missed"><span class="ln">833</span>        self::assertThat($haystack, new LogicalNot(new TraversableContainsOnlyType(ValueType::String)), $message);</span>
+<span class=""><span class="ln">834</span>    }</span>
+<span class=""><span class="ln">835</span></span>
+<span class=""><span class="ln">836</span>    // --- Case- and line-ending-insensitive equality -----------------------------------</span>
+<span class=""><span class="ln">837</span></span>
+<span class=""><span class="ln">838</span>    public static function assertEqualsIgnoringCase(mixed $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">839</span>    {</span>
+<span class="covered"><span class="ln">840</span>        self::assertThat($actual, new IsEqual($expected, ignoreCase: true), $message);</span>
+<span class=""><span class="ln">841</span>    }</span>
+<span class=""><span class="ln">842</span></span>
+<span class=""><span class="ln">843</span>    public static function assertNotEqualsIgnoringCase(mixed $expected, mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">844</span>    {</span>
+<span class="covered"><span class="ln">845</span>        self::assertThat($actual, new LogicalNot(new IsEqual($expected, ignoreCase: true)), $message);</span>
+<span class=""><span class="ln">846</span>    }</span>
+<span class=""><span class="ln">847</span></span>
+<span class=""><span class="ln">848</span>    public static function assertStringEqualsStringIgnoringLineEndings(string $expected, string $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">849</span>    {</span>
+<span class="covered"><span class="ln">850</span>        self::assertThat($actual, new StringEqualsStringIgnoringLineEndings($expected), $message);</span>
+<span class=""><span class="ln">851</span>    }</span>
+<span class=""><span class="ln">852</span></span>
+<span class=""><span class="ln">853</span>    public static function assertStringContainsStringIgnoringLineEndings(string $needle, string $haystack, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">854</span>    {</span>
+<span class="covered"><span class="ln">855</span>        self::assertThat(</span>
+<span class="covered"><span class="ln">856</span>            StringEqualsStringIgnoringLineEndings::normalize($haystack),</span>
+<span class="covered"><span class="ln">857</span>            new StringContains(StringEqualsStringIgnoringLineEndings::normalize($needle)),</span>
+<span class="covered"><span class="ln">858</span>            $message,</span>
+<span class=""><span class="ln">859</span>        );</span>
+<span class=""><span class="ln">860</span>    }</span>
+<span class=""><span class="ln">861</span></span>
+<span class=""><span class="ln">862</span></span>
+<span class=""><span class="ln">863</span>    // --- assertArrays*() family -------------------------------------------------------</span>
+<span class=""><span class="ln">864</span>    //</span>
+<span class=""><span class="ln">865</span>    // &quot;Are&quot; keeps the keys, &quot;Have*Values&quot; drops them; &quot;Identical&quot; is</span>
+<span class=""><span class="ln">866</span>    // strict where &quot;Equal&quot; is loose; &quot;IgnoringOrder&quot; relaxes key order</span>
+<span class=""><span class="ln">867</span>    // for the first pair and makes a multiset of the second.</span>
+<span class=""><span class="ln">868</span></span>
+<span class=""><span class="ln">869</span>    /**</span>
+<span class=""><span class="ln">870</span>     * @param array&lt;array-key, mixed&gt; $expected</span>
+<span class=""><span class="ln">871</span>     * @param array&lt;array-key, mixed&gt; $actual</span>
+<span class=""><span class="ln">872</span>     */</span>
+<span class=""><span class="ln">873</span>    public static function assertArraysAreEqual(array $expected, array $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">874</span>    {</span>
+<span class="missed"><span class="ln">875</span>        self::assertThat($actual, new ArrayComparison($expected, strict: false, ignoreKeys: false, ignoreOrder: false), $message);</span>
+<span class=""><span class="ln">876</span>    }</span>
+<span class=""><span class="ln">877</span></span>
+<span class=""><span class="ln">878</span>    /**</span>
+<span class=""><span class="ln">879</span>     * @param array&lt;array-key, mixed&gt; $expected</span>
+<span class=""><span class="ln">880</span>     * @param array&lt;array-key, mixed&gt; $actual</span>
+<span class=""><span class="ln">881</span>     */</span>
+<span class=""><span class="ln">882</span>    public static function assertArraysAreEqualIgnoringOrder(array $expected, array $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">883</span>    {</span>
+<span class="missed"><span class="ln">884</span>        self::assertThat($actual, new ArrayComparison($expected, strict: false, ignoreKeys: false, ignoreOrder: true), $message);</span>
+<span class=""><span class="ln">885</span>    }</span>
+<span class=""><span class="ln">886</span></span>
+<span class=""><span class="ln">887</span>    /**</span>
+<span class=""><span class="ln">888</span>     * @param array&lt;array-key, mixed&gt; $expected</span>
+<span class=""><span class="ln">889</span>     * @param array&lt;array-key, mixed&gt; $actual</span>
+<span class=""><span class="ln">890</span>     */</span>
+<span class=""><span class="ln">891</span>    public static function assertArraysAreIdentical(array $expected, array $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">892</span>    {</span>
+<span class="missed"><span class="ln">893</span>        self::assertThat($actual, new ArrayComparison($expected, strict: true, ignoreKeys: false, ignoreOrder: false), $message);</span>
+<span class=""><span class="ln">894</span>    }</span>
+<span class=""><span class="ln">895</span></span>
+<span class=""><span class="ln">896</span>    /**</span>
+<span class=""><span class="ln">897</span>     * @param array&lt;array-key, mixed&gt; $expected</span>
+<span class=""><span class="ln">898</span>     * @param array&lt;array-key, mixed&gt; $actual</span>
+<span class=""><span class="ln">899</span>     */</span>
+<span class=""><span class="ln">900</span>    public static function assertArraysAreIdenticalIgnoringOrder(array $expected, array $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">901</span>    {</span>
+<span class="missed"><span class="ln">902</span>        self::assertThat($actual, new ArrayComparison($expected, strict: true, ignoreKeys: false, ignoreOrder: true), $message);</span>
+<span class=""><span class="ln">903</span>    }</span>
+<span class=""><span class="ln">904</span></span>
+<span class=""><span class="ln">905</span>    /**</span>
+<span class=""><span class="ln">906</span>     * @param array&lt;array-key, mixed&gt; $expected</span>
+<span class=""><span class="ln">907</span>     * @param array&lt;array-key, mixed&gt; $actual</span>
+<span class=""><span class="ln">908</span>     */</span>
+<span class=""><span class="ln">909</span>    public static function assertArraysHaveEqualValues(array $expected, array $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">910</span>    {</span>
+<span class="missed"><span class="ln">911</span>        self::assertThat($actual, new ArrayComparison($expected, strict: false, ignoreKeys: true, ignoreOrder: false), $message);</span>
+<span class=""><span class="ln">912</span>    }</span>
+<span class=""><span class="ln">913</span></span>
+<span class=""><span class="ln">914</span>    /**</span>
+<span class=""><span class="ln">915</span>     * @param array&lt;array-key, mixed&gt; $expected</span>
+<span class=""><span class="ln">916</span>     * @param array&lt;array-key, mixed&gt; $actual</span>
+<span class=""><span class="ln">917</span>     */</span>
+<span class=""><span class="ln">918</span>    public static function assertArraysHaveEqualValuesIgnoringOrder(array $expected, array $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">919</span>    {</span>
+<span class="missed"><span class="ln">920</span>        self::assertThat($actual, new ArrayComparison($expected, strict: false, ignoreKeys: true, ignoreOrder: true), $message);</span>
+<span class=""><span class="ln">921</span>    }</span>
+<span class=""><span class="ln">922</span></span>
+<span class=""><span class="ln">923</span>    /**</span>
+<span class=""><span class="ln">924</span>     * @param array&lt;array-key, mixed&gt; $expected</span>
+<span class=""><span class="ln">925</span>     * @param array&lt;array-key, mixed&gt; $actual</span>
+<span class=""><span class="ln">926</span>     */</span>
+<span class=""><span class="ln">927</span>    public static function assertArraysHaveIdenticalValues(array $expected, array $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">928</span>    {</span>
+<span class="missed"><span class="ln">929</span>        self::assertThat($actual, new ArrayComparison($expected, strict: true, ignoreKeys: true, ignoreOrder: false), $message);</span>
+<span class=""><span class="ln">930</span>    }</span>
+<span class=""><span class="ln">931</span></span>
+<span class=""><span class="ln">932</span>    /**</span>
+<span class=""><span class="ln">933</span>     * @param array&lt;array-key, mixed&gt; $expected</span>
+<span class=""><span class="ln">934</span>     * @param array&lt;array-key, mixed&gt; $actual</span>
+<span class=""><span class="ln">935</span>     */</span>
+<span class=""><span class="ln">936</span>    public static function assertArraysHaveIdenticalValuesIgnoringOrder(array $expected, array $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">937</span>    {</span>
+<span class="missed"><span class="ln">938</span>        self::assertThat($actual, new ArrayComparison($expected, strict: true, ignoreKeys: true, ignoreOrder: true), $message);</span>
+<span class=""><span class="ln">939</span>    }</span>
+<span class=""><span class="ln">940</span></span>
+<span class=""><span class="ln">941</span>    // --- Key-scoped array comparison ---------------------------------------------------</span>
+<span class=""><span class="ln">942</span></span>
+<span class=""><span class="ln">943</span>    /**</span>
+<span class=""><span class="ln">944</span>     * @param array&lt;array-key, mixed&gt; $expected</span>
+<span class=""><span class="ln">945</span>     * @param array&lt;array-key, mixed&gt; $actual</span>
+<span class=""><span class="ln">946</span>     * @param list&lt;array-key&gt;         $keysToBeIgnored</span>
+<span class=""><span class="ln">947</span>     */</span>
+<span class=""><span class="ln">948</span>    public static function assertArrayIsEqualToArrayIgnoringListOfKeys(array $expected, array $actual, array $keysToBeIgnored, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">949</span>    {</span>
+<span class="missed"><span class="ln">950</span>        self::assertThat(</span>
+<span class="missed"><span class="ln">951</span>            self::withoutKeys($actual, $keysToBeIgnored),</span>
+<span class="missed"><span class="ln">952</span>            new ArrayComparison(self::withoutKeys($expected, $keysToBeIgnored), strict: false, ignoreKeys: false, ignoreOrder: false),</span>
+<span class="missed"><span class="ln">953</span>            $message,</span>
+<span class=""><span class="ln">954</span>        );</span>
+<span class=""><span class="ln">955</span>    }</span>
+<span class=""><span class="ln">956</span></span>
+<span class=""><span class="ln">957</span>    /**</span>
+<span class=""><span class="ln">958</span>     * @param array&lt;array-key, mixed&gt; $expected</span>
+<span class=""><span class="ln">959</span>     * @param array&lt;array-key, mixed&gt; $actual</span>
+<span class=""><span class="ln">960</span>     * @param list&lt;array-key&gt;         $keysToBeIgnored</span>
+<span class=""><span class="ln">961</span>     */</span>
+<span class=""><span class="ln">962</span>    public static function assertArrayIsIdenticalToArrayIgnoringListOfKeys(array $expected, array $actual, array $keysToBeIgnored, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">963</span>    {</span>
+<span class="missed"><span class="ln">964</span>        self::assertThat(</span>
+<span class="missed"><span class="ln">965</span>            self::withoutKeys($actual, $keysToBeIgnored),</span>
+<span class="missed"><span class="ln">966</span>            new ArrayComparison(self::withoutKeys($expected, $keysToBeIgnored), strict: true, ignoreKeys: false, ignoreOrder: false),</span>
+<span class="missed"><span class="ln">967</span>            $message,</span>
+<span class=""><span class="ln">968</span>        );</span>
+<span class=""><span class="ln">969</span>    }</span>
+<span class=""><span class="ln">970</span></span>
+<span class=""><span class="ln">971</span>    /**</span>
+<span class=""><span class="ln">972</span>     * @param array&lt;array-key, mixed&gt; $expected</span>
+<span class=""><span class="ln">973</span>     * @param array&lt;array-key, mixed&gt; $actual</span>
+<span class=""><span class="ln">974</span>     * @param list&lt;array-key&gt;         $keysToBeConsidered</span>
+<span class=""><span class="ln">975</span>     */</span>
+<span class=""><span class="ln">976</span>    public static function assertArrayIsEqualToArrayOnlyConsideringListOfKeys(array $expected, array $actual, array $keysToBeConsidered, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">977</span>    {</span>
+<span class="missed"><span class="ln">978</span>        self::assertThat(</span>
+<span class="missed"><span class="ln">979</span>            self::onlyKeys($actual, $keysToBeConsidered),</span>
+<span class="missed"><span class="ln">980</span>            new ArrayComparison(self::onlyKeys($expected, $keysToBeConsidered), strict: false, ignoreKeys: false, ignoreOrder: false),</span>
+<span class="missed"><span class="ln">981</span>            $message,</span>
+<span class=""><span class="ln">982</span>        );</span>
+<span class=""><span class="ln">983</span>    }</span>
+<span class=""><span class="ln">984</span></span>
+<span class=""><span class="ln">985</span>    /**</span>
+<span class=""><span class="ln">986</span>     * @param array&lt;array-key, mixed&gt; $expected</span>
+<span class=""><span class="ln">987</span>     * @param array&lt;array-key, mixed&gt; $actual</span>
+<span class=""><span class="ln">988</span>     * @param list&lt;array-key&gt;         $keysToBeConsidered</span>
+<span class=""><span class="ln">989</span>     */</span>
+<span class=""><span class="ln">990</span>    public static function assertArrayIsIdenticalToArrayOnlyConsideringListOfKeys(array $expected, array $actual, array $keysToBeConsidered, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">991</span>    {</span>
+<span class="missed"><span class="ln">992</span>        self::assertThat(</span>
+<span class="missed"><span class="ln">993</span>            self::onlyKeys($actual, $keysToBeConsidered),</span>
+<span class="missed"><span class="ln">994</span>            new ArrayComparison(self::onlyKeys($expected, $keysToBeConsidered), strict: true, ignoreKeys: false, ignoreOrder: false),</span>
+<span class="missed"><span class="ln">995</span>            $message,</span>
+<span class=""><span class="ln">996</span>        );</span>
+<span class=""><span class="ln">997</span>    }</span>
+<span class=""><span class="ln">998</span></span>
+<span class=""><span class="ln">999</span>    /**</span>
+<span class=""><span class="ln">1000</span>     * @param array&lt;array-key, mixed&gt; $array</span>
+<span class=""><span class="ln">1001</span>     * @param list&lt;array-key&gt;         $keys</span>
+<span class=""><span class="ln">1002</span>     *</span>
+<span class=""><span class="ln">1003</span>     * @return array&lt;array-key, mixed&gt;</span>
+<span class=""><span class="ln">1004</span>     */</span>
+<span class=""><span class="ln">1005</span>    private static function withoutKeys(array $array, array $keys): array</span>
+<span class=""><span class="ln">1006</span>    {</span>
+<span class="missed"><span class="ln">1007</span>        foreach ($keys as $key) {</span>
+<span class="missed"><span class="ln">1008</span>            unset($array[$key]);</span>
+<span class=""><span class="ln">1009</span>        }</span>
+<span class=""><span class="ln">1010</span></span>
+<span class="missed"><span class="ln">1011</span>        return $array;</span>
+<span class=""><span class="ln">1012</span>    }</span>
+<span class=""><span class="ln">1013</span></span>
+<span class=""><span class="ln">1014</span>    /**</span>
+<span class=""><span class="ln">1015</span>     * @param array&lt;array-key, mixed&gt; $array</span>
+<span class=""><span class="ln">1016</span>     * @param list&lt;array-key&gt;         $keys</span>
+<span class=""><span class="ln">1017</span>     *</span>
+<span class=""><span class="ln">1018</span>     * @return array&lt;array-key, mixed&gt;</span>
+<span class=""><span class="ln">1019</span>     */</span>
+<span class=""><span class="ln">1020</span>    private static function onlyKeys(array $array, array $keys): array</span>
+<span class=""><span class="ln">1021</span>    {</span>
+<span class="missed"><span class="ln">1022</span>        $kept = [];</span>
+<span class=""><span class="ln">1023</span></span>
+<span class="missed"><span class="ln">1024</span>        foreach ($keys as $key) {</span>
+<span class="missed"><span class="ln">1025</span>            if (array_key_exists($key, $array)) {</span>
+<span class="missed"><span class="ln">1026</span>                $kept[$key] = $array[$key];</span>
+<span class=""><span class="ln">1027</span>            }</span>
+<span class=""><span class="ln">1028</span>        }</span>
+<span class=""><span class="ln">1029</span></span>
+<span class="missed"><span class="ln">1030</span>        return $kept;</span>
+<span class=""><span class="ln">1031</span>    }</span>
+<span class=""><span class="ln">1032</span></span>
+<span class=""><span class="ln">1033</span></span>
+<span class=""><span class="ln">1034</span>    // --- XML document equality ---------------------------------------------------------</span>
+<span class=""><span class="ln">1035</span>    //</span>
+<span class=""><span class="ln">1036</span>    // Canonical form, not string form: attribute order, the declaration,</span>
+<span class=""><span class="ln">1037</span>    // inter-element whitespace and empty-element spelling all wash out,</span>
+<span class=""><span class="ln">1038</span>    // while text-node whitespace does not. Comments are dropped unless</span>
+<span class=""><span class="ln">1039</span>    // the ConsideringComments spelling keeps them. Input that will not</span>
+<span class=""><span class="ln">1040</span>    // parse raises rather than fails — see XmlException.</span>
+<span class=""><span class="ln">1041</span></span>
+<span class=""><span class="ln">1042</span>    public static function assertXmlStringEqualsXmlString(string $expectedXml, string $actualXml, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1043</span>    {</span>
+<span class="missed"><span class="ln">1044</span>        self::assertThat($actualXml, new XmlEqualsXml($expectedXml), $message);</span>
+<span class=""><span class="ln">1045</span>    }</span>
+<span class=""><span class="ln">1046</span></span>
+<span class=""><span class="ln">1047</span>    public static function assertXmlStringNotEqualsXmlString(string $expectedXml, string $actualXml, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1048</span>    {</span>
+<span class="missed"><span class="ln">1049</span>        self::assertThat($actualXml, new LogicalNot(new XmlEqualsXml($expectedXml)), $message);</span>
+<span class=""><span class="ln">1050</span>    }</span>
+<span class=""><span class="ln">1051</span></span>
+<span class=""><span class="ln">1052</span>    public static function assertXmlStringEqualsXmlStringConsideringComments(string $expectedXml, string $actualXml, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1053</span>    {</span>
+<span class="missed"><span class="ln">1054</span>        self::assertThat($actualXml, new XmlEqualsXml($expectedXml, withComments: true), $message);</span>
+<span class=""><span class="ln">1055</span>    }</span>
+<span class=""><span class="ln">1056</span></span>
+<span class=""><span class="ln">1057</span>    public static function assertXmlStringNotEqualsXmlStringConsideringComments(string $expectedXml, string $actualXml, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1058</span>    {</span>
+<span class="missed"><span class="ln">1059</span>        self::assertThat($actualXml, new LogicalNot(new XmlEqualsXml($expectedXml, withComments: true)), $message);</span>
+<span class=""><span class="ln">1060</span>    }</span>
+<span class=""><span class="ln">1061</span></span>
+<span class=""><span class="ln">1062</span>    public static function assertXmlStringEqualsXmlFile(string $expectedFile, string $actualXml, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1063</span>    {</span>
+<span class="missed"><span class="ln">1064</span>        self::assertThat($actualXml, new XmlEqualsXml(self::readFile($expectedFile)), $message);</span>
+<span class=""><span class="ln">1065</span>    }</span>
+<span class=""><span class="ln">1066</span></span>
+<span class=""><span class="ln">1067</span>    public static function assertXmlStringNotEqualsXmlFile(string $expectedFile, string $actualXml, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1068</span>    {</span>
+<span class="missed"><span class="ln">1069</span>        self::assertThat($actualXml, new LogicalNot(new XmlEqualsXml(self::readFile($expectedFile))), $message);</span>
+<span class=""><span class="ln">1070</span>    }</span>
+<span class=""><span class="ln">1071</span></span>
+<span class=""><span class="ln">1072</span>    public static function assertXmlStringEqualsXmlFileConsideringComments(string $expectedFile, string $actualXml, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1073</span>    {</span>
+<span class="missed"><span class="ln">1074</span>        self::assertThat($actualXml, new XmlEqualsXml(self::readFile($expectedFile), withComments: true), $message);</span>
+<span class=""><span class="ln">1075</span>    }</span>
+<span class=""><span class="ln">1076</span></span>
+<span class=""><span class="ln">1077</span>    public static function assertXmlStringNotEqualsXmlFileConsideringComments(string $expectedFile, string $actualXml, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1078</span>    {</span>
+<span class="missed"><span class="ln">1079</span>        self::assertThat($actualXml, new LogicalNot(new XmlEqualsXml(self::readFile($expectedFile), withComments: true)), $message);</span>
+<span class=""><span class="ln">1080</span>    }</span>
+<span class=""><span class="ln">1081</span></span>
+<span class=""><span class="ln">1082</span>    public static function assertXmlFileEqualsXmlFile(string $expectedFile, string $actualFile, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1083</span>    {</span>
+<span class="missed"><span class="ln">1084</span>        self::assertThat(self::readFile($actualFile), new XmlEqualsXml(self::readFile($expectedFile)), $message);</span>
+<span class=""><span class="ln">1085</span>    }</span>
+<span class=""><span class="ln">1086</span></span>
+<span class=""><span class="ln">1087</span>    public static function assertXmlFileNotEqualsXmlFile(string $expectedFile, string $actualFile, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1088</span>    {</span>
+<span class="missed"><span class="ln">1089</span>        self::assertThat(self::readFile($actualFile), new LogicalNot(new XmlEqualsXml(self::readFile($expectedFile))), $message);</span>
+<span class=""><span class="ln">1090</span>    }</span>
+<span class=""><span class="ln">1091</span></span>
+<span class=""><span class="ln">1092</span>    public static function assertXmlFileEqualsXmlFileConsideringComments(string $expectedFile, string $actualFile, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1093</span>    {</span>
+<span class="missed"><span class="ln">1094</span>        self::assertThat(self::readFile($actualFile), new XmlEqualsXml(self::readFile($expectedFile), withComments: true), $message);</span>
+<span class=""><span class="ln">1095</span>    }</span>
+<span class=""><span class="ln">1096</span></span>
+<span class=""><span class="ln">1097</span>    public static function assertXmlFileNotEqualsXmlFileConsideringComments(string $expectedFile, string $actualFile, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1098</span>    {</span>
+<span class="missed"><span class="ln">1099</span>        self::assertThat(self::readFile($actualFile), new LogicalNot(new XmlEqualsXml(self::readFile($expectedFile), withComments: true)), $message);</span>
+<span class=""><span class="ln">1100</span>    }</span>
+<span class=""><span class="ln">1101</span></span>
+<span class=""><span class="ln">1102</span>    // --- Whitespace-insensitive equality ----------------------------------------------</span>
+<span class=""><span class="ln">1103</span>    //</span>
+<span class=""><span class="ln">1104</span>    // The file forms read the file as the *expected* side in the</span>
+<span class=""><span class="ln">1105</span>    // String-vs-File spellings, and as both sides in the File-vs-File</span>
+<span class=""><span class="ln">1106</span>    // ones, matching the argument order each name announces.</span>
+<span class=""><span class="ln">1107</span></span>
+<span class=""><span class="ln">1108</span>    public static function assertStringEqualsStringIgnoringWhitespace(string $expected, string $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1109</span>    {</span>
+<span class="missed"><span class="ln">1110</span>        self::assertThat($actual, new StringEqualsStringIgnoringWhitespace($expected), $message);</span>
+<span class=""><span class="ln">1111</span>    }</span>
+<span class=""><span class="ln">1112</span></span>
+<span class=""><span class="ln">1113</span>    public static function assertStringNotEqualsStringIgnoringWhitespace(string $expected, string $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1114</span>    {</span>
+<span class="missed"><span class="ln">1115</span>        self::assertThat($actual, new LogicalNot(new StringEqualsStringIgnoringWhitespace($expected)), $message);</span>
+<span class=""><span class="ln">1116</span>    }</span>
+<span class=""><span class="ln">1117</span></span>
+<span class=""><span class="ln">1118</span>    public static function assertStringEqualsFileIgnoringWhitespace(string $expectedFile, string $actualString, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1119</span>    {</span>
+<span class="missed"><span class="ln">1120</span>        self::assertThat($actualString, new StringEqualsStringIgnoringWhitespace(self::readFile($expectedFile)), $message);</span>
+<span class=""><span class="ln">1121</span>    }</span>
+<span class=""><span class="ln">1122</span></span>
+<span class=""><span class="ln">1123</span>    public static function assertStringNotEqualsFileIgnoringWhitespace(string $expectedFile, string $actualString, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1124</span>    {</span>
+<span class="missed"><span class="ln">1125</span>        self::assertThat($actualString, new LogicalNot(new StringEqualsStringIgnoringWhitespace(self::readFile($expectedFile))), $message);</span>
+<span class=""><span class="ln">1126</span>    }</span>
+<span class=""><span class="ln">1127</span></span>
+<span class=""><span class="ln">1128</span>    public static function assertFileEqualsFileIgnoringWhitespace(string $expected, string $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1129</span>    {</span>
+<span class="missed"><span class="ln">1130</span>        self::assertThat(self::readFile($actual), new StringEqualsStringIgnoringWhitespace(self::readFile($expected)), $message);</span>
+<span class=""><span class="ln">1131</span>    }</span>
+<span class=""><span class="ln">1132</span></span>
+<span class=""><span class="ln">1133</span>    public static function assertFileNotEqualsFileIgnoringWhitespace(string $expected, string $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1134</span>    {</span>
+<span class="missed"><span class="ln">1135</span>        self::assertThat(self::readFile($actual), new LogicalNot(new StringEqualsStringIgnoringWhitespace(self::readFile($expected))), $message);</span>
+<span class=""><span class="ln">1136</span>    }</span>
+<span class=""><span class="ln">1137</span></span>
+<span class=""><span class="ln">1138</span>    // --- Float specials -----------------------------------------------------------------</span>
+<span class=""><span class="ln">1139</span></span>
+<span class=""><span class="ln">1140</span>    public static function assertNan(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1141</span>    {</span>
+<span class="covered"><span class="ln">1142</span>        self::assertThat($actual, new IsNan(), $message);</span>
+<span class=""><span class="ln">1143</span>    }</span>
+<span class=""><span class="ln">1144</span></span>
+<span class=""><span class="ln">1145</span>    public static function assertInfinite(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1146</span>    {</span>
+<span class="covered"><span class="ln">1147</span>        self::assertThat($actual, new IsInfinite(), $message);</span>
+<span class=""><span class="ln">1148</span>    }</span>
+<span class=""><span class="ln">1149</span></span>
+<span class=""><span class="ln">1150</span>    public static function assertFinite(mixed $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1151</span>    {</span>
+<span class="covered"><span class="ln">1152</span>        self::assertThat($actual, new IsFinite(), $message);</span>
+<span class=""><span class="ln">1153</span>    }</span>
+<span class=""><span class="ln">1154</span></span>
+<span class=""><span class="ln">1155</span>    // --- Object equality by protocol ------------------------------------------------------</span>
+<span class=""><span class="ln">1156</span></span>
+<span class=""><span class="ln">1157</span>    /**</span>
+<span class=""><span class="ln">1158</span>     * @param non-empty-string $method</span>
+<span class=""><span class="ln">1159</span>     */</span>
+<span class=""><span class="ln">1160</span>    public static function assertObjectEquals(object $expected, object $actual, string $method = &#039;equals&#039;, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1161</span>    {</span>
+<span class="covered"><span class="ln">1162</span>        self::assertThat($actual, new ObjectEquals($expected, $method), $message);</span>
+<span class=""><span class="ln">1163</span>    }</span>
+<span class=""><span class="ln">1164</span></span>
+<span class=""><span class="ln">1165</span>    /**</span>
+<span class=""><span class="ln">1166</span>     * @param non-empty-string $method</span>
+<span class=""><span class="ln">1167</span>     */</span>
+<span class=""><span class="ln">1168</span>    public static function assertObjectNotEquals(object $expected, object $actual, string $method = &#039;equals&#039;, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1169</span>    {</span>
+<span class="missed"><span class="ln">1170</span>        self::assertThat($actual, new LogicalNot(new ObjectEquals($expected, $method)), $message);</span>
+<span class=""><span class="ln">1171</span>    }</span>
+<span class=""><span class="ln">1172</span></span>
+<span class=""><span class="ln">1173</span>    // --- Format strings ---------------------------------------------------------------------</span>
+<span class=""><span class="ln">1174</span></span>
+<span class=""><span class="ln">1175</span>    public static function assertStringMatchesFormat(string $format, string $string, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1176</span>    {</span>
+<span class="covered"><span class="ln">1177</span>        self::assertThat($string, new StringMatchesFormat($format), $message);</span>
+<span class=""><span class="ln">1178</span>    }</span>
+<span class=""><span class="ln">1179</span></span>
+<span class=""><span class="ln">1180</span>    public static function assertStringMatchesFormatFile(string $formatFile, string $string, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1181</span>    {</span>
+<span class="missed"><span class="ln">1182</span>        self::assertThat($string, new StringMatchesFormat(self::readFile($formatFile)), $message);</span>
+<span class=""><span class="ln">1183</span>    }</span>
+<span class=""><span class="ln">1184</span></span>
+<span class=""><span class="ln">1185</span>    public static function assertFileMatchesFormat(string $format, string $actualFile, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1186</span>    {</span>
+<span class="missed"><span class="ln">1187</span>        self::assertThat(self::readFile($actualFile), new StringMatchesFormat($format), $message);</span>
+<span class=""><span class="ln">1188</span>    }</span>
+<span class=""><span class="ln">1189</span></span>
+<span class=""><span class="ln">1190</span>    public static function assertFileMatchesFormatFile(string $formatFile, string $actualFile, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1191</span>    {</span>
+<span class="missed"><span class="ln">1192</span>        self::assertThat(self::readFile($actualFile), new StringMatchesFormat(self::readFile($formatFile)), $message);</span>
+<span class=""><span class="ln">1193</span>    }</span>
+<span class=""><span class="ln">1194</span></span>
+<span class=""><span class="ln">1195</span>    // --- File-content equality -----------------------------------------------------------------</span>
+<span class=""><span class="ln">1196</span></span>
+<span class=""><span class="ln">1197</span>    public static function assertFileEquals(string $expected, string $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1198</span>    {</span>
+<span class="covered"><span class="ln">1199</span>        self::assertThat(self::readFile($actual), new IsEqual(self::readFile($expected)), $message);</span>
+<span class=""><span class="ln">1200</span>    }</span>
+<span class=""><span class="ln">1201</span></span>
+<span class=""><span class="ln">1202</span>    public static function assertFileNotEquals(string $expected, string $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1203</span>    {</span>
+<span class="covered"><span class="ln">1204</span>        self::assertThat(self::readFile($actual), new LogicalNot(new IsEqual(self::readFile($expected))), $message);</span>
+<span class=""><span class="ln">1205</span>    }</span>
+<span class=""><span class="ln">1206</span></span>
+<span class=""><span class="ln">1207</span>    public static function assertFileEqualsCanonicalizing(string $expected, string $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1208</span>    {</span>
+<span class="missed"><span class="ln">1209</span>        self::assertThat(self::readFile($actual), new IsEqual(self::readFile($expected), canonicalize: true), $message);</span>
+<span class=""><span class="ln">1210</span>    }</span>
+<span class=""><span class="ln">1211</span></span>
+<span class=""><span class="ln">1212</span>    public static function assertFileNotEqualsCanonicalizing(string $expected, string $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1213</span>    {</span>
+<span class="missed"><span class="ln">1214</span>        self::assertThat(self::readFile($actual), new LogicalNot(new IsEqual(self::readFile($expected), canonicalize: true)), $message);</span>
+<span class=""><span class="ln">1215</span>    }</span>
+<span class=""><span class="ln">1216</span></span>
+<span class=""><span class="ln">1217</span>    public static function assertFileEqualsIgnoringCase(string $expected, string $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1218</span>    {</span>
+<span class="covered"><span class="ln">1219</span>        self::assertThat(self::readFile($actual), new IsEqual(self::readFile($expected), ignoreCase: true), $message);</span>
+<span class=""><span class="ln">1220</span>    }</span>
+<span class=""><span class="ln">1221</span></span>
+<span class=""><span class="ln">1222</span>    public static function assertFileNotEqualsIgnoringCase(string $expected, string $actual, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1223</span>    {</span>
+<span class="missed"><span class="ln">1224</span>        self::assertThat(self::readFile($actual), new LogicalNot(new IsEqual(self::readFile($expected), ignoreCase: true)), $message);</span>
+<span class=""><span class="ln">1225</span>    }</span>
+<span class=""><span class="ln">1226</span></span>
+<span class=""><span class="ln">1227</span>    public static function assertStringEqualsFile(string $expectedFile, string $actualString, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1228</span>    {</span>
+<span class="covered"><span class="ln">1229</span>        self::assertThat($actualString, new IsEqual(self::readFile($expectedFile)), $message);</span>
+<span class=""><span class="ln">1230</span>    }</span>
+<span class=""><span class="ln">1231</span></span>
+<span class=""><span class="ln">1232</span>    public static function assertStringNotEqualsFile(string $expectedFile, string $actualString, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1233</span>    {</span>
+<span class="covered"><span class="ln">1234</span>        self::assertThat($actualString, new LogicalNot(new IsEqual(self::readFile($expectedFile))), $message);</span>
+<span class=""><span class="ln">1235</span>    }</span>
+<span class=""><span class="ln">1236</span></span>
+<span class=""><span class="ln">1237</span>    public static function assertStringEqualsFileCanonicalizing(string $expectedFile, string $actualString, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1238</span>    {</span>
+<span class="missed"><span class="ln">1239</span>        self::assertThat($actualString, new IsEqual(self::readFile($expectedFile), canonicalize: true), $message);</span>
+<span class=""><span class="ln">1240</span>    }</span>
+<span class=""><span class="ln">1241</span></span>
+<span class=""><span class="ln">1242</span>    public static function assertStringNotEqualsFileCanonicalizing(string $expectedFile, string $actualString, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1243</span>    {</span>
+<span class="missed"><span class="ln">1244</span>        self::assertThat($actualString, new LogicalNot(new IsEqual(self::readFile($expectedFile), canonicalize: true)), $message);</span>
+<span class=""><span class="ln">1245</span>    }</span>
+<span class=""><span class="ln">1246</span></span>
+<span class=""><span class="ln">1247</span>    public static function assertStringEqualsFileIgnoringCase(string $expectedFile, string $actualString, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1248</span>    {</span>
+<span class="covered"><span class="ln">1249</span>        self::assertThat($actualString, new IsEqual(self::readFile($expectedFile), ignoreCase: true), $message);</span>
+<span class=""><span class="ln">1250</span>    }</span>
+<span class=""><span class="ln">1251</span></span>
+<span class=""><span class="ln">1252</span>    public static function assertStringNotEqualsFileIgnoringCase(string $expectedFile, string $actualString, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1253</span>    {</span>
+<span class="missed"><span class="ln">1254</span>        self::assertThat($actualString, new LogicalNot(new IsEqual(self::readFile($expectedFile), ignoreCase: true)), $message);</span>
+<span class=""><span class="ln">1255</span>    }</span>
+<span class=""><span class="ln">1256</span></span>
+<span class=""><span class="ln">1257</span>    // --- JSON comparisons --------------------------------------------------------------------------</span>
+<span class=""><span class="ln">1258</span></span>
+<span class=""><span class="ln">1259</span>    public static function assertJsonStringEqualsJsonString(string $expectedJson, string $actualJson, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1260</span>    {</span>
+<span class="covered"><span class="ln">1261</span>        self::assertJson($expectedJson, $message);</span>
+<span class="covered"><span class="ln">1262</span>        self::assertJson($actualJson, $message);</span>
+<span class="covered"><span class="ln">1263</span>        self::assertThat($actualJson, new JsonMatches($expectedJson), $message);</span>
+<span class=""><span class="ln">1264</span>    }</span>
+<span class=""><span class="ln">1265</span></span>
+<span class=""><span class="ln">1266</span>    public static function assertJsonStringNotEqualsJsonString(string $expectedJson, string $actualJson, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1267</span>    {</span>
+<span class="covered"><span class="ln">1268</span>        self::assertJson($expectedJson, $message);</span>
+<span class="covered"><span class="ln">1269</span>        self::assertJson($actualJson, $message);</span>
+<span class="covered"><span class="ln">1270</span>        self::assertThat($actualJson, new LogicalNot(new JsonMatches($expectedJson)), $message);</span>
+<span class=""><span class="ln">1271</span>    }</span>
+<span class=""><span class="ln">1272</span></span>
+<span class=""><span class="ln">1273</span>    public static function assertJsonStringEqualsJsonFile(string $expectedFile, string $actualJson, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1274</span>    {</span>
+<span class="covered"><span class="ln">1275</span>        self::assertJsonStringEqualsJsonString(self::readFile($expectedFile), $actualJson, $message);</span>
+<span class=""><span class="ln">1276</span>    }</span>
+<span class=""><span class="ln">1277</span></span>
+<span class=""><span class="ln">1278</span>    public static function assertJsonStringNotEqualsJsonFile(string $expectedFile, string $actualJson, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1279</span>    {</span>
+<span class="missed"><span class="ln">1280</span>        self::assertJsonStringNotEqualsJsonString(self::readFile($expectedFile), $actualJson, $message);</span>
+<span class=""><span class="ln">1281</span>    }</span>
+<span class=""><span class="ln">1282</span></span>
+<span class=""><span class="ln">1283</span>    public static function assertJsonFileEqualsJsonFile(string $expectedFile, string $actualFile, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1284</span>    {</span>
+<span class="covered"><span class="ln">1285</span>        self::assertJsonStringEqualsJsonString(self::readFile($expectedFile), self::readFile($actualFile), $message);</span>
+<span class=""><span class="ln">1286</span>    }</span>
+<span class=""><span class="ln">1287</span></span>
+<span class=""><span class="ln">1288</span>    public static function assertJsonFileNotEqualsJsonFile(string $expectedFile, string $actualFile, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1289</span>    {</span>
+<span class="missed"><span class="ln">1290</span>        self::assertJsonStringNotEqualsJsonString(self::readFile($expectedFile), self::readFile($actualFile), $message);</span>
+<span class=""><span class="ln">1291</span>    }</span>
+<span class=""><span class="ln">1292</span></span>
+<span class=""><span class="ln">1293</span>    // --- Readability &amp; writability ---------------------------------------------------------------------</span>
+<span class=""><span class="ln">1294</span></span>
+<span class=""><span class="ln">1295</span>    public static function assertIsReadable(string $filename, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1296</span>    {</span>
+<span class="covered"><span class="ln">1297</span>        self::assertThat($filename, new IsReadable(), $message);</span>
+<span class=""><span class="ln">1298</span>    }</span>
+<span class=""><span class="ln">1299</span></span>
+<span class=""><span class="ln">1300</span>    public static function assertIsNotReadable(string $filename, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1301</span>    {</span>
+<span class="covered"><span class="ln">1302</span>        self::assertThat($filename, new LogicalNot(new IsReadable()), $message);</span>
+<span class=""><span class="ln">1303</span>    }</span>
+<span class=""><span class="ln">1304</span></span>
+<span class=""><span class="ln">1305</span>    public static function assertIsWritable(string $filename, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1306</span>    {</span>
+<span class="covered"><span class="ln">1307</span>        self::assertThat($filename, new IsWritable(), $message);</span>
+<span class=""><span class="ln">1308</span>    }</span>
+<span class=""><span class="ln">1309</span></span>
+<span class=""><span class="ln">1310</span>    public static function assertIsNotWritable(string $filename, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1311</span>    {</span>
+<span class="missed"><span class="ln">1312</span>        self::assertThat($filename, new LogicalNot(new IsWritable()), $message);</span>
+<span class=""><span class="ln">1313</span>    }</span>
+<span class=""><span class="ln">1314</span></span>
+<span class=""><span class="ln">1315</span>    public static function assertFileIsReadable(string $file, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1316</span>    {</span>
+<span class="covered"><span class="ln">1317</span>        self::assertFileExists($file, $message);</span>
+<span class="covered"><span class="ln">1318</span>        self::assertIsReadable($file, $message);</span>
+<span class=""><span class="ln">1319</span>    }</span>
+<span class=""><span class="ln">1320</span></span>
+<span class=""><span class="ln">1321</span>    public static function assertFileIsNotReadable(string $file, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1322</span>    {</span>
+<span class="missed"><span class="ln">1323</span>        self::assertFileExists($file, $message);</span>
+<span class="missed"><span class="ln">1324</span>        self::assertIsNotReadable($file, $message);</span>
+<span class=""><span class="ln">1325</span>    }</span>
+<span class=""><span class="ln">1326</span></span>
+<span class=""><span class="ln">1327</span>    public static function assertFileIsWritable(string $file, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1328</span>    {</span>
+<span class="covered"><span class="ln">1329</span>        self::assertFileExists($file, $message);</span>
+<span class="covered"><span class="ln">1330</span>        self::assertIsWritable($file, $message);</span>
+<span class=""><span class="ln">1331</span>    }</span>
+<span class=""><span class="ln">1332</span></span>
+<span class=""><span class="ln">1333</span>    public static function assertFileIsNotWritable(string $file, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1334</span>    {</span>
+<span class="missed"><span class="ln">1335</span>        self::assertFileExists($file, $message);</span>
+<span class="missed"><span class="ln">1336</span>        self::assertIsNotWritable($file, $message);</span>
+<span class=""><span class="ln">1337</span>    }</span>
+<span class=""><span class="ln">1338</span></span>
+<span class=""><span class="ln">1339</span>    public static function assertDirectoryIsReadable(string $directory, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1340</span>    {</span>
+<span class="covered"><span class="ln">1341</span>        self::assertDirectoryExists($directory, $message);</span>
+<span class="covered"><span class="ln">1342</span>        self::assertIsReadable($directory, $message);</span>
+<span class=""><span class="ln">1343</span>    }</span>
+<span class=""><span class="ln">1344</span></span>
+<span class=""><span class="ln">1345</span>    public static function assertDirectoryIsNotReadable(string $directory, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1346</span>    {</span>
+<span class="missed"><span class="ln">1347</span>        self::assertDirectoryExists($directory, $message);</span>
+<span class="missed"><span class="ln">1348</span>        self::assertIsNotReadable($directory, $message);</span>
+<span class=""><span class="ln">1349</span>    }</span>
+<span class=""><span class="ln">1350</span></span>
+<span class=""><span class="ln">1351</span>    public static function assertDirectoryIsWritable(string $directory, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1352</span>    {</span>
+<span class="covered"><span class="ln">1353</span>        self::assertDirectoryExists($directory, $message);</span>
+<span class="covered"><span class="ln">1354</span>        self::assertIsWritable($directory, $message);</span>
+<span class=""><span class="ln">1355</span>    }</span>
+<span class=""><span class="ln">1356</span></span>
+<span class=""><span class="ln">1357</span>    public static function assertDirectoryIsNotWritable(string $directory, string $message = &#039;&#039;): void</span>
+<span class=""><span class="ln">1358</span>    {</span>
+<span class="missed"><span class="ln">1359</span>        self::assertDirectoryExists($directory, $message);</span>
+<span class="missed"><span class="ln">1360</span>        self::assertIsNotWritable($directory, $message);</span>
+<span class=""><span class="ln">1361</span>    }</span>
+<span class=""><span class="ln">1362</span></span>
+<span class=""><span class="ln">1363</span>    // --- Internals ------------------------------------------------------------------------------------------</span>
+<span class=""><span class="ln">1364</span></span>
+<span class=""><span class="ln">1365</span>    private static function readFile(string $path): string</span>
+<span class=""><span class="ln">1366</span>    {</span>
+<span class="covered"><span class="ln">1367</span>        if (!is_file($path) || !is_readable($path)) {</span>
+<span class="covered"><span class="ln">1368</span>            throw new AssertionFailedError(sprintf(&#039;Failed asserting that file &quot;%s&quot; exists and is readable.&#039;, $path));</span>
+<span class=""><span class="ln">1369</span>        }</span>
+<span class=""><span class="ln">1370</span></span>
+<span class="covered"><span class="ln">1371</span>        $contents = file_get_contents($path);</span>
+<span class=""><span class="ln">1372</span></span>
+<span class="covered"><span class="ln">1373</span>        if ($contents === false) {</span>
+<span class="missed"><span class="ln">1374</span>            throw new AssertionFailedError(sprintf(&#039;Failed reading file &quot;%s&quot;.&#039;, $path));</span>
+<span class=""><span class="ln">1375</span>        }</span>
+<span class=""><span class="ln">1376</span></span>
+<span class="covered"><span class="ln">1377</span>        return $contents;</span>
+<span class=""><span class="ln">1378</span>    }</span>
+<span class=""><span class="ln">1379</span></span>
+<span class=""><span class="ln">1380</span>    /**</span>
+<span class=""><span class="ln">1381</span>     * The snapshot assertion (D-042, Crucible-native): the exported</span>
+<span class=""><span class="ln">1382</span>     * value must equal the stored snapshot; a missing snapshot fails</span>
+<span class=""><span class="ln">1383</span>     * and names --update-snapshots, which is the one way values get</span>
+<span class=""><span class="ln">1384</span>     * recorded. $name pins a stable key when one test snapshots more</span>
+<span class=""><span class="ln">1385</span>     * than once.</span>
+<span class=""><span class="ln">1386</span>     *</span>
+<span class=""><span class="ln">1387</span>     * @param ?non-empty-string $name</span>
+<span class=""><span class="ln">1388</span>     */</span>
+<span class=""><span class="ln">1389</span>    public static function assertMatchesSnapshot(mixed $value, ?string $name = null): void</span>
+<span class=""><span class="ln">1390</span>    {</span>
+<span class="missed"><span class="ln">1391</span>        Snapshots::match($value, $name);</span>
+<span class=""><span class="ln">1392</span>    }</span>
+<span class=""><span class="ln">1393</span></span>
+<span class=""><span class="ln">1394</span>    /**</span>
+<span class=""><span class="ln">1395</span>     * The inline snapshot assertion (D-076): the expected value lives in</span>
+<span class=""><span class="ln">1396</span>     * this call&#039;s own argument, not a `.snap` file. Passing nothing</span>
+<span class=""><span class="ln">1397</span>     * records it under --update-snapshots (the source is rewritten);</span>
+<span class=""><span class="ln">1398</span>     * once recorded, the exported value must equal the stored literal.</span>
+<span class=""><span class="ln">1399</span>     * The call site is captured here — this method&#039;s immediate caller is</span>
+<span class=""><span class="ln">1400</span>     * the user&#039;s test line.</span>
+<span class=""><span class="ln">1401</span>     */</span>
+<span class=""><span class="ln">1402</span>    public static function assertMatchesInlineSnapshot(mixed $value, ?string $expected = null): void</span>
+<span class=""><span class="ln">1403</span>    {</span>
+<span class="missed"><span class="ln">1404</span>        $frame = array_first(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 1));</span>
+<span class=""><span class="ln">1405</span></span>
+<span class="missed"><span class="ln">1406</span>        Snapshots::matchInline($value, $expected, is_string($frame[&#039;file&#039;] ?? null) ? $frame[&#039;file&#039;] : &#039;&#039;, is_int($frame[&#039;line&#039;] ?? null) ? $frame[&#039;line&#039;] : 0);</span>
+<span class=""><span class="ln">1407</span>    }</span>
+<span class=""><span class="ln">1408</span></span>
+<span class=""><span class="ln">1409</span>    /**</span>
+<span class=""><span class="ln">1410</span>     * @param Countable|iterable&lt;mixed&gt; $value</span>
+<span class=""><span class="ln">1411</span>     */</span>
+<span class=""><span class="ln">1412</span>    private static function sizeOf(Countable|iterable $value): int</span>
+<span class=""><span class="ln">1413</span>    {</span>
+<span class="covered"><span class="ln">1414</span>        return is_countable($value) ? count($value) : iterator_count($value);</span>
+<span class=""><span class="ln">1415</span>    }</span>
+<span class=""><span class="ln">1416</span></span>
+<span class=""><span class="ln">1417</span>    /**</span>
+<span class=""><span class="ln">1418</span>     * Constraint builders: the spec&#039;s other Assert-trait surface,</span>
+<span class=""><span class="ln">1419</span>     * returning a Constraint instead of asserting one — the shape a</span>
+<span class=""><span class="ln">1420</span>     * mock&#039;s -&gt;with() configuration composes matchers from, rather</span>
+<span class=""><span class="ln">1421</span>     * than an immediate pass/fail.</span>
+<span class=""><span class="ln">1422</span>     */</span>
+<span class=""><span class="ln">1423</span>    public static function equalTo(mixed $value, float $delta = 0.0, bool $canonicalize = false, bool $ignoreCase = false): Constraint</span>
+<span class=""><span class="ln">1424</span>    {</span>
+<span class="missed"><span class="ln">1425</span>        return new IsEqual($value, $delta, $canonicalize, $ignoreCase);</span>
+<span class=""><span class="ln">1426</span>    }</span>
+<span class=""><span class="ln">1427</span></span>
+<span class=""><span class="ln">1428</span>    public static function identicalTo(mixed $value): Constraint</span>
+<span class=""><span class="ln">1429</span>    {</span>
+<span class="missed"><span class="ln">1430</span>        return new IsIdentical($value);</span>
+<span class=""><span class="ln">1431</span>    }</span>
+<span class=""><span class="ln">1432</span></span>
+<span class=""><span class="ln">1433</span>    /**</span>
+<span class=""><span class="ln">1434</span>     * @param class-string $className</span>
+<span class=""><span class="ln">1435</span>     */</span>
+<span class=""><span class="ln">1436</span>    public static function isInstanceOf(string $className): Constraint</span>
+<span class=""><span class="ln">1437</span>    {</span>
+<span class="missed"><span class="ln">1438</span>        return new IsInstanceOf($className);</span>
+<span class=""><span class="ln">1439</span>    }</span>
+<span class=""><span class="ln">1440</span></span>
+<span class=""><span class="ln">1441</span>    public static function anything(): Constraint</span>
+<span class=""><span class="ln">1442</span>    {</span>
+<span class="missed"><span class="ln">1443</span>        return new IsAnything();</span>
+<span class=""><span class="ln">1444</span>    }</span>
+<span class=""><span class="ln">1445</span></span>
+<span class=""><span class="ln">1446</span>    public static function isTrue(): Constraint</span>
+<span class=""><span class="ln">1447</span>    {</span>
+<span class="missed"><span class="ln">1448</span>        return new IsTrue();</span>
+<span class=""><span class="ln">1449</span>    }</span>
+<span class=""><span class="ln">1450</span></span>
+<span class=""><span class="ln">1451</span>    public static function isFalse(): Constraint</span>
+<span class=""><span class="ln">1452</span>    {</span>
+<span class="missed"><span class="ln">1453</span>        return new IsFalse();</span>
+<span class=""><span class="ln">1454</span>    }</span>
+<span class=""><span class="ln">1455</span></span>
+<span class=""><span class="ln">1456</span>    public static function isNull(): Constraint</span>
+<span class=""><span class="ln">1457</span>    {</span>
+<span class="missed"><span class="ln">1458</span>        return new IsNull();</span>
+<span class=""><span class="ln">1459</span>    }</span>
+<span class=""><span class="ln">1460</span></span>
+<span class=""><span class="ln">1461</span>    public static function isEmpty(): Constraint</span>
+<span class=""><span class="ln">1462</span>    {</span>
+<span class="missed"><span class="ln">1463</span>        return new IsEmpty();</span>
+<span class=""><span class="ln">1464</span>    }</span>
+<span class=""><span class="ln">1465</span></span>
+<span class=""><span class="ln">1466</span>    public static function isJson(): Constraint</span>
+<span class=""><span class="ln">1467</span>    {</span>
+<span class="missed"><span class="ln">1468</span>        return new IsJson();</span>
+<span class=""><span class="ln">1469</span>    }</span>
+<span class=""><span class="ln">1470</span></span>
+<span class=""><span class="ln">1471</span>    /**</span>
+<span class=""><span class="ln">1472</span>     * @param Closure(mixed): bool $callback</span>
+<span class=""><span class="ln">1473</span>     */</span>
+<span class=""><span class="ln">1474</span>    public static function callback(Closure $callback): Constraint</span>
+<span class=""><span class="ln">1475</span>    {</span>
+<span class="missed"><span class="ln">1476</span>        return new Callback($callback);</span>
+<span class=""><span class="ln">1477</span>    }</span>
+<span class=""><span class="ln">1478</span></span>
+<span class=""><span class="ln">1479</span>    public static function stringContains(string $needle, bool $ignoreCase = false): Constraint</span>
+<span class=""><span class="ln">1480</span>    {</span>
+<span class="missed"><span class="ln">1481</span>        return new StringContains($needle, $ignoreCase);</span>
+<span class=""><span class="ln">1482</span>    }</span>
+<span class=""><span class="ln">1483</span></span>
+<span class=""><span class="ln">1484</span>    /**</span>
+<span class=""><span class="ln">1485</span>     * @param non-empty-string $prefix</span>
+<span class=""><span class="ln">1486</span>     */</span>
+<span class=""><span class="ln">1487</span>    public static function stringStartsWith(string $prefix): Constraint</span>
+<span class=""><span class="ln">1488</span>    {</span>
+<span class="missed"><span class="ln">1489</span>        return new StringStartsWith($prefix);</span>
+<span class=""><span class="ln">1490</span>    }</span>
+<span class=""><span class="ln">1491</span></span>
+<span class=""><span class="ln">1492</span>    /**</span>
+<span class=""><span class="ln">1493</span>     * @param non-empty-string $suffix</span>
+<span class=""><span class="ln">1494</span>     */</span>
+<span class=""><span class="ln">1495</span>    public static function stringEndsWith(string $suffix): Constraint</span>
+<span class=""><span class="ln">1496</span>    {</span>
+<span class="missed"><span class="ln">1497</span>        return new StringEndsWith($suffix);</span>
+<span class=""><span class="ln">1498</span>    }</span>
+<span class=""><span class="ln">1499</span></span>
+<span class=""><span class="ln">1500</span>    /**</span>
+<span class=""><span class="ln">1501</span>     * @param non-empty-string $pattern</span>
+<span class=""><span class="ln">1502</span>     */</span>
+<span class=""><span class="ln">1503</span>    public static function matchesRegularExpression(string $pattern): Constraint</span>
+<span class=""><span class="ln">1504</span>    {</span>
+<span class="missed"><span class="ln">1505</span>        return new MatchesRegularExpression($pattern);</span>
+<span class=""><span class="ln">1506</span>    }</span>
+<span class=""><span class="ln">1507</span></span>
+<span class=""><span class="ln">1508</span>    public static function greaterThan(mixed $value): Constraint</span>
+<span class=""><span class="ln">1509</span>    {</span>
+<span class="missed"><span class="ln">1510</span>        return new GreaterThan($value);</span>
+<span class=""><span class="ln">1511</span>    }</span>
+<span class=""><span class="ln">1512</span></span>
+<span class=""><span class="ln">1513</span>    public static function lessThan(mixed $value): Constraint</span>
+<span class=""><span class="ln">1514</span>    {</span>
+<span class="missed"><span class="ln">1515</span>        return new LessThan($value);</span>
+<span class=""><span class="ln">1516</span>    }</span>
+<span class=""><span class="ln">1517</span></span>
+<span class=""><span class="ln">1518</span>    public static function countOf(int $count): Constraint</span>
+<span class=""><span class="ln">1519</span>    {</span>
+<span class="missed"><span class="ln">1520</span>        return new HasCount($count);</span>
+<span class=""><span class="ln">1521</span>    }</span>
+<span class=""><span class="ln">1522</span></span>
+<span class=""><span class="ln">1523</span>    public static function arrayHasKey(int|string $key): Constraint</span>
+<span class=""><span class="ln">1524</span>    {</span>
+<span class="missed"><span class="ln">1525</span>        return new ArrayHasKey($key);</span>
+<span class=""><span class="ln">1526</span>    }</span>
+<span class=""><span class="ln">1527</span></span>
+<span class=""><span class="ln">1528</span>    /**</span>
+<span class=""><span class="ln">1529</span>     * @param non-empty-string $method</span>
+<span class=""><span class="ln">1530</span>     */</span>
+<span class=""><span class="ln">1531</span>    public static function objectEquals(object $object, string $method = &#039;equals&#039;): Constraint</span>
+<span class=""><span class="ln">1532</span>    {</span>
+<span class="missed"><span class="ln">1533</span>        return new ObjectEquals($object, $method);</span>
+<span class=""><span class="ln">1534</span>    }</span>
+<span class=""><span class="ln">1535</span></span>
+<span class=""><span class="ln">1536</span>    public static function logicalNot(Constraint $constraint): Constraint</span>
+<span class=""><span class="ln">1537</span>    {</span>
+<span class="missed"><span class="ln">1538</span>        return new LogicalNot($constraint);</span>
+<span class=""><span class="ln">1539</span>    }</span>
+<span class=""><span class="ln">1540</span></span>
+<span class=""><span class="ln">1541</span>    /**</span>
+<span class=""><span class="ln">1542</span>     * The Stub half of the spec&#039;s Assert-trait surface: a value for</span>
+<span class=""><span class="ln">1543</span>     * -&gt;will(), not a Constraint — the legacy pairing real-world</span>
+<span class=""><span class="ln">1544</span>     * suites still use (`-&gt;will($this-&gt;throwException($e))`) instead</span>
+<span class=""><span class="ln">1545</span>     * of the modern willThrowException() call this project&#039;s own</span>
+<span class=""><span class="ln">1546</span>     * tests use.</span>
+<span class=""><span class="ln">1547</span>     */</span>
+<span class=""><span class="ln">1548</span>    public static function throwException(Throwable $exception): Stub</span>
+<span class=""><span class="ln">1549</span>    {</span>
+<span class="missed"><span class="ln">1550</span>        return new Stub(static fn(array $args, object $double): never =&gt; throw $exception);</span>
+<span class=""><span class="ln">1551</span>    }</span>
+<span class=""><span class="ln">1552</span>}</span>
+<span class=""><span class="ln">1553</span></span>
+</pre>
+</body>
+</html>

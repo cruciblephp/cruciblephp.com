@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta charset="utf-8"><title>src/CLI/CliOptions.php — Crucible coverage</title><style>body { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; margin: 2rem; color: #1a1a1a; background: #fff; }
+h1 { font-size: 1.2rem; } h1 a { color: inherit; }
+h1 { display: flex; align-items: center; gap: .45rem; }
+.logo svg { display: block; width: 1.6em; height: 1.6em; }
+table { border-collapse: collapse; width: 100%; max-width: 72rem; }
+th, td { text-align: left; padding: .35rem .75rem; border-bottom: 1px solid #e5e5e5; font-size: .85rem; }
+th { border-bottom: 2px solid #1a1a1a; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+.bar { display: inline-block; width: 8rem; height: .6rem; background: #f3d6d6; vertical-align: baseline; }
+.bar span { display: block; height: 100%; background: #7bc47f; }
+pre { font-size: .8rem; line-height: 1.45; margin: 0; }
+.ln { display: inline-block; width: 3.5rem; text-align: right; padding-right: .75rem; color: #999; user-select: none; }
+.covered { background: #e6f4e6; }
+.missed { background: #fbe3e3; }
+.dead { color: #b0b0b0; }
+.badge { font-size: .7rem; padding: 0 .3rem; border-radius: .3rem; margin-left: .5rem; }
+.badge.full { background: #cdeccd; } .badge.partial { background: #ffe2b8; } .badge.none { background: #f6c6c6; }
+.total { font-weight: 700; }</style></head>
+<body>
+<h1><span class="logo" aria-hidden="true"><svg
+   width="400"
+   height="400"
+   viewBox="0 0 400 400"
+   version="1.1"
+   id="svg4"
+   xmlns="http://www.w3.org/2000/svg">
+  <g fill="#e80c08" fill-rule="nonzero" id="g3">
+    <path d="M 219.93,385.49 L 70.45,301.32 L 51.54,306.68 L 174.57,375.57 L 177.56,376.56 L 188.81,377.01 L 179.99,369.01 L 211.36,385.22 L 174.5,385.22 L 168.83,383.51 L 33.06,309.63 L 29.58,306.7 L 27.72,303.08 L 27.72,111.8 L 28.88,107.98 L 33.2,103.88 L 180.51,27.86 L 189.62,24.98 L 189.01,27.54 L 186.42,29.96 L 38.2,112.54 L 38.2,112.62 L 61.59,102.2 L 62.25,108.57 L 61.41,110.05 L 47.14,117.03 L 62.4,125.17 L 62.67,134.7 L 37.98,122.61 L 37.98,210.95 L 65.89,204.14 L 65.89,99.78 L 66.81,98.66 L 218.06,13.98 L 225.19,13.32 L 368.85,99.58 L 370.34,100.97 L 371.41,105.07 L 370.85,107.31 L 369.37,108.96 L 318.94,138.07 L 313.38,138.97 L 310.74,138.21 L 222.8,87.44 L 130.3,140.84 L 130.3,265.56 L 229.79,323 L 315.74,273.38 L 324.75,272.73 L 368.74,298.12 L 372.29,305.67 L 371.8,306.41 L 232.77,386.68 L 223.74,386.68 Z M 222.99,330.22 L 125.82,274.12 L 76.53,297.79 L 85.17,299.25 L 222.99,378.81 Z M 358.87,303.91 L 356.97,301.72 L 320.73,280.8 L 232.75,331.58 L 232.75,376.73 Z M 65.73,293.43 L 65.73,213.79 L 37.94,220.46 L 37.94,292.35 L 62.12,282.57 L 62.12,289.92 L 38.19,299.63 L 37.91,302.56 Z M 119.66,266.95 L 119.66,139.31 L 75.61,113.88 L 75.61,131.69 L 89.79,139.73 L 103.6,133.31 L 112.8,138.38 L 96.52,145.74 L 96.52,191.53 L 86.64,193.8 L 86.64,148.17 L 75.61,142.63 L 75.61,200.7 L 76.48,201.21 L 114.52,191.63 L 115.22,198.47 L 114.66,200.61 L 77.69,210.33 L 75.59,211.68 L 75.59,276.08 L 86.74,271.1 L 86.74,212.81 L 96.51,210.04 L 96.51,268.26 L 108.73,267.61 L 108.04,268.68 L 75.58,284.91 L 75.58,288.62 Z M 219.62,78.58 L 219.62,25.24 L 187.19,43.96 L 187.19,87.4 L 200.88,84.92 L 128.29,126.83 L 123.89,126.83 L 119.76,124.14 L 177.47,90.82 L 177.47,46.86 L 77.62,104.51 L 126.16,132.54 Z M 360.34,103.62 L 291.56,62.19 L 229.5,25.44 L 229.5,79.54 L 315.78,129.35 Z M 184.18,351.62 L 183.94,333.12 L 133.26,303.95 L 106.91,288.41 L 115.42,283.56 L 192.19,327.88 L 204.31,322.47 L 213.15,327.86 L 193.72,336.13 L 193.72,356.04 Z M 237.12,362.12 L 324.17,311.88 L 306.69,297.41 L 315.77,292.44 L 334.88,306.89 L 348.6,300.7 L 352.62,302.93 L 238.49,368.81 Z M 309.02,121.41 L 334.12,111.32 L 336.28,113.32 L 314.38,125.96 Z M 224.73,312.16 L 260.44,294.31 L 294.94,277.94 L 299.97,279.01 L 296.58,281.89 L 229.67,316.06 Z M 244.58,279.86 L 294.73,250.91 L 290.18,217.8 L 280.13,230.39 L 283.96,248.25 L 242.11,275.58 L 254.72,243.13 L 289.87,202.73 L 293.08,200.73 L 296.1,200.73 L 298.62,203.29 L 305.77,253.97 L 304.9,255.03 L 251.93,285.62 Z M 164.55,255.89 L 162.56,252.86 L 174.31,176.94 L 177.19,175.18 L 180.07,175.18 L 182.5,177.09 L 222.12,228.79 L 215.75,237.03 L 182.41,194.2 L 181.7,194.94 L 173.11,248.73 L 174.43,250.93 L 223.15,279.06 L 222.71,280.5 L 215.78,283.94 L 213.22,284 Z M 184.18,247.47 L 190.18,216.69 L 232.3,275.8 L 232.3,277.48 L 226.91,274.82 Z M 219.13,212.28 L 260.99,160.07 L 270.9,154.72 L 273.73,157.28 L 281.17,203.59 L 272.38,213.35 L 265.31,171.88 L 225.37,221.21 Z M 196.97,186.19 L 208.36,156.11 L 227.98,109.52 L 228.86,108.68 L 231.6,108.12 L 233.23,109.93 L 241.63,174.75 L 232.85,184.98 L 226.71,139.28 L 225.69,139.66 L 204.76,195.64 Z" id="path1" />
+  </g>
+  <path fill="#f17510" d="M 236.38,268.31 L 219.23,244.03 L 219.5,242.3 L 255.31,193.98 L 256.23,194.16 L 263.02,222.34 L 245.77,242.33 L 237.78,269.06 Z" id="path4" />
+</svg></span><a href="../../../index.html">Crucible coverage</a> / src/CLI/CliOptions.php</h1>
+<pre><span class=""><span class="ln">1</span>&lt;?php</span>
+<span class=""><span class="ln">2</span></span>
+<span class=""><span class="ln">3</span>declare(strict_types=1);</span>
+<span class=""><span class="ln">4</span>/*</span>
+<span class=""><span class="ln">5</span> * This file is part of Crucible.</span>
+<span class=""><span class="ln">6</span> *</span>
+<span class=""><span class="ln">7</span> * Copyright (c) 2026 Luciano Federico Pereira</span>
+<span class=""><span class="ln">8</span> * All rights reserved.</span>
+<span class=""><span class="ln">9</span> */</span>
+<span class=""><span class="ln">10</span></span>
+<span class=""><span class="ln">11</span>namespace LucianoPereira\Crucible\CLI;</span>
+<span class=""><span class="ln">12</span></span>
+<span class=""><span class="ln">13</span>use function array_keys;</span>
+<span class=""><span class="ln">14</span>use function array_map;</span>
+<span class=""><span class="ln">15</span>use function array_slice;</span>
+<span class=""><span class="ln">16</span>use function ctype_digit;</span>
+<span class=""><span class="ln">17</span>use function explode;</span>
+<span class=""><span class="ln">18</span>use function in_array;</span>
+<span class=""><span class="ln">19</span>use function is_numeric;</span>
+<span class=""><span class="ln">20</span>use function max;</span>
+<span class=""><span class="ln">21</span>use function sprintf;</span>
+<span class=""><span class="ln">22</span>use function str_contains;</span>
+<span class=""><span class="ln">23</span>use function str_starts_with;</span>
+<span class=""><span class="ln">24</span></span>
+<span class=""><span class="ln">25</span>use const PATH_SEPARATOR;</span>
+<span class=""><span class="ln">26</span></span>
+<span class=""><span class="ln">27</span>/**</span>
+<span class=""><span class="ln">28</span> * The parsed command line, one nullable field per option: null means</span>
+<span class=""><span class="ln">29</span> * &quot;not given&quot;, so the CLI-overrides-configuration resolution</span>
+<span class=""><span class="ln">30</span> * (CLI value ?? config value) is a null-coalesce, never a sentinel</span>
+<span class=""><span class="ln">31</span> * comparison. Parsing is registry-driven and closed — an unknown</span>
+<span class=""><span class="ln">32</span> * option or stray argument is an error, not a silent no-op.</span>
+<span class=""><span class="ln">33</span> */</span>
+<span class=""><span class="ln">34</span>final readonly class CliOptions</span>
+<span class=""><span class="ln">35</span>{</span>
+<span class=""><span class="ln">36</span>    private const array FLAGS = [</span>
+<span class=""><span class="ln">37</span>        &#039;--version&#039;, &#039;--help&#039;, &#039;-h&#039;, &#039;--init&#039;, &#039;--worker&#039;,</span>
+<span class=""><span class="ln">38</span>        &#039;--stop-on-defect&#039;, &#039;--stop-on-error&#039;, &#039;--stop-on-failure&#039;,</span>
+<span class=""><span class="ln">39</span>        &#039;--stop-on-risky&#039;, &#039;--stop-on-skipped&#039;, &#039;--stop-on-incomplete&#039;,</span>
+<span class=""><span class="ln">40</span>        &#039;--stop-on-deprecation&#039;, &#039;--stop-on-notice&#039;, &#039;--stop-on-warning&#039;,</span>
+<span class=""><span class="ln">41</span>        &#039;--fail-on-deprecation&#039;, &#039;--fail-on-incomplete&#039;, &#039;--fail-on-notice&#039;,</span>
+<span class=""><span class="ln">42</span>        &#039;--fail-on-risky&#039;, &#039;--fail-on-skipped&#039;, &#039;--fail-on-warning&#039;,</span>
+<span class=""><span class="ln">43</span>        &#039;--fail-on-flaky&#039;,</span>
+<span class=""><span class="ln">44</span>        &#039;--no-fail-on-deprecation&#039;, &#039;--no-fail-on-incomplete&#039;, &#039;--no-fail-on-notice&#039;,</span>
+<span class=""><span class="ln">45</span>        &#039;--no-fail-on-risky&#039;, &#039;--no-fail-on-skipped&#039;, &#039;--no-fail-on-warning&#039;,</span>
+<span class=""><span class="ln">46</span>        &#039;--fail-on-direct&#039;, &#039;--fail-on-indirect&#039;, &#039;--fail-on-self&#039;,</span>
+<span class=""><span class="ln">47</span>        &#039;--no-fail-on-direct&#039;, &#039;--no-fail-on-indirect&#039;, &#039;--no-fail-on-self&#039;,</span>
+<span class=""><span class="ln">48</span>        &#039;--fail-on-empty-test-suite&#039;, &#039;--no-fail-on-empty-test-suite&#039;,</span>
+<span class=""><span class="ln">49</span>        &#039;--fail-on-all-issues&#039;,</span>
+<span class=""><span class="ln">50</span>        &#039;--fail-on-phpunit-deprecation&#039;, &#039;--fail-on-phpunit-notice&#039;, &#039;--fail-on-phpunit-warning&#039;,</span>
+<span class=""><span class="ln">51</span>        &#039;--no-fail-on-phpunit-deprecation&#039;, &#039;--no-fail-on-phpunit-notice&#039;, &#039;--no-fail-on-phpunit-warning&#039;,</span>
+<span class=""><span class="ln">52</span>        &#039;--display-phpunit-deprecations&#039;, &#039;--display-phpunit-notices&#039;,</span>
+<span class=""><span class="ln">53</span>        &#039;--display-all-issues&#039;, &#039;--display-deprecations&#039;, &#039;--display-notices&#039;, &#039;--display-warnings&#039;,</span>
+<span class=""><span class="ln">54</span>        &#039;--display-errors&#039;, &#039;--display-skipped&#039;, &#039;--display-incomplete&#039;,</span>
+<span class=""><span class="ln">55</span>        &#039;--globals-backup&#039;, &#039;--static-backup&#039;, &#039;--strict-global-state&#039;,</span>
+<span class=""><span class="ln">56</span>        &#039;--require-coverage&#039;, &#039;--no-coverage&#039;,</span>
+<span class=""><span class="ln">57</span>        &#039;--cache-result&#039;, &#039;--do-not-cache-result&#039;,</span>
+<span class=""><span class="ln">58</span>        &#039;--testdox&#039;, &#039;--teamcity&#039;,</span>
+<span class=""><span class="ln">59</span>        &#039;--update-baseline&#039;,</span>
+<span class=""><span class="ln">60</span>        &#039;--watch&#039;, &#039;--coverage&#039;, &#039;--coverage-branch&#039;, &#039;--path-coverage&#039;, &#039;--strict-coverage&#039;,</span>
+<span class=""><span class="ln">61</span>        &#039;--update-snapshots&#039;, &#039;-u&#039;,</span>
+<span class=""><span class="ln">62</span>        &#039;--todos&#039;, &#039;--no-wip&#039;, &#039;--debug&#039;, &#039;--profile&#039;, &#039;--dirty&#039;,</span>
+<span class=""><span class="ln">63</span>        &#039;--list-tests&#039;, &#039;--list-groups&#039;, &#039;--list-suites&#039;, &#039;--list-test-files&#039;,</span>
+<span class=""><span class="ln">64</span>        &#039;--list-test-ids&#039;, &#039;--list-tests-xml&#039;,</span>
+<span class=""><span class="ln">65</span>        &#039;--auto-fix&#039;, &#039;--revert&#039;,</span>
+<span class=""><span class="ln">66</span>        &#039;--preview&#039;, &#039;--json&#039;,</span>
+<span class=""><span class="ln">67</span>        &#039;--no-logging&#039;, &#039;--no-extensions&#039;, &#039;--no-configuration&#039;,</span>
+<span class=""><span class="ln">68</span>        &#039;--no-useless-test-reports&#039;, &#039;--check-version&#039;,</span>
+<span class=""><span class="ln">69</span>        &#039;--compact&#039;, &#039;--no-progress&#039;, &#039;--no-results&#039;, &#039;--no-output&#039;, &#039;--stderr&#039;, &#039;--reverse-list&#039;,</span>
+<span class=""><span class="ln">70</span>        &#039;--ignore-baseline&#039;,</span>
+<span class=""><span class="ln">71</span>        &#039;--resolve-dependencies&#039;, &#039;--ignore-dependencies&#039;, &#039;--process-isolation&#039;,</span>
+<span class=""><span class="ln">72</span>        &#039;--coverage-text-summary&#039;, &#039;--coverage-text-uncovered&#039;,</span>
+<span class=""><span class="ln">73</span>        &#039;--disable-coverage-ignore&#039;, &#039;--disable-coverage-targeting&#039;,</span>
+<span class=""><span class="ln">74</span>        &#039;--without-class-view&#039;, &#039;--without-file-view&#039;, &#039;--coverage-xml-no-source&#039;,</span>
+<span class=""><span class="ln">75</span>        &#039;--include-git-information&#039;, &#039;--enforce-time-limit&#039;, &#039;--disallow-test-output&#039;, &#039;--with-telemetry&#039;,</span>
+<span class=""><span class="ln">76</span>        &#039;--warm-coverage-cache&#039;, &#039;--validate-configuration&#039;, &#039;--all&#039;,</span>
+<span class=""><span class="ln">77</span>        &#039;--check-php-configuration&#039;, &#039;--reproducible&#039;,</span>
+<span class=""><span class="ln">78</span>        &#039;--php-advisory&#039;,</span>
+<span class=""><span class="ln">79</span>        &#039;--no-php-advisory&#039;,</span>
+<span class=""><span class="ln">80</span>    ];</span>
+<span class=""><span class="ln">81</span></span>
+<span class=""><span class="ln">82</span>    private const array VALUED = [</span>
+<span class=""><span class="ln">83</span>        &#039;--configuration&#039;, &#039;--log-events-json&#039;, &#039;--log-junit&#039;, &#039;--log-markdown&#039;, &#039;--log-pdf&#039;,</span>
+<span class=""><span class="ln">84</span>        &#039;--order-by&#039;, &#039;--random-order-seed&#039;, &#039;--parallel&#039;, &#039;--filter&#039;, &#039;--cache-directory&#039;,</span>
+<span class=""><span class="ln">85</span>        &#039;--shard&#039;, &#039;--retries&#039;, &#039;--retry&#039;, &#039;--repeat&#039;, &#039;--default-time-limit&#039;, &#039;--rounds&#039;, &#039;--coverage-clover&#039;,</span>
+<span class=""><span class="ln">86</span>        &#039;--coverage-html&#039;, &#039;--coverage-cobertura&#039;,</span>
+<span class=""><span class="ln">87</span>        &#039;--testdox-text&#039;, &#039;--testdox-html&#039;, &#039;--testdox-summary&#039;,</span>
+<span class=""><span class="ln">88</span>        &#039;--log-otr&#039;,</span>
+<span class=""><span class="ln">89</span>        &#039;--coverage-php&#039;, &#039;--coverage-openclover&#039;, &#039;--coverage-crap4j&#039;, &#039;--coverage-xml&#039;,</span>
+<span class=""><span class="ln">90</span>        &#039;--assignee&#039;, &#039;--issue&#039;, &#039;--browser&#039;, &#039;--bootstrap&#039;,</span>
+<span class=""><span class="ln">91</span>        &#039;--exclude-filter&#039;, &#039;--test-files-file&#039;, &#039;--test-id-filter-file&#039;,</span>
+<span class=""><span class="ln">92</span>        &#039;--include-path&#039;, &#039;--atleast-version&#039;,</span>
+<span class=""><span class="ln">93</span>        &#039;--columns&#039;, &#039;--diff-context&#039;, &#039;--generate-baseline&#039;, &#039;--use-baseline&#039;,</span>
+<span class=""><span class="ln">94</span>        &#039;--log-events-text&#039;, &#039;--log-events-verbose&#039;, &#039;--log-teamcity&#039;,</span>
+<span class=""><span class="ln">95</span>        &#039;--key&#039;, &#039;--out&#039;, &#039;--view&#039;, &#039;--min&#039;,</span>
+<span class=""><span class="ln">96</span>    ];</span>
+<span class=""><span class="ln">97</span></span>
+<span class=""><span class="ln">98</span>    private const array REPEATABLE = [&#039;--testsuite&#039;, &#039;--group&#039;, &#039;--exclude-group&#039;, &#039;--related&#039;, &#039;--report&#039;, &#039;--subscriber&#039;, &#039;--extension&#039;, &#039;--exclude-testsuite&#039;, &#039;--test-suffix&#039;, &#039;--covers&#039;, &#039;--uses&#039;, &#039;--requires-ext&#039;, &#039;--run-test-id&#039;, &#039;--coverage-filter&#039;];</span>
+<span class=""><span class="ln">99</span></span>
+<span class=""><span class="ln">100</span>    /**</span>
+<span class=""><span class="ln">101</span>     * Spellings the spec uses for something Crucible already spells its</span>
+<span class=""><span class="ln">102</span>     * own way. Rewritten before the parse loop sees them, so there is one</span>
+<span class=""><span class="ln">103</span>     * option in the registry, one code path, and no second meaning to keep</span>
+<span class=""><span class="ln">104</span>     * in sync — an alias here can only ever be the option it points at.</span>
+<span class=""><span class="ln">105</span>     */</span>
+<span class=""><span class="ln">106</span>    private const array ALIASES = [</span>
+<span class=""><span class="ln">107</span>        &#039;--random-order&#039;          =&gt; &#039;--order-by=random&#039;,</span>
+<span class=""><span class="ln">108</span>        &#039;--reverse-order&#039;         =&gt; &#039;--order-by=reverse&#039;,</span>
+<span class=""><span class="ln">109</span>        &#039;--branch-coverage&#039;       =&gt; &#039;--coverage-branch&#039;,</span>
+<span class=""><span class="ln">110</span>        &#039;--migrate-configuration&#039; =&gt; &#039;migrate-config&#039;,</span>
+<span class=""><span class="ln">111</span>        &#039;--manual&#039;                =&gt; &#039;manual&#039;,</span>
+<span class=""><span class="ln">112</span></span>
+<span class=""><span class="ln">113</span>        // The spec&#039;s name for the result cache. Crucible&#039;s cache *is* a</span>
+<span class=""><span class="ln">114</span>        // per-test run history — bounded outcomes plus the last</span>
+<span class=""><span class="ln">115</span>        // duration — and feeds the same two orderings the spec&#039;s does.</span>
+<span class=""><span class="ln">116</span>        &#039;--generate-configuration&#039;         =&gt; &#039;--init&#039;,</span>
+<span class=""><span class="ln">117</span>        &#039;--record-test-run-history&#039;        =&gt; &#039;--cache-result&#039;,</span>
+<span class=""><span class="ln">118</span>        &#039;--do-not-record-test-run-history&#039; =&gt; &#039;--do-not-cache-result&#039;,</span>
+<span class=""><span class="ln">119</span></span>
+<span class=""><span class="ln">120</span>        // ⚠ The spec&#039;s spellings for options Crucible names more</span>
+<span class=""><span class="ln">121</span>        // briefly. They are aliases rather than the canonical name so</span>
+<span class=""><span class="ln">122</span>        // `--help` can stay readable, and they are kept rather than</span>
+<span class=""><span class="ln">123</span>        // dropped because a suite migrating to Crucible arrives with a</span>
+<span class=""><span class="ln">124</span>        // command line already written against them.</span>
+<span class=""><span class="ln">125</span>        &#039;--do-not-fail-on-deprecation&#039;                             =&gt; &#039;--no-fail-on-deprecation&#039;,</span>
+<span class=""><span class="ln">126</span>        &#039;--do-not-fail-on-incomplete&#039;                              =&gt; &#039;--no-fail-on-incomplete&#039;,</span>
+<span class=""><span class="ln">127</span>        &#039;--do-not-fail-on-notice&#039;                                  =&gt; &#039;--no-fail-on-notice&#039;,</span>
+<span class=""><span class="ln">128</span>        &#039;--do-not-fail-on-risky&#039;                                   =&gt; &#039;--no-fail-on-risky&#039;,</span>
+<span class=""><span class="ln">129</span>        &#039;--do-not-fail-on-skipped&#039;                                 =&gt; &#039;--no-fail-on-skipped&#039;,</span>
+<span class=""><span class="ln">130</span>        &#039;--do-not-fail-on-warning&#039;                                 =&gt; &#039;--no-fail-on-warning&#039;,</span>
+<span class=""><span class="ln">131</span>        &#039;--do-not-fail-on-direct-deprecation&#039;                      =&gt; &#039;--no-fail-on-direct&#039;,</span>
+<span class=""><span class="ln">132</span>        &#039;--do-not-fail-on-indirect-deprecation&#039;                    =&gt; &#039;--no-fail-on-indirect&#039;,</span>
+<span class=""><span class="ln">133</span>        &#039;--do-not-fail-on-self-deprecation&#039;                        =&gt; &#039;--no-fail-on-self&#039;,</span>
+<span class=""><span class="ln">134</span>        &#039;--fail-on-direct-deprecation&#039;                             =&gt; &#039;--fail-on-direct&#039;,</span>
+<span class=""><span class="ln">135</span>        &#039;--fail-on-indirect-deprecation&#039;                           =&gt; &#039;--fail-on-indirect&#039;,</span>
+<span class=""><span class="ln">136</span>        &#039;--fail-on-self-deprecation&#039;                               =&gt; &#039;--fail-on-self&#039;,</span>
+<span class=""><span class="ln">137</span>        &#039;--do-not-fail-on-empty-test-suite&#039;                        =&gt; &#039;--no-fail-on-empty-test-suite&#039;,</span>
+<span class=""><span class="ln">138</span>        &#039;--do-not-fail-on-phpunit-deprecation&#039;                     =&gt; &#039;--no-fail-on-phpunit-deprecation&#039;,</span>
+<span class=""><span class="ln">139</span>        &#039;--do-not-fail-on-phpunit-notice&#039;                          =&gt; &#039;--no-fail-on-phpunit-notice&#039;,</span>
+<span class=""><span class="ln">140</span>        &#039;--do-not-fail-on-phpunit-warning&#039;                         =&gt; &#039;--no-fail-on-phpunit-warning&#039;,</span>
+<span class=""><span class="ln">141</span>        &#039;--do-not-report-useless-tests&#039;                            =&gt; &#039;--no-useless-test-reports&#039;,</span>
+<span class=""><span class="ln">142</span>        &#039;--only-summary-for-coverage-text&#039;                         =&gt; &#039;--coverage-text-summary&#039;,</span>
+<span class=""><span class="ln">143</span>        &#039;--show-uncovered-for-coverage-text&#039;                       =&gt; &#039;--coverage-text-uncovered&#039;,</span>
+<span class=""><span class="ln">144</span>        &#039;--exclude-source-from-xml-coverage&#039;                       =&gt; &#039;--coverage-xml-no-source&#039;,</span>
+<span class=""><span class="ln">145</span>        &#039;--warn-when-php-is-not-configured-for-development&#039;        =&gt; &#039;--php-advisory&#039;,</span>
+<span class=""><span class="ln">146</span>        &#039;--do-not-warn-when-php-is-not-configured-for-development&#039; =&gt; &#039;--no-php-advisory&#039;,</span>
+<span class=""><span class="ln">147</span>        &#039;--requires-php-extension&#039;                                 =&gt; &#039;--requires-ext&#039;,</span>
+<span class=""><span class="ln">148</span>        &#039;--log-events-verbose-text&#039;                                =&gt; &#039;--log-events-verbose&#039;,</span>
+<span class=""><span class="ln">149</span>        &#039;--require-coverage-contribution&#039;                          =&gt; &#039;--require-coverage&#039;,</span>
+<span class=""><span class="ln">150</span></span>
+<span class=""><span class="ln">151</span>        // Crucible&#039;s own, shortened before 1.0 fixes it.</span>
+<span class=""><span class="ln">152</span>        &#039;--update-deprecations-baseline&#039; =&gt; &#039;--update-baseline&#039;,</span>
+<span class=""><span class="ln">153</span>    ];</span>
+<span class=""><span class="ln">154</span></span>
+<span class=""><span class="ln">155</span>    private const array COMMANDS = [&#039;migrate-config&#039;, &#039;flakes&#039;, &#039;phpstan-init&#039;, &#039;lint-inline&#039;, &#039;mutation-index&#039;, &#039;mutate&#039;, &#039;compat-check&#039;, &#039;extensions&#039;, &#039;manual&#039;, &#039;completion&#039;];</span>
+<span class=""><span class="ln">156</span></span>
+<span class=""><span class="ln">157</span>    /**</span>
+<span class=""><span class="ln">158</span>     * @param ?non-empty-string       $configuration</span>
+<span class=""><span class="ln">159</span>     * @param ?non-empty-string       $logEventsJson</span>
+<span class=""><span class="ln">160</span>     * @param ?non-empty-string       $logJunit</span>
+<span class=""><span class="ln">161</span>     * @param ?non-empty-string       $logMarkdown</span>
+<span class=""><span class="ln">162</span>     * @param ?non-empty-string       $logPdf</span>
+<span class=""><span class="ln">163</span>     * @param ?non-empty-string       $orderBy</span>
+<span class=""><span class="ln">164</span>     * @param ?non-empty-string       $filter</span>
+<span class=""><span class="ln">165</span>     * @param ?non-empty-string       $shard</span>
+<span class=""><span class="ln">166</span>     * @param ?non-empty-string       $cacheDirectory</span>
+<span class=""><span class="ln">167</span>     * @param ?(&#039;auto&#039;|&#039;always&#039;|&#039;never&#039;) $colors</span>
+<span class=""><span class="ln">168</span>     * @param ?list&lt;non-empty-string&gt; $testsuite</span>
+<span class=""><span class="ln">169</span>     * @param list&lt;non-empty-string&gt;  $groups</span>
+<span class=""><span class="ln">170</span>     * @param list&lt;non-empty-string&gt;  $excludeGroups</span>
+<span class=""><span class="ln">171</span>     * @param ?non-empty-string       $changed the git reference to diff against; bare --changed means HEAD</span>
+<span class=""><span class="ln">172</span>     * @param list&lt;non-empty-string&gt;  $extensionClasses class names registered from the CLI, instantiated with no arguments</span>
+<span class=""><span class="ln">173</span>     * @param ?non-empty-string       $excludeFilter    the spec&#039;s --exclude-filter, the negated form of --filter</span>
+<span class=""><span class="ln">174</span>     * @param ?non-empty-string       $testFilesFile    the spec&#039;s --test-files-file: a file listing the test files to run</span>
+<span class=""><span class="ln">175</span>     * @param ?non-empty-string       $testIdFilterFile the spec&#039;s --test-id-filter-file: a file listing the test ids to run</span>
+<span class=""><span class="ln">176</span>     * @param list&lt;non-empty-string&gt;  $excludeTestsuite the spec&#039;s --exclude-testsuite; exclusion wins over --testsuite</span>
+<span class=""><span class="ln">177</span>     * @param list&lt;non-empty-string&gt;  $testSuffixes     the spec&#039;s --test-suffix; empty keeps each suite&#039;s own</span>
+<span class=""><span class="ln">178</span>     * @param list&lt;non-empty-string&gt;  $covers           the spec&#039;s --covers: only tests declaring one of these targets</span>
+<span class=""><span class="ln">179</span>     * @param list&lt;non-empty-string&gt;  $uses             the spec&#039;s --uses: the same, over the Uses* attributes</span>
+<span class=""><span class="ln">180</span>     * @param list&lt;non-empty-string&gt;  $requiresPhpExtension the spec&#039;s --requires-php-extension</span>
+<span class=""><span class="ln">181</span>     * @param list&lt;non-empty-string&gt;  $runTestIds       the spec&#039;s --run-test-id, accumulated</span>
+<span class=""><span class="ln">182</span>     * @param ?non-empty-string       $list             what to list instead of running: tests|groups|suites|test-files|test-ids|tests-xml</span>
+<span class=""><span class="ln">183</span>     * @param list&lt;non-empty-string&gt;  $includePaths     the spec&#039;s --include-path, prepended to PHP&#039;s include_path</span>
+<span class=""><span class="ln">184</span>     * @param ?non-empty-string       $atLeastVersion   the spec&#039;s --atleast-version: exit 0 only if the running version is at least this</span>
+<span class=""><span class="ln">185</span>     * @param ?int&lt;1, max&gt;            $columns          the spec&#039;s --columns; &quot;max&quot; resolves to a fixed wide value</span>
+<span class=""><span class="ln">186</span>     * @param ?int&lt;0, max&gt;            $diffContext      the spec&#039;s --diff-context: unchanged lines kept around each change</span>
+<span class=""><span class="ln">187</span>     * @param ?int                    $repeat           the spec&#039;s --repeat: run every selected test this many times</span>
+<span class=""><span class="ln">188</span>     * @param list&lt;non-empty-string&gt;  $coverageFilter   the spec&#039;s --coverage-filter: directories coverage is restricted to</span>
+<span class=""><span class="ln">189</span>     * @param ?string                 $coverageText     the spec&#039;s --coverage-text; &#039;&#039; = the terminal, a path = that file</span>
+<span class=""><span class="ln">190</span>     * @param ?float                  $minCoverage      the spec&#039;s --min: the run fails below this line-coverage percentage</span>
+<span class=""><span class="ln">191</span>     * @param bool                    $reproducible     Crucible-native: normalise what describes the RUN, so two runs of the same code write identical bytes</span>
+<span class=""><span class="ln">192</span>     * @param ?non-empty-string       $generateBaseline the spec&#039;s --generate-baseline: write a fresh deprecations baseline here</span>
+<span class=""><span class="ln">193</span>     * @param ?non-empty-string       $useBaseline      the spec&#039;s --use-baseline: read the deprecations baseline from here</span>
+<span class=""><span class="ln">194</span>     * @param ?non-empty-string       $bootstrap the spec&#039;s --bootstrap; wins over the configuration&#039;s</span>
+<span class=""><span class="ln">195</span>     * @param list&lt;non-empty-string&gt;  $related</span>
+<span class=""><span class="ln">196</span>     * @param list&lt;non-empty-string&gt;  $report   each &quot;key:path&quot; — selects a registered report format for this run, key matching Configuration::$reportFormats</span>
+<span class=""><span class="ln">197</span>     * @param list&lt;non-empty-string&gt;  $subscriber each &quot;key:path&quot; — selects a registered subscriber for this run, key matching Configuration::$subscribers</span>
+<span class=""><span class="ln">198</span>     * @param ?int&lt;0, max&gt;            $retries  validated by the numeric-option check</span>
+<span class=""><span class="ln">199</span>     * @param ?int&lt;0, max&gt;            $rounds   validated by the numeric-option check</span>
+<span class=""><span class="ln">200</span>     * @param ?non-empty-string       $assignee select only todos assigned to this name</span>
+<span class=""><span class="ln">201</span>     * @param ?non-empty-string       $issue    select only todos referencing this issue</span>
+<span class=""><span class="ln">202</span>     * @param ?non-empty-string       $key      `crucible extensions`: the report-format key to describe/preview; omitted = list every registered format</span>
+<span class=""><span class="ln">203</span>     * @param ?non-empty-string       $out      `crucible extensions --preview`: where to write the rendered sample; default = a temp file, path printed</span>
+<span class=""><span class="ln">204</span>     * @param ?non-empty-string       $view     select a registered progress view by key, matching Configuration::$progressViews; wins over --testdox/--teamcity (D-023)</span>
+<span class=""><span class="ln">205</span>     */</span>
+<span class=""><span class="ln">206</span>    private function __construct(</span>
+<span class="covered"><span class="ln">207</span>        public bool $version = false,</span>
+<span class="covered"><span class="ln">208</span>        public bool $help = false,</span>
+<span class="covered"><span class="ln">209</span>        public bool $init = false,</span>
+<span class="covered"><span class="ln">210</span>        public bool $worker = false,</span>
+<span class="covered"><span class="ln">211</span>        public bool $migrateConfig = false,</span>
+<span class="covered"><span class="ln">212</span>        public bool $phpstanInit = false,</span>
+<span class="covered"><span class="ln">213</span>        public bool $lintInline = false,</span>
+<span class="covered"><span class="ln">214</span>        public bool $mutationIndex = false,</span>
+<span class="covered"><span class="ln">215</span>        public bool $mutate = false,</span>
+<span class="covered"><span class="ln">216</span>        public bool $compatCheck = false,</span>
+<span class="covered"><span class="ln">217</span>        public bool $autoFix = false,</span>
+<span class="covered"><span class="ln">218</span>        public bool $revert = false,</span>
+<span class="covered"><span class="ln">219</span>        public bool $extensions = false,</span>
+<span class="covered"><span class="ln">220</span>        public bool $manual = false,</span>
+<span class="covered"><span class="ln">221</span>        public bool $completion = false,</span>
+<span class=""><span class="ln">222</span>        /** The bare word after a command: `crucible completion bash`. */</span>
+<span class="covered"><span class="ln">223</span>        public ?string $argument = null,</span>
+<span class="covered"><span class="ln">224</span>        public bool $preview = false,</span>
+<span class="covered"><span class="ln">225</span>        public bool $json = false,</span>
+<span class="covered"><span class="ln">226</span>        public ?string $key = null,</span>
+<span class="covered"><span class="ln">227</span>        public ?string $out = null,</span>
+<span class="covered"><span class="ln">228</span>        public ?string $view = null,</span>
+<span class="covered"><span class="ln">229</span>        public ?string $configuration = null,</span>
+<span class="covered"><span class="ln">230</span>        public ?string $logEventsJson = null,</span>
+<span class="covered"><span class="ln">231</span>        public ?string $logJunit = null,</span>
+<span class="covered"><span class="ln">232</span>        public ?string $logMarkdown = null,</span>
+<span class="covered"><span class="ln">233</span>        public ?string $logPdf = null,</span>
+<span class="covered"><span class="ln">234</span>        public ?string $orderBy = null,</span>
+<span class="covered"><span class="ln">235</span>        public ?int $randomOrderSeed = null,</span>
+<span class="covered"><span class="ln">236</span>        public ?int $parallel = null,</span>
+<span class="covered"><span class="ln">237</span>        public ?string $filter = null,</span>
+<span class="covered"><span class="ln">238</span>        public ?string $shard = null,</span>
+<span class="covered"><span class="ln">239</span>        public ?string $cacheDirectory = null,</span>
+<span class="covered"><span class="ln">240</span>        public ?array $testsuite = null,</span>
+<span class="covered"><span class="ln">241</span>        public array $groups = [],</span>
+<span class="covered"><span class="ln">242</span>        public array $excludeGroups = [],</span>
+<span class="covered"><span class="ln">243</span>        public ?bool $stopOnDefect = null,</span>
+<span class="covered"><span class="ln">244</span>        public ?bool $stopOnError = null,</span>
+<span class="covered"><span class="ln">245</span>        public ?bool $stopOnFailure = null,</span>
+<span class="covered"><span class="ln">246</span>        public ?bool $stopOnRisky = null,</span>
+<span class="covered"><span class="ln">247</span>        public ?bool $stopOnSkipped = null,</span>
+<span class="covered"><span class="ln">248</span>        public ?bool $stopOnIncomplete = null,</span>
+<span class="covered"><span class="ln">249</span>        public ?bool $stopOnDeprecation = null,</span>
+<span class="covered"><span class="ln">250</span>        public ?bool $stopOnNotice = null,</span>
+<span class="covered"><span class="ln">251</span>        public ?bool $stopOnWarning = null,</span>
+<span class="covered"><span class="ln">252</span>        public ?bool $failOnDeprecation = null,</span>
+<span class="covered"><span class="ln">253</span>        public ?bool $failOnIncomplete = null,</span>
+<span class="covered"><span class="ln">254</span>        public ?bool $failOnNotice = null,</span>
+<span class="covered"><span class="ln">255</span>        public ?bool $failOnRisky = null,</span>
+<span class="covered"><span class="ln">256</span>        public ?bool $failOnSkipped = null,</span>
+<span class="covered"><span class="ln">257</span>        public ?bool $failOnWarning = null,</span>
+<span class="covered"><span class="ln">258</span>        public ?bool $failOnDirectDeprecation = null,</span>
+<span class="covered"><span class="ln">259</span>        public ?bool $failOnIndirectDeprecation = null,</span>
+<span class="covered"><span class="ln">260</span>        public ?bool $failOnSelfDeprecation = null,</span>
+<span class="covered"><span class="ln">261</span>        public ?bool $failOnEmptyTestSuite = null,</span>
+<span class="covered"><span class="ln">262</span>        public ?bool $backupGlobals = null,</span>
+<span class="covered"><span class="ln">263</span>        public ?bool $backupStaticProperties = null,</span>
+<span class="covered"><span class="ln">264</span>        public ?bool $strictGlobalState = null,</span>
+<span class="covered"><span class="ln">265</span>        public ?bool $requireCoverageMetadata = null,</span>
+<span class="covered"><span class="ln">266</span>        public ?string $bootstrap = null,</span>
+<span class="covered"><span class="ln">267</span>        public array $extensionClasses = [],</span>
+<span class="covered"><span class="ln">268</span>        public ?string $excludeFilter = null,</span>
+<span class="covered"><span class="ln">269</span>        public ?string $testFilesFile = null,</span>
+<span class="covered"><span class="ln">270</span>        public ?string $testIdFilterFile = null,</span>
+<span class="covered"><span class="ln">271</span>        public array $excludeTestsuite = [],</span>
+<span class="covered"><span class="ln">272</span>        public array $testSuffixes = [],</span>
+<span class="covered"><span class="ln">273</span>        public array $covers = [],</span>
+<span class="covered"><span class="ln">274</span>        public array $uses = [],</span>
+<span class="covered"><span class="ln">275</span>        public array $requiresPhpExtension = [],</span>
+<span class="covered"><span class="ln">276</span>        public array $runTestIds = [],</span>
+<span class="covered"><span class="ln">277</span>        public ?string $list = null,</span>
+<span class="covered"><span class="ln">278</span>        public bool $noExtensions = false,</span>
+<span class="covered"><span class="ln">279</span>        public bool $noConfiguration = false,</span>
+<span class="covered"><span class="ln">280</span>        public bool $reportUselessTests = true,</span>
+<span class="covered"><span class="ln">281</span>        public bool $checkVersion = false,</span>
+<span class="covered"><span class="ln">282</span>        public ?string $atLeastVersion = null,</span>
+<span class="covered"><span class="ln">283</span>        public array $includePaths = [],</span>
+<span class="covered"><span class="ln">284</span>        public bool $compact = false,</span>
+<span class="covered"><span class="ln">285</span>        public bool $noProgress = false,</span>
+<span class="covered"><span class="ln">286</span>        public bool $noResults = false,</span>
+<span class="covered"><span class="ln">287</span>        public bool $noOutput = false,</span>
+<span class="covered"><span class="ln">288</span>        public bool $stderr = false,</span>
+<span class="covered"><span class="ln">289</span>        public bool $reverseList = false,</span>
+<span class="covered"><span class="ln">290</span>        public ?int $columns = null,</span>
+<span class="covered"><span class="ln">291</span>        public ?int $diffContext = null,</span>
+<span class="covered"><span class="ln">292</span>        public bool $displayDeprecations = false,</span>
+<span class="covered"><span class="ln">293</span>        public bool $displayNotices = false,</span>
+<span class="covered"><span class="ln">294</span>        public bool $displayWarnings = false,</span>
+<span class="covered"><span class="ln">295</span>        public bool $displayErrors = false,</span>
+<span class="covered"><span class="ln">296</span>        public bool $displaySkipped = false,</span>
+<span class="covered"><span class="ln">297</span>        public bool $displayIncomplete = false,</span>
+<span class="covered"><span class="ln">298</span>        public ?string $generateBaseline = null,</span>
+<span class="covered"><span class="ln">299</span>        public ?string $useBaseline = null,</span>
+<span class="covered"><span class="ln">300</span>        public bool $ignoreBaseline = false,</span>
+<span class="covered"><span class="ln">301</span>        public ?bool $resolveDependencies = null,</span>
+<span class="covered"><span class="ln">302</span>        public bool $processIsolation = false,</span>
+<span class="covered"><span class="ln">303</span>        public ?string $logEventsText = null,</span>
+<span class="covered"><span class="ln">304</span>        public ?string $logEventsVerboseText = null,</span>
+<span class="covered"><span class="ln">305</span>        public ?string $logTeamcity = null,</span>
+<span class="covered"><span class="ln">306</span>        public ?bool $cacheResult = null,</span>
+<span class="covered"><span class="ln">307</span>        public ?string $logOtr = null,</span>
+<span class="covered"><span class="ln">308</span>        public ?string $testdoxText = null,</span>
+<span class="covered"><span class="ln">309</span>        public ?string $testdoxHtml = null,</span>
+<span class="covered"><span class="ln">310</span>        public ?string $testdoxSummary = null,</span>
+<span class="covered"><span class="ln">311</span>        public ?bool $testdox = null,</span>
+<span class="covered"><span class="ln">312</span>        public ?bool $teamcity = null,</span>
+<span class="covered"><span class="ln">313</span>        public ?string $colors = null,</span>
+<span class="covered"><span class="ln">314</span>        public bool $updateDeprecationsBaseline = false,</span>
+<span class="covered"><span class="ln">315</span>        public ?string $changed = null,</span>
+<span class="covered"><span class="ln">316</span>        public array $related = [],</span>
+<span class="covered"><span class="ln">317</span>        public array $report = [],</span>
+<span class="covered"><span class="ln">318</span>        public array $subscriber = [],</span>
+<span class="covered"><span class="ln">319</span>        public bool $watch = false,</span>
+<span class="covered"><span class="ln">320</span>        public ?int $retries = null,</span>
+<span class="covered"><span class="ln">321</span>        public ?int $repeat = null,</span>
+<span class="covered"><span class="ln">322</span>        public bool $checkPhpConfiguration = false,</span>
+<span class="covered"><span class="ln">323</span>        public ?bool $warnWhenPhpIsNotConfiguredForDevelopment = null,</span>
+<span class="covered"><span class="ln">324</span>        public bool $warmCoverageCache = false,</span>
+<span class="covered"><span class="ln">325</span>        public bool $validateConfiguration = false,</span>
+<span class="covered"><span class="ln">326</span>        public bool $all = false,</span>
+<span class="covered"><span class="ln">327</span>        public bool $withTelemetry = false,</span>
+<span class="covered"><span class="ln">328</span>        public bool $disallowTestOutput = false,</span>
+<span class="covered"><span class="ln">329</span>        public bool $enforceTimeLimit = false,</span>
+<span class="covered"><span class="ln">330</span>        public ?int $defaultTimeLimit = null,</span>
+<span class="covered"><span class="ln">331</span>        public ?bool $failOnFlaky = null,</span>
+<span class="covered"><span class="ln">332</span>        public bool $flakes = false,</span>
+<span class="covered"><span class="ln">333</span>        public ?int $rounds = null,</span>
+<span class="covered"><span class="ln">334</span>        public bool $coverage = false,</span>
+<span class="covered"><span class="ln">335</span>        public ?string $coverageClover = null,</span>
+<span class="covered"><span class="ln">336</span>        public bool $coverageBranch = false,</span>
+<span class="covered"><span class="ln">337</span>        public bool $pathCoverage = false,</span>
+<span class="covered"><span class="ln">338</span>        public bool $strictCoverage = false,</span>
+<span class="covered"><span class="ln">339</span>        public ?string $coverageHtml = null,</span>
+<span class="covered"><span class="ln">340</span>        public ?string $coverageCobertura = null,</span>
+<span class="covered"><span class="ln">341</span>        public ?string $coveragePhp = null,</span>
+<span class="covered"><span class="ln">342</span>        public ?string $coverageOpenClover = null,</span>
+<span class="covered"><span class="ln">343</span>        public ?string $coverageCrap4j = null,</span>
+<span class="covered"><span class="ln">344</span>        public ?string $coverageXml = null,</span>
+<span class="covered"><span class="ln">345</span>        public ?string $coverageText = null,</span>
+<span class="covered"><span class="ln">346</span>        public ?float $minCoverage = null,</span>
+<span class="covered"><span class="ln">347</span>        public bool $reproducible = false,</span>
+<span class="covered"><span class="ln">348</span>        public bool $onlySummaryForCoverageText = false,</span>
+<span class="covered"><span class="ln">349</span>        public bool $showUncoveredForCoverageText = false,</span>
+<span class="covered"><span class="ln">350</span>        public bool $withoutClassView = false,</span>
+<span class="covered"><span class="ln">351</span>        public bool $withoutFileView = false,</span>
+<span class="covered"><span class="ln">352</span>        public bool $excludeSourceFromXmlCoverage = false,</span>
+<span class="covered"><span class="ln">353</span>        public bool $disableCoverageIgnore = false,</span>
+<span class="covered"><span class="ln">354</span>        public bool $disableCoverageTargeting = false,</span>
+<span class="covered"><span class="ln">355</span>        public bool $includeGitInformation = false,</span>
+<span class="covered"><span class="ln">356</span>        public array $coverageFilter = [],</span>
+<span class="covered"><span class="ln">357</span>        public bool $updateSnapshots = false,</span>
+<span class="covered"><span class="ln">358</span>        public bool $todos = false,</span>
+<span class="covered"><span class="ln">359</span>        public ?string $assignee = null,</span>
+<span class="covered"><span class="ln">360</span>        public ?string $issue = null,</span>
+<span class="covered"><span class="ln">361</span>        public bool $noWip = false,</span>
+<span class="covered"><span class="ln">362</span>        public ?string $browser = null,</span>
+<span class="covered"><span class="ln">363</span>        public bool $debug = false,</span>
+<span class="covered"><span class="ln">364</span>        public bool $profile = false,</span>
+<span class="covered"><span class="ln">365</span>        public bool $dirty = false,</span>
+<span class="covered"><span class="ln">366</span>    ) {}</span>
+<span class=""><span class="ln">367</span></span>
+<span class=""><span class="ln">368</span></span>
+<span class=""><span class="ln">369</span>    /**</span>
+<span class=""><span class="ln">370</span>     * Whether anything on this command line asks for a coverage driver.</span>
+<span class=""><span class="ln">371</span>     * One question with one answer, so a new report target cannot be</span>
+<span class=""><span class="ln">372</span>     * wired to a writer and then silently never collected for.</span>
+<span class=""><span class="ln">373</span>     */</span>
+<span class=""><span class="ln">374</span>    public function wantsCoverage(): bool</span>
+<span class=""><span class="ln">375</span>    {</span>
+<span class="covered"><span class="ln">376</span>        return $this-&gt;coverage</span>
+<span class="covered"><span class="ln">377</span>            || $this-&gt;coverageBranch</span>
+<span class="covered"><span class="ln">378</span>            || $this-&gt;pathCoverage</span>
+<span class="covered"><span class="ln">379</span>            || $this-&gt;coverageClover !== null</span>
+<span class="covered"><span class="ln">380</span>            || $this-&gt;coverageCobertura !== null</span>
+<span class="covered"><span class="ln">381</span>            || $this-&gt;coverageHtml !== null</span>
+<span class="covered"><span class="ln">382</span>            || $this-&gt;coverageOpenClover !== null</span>
+<span class="covered"><span class="ln">383</span>            || $this-&gt;coveragePhp !== null</span>
+<span class="covered"><span class="ln">384</span>            || $this-&gt;coverageCrap4j !== null</span>
+<span class="covered"><span class="ln">385</span>            || $this-&gt;coverageXml !== null</span>
+<span class="covered"><span class="ln">386</span>            || $this-&gt;coverageText !== null</span>
+<span class=""><span class="ln">387</span>            // A floor is a request to measure: you cannot ask for one and</span>
+<span class=""><span class="ln">388</span>            // not want the measurement it is a floor on.</span>
+<span class="covered"><span class="ln">389</span>            || $this-&gt;minCoverage !== null;</span>
+<span class=""><span class="ln">390</span>    }</span>
+<span class=""><span class="ln">391</span></span>
+<span class=""><span class="ln">392</span>    /**</span>
+<span class=""><span class="ln">393</span>     * A switch with both spellings present: --fail-on-x turns the policy</span>
+<span class=""><span class="ln">394</span>     * on, --no-fail-on-x turns it off, neither leaves it null so the</span>
+<span class=""><span class="ln">395</span>     * configuration decides.</span>
+<span class=""><span class="ln">396</span>     *</span>
+<span class=""><span class="ln">397</span>     * @param array&lt;string, true&gt; $flags</span>
+<span class=""><span class="ln">398</span>     */</span>
+<span class=""><span class="ln">399</span>    private static function tristate(array $flags, string $on, string $off): ?bool</span>
+<span class=""><span class="ln">400</span>    {</span>
+<span class=""><span class="ln">401</span>        return match (true) {</span>
+<span class="covered"><span class="ln">402</span>            isset($flags[$on])  =&gt; true,</span>
+<span class="covered"><span class="ln">403</span>            isset($flags[$off]) =&gt; false,</span>
+<span class="covered"><span class="ln">404</span>            default             =&gt; null,</span>
+<span class=""><span class="ln">405</span>        };</span>
+<span class=""><span class="ln">406</span>    }</span>
+<span class=""><span class="ln">407</span></span>
+<span class=""><span class="ln">408</span>    /**</span>
+<span class=""><span class="ln">409</span>     * Every name the parser accepts: options, their aliases, commands.</span>
+<span class=""><span class="ln">410</span>     *</span>
+<span class=""><span class="ln">411</span>     * ⚠ Read from the same constants the parse loop reads, so a</span>
+<span class=""><span class="ln">412</span>     * generated completion script cannot drift from what the binary</span>
+<span class=""><span class="ln">413</span>     * takes. `--worker` is the supervisor&#039;s private handshake with its</span>
+<span class=""><span class="ln">414</span>     * own children and is not a thing a user types.</span>
+<span class=""><span class="ln">415</span>     *</span>
+<span class=""><span class="ln">416</span>     * @return list&lt;string&gt;</span>
+<span class=""><span class="ln">417</span>     */</span>
+<span class=""><span class="ln">418</span>    public static function accepted(): array</span>
+<span class=""><span class="ln">419</span>    {</span>
+<span class="missed"><span class="ln">420</span>        $names = [];</span>
+<span class=""><span class="ln">421</span></span>
+<span class="missed"><span class="ln">422</span>        foreach ([self::FLAGS, self::VALUED, self::REPEATABLE, self::COMMANDS] as $set) {</span>
+<span class="missed"><span class="ln">423</span>            foreach ($set as $name) {</span>
+<span class="missed"><span class="ln">424</span>                $names[$name] = true;</span>
+<span class=""><span class="ln">425</span>            }</span>
+<span class=""><span class="ln">426</span>        }</span>
+<span class=""><span class="ln">427</span></span>
+<span class="missed"><span class="ln">428</span>        foreach (array_keys(self::ALIASES) as $name) {</span>
+<span class="missed"><span class="ln">429</span>            $names[$name] = true;</span>
+<span class=""><span class="ln">430</span>        }</span>
+<span class=""><span class="ln">431</span></span>
+<span class=""><span class="ln">432</span>        // Parsed by hand because their value is optional.</span>
+<span class="missed"><span class="ln">433</span>        foreach ([&#039;--changed&#039;, &#039;--colors&#039;, &#039;--coverage-text&#039;] as $byHand) {</span>
+<span class="missed"><span class="ln">434</span>            $names[$byHand] = true;</span>
+<span class=""><span class="ln">435</span>        }</span>
+<span class=""><span class="ln">436</span></span>
+<span class="missed"><span class="ln">437</span>        unset($names[&#039;--worker&#039;]);</span>
+<span class=""><span class="ln">438</span></span>
+<span class="missed"><span class="ln">439</span>        return array_keys($names);</span>
+<span class=""><span class="ln">440</span>    }</span>
+<span class=""><span class="ln">441</span></span>
+<span class=""><span class="ln">442</span>    /**</span>
+<span class=""><span class="ln">443</span>     * @param list&lt;string&gt; $argv</span>
+<span class=""><span class="ln">444</span>     *</span>
+<span class=""><span class="ln">445</span>     * @return self|non-empty-string the options, or an error message</span>
+<span class=""><span class="ln">446</span>     */</span>
+<span class=""><span class="ln">447</span>    public static function fromArgv(array $argv): self|string</span>
+<span class=""><span class="ln">448</span>    {</span>
+<span class=""><span class="ln">449</span>        /** @var array&lt;string, true&gt; $flags */</span>
+<span class="covered"><span class="ln">450</span>        $flags = [];</span>
+<span class=""><span class="ln">451</span></span>
+<span class=""><span class="ln">452</span>        /** @var array&lt;string, non-empty-string&gt; $values */</span>
+<span class="covered"><span class="ln">453</span>        $values = [];</span>
+<span class=""><span class="ln">454</span></span>
+<span class=""><span class="ln">455</span>        /** @var array&lt;string, list&lt;non-empty-string&gt;&gt; $lists */</span>
+<span class="covered"><span class="ln">456</span>        $lists = [];</span>
+<span class=""><span class="ln">457</span></span>
+<span class=""><span class="ln">458</span>        /** @var ?(&#039;auto&#039;|&#039;always&#039;|&#039;never&#039;) $colors */</span>
+<span class="covered"><span class="ln">459</span>        $colors = null;</span>
+<span class=""><span class="ln">460</span></span>
+<span class=""><span class="ln">461</span>        /** The command seen, and the bare word following it. */</span>
+<span class="covered"><span class="ln">462</span>        $command         = null;</span>
+<span class="covered"><span class="ln">463</span>        $commandArgument = null;</span>
+<span class=""><span class="ln">464</span></span>
+<span class=""><span class="ln">465</span>        /** @var ?non-empty-string $changed */</span>
+<span class="covered"><span class="ln">466</span>        $changed = null;</span>
+<span class=""><span class="ln">467</span></span>
+<span class=""><span class="ln">468</span>        /** @var ?string $coverageText &#039;&#039; = the terminal, non-empty = that file */</span>
+<span class="covered"><span class="ln">469</span>        $coverageText = null;</span>
+<span class=""><span class="ln">470</span></span>
+<span class=""><span class="ln">471</span>        // ⚠ The alias is resolved on the NAME, not on the whole</span>
+<span class=""><span class="ln">472</span>        // argument. Every alias used to be a flag, so `--alias=value`</span>
+<span class=""><span class="ln">473</span>        // never came up; the spec&#039;s spellings for valued options can be</span>
+<span class=""><span class="ln">474</span>        // written that way, and matching the whole token would have let</span>
+<span class=""><span class="ln">475</span>        // them through unresolved to be rejected as unknown.</span>
+<span class="covered"><span class="ln">476</span>        $arguments = array_map(</span>
+<span class="covered"><span class="ln">477</span>            static function (string $argument): string {</span>
+<span class="covered"><span class="ln">478</span>                if (str_starts_with($argument, &#039;--&#039;) &amp;&amp; str_contains($argument, &#039;=&#039;)) {</span>
+<span class="covered"><span class="ln">479</span>                    [$name, $value] = explode(&#039;=&#039;, $argument, 2);</span>
+<span class=""><span class="ln">480</span></span>
+<span class="covered"><span class="ln">481</span>                    return (self::ALIASES[$name] ?? $name) . &#039;=&#039; . $value;</span>
+<span class=""><span class="ln">482</span>                }</span>
+<span class=""><span class="ln">483</span></span>
+<span class="covered"><span class="ln">484</span>                return self::ALIASES[$argument] ?? $argument;</span>
+<span class="covered"><span class="ln">485</span>            },</span>
+<span class="covered"><span class="ln">486</span>            array_slice($argv, 1),</span>
+<span class=""><span class="ln">487</span>        );</span>
+<span class=""><span class="ln">488</span></span>
+<span class="covered"><span class="ln">489</span>        for ($i = 0; isset($arguments[$i]); $i++) {</span>
+<span class="covered"><span class="ln">490</span>            $argument = $arguments[$i];</span>
+<span class="covered"><span class="ln">491</span>            $name     = $argument;</span>
+<span class="covered"><span class="ln">492</span>            $inline   = null;</span>
+<span class=""><span class="ln">493</span></span>
+<span class="covered"><span class="ln">494</span>            if (str_starts_with($argument, &#039;--&#039;) &amp;&amp; str_contains($argument, &#039;=&#039;)) {</span>
+<span class="covered"><span class="ln">495</span>                [$name, $inline] = explode(&#039;=&#039;, $argument, 2);</span>
+<span class=""><span class="ln">496</span>            }</span>
+<span class=""><span class="ln">497</span></span>
+<span class="covered"><span class="ln">498</span>            if (in_array($name, self::FLAGS, true)) {</span>
+<span class="covered"><span class="ln">499</span>                if ($inline !== null) {</span>
+<span class="covered"><span class="ln">500</span>                    return sprintf(&#039;Option %s does not take a value.&#039;, $name);</span>
+<span class=""><span class="ln">501</span>                }</span>
+<span class=""><span class="ln">502</span></span>
+<span class="covered"><span class="ln">503</span>                $flags[$name] = true;</span>
+<span class=""><span class="ln">504</span></span>
+<span class="covered"><span class="ln">505</span>                continue;</span>
+<span class=""><span class="ln">506</span>            }</span>
+<span class=""><span class="ln">507</span></span>
+<span class="covered"><span class="ln">508</span>            if (in_array($name, self::VALUED, true) || in_array($name, self::REPEATABLE, true)) {</span>
+<span class="covered"><span class="ln">509</span>                $value = $inline;</span>
+<span class=""><span class="ln">510</span></span>
+<span class="covered"><span class="ln">511</span>                if ($value === null &amp;&amp; isset($arguments[$i + 1])) {</span>
+<span class="covered"><span class="ln">512</span>                    $value = $arguments[$i + 1];</span>
+<span class="covered"><span class="ln">513</span>                    $i++;</span>
+<span class=""><span class="ln">514</span>                }</span>
+<span class=""><span class="ln">515</span></span>
+<span class="covered"><span class="ln">516</span>                if ($value === null || $value === &#039;&#039;) {</span>
+<span class="covered"><span class="ln">517</span>                    return sprintf(&#039;Option %s requires a value.&#039;, $name);</span>
+<span class=""><span class="ln">518</span>                }</span>
+<span class=""><span class="ln">519</span></span>
+<span class="covered"><span class="ln">520</span>                if (in_array($name, self::REPEATABLE, true)) {</span>
+<span class="covered"><span class="ln">521</span>                    foreach (explode(&#039;,&#039;, $value) as $item) {</span>
+<span class="covered"><span class="ln">522</span>                        if ($item !== &#039;&#039;) {</span>
+<span class="covered"><span class="ln">523</span>                            $lists[$name][] = $item;</span>
+<span class=""><span class="ln">524</span>                        }</span>
+<span class=""><span class="ln">525</span>                    }</span>
+<span class=""><span class="ln">526</span></span>
+<span class="covered"><span class="ln">527</span>                    continue;</span>
+<span class=""><span class="ln">528</span>                }</span>
+<span class=""><span class="ln">529</span></span>
+<span class=""><span class="ln">530</span>                // Last occurrence wins, matching the spec&#039;s CLI.</span>
+<span class="covered"><span class="ln">531</span>                $values[$name] = $value;</span>
+<span class=""><span class="ln">532</span></span>
+<span class="covered"><span class="ln">533</span>                continue;</span>
+<span class=""><span class="ln">534</span>            }</span>
+<span class=""><span class="ln">535</span></span>
+<span class="covered"><span class="ln">536</span>            if (in_array($name, self::COMMANDS, true)) {</span>
+<span class="covered"><span class="ln">537</span>                $flags[$name] = true;</span>
+<span class="covered"><span class="ln">538</span>                $command      = $name;</span>
+<span class=""><span class="ln">539</span></span>
+<span class="covered"><span class="ln">540</span>                continue;</span>
+<span class=""><span class="ln">541</span>            }</span>
+<span class=""><span class="ln">542</span></span>
+<span class=""><span class="ln">543</span>            // ⚠ Only after a command, and only the first one. A bare word</span>
+<span class=""><span class="ln">544</span>            // with no command before it is still an error, so a mistyped</span>
+<span class=""><span class="ln">545</span>            // option cannot be silently swallowed as an argument.</span>
+<span class="covered"><span class="ln">546</span>            if ($command !== null &amp;&amp; $commandArgument === null &amp;&amp; !str_starts_with($name, &#039;-&#039;)) {</span>
+<span class="missed"><span class="ln">547</span>                $commandArgument = $name;</span>
+<span class=""><span class="ln">548</span></span>
+<span class="missed"><span class="ln">549</span>                continue;</span>
+<span class=""><span class="ln">550</span>            }</span>
+<span class=""><span class="ln">551</span></span>
+<span class=""><span class="ln">552</span>            // --changed takes an optional value: bare means HEAD (the</span>
+<span class=""><span class="ln">553</span>            // working tree&#039;s uncommitted changes), and like --colors</span>
+<span class=""><span class="ln">554</span>            // it never consumes the next argument (only the = form).</span>
+<span class="covered"><span class="ln">555</span>            if ($name === &#039;--changed&#039;) {</span>
+<span class="covered"><span class="ln">556</span>                $reference = $inline ?? &#039;HEAD&#039;;</span>
+<span class=""><span class="ln">557</span></span>
+<span class="covered"><span class="ln">558</span>                if ($reference === &#039;&#039;) {</span>
+<span class="covered"><span class="ln">559</span>                    return &#039;Option --changed expects a git reference.&#039;;</span>
+<span class=""><span class="ln">560</span>                }</span>
+<span class=""><span class="ln">561</span></span>
+<span class="covered"><span class="ln">562</span>                $changed = $reference;</span>
+<span class=""><span class="ln">563</span></span>
+<span class="covered"><span class="ln">564</span>                continue;</span>
+<span class=""><span class="ln">565</span>            }</span>
+<span class=""><span class="ln">566</span></span>
+<span class=""><span class="ln">567</span>            // --coverage-text takes an optional value, the spec spelling</span>
+<span class=""><span class="ln">568</span>            // it --coverage-text=&lt;file&gt; for exactly that reason: bare</span>
+<span class=""><span class="ln">569</span>            // means the terminal, so it never consumes the next argument.</span>
+<span class="covered"><span class="ln">570</span>            if ($name === &#039;--coverage-text&#039;) {</span>
+<span class="covered"><span class="ln">571</span>                $coverageText = $inline ?? &#039;&#039;;</span>
+<span class=""><span class="ln">572</span></span>
+<span class="covered"><span class="ln">573</span>                continue;</span>
+<span class=""><span class="ln">574</span>            }</span>
+<span class=""><span class="ln">575</span></span>
+<span class=""><span class="ln">576</span>            // --colors takes an optional value: bare means auto, and</span>
+<span class=""><span class="ln">577</span>            // it never consumes the next argument (only the = form).</span>
+<span class="covered"><span class="ln">578</span>            if ($name === &#039;--colors&#039;) {</span>
+<span class="missed"><span class="ln">579</span>                $when = $inline ?? &#039;auto&#039;;</span>
+<span class=""><span class="ln">580</span></span>
+<span class="missed"><span class="ln">581</span>                if (!in_array($when, [&#039;auto&#039;, &#039;always&#039;, &#039;never&#039;], true)) {</span>
+<span class="missed"><span class="ln">582</span>                    return sprintf(&#039;Option --colors expects auto, always or never, got &quot;%s&quot;.&#039;, $when);</span>
+<span class=""><span class="ln">583</span>                }</span>
+<span class=""><span class="ln">584</span></span>
+<span class="missed"><span class="ln">585</span>                $colors = $when;</span>
+<span class=""><span class="ln">586</span></span>
+<span class="missed"><span class="ln">587</span>                continue;</span>
+<span class=""><span class="ln">588</span>            }</span>
+<span class=""><span class="ln">589</span></span>
+<span class="covered"><span class="ln">590</span>            return str_starts_with($argument, &#039;-&#039;)</span>
+<span class="covered"><span class="ln">591</span>                ? sprintf(&#039;Unknown option &quot;%s&quot;. Run crucible --help for the list of options.&#039;, $argument)</span>
+<span class="covered"><span class="ln">592</span>                : sprintf(&#039;Unrecognized argument &quot;%s&quot;.&#039;, $argument);</span>
+<span class=""><span class="ln">593</span>        }</span>
+<span class=""><span class="ln">594</span></span>
+<span class="covered"><span class="ln">595</span>        foreach ([&#039;--random-order-seed&#039;, &#039;--parallel&#039;, &#039;--retries&#039;, &#039;--retry&#039;, &#039;--rounds&#039;, &#039;--diff-context&#039;] as $numeric) {</span>
+<span class="covered"><span class="ln">596</span>            if (isset($values[$numeric]) &amp;&amp; !ctype_digit($values[$numeric])) {</span>
+<span class="covered"><span class="ln">597</span>                return sprintf(&#039;Option %s expects a non-negative integer, got &quot;%s&quot;.&#039;, $numeric, $values[$numeric]);</span>
+<span class=""><span class="ln">598</span>            }</span>
+<span class=""><span class="ln">599</span>        }</span>
+<span class=""><span class="ln">600</span></span>
+<span class=""><span class="ln">601</span>        // A percentage, not an integer: --min=99.5 is a real ask, and the</span>
+<span class=""><span class="ln">602</span>        // number the gate compares is the one the report prints.</span>
+<span class="covered"><span class="ln">603</span>        if (isset($values[&#039;--min&#039;])) {</span>
+<span class="covered"><span class="ln">604</span>            if (!is_numeric($values[&#039;--min&#039;])) {</span>
+<span class="covered"><span class="ln">605</span>                return sprintf(&#039;Option --min expects a percentage between 0 and 100, got &quot;%s&quot;.&#039;, $values[&#039;--min&#039;]);</span>
+<span class=""><span class="ln">606</span>            }</span>
+<span class=""><span class="ln">607</span></span>
+<span class="covered"><span class="ln">608</span>            $minimum = (float) $values[&#039;--min&#039;];</span>
+<span class=""><span class="ln">609</span></span>
+<span class="covered"><span class="ln">610</span>            if ($minimum &lt; 0.0 || $minimum &gt; 100.0) {</span>
+<span class="covered"><span class="ln">611</span>                return sprintf(&#039;Option --min expects a percentage between 0 and 100, got &quot;%s&quot;.&#039;, $values[&#039;--min&#039;]);</span>
+<span class=""><span class="ln">612</span>            }</span>
+<span class=""><span class="ln">613</span></span>
+<span class=""><span class="ln">614</span>            // Refused rather than resolved: --no-coverage says measure</span>
+<span class=""><span class="ln">615</span>            // nothing, --min says fail below a measurement. Letting one</span>
+<span class=""><span class="ln">616</span>            // win silently would drop a CI gate and report success.</span>
+<span class="covered"><span class="ln">617</span>            if (isset($flags[&#039;--no-coverage&#039;])) {</span>
+<span class="covered"><span class="ln">618</span>                return &#039;Options --min and --no-coverage are mutually exclusive.&#039;;</span>
+<span class=""><span class="ln">619</span>            }</span>
+<span class=""><span class="ln">620</span>        }</span>
+<span class=""><span class="ln">621</span></span>
+<span class="covered"><span class="ln">622</span>        if (isset($flags[&#039;--cache-result&#039;], $flags[&#039;--do-not-cache-result&#039;])) {</span>
+<span class="covered"><span class="ln">623</span>            return &#039;Options --cache-result and --do-not-cache-result are mutually exclusive.&#039;;</span>
+<span class=""><span class="ln">624</span>        }</span>
+<span class=""><span class="ln">625</span></span>
+<span class="covered"><span class="ln">626</span>        $switches = [</span>
+<span class=""><span class="ln">627</span>            &#039;deprecation&#039;, &#039;incomplete&#039;, &#039;notice&#039;, &#039;risky&#039;, &#039;skipped&#039;, &#039;warning&#039;,</span>
+<span class=""><span class="ln">628</span>            &#039;direct&#039;, &#039;indirect&#039;, &#039;self&#039;,</span>
+<span class=""><span class="ln">629</span>            &#039;empty-test-suite&#039;,</span>
+<span class=""><span class="ln">630</span>            &#039;phpunit-deprecation&#039;, &#039;phpunit-notice&#039;, &#039;phpunit-warning&#039;,</span>
+<span class=""><span class="ln">631</span>        ];</span>
+<span class=""><span class="ln">632</span></span>
+<span class="covered"><span class="ln">633</span>        foreach ($switches as $issue) {</span>
+<span class="covered"><span class="ln">634</span>            if (isset($flags[&#039;--fail-on-&#039; . $issue], $flags[&#039;--no-fail-on-&#039; . $issue])) {</span>
+<span class="covered"><span class="ln">635</span>                return sprintf(&#039;Options --fail-on-%1$s and --no-fail-on-%1$s are mutually exclusive.&#039;, $issue);</span>
+<span class=""><span class="ln">636</span>            }</span>
+<span class=""><span class="ln">637</span>        }</span>
+<span class=""><span class="ln">638</span></span>
+<span class=""><span class="ln">639</span>        // --fail-on-all-issues turns on every policy the run has, which is</span>
+<span class=""><span class="ln">640</span>        // what the spec means by &quot;all&quot;. A negation still wins: the point of</span>
+<span class=""><span class="ln">641</span>        // pairing it with --no-fail-on-skipped is &quot;everything but that&quot;.</span>
+<span class="covered"><span class="ln">642</span>        if (isset($flags[&#039;--fail-on-all-issues&#039;])) {</span>
+<span class="missed"><span class="ln">643</span>            foreach ($switches as $issue) {</span>
+<span class="missed"><span class="ln">644</span>                if (!isset($flags[&#039;--no-fail-on-&#039; . $issue])) {</span>
+<span class="missed"><span class="ln">645</span>                    $flags[&#039;--fail-on-&#039; . $issue] = true;</span>
+<span class=""><span class="ln">646</span>                }</span>
+<span class=""><span class="ln">647</span>            }</span>
+<span class=""><span class="ln">648</span>        }</span>
+<span class=""><span class="ln">649</span></span>
+<span class="covered"><span class="ln">650</span>        if (isset($flags[&#039;--php-advisory&#039;], $flags[&#039;--no-php-advisory&#039;])) {</span>
+<span class="missed"><span class="ln">651</span>            return &#039;Options --php-advisory and --no-php-advisory are mutually exclusive.&#039;;</span>
+<span class=""><span class="ln">652</span>        }</span>
+<span class=""><span class="ln">653</span></span>
+<span class="covered"><span class="ln">654</span>        if (isset($flags[&#039;--resolve-dependencies&#039;], $flags[&#039;--ignore-dependencies&#039;])) {</span>
+<span class="covered"><span class="ln">655</span>            return &#039;Options --resolve-dependencies and --ignore-dependencies are mutually exclusive.&#039;;</span>
+<span class=""><span class="ln">656</span>        }</span>
+<span class=""><span class="ln">657</span></span>
+<span class="covered"><span class="ln">658</span>        if (isset($values[&#039;--generate-baseline&#039;], $values[&#039;--use-baseline&#039;])) {</span>
+<span class="missed"><span class="ln">659</span>            return &#039;Options --generate-baseline and --use-baseline are mutually exclusive.&#039;;</span>
+<span class=""><span class="ln">660</span>        }</span>
+<span class=""><span class="ln">661</span></span>
+<span class="covered"><span class="ln">662</span>        if (isset($values[&#039;--retries&#039;], $values[&#039;--retry&#039;])) {</span>
+<span class="covered"><span class="ln">663</span>            return &#039;Options --retries and --retry are mutually exclusive.&#039;;</span>
+<span class=""><span class="ln">664</span>        }</span>
+<span class=""><span class="ln">665</span></span>
+<span class=""><span class="ln">666</span>        // Repeating and retrying answer opposite questions — &quot;run it</span>
+<span class=""><span class="ln">667</span>        // again regardless&quot; against &quot;run it again only if it failed&quot; —</span>
+<span class=""><span class="ln">668</span>        // so the spec refuses the pair rather than ordering them.</span>
+<span class="covered"><span class="ln">669</span>        if (isset($values[&#039;--repeat&#039;]) &amp;&amp; (isset($values[&#039;--retries&#039;]) || isset($values[&#039;--retry&#039;]))) {</span>
+<span class="missed"><span class="ln">670</span>            return &#039;Options --repeat and --retries/--retry are mutually exclusive.&#039;;</span>
+<span class=""><span class="ln">671</span>        }</span>
+<span class=""><span class="ln">672</span></span>
+<span class=""><span class="ln">673</span>        // The oracle&#039;s --retry counts *total* attempts (&quot;attempt each test up</span>
+<span class=""><span class="ln">674</span>        // to N times&quot;); Crucible&#039;s --retries counts the extra ones, following</span>
+<span class=""><span class="ln">675</span>        // nextest (D-043), which is also what -&gt;retries() and #[Retry] mean.</span>
+<span class=""><span class="ln">676</span>        // Both spellings stay exact by converting here rather than by moving</span>
+<span class=""><span class="ln">677</span>        // either vocabulary onto the other&#039;s.</span>
+<span class="covered"><span class="ln">678</span>        $retries = match (true) {</span>
+<span class="covered"><span class="ln">679</span>            isset($values[&#039;--retries&#039;]) =&gt; max(0, (int) $values[&#039;--retries&#039;]),</span>
+<span class="covered"><span class="ln">680</span>            isset($values[&#039;--retry&#039;])   =&gt; max(0, (int) $values[&#039;--retry&#039;] - 1),</span>
+<span class="covered"><span class="ln">681</span>            default                     =&gt; null,</span>
+<span class=""><span class="ln">682</span>        };</span>
+<span class=""><span class="ln">683</span></span>
+<span class=""><span class="ln">684</span>        // --display-all-issues is the spec&#039;s &quot;every --display-* at once&quot;,</span>
+<span class=""><span class="ln">685</span>        // resolved here so the command sees one already-answered question</span>
+<span class=""><span class="ln">686</span>        // per kind rather than an &quot;or the all switch&quot; at every use.</span>
+<span class="covered"><span class="ln">687</span>        $displayAll = isset($flags[&#039;--display-all-issues&#039;]);</span>
+<span class=""><span class="ln">688</span></span>
+<span class=""><span class="ln">689</span>        // --columns takes a number or the word &quot;max&quot;, which the spec uses</span>
+<span class=""><span class="ln">690</span>        // for &quot;as wide as the terminal&quot;. Without a terminal to ask, max is</span>
+<span class=""><span class="ln">691</span>        // the widest line worth writing to a pipe.</span>
+<span class="covered"><span class="ln">692</span>        $columns = null;</span>
+<span class=""><span class="ln">693</span></span>
+<span class="covered"><span class="ln">694</span>        if (isset($values[&#039;--columns&#039;])) {</span>
+<span class="missed"><span class="ln">695</span>            if ($values[&#039;--columns&#039;] === &#039;max&#039;) {</span>
+<span class="missed"><span class="ln">696</span>                $columns = 120;</span>
+<span class="missed"><span class="ln">697</span>            } elseif (ctype_digit($values[&#039;--columns&#039;]) &amp;&amp; (int) $values[&#039;--columns&#039;] &gt; 0) {</span>
+<span class="missed"><span class="ln">698</span>                $columns = (int) $values[&#039;--columns&#039;];</span>
+<span class=""><span class="ln">699</span>            } else {</span>
+<span class="missed"><span class="ln">700</span>                return sprintf(&#039;Option --columns expects a positive integer or &quot;max&quot;, got &quot;%s&quot;.&#039;, $values[&#039;--columns&#039;]);</span>
+<span class=""><span class="ln">701</span>            }</span>
+<span class=""><span class="ln">702</span>        }</span>
+<span class=""><span class="ln">703</span></span>
+<span class=""><span class="ln">704</span>        // A single --include-path may carry several entries, separated the</span>
+<span class=""><span class="ln">705</span>        // way PHP itself separates them.</span>
+<span class="covered"><span class="ln">706</span>        $includePaths = [];</span>
+<span class=""><span class="ln">707</span></span>
+<span class="covered"><span class="ln">708</span>        foreach (isset($values[&#039;--include-path&#039;]) ? explode(PATH_SEPARATOR, $values[&#039;--include-path&#039;]) : [] as $path) {</span>
+<span class="covered"><span class="ln">709</span>            if ($path !== &#039;&#039;) {</span>
+<span class="covered"><span class="ln">710</span>                $includePaths[] = $path;</span>
+<span class=""><span class="ln">711</span>            }</span>
+<span class=""><span class="ln">712</span>        }</span>
+<span class=""><span class="ln">713</span></span>
+<span class=""><span class="ln">714</span>        // The listing family is one question — what to print instead of</span>
+<span class=""><span class="ln">715</span>        // running — so it resolves to one value rather than six booleans</span>
+<span class=""><span class="ln">716</span>        // the command would have to re-derive an order for.</span>
+<span class="covered"><span class="ln">717</span>        $list = null;</span>
+<span class=""><span class="ln">718</span></span>
+<span class="covered"><span class="ln">719</span>        foreach ([&#039;tests&#039;, &#039;groups&#039;, &#039;suites&#039;, &#039;test-files&#039;, &#039;test-ids&#039;, &#039;tests-xml&#039;] as $what) {</span>
+<span class="covered"><span class="ln">720</span>            if (isset($flags[&#039;--list-&#039; . $what])) {</span>
+<span class="missed"><span class="ln">721</span>                if ($list !== null) {</span>
+<span class="missed"><span class="ln">722</span>                    return sprintf(&#039;Options --list-%s and --list-%s are mutually exclusive.&#039;, $list, $what);</span>
+<span class=""><span class="ln">723</span>                }</span>
+<span class=""><span class="ln">724</span></span>
+<span class="missed"><span class="ln">725</span>                $list = $what;</span>
+<span class=""><span class="ln">726</span>            }</span>
+<span class=""><span class="ln">727</span>        }</span>
+<span class=""><span class="ln">728</span></span>
+<span class=""><span class="ln">729</span>        // The spec&#039;s --no-coverage suppresses coverage for the whole run, so</span>
+<span class=""><span class="ln">730</span>        // a CI line can append it to a command that already asks for reports.</span>
+<span class=""><span class="ln">731</span>        // --no-logging and --no-extensions are the same shape over the log</span>
+<span class=""><span class="ln">732</span>        // targets and the plugins: a blanket off switch appended to a command</span>
+<span class=""><span class="ln">733</span>        // that already asks for them.</span>
+<span class="covered"><span class="ln">734</span>        $noCoverage   = isset($flags[&#039;--no-coverage&#039;]);</span>
+<span class="covered"><span class="ln">735</span>        $noLogging    = isset($flags[&#039;--no-logging&#039;]);</span>
+<span class="covered"><span class="ln">736</span>        $noExtensions = isset($flags[&#039;--no-extensions&#039;]);</span>
+<span class=""><span class="ln">737</span></span>
+<span class="covered"><span class="ln">738</span>        $cacheResult = null;</span>
+<span class=""><span class="ln">739</span></span>
+<span class="covered"><span class="ln">740</span>        if (isset($flags[&#039;--cache-result&#039;])) {</span>
+<span class="missed"><span class="ln">741</span>            $cacheResult = true;</span>
+<span class="covered"><span class="ln">742</span>        } elseif (isset($flags[&#039;--do-not-cache-result&#039;])) {</span>
+<span class="covered"><span class="ln">743</span>            $cacheResult = false;</span>
+<span class=""><span class="ln">744</span>        }</span>
+<span class=""><span class="ln">745</span></span>
+<span class="covered"><span class="ln">746</span>        return new self(</span>
+<span class="covered"><span class="ln">747</span>            version: isset($flags[&#039;--version&#039;]),</span>
+<span class="covered"><span class="ln">748</span>            help: isset($flags[&#039;--help&#039;]) || isset($flags[&#039;-h&#039;]),</span>
+<span class="covered"><span class="ln">749</span>            init: isset($flags[&#039;--init&#039;]),</span>
+<span class="covered"><span class="ln">750</span>            worker: isset($flags[&#039;--worker&#039;]),</span>
+<span class="covered"><span class="ln">751</span>            migrateConfig: isset($flags[&#039;migrate-config&#039;]),</span>
+<span class="covered"><span class="ln">752</span>            phpstanInit: isset($flags[&#039;phpstan-init&#039;]),</span>
+<span class="covered"><span class="ln">753</span>            lintInline: isset($flags[&#039;lint-inline&#039;]),</span>
+<span class="covered"><span class="ln">754</span>            mutationIndex: isset($flags[&#039;mutation-index&#039;]),</span>
+<span class="covered"><span class="ln">755</span>            mutate: isset($flags[&#039;mutate&#039;]),</span>
+<span class="covered"><span class="ln">756</span>            compatCheck: isset($flags[&#039;compat-check&#039;]),</span>
+<span class="covered"><span class="ln">757</span>            autoFix: isset($flags[&#039;--auto-fix&#039;]),</span>
+<span class="covered"><span class="ln">758</span>            revert: isset($flags[&#039;--revert&#039;]),</span>
+<span class="covered"><span class="ln">759</span>            extensions: isset($flags[&#039;extensions&#039;]),</span>
+<span class="covered"><span class="ln">760</span>            manual: isset($flags[&#039;manual&#039;]),</span>
+<span class="covered"><span class="ln">761</span>            completion: isset($flags[&#039;completion&#039;]),</span>
+<span class=""><span class="ln">762</span>            argument: $commandArgument,</span>
+<span class="covered"><span class="ln">763</span>            preview: isset($flags[&#039;--preview&#039;]),</span>
+<span class="covered"><span class="ln">764</span>            json: isset($flags[&#039;--json&#039;]),</span>
+<span class="covered"><span class="ln">765</span>            key: $values[&#039;--key&#039;] ?? null,</span>
+<span class="covered"><span class="ln">766</span>            out: $values[&#039;--out&#039;] ?? null,</span>
+<span class="covered"><span class="ln">767</span>            view: $values[&#039;--view&#039;] ?? null,</span>
+<span class="covered"><span class="ln">768</span>            configuration: $values[&#039;--configuration&#039;] ?? null,</span>
+<span class="covered"><span class="ln">769</span>            logEventsJson: $noLogging ? null : ($values[&#039;--log-events-json&#039;] ?? null),</span>
+<span class="covered"><span class="ln">770</span>            logJunit: $noLogging ? null : ($values[&#039;--log-junit&#039;] ?? null),</span>
+<span class="covered"><span class="ln">771</span>            logMarkdown: $noLogging ? null : ($values[&#039;--log-markdown&#039;] ?? null),</span>
+<span class="covered"><span class="ln">772</span>            logPdf: $noLogging ? null : ($values[&#039;--log-pdf&#039;] ?? null),</span>
+<span class="covered"><span class="ln">773</span>            orderBy: $values[&#039;--order-by&#039;] ?? null,</span>
+<span class="covered"><span class="ln">774</span>            randomOrderSeed: isset($values[&#039;--random-order-seed&#039;]) ? (int) $values[&#039;--random-order-seed&#039;] : null,</span>
+<span class="covered"><span class="ln">775</span>            parallel: isset($values[&#039;--parallel&#039;]) ? (int) $values[&#039;--parallel&#039;] : null,</span>
+<span class="covered"><span class="ln">776</span>            filter: $values[&#039;--filter&#039;] ?? null,</span>
+<span class="covered"><span class="ln">777</span>            shard: $values[&#039;--shard&#039;] ?? null,</span>
+<span class="covered"><span class="ln">778</span>            cacheDirectory: $values[&#039;--cache-directory&#039;] ?? null,</span>
+<span class="covered"><span class="ln">779</span>            testsuite: $lists[&#039;--testsuite&#039;] ?? null,</span>
+<span class="covered"><span class="ln">780</span>            groups: $lists[&#039;--group&#039;] ?? [],</span>
+<span class="covered"><span class="ln">781</span>            excludeGroups: $lists[&#039;--exclude-group&#039;] ?? [],</span>
+<span class="covered"><span class="ln">782</span>            stopOnDefect: isset($flags[&#039;--stop-on-defect&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">783</span>            stopOnError: isset($flags[&#039;--stop-on-error&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">784</span>            stopOnFailure: isset($flags[&#039;--stop-on-failure&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">785</span>            stopOnRisky: isset($flags[&#039;--stop-on-risky&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">786</span>            stopOnSkipped: isset($flags[&#039;--stop-on-skipped&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">787</span>            stopOnIncomplete: isset($flags[&#039;--stop-on-incomplete&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">788</span>            stopOnDeprecation: isset($flags[&#039;--stop-on-deprecation&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">789</span>            stopOnNotice: isset($flags[&#039;--stop-on-notice&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">790</span>            stopOnWarning: isset($flags[&#039;--stop-on-warning&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">791</span>            failOnDeprecation: self::tristate($flags, &#039;--fail-on-deprecation&#039;, &#039;--no-fail-on-deprecation&#039;),</span>
+<span class="covered"><span class="ln">792</span>            failOnIncomplete: self::tristate($flags, &#039;--fail-on-incomplete&#039;, &#039;--no-fail-on-incomplete&#039;),</span>
+<span class="covered"><span class="ln">793</span>            failOnNotice: self::tristate($flags, &#039;--fail-on-notice&#039;, &#039;--no-fail-on-notice&#039;),</span>
+<span class="covered"><span class="ln">794</span>            failOnRisky: self::tristate($flags, &#039;--fail-on-risky&#039;, &#039;--no-fail-on-risky&#039;),</span>
+<span class="covered"><span class="ln">795</span>            failOnSkipped: self::tristate($flags, &#039;--fail-on-skipped&#039;, &#039;--no-fail-on-skipped&#039;),</span>
+<span class="covered"><span class="ln">796</span>            failOnWarning: self::tristate($flags, &#039;--fail-on-warning&#039;, &#039;--no-fail-on-warning&#039;),</span>
+<span class="covered"><span class="ln">797</span>            failOnDirectDeprecation: self::tristate($flags, &#039;--fail-on-direct&#039;, &#039;--no-fail-on-direct&#039;),</span>
+<span class="covered"><span class="ln">798</span>            failOnIndirectDeprecation: self::tristate($flags, &#039;--fail-on-indirect&#039;, &#039;--no-fail-on-indirect&#039;),</span>
+<span class="covered"><span class="ln">799</span>            failOnSelfDeprecation: self::tristate($flags, &#039;--fail-on-self&#039;, &#039;--no-fail-on-self&#039;),</span>
+<span class="covered"><span class="ln">800</span>            failOnEmptyTestSuite: self::tristate($flags, &#039;--fail-on-empty-test-suite&#039;, &#039;--no-fail-on-empty-test-suite&#039;),</span>
+<span class="covered"><span class="ln">801</span>            backupGlobals: isset($flags[&#039;--globals-backup&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">802</span>            backupStaticProperties: isset($flags[&#039;--static-backup&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">803</span>            strictGlobalState: isset($flags[&#039;--strict-global-state&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">804</span>            requireCoverageMetadata: isset($flags[&#039;--require-coverage&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">805</span>            bootstrap: $values[&#039;--bootstrap&#039;] ?? null,</span>
+<span class="covered"><span class="ln">806</span>            extensionClasses: $noExtensions ? [] : ($lists[&#039;--extension&#039;] ?? []),</span>
+<span class="covered"><span class="ln">807</span>            excludeFilter: $values[&#039;--exclude-filter&#039;] ?? null,</span>
+<span class="covered"><span class="ln">808</span>            testFilesFile: $values[&#039;--test-files-file&#039;] ?? null,</span>
+<span class="covered"><span class="ln">809</span>            testIdFilterFile: $values[&#039;--test-id-filter-file&#039;] ?? null,</span>
+<span class="covered"><span class="ln">810</span>            excludeTestsuite: $lists[&#039;--exclude-testsuite&#039;] ?? [],</span>
+<span class="covered"><span class="ln">811</span>            testSuffixes: $lists[&#039;--test-suffix&#039;] ?? [],</span>
+<span class="covered"><span class="ln">812</span>            covers: $lists[&#039;--covers&#039;] ?? [],</span>
+<span class="covered"><span class="ln">813</span>            uses: $lists[&#039;--uses&#039;] ?? [],</span>
+<span class="covered"><span class="ln">814</span>            requiresPhpExtension: $lists[&#039;--requires-ext&#039;] ?? [],</span>
+<span class="covered"><span class="ln">815</span>            runTestIds: $lists[&#039;--run-test-id&#039;] ?? [],</span>
+<span class=""><span class="ln">816</span>            list: $list,</span>
+<span class=""><span class="ln">817</span>            noExtensions: $noExtensions,</span>
+<span class="covered"><span class="ln">818</span>            noConfiguration: isset($flags[&#039;--no-configuration&#039;]),</span>
+<span class="covered"><span class="ln">819</span>            reportUselessTests: !isset($flags[&#039;--no-useless-test-reports&#039;]),</span>
+<span class="covered"><span class="ln">820</span>            checkVersion: isset($flags[&#039;--check-version&#039;]),</span>
+<span class="covered"><span class="ln">821</span>            atLeastVersion: $values[&#039;--atleast-version&#039;] ?? null,</span>
+<span class=""><span class="ln">822</span>            includePaths: $includePaths,</span>
+<span class="covered"><span class="ln">823</span>            compact: isset($flags[&#039;--compact&#039;]),</span>
+<span class="covered"><span class="ln">824</span>            noProgress: isset($flags[&#039;--no-progress&#039;]) || isset($flags[&#039;--no-output&#039;]),</span>
+<span class="covered"><span class="ln">825</span>            noResults: isset($flags[&#039;--no-results&#039;]) || isset($flags[&#039;--no-output&#039;]),</span>
+<span class="covered"><span class="ln">826</span>            noOutput: isset($flags[&#039;--no-output&#039;]),</span>
+<span class="covered"><span class="ln">827</span>            stderr: isset($flags[&#039;--stderr&#039;]),</span>
+<span class="covered"><span class="ln">828</span>            reverseList: isset($flags[&#039;--reverse-list&#039;]),</span>
+<span class=""><span class="ln">829</span>            columns: $columns,</span>
+<span class="covered"><span class="ln">830</span>            diffContext: isset($values[&#039;--diff-context&#039;]) ? max(0, (int) $values[&#039;--diff-context&#039;]) : null,</span>
+<span class="covered"><span class="ln">831</span>            displayDeprecations: $displayAll || isset($flags[&#039;--display-deprecations&#039;]),</span>
+<span class="covered"><span class="ln">832</span>            displayNotices: $displayAll || isset($flags[&#039;--display-notices&#039;]),</span>
+<span class="covered"><span class="ln">833</span>            displayWarnings: $displayAll || isset($flags[&#039;--display-warnings&#039;]),</span>
+<span class="covered"><span class="ln">834</span>            displayErrors: $displayAll || isset($flags[&#039;--display-errors&#039;]),</span>
+<span class="covered"><span class="ln">835</span>            displaySkipped: $displayAll || isset($flags[&#039;--display-skipped&#039;]),</span>
+<span class="covered"><span class="ln">836</span>            displayIncomplete: $displayAll || isset($flags[&#039;--display-incomplete&#039;]),</span>
+<span class="covered"><span class="ln">837</span>            generateBaseline: $values[&#039;--generate-baseline&#039;] ?? null,</span>
+<span class="covered"><span class="ln">838</span>            useBaseline: $values[&#039;--use-baseline&#039;] ?? null,</span>
+<span class="covered"><span class="ln">839</span>            ignoreBaseline: isset($flags[&#039;--ignore-baseline&#039;]),</span>
+<span class="covered"><span class="ln">840</span>            resolveDependencies: self::tristate($flags, &#039;--resolve-dependencies&#039;, &#039;--ignore-dependencies&#039;),</span>
+<span class="covered"><span class="ln">841</span>            processIsolation: isset($flags[&#039;--process-isolation&#039;]),</span>
+<span class="covered"><span class="ln">842</span>            logEventsText: $noLogging ? null : ($values[&#039;--log-events-text&#039;] ?? null),</span>
+<span class="covered"><span class="ln">843</span>            logEventsVerboseText: $noLogging ? null : ($values[&#039;--log-events-verbose&#039;] ?? null),</span>
+<span class="covered"><span class="ln">844</span>            logTeamcity: $noLogging ? null : ($values[&#039;--log-teamcity&#039;] ?? null),</span>
+<span class=""><span class="ln">845</span>            cacheResult: $cacheResult,</span>
+<span class="covered"><span class="ln">846</span>            logOtr: $noLogging ? null : ($values[&#039;--log-otr&#039;] ?? null),</span>
+<span class="covered"><span class="ln">847</span>            testdoxText: $noLogging ? null : ($values[&#039;--testdox-text&#039;] ?? null),</span>
+<span class="covered"><span class="ln">848</span>            testdoxHtml: $noLogging ? null : ($values[&#039;--testdox-html&#039;] ?? null),</span>
+<span class="covered"><span class="ln">849</span>            testdoxSummary: $noLogging ? null : ($values[&#039;--testdox-summary&#039;] ?? null),</span>
+<span class="covered"><span class="ln">850</span>            testdox: isset($flags[&#039;--testdox&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">851</span>            teamcity: isset($flags[&#039;--teamcity&#039;]) ? true : null,</span>
+<span class=""><span class="ln">852</span>            colors: $colors,</span>
+<span class="covered"><span class="ln">853</span>            updateDeprecationsBaseline: isset($flags[&#039;--update-baseline&#039;]),</span>
+<span class=""><span class="ln">854</span>            changed: $changed,</span>
+<span class="covered"><span class="ln">855</span>            related: $lists[&#039;--related&#039;] ?? [],</span>
+<span class="covered"><span class="ln">856</span>            report: $noLogging ? [] : ($lists[&#039;--report&#039;] ?? []),</span>
+<span class="covered"><span class="ln">857</span>            subscriber: $noLogging ? [] : ($lists[&#039;--subscriber&#039;] ?? []),</span>
+<span class="covered"><span class="ln">858</span>            watch: isset($flags[&#039;--watch&#039;]),</span>
+<span class=""><span class="ln">859</span>            retries: $retries,</span>
+<span class="covered"><span class="ln">860</span>            repeat: isset($values[&#039;--repeat&#039;]) ? max(1, (int) $values[&#039;--repeat&#039;]) : null,</span>
+<span class="covered"><span class="ln">861</span>            checkPhpConfiguration: isset($flags[&#039;--check-php-configuration&#039;]),</span>
+<span class="covered"><span class="ln">862</span>            warnWhenPhpIsNotConfiguredForDevelopment: self::tristate(</span>
+<span class="covered"><span class="ln">863</span>                $flags,</span>
+<span class="covered"><span class="ln">864</span>                &#039;--php-advisory&#039;,</span>
+<span class="covered"><span class="ln">865</span>                &#039;--no-php-advisory&#039;,</span>
+<span class=""><span class="ln">866</span>            ),</span>
+<span class="covered"><span class="ln">867</span>            warmCoverageCache: isset($flags[&#039;--warm-coverage-cache&#039;]),</span>
+<span class="covered"><span class="ln">868</span>            validateConfiguration: isset($flags[&#039;--validate-configuration&#039;]),</span>
+<span class="covered"><span class="ln">869</span>            all: isset($flags[&#039;--all&#039;]),</span>
+<span class="covered"><span class="ln">870</span>            withTelemetry: isset($flags[&#039;--with-telemetry&#039;]),</span>
+<span class="covered"><span class="ln">871</span>            disallowTestOutput: isset($flags[&#039;--disallow-test-output&#039;]),</span>
+<span class="covered"><span class="ln">872</span>            enforceTimeLimit: isset($flags[&#039;--enforce-time-limit&#039;]),</span>
+<span class="covered"><span class="ln">873</span>            defaultTimeLimit: isset($values[&#039;--default-time-limit&#039;]) ? max(0, (int) $values[&#039;--default-time-limit&#039;]) : null,</span>
+<span class="covered"><span class="ln">874</span>            failOnFlaky: isset($flags[&#039;--fail-on-flaky&#039;]) ? true : null,</span>
+<span class="covered"><span class="ln">875</span>            flakes: isset($flags[&#039;flakes&#039;]),</span>
+<span class="covered"><span class="ln">876</span>            rounds: isset($values[&#039;--rounds&#039;]) ? max(0, (int) $values[&#039;--rounds&#039;]) : null,</span>
+<span class="covered"><span class="ln">877</span>            coverage: !$noCoverage &amp;&amp; isset($flags[&#039;--coverage&#039;]),</span>
+<span class="covered"><span class="ln">878</span>            coverageClover: $noCoverage ? null : ($values[&#039;--coverage-clover&#039;] ?? null),</span>
+<span class="covered"><span class="ln">879</span>            coverageBranch: !$noCoverage &amp;&amp; (isset($flags[&#039;--coverage-branch&#039;]) || isset($flags[&#039;--path-coverage&#039;])),</span>
+<span class="covered"><span class="ln">880</span>            pathCoverage: !$noCoverage &amp;&amp; isset($flags[&#039;--path-coverage&#039;]),</span>
+<span class="covered"><span class="ln">881</span>            strictCoverage: !$noCoverage &amp;&amp; isset($flags[&#039;--strict-coverage&#039;]),</span>
+<span class="covered"><span class="ln">882</span>            coverageHtml: $noCoverage ? null : ($values[&#039;--coverage-html&#039;] ?? null),</span>
+<span class="covered"><span class="ln">883</span>            coverageCobertura: $noCoverage ? null : ($values[&#039;--coverage-cobertura&#039;] ?? null),</span>
+<span class="covered"><span class="ln">884</span>            coveragePhp: $noCoverage ? null : ($values[&#039;--coverage-php&#039;] ?? null),</span>
+<span class="covered"><span class="ln">885</span>            coverageOpenClover: $noCoverage ? null : ($values[&#039;--coverage-openclover&#039;] ?? null),</span>
+<span class="covered"><span class="ln">886</span>            coverageCrap4j: $noCoverage ? null : ($values[&#039;--coverage-crap4j&#039;] ?? null),</span>
+<span class="covered"><span class="ln">887</span>            coverageXml: $noCoverage ? null : ($values[&#039;--coverage-xml&#039;] ?? null),</span>
+<span class="covered"><span class="ln">888</span>            coverageText: $noCoverage ? null : $coverageText,</span>
+<span class="covered"><span class="ln">889</span>            minCoverage: isset($values[&#039;--min&#039;]) ? (float) $values[&#039;--min&#039;] : null,</span>
+<span class="covered"><span class="ln">890</span>            reproducible: isset($flags[&#039;--reproducible&#039;]),</span>
+<span class="covered"><span class="ln">891</span>            onlySummaryForCoverageText: isset($flags[&#039;--coverage-text-summary&#039;]),</span>
+<span class="covered"><span class="ln">892</span>            showUncoveredForCoverageText: isset($flags[&#039;--coverage-text-uncovered&#039;]),</span>
+<span class="covered"><span class="ln">893</span>            withoutClassView: isset($flags[&#039;--without-class-view&#039;]),</span>
+<span class="covered"><span class="ln">894</span>            withoutFileView: isset($flags[&#039;--without-file-view&#039;]),</span>
+<span class="covered"><span class="ln">895</span>            excludeSourceFromXmlCoverage: isset($flags[&#039;--coverage-xml-no-source&#039;]),</span>
+<span class="covered"><span class="ln">896</span>            disableCoverageIgnore: isset($flags[&#039;--disable-coverage-ignore&#039;]),</span>
+<span class="covered"><span class="ln">897</span>            disableCoverageTargeting: isset($flags[&#039;--disable-coverage-targeting&#039;]),</span>
+<span class="covered"><span class="ln">898</span>            includeGitInformation: isset($flags[&#039;--include-git-information&#039;]),</span>
+<span class="covered"><span class="ln">899</span>            coverageFilter: $noCoverage ? [] : ($lists[&#039;--coverage-filter&#039;] ?? []),</span>
+<span class="covered"><span class="ln">900</span>            updateSnapshots: isset($flags[&#039;--update-snapshots&#039;]) || isset($flags[&#039;-u&#039;]),</span>
+<span class="covered"><span class="ln">901</span>            todos: isset($flags[&#039;--todos&#039;]),</span>
+<span class="covered"><span class="ln">902</span>            assignee: $values[&#039;--assignee&#039;] ?? null,</span>
+<span class="covered"><span class="ln">903</span>            issue: $values[&#039;--issue&#039;] ?? null,</span>
+<span class="covered"><span class="ln">904</span>            noWip: isset($flags[&#039;--no-wip&#039;]),</span>
+<span class="covered"><span class="ln">905</span>            browser: $values[&#039;--browser&#039;] ?? null,</span>
+<span class="covered"><span class="ln">906</span>            debug: isset($flags[&#039;--debug&#039;]),</span>
+<span class="covered"><span class="ln">907</span>            profile: isset($flags[&#039;--profile&#039;]),</span>
+<span class="covered"><span class="ln">908</span>            dirty: isset($flags[&#039;--dirty&#039;]),</span>
+<span class=""><span class="ln">909</span>        );</span>
+<span class=""><span class="ln">910</span>    }</span>
+<span class=""><span class="ln">911</span>}</span>
+<span class=""><span class="ln">912</span></span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,93 @@
+{
+    "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+    "version": "2.1.0",
+    "runs": [
+        {
+            "tool": {
+                "driver": {
+                    "name": "crucible",
+                    "informationUri": "https://github.com/cruciblephp/crucible",
+                    "version": "1.1.0",
+                    "rules": [
+                        {
+                            "id": "test-failed",
+                            "name": "TestFailed",
+                            "shortDescription": {
+                                "text": "An assertion did not hold."
+                            }
+                        },
+                        {
+                            "id": "test-errored",
+                            "name": "TestErrored",
+                            "shortDescription": {
+                                "text": "The test threw or triggered a fatal error."
+                            }
+                        },
+                        {
+                            "id": "test-skipped",
+                            "name": "TestSkipped",
+                            "shortDescription": {
+                                "text": "The test was skipped."
+                            }
+                        },
+                        {
+                            "id": "test-incomplete",
+                            "name": "TestIncomplete",
+                            "shortDescription": {
+                                "text": "The test is marked incomplete."
+                            }
+                        },
+                        {
+                            "id": "test-risky",
+                            "name": "TestRisky",
+                            "shortDescription": {
+                                "text": "The test passed but is considered risky."
+                            }
+                        }
+                    ]
+                }
+            },
+            "invocations": [
+                {
+                    "executionSuccessful": true,
+                    "startTimeUtc": "2026-09-26T17:44:09.348Z",
+                    "endTimeUtc": "2026-09-26T17:45:50.371Z"
+                }
+            ],
+            "results": [
+                {
+                    "ruleId": "test-skipped",
+                    "level": "note",
+                    "message": {
+                        "text": "phpcpd-next is installed, so its absence cannot be observed."
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "tests/unit/Extension/AssertNoDuplicationTest.php"
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
+                    "ruleId": "test-skipped",
+                    "level": "note",
+                    "message": {
+                        "text": "phpcpd-next is installed, so its absence cannot be observed."
+                    },
+                    "locations": [
+                        {
+                            "physicalLocation": {
+                                "artifactLocation": {
+                                    "uri": "tests/unit/Extension/DuplicationCheckTest.php"
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
