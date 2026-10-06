@@ -316,6 +316,9 @@
     padding-left: 1.125rem; margin-left: 0.125rem;
     border-left: 1px solid var(--border);
   }
+  /* In the hamburger only: the full row has no room for them. */
+  .nav .links a.link--menu-only { display: none; }
+  .nav.is-compact .links a.link--menu-only { display: inline-flex; }
   /* .links-external-toolbar (index.html): the standalone duplicate of the
      block above, shown in the toolbar itself instead of inside #nav-links
      — see the HTML comment next to it for why it exists. A fully separate
@@ -424,6 +427,7 @@
          zero height. Same fix as .nav's own border-bottom above: keep the
          line, just make it invisible until there's something to divide. */
       border: 1px solid transparent; border-top: none;
+      background-clip: padding-box;
       border-radius: 0 0 var(--radius) var(--radius);
       transition: max-height var(--duration-moderate) var(--ease-out-expo),
                   border-color var(--duration-fast) var(--ease-out-expo);
@@ -454,6 +458,7 @@
       display: flex; flex-direction: column; align-items: stretch; gap: 0;
       padding-left: 0; margin-left: 0; border-left: none;
     }
+    .nav .links a.link--menu-only { display: inline-flex; }
   }
 
   /* Same compact layout as the media query above, applied via a class
@@ -505,6 +510,7 @@
        real color here renders as a thin flat line under the nav even while
        "closed". */
     border: 1px solid transparent; border-top: none;
+    background-clip: padding-box;
     border-radius: 0 0 var(--radius) var(--radius);
     transition: max-height var(--duration-moderate) var(--ease-out-expo),
                 border-color var(--duration-fast) var(--ease-out-expo);

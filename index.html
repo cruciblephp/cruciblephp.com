@@ -30,27 +30,27 @@ try {
 } catch (e) {}
 </script>
 <meta name="color-scheme" content="light dark" />
-<title>Crucible PHP — PHPUnit-compatible test framework for PHP 8.3+</title>
+<title>Crucible PHP — test framework for PHP 8.3+</title>
 <meta name="author" content="Luciano Federico Pereira" />
-<meta name="description" content="Independent PHP 8.3+ test framework that runs PHPUnit and Pest suites unchanged: typed PHP config instead of XML, parallel runs, coverage and mutation testing." />
+<meta name="description" content="Independent PHP 8.3+ test framework that runs your test suite unchanged — Pest files and PHPUnit classes in one run — with typed PHP config instead of XML, parallel runs, coverage and mutation testing." />
 <link rel="canonical" href="https://www.cruciblephp.com/" />
 <meta name="robots" content="index, follow" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Crucible PHP" />
 <meta property="og:locale" content="en_US" />
 <meta property="og:url" content="https://www.cruciblephp.com/" />
-<meta property="og:title" content="Crucible PHP — PHPUnit-compatible test framework for PHP 8.3+" />
-<meta property="og:description" content="Runs PHPUnit and Pest suites unchanged, with typed PHP config instead of XML, parallel runs, coverage and mutation testing." />
+<meta property="og:title" content="Crucible PHP — test framework for PHP 8.3+" />
+<meta property="og:description" content="Runs your test suite unchanged — Pest files and PHPUnit classes in one run — with typed PHP config instead of XML, parallel runs, coverage and mutation testing." />
 <meta property="og:image" content="https://www.cruciblephp.com/assets/og-image.png" />
 <meta property="og:image:type" content="image/png" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
-<meta property="og:image:alt" content="Crucible PHP: an independent, XML-free test framework for PHP 8.3+, drop-in compatible with PHPUnit suites." />
+<meta property="og:image:alt" content="Crucible PHP: an independent, XML-free test framework for PHP 8.3+ that runs your test suite as it is." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:image" content="https://www.cruciblephp.com/assets/og-image.png" />
-<meta name="twitter:image:alt" content="Crucible PHP: an independent, XML-free test framework for PHP 8.3+, drop-in compatible with PHPUnit suites." />
-<meta name="twitter:title" content="Crucible PHP — PHPUnit-compatible test framework for PHP 8.3+" />
-<meta name="twitter:description" content="Runs PHPUnit and Pest suites unchanged, with typed PHP config instead of XML, parallel runs, coverage and mutation testing." />
+<meta name="twitter:image:alt" content="Crucible PHP: an independent, XML-free test framework for PHP 8.3+ that runs your test suite as it is." />
+<meta name="twitter:title" content="Crucible PHP — test framework for PHP 8.3+" />
+<meta name="twitter:description" content="Runs your test suite unchanged — Pest files and PHPUnit classes in one run — with typed PHP config instead of XML, parallel runs, coverage and mutation testing." />
 <!-- What search engines read as the software itself: its name, category,
      requirement, price and where to get it. Kept to facts that do not
      change per release, so it never states a stale version. -->
@@ -62,7 +62,7 @@ try {
   "alternateName": "Crucible",
   "url": "https://www.cruciblephp.com/",
   "image": "https://www.cruciblephp.com/assets/og-image.png",
-  "description": "An independent test framework for PHP 8.3+ that runs PHPUnit and Pest suites unchanged, configured in typed PHP instead of XML.",
+  "description": "An independent test framework for PHP 8.3+ that runs your test suite unchanged — Pest files and PHPUnit classes in one run — configured in typed PHP instead of XML.",
   "applicationCategory": "DeveloperApplication",
   "applicationSubCategory": "Test framework",
   "operatingSystem": "Linux, macOS, Windows",
@@ -329,8 +329,8 @@ try {
       <a class="link" href="#faq">FAQ</a>
       <div class="links-external">
         <a class="link link--external i18n" href="docs.html"><span data-i18n-default>Docs</span><span data-locale="es" class="notranslate">Documentación</span><span data-locale="it" class="notranslate">Documentazione</span><svg class="link-external-icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
-        <a class="link link--external i18n" href="changelog.html"><span data-i18n-default>Changelog</span><span data-locale="es" class="notranslate">Cambios</span><span data-locale="it" class="notranslate">Modifiche</span><svg class="link-external-icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
-        <a class="link link--external i18n" href="reports/latest/index.html"><span data-i18n-default>Reports</span><span data-locale="es" class="notranslate">Informes</span><span data-locale="it" class="notranslate">Report</span><svg class="link-external-icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
+        <a class="link link--external link--menu-only i18n" href="changelog.html"><span data-i18n-default>Changelog</span><span data-locale="es" class="notranslate">Cambios</span><span data-locale="it" class="notranslate">Modifiche</span><svg class="link-external-icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
+        <a class="link link--external link--menu-only i18n" href="reports/latest/index.html"><span data-i18n-default>Reports</span><span data-locale="es" class="notranslate">Informes</span><span data-locale="it" class="notranslate">Report</span><svg class="link-external-icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
         <a class="link link--external notranslate" href="https://github.com/cruciblephp/crucible" target="_blank" rel="noopener">GitHub<svg class="link-external-icon" aria-hidden="true"><use href="#icon-external"/></svg></a>
       </div>
     </div>
@@ -388,17 +388,16 @@ try {
         <div class="logo"><svg class="logo-mark" aria-hidden="true"><use href="#icon-crucible"/></svg></div>
         <h1 class="notranslate">Crucible PHP</h1>
         <p class="tagline i18n">
-          <span data-i18n-default>An independent, XML-free test framework for PHP 8.3+ — drop-in compatible
-          with PHPUnit suites, engineered like the best runners of other ecosystems.</span>
-          <span data-locale="es" class="notranslate">Un framework de pruebas independiente y sin XML para PHP 8.3+ — compatible
-          sin cambios con suites de PHPUnit, diseñado como los mejores runners de otros ecosistemas.</span>
-          <span data-locale="it" class="notranslate">Un framework di test indipendente e senza XML per PHP 8.3+ — compatibile
-          senza modifiche con le suite PHPUnit, progettato come i migliori runner di altri ecosistemi.</span>
+          <span data-i18n-default>An independent, XML-free test framework for PHP 8.3+ — runs your test suite
+          as it is, engineered like the best runners of other ecosystems.</span>
+          <span data-locale="es" class="notranslate">Un framework de pruebas independiente y sin XML para PHP 8.3+ — ejecuta tu suite
+          de pruebas tal como está, diseñado como los mejores runners de otros ecosistemas.</span>
+          <span data-locale="it" class="notranslate">Un framework di test indipendente e senza XML per PHP 8.3+ — esegue la tua suite
+          di test così com'è, progettato come i migliori runner di altri ecosistemi.</span>
         </p>
         <div class="badges notranslate">
           <span class="badge">PHP 8.3+</span>
           <span class="badge">0 Composer deps</span>
-          <span class="badge">PHPUnit-compatible</span>
           <span class="badge">code: MIT</span>
         </div>
         <div class="cta">
@@ -420,7 +419,7 @@ try {
 <section id="compare">
   <div class="wrap">
     <div class="eyebrow reveal i18n"><span data-i18n-default>Drop-in</span><span data-locale="es" class="notranslate">Reemplazo directo</span><span data-locale="it" class="notranslate">Sostituto diretto</span></div>
-    <h2 class="reveal i18n"><span data-i18n-default>Your PHPUnit suite, unchanged</span><span data-locale="es" class="notranslate">Tu suite de PHPUnit, sin cambios</span><span data-locale="it" class="notranslate">La tua suite PHPUnit, senza modifiche</span></h2>
+    <h2 class="reveal i18n"><span data-i18n-default>Your test suite, unchanged</span><span data-locale="es" class="notranslate">Tu suite de pruebas, sin cambios</span><span data-locale="it" class="notranslate">La tua suite di test, senza modifiche</span></h2>
     <p class="section-lead reveal i18n">
       <span data-i18n-default>A real Laravel 13 application runs green — factories, <code class="inline">RefreshDatabase</code>,
       Laravel's own constraints, mocks, <code class="inline">--parallel</code> — with the
@@ -574,22 +573,6 @@ OK</pre>
 
     <div class="variant reveal">
       <div class="head">
-        <span class="name notranslate">PHPUnit</span>
-        <span class="desc i18n"><span data-i18n-default>The drop-in one — a suite written for PHPUnit runs unchanged</span><span data-locale="es" class="notranslate">El de reemplazo directo — una suite escrita para PHPUnit se ejecuta sin cambios</span><span data-locale="it" class="notranslate">Quello diretto — una suite scritta per PHPUnit gira senza modifiche</span></span>
-      </div>
-      <div class="body">
-<pre class="notranslate">final class CalculatorTest extends TestCase
-{
-    public function testAddsTwoNumbers(): void
-    {
-        $this-&gt;assertSame(4, 2 + 2);
-    }
-}</pre>
-      </div>
-    </div>
-
-    <div class="variant reveal">
-      <div class="head">
         <span class="name notranslate">Pest</span>
         <span class="desc i18n"><span data-i18n-default>The expressive one — <code class="inline">*.pest.php</code> files run natively</span><span data-locale="es" class="notranslate">El expresivo — los archivos <code class="inline">*.pest.php</code> se ejecutan de forma nativa</span><span data-locale="it" class="notranslate">Quello espressivo — i file <code class="inline">*.pest.php</code> girano in modo nativo</span></span>
       </div>
@@ -607,6 +590,22 @@ describe('expectations', function (): void {
         expect('crucible')-&gt;toBeString()-&gt;toHaveLength(8)-&gt;toStartWith('cru');
     });
 });</pre>
+      </div>
+    </div>
+
+    <div class="variant reveal">
+      <div class="head">
+        <span class="name notranslate">PHPUnit</span>
+        <span class="desc i18n"><span data-i18n-default>The classic one — test classes written for PHPUnit run unchanged</span><span data-locale="es" class="notranslate">El clásico — las clases de prueba escritas para PHPUnit se ejecutan sin cambios</span><span data-locale="it" class="notranslate">Quello classico — le classi di test scritte per PHPUnit girano senza modifiche</span></span>
+      </div>
+      <div class="body">
+<pre class="notranslate">final class CalculatorTest extends TestCase
+{
+    public function testAddsTwoNumbers(): void
+    {
+        $this-&gt;assertSame(4, 2 + 2);
+    }
+}</pre>
       </div>
     </div>
 
@@ -631,12 +630,12 @@ describe('expectations', function (): void {
     <div class="carousel-viewport reveal">
       <div class="carousel" id="use-case-carousel" role="region" aria-label="Use cases, scrollable" tabindex="0">
         <div class="carousel-card">
-          <div class="cc-eyebrow i18n"><span data-i18n-default>Laravel applications</span><span data-locale="es" class="notranslate">Aplicaciones Laravel</span><span data-locale="it" class="notranslate">Applicazioni Laravel</span></div>
-          <p class="i18n"><span data-i18n-default>Factories, <code class="inline">RefreshDatabase</code>, mocks and <code class="inline">--parallel</code>, green on a real Laravel 13 app.</span><span data-locale="es" class="notranslate">Factories, <code class="inline">RefreshDatabase</code>, mocks y <code class="inline">--parallel</code>, en verde sobre una app Laravel 13 real.</span><span data-locale="it" class="notranslate">Factory, <code class="inline">RefreshDatabase</code>, mock e <code class="inline">--parallel</code>, in verde su una vera app Laravel 13.</span></p>
-        </div>
-        <div class="carousel-card">
           <div class="cc-eyebrow i18n"><span data-i18n-default>Pest projects</span><span data-locale="es" class="notranslate">Proyectos Pest</span><span data-locale="it" class="notranslate">Progetti Pest</span></div>
           <p class="i18n"><span data-i18n-default><code class="inline">*.pest.php</code> runs natively, beside PHPUnit classes in the same run.</span><span data-locale="es" class="notranslate"><code class="inline">*.pest.php</code> se ejecuta de forma nativa, junto a clases de PHPUnit en la misma ejecución.</span><span data-locale="it" class="notranslate"><code class="inline">*.pest.php</code> gira in modo nativo, accanto alle classi PHPUnit nella stessa esecuzione.</span></p>
+        </div>
+        <div class="carousel-card">
+          <div class="cc-eyebrow i18n"><span data-i18n-default>Laravel applications</span><span data-locale="es" class="notranslate">Aplicaciones Laravel</span><span data-locale="it" class="notranslate">Applicazioni Laravel</span></div>
+          <p class="i18n"><span data-i18n-default>Factories, <code class="inline">RefreshDatabase</code>, mocks and <code class="inline">--parallel</code>, green on a real Laravel 13 app.</span><span data-locale="es" class="notranslate">Factories, <code class="inline">RefreshDatabase</code>, mocks y <code class="inline">--parallel</code>, en verde sobre una app Laravel 13 real.</span><span data-locale="it" class="notranslate">Factory, <code class="inline">RefreshDatabase</code>, mock e <code class="inline">--parallel</code>, in verde su una vera app Laravel 13.</span></p>
         </div>
         <div class="carousel-card">
           <div class="cc-eyebrow i18n"><span data-i18n-default>PHP and JavaScript</span><span data-locale="es" class="notranslate">PHP y JavaScript</span><span data-locale="it" class="notranslate">PHP e JavaScript</span></div>
@@ -669,7 +668,7 @@ describe('expectations', function (): void {
 
 <section id="how">
   <div class="wrap">
-    <div class="eyebrow reveal i18n"><span data-i18n-default>Migrating from PHPUnit</span><span data-locale="es" class="notranslate">Migrar desde PHPUnit</span><span data-locale="it" class="notranslate">Migrare da PHPUnit</span></div>
+    <div class="eyebrow reveal i18n"><span data-i18n-default>Switching runners</span><span data-locale="es" class="notranslate">Cambiar de runner</span><span data-locale="it" class="notranslate">Cambiare runner</span></div>
     <h2 class="reveal i18n"><span data-i18n-default>How it works</span><span data-locale="es" class="notranslate">Cómo funciona</span><span data-locale="it" class="notranslate">Come funziona</span></h2>
     <p class="section-lead reveal i18n"><span data-i18n-default>Four steps, and the last one is a removal.</span><span data-locale="es" class="notranslate">Cuatro pasos, y el último es quitar algo.</span><span data-locale="it" class="notranslate">Quattro passaggi, e l'ultimo è togliere qualcosa.</span></p>
     <div class="steps">
@@ -814,7 +813,7 @@ return Crucible::configure()
         </button>
         <div class="accordion-panel-wrap" id="faq-1">
           <div class="accordion-panel-inner">
-            <p class="accordion-panel i18n"><span data-i18n-default>No. A suite written for PHPUnit runs unchanged. With the compatibility aliases enabled, <code class="inline">PHPUnit\Framework\*</code> resolves too — which is what makes an existing suite run with <code class="inline">composer remove phpunit/phpunit</code> as the only change.</span><span data-locale="es" class="notranslate">No. Una suite escrita para PHPUnit se ejecuta sin cambios. Con los alias de compatibilidad activados, <code class="inline">PHPUnit\Framework\*</code> también se resuelve — que es lo que permite ejecutar una suite existente con <code class="inline">composer remove phpunit/phpunit</code> como único cambio.</span><span data-locale="it" class="notranslate">No. Una suite scritta per PHPUnit gira senza modifiche. Con gli alias di compatibilità attivi, anche <code class="inline">PHPUnit\Framework\*</code> si risolve — ed è questo che permette a una suite esistente di girare con <code class="inline">composer remove phpunit/phpunit</code> come unica modifica.</span></p>
+            <p class="accordion-panel i18n"><span data-i18n-default>No. The tests stay as they are, whether written for Pest or for PHPUnit. With the compatibility aliases enabled, <code class="inline">PHPUnit\Framework\*</code> resolves too — which is what makes an existing suite run with <code class="inline">composer remove phpunit/phpunit</code> as the only change.</span><span data-locale="es" class="notranslate">No. Las pruebas se quedan como están, escritas para Pest o para PHPUnit. Con los alias de compatibilidad activados, <code class="inline">PHPUnit\Framework\*</code> también se resuelve — que es lo que permite ejecutar una suite existente con <code class="inline">composer remove phpunit/phpunit</code> como único cambio.</span><span data-locale="it" class="notranslate">No. I test restano come sono, scritti per Pest o per PHPUnit. Con gli alias di compatibilità attivi, anche <code class="inline">PHPUnit\Framework\*</code> si risolve — ed è questo che permette a una suite esistente di girare con <code class="inline">composer remove phpunit/phpunit</code> come unica modifica.</span></p>
           </div>
         </div>
       </div>
@@ -888,7 +887,7 @@ return Crucible::configure()
       <a class="i18n" href="docs.html"><span data-i18n-default>Docs</span><span data-locale="es" class="notranslate">Documentación</span><span data-locale="it" class="notranslate">Documentazione</span></a><span class="no-print"> ·</span>
       <a class="i18n" href="changelog.html"><span data-i18n-default>Changelog</span><span data-locale="es" class="notranslate">Cambios</span><span data-locale="it" class="notranslate">Modifiche</span></a><span class="no-print"> ·</span>
       <a class="i18n" href="reports/latest/index.html"><span data-i18n-default>Reports</span><span data-locale="es" class="notranslate">Informes</span><span data-locale="it" class="notranslate">Report</span></a><span class="no-print"> ·</span>
-      <a class="i18n" href="https://ko-fi.com/lucianofedericopereira"><span data-i18n-default>Support</span><span data-locale="es" class="notranslate">Apoyar</span><span data-locale="it" class="notranslate">Sostieni</span></a><span class="no-print"> ·</span>
+      <a class="i18n" href="https://opencollective.com/crucible-free-software"><span data-i18n-default>Support</span><span data-locale="es" class="notranslate">Apoyar</span><span data-locale="it" class="notranslate">Sostieni</span></a><span class="no-print"> ·</span>
       <a class="i18n" href="https://github.com/cruciblephp/crucible/blob/main/LICENSE"><span data-i18n-default>License</span><span data-locale="es" class="notranslate">Licencia</span><span data-locale="it" class="notranslate">Licenza</span></a>
     </p>
     <!-- Not "MIT" alone, as treegen2's footer says: LICENSE reserves the
