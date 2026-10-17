@@ -635,7 +635,7 @@ describe('expectations', function (): void {
         </div>
         <div class="carousel-card">
           <div class="cc-eyebrow i18n"><span data-i18n-default>Laravel applications</span><span data-locale="es" class="notranslate">Aplicaciones Laravel</span><span data-locale="it" class="notranslate">Applicazioni Laravel</span></div>
-          <p class="i18n"><span data-i18n-default>Factories, <code class="inline">RefreshDatabase</code>, mocks and <code class="inline">--parallel</code>, green on a real Laravel 13 app.</span><span data-locale="es" class="notranslate">Factories, <code class="inline">RefreshDatabase</code>, mocks y <code class="inline">--parallel</code>, en verde sobre una app Laravel 13 real.</span><span data-locale="it" class="notranslate">Factory, <code class="inline">RefreshDatabase</code>, mock e <code class="inline">--parallel</code>, in verde su una vera app Laravel 13.</span></p>
+          <p class="i18n"><span data-i18n-default>Factories, <code class="inline">RefreshDatabase</code>, mocks and <code class="inline">--parallel</code>, green on a real Laravel 13 app. On a stock Laravel + Pest project, plugin included, <code class="inline">compat-check</code> reports no drift.</span><span data-locale="es" class="notranslate">Factories, <code class="inline">RefreshDatabase</code>, mocks y <code class="inline">--parallel</code>, en verde sobre una app Laravel 13 real. En un proyecto Laravel + Pest recién creado, con su plugin, <code class="inline">compat-check</code> no encuentra diferencias.</span><span data-locale="it" class="notranslate">Factory, <code class="inline">RefreshDatabase</code>, mock e <code class="inline">--parallel</code>, in verde su una vera app Laravel 13. Su un progetto Laravel + Pest appena creato, plugin incluso, <code class="inline">compat-check</code> non trova differenze.</span></p>
         </div>
         <div class="carousel-card">
           <div class="cc-eyebrow i18n"><span data-i18n-default>PHP and JavaScript</span><span data-locale="es" class="notranslate">PHP y JavaScript</span><span data-locale="it" class="notranslate">PHP e JavaScript</span></div>
@@ -696,15 +696,15 @@ describe('expectations', function (): void {
     <div class="callout reveal i18n">
       <span data-i18n-default><strong>Step 3 not green?</strong> Run <code class="inline">crucible compat-check</code> before digging in by hand.
       While the incumbent is still installed, it runs your real suite through both engines and reports every test that
-      passes on the incumbent but fails on Crucible, with why. <code class="inline">--auto-fix</code> rewrites the shapes it
+      passes on the incumbent but fails on Crucible, with Crucible's own failure message for each. If Crucible could not build the suite at all, it shows the error that stopped it. <code class="inline">--auto-fix</code> rewrites the shapes it
       recognizes; <code class="inline">--revert</code> undoes anything it changed.</span>
       <span data-locale="es" class="notranslate"><strong>¿El paso 3 no está en verde?</strong> Ejecuta <code class="inline">crucible compat-check</code> antes de investigar a mano.
       Mientras el titular siga instalado, pasa tu suite real por ambos motores e informa de cada prueba que
-      pasa con el titular pero falla con Crucible, y por qué. <code class="inline">--auto-fix</code> reescribe las formas que
+      pasa con el titular pero falla con Crucible, con el propio mensaje de error de Crucible para cada una. Si Crucible no pudo construir la suite, muestra el error que lo detuvo. <code class="inline">--auto-fix</code> reescribe las formas que
       reconoce; <code class="inline">--revert</code> deshace todo lo que cambió.</span>
       <span data-locale="it" class="notranslate"><strong>Il passaggio 3 non è verde?</strong> Esegui <code class="inline">crucible compat-check</code> prima di indagare a mano.
       Finché l'incumbent è ancora installato, fa girare la tua suite reale su entrambi i motori e segnala ogni test che
-      passa con l'incumbent ma fallisce con Crucible, e perché. <code class="inline">--auto-fix</code> riscrive le forme che
+      passa con l'incumbent ma fallisce con Crucible, con il messaggio di errore di Crucible per ciascuno. Se Crucible non è riuscito a costruire la suite, mostra l'errore che l'ha fermato. <code class="inline">--auto-fix</code> riscrive le forme che
       riconosce; <code class="inline">--revert</code> annulla tutto ciò che ha cambiato.</span>
     </div>
   </div>
@@ -727,8 +727,7 @@ return Crucible::configure()
     -&gt;bootstrap('vendor/autoload.php')
     -&gt;testSuite('unit', 'tests/Unit')
     -&gt;testSuite('feature', 'tests/Feature')
-    -&gt;source(include: ['src'])
-    -&gt;build();</pre>
+    -&gt;source(include: ['src']);</pre>
     <p class="section-lead reveal i18n" style="margin-top:24px">
       <span data-i18n-default>Already have a <code class="inline">phpunit.xml</code>? <code class="inline">./vendor/bin/crucible migrate-config</code> converts it,
       and tells you about anything it could not translate rather than dropping it silently. Then read the whole manual, in the terminal:</span>
@@ -835,7 +834,7 @@ return Crucible::configure()
         </button>
         <div class="accordion-panel-wrap" id="faq-3">
           <div class="accordion-panel-inner">
-            <p class="accordion-panel i18n"><span data-i18n-default>Not by default: Crucible refuses rather than fight Pest for the same global functions, because PHP cannot redeclare one. Crucible ships a prelude that stops Composer loading Pest's two function files — with it, and <code class="inline">-&gt;phpunitCompatibility()</code>, both can be installed at once, which is what <code class="inline">compat-check</code> needs.</span><span data-locale="es" class="notranslate">No por defecto: Crucible se niega en lugar de disputarle a Pest las mismas funciones globales, porque PHP no puede redeclarar una. Crucible incluye un preludio que evita que Composer cargue los dos archivos de funciones de Pest — con él, y <code class="inline">-&gt;phpunitCompatibility()</code>, ambos pueden estar instalados a la vez, que es lo que necesita <code class="inline">compat-check</code>.</span><span data-locale="it" class="notranslate">Non di default: Crucible si rifiuta invece di contendere a Pest le stesse funzioni globali, perché PHP non può ridichiararne una. Crucible include un preludio che impedisce a Composer di caricare i due file di funzioni di Pest — con quello, e <code class="inline">-&gt;phpunitCompatibility()</code>, entrambi possono essere installati insieme, ed è ciò che serve a <code class="inline">compat-check</code>.</span></p>
+            <p class="accordion-panel i18n"><span data-i18n-default>Not by default: Crucible refuses rather than fight Pest for the same global functions, because PHP cannot redeclare one. Crucible ships a prelude that stops Composer loading Pest's two function files — with it, and <code class="inline">-&gt;phpunitCompatibility()</code>, both can be installed at once, which is what <code class="inline">compat-check</code> needs. Since 1.1.5 the prelude also defines Crucible's own functions first, so a plugin that extends <code class="inline">expect()</code> while it loads, such as <code class="inline">pest-plugin-laravel</code>, works, and so do its helpers like <code class="inline">get()</code> and <code class="inline">actingAs()</code>.</span><span data-locale="es" class="notranslate">No por defecto: Crucible se niega en lugar de disputarle a Pest las mismas funciones globales, porque PHP no puede redeclarar una. Crucible incluye un preludio que evita que Composer cargue los dos archivos de funciones de Pest — con él, y <code class="inline">-&gt;phpunitCompatibility()</code>, ambos pueden estar instalados a la vez, que es lo que necesita <code class="inline">compat-check</code>. Desde la 1.1.5 el preludio también define primero las funciones propias de Crucible, así que un plugin que extiende <code class="inline">expect()</code> al cargarse, como <code class="inline">pest-plugin-laravel</code>, funciona, y también sus helpers como <code class="inline">get()</code> y <code class="inline">actingAs()</code>.</span><span data-locale="it" class="notranslate">Non di default: Crucible si rifiuta invece di contendere a Pest le stesse funzioni globali, perché PHP non può ridichiararne una. Crucible include un preludio che impedisce a Composer di caricare i due file di funzioni di Pest — con quello, e <code class="inline">-&gt;phpunitCompatibility()</code>, entrambi possono essere installati insieme, ed è ciò che serve a <code class="inline">compat-check</code>. Dalla 1.1.5 il preludio definisce anche, per prime, le funzioni di Crucible, quindi un plugin che estende <code class="inline">expect()</code> mentre si carica, come <code class="inline">pest-plugin-laravel</code>, funziona, e così i suoi helper come <code class="inline">get()</code> e <code class="inline">actingAs()</code>.</span></p>
           </div>
         </div>
       </div>

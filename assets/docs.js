@@ -47,6 +47,7 @@
     { name: 'RELEASE', label: 'Released' },
     { name: 'ORACLES', label: 'Oracles' },
     { name: 'DESIGN', label: 'Design record' },
+    { name: 'RESEARCH', label: 'Research' },
   ];
 
   /** GitHub's slug rule, closely enough that every in-file `#anchor` in these documents resolves. */
