@@ -38,7 +38,7 @@ const TYPES = {
 // The documents docs.js lists, in its order. Kept here rather than parsed out
 // of the script: if the two ever disagree, a document the site links to is
 // one this check never loaded, and the check says so below.
-const DOCS = ['MANUAL', 'HELP', 'examples/README', 'RELEASE', 'ORACLES', 'DESIGN'];
+const DOCS = ['MANUAL', 'HELP', 'examples/README', 'RELEASE', 'ORACLES', 'DESIGN', 'RESEARCH'];
 const PAGES = ['index.html', 'changelog.html', ...DOCS.map((doc) => `docs.html#/${doc}`)];
 
 // Hosts the page may reach that are not this site. Google Translate loads

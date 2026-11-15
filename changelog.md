@@ -2,6 +2,13 @@
 
 Every release, as it ships. RELEASE.md is the full record of what shipped, each entry traced to its decision record.
 
+## v1.3.0 — 2026-11-15
+
+- Added a file and line to every problem in the console, TestDox, Markdown and PDF reports: an assertion names the line in the test file, and an error names the line where it was thrown
+- Added named coverage targets: `--coverage-target Name=path` on the command line and `->coverageTarget('Name', 'path', min: 100)` in `crucible.php`
+- Added `--coverage-min` (alias `--mins`): a named target's own floor, written `Name:pct`, `Name1,Name2:pct`, or `@file` for one floor per line
+- Changed a run with named targets to judge each target on its own slice, so a passing pooled total cannot hide a module under its floor; a target's own floor wins over `--coverage-min`, which wins over `--min`
+
 ## v1.2.0 — 2026-10-26
 
 - Fixed a mutant in a `match` arm escaping although a test kills it: coverage marks an arm's line unrun whenever another arm matched, so the mutant now runs the tests of every line of its `match`
@@ -64,7 +71,6 @@ Every release, as it ships. RELEASE.md is the full record of what shipped, each 
 - Fixed a global `afterEach` from `Pest.php` running after the file's own: it runs before it, as Pest does
 - Fixed `->in(__DIR__)` in `Pest.php` matching nothing, so its class, traits, groups and hooks were silently dropped: an absolute path selects the files beneath it, as Pest does
 
-
 ## v1.1.6 — 2026-10-20
 
 - Fixed a constraint's additional failure description being joined to the failure sentence: it now starts a line of its own, as PHPUnit writes it (Hallmark cross-check)
@@ -107,6 +113,7 @@ Every release, as it ships. RELEASE.md is the full record of what shipped, each 
 - Added `TestCase::expectExceptionObject()`, which sets the class, message and code of one exception object as three expectations, as under PHPUnit
 - Fixed `expectNotToPerformAssertions()` still reporting the test risky: the runner now reads the declaration, in the PHPUnit and Pest dialects, and it does not carry into the next test
 - Fixed `composer dump-autoload --strict-psr` failing on a repository checkout: one test class had a namespace outside the autoload rule, and the nested-vendor fixtures are now excluded from the classmap
+- Added Ko-fi as a funding channel beside Open Collective
 
 ## v1.1.2 — 2026-10-06
 
